@@ -1,0 +1,13 @@
+# This workflow adds the necessary assets to every release
+# For more details, visit https://github.com/BSData/publish-catpkg
+name: Publish catpkg
+on:
+  release:
+    types: [ published, edited ]
+permissions: write-all
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: BSData/publish-catpkg@v1
