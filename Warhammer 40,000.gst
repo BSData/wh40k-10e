@@ -54,16 +54,20 @@
     <categoryEntry name="Grenades" id="5a61-81ac-eb7c-a87e"/>
     <categoryEntry name="Imperium" id="aff3-d6a3-2a95-9dc"/>
     <categoryEntry name="Configuration" id="4ac9-fd30-1e3d-b249"/>
+    <categoryEntry name="Unit" id="1160-70ae-a862-b1a8"/>
   </categoryEntries>
   <forceEntries>
-    <forceEntry id="bb9d-299a-ed60-2d8a" name="Mustered Army" hidden="false">
+    <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
       <categoryLinks>
+        <categoryLink name="Configuration" id="d5de-ee57-ad4b-e4b7" targetId="4ac9-fd30-1e3d-b249"/>
         <categoryLink id="c932-1176-dc9-b390" name="New Category (link)" hidden="false" targetId="9cfd-1c32-585f-7d5c" primary="false">
           <constraints>
-            <constraint field="selections" scope="roster" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="f08b-2179-601f-9af" type="min"/>
+            <constraint field="selections" scope="roster" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" id="f08b-2179-601f-9af" type="min"/>
           </constraints>
         </categoryLink>
-        <categoryLink name="Configuration" id="d5de-ee57-ad4b-e4b7" targetId="4ac9-fd30-1e3d-b249"/>
+        <categoryLink name="Battleline" id="b3ba-1e1a-a92d-60d2" targetId="e338-111e-d0c6-b687" type="category"/>
+        <categoryLink name="Dedicated Transport" id="cf3e-2c24-fe34-39f9" targetId="ba07-411c-2832-1f79" type="category"/>
+        <categoryLink name="Unit" id="a41a-6330-4718-d8d2" targetId="1160-70ae-a862-b1a8" type="category"/>
       </categoryLinks>
     </forceEntry>
   </forceEntries>
