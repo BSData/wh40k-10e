@@ -23,6 +23,7 @@
         <characteristicType id="2229-f494-25db-c5d3" name="S"/>
         <characteristicType id="9ead-8a10-520-de15" name="AP"/>
         <characteristicType id="a354-c1c8-a745-f9e3" name="D"/>
+        <characteristicType id="7f1b-8591-2fcf-d01c" name="Abilities"/>
       </characteristicTypes>
     </profileType>
     <profileType id="9cc3-6d83-4dd3-9b64" name="Abilities">
@@ -38,6 +39,7 @@
         <characteristicType id="ab33-d393-96ce-ccba" name="S"/>
         <characteristicType id="41a0-1301-112a-e2f2" name="AP"/>
         <characteristicType id="3254-9fe6-d824-513e" name="D"/>
+        <characteristicType id="893f-9000-ccf7-648e" name="Abilities"/>
       </characteristicTypes>
     </profileType>
   </profileTypes>
@@ -55,11 +57,20 @@
     <categoryEntry name="Imperium" id="aff3-d6a3-2a95-9dc"/>
     <categoryEntry name="Configuration" id="4ac9-fd30-1e3d-b249"/>
     <categoryEntry name="Unit" id="1160-70ae-a862-b1a8"/>
+    <categoryEntry name="Fly" id="c619-2086-bbcf-69c9"/>
+    <categoryEntry name="Smoke" id="6df-937-16bc-8c1a"/>
+    <categoryEntry name="Psyker" id="13bf-2bee-3ae0-b414"/>
+    <categoryEntry name="Vehicle" id="dbd4-63-af05-998"/>
+    <categoryEntry name="Walker" id="6dda-e157-334d-e93a"/>
+    <categoryEntry name="Transport" id="75e8-57c4-40e3-1817"/>
+    <categoryEntry name="Aircraft" id="63f1-e6e8-f6f6-a4f0"/>
+    <categoryEntry name="Fortification" id="19d7-9c74-2140-5851"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
       <categoryLinks>
         <categoryLink name="Configuration" id="d5de-ee57-ad4b-e4b7" targetId="4ac9-fd30-1e3d-b249"/>
+        <categoryLink name="Epic Hero" id="16fc-8e39-ee82-cf96" targetId="4f3a-f0f7-6647-348d" type="category"/>
         <categoryLink id="c932-1176-dc9-b390" name="New Category (link)" hidden="false" targetId="9cfd-1c32-585f-7d5c" primary="false">
           <constraints>
             <constraint field="selections" scope="roster" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" id="f08b-2179-601f-9af" type="min"/>
@@ -354,6 +365,98 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+    </sharedProfile>
+    <sharedProfile name="Assault" hidden="false" id="fc8a-8c24-bae9-cc1c" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [ASSAULT] in their profile are known as Assault weapons. If a unit that Advanced this turn contains any models equipped with Assault weapons, it is still eligible to shoot in this turn’s Shooting phase. When such a unit is selected to shoot, you can only resolve attacks using Assault weapons its models are equipped with.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Rapid Fire" hidden="false" id="1760-73d-b03f-637f" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [RAPID FIRE X] in their profile are known as Rapid Fire weapons. Each time such a weapon targets a unit within half that weapon’s range, the Attacks characteristic of that weapon is increased by the amount denoted by ‘x’.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Ignores Cover" hidden="false" id="ae12-f288-4092-2d81" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [IGNORES COVER] in their profile are known as Ignores Cover weapons. Each time an attack is made with such a weapon, the target cannot have the Benefit of Cover against that attack.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Twin-linked" hidden="false" id="7386-ff26-603-6891" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [TWIN-LINKED] in their profile are known as Twin-linked weapons. Each time an attack is made with such a weapon, you can re-roll that attack’s Wound roll.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Torrent" hidden="false" id="487d-2089-e7a7-f904" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [TORRENT] in their profile are known as Torrent weapons. Each time an attack is made with such a weapon, that attack automatically hits the target.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Lethal Hits" hidden="false" id="1c-2678-ae6b-889f" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [LETHAL HITS] in their profile are known as Lethal Hits weapons. Each time an attack is made with such a weapon, a Critical Hit automatically wounds the target.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Lance" hidden="false" id="5bb-99a-6d10-9ec3" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [LANCE] in their profile are known as Lance weapons. Each time an attack is made with such a weapon, if the bearer made a Charge move this turn, add 1 to that attack’s Wound roll.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Indirect Fire" hidden="false" id="6385-271e-f5e5-71e3" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [INDIRECT FIRE] in their profile are known as Indirect Fire weapons, and attacks can be made with them even if the target is not visible to the attacking model. These attacks can destroy enemy models in a target unit even though none may have been visible to the attacking unit when you selected nthat target.
+
+If no models in a target unit are visible to the attacking unit when you select that target, then each time a model in the attacking unit makes an attack against that target using an Indirect Fire weapon, subtract 1 from that attack’s Hit roll and the target has the Benefit of Cover against that attack (pg 44).</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Precision" hidden="false" id="1a56-5a18-9195-a57a" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [PRECISION] in their profile are known as Precision weapons. Each time an attack made with such a weapon successfully wounds an Attached unit (pg 39), if a Character model in that unit is visible to the attacking model, the attacking model’s player can choose to have that attack allocated to that Character model instead of following the normal attack sequence.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Blast" hidden="false" id="d4d2-3327-a058-5508" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [BLAST] in their profile are known as Blast weapons, and they make a random number of attacks. Each time you determine how many attacks are made with a Blast weapon, add 1 to the result for every five models that were in the target unit when you selected it as the target (rounding down). Blast weapons can never be used to make attacks against a unit that is within Engagement Range of one or more units from the attacking model’s army (including its own unit).</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Melta" hidden="false" id="9689-790f-a49d-a50e" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [MELTA X] in their profile are known as Melta weapons. Each time an attack made with such a weapon targets a unit within half that weapon’s range, that attack’s Damage characteristic is increased by the amount denoted by ‘x’.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Heavy" hidden="false" id="424b-1d81-802b-4a6d" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [HEAVY] in their profile are known as Heavy weapons. Each time an attack is made with such a weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Devastating Wounds" hidden="false" id="7e5c-d6bc-794b-a65d" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [DEVASTATING WOUNDS] in their profile are known as Devastating Wounds weapons. Each time an attack is made with such a weapon, a Critical Wound inflicts a number of mortal wounds on the target equal to the Damage characteristic of that weapon and the attack sequence ends.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Sustained Hits" hidden="false" id="9123-1143-524f-279b" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [SUSTAINED HITS X] in their profile are known as Sustained Hits weapons. Each time an attack is made with such a weapon, if a Critical Hit is rolled, that attack scores a number of additional hits on the target as denoted by ‘x’.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Extra Attacks" hidden="false" id="115b-79dc-f723-d760" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [EXTRA ATTACKS] in their profile are known as Extra Attacks weapons. Each time the bearer of such a weapon fights, it can make attacks with that weapon in addition to the one it chooses to fight with. The number of attacks made with an Extra Attacks weapon cannot be modified by other rules.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Anti" hidden="false" id="470-16cd-cd40-425f" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [ANTI-KEYWORD X+] in their profile are known as Anti weapons. Each time an attack is made with such a weapon against a target with the keyword after the word ‘Anti-’, an unmodified Wound roll of ‘x+’ scores a Critical Wound.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Infiltrators" hidden="false" id="f463-cf45-40da-b0ed" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">During deployment, if every model in a unit has this ability, then when you set it up, it can be set up anywhere on the battlefield that is more than 9&quot; horizontally away from the enemy deployment zone and all enemy models.</characteristic>
+      </characteristics>
+    </sharedProfile>
+    <sharedProfile name="Scouts" hidden="false" id="8e83-e9c9-e857-586e" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Some units have ‘Scouts x&quot;’ listed in their abilities. If every model in a unit has this ability, then at the start of the first battle round, before the first turn begins, it can make a Normal move of up to x&quot; as if it were your Movement phase – as can any Dedicated Transport model such a unit starts the battle embarked within (provided only models with this ability are embarked within that Dedicated Transport model). A unit that moves using this ability must end that move more than 9&quot; horizontally away from all enemy models. If both players have units that can do this, the player who is taking the first turn moves their units first.</characteristic>
+      </characteristics>
     </sharedProfile>
   </sharedProfiles>
   <sharedRules>
