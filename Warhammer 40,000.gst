@@ -77,8 +77,9 @@
           </constraints>
         </categoryLink>
         <categoryLink name="Battleline" id="b3ba-1e1a-a92d-60d2" targetId="e338-111e-d0c6-b687" type="category"/>
-        <categoryLink name="Dedicated Transport" id="cf3e-2c24-fe34-39f9" targetId="ba07-411c-2832-1f79" type="category"/>
         <categoryLink name="Unit" id="a41a-6330-4718-d8d2" targetId="1160-70ae-a862-b1a8" type="category"/>
+        <categoryLink name="Dedicated Transport" id="cf3e-2c24-fe34-39f9" targetId="ba07-411c-2832-1f79" type="category"/>
+        <categoryLink name="Aircraft" id="9a17-9155-3e42-e7b4" targetId="63f1-e6e8-f6f6-a4f0" type="category"/>
       </categoryLinks>
     </forceEntry>
   </forceEntries>
