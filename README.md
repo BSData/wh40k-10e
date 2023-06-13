@@ -1,4 +1,4 @@
-Template Data Repo
+Warhammer 40,000 10th Edition
 ==================
 
 [![Latest release](https://img.shields.io/github/release/BSData/TemplateDataRepo.svg?style=flat-square)](https://github.com/BSData/TemplateDataRepo/releases/latest)
