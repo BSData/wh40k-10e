@@ -130,19 +130,6 @@
     <sharedSelectionEntry id="c319-bbad-fe73-950e" name="Bolt Pistol" hidden="false" collective="false" import="true" type="upgrade">
       <profiles>
         <profile id="3af1-4ce9-864-6332" name="Bolt Pistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapon">
-          <modifiers>
-            <modifier type="set" field="94d-8a98-cf90-183e" value="2+">
-              <conditionGroups>
-                <conditionGroup type="or">
-                  <conditions>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="9082-e850-6a21-2918" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
           <characteristics>
             <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
             <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
@@ -155,7 +142,6 @@
         </profile>
       </profiles>
       <infoLinks>
-        <infoLink id="b9ed-e737-fc66-815c" name="Pistol" hidden="false" targetId="a0e5-6744-b1d2-3786" type="profile"/>
         <infoLink id="c173-eed6-c0b0-4a5a" name="Pistol" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
       </infoLinks>
       <costs>
@@ -171,7 +157,6 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="9082-e850-6a21-2918" type="instanceOf"/>
                     <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
                     <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
                   </conditions>
@@ -209,7 +194,6 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="9082-e850-6a21-2918" type="instanceOf"/>
                     <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
                     <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
                   </conditions>
@@ -241,7 +225,6 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="9082-e850-6a21-2918" type="instanceOf"/>
                     <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
                     <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
                   </conditions>
@@ -265,7 +248,6 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="9082-e850-6a21-2918" type="instanceOf"/>
                     <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
                     <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
                   </conditions>
