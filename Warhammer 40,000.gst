@@ -52,7 +52,6 @@
     <categoryEntry id="ba07-411c-2832-1f79" name="Dedicated Transport" hidden="false"/>
     <categoryEntry id="14a0-40c9-2748-ae6e" name="Mounted" hidden="false"/>
     <categoryEntry id="2d7f-1892-2fd0-e29c" name="Captain" hidden="false"/>
-    <categoryEntry id="9082-e850-6a21-2918" name="Lieutenant" hidden="false"/>
     <categoryEntry id="5a61-81ac-eb7c-a87e" name="Grenades" hidden="false"/>
     <categoryEntry id="aff3-d6a3-2a95-9dc" name="Imperium" hidden="false"/>
     <categoryEntry id="4ac9-fd30-1e3d-b249" name="Configuration" hidden="false"/>
