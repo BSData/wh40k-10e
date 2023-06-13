@@ -335,6 +335,48 @@ If a model is equipped with one or more Pistols, unless it is a Monster or Vehic
         </profile>
       </profiles>
     </sharedRule>
+    <sharedRule name="Anti-" id="4111-82e3-9444-e942">
+      <description>Weapons with [ANTI-KEYWORD X+] in their profile are known as Anti weapons. Each time an attack is made with such a weapon against a target with the keyword after the word ‘Anti-’, an unmodified Wound roll of ‘x+’ scores a Critical Wound.</description>
+      <profiles>
+        <profile id="ada5-32e0-cb0d-8ac8" name="Anti" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [ANTI-KEYWORD X+] in their profile are known as Anti weapons. Each time an attack is made with such a weapon against a target with the keyword after the word ‘Anti-’, an unmodified Wound roll of ‘x+’ scores a Critical Wound.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </sharedRule>
+    <sharedRule name="Sustained Hits" id="1897-c22c-9597-12b1">
+      <description>Weapons with [SUSTAINED HITS X] in their profile are known as Sustained Hits weapons. Each time an attack is made with such a weapon, if a Critical Hit is rolled, that attack scores a number of additional hits on the target as denoted by ‘x’</description>
+      <profiles>
+        <profile id="28b7-2b86-c514-afab" name="Sustained Hits" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [SUSTAINED HITS X] in their profile are known as Sustained Hits weapons. Each time an attack is made with such a weapon, if a Critical Hit is rolled, that attack scores a number of additional hits on the target as denoted by ‘x’.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </sharedRule>
+    <sharedRule name="Heavy" id="1202-10a8-78e9-4c67">
+      <description>Weapons with [HEAVY] in their profile are known as Heavy weapons. Each time an attack is made with such a weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll.</description>
+      <profiles>
+        <profile id="9313-a366-a12d-2fc" name="Heavy" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [HEAVY] in their profile are known as Heavy weapons. Each time an attack is made with such a weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </sharedRule>
+    <sharedRule name="Melta" id="7cdb-fb99-44a9-8849"/>
+    <sharedRule name="Feel No Pain" id="9bf4-280f-bbe2-6fbb">
+      <description>Each time this model would lose a wound, roll one D6: if the result equals or exceeds ‘x’, that wound is not lost.</description>
+      <profiles>
+        <profile id="3907-3dde-9db8-d8fd" name="Feel No Pain" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model would lose a wound, roll one D6: if the result equals or exceeds ‘x’, that wound is not lost.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </sharedRule>
+    <sharedRule name="Invulnerable Save" id="f75f-ee67-c3cb-669e"/>
   </sharedRules>
   <sharedProfiles>
     <sharedProfile id="b0f9-c74-735c-2d3" name="Deadly Demise" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -408,26 +450,6 @@ If no models in a target unit are visible to the attacking unit when you select 
     <sharedProfile id="9689-790f-a49d-a50e" name="Melta" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
       <characteristics>
         <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [MELTA X] in their profile are known as Melta weapons. Each time an attack made with such a weapon targets a unit within half that weapon’s range, that attack’s Damage characteristic is increased by the amount denoted by ‘x’.</characteristic>
-      </characteristics>
-    </sharedProfile>
-    <sharedProfile id="424b-1d81-802b-4a6d" name="Heavy" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-      <characteristics>
-        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [HEAVY] in their profile are known as Heavy weapons. Each time an attack is made with such a weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll.</characteristic>
-      </characteristics>
-    </sharedProfile>
-    <sharedProfile id="7e5c-d6bc-794b-a65d" name="Devastating Wounds" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-      <characteristics>
-        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [DEVASTATING WOUNDS] in their profile are known as Devastating Wounds weapons. Each time an attack is made with such a weapon, a Critical Wound inflicts a number of mortal wounds on the target equal to the Damage characteristic of that weapon and the attack sequence ends.</characteristic>
-      </characteristics>
-    </sharedProfile>
-    <sharedProfile id="9123-1143-524f-279b" name="Sustained Hits" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-      <characteristics>
-        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [SUSTAINED HITS X] in their profile are known as Sustained Hits weapons. Each time an attack is made with such a weapon, if a Critical Hit is rolled, that attack scores a number of additional hits on the target as denoted by ‘x’.</characteristic>
-      </characteristics>
-    </sharedProfile>
-    <sharedProfile id="470-16cd-cd40-425f" name="Anti" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-      <characteristics>
-        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [ANTI-KEYWORD X+] in their profile are known as Anti weapons. Each time an attack is made with such a weapon against a target with the keyword after the word ‘Anti-’, an unmodified Wound roll of ‘x+’ scores a Critical Wound.</characteristic>
       </characteristics>
     </sharedProfile>
     <sharedProfile id="f463-cf45-40da-b0ed" name="Infiltrators" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
