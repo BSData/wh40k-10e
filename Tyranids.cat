@@ -1,2 +1,382 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue library="false" id="b984-7317-81cc-20f" name="Tyranids" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="1" battleScribeVersion="2.03" xmlns="http://www.battlescribe.net/schema/catalogueSchema"/>
+<catalogue library="false" id="b984-7317-81cc-20f" name="Tyranids" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="1" battleScribeVersion="2.03" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
+  <rules>
+    <rule name="Synapse" id="86aa-437f-260b-5cad">
+      <description>If your Army Faction is Tyranids, while a Tyranids unit from your army is within 6&quot; of one or more Synapse models from your army, that unit is said to be within Synapse Range of your army. Each time a Tyranids unit from your army takes a Battle-shock test, if it is within Synapse Range of your army, take that test on 3D6 instead of 2D6.</description>
+    </rule>
+    <rule name="Shadow in the Warp" id="5e57-2478-724a-bd40">
+      <description>If your Army Faction is Tyranids, once per battle, in either player’s Command phase, if one or more units from your army with this ability are on the battlefield, you can unleash the Shadow in the Warp. When you do, each enemy unit on the battlefield must take a Battle-shock test.</description>
+    </rule>
+  </rules>
+  <sharedSelectionEntryGroups>
+    <sharedSelectionEntryGroup name="Detachment Rule" id="7ada-e361-1f7e-af">
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Invasion Fleet" id="c2fe-bf23-bf24-aa43">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="33dd-8deb-f473-d6a"/>
+          </constraints>
+          <profiles>
+            <profile name="Hyper Adaptions" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="cbd6-8e0f-412a-b9c8">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the first battle round, select one of the following Hyper-adaptations to be active for Tyranids units from your army until the end of the battle:
+
+SWARMING INSTINCTS
+Each time a Tyranids model with this Hyper-adaptation makes an attack that targets an enemy Infantry or Swarm unit, that attack has the [SUSTAINED HITS 1] ability.
+
+
+HYPER-AGGRESSION Each time a Tyranids model with this Hyper-adaptation makes an attack that targets an enemy Monster or Vehicle unit, that attack has the [LETHAL HITS] ability.
+
+HIVE PREDATORS Each time a Tyranids model with this Hyper-adaptation makes an attack that targets an enemy Character unit, if a Critical Hit is scored, that attack has the [PRECISION] ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+      </selectionEntries>
+      <constraints>
+        <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="9771-9344-412d-6850" includeChildSelections="true" includeChildForces="true"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="932-a6c9-b917-9279" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+    </sharedSelectionEntryGroup>
+    <sharedSelectionEntryGroup name="Enhancements" id="fa5b-f646-b960-a8d3">
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="4856-7562-fc89-349b" includeChildSelections="true" includeChildForces="true"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5d2e-eca-98b1-336a" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Invasion Fleet Enhancements" id="2d20-befd-a5c5-67a5">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Alien Cunning" id="1b44-a62d-8dcf-c9d9">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b051-7c22-14eb-c85d" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Alien Cunning" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="61a5-80cd-a46-38b5">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Tyranids model only. After both players have deployed their armies, select up to three Tyranids units from your army and redeploy them. When doing so, you can set those units up in Strategic Reserves if you wish, regardless of how many units are already in Strategic Reserves.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="d1d8-6ae0-1be7-e9e" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Perfectly Adapted" id="ae4f-4b00-7733-1cf2">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b051-7c22-14eb-c85d" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Perfectly Adapted" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="3ffd-af3b-fe75-e013">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Tyranids model only. Once per turn, you can re-roll one Hit roll, one Wound roll, one Damage roll, one Advance roll, one Charge roll or one saving throw made for the bearer</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="d1d8-6ae0-1be7-e9e" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Synaptic Linchpin" id="abdd-58fa-44ee-4fa0">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b051-7c22-14eb-c85d" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Synaptic Linchpin" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="877c-8a93-2907-cf90">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Tyranids model only. While a friendly Tyranids unit is within 9&quot; of the bearer, that unit is within Synapse Range of your army.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="d1d8-6ae0-1be7-e9e" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Adaptive Biology" id="8036-cb7f-d252-2e2a">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b051-7c22-14eb-c85d" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Adaptive Biology" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="808c-6c15-dd55-c5b">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Tyranids model only. The bearer has the Feel No Pain 5+ ability. At the start of any turn, if the bearer has fewer than its starting number of wounds remaining, until the end of the battle, it has the Feel No Pain 4+ ability instead.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="d1d8-6ae0-1be7-e9e" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="875a-8354-9bf1-886d" includeChildSelections="true" includeChildForces="true"/>
+          </constraints>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+    </sharedSelectionEntryGroup>
+  </sharedSelectionEntryGroups>
+  <categoryEntries>
+    <categoryEntry name="Faction: Tyranids" id="d1d8-6ae0-1be7-e9e"/>
+    <categoryEntry name="Great Devourer" id="7e82-2c6-9b5-e6ed"/>
+    <categoryEntry name="Synapse" id="4129-a453-686a-d38a"/>
+    <categoryEntry name="Winged Hive Tyrant" id="4f10-fe01-4b80-8d6b"/>
+    <categoryEntry name="Hive Tyrant" id="101a-751-2ee4-c46e"/>
+  </categoryEntries>
+  <sharedSelectionEntries>
+    <sharedSelectionEntry type="model" import="true" name="Winged Hive Tyrant" id="fa68-fcb9-38c-cd0f">
+      <categoryLinks>
+        <categoryLink targetId="9693-cf84-fe69-37a9" id="843-f94e-913a-e630" primary="false" name="Monster"/>
+        <categoryLink targetId="9cfd-1c32-585f-7d5c" id="978a-317d-5f0-93e1" primary="true" name="Character"/>
+        <categoryLink targetId="13bf-2bee-3ae0-b414" id="2b6c-f19e-9742-72e1" primary="false" name="Psyker"/>
+        <categoryLink targetId="c619-2086-bbcf-69c9" id="8dfb-2f62-4513-e7e7" primary="false" name="Fly"/>
+        <categoryLink targetId="4f10-fe01-4b80-8d6b" id="1bd8-98cd-a897-bf30" primary="false" name="Winged Hive Tyrant"/>
+        <categoryLink targetId="7e82-2c6-9b5-e6ed" id="7256-282e-20d8-3c86" primary="false" name="Great Devourer"/>
+        <categoryLink targetId="4129-a453-686a-d38a" id="24d2-ea59-dcc6-f36" primary="false" name="Synapse"/>
+        <categoryLink targetId="d1d8-6ae0-1be7-e9e" id="e7f6-47ce-a120-989f" primary="false" name="Faction: Tyranids"/>
+      </categoryLinks>
+      <entryLinks>
+        <entryLink import="true" name="Will of the Hive Mind" type="selectionEntry" id="2590-6f13-e0b8-bc09" targetId="f2b8-d1b2-af95-b9b1"/>
+        <entryLink import="true" name="Warlord" type="selectionEntry" id="4fc9-cd8c-b426-f2d4" targetId="ceab-62d9-31bf-7c61"/>
+        <entryLink import="true" name="Enhancements" type="selectionEntryGroup" id="e797-cbb5-dc66-bd25" targetId="fa5b-f646-b960-a8d3"/>
+      </entryLinks>
+      <infoLinks>
+        <infoLink name="Deadly Demise" type="profile" id="4868-8ba6-a021-5567" targetId="b0f9-c74-735c-2d3">
+          <modifiers>
+            <modifier type="append" value=" D3" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Deepstrike" type="profile" id="b12e-7b6d-4af8-4757" targetId="a039-4492-1af0-ffbc"/>
+      </infoLinks>
+      <profiles>
+        <profile name="Winged Hive Tyrant" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit" id="b3b6-408d-6916-d204">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">12&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">9</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">10</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">3</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Invulnerable Save" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="3448-690f-465b-d133">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This Model has a 4+ invulnerable save.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Paroxysm (Psychic)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="fee7-90a8-24a2-79ef">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the Fight phase, you can select one enemy unit within 12&quot; of and visible to this model and roll one D6: on a 1, this Psyker suffers D3 mortal wounds; on a 2+, until the end of the phase, subtract 1 from the Attacks characteristic of weapons equipped by models in that unit.
+</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Winged Hive Tyrant Equipment" id="8bc7-da89-cba2-31d4" defaultSelectionEntryId="effb-d65d-a1b1-51d6">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c3b3-d152-a2d8-9b1"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ed83-7d2e-a97e-5121"/>
+          </constraints>
+          <profiles>
+            <profile name="Tyrant Talons" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapon" id="1b78-1168-ce51-fe52">
+              <characteristics>
+                <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
+                <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">7</characteristic>
+                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                <characteristic name="Abilities" typeId="893f-9000-ccf7-648e">-</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <entryLinks>
+            <entryLink targetId="d0cf-a582-5166-fbba" id="2019-583b-ca88-546c" type="selectionEntry" name="Monstrous Scything Talons"/>
+            <entryLink targetId="b9ec-cb81-44f6-49" id="79d7-2c8d-a55e-af25" type="selectionEntry" name="Stranglethorn Cannon"/>
+            <entryLink targetId="1504-4096-b992-65c3" id="46a7-e00d-e612-2a6d" type="selectionEntry" name="Heavy Venom Cannon"/>
+            <entryLink targetId="effb-d65d-a1b1-51d6" id="777b-826-ebd3-6a1a" type="selectionEntry" name="Monstrous Bonesword and Lash Whip"/>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+    </sharedSelectionEntry>
+    <sharedSelectionEntry type="upgrade" import="true" name="Will of the Hive Mind" id="f2b8-d1b2-af95-b9b1">
+      <profiles>
+        <profile name="Will of the Hive Mind" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="7784-d522-b926-ccbb">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per turn, one friendly Tyranids unit within 12&quot; of one or more models with this ability can be targeted with a Stratagem for 0CP, even if another unit from your army has already been targeted with that Stratagem this phase.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8fd5-b43f-cc17-8a57"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="65b6-f118-ebe1-ff38"/>
+      </constraints>
+    </sharedSelectionEntry>
+    <sharedSelectionEntry type="upgrade" import="true" name="Hive Tyrant" id="3e96-8098-3401-77af">
+      <entryLinks>
+        <entryLink import="true" name="Will of the Hive Mind" type="selectionEntry" id="698c-bd08-6450-ef54" targetId="f2b8-d1b2-af95-b9b1"/>
+        <entryLink import="true" name="Warlord" type="selectionEntry" id="a2d3-5a18-5a14-26ac" targetId="ceab-62d9-31bf-7c61"/>
+        <entryLink import="true" name="Enhancements" type="selectionEntryGroup" id="ecf0-4643-c6b-6160" targetId="fa5b-f646-b960-a8d3"/>
+      </entryLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Hive Tyrant Equipment" id="c1a4-2d78-4a06-852e">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Monstrous Bonesword and Lash Whip Option" id="2cd2-d174-61dc-7b97" defaultSelectionEntryId="5889-181a-3b21-9b7e">
+              <entryLinks>
+                <entryLink targetId="effb-d65d-a1b1-51d6" id="5889-181a-3b21-9b7e" type="selectionEntry" name="Monstrous Bonesword and Lash Whip"/>
+                <entryLink targetId="1504-4096-b992-65c3" id="1435-6320-71bc-dcfd" type="selectionEntry" name="Heavy Venom Cannon"/>
+                <entryLink targetId="b9ec-cb81-44f6-49" id="ebc6-5d4f-5ec5-b222" type="selectionEntry" name="Stranglethorn Cannon"/>
+                <entryLink targetId="d0cf-a582-5166-fbba" id="f717-3d3-4448-5cfc" type="selectionEntry" name="Monstrous Scything Talons">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="false" id="f99e-ae4e-fbce-84b9"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e478-c71b-bcff-245f"/>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="b58c-a12e-d22c-a975"/>
+              </constraints>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Monstrous Scything Talons Option" id="6f57-d5fd-f3ed-ae3" defaultSelectionEntryId="5fe8-e07-2888-42bc">
+              <entryLinks>
+                <entryLink targetId="d0cf-a582-5166-fbba" id="5fe8-e07-2888-42bc" type="selectionEntry" name="Monstrous Scything Talons">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="false" id="8011-7f8f-e852-5ded"/>
+                  </constraints>
+                </entryLink>
+                <entryLink targetId="b9ec-cb81-44f6-49" id="bb4e-c104-1a32-ad5d" type="selectionEntry" name="Stranglethorn Cannon">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="3e96-8098-3401-77af" shared="true" id="8b2f-e77b-ce26-5403" includeChildSelections="true"/>
+                  </constraints>
+                </entryLink>
+                <entryLink targetId="1504-4096-b992-65c3" id="c352-60ee-2742-dba2" type="selectionEntry" name="Heavy Venom Cannon">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="3e96-8098-3401-77af" shared="true" id="8b2f-e77b-ce26-5403" includeChildSelections="true"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d36c-bd8-bbc9-ffc0"/>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="ee5d-591-12d-9bae"/>
+              </constraints>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <categoryLinks>
+        <categoryLink targetId="9693-cf84-fe69-37a9" id="121b-5c62-2542-1433" primary="false" name="Monster"/>
+        <categoryLink targetId="9cfd-1c32-585f-7d5c" id="a030-8569-1f29-a456" primary="true" name="Character"/>
+        <categoryLink targetId="13bf-2bee-3ae0-b414" id="387a-6862-5473-786b" primary="false" name="Psyker"/>
+        <categoryLink targetId="4129-a453-686a-d38a" id="d71b-497b-27eb-e4ae" primary="false" name="Synapse"/>
+        <categoryLink targetId="101a-751-2ee4-c46e" id="4f23-7aa7-a48e-89ea" primary="false" name="Hive Tyrant"/>
+        <categoryLink targetId="7e82-2c6-9b5-e6ed" id="8c65-7d40-28ab-48a6" primary="false" name="Great Devourer"/>
+        <categoryLink targetId="d1d8-6ae0-1be7-e9e" id="76b2-1939-4f4-ff2f" primary="false" name="Faction: Tyranids"/>
+      </categoryLinks>
+    </sharedSelectionEntry>
+    <sharedSelectionEntry type="upgrade" import="true" name="Monstrous Bonesword and Lash Whip" id="effb-d65d-a1b1-51d6">
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6be2-7b2e-9716-518b" includeChildSelections="true"/>
+      </constraints>
+      <profiles>
+        <profile name="Monstrous bonesword and lash whip " hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapon" id="8ad2-55e5-a52f-2ca0">
+          <characteristics>
+            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+            <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
+            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+            <characteristic name="S" typeId="ab33-d393-96ce-ccba">9</characteristic>
+            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+            <characteristic name="D" typeId="3254-9fe6-d824-513e">3</characteristic>
+            <characteristic name="Abilities" typeId="893f-9000-ccf7-648e">Twin Linked</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Twin-linked" type="profile" id="1157-7b87-7b61-f49c" targetId="7386-ff26-603-6891"/>
+      </infoLinks>
+    </sharedSelectionEntry>
+    <sharedSelectionEntry type="upgrade" import="true" name="Heavy Venom Cannon" id="1504-4096-b992-65c3">
+      <profiles>
+        <profile name="Heavy Venom Cannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapon" id="953d-482e-624b-2465">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+            <characteristic name="Abilities" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4fd2-2615-c652-6829"/>
+      </constraints>
+      <infoLinks>
+        <infoLink name="Blast" type="profile" id="a401-8242-8687-ef8f" targetId="d4d2-3327-a058-5508"/>
+      </infoLinks>
+    </sharedSelectionEntry>
+    <sharedSelectionEntry type="upgrade" import="true" name="Stranglethorn Cannon" id="b9ec-cb81-44f6-49">
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f4cd-ba2e-8631-d3a7"/>
+      </constraints>
+      <profiles>
+        <profile name="Stranglethorn Cannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapon" id="3803-1fe1-edde-12e1">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+1</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+            <characteristic name="Abilities" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Blast" type="profile" id="8def-543c-9b61-3f4a" targetId="d4d2-3327-a058-5508"/>
+      </infoLinks>
+    </sharedSelectionEntry>
+    <sharedSelectionEntry type="upgrade" import="true" name="Monstrous Scything Talons" id="d0cf-a582-5166-fbba">
+      <profiles>
+        <profile name="Monstrous Scything Talons" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapon" id="54a6-4f13-d99b-583c">
+          <characteristics>
+            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+            <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
+            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+            <characteristic name="S" typeId="ab33-d393-96ce-ccba">7</characteristic>
+            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+            <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+            <characteristic name="Abilities" typeId="893f-9000-ccf7-648e">Extra Attacks</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Extra Attacks" type="profile" id="44ca-fb63-b663-ed94" targetId="115b-79dc-f723-d760"/>
+      </infoLinks>
+    </sharedSelectionEntry>
+    <sharedSelectionEntry type="upgrade" import="true" name="Warlord" id="ceab-62d9-31bf-7c61">
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a9c-a415-9934-68cc" includeChildSelections="true" includeChildForces="true"/>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="6e88-7ea5-92d6-b492" includeChildSelections="true" includeChildForces="true"/>
+        <constraint type="min" value="1" field="selections" scope="roster" shared="true" id="db48-6e99-34f8-d883" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+    </sharedSelectionEntry>
+  </sharedSelectionEntries>
+  <entryLinks>
+    <entryLink import="true" name="Winged Hive Tyrant" type="selectionEntry" id="706e-86ff-ae9f-c65f" targetId="fa68-fcb9-38c-cd0f"/>
+    <entryLink import="true" name="Hive Tyrant" type="selectionEntry" id="d160-2a74-7d96-5e9f" targetId="3e96-8098-3401-77af"/>
+  </entryLinks>
+</catalogue>
