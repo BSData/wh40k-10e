@@ -72,6 +72,43 @@
     <categoryEntry name="Towering" id="d666-e2c9-b6cc-5716"/>
     <categoryEntry name="Titanic" id="5929-ad51-d006-e008"/>
     <categoryEntry name="Beast" id="4c3e-9310-a516-3590"/>
+    <categoryEntry name="Chaos" id="4c00-2578-faf5-6918"/>
+    <categoryEntry name="Faction: Chaos Knights" id="bb67-f191-6562-acc7"/>
+    <categoryEntry name="Faction: Tyranids" id="d1d8-6ae0-1be7-e9e"/>
+    <categoryEntry name="Faction: Drukhari" id="1015-db48-a2fa-c7da"/>
+    <categoryEntry name="Faction: Aeldari" id="4378-1827-4988-be4e"/>
+    <categoryEntry name="Faction: Astra Militarum" id="fa45-57e-930e-602b"/>
+    <categoryEntry name="Faction: Imperial Knights" id="b5e4-3253-c157-54fd"/>
+    <categoryEntry name="Faction: Heretic Astartes" id="1e42-dfae-cbdd-207d"/>
+    <categoryEntry name="Faction: Adepta Sororitas" id="fd71-afa6-b13b-7fda"/>
+    <categoryEntry name="Faction: Necrons" id="ee0-cf31-4fb5-6b26"/>
+    <categoryEntry name="Faction: Legiones Daemonica" id="571f-ec3a-a5a2-751a"/>
+    <categoryEntry name="Slaanesh" id="b2a9-ede5-7a83-4da8"/>
+    <categoryEntry name="Nurgle" id="ed0d-8e2a-225c-2340"/>
+    <categoryEntry name="Khorne" id="4bd-5ee0-f179-2fc5"/>
+    <categoryEntry name="Tzeentch" id="b188-114f-6ba5-79a1"/>
+    <categoryEntry name="Faction: Adeptus Mechanicus" id="5418-f86b-6e76-c5a"/>
+    <categoryEntry name="Faction: Genestealer Cults" id="226b-cf1e-353a-ae7f"/>
+    <categoryEntry name="Faction: World Eaters" id="bd1d-c1a5-6ca2-c791"/>
+    <categoryEntry name="Faction: Leagues of Votann" id="8474-765-16a9-f00d"/>
+    <categoryEntry name="Faction: Death Guard" id="9888-ddb2-a141-6037"/>
+    <categoryEntry name="Faction: T&apos;au Empire" id="3d58-2655-391e-ecc"/>
+    <categoryEntry name="Faction: Adeptus Custodes" id="eea5-aeaf-bbf0-d5ee"/>
+    <categoryEntry name="Faction: Orks" id="56cc-5f43-2403-8da0"/>
+    <categoryEntry name="Faction: Thousand Sons" id="7002-1fbb-7571-e8e7"/>
+    <categoryEntry name="Faction: Grey Knights" id="d564-3284-bf44-b873"/>
+    <categoryEntry name="Faction: Agents of the Imperium" id="5128-90b-e4a5-dcbd"/>
+    <categoryEntry name="Faction: Dark Angels" id="aab1-4f05-fabe-5ba5"/>
+    <categoryEntry name="Faction: Salamanders" id="65e4-13-4fa8-b36c"/>
+    <categoryEntry name="Faction: Deathwatch" id="d39c-9989-db7f-d815"/>
+    <categoryEntry name="Faction: Blood Angels" id="62ac-ef42-27b4-ae7"/>
+    <categoryEntry name="Faction: Ultramarines" id="1a2d-2f00-c054-4dcb"/>
+    <categoryEntry name="Faction: Space Wolves" id="a0d9-c115-2a-8330"/>
+    <categoryEntry name="Faction: Black Templars" id="9249-acae-2882-d95"/>
+    <categoryEntry name="Faction: Raven Guard" id="84b7-7194-3b84-1b0c"/>
+    <categoryEntry name="Faction: Iron Hands" id="b88e-1b0c-b79f-5cdf"/>
+    <categoryEntry name="Faction: Imperial Fists" id="97aa-d0e4-71c7-96c3"/>
+    <categoryEntry name="Faction: White Scars" id="5c0e-2250-dd3a-1df9"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
