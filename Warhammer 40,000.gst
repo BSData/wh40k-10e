@@ -42,6 +42,11 @@
         <characteristicType id="893f-9000-ccf7-648e" name="Keywords"/>
       </characteristicTypes>
     </profileType>
+    <profileType name="Transport" id="74f8-5443-9d6d-1f1e">
+      <characteristicTypes>
+        <characteristicType id="30f2-be70-861d-1b84" name="Capacity"/>
+      </characteristicTypes>
+    </profileType>
   </profileTypes>
   <categoryEntries>
     <categoryEntry id="9cfd-1c32-585f-7d5c" name="Character" hidden="false"/>
@@ -66,6 +71,7 @@
     <categoryEntry id="19d7-9c74-2140-5851" name="Fortification" hidden="false"/>
     <categoryEntry name="Towering" id="d666-e2c9-b6cc-5716"/>
     <categoryEntry name="Titanic" id="5929-ad51-d006-e008"/>
+    <categoryEntry name="Beast" id="4c3e-9310-a516-3590"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
