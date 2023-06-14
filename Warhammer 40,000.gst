@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <gameSystem id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="1" battleScribeVersion="2.03" xmlns="http://www.battlescribe.net/schema/gameSystemSchema">
   <costTypes>
-    <costType id="51b2-306e-1021-d207" name="pts" hidden="false"/>
-    <costType id="c5fb-5b9b-89f6-86c" name="pl" hidden="false"/>
+    <costType id="51b2-306e-1021-d207" name="pts" defaultCostLimit="0.0" hidden="false"/>
+    <costType id="c5fb-5b9b-89f6-86c" name="pl" defaultCostLimit="0.0" hidden="false"/>
   </costTypes>
   <profileTypes>
     <profileType id="c547-1836-d8a-ff4f" name="Unit">
@@ -42,7 +42,7 @@
         <characteristicType id="893f-9000-ccf7-648e" name="Keywords"/>
       </characteristicTypes>
     </profileType>
-    <profileType name="Transport" id="74f8-5443-9d6d-1f1e">
+    <profileType id="74f8-5443-9d6d-1f1e" name="Transport">
       <characteristicTypes>
         <characteristicType id="30f2-be70-861d-1b84" name="Capacity"/>
       </characteristicTypes>
@@ -69,46 +69,52 @@
     <categoryEntry id="75e8-57c4-40e3-1817" name="Transport" hidden="false"/>
     <categoryEntry id="63f1-e6e8-f6f6-a4f0" name="Aircraft" hidden="false"/>
     <categoryEntry id="19d7-9c74-2140-5851" name="Fortification" hidden="false"/>
-    <categoryEntry name="Towering" id="d666-e2c9-b6cc-5716"/>
-    <categoryEntry name="Titanic" id="5929-ad51-d006-e008"/>
-    <categoryEntry name="Beast" id="4c3e-9310-a516-3590"/>
-    <categoryEntry name="Chaos" id="4c00-2578-faf5-6918"/>
-    <categoryEntry name="Faction: Chaos Knights" id="bb67-f191-6562-acc7"/>
-    <categoryEntry name="Faction: Tyranids" id="d1d8-6ae0-1be7-e9e"/>
-    <categoryEntry name="Faction: Drukhari" id="1015-db48-a2fa-c7da"/>
-    <categoryEntry name="Faction: Aeldari" id="4378-1827-4988-be4e"/>
-    <categoryEntry name="Faction: Astra Militarum" id="fa45-57e-930e-602b"/>
-    <categoryEntry name="Faction: Imperial Knights" id="b5e4-3253-c157-54fd"/>
-    <categoryEntry name="Faction: Heretic Astartes" id="1e42-dfae-cbdd-207d"/>
-    <categoryEntry name="Faction: Adepta Sororitas" id="fd71-afa6-b13b-7fda"/>
-    <categoryEntry name="Faction: Necrons" id="ee0-cf31-4fb5-6b26"/>
-    <categoryEntry name="Faction: Legiones Daemonica" id="571f-ec3a-a5a2-751a"/>
-    <categoryEntry name="Slaanesh" id="b2a9-ede5-7a83-4da8"/>
-    <categoryEntry name="Nurgle" id="ed0d-8e2a-225c-2340"/>
-    <categoryEntry name="Khorne" id="4bd-5ee0-f179-2fc5"/>
-    <categoryEntry name="Tzeentch" id="b188-114f-6ba5-79a1"/>
-    <categoryEntry name="Faction: Adeptus Mechanicus" id="5418-f86b-6e76-c5a"/>
-    <categoryEntry name="Faction: Genestealer Cults" id="226b-cf1e-353a-ae7f"/>
-    <categoryEntry name="Faction: World Eaters" id="bd1d-c1a5-6ca2-c791"/>
-    <categoryEntry name="Faction: Leagues of Votann" id="8474-765-16a9-f00d"/>
-    <categoryEntry name="Faction: Death Guard" id="9888-ddb2-a141-6037"/>
-    <categoryEntry name="Faction: T&apos;au Empire" id="3d58-2655-391e-ecc"/>
-    <categoryEntry name="Faction: Adeptus Custodes" id="eea5-aeaf-bbf0-d5ee"/>
-    <categoryEntry name="Faction: Orks" id="56cc-5f43-2403-8da0"/>
-    <categoryEntry name="Faction: Thousand Sons" id="7002-1fbb-7571-e8e7"/>
-    <categoryEntry name="Faction: Grey Knights" id="d564-3284-bf44-b873"/>
-    <categoryEntry name="Faction: Agents of the Imperium" id="5128-90b-e4a5-dcbd"/>
-    <categoryEntry name="Faction: Dark Angels" id="aab1-4f05-fabe-5ba5"/>
-    <categoryEntry name="Faction: Salamanders" id="65e4-13-4fa8-b36c"/>
-    <categoryEntry name="Faction: Deathwatch" id="d39c-9989-db7f-d815"/>
-    <categoryEntry name="Faction: Blood Angels" id="62ac-ef42-27b4-ae7"/>
-    <categoryEntry name="Faction: Ultramarines" id="1a2d-2f00-c054-4dcb"/>
-    <categoryEntry name="Faction: Space Wolves" id="a0d9-c115-2a-8330"/>
-    <categoryEntry name="Faction: Black Templars" id="9249-acae-2882-d95"/>
-    <categoryEntry name="Faction: Raven Guard" id="84b7-7194-3b84-1b0c"/>
-    <categoryEntry name="Faction: Iron Hands" id="b88e-1b0c-b79f-5cdf"/>
-    <categoryEntry name="Faction: Imperial Fists" id="97aa-d0e4-71c7-96c3"/>
-    <categoryEntry name="Faction: White Scars" id="5c0e-2250-dd3a-1df9"/>
+    <categoryEntry id="d666-e2c9-b6cc-5716" name="Towering" hidden="false"/>
+    <categoryEntry id="5929-ad51-d006-e008" name="Titanic" hidden="false"/>
+    <categoryEntry id="4c3e-9310-a516-3590" name="Beast" hidden="false"/>
+    <categoryEntry id="4c00-2578-faf5-6918" name="Chaos" hidden="false"/>
+    <categoryEntry id="bb67-f191-6562-acc7" name="Faction: Chaos Knights" hidden="false"/>
+    <categoryEntry id="d1d8-6ae0-1be7-e9e" name="Faction: Tyranids" hidden="false"/>
+    <categoryEntry id="1015-db48-a2fa-c7da" name="Faction: Drukhari" hidden="false"/>
+    <categoryEntry id="4378-1827-4988-be4e" name="Faction: Aeldari" hidden="false"/>
+    <categoryEntry id="fa45-57e-930e-602b" name="Faction: Astra Militarum" hidden="false"/>
+    <categoryEntry id="b5e4-3253-c157-54fd" name="Faction: Imperial Knights" hidden="false"/>
+    <categoryEntry id="1e42-dfae-cbdd-207d" name="Faction: Heretic Astartes" hidden="false"/>
+    <categoryEntry id="fd71-afa6-b13b-7fda" name="Faction: Adepta Sororitas" hidden="false"/>
+    <categoryEntry id="ee0-cf31-4fb5-6b26" name="Faction: Necrons" hidden="false"/>
+    <categoryEntry id="571f-ec3a-a5a2-751a" name="Faction: Legiones Daemonica" hidden="false"/>
+    <categoryEntry id="b2a9-ede5-7a83-4da8" name="Slaanesh" hidden="false"/>
+    <categoryEntry id="ed0d-8e2a-225c-2340" name="Nurgle" hidden="false"/>
+    <categoryEntry id="4bd-5ee0-f179-2fc5" name="Khorne" hidden="false"/>
+    <categoryEntry id="b188-114f-6ba5-79a1" name="Tzeentch" hidden="false"/>
+    <categoryEntry id="5418-f86b-6e76-c5a" name="Faction: Adeptus Mechanicus" hidden="false"/>
+    <categoryEntry id="226b-cf1e-353a-ae7f" name="Faction: Genestealer Cults" hidden="false"/>
+    <categoryEntry id="bd1d-c1a5-6ca2-c791" name="Faction: World Eaters" hidden="false"/>
+    <categoryEntry id="8474-765-16a9-f00d" name="Faction: Leagues of Votann" hidden="false"/>
+    <categoryEntry id="9888-ddb2-a141-6037" name="Faction: Death Guard" hidden="false"/>
+    <categoryEntry id="3d58-2655-391e-ecc" name="Faction: T&apos;au Empire" hidden="false"/>
+    <categoryEntry id="eea5-aeaf-bbf0-d5ee" name="Faction: Adeptus Custodes" hidden="false"/>
+    <categoryEntry id="56cc-5f43-2403-8da0" name="Faction: Orks" hidden="false"/>
+    <categoryEntry id="7002-1fbb-7571-e8e7" name="Faction: Thousand Sons" hidden="false"/>
+    <categoryEntry id="d564-3284-bf44-b873" name="Faction: Grey Knights" hidden="false"/>
+    <categoryEntry id="5128-90b-e4a5-dcbd" name="Faction: Agents of the Imperium" hidden="false"/>
+    <categoryEntry id="aab1-4f05-fabe-5ba5" name="Faction: Dark Angels" hidden="false"/>
+    <categoryEntry id="65e4-13-4fa8-b36c" name="Faction: Salamanders" hidden="false"/>
+    <categoryEntry id="d39c-9989-db7f-d815" name="Faction: Deathwatch" hidden="false"/>
+    <categoryEntry id="62ac-ef42-27b4-ae7" name="Faction: Blood Angels" hidden="false"/>
+    <categoryEntry id="1a2d-2f00-c054-4dcb" name="Faction: Ultramarines" hidden="false"/>
+    <categoryEntry id="a0d9-c115-2a-8330" name="Faction: Space Wolves" hidden="false"/>
+    <categoryEntry id="9249-acae-2882-d95" name="Faction: Black Templars" hidden="false"/>
+    <categoryEntry id="84b7-7194-3b84-1b0c" name="Faction: Raven Guard" hidden="false"/>
+    <categoryEntry id="b88e-1b0c-b79f-5cdf" name="Faction: Iron Hands" hidden="false"/>
+    <categoryEntry id="97aa-d0e4-71c7-96c3" name="Faction: Imperial Fists" hidden="false"/>
+    <categoryEntry id="5c0e-2250-dd3a-1df9" name="Faction: White Scars" hidden="false"/>
+    <categoryEntry id="5c0e-4c31-d51b-e470" name="Warlord" hidden="false">
+      <constraints>
+        <constraint field="selections" scope="roster" value="1.0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="16ac-a6c9-6d9a-d6d5" type="min"/>
+        <constraint field="selections" scope="roster" value="1.0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="3d50-6d29-4f91-8f73" type="max"/>
+      </constraints>
+    </categoryEntry>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
@@ -117,7 +123,7 @@
         <categoryLink id="16fc-8e39-ee82-cf96" name="Epic Hero" hidden="false" targetId="4f3a-f0f7-6647-348d" primary="false"/>
         <categoryLink id="c932-1176-dc9-b390" name="New Category (link)" hidden="false" targetId="9cfd-1c32-585f-7d5c" primary="false">
           <constraints>
-            <constraint field="selections" scope="roster" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" id="f08b-2179-601f-9af" type="min"/>
+            <constraint field="selections" scope="roster" value="1.0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" id="f08b-2179-601f-9af" type="min"/>
           </constraints>
         </categoryLink>
         <categoryLink id="b3ba-1e1a-a92d-60d2" name="Battleline" hidden="false" targetId="e338-111e-d0c6-b687" primary="false"/>
@@ -137,7 +143,7 @@
             <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
             <characteristic name="AP" typeId="9ead-8a10-520-de15"/>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-            <characteristic name="Abilities" typeId="7f1b-8591-2fcf-d01c"/>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
           </characteristics>
         </profile>
       </profiles>
@@ -145,8 +151,8 @@
         <infoLink id="c173-eed6-c0b0-4a5a" name="Pistol" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
       </infoLinks>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="c4d0-5190-3fdb-e16a" name="Heavy Bolt Pistol" hidden="false" collective="false" import="true" type="upgrade">
@@ -157,8 +163,8 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -171,19 +177,19 @@
             <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
             <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-            <characteristic name="Abilities" typeId="7f1b-8591-2fcf-d01c"/>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
           </characteristics>
         </profile>
       </profiles>
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="ed8-b467-c84f-e324" name="Close Combat Weapon" hidden="false" collective="false" import="true" type="upgrade">
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="6768-5a70-fc2f-ed3d" name="Master-crafted Bolt Rifle" hidden="false" collective="false" import="true" type="upgrade">
@@ -194,8 +200,8 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -208,13 +214,13 @@
             <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
             <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-            <characteristic name="Abilities" typeId="7f1b-8591-2fcf-d01c"/>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
           </characteristics>
         </profile>
       </profiles>
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="3d3f-d559-46df-5bf3" name="Plasma Pistol" hidden="false" collective="false" import="true" type="upgrade">
@@ -225,8 +231,8 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -239,7 +245,7 @@
             <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
             <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-            <characteristic name="Abilities" typeId="7f1b-8591-2fcf-d01c"/>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
           </characteristics>
         </profile>
         <profile id="3fd5-c8be-caf2-4c21" name="Supercharged [HAZARDOUS] [PISTOL]" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapon">
@@ -248,8 +254,8 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -262,7 +268,7 @@
             <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
             <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
-            <characteristic name="Abilities" typeId="7f1b-8591-2fcf-d01c"/>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
           </characteristics>
         </profile>
       </profiles>
@@ -271,20 +277,20 @@
         <infoLink id="7bcb-60d7-617b-126f" name="Pistol" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
       </infoLinks>
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="1bd3-4f38-938c-db9e" name="Master-crafted Power Weapon" hidden="false" collective="false" import="true" type="upgrade">
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="5b4-55e7-90c6-d7ec" name="Power Fist" hidden="false" collective="false" import="true" type="upgrade">
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="e6a7-b974-4ab6-592b" name="Neo-Volkite Pistol" hidden="false" collective="false" import="true" type="upgrade">
@@ -297,13 +303,13 @@
             <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
             <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
-            <characteristic name="Abilities" typeId="7f1b-8591-2fcf-d01c"/>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
           </characteristics>
         </profile>
       </profiles>
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
       </costs>
     </selectionEntry>
   </sharedSelectionEntries>
@@ -323,218 +329,75 @@ If a model is equipped with one or more Pistols, unless it is a Monster or Vehic
     <rule id="be1e-ac8e-1e2c-3528" name="Devastating Wounds" hidden="false">
       <description>Weapons with [DEVASTATING WOUNDS] in their profile are known as Devastating Wounds weapons. Each time an attack is made with such a weapon, a Critical Wound inflicts a number of mortal wounds on the target equal to the Damage characteristic of that weapon and the attack sequence ends.</description>
     </rule>
-    <rule name="Assault" id="fc8a-8c24-bae9-cc1c">
+    <rule id="fc8a-8c24-bae9-cc1c" name="Assault" hidden="false">
       <description>Weapons with [ASSAULT] in their profile are known as Assault weapons. If a unit that Advanced this turn contains any models equipped with Assault weapons, it is still eligible to shoot in this turn’s Shooting phase. When such a unit is selected to shoot, you can only resolve attacks using Assault weapons its models are equipped with.</description>
-      <profiles>
-        <profile id="3779-5e83-1d4c-e5ff" name="Assault" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [ASSAULT] in their profile are known as Assault weapons. If a unit that Advanced this turn contains any models equipped with Assault weapons, it is still eligible to shoot in this turn’s Shooting phase. When such a unit is selected to shoot, you can only resolve attacks using Assault weapons its models are equipped with.</characteristic>
-          </characteristics>
-        </profile>
-        <profile id="1080-62cb-261f-4bbc" name="Assault" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [ASSAULT] in their profile are known as Assault weapons. If a unit that Advanced this turn contains any models equipped with Assault weapons, it is still eligible to shoot in this turn’s Shooting phase. When such a unit is selected to shoot, you can only resolve attacks using Assault weapons its models are equipped with.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Extra Attacks" id="115b-79dc-f723-d761">
+    <rule id="115b-79dc-f723-d761" name="Extra Attacks" hidden="false">
       <description>Weapons with [EXTRA ATTACKS] in their profile are known as Extra Attacks weapons. Each time the bearer of such a weapon fights, it can make attacks with that weapon in addition to the one it chooses to fight with. The number of attacks made with an Extra Attacks weapon cannot be modified by other rules.</description>
     </rule>
-    <rule name="Twin-linked" id="cf93-ad4d-2f08-a79d">
+    <rule id="cf93-ad4d-2f08-a79d" name="Twin-linked" hidden="false">
       <description>Weapons with [TWIN-LINKED] in their profile are known as Twin-linked weapons. Each time an attack is made with such a weapon, you can re-roll that attack’s Wound roll.</description>
-      <profiles>
-        <profile id="c657-9d1e-4647-991b" name="Twin-linked" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [TWIN-LINKED] in their profile are known as Twin-linked weapons. Each time an attack is made with such a weapon, you can re-roll that attack’s Wound roll.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Anti-" id="4111-82e3-9444-e942">
+    <rule id="4111-82e3-9444-e942" name="Anti-" hidden="false">
       <description>Weapons with [ANTI-KEYWORD X+] in their profile are known as Anti weapons. Each time an attack is made with such a weapon against a target with the keyword after the word ‘Anti-’, an unmodified Wound roll of ‘x+’ scores a Critical Wound.</description>
-      <profiles>
-        <profile id="ada5-32e0-cb0d-8ac8" name="Anti" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [ANTI-KEYWORD X+] in their profile are known as Anti weapons. Each time an attack is made with such a weapon against a target with the keyword after the word ‘Anti-’, an unmodified Wound roll of ‘x+’ scores a Critical Wound.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Sustained Hits" id="1897-c22c-9597-12b1">
+    <rule id="1897-c22c-9597-12b1" name="Sustained Hits" hidden="false">
       <description>Weapons with [SUSTAINED HITS X] in their profile are known as Sustained Hits weapons. Each time an attack is made with such a weapon, if a Critical Hit is rolled, that attack scores a number of additional hits on the target as denoted by ‘x’</description>
-      <profiles>
-        <profile id="28b7-2b86-c514-afab" name="Sustained Hits" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [SUSTAINED HITS X] in their profile are known as Sustained Hits weapons. Each time an attack is made with such a weapon, if a Critical Hit is rolled, that attack scores a number of additional hits on the target as denoted by ‘x’.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Heavy" id="1202-10a8-78e9-4c67">
+    <rule id="1202-10a8-78e9-4c67" name="Heavy" hidden="false">
       <description>Weapons with [HEAVY] in their profile are known as Heavy weapons. Each time an attack is made with such a weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll.</description>
-      <profiles>
-        <profile id="9313-a366-a12d-2fc" name="Heavy" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [HEAVY] in their profile are known as Heavy weapons. Each time an attack is made with such a weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Melta" id="7cdb-fb99-44a9-8849">
+    <rule id="7cdb-fb99-44a9-8849" name="Melta" hidden="false">
       <description>Weapons with [MELTA X] in their profile are known as Melta weapons. Each time an attack made with such a weapon targets a unit within half that weapon’s range, that attack’s Damage characteristic is increased by the amount denoted by ‘x’.</description>
-      <profiles>
-        <profile id="96ff-7b7a-6058-c91e" name="Melta" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [MELTA X] in their profile are known as Melta weapons. Each time an attack made with such a weapon targets a unit within half that weapon’s range, that attack’s Damage characteristic is increased by the amount denoted by ‘x’.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Feel No Pain" id="9bf4-280f-bbe2-6fbb">
+    <rule id="9bf4-280f-bbe2-6fbb" name="Feel No Pain" hidden="false">
       <description>Each time this model would lose a wound, roll one D6: if the result equals or exceeds ‘x’, that wound is not lost.</description>
-      <profiles>
-        <profile id="3907-3dde-9db8-d8fd" name="Feel No Pain" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model would lose a wound, roll one D6: if the result equals or exceeds ‘x’, that wound is not lost.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Invulnerable Save" id="f75f-ee67-c3cb-669e"/>
-    <rule name="Blast" id="6c1f-1cf7-ff25-c99e">
+    <rule id="f75f-ee67-c3cb-669e" name="Invulnerable Save" hidden="false"/>
+    <rule id="6c1f-1cf7-ff25-c99e" name="Blast" hidden="false">
       <description>Weapons with [BLAST] in their profile are known as Blast weapons, and they make a random number of attacks. Each time you determine how many attacks are made with a Blast weapon, add 1 to the result for every five models that were in the target unit when you selected it as the target (rounding down). Blast weapons can never be used to make attacks against a unit that is within Engagement Range of one or more units from the attacking model’s army (including its own unit).</description>
-      <profiles>
-        <profile id="30f2-7b92-ff0d-dc4c" name="Blast" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [BLAST] in their profile are known as Blast weapons, and they make a random number of attacks. Each time you determine how many attacks are made with a Blast weapon, add 1 to the result for every five models that were in the target unit when you selected it as the target (rounding down). Blast weapons can never be used to make attacks against a unit that is within Engagement Range of one or more units from the attacking model’s army (including its own unit).</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Precision" id="9143-31ae-e0a6-6007">
-      <profiles>
-        <profile id="2a38-de17-6faf-95f8" name="Precision" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [PRECISION] in their profile are known as Precision weapons. Each time an attack made with such a weapon successfully wounds an Attached unit (pg 39), if a Character model in that unit is visible to the attacking model, the attacking model’s player can choose to have that attack allocated to that Character model instead of following the normal attack sequence.</characteristic>
-          </characteristics>
-        </profile>
-        <profile id="94dd-5c1e-cd47-e960" name="Precision" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [PRECISION] in their profile are known as Precision weapons. Each time an attack made with such a weapon successfully wounds an Attached unit (pg 39), if a Character model in that unit is visible to the attacking model, the attacking model’s player can choose to have that attack allocated to that Character model instead of following the normal attack sequence.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
+    <rule id="9143-31ae-e0a6-6007" name="Precision" hidden="false">
       <description>Weapons with [PRECISION] in their profile are known as Precision weapons. Each time an attack made with such a weapon successfully wounds an Attached unit, if a Character model in that unit is visible to the attacking model, the attacking model’s player can choose to have that attack allocated to that Character model instead of following the normal attack sequence.</description>
     </rule>
-    <rule name="Indirect Fire" id="4ddd-4e29-acdd-5e6d">
+    <rule id="4ddd-4e29-acdd-5e6d" name="Indirect Fire" hidden="false">
       <description>Weapons with [INDIRECT FIRE] in their profile are known as Indirect Fire weapons, and attacks can be made with them even if the target is not visible to the attacking model. These attacks can destroy enemy models in a target unit even though none may have been visible to the attacking unit when you selected that target.
 
 If no models in a target unit are visible to the attacking unit when you select that target, then each time a model in the attacking unit makes an attack against that target using an Indirect Fire weapon, subtract 1 from that attack’s Hit roll and the target has the Benefit of Cover against that attack.</description>
-      <profiles>
-        <profile id="e2a4-c4a8-fa3f-df13" name="Indirect Fire" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [INDIRECT FIRE] in their profile are known as Indirect Fire weapons, and attacks can be made with them even if the target is not visible to the attacking model. These attacks can destroy enemy models in a target unit even though none may have been visible to the attacking unit when you selected nthat target.
-
-If no models in a target unit are visible to the attacking unit when you select that target, then each time a model in the attacking unit makes an attack against that target using an Indirect Fire weapon, subtract 1 from that attack’s Hit roll and the target has the Benefit of Cover against that attack (pg 44).</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Lance" id="2ebc-abdf-8129-6c57">
+    <rule id="2ebc-abdf-8129-6c57" name="Lance" hidden="false">
       <description>Weapons with [LANCE] in their profile are known as Lance weapons. Each time an attack is made with such a weapon, if the bearer made a Charge move this turn, add 1 to that attack’s Wound roll.</description>
-      <profiles>
-        <profile id="dd7f-f530-76a1-2cfb" name="Lance" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [LANCE] in their profile are known as Lance weapons. Each time an attack is made with such a weapon, if the bearer made a Charge move this turn, add 1 to that attack’s Wound roll.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Lethal Hits" id="d1d1-611e-5191-1095">
+    <rule id="d1d1-611e-5191-1095" name="Lethal Hits" hidden="false">
       <description>Weapons with [LETHAL HITS] in their profile are known as Lethal Hits weapons. Each time an attack is made with such a weapon, a Critical Hit automatically wounds the target.</description>
-      <profiles>
-        <profile id="e8a3-7e4c-5dd0-1447" name="Lethal Hits" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [LETHAL HITS] in their profile are known as Lethal Hits weapons. Each time an attack is made with such a weapon, a Critical Hit automatically wounds the target.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Ignores Cover" id="4640-43e7-30b-215a">
+    <rule id="4640-43e7-30b-215a" name="Ignores Cover" hidden="false">
       <description>Weapons with [IGNORES COVER] in their profile are known as Ignores Cover weapons. Each time an attack is made with such a weapon, the target cannot have the Benefit of Cover against that attack.</description>
-      <profiles>
-        <profile id="e77-19e9-9d81-4e6d" name="Ignores Cover" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [IGNORES COVER] in their profile are known as Ignores Cover weapons. Each time an attack is made with such a weapon, the target cannot have the Benefit of Cover against that attack.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Rapid Fire" id="c5c8-8b58-b8b6-7786">
+    <rule id="c5c8-8b58-b8b6-7786" name="Rapid Fire" hidden="false">
       <description>Weapons with [RAPID FIRE X] in their profile are known as Rapid Fire weapons. Each time such a weapon targets a unit within half that weapon’s range, the Attacks characteristic of that weapon is increased by the amount denoted by ‘x’.</description>
-      <profiles>
-        <profile id="e02b-2e0f-fd5e-ec74" name="Rapid Fire" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [RAPID FIRE X] in their profile are known as Rapid Fire weapons. Each time such a weapon targets a unit within half that weapon’s range, the Attacks characteristic of that weapon is increased by the amount denoted by ‘x’.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Torrent" id="5edf-d619-23e0-9b56">
+    <rule id="5edf-d619-23e0-9b56" name="Torrent" hidden="false">
       <description>Weapons with [TORRENT] in their profile are known as Torrent weapons. Each time an attack is made with such a weapon, that attack automatically hits the target.</description>
-      <profiles>
-        <profile id="5898-a98b-f43e-4d8a" name="Torrent" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Weapons with [TORRENT] in their profile are known as Torrent weapons. Each time an attack is made with such a weapon, that attack automatically hits the target.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Scouts" id="ada6-bac1-ffe0-d6f7">
+    <rule id="ada6-bac1-ffe0-d6f7" name="Scouts" hidden="false">
       <description>Some units have ‘Scouts x’ listed in their abilities. If every model in a unit has this ability, then at the start of the first battle round, before the first turn begins, it can make a Normal move of up to x\&quot; as if it were your Movement phase – as can any Dedicated Transport model such a unit starts the battle embarked within (provided only models with this ability are embarked within that Dedicated Transport model). A unit that moves using this ability must end that move more than 9\&quot; horizontally away from all enemy models. If both players have units that can do this, the player who is taking the first turn moves their units first.</description>
-      <profiles>
-        <profile id="ac21-1489-4a93-6a1c" name="Scouts" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Some units have ‘Scouts x&quot;’ listed in their abilities. If every model in a unit has this ability, then at the start of the first battle round, before the first turn begins, it can make a Normal move of up to x&quot; as if it were your Movement phase – as can any Dedicated Transport model such a unit starts the battle embarked within (provided only models with this ability are embarked within that Dedicated Transport model). A unit that moves using this ability must end that move more than 9&quot; horizontally away from all enemy models. If both players have units that can do this, the player who is taking the first turn moves their units first.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Infiltrators" id="c05d-f4c3-f091-4938">
+    <rule id="c05d-f4c3-f091-4938" name="Infiltrators" hidden="false">
       <description>During deployment, if every model in a unit has this ability, then when you set it up, it can be set up anywhere on the battlefield that is more than 9&quot; horizontally away from the enemy deployment zone and all enemy models.</description>
-      <profiles>
-        <profile id="36bf-bce4-23a6-eef1" name="Infiltrators" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">During deployment, if every model in a unit has this ability, then when you set it up, it can be set up anywhere on the battlefield that is more than 9&quot; horizontally away from the enemy deployment zone and all enemy models.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Deep Strike" id="7cb5-dd6b-dd87-ad3b">
+    <rule id="7cb5-dd6b-dd87-ad3b" name="Deep Strike" hidden="false">
       <description>- Unit can be set up in Reserves instead of on the battlefield.
 - Unit can be set up in your Movement phase, more than 9&quot; horizontally away from all enemy models.</description>
-      <profiles>
-        <profile id="73ec-614c-6e81-854e" name="Deepstrike" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">- Unit can be set up in Reserves instead of on the battlefield.
-- Unit can be set up in your Movement phase, more than 9&quot; horizontally away from all enemy models.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
     </rule>
-    <rule name="Deadly Demise" id="b68a-5ded-65ac-98c">
-      <description>When this model is destroyed, roll one D6. On a 6, each unit within 6\&quot; suffers ‘x’ mortal wounds.</description>
-      <profiles>
-        <profile id="7dcf-f669-6e7c-b9ff" name="Deadly Demise" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">When this model is destroyed, roll one D6. On a 6, each unit within 6&quot; suffers ‘x’ mortal wounds.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
+    <rule id="b68a-5ded-65ac-98c" name="Deadly Demise" hidden="false">
+      <description>When this model is destroyed, roll one D6. On a 6, each unit within 6&quot; suffers ‘x’ mortal wounds.</description>
     </rule>
-    <rule name="Stealth" id="bec5-4288-34a6-ccfa">
+    <rule id="bec5-4288-34a6-ccfa" name="Stealth" hidden="false">
       <description>If every model in a unit has this ability, then each time a ranged attack is made against it, subtract 1 from that attack’s Hit roll.</description>
+    </rule>
+    <rule id="5e13-1624-d280-418d" name="Super-Heavy Walker" hidden="false">
+      <description>Each time a model with this ability makes a Normal, Advance or Fall Back move, it can move over models (excluding TITANIC models) and terrain features that are 4&quot; or less in height as if they were not there.</description>
     </rule>
   </sharedRules>
   <sharedProfiles>
