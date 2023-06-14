@@ -2,7 +2,6 @@
 <gameSystem id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="1" battleScribeVersion="2.03" xmlns="http://www.battlescribe.net/schema/gameSystemSchema">
   <costTypes>
     <costType id="51b2-306e-1021-d207" name="pts" defaultCostLimit="0.0" hidden="false"/>
-    <costType id="c5fb-5b9b-89f6-86c" name="pl" defaultCostLimit="0.0" hidden="false"/>
   </costTypes>
   <profileTypes>
     <profileType id="c547-1836-d8a-ff4f" name="Unit">
@@ -15,7 +14,7 @@
         <characteristicType id="bef7-942a-1a23-59f8" name="OC"/>
       </characteristicTypes>
     </profileType>
-    <profileType id="f77d-b953-8fa4-b762" name="Ranged Weapon">
+    <profileType id="f77d-b953-8fa4-b762" name="Ranged Weapons">
       <characteristicTypes>
         <characteristicType id="9896-9419-16a1-92fc" name="Range"/>
         <characteristicType id="3bb-c35f-f54-fb08" name="A"/>
@@ -31,7 +30,7 @@
         <characteristicType id="9b8f-694b-e5e-b573" name="Description"/>
       </characteristicTypes>
     </profileType>
-    <profileType id="8a40-4aaa-c780-9046" name="Melee Weapon">
+    <profileType id="8a40-4aaa-c780-9046" name="Melee Weapons">
       <characteristicTypes>
         <characteristicType id="914c-b413-91e3-a132" name="Range"/>
         <characteristicType id="2337-daa1-6682-b110" name="A"/>
@@ -134,193 +133,11 @@
       </categoryLinks>
     </forceEntry>
   </forceEntries>
-  <sharedSelectionEntries>
-    <selectionEntry id="c319-bbad-fe73-950e" name="Bolt Pistol" hidden="false" collective="false" import="true" type="upgrade">
-      <profiles>
-        <profile id="3af1-4ce9-864-6332" name="Bolt Pistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapon">
-          <characteristics>
-            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-            <characteristic name="BS" typeId="94d-8a98-cf90-183e"/>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15"/>
-            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
-          </characteristics>
-        </profile>
-      </profiles>
-      <infoLinks>
-        <infoLink id="c173-eed6-c0b0-4a5a" name="Pistol" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
-      </infoLinks>
-      <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-      </costs>
-    </selectionEntry>
-    <selectionEntry id="c4d0-5190-3fdb-e16a" name="Heavy Bolt Pistol" hidden="false" collective="false" import="true" type="upgrade">
-      <profiles>
-        <profile id="abcf-e73c-b95a-1263" name="Heavy Bolt Pistol [PISTOL]" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapon">
-          <modifiers>
-            <modifier type="set" field="94d-8a98-cf90-183e" value="2+">
-              <conditionGroups>
-                <conditionGroup type="or">
-                  <conditions>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-          <characteristics>
-            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
-            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
-          </characteristics>
-        </profile>
-      </profiles>
-      <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
-      </costs>
-    </selectionEntry>
-    <selectionEntry id="ed8-b467-c84f-e324" name="Close Combat Weapon" hidden="false" collective="false" import="true" type="upgrade">
-      <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
-      </costs>
-    </selectionEntry>
-    <selectionEntry id="6768-5a70-fc2f-ed3d" name="Master-crafted Bolt Rifle" hidden="false" collective="false" import="true" type="upgrade">
-      <profiles>
-        <profile id="1d7c-6821-1c30-eda6" name="Master-crafted Bolt Rifle" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapon">
-          <modifiers>
-            <modifier type="set" field="94d-8a98-cf90-183e" value="2+">
-              <conditionGroups>
-                <conditionGroup type="or">
-                  <conditions>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-          <characteristics>
-            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
-            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
-            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
-          </characteristics>
-        </profile>
-      </profiles>
-      <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
-      </costs>
-    </selectionEntry>
-    <selectionEntry id="3d3f-d559-46df-5bf3" name="Plasma Pistol" hidden="false" collective="false" import="true" type="upgrade">
-      <profiles>
-        <profile id="2f87-81ec-fe52-48f6" name="Standard [PISTOL]" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapon">
-          <modifiers>
-            <modifier type="set" field="94d-8a98-cf90-183e" value="2+">
-              <conditionGroups>
-                <conditionGroup type="or">
-                  <conditions>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-          <characteristics>
-            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
-            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
-          </characteristics>
-        </profile>
-        <profile id="3fd5-c8be-caf2-4c21" name="Supercharged [HAZARDOUS] [PISTOL]" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapon">
-          <modifiers>
-            <modifier type="set" field="94d-8a98-cf90-183e" value="2+">
-              <conditionGroups>
-                <conditionGroup type="or">
-                  <conditions>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-          <characteristics>
-            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
-            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
-          </characteristics>
-        </profile>
-      </profiles>
-      <infoLinks>
-        <infoLink id="f1fa-798b-57db-4823" name="New Rule" hidden="false" targetId="8367-374c-f87-c627" type="rule"/>
-        <infoLink id="7bcb-60d7-617b-126f" name="Pistol" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
-      </infoLinks>
-      <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
-      </costs>
-    </selectionEntry>
-    <selectionEntry id="1bd3-4f38-938c-db9e" name="Master-crafted Power Weapon" hidden="false" collective="false" import="true" type="upgrade">
-      <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
-      </costs>
-    </selectionEntry>
-    <selectionEntry id="5b4-55e7-90c6-d7ec" name="Power Fist" hidden="false" collective="false" import="true" type="upgrade">
-      <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
-      </costs>
-    </selectionEntry>
-    <selectionEntry id="e6a7-b974-4ab6-592b" name="Neo-Volkite Pistol" hidden="false" collective="false" import="true" type="upgrade">
-      <profiles>
-        <profile id="6b08-7f7b-2ba4-7240" name="Neo-volkite Pistol [Devastating wounds, Pistol]" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapon">
-          <characteristics>
-            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
-          </characteristics>
-        </profile>
-      </profiles>
-      <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
-      </costs>
-    </selectionEntry>
-  </sharedSelectionEntries>
   <sharedRules>
     <rule id="8bf7-8812-923d-29e4" name="Pistol" hidden="false">
       <description>Weapons with [PISTOL] in their profile are known as Pistols. If a unit contains any models equipped with Pistols, that unit is eligible to shoot in its controlling player’s Shooting phase even while it is within Engagement Range of one or more enemy units. When such a unit is selected to shoot, it can only resolve attacks using its Pistols and can only target one of the enemy units it is within Engagement Range of. In such circumstances, a Pistol can target an enemy unit even if other friendly units are within Engagement Range of the same enemy unit. 
 
-
-If a model is equipped with one or more Pistols, unless it is a Monster or Vehicle model, it can either shoot with its Pistols or with all of its other ranged weapons. Declare whether such a model will shoot with its Pistols or its other ranged weapons before selecting targets.</description>
+If a model is equipped with one or more Pistols, unless it is a MONSTER or VEHICLE model, it can either shoot with its Pistols or with all of its other ranged weapons. Declare whether such a model will shoot with its Pistols or its other ranged weapons before selecting targets.</description>
     </rule>
     <rule id="8367-374c-f87-c627" name="Hazardous" hidden="false">
       <description>Weapons with [HAZARDOUS] in their profile are known as Hazardous weapons. Each time a unit is selected to shoot or fight, if one or more models attack with Hazardous weapons, then after that unit has resolved all of its attacks, you must take one Hazardous test for each Hazardous weapon that was just used by rolling one D6. For each roll of 1, that test is failed and one model in that unit equipped with a Hazardous weapon is destroyed (selected by the controlling player), unless that model is a Character, Monster or Vehicle, in which case it suffers 3 mortal wounds instead. Note that if you selected a Character model in an Attached unit, the mortal wounds suffered must be allocated to that model first, even if there is another model in that unit that has lost one or more wounds or has had attacks allocated to it this phase.</description>
@@ -353,7 +170,8 @@ If a model is equipped with one or more Pistols, unless it is a Monster or Vehic
       <description>Weapons with [MELTA X] in their profile are known as Melta weapons. Each time an attack made with such a weapon targets a unit within half that weapon’s range, that attack’s Damage characteristic is increased by the amount denoted by ‘x’.</description>
     </rule>
     <rule id="9bf4-280f-bbe2-6fbb" name="Feel No Pain" hidden="false">
-      <description>Each time this model would lose a wound, roll one D6: if the result equals or exceeds ‘x’, that wound is not lost.</description>
+      <description>Some models have &apos;Feel No Pain x+&apos; listed in their abilities. Each time a model with this ability suffers damage and so would lose a wound (including wounds lost due to mortal wounds), roll one D6: if the result is greater than or equal to the number denoted by &apos;x: that wound is ignored and is not lost. If a model has more than one Feel No Pain ability, you can only use one of those abilities each time that model
+suffers damage and so would lose a wound.</description>
     </rule>
     <rule id="f75f-ee67-c3cb-669e" name="Invulnerable Save" hidden="false"/>
     <rule id="6c1f-1cf7-ff25-c99e" name="Blast" hidden="false">
@@ -383,17 +201,16 @@ If no models in a target unit are visible to the attacking unit when you select 
       <description>Weapons with [TORRENT] in their profile are known as Torrent weapons. Each time an attack is made with such a weapon, that attack automatically hits the target.</description>
     </rule>
     <rule id="ada6-bac1-ffe0-d6f7" name="Scouts" hidden="false">
-      <description>Some units have ‘Scouts x’ listed in their abilities. If every model in a unit has this ability, then at the start of the first battle round, before the first turn begins, it can make a Normal move of up to x\&quot; as if it were your Movement phase – as can any Dedicated Transport model such a unit starts the battle embarked within (provided only models with this ability are embarked within that Dedicated Transport model). A unit that moves using this ability must end that move more than 9\&quot; horizontally away from all enemy models. If both players have units that can do this, the player who is taking the first turn moves their units first.</description>
+      <description>Some units have ‘Scouts x’ listed in their abilities. If every model in a unit has this ability, then at the start of the first battle round, before the first turn begins, it can make a Normal move of up to x&quot; as if it were your Movement phase – as can any DEDICATED TRANSPORT model such a unit starts the battle embarked within (provided only models with this ability are embarked within that DEDICATED TRANSPORT model). A unit that moves using this ability must end that move more than 9\&quot; horizontally away from all enemy models. If both players have units that can do this, the player who is taking the first turn moves their units first.</description>
     </rule>
     <rule id="c05d-f4c3-f091-4938" name="Infiltrators" hidden="false">
       <description>During deployment, if every model in a unit has this ability, then when you set it up, it can be set up anywhere on the battlefield that is more than 9&quot; horizontally away from the enemy deployment zone and all enemy models.</description>
     </rule>
     <rule id="7cb5-dd6b-dd87-ad3b" name="Deep Strike" hidden="false">
-      <description>- Unit can be set up in Reserves instead of on the battlefield.
-- Unit can be set up in your Movement phase, more than 9&quot; horizontally away from all enemy models.</description>
+      <description>During the Declare Battle Formations step, if every model in a unit has this ability, you can set it up in Reserves instead of setting it up on the battlefield. If you do, in the Reinforcements step of one of your Movement phases you can set up this unit anywhere on the battlefield that is more than 9&quot; horizontally away from all enemy models.</description>
     </rule>
     <rule id="b68a-5ded-65ac-98c" name="Deadly Demise" hidden="false">
-      <description>When this model is destroyed, roll one D6. On a 6, each unit within 6&quot; suffers ‘x’ mortal wounds.</description>
+      <description>Some models have &apos;Deadly Demise x&apos; listed in their abilities. When such a model is destroyed, roll one D6 before removing it from play (if such a model is a TRANSPORT, roll before any embarked models disembark). On a 6, each unit within 6&quot; of that model suffers a number of mortal wounds denoted by &apos;x&apos; (if this is a random number, roll separately for each unit within 6&quot;).</description>
     </rule>
     <rule id="bec5-4288-34a6-ccfa" name="Stealth" hidden="false">
       <description>If every model in a unit has this ability, then each time a ranged attack is made against it, subtract 1 from that attack’s Hit roll.</description>
@@ -405,11 +222,4 @@ If no models in a target unit are visible to the attacking unit when you select 
       <description>Unless part of an Attached unit, this unit can only be selected as the target of a ranged attack if the attacking model is within 12&quot;.</description>
     </rule>
   </sharedRules>
-  <sharedProfiles>
-    <profile id="6b78-2820-71ba-ae34" name="Feel No Pain" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
-      <characteristics>
-        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model would lose a wound, roll one D6: if the result equals or exceeds ‘x’, that wound is not lost.</characteristic>
-      </characteristics>
-    </profile>
-  </sharedProfiles>
 </gameSystem>
