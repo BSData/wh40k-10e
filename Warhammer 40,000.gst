@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="1" battleScribeVersion="2.03" xmlns="http://www.battlescribe.net/schema/gameSystemSchema">
+<gameSystem id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="1" battleScribeVersion="2.03" xmlns="http://www.battlescribe.net/schema/gameSystemSchema" type="gameSystem">
   <costTypes>
-    <costType id="51b2-306e-1021-d207" name="pts" defaultCostLimit="0.0" hidden="false"/>
-    <costType id="c5fb-5b9b-89f6-86c" name="pl" defaultCostLimit="0.0" hidden="false"/>
+    <costType id="51b2-306e-1021-d207" name="pts" hidden="false"/>
+    <costType id="c5fb-5b9b-89f6-86c" name="pl" hidden="false"/>
   </costTypes>
   <profileTypes>
     <profileType id="c547-1836-d8a-ff4f" name="Unit">
@@ -111,8 +111,8 @@
     <categoryEntry id="5c0e-2250-dd3a-1df9" name="Faction: White Scars" hidden="false"/>
     <categoryEntry id="5c0e-4c31-d51b-e470" name="Warlord" hidden="false">
       <constraints>
-        <constraint field="selections" scope="roster" value="1.0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="16ac-a6c9-6d9a-d6d5" type="min"/>
-        <constraint field="selections" scope="roster" value="1.0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="3d50-6d29-4f91-8f73" type="max"/>
+        <constraint field="selections" scope="roster" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="16ac-a6c9-6d9a-d6d5" type="min"/>
+        <constraint field="selections" scope="roster" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="3d50-6d29-4f91-8f73" type="max"/>
       </constraints>
     </categoryEntry>
   </categoryEntries>
@@ -123,7 +123,7 @@
         <categoryLink id="16fc-8e39-ee82-cf96" name="Epic Hero" hidden="false" targetId="4f3a-f0f7-6647-348d" primary="false"/>
         <categoryLink id="c932-1176-dc9-b390" name="New Category (link)" hidden="false" targetId="9cfd-1c32-585f-7d5c" primary="false">
           <constraints>
-            <constraint field="selections" scope="roster" value="1.0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" id="f08b-2179-601f-9af" type="min"/>
+            <constraint field="selections" scope="roster" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" id="f08b-2179-601f-9af" type="min"/>
           </constraints>
         </categoryLink>
         <categoryLink id="b3ba-1e1a-a92d-60d2" name="Battleline" hidden="false" targetId="e338-111e-d0c6-b687" primary="false"/>
@@ -151,8 +151,8 @@
         <infoLink id="c173-eed6-c0b0-4a5a" name="Pistol" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
       </infoLinks>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="c4d0-5190-3fdb-e16a" name="Heavy Bolt Pistol" hidden="false" collective="false" import="true" type="upgrade">
@@ -163,8 +163,8 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -182,14 +182,14 @@
         </profile>
       </profiles>
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="ed8-b467-c84f-e324" name="Close Combat Weapon" hidden="false" collective="false" import="true" type="upgrade">
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="6768-5a70-fc2f-ed3d" name="Master-crafted Bolt Rifle" hidden="false" collective="false" import="true" type="upgrade">
@@ -200,8 +200,8 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -219,8 +219,8 @@
         </profile>
       </profiles>
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="3d3f-d559-46df-5bf3" name="Plasma Pistol" hidden="false" collective="false" import="true" type="upgrade">
@@ -231,8 +231,8 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -254,8 +254,8 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
-                    <condition field="selections" scope="ancestor" value="1.0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="2d7f-1892-2fd0-e29c" type="instanceOf"/>
+                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4f3a-f0f7-6647-348d" type="instanceOf"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -277,20 +277,20 @@
         <infoLink id="7bcb-60d7-617b-126f" name="Pistol" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
       </infoLinks>
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="1bd3-4f38-938c-db9e" name="Master-crafted Power Weapon" hidden="false" collective="false" import="true" type="upgrade">
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="5b4-55e7-90c6-d7ec" name="Power Fist" hidden="false" collective="false" import="true" type="upgrade">
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
     </selectionEntry>
     <selectionEntry id="e6a7-b974-4ab6-592b" name="Neo-Volkite Pistol" hidden="false" collective="false" import="true" type="upgrade">
@@ -308,8 +308,8 @@
         </profile>
       </profiles>
       <costs>
-        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0.0"/>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="0.0"/>
+        <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
     </selectionEntry>
   </sharedSelectionEntries>
@@ -398,6 +398,9 @@ If no models in a target unit are visible to the attacking unit when you select 
     </rule>
     <rule id="5e13-1624-d280-418d" name="Super-Heavy Walker" hidden="false">
       <description>Each time a model with this ability makes a Normal, Advance or Fall Back move, it can move over models (excluding TITANIC models) and terrain features that are 4&quot; or less in height as if they were not there.</description>
+    </rule>
+    <rule name="Lone Operative" id="a8a0-8fe7-898-e0f3">
+      <description>Unless part of an Attached unit, this unit can only be selected as the target of a ranged attack if the attacking model is within 12&quot;.</description>
     </rule>
   </sharedRules>
   <sharedProfiles>
