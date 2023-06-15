@@ -232,8 +232,8 @@ If no models in a target unit are visible to the attacking unit when you select 
 
 If a model is in Hover mode,  then until the end of the battle, its Move characteristic is changed to 20&quot;, it loses the AIRCRAFT keyword and it loses all associated rules for being an AlRCRAFT model. Models in Hover mode do not start the battle in Reserves, but you can choose to place them into Strategic Reserves following the normal rules if you wish.</description>
     </rule>
-    <rule name="One Shot" hidden="false" id="6dc3-4d25-df5d-4d30">
-      <description>The bearer can only shoot with this weapon once per battle.</description>
+    <rule name="Fights First" hidden="false" id="24-c886-e8ba-5a89">
+      <description>Units with this ability that are eligible to fight do so in the Fights First step, provided every model in the unit has this ability.</description>
     </rule>
   </sharedRules>
 </gameSystem>
