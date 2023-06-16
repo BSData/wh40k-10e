@@ -106,11 +106,12 @@
     <categoryEntry name="Lieutenant" hidden="false" id="7823-5e66-c298-4b6b"/>
   </categoryEntries>
   <entryLinks>
-    <entryLink id="1dc4-4eb1-ca87-d104" name="Detachment" hidden="false" collective="false" import="true" targetId="821b-9477-6c47-eab5" type="selectionEntryGroup">
+    <entryLink id="1dc4-4eb1-ca87-d104" name="Detachment" hidden="false" collective="false" import="true" targetId="61d6-f66-8112-64c7" type="selectionEntry">
       <categoryLinks>
         <categoryLink id="401e-6984-2f8b-1a85" name="Configuration" hidden="false" targetId="4ac9-fd30-1e3d-b249" primary="true"/>
       </categoryLinks>
     </entryLink>
+    <entryLink import="true" name="Captain in Terminator Armour" hidden="false" type="selectionEntry" id="31c-1092-811e-3775" targetId="dc24-dd64-5d97-df3c"/>
   </entryLinks>
   <rules>
     <rule id="3b76-4053-ece9-6e7d" name="Oath of Moment" hidden="false">
@@ -1471,6 +1472,11 @@
         </profile>
       </profiles>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Detachment" hidden="false" id="61d6-f66-8112-64c7">
+      <entryLinks>
+        <entryLink import="true" name="Detachment" hidden="false" type="selectionEntryGroup" id="436e-5481-bbe5-8887" targetId="821b-9477-6c47-eab5"/>
+      </entryLinks>
+    </selectionEntry>
   </sharedSelectionEntries>
   <sharedProfiles>
     <profile id="90c7-c55c-21e2-2232" name="Rites of Battle" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -1550,8 +1556,18 @@ This unit is eligible to declare a charge in a turn in which it Advanced.</chara
               </characteristics>
             </profile>
           </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="470a-6daa-9014-12df" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
       </selectionEntries>
+      <categoryLinks>
+        <categoryLink targetId="4ac9-fd30-1e3d-b249" id="8721-cb4a-21bd-33e2" primary="true" name="Configuration"/>
+      </categoryLinks>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
 </catalogue>
