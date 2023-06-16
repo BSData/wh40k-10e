@@ -3177,6 +3177,11 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6bda-711b-d822-f5b6"/>
               </constraints>
             </entryLink>
+            <entryLink import="true" name="Semi-automatic grenade launcher" hidden="false" type="selectionEntry" id="5f86-247e-7ff-79fa" targetId="6af0-a6dd-ddeb-4178">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c3f7-ba37-dab8-6880"/>
+              </constraints>
+            </entryLink>
           </entryLinks>
           <selectionEntries>
             <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="d60b-64f6-7d34-8eb2">
@@ -3200,39 +3205,6 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
             </selectionEntry>
           </selectionEntries>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Semi-automatic grenade launcher" hidden="false" id="cfd3-8912-5a61-1d47">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="845b-cf34-7bb7-f653"/>
-          </constraints>
-          <profiles>
-            <profile name="⮞ Semi-automatic grenade launcher - EMP" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="13bc-f3da-ddd1-929d">
-              <characteristics>
-                <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
-                <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
-                <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
-                <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-Vehicle 4+, Devastating Wounds</characteristic>
-              </characteristics>
-            </profile>
-            <profile name="⮞ Semi-automatic grenade launcher - fusion" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="b451-ed2-c70f-cacd">
-              <characteristics>
-                <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
-                <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
-                <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
-                <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
-                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
-              </characteristics>
-            </profile>
-          </profiles>
-          <infoLinks>
-            <infoLink name="Anti-" hidden="false" type="rule" id="a3c5-c184-5bf2-6de3" targetId="4111-82e3-9444-e942"/>
-            <infoLink name="Devastating Wounds" hidden="false" type="rule" id="9fb9-cf7e-c20d-be65" targetId="be1e-ac8e-1e2c-3528"/>
-          </infoLinks>
-        </selectionEntry>
       </selectionEntries>
       <selectionEntryGroups>
         <selectionEntryGroup name="Pathfinders" hidden="false" id="60bc-2143-2514-bae5">
@@ -3252,6 +3224,11 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
               </entryLinks>
               <modifiers>
                 <modifier type="decrement" value="3" field="850f-6d92-773b-312f"/>
+                <modifier type="decrement" value="1" field="850f-6d92-773b-312f">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="parent" childId="f1ca-59d2-49db-849f" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
               </modifiers>
               <selectionEntries>
                 <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="af7e-1ac-4f84-25ff" collective="true">
@@ -3389,6 +3366,53 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                 </selectionEntry>
               </selectionEntries>
             </selectionEntry>
+            <selectionEntry type="model" import="true" name="Pathfinders w/ pulse carbine and grenade launcher" hidden="false" id="f1ca-59d2-49db-849f" collective="false">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="eb76-3e3f-1a38-7195"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Pulse carbine" hidden="false" type="selectionEntry" id="ef62-6176-8252-1709" targetId="132e-eb89-c531-4947" collective="false">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3a58-d1e7-c61-6bb2"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e789-9ed1-a92a-278b"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Semi-automatic grenade launcher" hidden="false" type="selectionEntry" id="2bb8-5cce-e0d1-b0b7" targetId="6af0-a6dd-ddeb-4178">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4043-f0b2-78d5-acae"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5a27-a610-957d-c200"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <modifiers>
+                <modifier type="decrement" value="1" field="eb76-3e3f-1a38-7195">
+                  <conditions>
+                    <condition type="greaterThan" value="1" field="selections" scope="parent" childId="5f86-247e-7ff-79fa" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="374c-fff1-128a-dca3" collective="true">
+                  <profiles>
+                    <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="f61a-e877-a70c-895">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">1</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">5+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2567-841-e849-8028"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="48ac-181b-daa2-851"/>
+                  </constraints>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntry>
           </selectionEntries>
           <constraints>
             <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="9b06-df93-4d7-e459"/>
@@ -3396,6 +3420,37 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
           </constraints>
         </selectionEntryGroup>
       </selectionEntryGroups>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Semi-automatic grenade launcher" hidden="false" id="6af0-a6dd-ddeb-4178" collective="true">
+      <profiles>
+        <profile name="⮞ Semi-automatic grenade launcher - EMP" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="31a1-c5dd-a259-1d89">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-Vehicle 4+, Devastating Wounds</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="⮞ Semi-automatic grenade launcher - fusion" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="81e6-dde4-c590-9945">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Anti-" hidden="false" type="rule" id="6d4d-a80f-7a2b-2719" targetId="4111-82e3-9444-e942"/>
+        <infoLink name="Devastating Wounds" hidden="false" type="rule" id="433c-aa69-bad5-6949" targetId="be1e-ac8e-1e2c-3528"/>
+      </infoLinks>
+      <comment>Shared</comment>
     </selectionEntry>
   </sharedSelectionEntries>
   <entryLinks>
