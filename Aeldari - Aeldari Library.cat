@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue library="true" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="1" battleScribeVersion="2.03" xmlns="http://www.battlescribe.net/schema/catalogueSchema" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="1" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Asurmen" hidden="false" id="828d-840a-9a67-9074">
       <costs>
@@ -31,8 +31,30 @@
         <cost name="pts" typeId="51b2-306e-1021-d207" value="125"/>
       </costs>
     </selectionEntry>
-    <selectionEntry type="unit" import="true" name="Corsair Voidreavers" hidden="false" id="cc68-ad19-7285-7a11"/>
-    <selectionEntry type="unit" import="true" name="Corsair Voidscarred" hidden="false" id="cbb7-6669-a014-36fe"/>
+    <selectionEntry type="unit" import="true" name="Corsair Voidreavers" hidden="false" id="cc68-ad19-7285-7a11">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="70"/>
+      </costs>
+      <modifiers>
+        <modifier type="set" value="140" field="51b2-306e-1021-d207">
+          <conditions>
+            <condition type="greaterThan" value="5" field="selections" scope="parent" childId="model" shared="true" id="9d60-a69b-d1f1-4a4f" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Corsair Voidscarred" hidden="false" id="cbb7-6669-a014-36fe">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="90"/>
+      </costs>
+      <modifiers>
+        <modifier type="set" value="180" field="51b2-306e-1021-d207">
+          <conditions>
+            <condition type="greaterThan" value="5" field="selections" scope="parent" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
     <selectionEntry type="model" import="true" name="Crimson Hunter" hidden="false" id="90c9-aaac-5ef8-f043">
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="160"/>
@@ -206,7 +228,53 @@
         <cost name="pts" typeId="51b2-306e-1021-d207" value="160"/>
       </costs>
     </selectionEntry>
-    <selectionEntry type="unit" import="true" name="Wraithguard" hidden="false" id="5aa4-107-d7ee-f0f3"/>
+    <selectionEntry type="unit" import="true" name="Wraithguard" hidden="false" id="5aa4-107-d7ee-f0f3">
+      <selectionEntries>
+        <selectionEntry type="model" import="true" name="Wraithguard" hidden="false" id="5049-c34-3679-6ab9">
+          <constraints>
+            <constraint type="min" value="5" field="selections" scope="parent" shared="true" id="6324-9b89-75cd-fd69"/>
+            <constraint type="max" value="10" field="selections" scope="parent" shared="true" id="3312-52db-6a50-3691"/>
+          </constraints>
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Weapon" hidden="false" id="33c1-c486-f3a6-a523" defaultSelectionEntryId="e676-de3-8c2f-2769">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Wraithcannon" hidden="false" id="e676-de3-8c2f-2769" collective="true">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="639e-686a-cd45-a7df"/>
+                  </constraints>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="D-Scythe" hidden="false" id="24e3-c4ab-cf59-5c4c" collective="true">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4d9c-3a2d-2320-bb9b"/>
+                  </constraints>
+                </selectionEntry>
+              </selectionEntries>
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="735c-ba4c-4ce9-bf43"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="bb21-5532-b5d2-901"/>
+              </constraints>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+        </selectionEntry>
+      </selectionEntries>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="155"/>
+      </costs>
+      <modifiers>
+        <modifier type="set" value="310" field="51b2-306e-1021-d207">
+          <conditions>
+            <condition type="greaterThan" value="5" field="selections" scope="parent" childId="5049-c34-3679-6ab9" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <categoryLinks>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="b0c8-d0d3-6ee5-7a6d" primary="false" name="Infantry"/>
+        <categoryLink targetId="4378-1827-4988-be4e" id="4232-840b-c8b3-6e6b" primary="false" name="Faction: Aeldari"/>
+        <categoryLink targetId="6fba-69f6-a9d8-9754" id="9290-1bab-cda0-9877" primary="false" name="Wraithguard"/>
+        <categoryLink targetId="c250-f6c5-ffc8-bcd5" id="d787-9f9e-8024-1adc" primary="false" name="Wraith Construct"/>
+        <categoryLink targetId="1160-70ae-a862-b1a8" id="501-9d12-fddc-57d9" primary="true" name="Unit"/>
+      </categoryLinks>
+    </selectionEntry>
     <selectionEntry type="model" import="true" name="Yvraine" hidden="false" id="ada5-25ce-d5d5-4ccb">
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="100"/>
@@ -336,5 +404,9 @@
       </selectionEntries>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
+  <categoryEntries>
+    <categoryEntry name="Wraithguard" hidden="false" id="6fba-69f6-a9d8-9754"/>
+    <categoryEntry name="Wraith Construct" hidden="false" id="c250-f6c5-ffc8-bcd5"/>
+  </categoryEntries>
   <xmlns>http://www.battlescribe.net/schema/catalogueSchema</xmlns>
 </catalogue>
