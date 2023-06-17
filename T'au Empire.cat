@@ -1095,7 +1095,7 @@ Until the end of the phase:
           <modifiers>
             <modifier type="set" value="10&quot;" field="e703-ecb6-5ce7-aec1">
               <conditions>
-                <condition type="equalTo" value="1" field="selections" scope="5e66-6f0-a181-cc4d" childId="810e-8e65-408-f9b2" shared="true" includeChildSelections="true"/>
+                <condition type="equalTo" value="1" field="selections" scope="5e66-6f0-a181-cc4d" childId="7b1c-902d-feb6-6fd6" shared="true" includeChildSelections="true"/>
               </conditions>
             </modifier>
           </modifiers>
@@ -1540,6 +1540,12 @@ Until the end of the phase:
       </categoryLinks>
       <entryLinks>
         <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="d4c8-6980-7d18-1a84" targetId="179c-d88a-d49b-48b9"/>
+        <entryLink import="true" name="Armoured hull" hidden="false" type="selectionEntry" id="764c-2fb0-129d-3310" targetId="352c-96b2-7b2d-f5eb">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="752f-c015-5d18-9c79"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e702-3eb8-d8f6-2bbe"/>
+          </constraints>
+        </entryLink>
       </entryLinks>
       <profiles>
         <profile name="Longstrike" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="2a60-198d-28b3-11d5">
@@ -1557,11 +1563,6 @@ Until the end of the phase:
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes an attack that targets a MONSTER or VEHICLE, add 1 to the Hit roll.</characteristic>
           </characteristics>
         </profile>
-        <profile name="Targeting Array" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3ef4-95c7-cb87-1111">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model is selected to shoot, you can re-roll one Hit roll or you can re-roll one Wound roll when resolving its attacks.</characteristic>
-          </characteristics>
-        </profile>
       </profiles>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
@@ -1573,6 +1574,7 @@ Until the end of the phase:
           </modifiers>
         </infoLink>
         <infoLink name="Damaged: 1-5 Wounds Remaining" hidden="false" type="profile" id="da4d-5a3c-24cb-a231" targetId="4f24-6581-c017-3daa"/>
+        <infoLink name="Targeting Array" hidden="false" type="profile" id="d67d-4adc-d752-a5de" targetId="6c1e-179e-a2dc-85d6"/>
       </infoLinks>
       <infoGroups>
         <infoGroup name="XV02 Pilot Battlesuit" hidden="false" id="8758-2d81-c48-78a8">
@@ -1657,18 +1659,19 @@ Until the end of the phase:
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="198b-b609-9363-da0f"/>
           </constraints>
         </selectionEntryGroup>
-        <selectionEntryGroup name="Twin pulse carbines" hidden="false" id="abb0-2ce5-d89f-b66d" defaultSelectionEntryId="2c92-4ef8-c103-91cb" collective="false">
+        <selectionEntryGroup name="Twin Pulse Carbines" hidden="false" id="abb0-2ce5-d89f-b66d" defaultSelectionEntryId="2c92-4ef8-c103-91cb" collective="false">
           <constraints>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="6f7d-77c6-3c18-8336"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c2cc-6846-5dc9-ebbc"/>
           </constraints>
           <selectionEntries>
             <selectionEntry type="upgrade" import="true" name="2 Accelerator burst cannons" hidden="false" id="7beb-936e-dd45-2919">
+              <comment>Longstrike variant</comment>
               <entryLinks>
-                <entryLink import="true" name="Accelerator burst cannon" hidden="false" type="selectionEntry" id="51c0-8077-1f1e-446" targetId="790a-8944-95ce-fae2" collective="false">
+                <entryLink import="true" name="Accelerator burst cannon" hidden="false" type="selectionEntry" id="39a5-2c75-f27b-9fba" targetId="8d70-f94f-8c8c-f943">
                   <constraints>
-                    <constraint type="min" value="2" field="selections" scope="parent" shared="false" id="2585-7323-909d-3194"/>
-                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="7daf-4ccb-5ded-6a0b"/>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="a4c5-2d3e-beb3-a286"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="469e-21b4-bd90-466c"/>
                   </constraints>
                 </entryLink>
               </entryLinks>
@@ -1763,32 +1766,12 @@ Until the end of the phase:
             <characteristic name="A" typeId="3bb-c35f-f54-fb08">4</characteristic>
             <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
             <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
           </characteristics>
         </profile>
       </profiles>
-    </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Twin smart missile system" hidden="false" id="be26-51a3-899b-b754">
-      <profiles>
-        <profile name="Twin smart missile system" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="7d6b-71e6-1444-c408">
-          <characteristics>
-            <characteristic name="Range" typeId="9896-9419-16a1-92fc">30&quot;</characteristic>
-            <characteristic name="A" typeId="3bb-c35f-f54-fb08">4</characteristic>
-            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Indirect Fire, Twin-Linked</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
-      <comment>Shared - 2A</comment>
-      <infoLinks>
-        <infoLink name="Indirect Fire" hidden="false" type="rule" id="a53a-ac9d-6286-b371" targetId="4ddd-4e29-acdd-5e6d"/>
-        <infoLink name="Twin-linked" hidden="false" type="rule" id="c9a6-7d0d-e225-e5dc" targetId="cf93-ad4d-2f08-a79d"/>
-      </infoLinks>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Strike Team" hidden="false" id="acdd-2901-1a75-99f4" collective="false">
       <profiles>
@@ -2797,20 +2780,6 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
         <infoLink name="Damaged: 1-4 Wounds Remaining" hidden="false" type="profile" id="69f9-2f2b-ecba-4259" targetId="2220-2459-9f07-490e"/>
       </infoLinks>
       <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Battlesuit support system" hidden="false" id="95a-5eac-381a-dbcc">
-          <comment>Ghostkeel variant</comment>
-          <profiles>
-            <profile name="Battlesuit Support System" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c40b-89b1-249-4c0">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer is eligible to shoot in a turn in which it Fell Back but it loses the SMOKE keyword.</characteristic>
-              </characteristics>
-              <comment>Ghostkeel variant</comment>
-            </profile>
-          </profiles>
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2d8f-6e39-cefd-b32"/>
-          </constraints>
-        </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Ghostkeel fists" hidden="false" id="5804-a3f4-b65a-4e32">
           <constraints>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c07-7cd-7bea-656d"/>
@@ -2898,6 +2867,24 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="70ab-ab74-4591-3b63"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4851-8926-11e9-781c"/>
           </constraints>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Battlesuit Support System" hidden="false" id="ed28-85af-7b7b-31fe">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Battlesuit support system" hidden="false" id="a8a0-dacd-a0e-55fb">
+              <comment>Ghostkeel variant</comment>
+              <profiles>
+                <profile name="Battlesuit Support System" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5496-1077-da50-c494">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer is eligible to shoot in a turn in which it Fell Back but it loses the SMOKE keyword.</characteristic>
+                  </characteristics>
+                  <comment>Ghostkeel variant</comment>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2d8f-6e39-cefd-b32"/>
+              </constraints>
+            </selectionEntry>
+          </selectionEntries>
         </selectionEntryGroup>
       </selectionEntryGroups>
     </selectionEntry>
@@ -3473,6 +3460,7 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8d18-b5e7-6810-1592"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="40c5-105-b0e8-4a45"/>
           </constraints>
+          <comment>Piranha variant</comment>
         </selectionEntry>
       </selectionEntries>
       <entryLinks>
@@ -3685,27 +3673,9 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                 <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="732-abfe-19cc-2a3"/>
                 <constraint type="max" value="12" field="selections" scope="parent" shared="true" id="5404-6333-f14-c1f1"/>
               </constraints>
-              <selectionEntries>
-                <selectionEntry type="upgrade" import="true" name="Ripping fangs" hidden="false" id="51c3-3b52-4d09-b8c7" collective="true">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="366f-8f7a-97e8-29a7"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a69b-3071-99a2-232e"/>
-                  </constraints>
-                  <profiles>
-                    <profile name="Ripping fangs" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="a2e5-be2b-150e-5fbc">
-                      <characteristics>
-                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                        <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
-                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
-                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
-                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
-                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
-                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                </selectionEntry>
-              </selectionEntries>
+              <entryLinks>
+                <entryLink import="true" name="Ripping fangs" hidden="false" type="selectionEntry" id="b100-54b2-a6ab-6e3" targetId="1678-53f2-d5e3-dded"/>
+              </entryLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -3933,7 +3903,11 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
       <selectionEntryGroups>
         <selectionEntryGroup name="Missile Drones (0-2)" hidden="false" id="6a04-101c-70b6-3e01">
           <entryLinks>
-            <entryLink import="true" name="Missile Drone" hidden="false" type="selectionEntry" id="6c4c-a93e-66d1-c09b" targetId="b9e4-45d7-9f27-8a46"/>
+            <entryLink import="true" name="Missile Drone" hidden="false" type="selectionEntry" id="6c4c-a93e-66d1-c09b" targetId="b9e4-45d7-9f27-8a46">
+              <constraints>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="7-fcca-e1ba-3c3c"/>
+              </constraints>
+            </entryLink>
           </entryLinks>
           <constraints>
             <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="1cb-f4d-ca9a-9269"/>
@@ -4006,6 +3980,1538 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="c0f6-4c2c-84aa-5c86"/>
       </constraints>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Riptide fists" hidden="false" id="d41c-dfc2-1b8d-710c">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="63eb-9872-9fae-7574"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="64ae-a3e3-18dc-f3d8"/>
+          </constraints>
+          <profiles>
+            <profile name="Riptide fists" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="925f-89df-81b7-ad2">
+              <characteristics>
+                <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
+                <characteristic name="WS" typeId="95d1-95f-45b4-11d6">5+</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+      </selectionEntries>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Hammerhead Gunship" hidden="false" id="ca9-49ab-17c1-8556">
+      <profiles>
+        <profile name="Hammerhead Gunship" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="a346-fe31-7e8-7628">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">10</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">14</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">3</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Armour Hunter" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9e7-373-d0d6-af25">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes an attack that targets a MONSTER or VEHICLE, add 1 to the Hit roll.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="bfe6-4768-fc97-8d24"/>
+      </constraints>
+      <categoryLinks>
+        <categoryLink targetId="dbd4-63-af05-998" id="e68f-6982-be52-ceeb" primary="true" name="Vehicle"/>
+        <categoryLink targetId="c619-2086-bbcf-69c9" id="5630-81cf-f850-7b" primary="false" name="Fly"/>
+        <categoryLink targetId="7b0b-ad0-8397-2937" id="729e-880c-e7b7-a078" primary="false" name="Hammerhead Gunship"/>
+        <categoryLink targetId="3d58-2655-391e-ecc" id="99da-9954-dd59-13cb" primary="false" name="Faction: T&apos;au Empire"/>
+      </categoryLinks>
+      <infoLinks>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="5a1f-5697-f094-3969" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D3" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Damaged: 1-5 Wounds Remaining" hidden="false" type="profile" id="fb57-a3b8-30e-5325" targetId="4f24-6581-c017-3daa"/>
+        <infoLink name="Targeting Array" hidden="false" type="profile" id="31ac-fe19-ecae-43cf" targetId="6c1e-179e-a2dc-85d6"/>
+      </infoLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Seeker Missiles (0-2)" hidden="false" id="7451-88a-f165-da">
+          <constraints>
+            <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="e67-1608-1a5-9ad7"/>
+          </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Seeker missile" hidden="false" type="selectionEntry" id="c1b1-297c-f3b-86cc" targetId="3a30-cb51-c88c-255f">
+              <constraints>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="d910-4fa1-a880-d66e"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Railgun" hidden="false" id="fe0e-b869-a39e-16a9" defaultSelectionEntryId="fc2c-78c4-4617-ec8d">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Railgun" hidden="false" id="fc2c-78c4-4617-ec8d">
+              <profiles>
+                <profile name="Railgun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="c7e5-e0ff-81a0-7df5">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">72&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">20</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-5</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6+6</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Devastating Wounds</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Heavy" hidden="false" type="rule" id="2f89-dfcc-15e2-8d38" targetId="1202-10a8-78e9-4c67"/>
+                <infoLink name="Devastating Wounds" hidden="false" type="rule" id="5d09-a00c-3314-7949" targetId="be1e-ac8e-1e2c-3528"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Ion cannon" hidden="false" id="d606-c10d-d8f3-35e0">
+              <profiles>
+                <profile name="➤ Ion cannon - standard" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="b544-eb03-8643-7d19">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">60&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
+                  </characteristics>
+                </profile>
+                <profile name="➤ Ion cannon - overcharge" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="f9c3-2ed7-f420-b752">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">60&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Hazardous</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Blast" hidden="false" type="rule" id="17c2-99b3-fbe-e911" targetId="6c1f-1cf7-ff25-c99e"/>
+                <infoLink name="Hazardous" hidden="false" type="rule" id="bc04-b7ea-2b58-cbe3" targetId="8367-374c-f87-c627"/>
+              </infoLinks>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="117b-ac58-d34d-5f1a"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e59e-9561-280c-be94"/>
+          </constraints>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <entryLinks>
+        <entryLink import="true" name="Twin pulse carbines" hidden="false" type="selectionEntryGroup" id="63f6-5d39-39b1-8100" targetId="5e97-414a-5445-2f01"/>
+        <entryLink import="true" name="Armoured hull" hidden="false" type="selectionEntry" id="7774-b034-4e52-4ee3" targetId="352c-96b2-7b2d-f5eb">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4d7-a622-4001-f20d"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1c1c-b34f-2191-6d41"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Sky Ray Gunship" hidden="false" id="bfe0-2e9f-6f57-b48f">
+      <categoryLinks>
+        <categoryLink targetId="dbd4-63-af05-998" id="e39d-73d-72d7-9be7" primary="true" name="Vehicle"/>
+        <categoryLink targetId="c619-2086-bbcf-69c9" id="6ae6-9ead-1c45-1a84" primary="false" name="Fly"/>
+        <categoryLink targetId="1685-dd28-8e90-e10d" id="29c9-45f3-c57f-dc2c" primary="false" name="Markerlight"/>
+        <categoryLink targetId="8ecd-70d4-ce52-f480" id="7aa1-b8b8-6264-34f2" primary="false" name="Sky Ray Gunship"/>
+        <categoryLink targetId="3d58-2655-391e-ecc" id="5b5c-4ede-7307-2519" primary="false" name="Faction: T&apos;au Empire"/>
+      </categoryLinks>
+      <profiles>
+        <profile name="Sky Ray Gunship" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="dd04-efd8-8f8f-750f">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">10</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">14</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">3</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Aerial Scanners" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="89bb-91cf-2e76-ae69">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes an attack with a ranged weapon that targets a unit that can FLY, you can re-roll the Hit roll.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <entryLinks>
+        <entryLink import="true" name="Armoured hull" hidden="false" type="selectionEntry" id="5dd8-8840-c8b0-f0ef" targetId="352c-96b2-7b2d-f5eb">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3daf-5d44-b505-5ee0"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e1d3-45a5-f0bc-fbdc"/>
+          </constraints>
+        </entryLink>
+        <entryLink import="true" name="Twin Pulse Carbines" hidden="false" type="selectionEntryGroup" id="b976-f84a-6656-f318" targetId="5e97-414a-5445-2f01"/>
+      </entryLinks>
+      <infoLinks>
+        <infoLink name="Damaged: 1-5 Wounds Remaining" hidden="false" type="profile" id="ef2d-16fe-4600-61bb" targetId="4f24-6581-c017-3daa"/>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="589b-fabd-d1a4-f1dd" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D3" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Targeting Array" hidden="false" type="profile" id="dcc8-afa7-e37a-5146" targetId="6c1e-179e-a2dc-85d6"/>
+      </infoLinks>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="3b5-7dee-1edc-d93e"/>
+      </constraints>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Seeker missile rack" hidden="false" id="cd24-168c-be83-b8d8">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="bda5-ae40-58f9-57b0"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="90e5-cec5-9442-2152"/>
+          </constraints>
+          <profiles>
+            <profile name="Seeker missile rack" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="9475-a50e-aef8-42d9">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">14</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6+1</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+      </selectionEntries>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Armoured hull" hidden="false" id="352c-96b2-7b2d-f5eb">
+      <comment>Shared</comment>
+      <profiles>
+        <profile name="Armoured hull" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="7a5a-7ea8-6d02-e55c">
+          <characteristics>
+            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">5+</characteristic>
+            <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Devilfish" hidden="false" id="14f3-9aa6-21af-7fe3">
+      <profiles>
+        <profile name="Devilfish" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="3e4c-15ec-7146-f08">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">12&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">9</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">13</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Rapid Deployment" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6109-8d9d-d74-423f">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Units can disembark from this TRANSPORT after it has Advanced. Units that do so count as having made a Normal move that phase, and cannot declare a charge in the same turn, but can otherwise act normally in the remainder of the turn.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Devilfish" typeId="74f8-5443-9d6d-1f1e" typeName="Transport" hidden="false" id="cdb4-e0e7-adc0-bb3b">
+          <characteristics>
+            <characteristic name="Capacity" typeId="30f2-be70-861d-1b84">This model has a transport capacity of 12 T’AU EMPIRE INFANTRY models. It cannot transport BATTLESUIT, KROOT or VESPID STINGWINGS models.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <categoryLinks>
+        <categoryLink targetId="dbd4-63-af05-998" id="11c8-5029-355e-f61b" primary="false" name="Vehicle"/>
+        <categoryLink targetId="c619-2086-bbcf-69c9" id="9f56-c43b-25af-d927" primary="false" name="Fly"/>
+        <categoryLink targetId="75e8-57c4-40e3-1817" id="42a0-1e3d-357c-266b" primary="false" name="Transport"/>
+        <categoryLink targetId="ba07-411c-2832-1f79" id="f9d-b44f-2b7d-b9ff" primary="true" name="Dedicated Transport"/>
+        <categoryLink targetId="9b0-3c53-1484-3843" id="3b36-c860-a82e-ac12" primary="false" name="Devilfish"/>
+        <categoryLink targetId="3d58-2655-391e-ecc" id="b447-953f-7fec-62bf" primary="false" name="Faction: T&apos;au Empire"/>
+      </categoryLinks>
+      <infoLinks>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="11f6-21f7-a6d1-b192" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D3" field="name"/>
+          </modifiers>
+        </infoLink>
+      </infoLinks>
+      <constraints>
+        <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="4bc0-150e-849b-2e5b"/>
+      </constraints>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Seeker Missiles (0-2)" hidden="false" id="6366-1f29-9d95-c246">
+          <constraints>
+            <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="2295-169d-ea11-40b6"/>
+          </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Seeker missile" hidden="false" type="selectionEntry" id="ae15-f02-30c6-cb4e" targetId="3a30-cb51-c88c-255f">
+              <constraints>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="b081-ecab-5c73-3ca8"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Twin Pulse Carbines" hidden="false" id="68c8-2849-51dc-b4ea" defaultSelectionEntryId="e2b9-ad4b-5f60-db9e">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="6bab-7708-a473-a043"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e963-32e9-e263-46af"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="2 Twin pulse carbines" hidden="false" id="e2b9-ad4b-5f60-db9e">
+              <entryLinks>
+                <entryLink import="true" name="Twin pulse carbine" hidden="false" type="selectionEntry" id="646e-eeb2-5018-a993" targetId="e89e-ede-c701-db48">
+                  <constraints>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="c839-2a4a-10b4-1c40"/>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="960d-4aa0-332d-d5ea"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="2 Twin smart missile systems" hidden="false" id="c669-45e-85aa-4252">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Twin smart missile system" hidden="false" id="e1b5-f9d2-429-87f0">
+                  <profiles>
+                    <profile name="Twin smart missile system" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="3da7-26b8-c359-76b">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">30&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Indirect Fire, Twin-Linked</characteristic>
+                      </characteristics>
+                      <comment>Devilfish variant</comment>
+                    </profile>
+                  </profiles>
+                  <comment>Devilfish variant</comment>
+                  <infoLinks>
+                    <infoLink name="Indirect Fire" hidden="false" type="rule" id="24ed-ddf2-66ac-c4" targetId="4ddd-4e29-acdd-5e6d"/>
+                    <infoLink name="Twin-linked" hidden="false" type="rule" id="d23b-a218-d079-a62e" targetId="cf93-ad4d-2f08-a79d"/>
+                  </infoLinks>
+                  <constraints>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="66d8-a76b-d43f-7edd"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="dda-1372-b2c7-e237"/>
+                  </constraints>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <entryLinks>
+        <entryLink import="true" name="Accelerator burst cannon" hidden="false" type="selectionEntry" id="21f8-e8f3-1918-cdc5" targetId="8d70-f94f-8c8c-f943">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="681f-1725-ea2b-e794"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="24e1-84e4-db05-27a9"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Accelerator burst cannon" hidden="false" id="8d70-f94f-8c8c-f943">
+      <comment>Devilfish</comment>
+      <profiles>
+        <profile name="Accelerator burst cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="ce0d-c98a-bb61-f64e">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">4</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Razorshark Strike Fighter" hidden="false" id="cac0-2569-67c8-f492">
+      <categoryLinks>
+        <categoryLink targetId="dbd4-63-af05-998" id="1405-32f7-ce52-7444" primary="true" name="Vehicle"/>
+        <categoryLink targetId="63f1-e6e8-f6f6-a4f0" id="9fc2-2fbb-c81a-4071" primary="false" name="Aircraft"/>
+        <categoryLink targetId="c619-2086-bbcf-69c9" id="d71e-32e1-73d6-2859" primary="false" name="Fly"/>
+        <categoryLink targetId="e8f5-87d8-7e02-89fd" id="5f34-836b-8e11-4f4" primary="false" name="Razorshark Strike Fighter"/>
+        <categoryLink targetId="3d58-2655-391e-ecc" id="95ba-5ab-81a-90cd" primary="false" name="Faction: T&apos;au Empire"/>
+      </categoryLinks>
+      <profiles>
+        <profile name="Razorshark Strike Fighter" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="42ad-8287-bd00-5989">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">20+&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">10</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">12</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Ground Strike Fighter" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1ee8-8fac-5c19-3b78">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a ranged attack that targets an enemy unit that cannot FLY, add 1 to the Hit roll.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="3f11-6c39-7ad2-c326"/>
+      </constraints>
+      <infoLinks>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="78e2-d768-f791-fd42" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D3" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Damaged: 1-4 Wounds Remaining" hidden="false" type="profile" id="bb22-8d4e-a974-4e25" targetId="2220-2459-9f07-490e"/>
+      </infoLinks>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Quad ion turret" hidden="false" id="4124-9c2b-ec89-c63">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5be-6c82-6b5c-e0fc"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9eaf-1c2f-fb9a-6a9e"/>
+          </constraints>
+          <profiles>
+            <profile name="➤ Quad ion turret - standard" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="5f4b-8252-2657-c7fa">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">30&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">8</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Twin-linked</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="➤ Quad ion turret - overcharge" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="a01e-4195-1c61-29ea">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">30&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">8</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Hazardous, Twin-linked</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Twin-linked" hidden="false" type="rule" id="3571-49d1-1821-24a" targetId="cf93-ad4d-2f08-a79d"/>
+            <infoLink name="Hazardous" hidden="false" type="rule" id="6d4f-e07b-ae5e-f4c8" targetId="8367-374c-f87-c627"/>
+          </infoLinks>
+        </selectionEntry>
+      </selectionEntries>
+      <entryLinks>
+        <entryLink import="true" name="Armoured hull" hidden="false" type="selectionEntry" id="3ee7-f1bb-3520-9c60" targetId="352c-96b2-7b2d-f5eb">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="91a4-ad6b-3046-9a52"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7b3c-ef85-1c24-3556"/>
+          </constraints>
+        </entryLink>
+        <entryLink import="true" name="Seeker missile" hidden="false" type="selectionEntry" id="b02f-b745-b62f-be1a" targetId="3a30-cb51-c88c-255f">
+          <constraints>
+            <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="ca23-baec-466a-f7c6"/>
+            <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="5373-d08f-c53a-fc0e"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Accelerator Burst Cannon" hidden="false" id="9200-9eb-cbf7-b177" defaultSelectionEntryId="855e-d215-7192-4553">
+          <entryLinks>
+            <entryLink import="true" name="Accelerator burst cannon" hidden="false" type="selectionEntry" id="855e-d215-7192-4553" targetId="8d70-f94f-8c8c-f943"/>
+            <entryLink import="true" name="Missile pod" hidden="false" type="selectionEntry" id="4194-908d-1ff-e13b" targetId="8290-c852-cce9-d50e"/>
+          </entryLinks>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="767f-4afa-810-17c2"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5d5b-3a63-f0a6-f334"/>
+          </constraints>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Sun Shark Bomber" hidden="false" id="8d6a-3409-52db-a8c">
+      <profiles>
+        <profile name="Sun Shark Bomber" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="ff15-9eaa-4168-a8d9">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">20+&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">9</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">12</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Pulse Bombs" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1a89-4e93-ec68-d5b6">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model ends a Normal move, you can select one enemy unit it moved over during that move and roll six D6: for each 3+, that unit suffers 1 mortal wound.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="d97d-cff7-73e3-2fe2"/>
+      </constraints>
+      <infoLinks>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="64eb-5008-9a35-5976" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D3" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Damaged: 1-4 Wounds Remaining" hidden="false" type="profile" id="b096-f2e9-178f-957e" targetId="2220-2459-9f07-490e"/>
+      </infoLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Missile Pod" hidden="false" id="1c25-8744-1a0-5981">
+          <entryLinks>
+            <entryLink import="true" name="Missile pod" hidden="false" type="selectionEntry" id="d2ee-3a2a-e335-d173" targetId="8290-c852-cce9-d50e">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3738-9fc6-b693-1ae5"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Twin missile pod" hidden="false" id="16cf-8336-51cf-d413">
+          <profiles>
+            <profile name="Twin missile pod" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="c149-d194-a1da-1cd8">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">30&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Twin-linked</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="51e5-1c3f-2900-8e9e"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3ab8-53f0-4145-65fd"/>
+          </constraints>
+          <infoLinks>
+            <infoLink name="Twin-linked" hidden="false" type="rule" id="16c4-3f44-1ba9-6a49" targetId="cf93-ad4d-2f08-a79d"/>
+          </infoLinks>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Twin ion rifle" hidden="false" id="7072-c47d-79b2-f80b">
+          <constraints>
+            <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="1049-f29a-89bd-c122"/>
+            <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="4980-7d1e-feb9-8493"/>
+          </constraints>
+          <profiles>
+            <profile name="➤ Twin ion rifle - standard" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="e44-8052-1aee-9c76">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">30&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Twin-linked</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="➤ Twin ion rifle - overcharged" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="a910-69c5-35f8-ba1f">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">30&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Hazardous, Twin-linked</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Hazardous" hidden="false" type="rule" id="716b-da2d-6807-af4b" targetId="8367-374c-f87-c627"/>
+            <infoLink name="Twin-linked" hidden="false" type="rule" id="f781-2e2a-71a7-b7b7" targetId="cf93-ad4d-2f08-a79d"/>
+          </infoLinks>
+        </selectionEntry>
+      </selectionEntries>
+      <entryLinks>
+        <entryLink import="true" name="Seeker missile" hidden="false" type="selectionEntry" id="9e3-b006-a563-eadc" targetId="3a30-cb51-c88c-255f">
+          <constraints>
+            <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="5281-2bb6-4840-99de"/>
+            <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="7304-c00-3335-bacb"/>
+          </constraints>
+        </entryLink>
+        <entryLink import="true" name="Armoured hull" hidden="false" type="selectionEntry" id="3835-e43c-15f2-a394" targetId="352c-96b2-7b2d-f5eb">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="bc72-a47e-9fa9-743b"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="141b-719a-78f4-fa22"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <categoryLinks>
+        <categoryLink targetId="dbd4-63-af05-998" id="fa62-9fbd-28df-4929" primary="true" name="Vehicle"/>
+        <categoryLink targetId="63f1-e6e8-f6f6-a4f0" id="4953-ebc4-7882-8206" primary="false" name="Aircraft"/>
+        <categoryLink targetId="c619-2086-bbcf-69c9" id="654f-f89d-572e-6154" primary="false" name="Fly"/>
+        <categoryLink targetId="cdb3-2eb9-88c7-56a7" id="365a-ce19-d951-c93c" primary="false" name="Sun Shark Bomber"/>
+        <categoryLink targetId="3d58-2655-391e-ecc" id="18d-ec1b-cef5-4bb2" primary="false" name="Faction: T&apos;au Empire"/>
+      </categoryLinks>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Tidewall Shieldline" hidden="false" id="1d72-cdbd-796f-7c0d">
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="ddd0-a8fc-cc68-1dd2" primary="true" name="Fortification"/>
+        <categoryLink targetId="dbd4-63-af05-998" id="93b0-6ca3-ab28-7355" primary="false" name="Vehicle"/>
+        <categoryLink targetId="75e8-57c4-40e3-1817" id="9f81-e43f-9741-8422" primary="false" name="Transport"/>
+        <categoryLink targetId="c619-2086-bbcf-69c9" id="dfa-c39e-8284-cdb9" primary="false" name="Fly"/>
+        <categoryLink targetId="88d1-d0ab-d5a7-48f2" id="43ce-9c06-75bc-a3c6" primary="false" name="Tidewall Shieldline"/>
+        <categoryLink targetId="3d58-2655-391e-ecc" id="d60e-19d8-bb8-7eb" primary="false" name="Faction: T&apos;au Empire"/>
+      </categoryLinks>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="156-cb5a-c060-4570"/>
+      </constraints>
+      <profiles>
+        <profile name="Tidewall Shieldline" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="f60e-82ae-5ab1-21f9">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">4&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">8</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">10</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+          <modifiers>
+            <modifier type="set" value="15" field="750a-a2ec-90d3-21fe">
+              <conditions>
+                <condition type="equalTo" value="1" field="selections" scope="1d72-cdbd-796f-7c0d" childId="71fb-3e7-db6c-356e" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </profile>
+        <profile name="Tidewall Shieldline" typeId="74f8-5443-9d6d-1f1e" typeName="Transport" hidden="false" id="ca95-3b9e-2fbb-1bac">
+          <characteristics>
+            <characteristic name="Capacity" typeId="30f2-be70-861d-1b84">This model has a transport capacity of 11 T’AU EMPIRE INFANTRY models. It cannot transport BATTLESUIT, KROOT or VESPID STINGWINGS models. If this model is equipped with a Tidewall defence platform, it has a transport capacity of 22 T’AU INFANTRY models instead.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="e196-7e41-940-f35d" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D3" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Fortification" hidden="false" type="profile" id="c330-a0c2-f9b7-f580" targetId="fa4e-5ac8-11a6-78d2"/>
+        <infoLink name="Firing Deck" hidden="false" type="rule" id="5931-7dbb-2912-828f" targetId="13b2-6518-dab3-7ea1">
+          <modifiers>
+            <modifier type="append" value="20" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Invulnerable Save" hidden="false" type="profile" id="7a39-b569-49be-c6a9" targetId="27f4-7449-a636-ae8c"/>
+        <infoLink name="Tidewall Cover" hidden="false" type="profile" id="cb70-84fb-7cef-c4be" targetId="2050-72df-fd02-7085"/>
+      </infoLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Tidewall Defence Platform" hidden="false" id="2242-757b-d426-900">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Tidewall Defence Platform" hidden="false" id="71fb-3e7-db6c-356e">
+              <profiles>
+                <profile name="Tidewall Defence Platform" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6769-2de7-81ba-2a99">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If equipped with a Tidewall defence platform, this FORTIFICATION has a Wounds characteristic of 15.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="70e7-5676-165e-c6b5"/>
+              </constraints>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Tidewall Droneport" hidden="false" id="af7f-fc61-e9c0-6a7e">
+      <profiles>
+        <profile name="Tidewall Droneport" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="5799-a1a2-f1ec-9054">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">4&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">8</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">10</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Droneport" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="81a0-c679-23bd-77e3">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this FORTIFICATION is selected to shoot, its drone defenders weapon will target and resolve attacks against every enemy unit that is an eligible target to this FORTIFICATION.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Tidewall Droneport" typeId="74f8-5443-9d6d-1f1e" typeName="Transport" hidden="false" id="a334-a990-143d-fe61">
+          <characteristics>
+            <characteristic name="Capacity" typeId="30f2-be70-861d-1b84">This model has a transport capacity of 11 T’AU EMPIRE INFANTRY models. It cannot transport BATTLESUIT, KROOT or VESPID STINGWINGS models.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="47d9-739a-4797-a376"/>
+      </constraints>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="30a0-2aef-435c-8de4" primary="true" name="Fortification"/>
+        <categoryLink targetId="dbd4-63-af05-998" id="42b5-f2d2-f4dc-37d4" primary="false" name="Vehicle"/>
+        <categoryLink targetId="75e8-57c4-40e3-1817" id="e175-e319-5db5-c910" primary="false" name="Transport"/>
+        <categoryLink targetId="c619-2086-bbcf-69c9" id="54da-8c35-d861-486d" primary="false" name="Fly"/>
+        <categoryLink targetId="3d58-2655-391e-ecc" id="c8e2-c38e-e0a9-6466" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink targetId="b7a-b0ee-a2ae-e54" id="b9db-97ba-fb5-ff75" primary="false" name="Tidewall Droneport"/>
+      </categoryLinks>
+      <infoLinks>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="1721-c492-644-2915" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D3" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Firing Deck" hidden="false" type="rule" id="4857-f30e-179-5832" targetId="13b2-6518-dab3-7ea1">
+          <modifiers>
+            <modifier type="append" value="11" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Fortification" hidden="false" type="profile" id="85ce-a14d-3f70-913a" targetId="fa4e-5ac8-11a6-78d2"/>
+        <infoLink name="Tidewall Cover" hidden="false" type="profile" id="9c4f-f0ea-8b64-3f3c" targetId="2050-72df-fd02-7085"/>
+      </infoLinks>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Drone defenders" hidden="false" id="b35e-e7b3-244b-87d4">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="64a5-e9e7-48b7-81c2"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="92ba-5711-9b2a-9434"/>
+          </constraints>
+          <profiles>
+            <profile name="Drone defenders" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="545c-9dc3-f9f6-e5a4">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">20&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">8</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">5+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Twin-linked</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Assault" hidden="false" type="rule" id="8deb-e3ec-b055-81de" targetId="fc8a-8c24-bae9-cc1c"/>
+            <infoLink name="Twin-linked" hidden="false" type="rule" id="92ab-e669-e979-6cde" targetId="cf93-ad4d-2f08-a79d"/>
+          </infoLinks>
+        </selectionEntry>
+      </selectionEntries>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Tidewall Gunrig" hidden="false" id="e412-ea81-6767-9974">
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="1baa-b19f-827d-d55e"/>
+      </constraints>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="6936-615f-1c45-8cb6" primary="true" name="Fortification"/>
+        <categoryLink targetId="dbd4-63-af05-998" id="fe3d-5cca-2118-afe" primary="false" name="Vehicle"/>
+        <categoryLink targetId="75e8-57c4-40e3-1817" id="2332-8490-d5ee-7e9f" primary="false" name="Transport"/>
+        <categoryLink targetId="c619-2086-bbcf-69c9" id="cf2-b909-63af-9a30" primary="false" name="Fly"/>
+        <categoryLink targetId="5151-516e-3ecc-8b51" id="f49b-7753-ba48-8f8e" primary="false" name="Tidewall Gunrig"/>
+        <categoryLink targetId="3d58-2655-391e-ecc" id="2f0-5c6-a45d-2759" primary="false" name="Faction: T&apos;au Empire"/>
+      </categoryLinks>
+      <profiles>
+        <profile name="Tidewall Gunrig" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="99db-d097-be48-6768">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">4&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">8</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">14</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Tidewall Gunrig" typeId="74f8-5443-9d6d-1f1e" typeName="Transport" hidden="false" id="4cc0-bf88-84f5-c52b">
+          <characteristics>
+            <characteristic name="Capacity" typeId="30f2-be70-861d-1b84">This model has a transport capacity of 11 T’AU EMPIRE INFANTRY models. It cannot transport BATTLESUIT, KROOT or VESPID STINGWINGS models.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Firing Deck" hidden="false" type="rule" id="4269-bcd2-ec5d-b80f" targetId="13b2-6518-dab3-7ea1">
+          <modifiers>
+            <modifier type="append" value="11" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="275e-f53d-c555-72b" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D3" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Fortification" hidden="false" type="profile" id="3e7f-60bf-7234-da32" targetId="fa4e-5ac8-11a6-78d2"/>
+        <infoLink name="Tidewall Cover" hidden="false" type="profile" id="9fdd-4bad-bd51-7e70" targetId="2050-72df-fd02-7085"/>
+      </infoLinks>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Supremacy railgun" hidden="false" id="d7a2-80bc-2153-95af">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="64a5-e9e7-48b7-81c2"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="92ba-5711-9b2a-9434"/>
+          </constraints>
+          <profiles>
+            <profile name="Supremacy railgun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="8ebc-c5f1-9125-6295">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">72&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">5+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">20</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-5</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6+6</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Devastating Wounds, Twin-linked</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Devastating Wounds" hidden="false" type="rule" id="bb09-4949-3109-341c" targetId="be1e-ac8e-1e2c-3528"/>
+            <infoLink name="Twin-linked" hidden="false" type="rule" id="b59d-4f86-e32e-c820" targetId="cf93-ad4d-2f08-a79d"/>
+          </infoLinks>
+        </selectionEntry>
+      </selectionEntries>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Stormsurge" hidden="false" id="439b-e08-4466-e162">
+      <profiles>
+        <profile name="Stormsurge" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="fe77-ea50-8315-ea79">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">8&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">11</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">20</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">6</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Damaged: 1-5 Wounds Remaining" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9b21-f9e4-2fe9-7895">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model has 1-5 wounds remaining, subtract 3 from this models Objective Control characteristic, and each time this model makes an attack, subtract 1 from the Hit roll.</characteristic>
+          </characteristics>
+          <comment>Stormsurge</comment>
+        </profile>
+        <profile name="Heavy Walker" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d152-5323-f05c-bd84">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a Normal, Advance or Fall Back move, it can move over models (excluding TITANIC models) and terrain features that are 4&quot; or less in height as if they were not there.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Support System" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d61e-c391-27c4-cec9">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a ranged attack, you can ignore any or all modifiers to the Hit roll.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Titan-killer" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f200-bc51-2065-ca29">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a ranged attack that targets a TITANIC or TOWERING unit, you can re-roll the Hit roll.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="2c2-9b09-22ce-5cc0"/>
+      </constraints>
+      <infoLinks>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="1e5b-ea47-b99d-6c4f" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D6+2" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Invulnerable Save" hidden="false" type="profile" id="75d1-7e80-d917-e9b2" targetId="5b77-29f8-7b77-75e3"/>
+      </infoLinks>
+      <categoryLinks>
+        <categoryLink targetId="dbd4-63-af05-998" id="f8c8-5eec-cb53-411a" primary="true" name="Vehicle"/>
+        <categoryLink targetId="6dda-e157-334d-e93a" id="57b1-8e62-876-aca4" primary="false" name="Walker"/>
+        <categoryLink targetId="5929-ad51-d006-e008" id="aca6-ca24-2b9a-c77c" primary="false" name="Titanic"/>
+        <categoryLink targetId="d666-e2c9-b6cc-5716" id="4ed5-c671-5973-8e9b" primary="false" name="Towering"/>
+        <categoryLink targetId="1ad9-8254-80e7-5425" id="4d93-53bc-ff5-752f" primary="false" name="Stormsurge"/>
+        <categoryLink targetId="3d58-2655-391e-ecc" id="c9bc-2325-665e-76de" primary="false" name="Faction: T&apos;au Empire"/>
+      </categoryLinks>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Thunderous footfalls" hidden="false" id="b413-48c2-13c8-9194">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8c47-295-b565-cd0d"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="bcff-3147-a1b2-ead0"/>
+          </constraints>
+          <profiles>
+            <profile name="Thunderous footfalls" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="2d47-e9ba-c294-81bb">
+              <characteristics>
+                <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                <characteristic name="WS" typeId="95d1-95f-45b4-11d6">5+</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
+                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Twin smart missile system" hidden="false" id="c1b5-d3b5-9765-7eb0">
+          <profiles>
+            <profile name="Twin smart missile system" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="5b17-951b-a7e3-e92e">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">30&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Indirect Fire, Twin-Linked</characteristic>
+              </characteristics>
+              <comment>Stormsurge variant</comment>
+            </profile>
+          </profiles>
+          <comment>Stormsurge variant</comment>
+          <infoLinks>
+            <infoLink name="Indirect Fire" hidden="false" type="rule" id="6c11-11a6-9e65-2a80" targetId="4ddd-4e29-acdd-5e6d"/>
+            <infoLink name="Twin-linked" hidden="false" type="rule" id="4f5c-4847-d2ec-b56f" targetId="cf93-ad4d-2f08-a79d"/>
+            <infoLink name="Heavy" hidden="false" type="rule" id="435a-50f-1554-259c" targetId="1202-10a8-78e9-4c67"/>
+          </infoLinks>
+          <constraints>
+            <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="e10-62da-ef05-29a7"/>
+            <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="2af-9da5-1177-6764"/>
+          </constraints>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Cluster rocket system" hidden="false" id="cf60-7be2-e5a8-767">
+          <infoLinks>
+            <infoLink name="Heavy" hidden="false" type="rule" id="8025-8b37-174-b9af" targetId="1202-10a8-78e9-4c67"/>
+            <infoLink name="Blast" hidden="false" type="rule" id="d840-6c77-89fd-c374" targetId="6c1f-1cf7-ff25-c99e"/>
+          </infoLinks>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3e93-1b28-5553-d4ae"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="74f6-a0b9-4213-2971"/>
+          </constraints>
+          <profiles>
+            <profile name="Cluster rocket system" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="29a6-3f44-894e-e1ca">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">4D6</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Heavy</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Destroyer missiles" hidden="false" id="6e13-c32e-d336-c">
+          <infoLinks>
+            <infoLink name="Heavy" hidden="false" type="rule" id="9e06-cd68-9162-965c" targetId="1202-10a8-78e9-4c67"/>
+            <infoLink name="Blast" hidden="false" type="rule" id="5cfd-5b47-6e-7e28" targetId="6c1f-1cf7-ff25-c99e"/>
+          </infoLinks>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3e93-1b28-5553-d4ae"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="74f6-a0b9-4213-2971"/>
+          </constraints>
+          <profiles>
+            <profile name="Destroyer missiles" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="fc4d-b5a0-5faa-fc50">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">72&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">16</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6+2</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+      </selectionEntries>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Pulse Driver Cannon" hidden="false" id="fdf9-b67f-2381-32b6" defaultSelectionEntryId="317-c1c4-e623-8890">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Pulse driver cannon" hidden="false" id="317-c1c4-e623-8890">
+              <profiles>
+                <profile name="Pulse Driver Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="d5a3-7b4e-7307-154">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">72&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">12</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Heavy</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Blast" hidden="false" type="rule" id="ab4d-ef15-baa2-b851" targetId="6c1f-1cf7-ff25-c99e"/>
+                <infoLink name="Heavy" hidden="false" type="rule" id="c70c-39ea-cb5c-2244" targetId="1202-10a8-78e9-4c67"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Pulse blast cannon" hidden="false" id="b092-a7a6-2afc-99d1">
+              <profiles>
+                <profile name="➤ Pulse blast cannon - focused" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="5586-4bd7-df7c-24a9">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">24</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-6</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">12</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy</characteristic>
+                  </characteristics>
+                </profile>
+                <profile name="➤ Pulse blast cannon - dispersed" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="8d7a-98de-25be-7b80">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">6</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">10</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">4</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Heavy" hidden="false" type="rule" id="485d-64c8-6385-841d" targetId="1202-10a8-78e9-4c67"/>
+              </infoLinks>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="991e-bdd8-ca55-2740"/>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="691b-59e0-849f-713f"/>
+          </constraints>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Twin T&apos;au Flamer" hidden="false" id="5976-1d9c-cdce-30dd" defaultSelectionEntryId="c934-f727-731d-63de">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Twin airbursting fragmentation projector" hidden="false" id="e4ce-ed55-a1bd-9a6b">
+              <profiles>
+                <profile name="Twin airbursting fragmentation projector" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="aa8c-b84c-5626-631b">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Heavy, Indirect Fire, Twin-linked</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Twin-linked" hidden="false" type="rule" id="1e00-1520-bebc-2751" targetId="cf93-ad4d-2f08-a79d"/>
+                <infoLink name="Blast" hidden="false" type="rule" id="5d37-aa6c-d728-ee8" targetId="6c1f-1cf7-ff25-c99e"/>
+                <infoLink name="Heavy" hidden="false" type="rule" id="ff94-992-f665-74d0" targetId="1202-10a8-78e9-4c67"/>
+                <infoLink name="Indirect Fire" hidden="false" type="rule" id="c358-c130-dcb3-59b" targetId="4ddd-4e29-acdd-5e6d"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Twin burst cannon" hidden="false" id="2526-2545-30a1-7685">
+              <comment>Stormsurge varant</comment>
+              <infoLinks>
+                <infoLink name="Twin-linked" hidden="false" type="rule" id="345a-f5e4-805d-6309" targetId="cf93-ad4d-2f08-a79d"/>
+                <infoLink name="Heavy" hidden="false" type="rule" id="4506-d942-5616-df1f" targetId="1202-10a8-78e9-4c67"/>
+              </infoLinks>
+              <profiles>
+                <profile name="Twin burst cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="112e-45c5-61fb-9cb0">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">4</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Twin-linked</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="897-c487-306c-4597"/>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="41b5-b815-b716-6071"/>
+          </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Twin T&apos;au flamer" hidden="false" type="selectionEntry" id="c934-f727-731d-63de" targetId="30e0-dead-6363-f4c0"/>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Tactical Drones" hidden="false" id="f98a-5aa8-9305-2ed">
+      <infoLinks>
+        <infoLink name="Deep Strike" hidden="false" type="rule" id="cc1c-2dc-484d-febf" targetId="7cb5-dd6b-dd87-ad3b"/>
+      </infoLinks>
+      <profiles>
+        <profile name="Tactical Drones" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="ab4f-713d-a21-2165">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">8&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">4+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="parent" shared="true" id="4be5-b197-abc9-2c24"/>
+      </constraints>
+      <selectionEntries>
+        <selectionEntry type="model" import="true" name="Tactical Drones" hidden="false" id="d27f-9283-f2d0-dd4b">
+          <constraints>
+            <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="c040-a70a-3ef-d8ec"/>
+            <constraint type="max" value="12" field="selections" scope="parent" shared="true" id="47c-55fc-cc15-b208"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="79d9-4ee4-560b-392b" collective="true">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="bbf4-907c-e117-76d3"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d720-fa9-eee2-5ac3"/>
+              </constraints>
+              <profiles>
+                <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="412b-8b19-a87a-b255">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">1</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">6+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
+          <entryLinks>
+            <entryLink import="true" name="Twin pulse carbine" hidden="false" type="selectionEntry" id="18d6-3cba-e87b-92a7" targetId="23b4-d67-fb22-4a5e">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="58fc-c4fd-8ee8-ec1b"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="865b-fd7a-a56b-2ec7"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+        </selectionEntry>
+      </selectionEntries>
+      <categoryLinks>
+        <categoryLink targetId="2471-e2e0-3f55-d6cb" id="4d8f-266d-bc9e-80a0" primary="true" name="Drone"/>
+        <categoryLink targetId="c619-2086-bbcf-69c9" id="b254-3797-89c4-d962" primary="false" name="Fly"/>
+        <categoryLink targetId="a36e-3fe6-19a8-80f0" id="433-55ca-89cc-5dd5" primary="false" name="Tactical Drones"/>
+        <categoryLink targetId="3d58-2655-391e-ecc" id="7d80-8357-5d5a-d16a" primary="false" name="Faction: T&apos;au Empire"/>
+      </categoryLinks>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Kroot Farstalkers" hidden="false" id="72f2-7d0b-80f9-43b7">
+      <profiles>
+        <profile name="Farstalkers &amp; Kill-broker" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="1e7b-dbbd-43ca-62d0">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">7&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">6+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Kroot Hounds" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="5816-9f88-e3e5-67ab">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1"/>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4"/>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da"/>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe"/>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc"/>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8"/>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="69df-ed38-2bef-60d6"/>
+      </constraints>
+      <infoLinks>
+        <infoLink name="Infiltrators" hidden="false" type="rule" id="a535-3aee-e88c-dcda" targetId="c05d-f4c3-f091-4938"/>
+        <infoLink name="Stealth" hidden="false" type="rule" id="fe3c-d815-d4aa-47b1" targetId="bec5-4288-34a6-ccfa"/>
+      </infoLinks>
+      <infoGroups>
+        <infoGroup name="Bounty Hunters" hidden="false" id="8c3a-5cb2-6a94-891b">
+          <profiles>
+            <profile name="Bounty Hunters" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7899-d388-f303-592">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select one unit from your opponent’s army. Each time a model in this unit makes an attack that targets that unit, that attack has the [LETHAL HITS] and [PRECISION] abilities.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Precision" hidden="false" type="rule" id="179a-3f22-9a75-58bf" targetId="9143-31ae-e0a6-6007"/>
+            <infoLink name="Lethal Hits" hidden="false" type="rule" id="2885-2e2a-254f-4ed3" targetId="d1d1-611e-5191-1095"/>
+          </infoLinks>
+        </infoGroup>
+      </infoGroups>
+      <selectionEntries>
+        <selectionEntry type="model" import="true" name="Kroot Kill-broker" hidden="false" id="a89d-6ef9-4600-bf5d">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c4a3-d621-76-5296"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3e21-bc15-9d70-306c"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Ritual blade" hidden="false" id="bae-1e17-3f5b-92c1">
+              <profiles>
+                <profile name="Ritual blade" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="67eb-a8ac-afd1-dfc">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="cf56-14e7-ce64-6a9c"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6e1d-71a-b592-e223"/>
+              </constraints>
+            </selectionEntry>
+          </selectionEntries>
+          <entryLinks>
+            <entryLink import="true" name="Kroot pistol" hidden="false" type="selectionEntry" id="254f-8a7b-2760-523f" targetId="591e-d6ae-6069-c203">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f3dd-1f64-ace0-2bb9"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c0f7-5b2c-b2f0-b68a"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Farstalker Firearm" hidden="false" id="831f-a0e6-f89b-9be7" defaultSelectionEntryId="46b2-1476-40d4-dcf8">
+              <entryLinks>
+                <entryLink import="true" name="Farstalker firearm" hidden="false" type="selectionEntry" id="46b2-1476-40d4-dcf8" targetId="893d-9dac-b2b2-2590"/>
+                <entryLink import="true" name="Pulse carbine" hidden="false" type="selectionEntry" id="2fe6-e6cd-4a1c-e204" targetId="132e-eb89-c531-4947"/>
+                <entryLink import="true" name="Pulse rifle" hidden="false" type="selectionEntry" id="62fb-7c5d-f1c9-3280" targetId="432a-9043-f4ee-72d1"/>
+              </entryLinks>
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5933-6d5a-d325-37a5"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="54fa-d3f7-d5a3-b925"/>
+              </constraints>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+        </selectionEntry>
+        <selectionEntry type="model" import="true" name="Kroot Hounds" hidden="false" id="44d8-4622-f488-dfc">
+          <constraints>
+            <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="687a-9de5-5993-4873"/>
+            <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="5916-8039-f37b-4629"/>
+          </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Ripping fangs" hidden="false" type="selectionEntry" id="b380-5096-a717-52d5" targetId="1678-53f2-d5e3-dded"/>
+          </entryLinks>
+        </selectionEntry>
+      </selectionEntries>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Kroot Farstalkers" hidden="false" id="42b3-7f9a-d4eb-5d6f">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Kroot Farstalkers" hidden="false" id="9620-c5b6-e0da-589d">
+              <constraints>
+                <constraint type="min" value="8" field="selections" scope="parent" shared="true" id="a865-e77f-718c-3ff7"/>
+                <constraint type="max" value="8" field="selections" scope="parent" shared="true" id="3b08-e20f-d919-33a9"/>
+              </constraints>
+              <modifiers>
+                <modifier type="decrement" value="1" field="a865-e77f-718c-3ff7"/>
+              </modifiers>
+              <entryLinks>
+                <entryLink import="true" name="Farstalker firearm" hidden="false" type="selectionEntry" id="bf1a-94c3-6f85-cec" targetId="893d-9dac-b2b2-2590">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5705-8b47-e199-4b19"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="14a4-4915-ea26-9033"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Kroot pistol" hidden="false" type="selectionEntry" id="cb25-cfa5-5098-a461" targetId="591e-d6ae-6069-c203">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="b398-7e91-ca23-172e"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5c29-58f5-ff78-3503"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="64d5-a328-6a18-ebff" collective="true">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3767-db06-1dcd-bd46"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9bbe-2b48-2d5-48d3"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="b029-518a-1e5b-f465">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Kroot Farstalker w/ Farstalker firearm and Pech&apos;ra" hidden="false" id="ca9e-99f0-8f4b-8355">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3d76-9a6d-8119-f8d4"/>
+              </constraints>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="cc1c-95f8-294-ac74" collective="true">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3767-db06-1dcd-bd46"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9bbe-2b48-2d5-48d3"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="c24f-f411-c617-6f57">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+              <entryLinks>
+                <entryLink import="true" name="Kroot pistol" hidden="false" type="selectionEntry" id="c1c1-f517-e3eb-8c04" targetId="591e-d6ae-6069-c203">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="b398-7e91-ca23-172e"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5c29-58f5-ff78-3503"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Farstalker firearm" hidden="false" type="selectionEntry" id="4a3-57ab-3d9-70d5" targetId="893d-9dac-b2b2-2590">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5705-8b47-e199-4b19"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="14a4-4915-ea26-9033"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <infoGroups>
+                <infoGroup name="Pech&apos;ra" hidden="false" id="19d9-3325-c945-8a64">
+                  <profiles>
+                    <profile name="Pech&apos;ra" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="567d-867a-3de8-fcab">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Ranged weapons equipped by the bearer’s unit have the [IGNORES COVER] ability.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <infoLinks>
+                    <infoLink name="Ignores Cover" hidden="false" type="rule" id="9e52-4271-c9fa-8b8c" targetId="4640-43e7-30b-215a"/>
+                  </infoLinks>
+                </infoGroup>
+              </infoGroups>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="27ef-2994-c972-2e61"/>
+            <constraint type="min" value="9" field="selections" scope="parent" shared="true" id="f9b5-2d45-4e30-88e2"/>
+          </constraints>
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Special Weapon" hidden="false" id="d244-c40b-5b02-39f6" defaultSelectionEntryId="4374-c9e6-f4e2-ab59">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Kroot Farstalker w/ Dvorgite skinner" hidden="false" id="795b-e4b5-252-145d">
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Dvorgite skinner" hidden="false" id="705c-da9b-4fe1-fd47" collective="true">
+                      <profiles>
+                        <profile name="Dvorgite skinner" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="a49e-69cc-7f9f-49cb">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8ce9-6fb3-ec15-b148"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="165a-638d-ac74-620b"/>
+                      </constraints>
+                      <infoLinks>
+                        <infoLink name="Ignores Cover" hidden="false" type="rule" id="f530-5d6a-9a23-7b48" targetId="4640-43e7-30b-215a"/>
+                        <infoLink name="Torrent" hidden="false" type="rule" id="fd4c-c699-8d0c-84e2" targetId="5edf-d619-23e0-9b56"/>
+                      </infoLinks>
+                    </selectionEntry>
+                    <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="9b6-6cd7-307b-dc3d" collective="true">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3767-db06-1dcd-bd46"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9bbe-2b48-2d5-48d3"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="3a10-944d-cdba-94b0">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <entryLinks>
+                    <entryLink import="true" name="Kroot pistol" hidden="false" type="selectionEntry" id="f539-f6f6-2500-c27c" targetId="591e-d6ae-6069-c203">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="b398-7e91-ca23-172e"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5c29-58f5-ff78-3503"/>
+                      </constraints>
+                    </entryLink>
+                  </entryLinks>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Kroot Farstalker w/ Londaxi tribalest" hidden="false" id="ebca-9caf-7200-a021">
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Londaxi tribalest" hidden="false" id="7dd3-901a-45b8-8a99" collective="true">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="bdae-ca7d-10df-4138"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3abf-c4c6-b0a3-5f89"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Londaxi tribalest" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="da44-fef6-a176-793c">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">5+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-Vehicle 4+, Devastating Wounds, Heavy</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Anti-" hidden="false" type="rule" id="2b2d-da93-a9b1-cc9d" targetId="4111-82e3-9444-e942"/>
+                        <infoLink name="Devastating Wounds" hidden="false" type="rule" id="e6d7-5a78-a4ea-fa13" targetId="be1e-ac8e-1e2c-3528"/>
+                        <infoLink name="Heavy" hidden="false" type="rule" id="601e-99b2-ab20-e13c" targetId="1202-10a8-78e9-4c67"/>
+                      </infoLinks>
+                    </selectionEntry>
+                    <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="99a1-6a23-90b5-8084" collective="true">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3767-db06-1dcd-bd46"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9bbe-2b48-2d5-48d3"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="c501-3dd1-b0b1-ea0f">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <entryLinks>
+                    <entryLink import="true" name="Kroot pistol" hidden="false" type="selectionEntry" id="1eff-4459-2407-6b0c" targetId="591e-d6ae-6069-c203">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="b398-7e91-ca23-172e"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5c29-58f5-ff78-3503"/>
+                      </constraints>
+                    </entryLink>
+                  </entryLinks>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Kroot Farstalker" hidden="false" id="4374-c9e6-f4e2-ab59">
+                  <entryLinks>
+                    <entryLink import="true" name="Farstalker firearm" hidden="false" type="selectionEntry" id="36ae-22a1-4f1c-f969" targetId="893d-9dac-b2b2-2590">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5cb5-9844-150a-511a"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="fef7-4a59-b6c2-7bb6"/>
+                      </constraints>
+                    </entryLink>
+                    <entryLink import="true" name="Kroot pistol" hidden="false" type="selectionEntry" id="6036-2ec0-f4ee-828e" targetId="591e-d6ae-6069-c203">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="b398-7e91-ca23-172e"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5c29-58f5-ff78-3503"/>
+                      </constraints>
+                    </entryLink>
+                  </entryLinks>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="2f81-85b1-b101-b6a4" collective="true">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3767-db06-1dcd-bd46"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9bbe-2b48-2d5-48d3"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="8dba-629-1888-7625">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                    </selectionEntry>
+                  </selectionEntries>
+                </selectionEntry>
+              </selectionEntries>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="35c1-adb4-c575-be14"/>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8b41-7037-1556-4c99"/>
+              </constraints>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <categoryLinks>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="8494-5566-a1f6-a81b" primary="true" name="Infantry"/>
+        <categoryLink targetId="5a61-81ac-eb7c-a87e" id="efc9-eaa2-225b-7e31" primary="false" name="Grenades"/>
+        <categoryLink targetId="79c5-9fc4-7b97-7c3f" id="eceb-d043-20a4-26a5" primary="false" name="Kroot"/>
+        <categoryLink targetId="d4bd-9928-e74e-9605" id="496e-ba6d-84c4-ec23" primary="false" name="Farstalkers"/>
+        <categoryLink targetId="3d58-2655-391e-ecc" id="6135-96b1-45a1-e044" primary="false" name="Faction: T&apos;au Empire"/>
+      </categoryLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Farstalker firearm" hidden="false" id="893d-9dac-b2b2-2590" collective="true">
+      <profiles>
+        <profile name="Farstalker firearm" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="4477-ba77-8b1e-f8a">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire 1</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Rapid Fire" hidden="false" type="rule" id="97b-1c9a-1492-82f7" targetId="c5c8-8b58-b8b6-7786"/>
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Kroot pistol" hidden="false" id="591e-d6ae-6069-c203" collective="true">
+      <profiles>
+        <profile name="Kroot pistol" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="ae6e-a965-67d4-2f29">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Pistol" hidden="false" type="rule" id="371b-ec73-c468-5438" targetId="8bf7-8812-923d-29e4"/>
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Ripping fangs" hidden="false" id="1678-53f2-d5e3-dded" collective="true">
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d7e0-9878-8884-383c"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ca1d-dc13-cc1c-9e2d"/>
+      </constraints>
+      <profiles>
+        <profile name="Ripping fangs" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="54d9-4d7b-cbc3-49aa">
+          <characteristics>
+            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+            <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+          </characteristics>
+        </profile>
+      </profiles>
     </selectionEntry>
   </sharedSelectionEntries>
   <entryLinks>
@@ -4040,6 +5546,17 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
     <entryLink import="true" name="Kroot Hounds" hidden="false" type="selectionEntry" id="9080-347f-a193-a87e" targetId="6883-85aa-b338-b88"/>
     <entryLink import="true" name="Broadside Battlesuits" hidden="false" type="selectionEntry" id="4247-49bc-8f4c-889f" targetId="a594-317-b90a-a226"/>
     <entryLink import="true" name="Riptide Battlesuit" hidden="false" type="selectionEntry" id="f797-682a-ac64-c6fd" targetId="5d8f-5530-263d-651b"/>
+    <entryLink import="true" name="Hammerhead Gunship" hidden="false" type="selectionEntry" id="5f-e59d-3d17-8cc5" targetId="ca9-49ab-17c1-8556"/>
+    <entryLink import="true" name="Sky Ray Gunship" hidden="false" type="selectionEntry" id="a643-a68c-d58b-56f0" targetId="bfe0-2e9f-6f57-b48f"/>
+    <entryLink import="true" name="Devilfish" hidden="false" type="selectionEntry" id="dfe-4279-be61-2c72" targetId="14f3-9aa6-21af-7fe3"/>
+    <entryLink import="true" name="Razorshark Strike Fighter" hidden="false" type="selectionEntry" id="c21e-f204-8a12-f1ff" targetId="cac0-2569-67c8-f492"/>
+    <entryLink import="true" name="Sun Shark Bomber" hidden="false" type="selectionEntry" id="274b-2834-a2ee-e578" targetId="8d6a-3409-52db-a8c"/>
+    <entryLink import="true" name="Tidewall Shieldline" hidden="false" type="selectionEntry" id="ccdd-dd99-2db3-bcad" targetId="1d72-cdbd-796f-7c0d"/>
+    <entryLink import="true" name="Tidewall Droneport" hidden="false" type="selectionEntry" id="f809-4387-ed6f-16ef" targetId="af7f-fc61-e9c0-6a7e"/>
+    <entryLink import="true" name="Tidewall Gunrig" hidden="false" type="selectionEntry" id="bf6c-669e-7c86-b731" targetId="e412-ea81-6767-9974"/>
+    <entryLink import="true" name="Stormsurge" hidden="false" type="selectionEntry" id="cc1a-c4b-4647-965a" targetId="439b-e08-4466-e162"/>
+    <entryLink import="true" name="Tactical Drones" hidden="false" type="selectionEntry" id="6924-e9e8-f6e2-278b" targetId="f98a-5aa8-9305-2ed"/>
+    <entryLink import="true" name="Kroot Farstalkers" hidden="false" type="selectionEntry" id="3f15-c0c4-5df4-fed9" targetId="72f2-7d0b-80f9-43b7"/>
   </entryLinks>
   <sharedSelectionEntryGroups>
     <selectionEntryGroup name="Enhancements - Kauyon" id="fae2-569a-6bec-9167">
@@ -4438,6 +5955,63 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
         </selectionEntryGroup>
       </selectionEntryGroups>
     </selectionEntryGroup>
+    <selectionEntryGroup name="Twin Pulse Carbines" hidden="false" id="5e97-414a-5445-2f01" defaultSelectionEntryId="5064-479f-d0cf-d457" collective="false">
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="6f7d-77c6-3c18-8336"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c2cc-6846-5dc9-ebbc"/>
+      </constraints>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="2 Accelerator burst cannons" hidden="false" id="7c48-23dc-fdd-87cf">
+          <entryLinks>
+            <entryLink import="true" name="Accelerator burst cannon" hidden="false" type="selectionEntry" id="6be5-c35c-c91a-8f2c" targetId="790a-8944-95ce-fae2">
+              <constraints>
+                <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="e53a-b955-562a-3537"/>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="d343-f356-459f-f05"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="2 Twin pulse carbines" hidden="false" id="5064-479f-d0cf-d457">
+          <entryLinks>
+            <entryLink import="true" name="Twin pulse carbine" hidden="false" type="selectionEntry" id="f459-9719-924c-9ea" targetId="e89e-ede-c701-db48" collective="false">
+              <constraints>
+                <constraint type="min" value="2" field="selections" scope="parent" shared="false" id="e1f5-52de-4054-80aa"/>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="2d0f-e272-cf4e-989"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="2 Twin smart missile systems" hidden="false" id="c14d-cc5e-8103-3696">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Twin smart missile system" hidden="false" id="f287-312d-3f17-fecb">
+              <profiles>
+                <profile name="Twin smart missile system" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="f8e5-aaf5-3eb8-5665">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">30&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">4</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Indirect Fire, Twin-Linked</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <comment>Longstrike</comment>
+              <infoLinks>
+                <infoLink name="Indirect Fire" hidden="false" type="rule" id="c019-574-f55-9996" targetId="4ddd-4e29-acdd-5e6d"/>
+                <infoLink name="Twin-linked" hidden="false" type="rule" id="d747-b80-56ba-db31" targetId="cf93-ad4d-2f08-a79d"/>
+              </infoLinks>
+              <constraints>
+                <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="6155-9cb1-7312-d579"/>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="34a4-88f5-9579-f8b1"/>
+              </constraints>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntry>
+      </selectionEntries>
+      <comment>Shared</comment>
+    </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <categoryEntries>
     <categoryEntry name="Shaper" hidden="false" id="39f9-dcd3-1e80-fa1f"/>
@@ -4470,6 +6044,17 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
     <categoryEntry name="Hounds" hidden="false" id="18e9-bb22-6283-f077"/>
     <categoryEntry name="Broadside" hidden="false" id="cc7e-612b-ac7d-c162"/>
     <categoryEntry name="Riptide" hidden="false" id="5a55-f02e-d30c-85e"/>
+    <categoryEntry name="Hammerhead Gunship" hidden="false" id="7b0b-ad0-8397-2937"/>
+    <categoryEntry name="Sky Ray Gunship" hidden="false" id="8ecd-70d4-ce52-f480"/>
+    <categoryEntry name="Devilfish" hidden="false" id="9b0-3c53-1484-3843"/>
+    <categoryEntry name="Razorshark Strike Fighter" hidden="false" id="e8f5-87d8-7e02-89fd"/>
+    <categoryEntry name="Sun Shark Bomber" hidden="false" id="cdb3-2eb9-88c7-56a7"/>
+    <categoryEntry name="Tidewall Shieldline" hidden="false" id="88d1-d0ab-d5a7-48f2"/>
+    <categoryEntry name="Tidewall Droneport" hidden="false" id="b7a-b0ee-a2ae-e54"/>
+    <categoryEntry name="Tidewall Gunrig" hidden="false" id="5151-516e-3ecc-8b51"/>
+    <categoryEntry name="Stormsurge" hidden="false" id="1ad9-8254-80e7-5425"/>
+    <categoryEntry name="Tactical Drones" hidden="false" id="a36e-3fe6-19a8-80f0"/>
+    <categoryEntry name="Farstalkers" hidden="false" id="d4bd-9928-e74e-9605"/>
   </categoryEntries>
   <sharedProfiles>
     <profile name="Invulnerable Save" hidden="false" id="27f4-7449-a636-ae8c" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
@@ -4505,6 +6090,17 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
         <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer’s unit is eligible to shoot in a turn in which it Fell Back, but when doing so only models equipped with this wargear can make ranged attacks.</characteristic>
       </characteristics>
       <comment>Shared</comment>
+    </profile>
+    <profile name="Targeting Array" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6c1e-179e-a2dc-85d6">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model is selected to shoot, you can re-roll one Hit roll or you can re-roll one Wound roll when resolving those attacks.</characteristic>
+      </characteristics>
+      <comment>Shared</comment>
+    </profile>
+    <profile name="Tidewall Cover" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2050-72df-fd02-7085">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this FORTIFICATION, that model has the Benefit of Cover against that attack.</characteristic>
+      </characteristics>
     </profile>
   </sharedProfiles>
   <xmlns>http://www.battlescribe.net/schema/catalogueSchema</xmlns>
