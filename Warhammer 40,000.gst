@@ -122,6 +122,7 @@
     <categoryEntry id="4f09-0141-6c70-6c5a" name="Daemon Prince" hidden="false"/>
     <categoryEntry id="b00b-5bae-444f-964e" name="Swarm" hidden="false"/>
     <categoryEntry name="Drone" hidden="false" id="2471-e2e0-3f55-d6cb"/>
+    <categoryEntry id="7850-cc5a-c191-b80d" name="Great Devourer" hidden="false"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
