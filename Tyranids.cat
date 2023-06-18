@@ -90,6 +90,7 @@
     <entryLink import="true" name="Sporocyst" hidden="false" type="selectionEntry" id="b0f2-86e1-24d3-bd1e" targetId="2cdd-3bf1-55e0-7641"/>
     <entryLink import="true" name="Psychophage" hidden="false" type="selectionEntry" id="bb17-5e67-f80d-1479" targetId="b6ac-f091-a018-dab2"/>
     <entryLink import="true" name="Barbgaunts" hidden="false" type="selectionEntry" id="2022-800a-5f81-59c3" targetId="6de-ccee-11b4-be3e"/>
+    <entryLink import="true" name="Detachment" hidden="false" type="selectionEntry" id="caa6-dacc-8da8-3211" targetId="bac9-a18e-5a8a-48d1"/>
   </entryLinks>
   <rules>
     <rule id="86aa-437f-260b-5cad" name="Synapse" hidden="false">
@@ -1828,7 +1829,7 @@
       <selectionEntries>
         <selectionEntry id="4b19-26b8-1f71-2768" name="Psychic scream" hidden="false" collective="false" import="true" type="upgrade">
           <constraints>
-            <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="0d9a-0f02-4961-2d3d" type="min"/>
+            <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="0d9a-0f02-4961-2d3d" type="max"/>
             <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="c786-f4b8-7924-db1c" type="min"/>
           </constraints>
           <profiles>
@@ -1863,6 +1864,10 @@
               </characteristics>
             </profile>
           </profiles>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e54a-f45d-8e12-e1ed" includeChildSelections="true"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b169-834d-4c17-b786" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
       </selectionEntries>
       <costs>
@@ -4509,6 +4514,23 @@
         </modifier>
       </modifiers>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Detachment" hidden="false" id="bac9-a18e-5a8a-48d1">
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="roster" shared="true" id="d872-23e4-6279-ff17" includeChildSelections="true" includeChildForces="true"/>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="cecc-f2ed-1942-2744" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+      <entryLinks>
+        <entryLink import="true" name="Detachment Rule" hidden="false" type="selectionEntryGroup" id="e4a1-54e3-a318-7140" targetId="7ada-e361-1f7e-af">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="49ea-ec65-dd72-4452" includeChildSelections="true"/>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2f05-b50-eb0c-faae" includeChildSelections="true"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <categoryLinks>
+        <categoryLink targetId="4ac9-fd30-1e3d-b249" id="5cf0-e77e-ee1e-db7f" primary="true" name="Configuration"/>
+      </categoryLinks>
+    </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
     <selectionEntryGroup id="7ada-e361-1f7e-af" name="Detachment Rule" hidden="false" collective="false" import="true">
@@ -4548,11 +4570,11 @@ HIVE PREDATORS Each time a Tyranids model with this Hyper-adaptation makes an at
         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" id="5d2e-eca-98b1-336a" type="max"/>
       </constraints>
       <selectionEntryGroups>
-        <selectionEntryGroup id="2d20-befd-a5c5-67a5" name="Invasion Fleet Enhancements" hidden="false" collective="false" import="true">
+        <selectionEntryGroup id="2d20-befd-a5c5-67a5" name="Invasion Fleet Enhancements" hidden="true" collective="false" import="true">
           <modifiers>
             <modifier type="set" field="hidden" value="false">
               <conditions>
-                <condition field="selections" scope="roster" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" childId="c2fe-bf23-bf24-aa43" type="lessThan"/>
+                <condition field="selections" scope="roster" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" childId="c2fe-bf23-bf24-aa43" type="greaterThan"/>
               </conditions>
             </modifier>
           </modifiers>
