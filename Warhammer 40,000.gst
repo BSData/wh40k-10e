@@ -259,5 +259,32 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
       </characteristics>
     </profile>
   </sharedProfiles>
+  <sharedSelectionEntries>
+    <selectionEntry type="upgrade" import="true" name="Battle Size" hidden="false" id="564e-fbc6-5266-3ea4">
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Battle Size" hidden="false" id="b960-4789-a3a6-59cb">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="132a-318-b78a-7afb"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="dea4-90c8-6d86-3a01"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="1. Incursion (1000 Point limit)" hidden="false" id="d62d-db22-4893-4bc0"/>
+            <selectionEntry type="upgrade" import="true" name="2. Strike Force (2000 Point limit)" hidden="false" id="baf8-997f-e323-a090"/>
+            <selectionEntry type="upgrade" import="true" name="3. Onslaught (3000 Point limit)" hidden="false" id="4204-82d0-908c-a62a"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="d907-5a90-75f2-feec" includeChildSelections="true" includeChildForces="true"/>
+        <constraint type="min" value="1" field="selections" scope="roster" shared="true" id="6b1c-4cb6-1e16-5ada" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+      <categoryLinks>
+        <categoryLink targetId="4ac9-fd30-1e3d-b249" id="bc21-bf76-b29d-576c" primary="true" name="Configuration"/>
+      </categoryLinks>
+    </selectionEntry>
+  </sharedSelectionEntries>
+  <entryLinks>
+    <entryLink import="true" name="Battle Size" hidden="false" type="selectionEntry" id="7380-3e40-6ed6-b7cc" targetId="564e-fbc6-5266-3ea4"/>
+  </entryLinks>
   <xmlns>http://www.battlescribe.net/schema/gameSystemSchema</xmlns>
 </gameSystem>
