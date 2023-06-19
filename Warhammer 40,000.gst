@@ -83,7 +83,43 @@
     <categoryEntry id="1e42-dfae-cbdd-207d" name="Faction: Heretic Astartes" hidden="false"/>
     <categoryEntry id="fd71-afa6-b13b-7fda" name="Faction: Adepta Sororitas" hidden="false"/>
     <categoryEntry id="ee0-cf31-4fb5-6b26" name="Faction: Necrons" hidden="false"/>
-    <categoryEntry id="571f-ec3a-a5a2-751a" name="Faction: Legiones Daemonica" hidden="false"/>
+    <categoryEntry id="571f-ec3a-a5a2-751a" name="Faction: Legiones Daemonica" hidden="false">
+      <constraints>
+        <constraint type="max" value="-1" field="51b2-306e-1021-d207" scope="force" shared="true" id="f70b-465d-493f-52e3" includeChildSelections="true"/>
+      </constraints>
+      <modifiers>
+        <modifier type="set" value="250" field="f70b-465d-493f-52e3" id="4796-8c50-4a43-66c8">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="b45c-af22-788a-dfd6" shared="true"/>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="d62d-db22-4893-4bc0" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="500" field="f70b-465d-493f-52e3" id="bc6-87f4-482b-c1cd">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="b45c-af22-788a-dfd6" shared="true"/>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="baf8-997f-e323-a090" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="750" field="f70b-465d-493f-52e3" id="b336-af46-e756-ab15">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="b45c-af22-788a-dfd6" shared="true"/>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="4204-82d0-908c-a62a" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </categoryEntry>
     <categoryEntry id="b2a9-ede5-7a83-4da8" name="Slaanesh" hidden="false"/>
     <categoryEntry id="ed0d-8e2a-225c-2340" name="Nurgle" hidden="false"/>
     <categoryEntry id="4bd-5ee0-f179-2fc5" name="Khorne" hidden="false"/>
@@ -122,28 +158,6 @@
     <categoryEntry id="b00b-5bae-444f-964e" name="Swarm" hidden="false"/>
     <categoryEntry id="2471-e2e0-3f55-d6cb" name="Drone" hidden="false"/>
     <categoryEntry id="7850-cc5a-c191-b80d" name="Great Devourer" hidden="false"/>
-    <categoryEntry name="Retinue" hidden="false" id="26aa-796b-52d3-5ae9">
-      <modifiers>
-        <modifier type="set" value="1" field="c94d-ba3c-a2a0-9e39">
-          <conditions>
-            <condition type="greaterThan" value="0" field="selections" scope="roster" childId="d62d-db22-4893-4bc0" shared="true" includeChildSelections="true" includeChildForces="true"/>
-          </conditions>
-        </modifier>
-        <modifier type="set" value="2" field="c94d-ba3c-a2a0-9e39">
-          <conditions>
-            <condition type="greaterThan" value="0" field="selections" scope="roster" childId="baf8-997f-e323-a090" shared="true" includeChildSelections="true" includeChildForces="true"/>
-          </conditions>
-        </modifier>
-        <modifier type="set" value="3" field="c94d-ba3c-a2a0-9e39">
-          <conditions>
-            <condition type="greaterThan" value="0" field="selections" scope="roster" childId="4204-82d0-908c-a62a" shared="true" includeChildSelections="true" includeChildForces="true"/>
-          </conditions>
-        </modifier>
-      </modifiers>
-      <constraints>
-        <constraint type="max" value="0" field="selections" scope="roster" shared="true" id="c94d-ba3c-a2a0-9e39" includeChildSelections="true" includeChildForces="true"/>
-      </constraints>
-    </categoryEntry>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
