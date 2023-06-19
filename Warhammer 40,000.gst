@@ -62,6 +62,7 @@
     <categoryEntry id="5a61-81ac-eb7c-a87e" name="Grenades" hidden="false"/>
     <categoryEntry id="aff3-d6a3-2a95-9dc" name="Imperium" hidden="false"/>
     <categoryEntry id="4ac9-fd30-1e3d-b249" name="Configuration" hidden="false"/>
+    <categoryEntry id="1160-70ae-a862-b1a8" name="Unit" hidden="false"/>
     <categoryEntry id="c619-2086-bbcf-69c9" name="Fly" hidden="false"/>
     <categoryEntry id="6df-937-16bc-8c1a" name="Smoke" hidden="false"/>
     <categoryEntry id="13bf-2bee-3ae0-b414" name="Psyker" hidden="false"/>
@@ -179,7 +180,7 @@
         <categoryLink id="8243-857b-2133-8887" name="Drone" hidden="false" targetId="2471-e2e0-3f55-d6cb" primary="false"/>
         <categoryLink id="cf3e-2c24-fe34-39f9" name="Dedicated Transport" hidden="false" targetId="ba07-411c-2832-1f79" primary="false"/>
         <categoryLink id="9198-c35d-71cd-eea3" name="Fortification" hidden="false" targetId="19d7-9c74-2140-5851" primary="false"/>
-        <categoryLink id="320d-71f3-1e43-2435" name="Retinue" hidden="false" targetId="26aa-796b-52d3-5ae9" primary="false" type="category"/>
+        <categoryLink id="a41a-6330-4718-d8d2" name="Unit" hidden="false" targetId="1160-70ae-a862-b1a8" primary="false"/>
       </categoryLinks>
     </forceEntry>
   </forceEntries>
