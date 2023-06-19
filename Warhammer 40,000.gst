@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="1" battleScribeVersion="2.03" xmlns="http://www.battlescribe.net/schema/gameSystemSchema" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="1" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
   </publications>
@@ -159,6 +159,28 @@
     <categoryEntry id="b00b-5bae-444f-964e" name="Swarm" hidden="false"/>
     <categoryEntry id="2471-e2e0-3f55-d6cb" name="Drone" hidden="false"/>
     <categoryEntry id="7850-cc5a-c191-b80d" name="Great Devourer" hidden="false"/>
+    <categoryEntry name="Retinue" hidden="false" id="cc77-a53-fca8-f48e">
+      <modifiers>
+        <modifier type="set" value="1" field="d9f0-95cb-2ef5-f100">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="d62d-db22-4893-4bc0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="set" value="2" field="d9f0-95cb-2ef5-f100">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="baf8-997f-e323-a090" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="set" value="3" field="d9f0-95cb-2ef5-f100">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="4204-82d0-908c-a62a" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="0" field="selections" scope="roster" shared="true" id="d9f0-95cb-2ef5-f100" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+    </categoryEntry>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
@@ -181,6 +203,7 @@
         <categoryLink id="cf3e-2c24-fe34-39f9" name="Dedicated Transport" hidden="false" targetId="ba07-411c-2832-1f79" primary="false"/>
         <categoryLink id="9198-c35d-71cd-eea3" name="Fortification" hidden="false" targetId="19d7-9c74-2140-5851" primary="false"/>
         <categoryLink id="a41a-6330-4718-d8d2" name="Unit" hidden="false" targetId="1160-70ae-a862-b1a8" primary="false"/>
+        <categoryLink name="Retinue" hidden="false" id="bbb1-2c73-9723-5389" targetId="cc77-a53-fca8-f48e" type="category"/>
       </categoryLinks>
     </forceEntry>
   </forceEntries>
