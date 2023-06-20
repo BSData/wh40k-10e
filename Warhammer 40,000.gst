@@ -181,6 +181,7 @@
         <constraint type="max" value="0" field="selections" scope="roster" shared="true" id="d9f0-95cb-2ef5-f100" includeChildSelections="true" includeChildForces="true"/>
       </constraints>
     </categoryEntry>
+    <categoryEntry name="Terminator" hidden="false" id="740a-892c-8958-defa"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
