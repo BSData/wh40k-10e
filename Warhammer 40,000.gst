@@ -182,6 +182,7 @@
       </constraints>
     </categoryEntry>
     <categoryEntry name="Terminator" hidden="false" id="740a-892c-8958-defa"/>
+    <categoryEntry name="Rhino" hidden="false" id="50a2-5557-84bb-ca4d"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
