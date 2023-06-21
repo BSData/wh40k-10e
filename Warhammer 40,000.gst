@@ -81,7 +81,7 @@
     <categoryEntry id="4378-1827-4988-be4e" name="Faction: Aeldari" hidden="false"/>
     <categoryEntry id="fa45-57e-930e-602b" name="Faction: Astra Militarum" hidden="false">
       <modifiers>
-        <modifier type="set" value="250" field="f70b-465d-493f-52e3" id="4ff4-f313-206c-fcb0">
+        <modifier type="set" value="250" field="4d8f-6e09-606e-788e" id="4ff4-f313-206c-fcb0">
           <conditionGroups>
             <conditionGroup type="and">
               <conditions>
@@ -91,7 +91,7 @@
             </conditionGroup>
           </conditionGroups>
         </modifier>
-        <modifier type="set" value="500" field="f70b-465d-493f-52e3" id="1225-b57b-bfa5-1448">
+        <modifier type="set" value="500" field="4d8f-6e09-606e-788e" id="1225-b57b-bfa5-1448">
           <conditionGroups>
             <conditionGroup type="and">
               <conditions>
@@ -101,7 +101,7 @@
             </conditionGroup>
           </conditionGroups>
         </modifier>
-        <modifier type="set" value="750" field="f70b-465d-493f-52e3" id="3d8e-d570-a4d2-6ed8">
+        <modifier type="set" value="750" field="4d8f-6e09-606e-788e" id="3d8e-d570-a4d2-6ed8">
           <conditionGroups>
             <conditionGroup type="and">
               <conditions>
@@ -112,6 +112,9 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <constraints>
+        <constraint type="max" value="-1" field="51b2-306e-1021-d207" scope="force" shared="true" id="4d8f-6e09-606e-788e" includeChildSelections="true" includeChildForces="false"/>
+      </constraints>
     </categoryEntry>
     <categoryEntry id="b5e4-3253-c157-54fd" name="Faction: Imperial Knights" hidden="false"/>
     <categoryEntry id="1e42-dfae-cbdd-207d" name="Faction: Heretic Astartes" hidden="false"/>
