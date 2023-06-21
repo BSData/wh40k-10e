@@ -116,7 +116,34 @@
         <constraint type="max" value="-1" field="51b2-306e-1021-d207" scope="force" shared="true" id="4d8f-6e09-606e-788e" includeChildSelections="true" includeChildForces="false"/>
       </constraints>
     </categoryEntry>
-    <categoryEntry id="b5e4-3253-c157-54fd" name="Faction: Imperial Knights" hidden="false"/>
+    <categoryEntry id="b5e4-3253-c157-54fd" name="Faction: Imperial Knights" hidden="false">
+      <modifiers>
+        <modifier type="set" value="1" field="807c-44c1-6f7d-dfb8">
+          <conditions>
+            <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
+            <condition type="equalTo" value="0" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
+          </conditions>
+          <conditionGroups>
+            <conditionGroup type="and"/>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="3" field="807c-44c1-6f7d-dfb8">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="equalTo" value="0" field="selections" scope="force" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+          <conditions>
+            <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="-1" field="selections" scope="force" shared="true" id="807c-44c1-6f7d-dfb8" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+    </categoryEntry>
     <categoryEntry id="1e42-dfae-cbdd-207d" name="Faction: Heretic Astartes" hidden="false"/>
     <categoryEntry id="fd71-afa6-b13b-7fda" name="Faction: Adepta Sororitas" hidden="false"/>
     <categoryEntry id="ee0-cf31-4fb5-6b26" name="Faction: Necrons" hidden="false"/>
@@ -220,6 +247,7 @@
     <categoryEntry name="Terminator" hidden="false" id="740a-892c-8958-defa"/>
     <categoryEntry name="Rhino" hidden="false" id="50a2-5557-84bb-ca4d"/>
     <categoryEntry id="dda2-bb0a-215e-ad9c" name="Jump Pack" hidden="false"/>
+    <categoryEntry name="Armiger" id="4c40-ab9-54af-d290" hidden="false"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
