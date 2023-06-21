@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <catalogue id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="1" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" xmlns="http://www.battlescribe.net/schema/catalogueSchema" type="catalogue">
   <categoryEntries>
+    <categoryEntry id="6e7-40c-58d9-e402" name="Faction: Adeptus Astartes" hidden="false"/>
     <categoryEntry id="539-7da4-d962-1a64" name="Primaris" hidden="false"/>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
     <categoryEntry id="930d-2875-125b-a65e" name="Bladeguard Veteran Squad" hidden="false"/>
@@ -19,6 +20,7 @@
     <categoryEntry id="7fa1-af93-1edd-1865" name="Aggressor Squad" hidden="false"/>
     <categoryEntry id="7295-ed65-8ff4-7a5f" name="Phobos" hidden="false"/>
     <categoryEntry id="d9d-c91b-5de0-38b0" name="Terminator" hidden="false"/>
+    <categoryEntry id="dda2-bb0a-215e-ad9c" name="Jump Pack" hidden="false"/>
     <categoryEntry id="b95-bdb8-c3e1-456b" name="Primaris Lieutenant" hidden="false"/>
     <categoryEntry id="4195-95ab-f4f-6646" name="Lieutenant in Reiver Armour" hidden="false"/>
     <categoryEntry id="9f00-976d-a6fc-55ca" name="Primaris Librarian" hidden="false"/>
@@ -103,11 +105,7 @@
     <categoryEntry name="Chapter Master" hidden="false" id="5bd8-882d-302b-48f3"/>
   </categoryEntries>
   <entryLinks>
-    <entryLink id="1dc4-4eb1-ca87-d104" name="Detachment" hidden="false" collective="false" import="true" targetId="821b-9477-6c47-eab5" type="selectionEntryGroup">
-      <categoryLinks>
-        <categoryLink id="401e-6984-2f8b-1a85" name="Configuration" hidden="false" targetId="4ac9-fd30-1e3d-b249" primary="true"/>
-      </categoryLinks>
-    </entryLink>
+    <entryLink import="true" name="Detachment" hidden="false" type="selectionEntry" id="e9ed-6763-ea0d-39fe" targetId="82cb-ba1-1aae-3b1d"/>
   </entryLinks>
   <rules>
     <rule id="3b76-4053-ece9-6e7d" name="Oath of Moment" hidden="false">
@@ -2421,6 +2419,13 @@ this unit, add 1 to any armour saving throw made against that attack.</character
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="175"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="f89b-84e0-6e3b-f1e2" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Flamer" hidden="false" id="469c-6259-59a5-64c1">
       <profiles>
@@ -2677,6 +2682,11 @@ this unit, add 1 to any armour saving throw made against that attack.</character
         <infoLink name="Blast" hidden="false" type="rule" id="beb6-8c62-8e4-8383" targetId="6c1f-1cf7-ff25-c99e"/>
       </infoLinks>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Detachment" hidden="false" id="82cb-ba1-1aae-3b1d">
+      <entryLinks>
+        <entryLink import="true" name="Detachment" hidden="false" type="selectionEntryGroup" id="b79-add5-1d1e-f700" targetId="821b-9477-6c47-eab5"/>
+      </entryLinks>
+    </selectionEntry>
   </sharedSelectionEntries>
   <sharedProfiles>
     <profile id="90c7-c55c-21e2-2232" name="Rites of Battle" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -2707,6 +2717,7 @@ this unit, add 1 to any armour saving throw made against that attack.</character
   </sharedProfiles>
   <publications>
     <publication name="Index - Space Marines" hidden="false" id="8b50-6bb0-b6bb-e187" shortName="Index SM" publisherUrl="https://www.warhammer-community.com/wp-content/uploads/2023/06/uVN1M55L0U3dQeWZ.pdf" publicationDate="09/06/2023" publisher="Index - Space Marines"/>
+    <publication name="Index - Deathwatch" hidden="false" id="4115-3627-e608-39f6"/>
   </publications>
   <sharedSelectionEntryGroups>
     <selectionEntryGroup name="Detachment" hidden="false" id="821b-9477-6c47-eab5">
@@ -2753,6 +2764,43 @@ This unit is eligible to declare a charge in a turn in which it Advanced.</chara
             <profile name="Grim Resolve" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f222-fd2e-80f5-9bc6">
               <characteristics>
                 <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While an Adeptus Astartes unit from your army is Battle-shocked, change the Objective Control characteristic of models in that unit to 1, instead of 0.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="470a-6daa-9014-12df" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Mission Tactics" hidden="false" id="4459-12f0-bc-142b">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1444-4a04-e57d-3411"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="f89b-84e0-6e3b-f1e2" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Furor Tactics" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d0e5-379a-d2c1-898a" publicationId="4115-3627-e608-39f6">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this Mission Tactic is active, weapons equipped by Adeptus Astartes units from your army have the [SUSTAINED HITS 1] ability.</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="Malleus Tactics" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="49e6-ffa4-895d-6d1a" publicationId="4115-3627-e608-39f6">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this Mission Tactic is active, weapons equipped by Adeptus Astartes units from your army have the [LETHAL HITS] ability.</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="Purgatus Tactics" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9172-14c8-adb-a0a8" publicationId="4115-3627-e608-39f6">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this Mission Tactic is active, each time an Adeptus Astartes unit from your army makes an attack, if a Critical Hit is scored, that attack has the [PRECISION] ability.
+</characteristic>
               </characteristics>
             </profile>
           </profiles>
