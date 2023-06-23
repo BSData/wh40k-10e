@@ -155,12 +155,14 @@
     <categoryEntry id="b5e4-3253-c157-54fd" name="Faction: Imperial Knights" hidden="false">
       <modifiers>
         <modifier type="set" value="1" field="807c-44c1-6f7d-dfb8">
-          <conditions>
-            <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
-            <condition type="equalTo" value="0" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
-          </conditions>
           <conditionGroups>
-            <conditionGroup type="and"/>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
+                <condition type="equalTo" value="0" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </conditionGroup>
           </conditionGroups>
         </modifier>
         <modifier type="set" value="3" field="807c-44c1-6f7d-dfb8">
@@ -168,12 +170,22 @@
             <conditionGroup type="and">
               <conditions>
                 <condition type="equalTo" value="0" field="selections" scope="force" childId="5929-ad51-d006-e008" shared="true"/>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
               </conditions>
             </conditionGroup>
           </conditionGroups>
-          <conditions>
-            <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
-          </conditions>
+        </modifier>
+        <modifier type="set" value="0" field="807c-44c1-6f7d-dfb8">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
         </modifier>
       </modifiers>
       <constraints>
