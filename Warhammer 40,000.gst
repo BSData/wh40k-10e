@@ -160,8 +160,15 @@
               <conditions>
                 <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
                 <condition type="equalTo" value="0" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
-                <condition type="greaterThan" value="0" field="selections" scope="force" childId="5929-ad51-d006-e008" shared="true"/>
               </conditions>
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="roster" childId="6801-fa8f-3084-5088" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="greaterThan" value="0" field="selections" scope="roster" childId="a516-d676-c018-e7b0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </conditionGroup>
           </conditionGroups>
         </modifier>
@@ -169,10 +176,17 @@
           <conditionGroups>
             <conditionGroup type="and">
               <conditions>
-                <condition type="equalTo" value="0" field="selections" scope="force" childId="5929-ad51-d006-e008" shared="true"/>
                 <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
                 <condition type="atLeast" value="1" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
               </conditions>
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="equalTo" value="0" field="selections" scope="roster" childId="6801-fa8f-3084-5088" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="equalTo" value="0" field="selections" scope="roster" childId="a516-d676-c018-e7b0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </conditionGroup>
           </conditionGroups>
         </modifier>
@@ -182,8 +196,15 @@
               <conditions>
                 <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
                 <condition type="atLeast" value="1" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
-                <condition type="greaterThan" value="0" field="selections" scope="force" childId="5929-ad51-d006-e008" shared="true"/>
               </conditions>
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="roster" childId="6801-fa8f-3084-5088" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="greaterThan" value="0" field="selections" scope="roster" childId="a516-d676-c018-e7b0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </conditionGroup>
           </conditionGroups>
         </modifier>
@@ -296,6 +317,8 @@
     <categoryEntry name="Rhino" hidden="false" id="50a2-5557-84bb-ca4d"/>
     <categoryEntry id="dda2-bb0a-215e-ad9c" name="Jump Pack" hidden="false"/>
     <categoryEntry name="Armiger" id="4c40-ab9-54af-d290" hidden="false"/>
+    <categoryEntry name="Questoris" id="e4d6-1a77-132b-f39d"/>
+    <categoryEntry name="Dominus" id="af4c-b971-a31c-669c"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
