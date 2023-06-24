@@ -62,7 +62,6 @@
     <categoryEntry id="5a61-81ac-eb7c-a87e" name="Grenades" hidden="false"/>
     <categoryEntry id="aff3-d6a3-2a95-9dc" name="Imperium" hidden="false"/>
     <categoryEntry id="4ac9-fd30-1e3d-b249" name="Configuration" hidden="false"/>
-    <categoryEntry id="1160-70ae-a862-b1a8" name="Unit" hidden="false"/>
     <categoryEntry id="c619-2086-bbcf-69c9" name="Fly" hidden="false"/>
     <categoryEntry id="6df-937-16bc-8c1a" name="Smoke" hidden="false"/>
     <categoryEntry id="13bf-2bee-3ae0-b414" name="Psyker" hidden="false"/>
@@ -296,6 +295,7 @@
     <categoryEntry name="Rhino" hidden="false" id="50a2-5557-84bb-ca4d"/>
     <categoryEntry id="dda2-bb0a-215e-ad9c" name="Jump Pack" hidden="false"/>
     <categoryEntry name="Armiger" id="4c40-ab9-54af-d290" hidden="false"/>
+    <categoryEntry name="Allied Units" hidden="false" id="d353-f4f5-7bcf-308d"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
@@ -317,8 +317,8 @@
         <categoryLink id="8243-857b-2133-8887" name="Drone" hidden="false" targetId="2471-e2e0-3f55-d6cb" primary="false"/>
         <categoryLink id="cf3e-2c24-fe34-39f9" name="Dedicated Transport" hidden="false" targetId="ba07-411c-2832-1f79" primary="false"/>
         <categoryLink id="9198-c35d-71cd-eea3" name="Fortification" hidden="false" targetId="19d7-9c74-2140-5851" primary="false"/>
-        <categoryLink id="a41a-6330-4718-d8d2" name="Unit" hidden="false" targetId="1160-70ae-a862-b1a8" primary="false"/>
         <categoryLink name="Retinue" hidden="false" id="bbb1-2c73-9723-5389" targetId="cc77-a53-fca8-f48e" type="category"/>
+        <categoryLink name="Allied Units" hidden="false" id="bccd-60fa-2f78-49bc" targetId="d353-f4f5-7bcf-308d" type="category"/>
       </categoryLinks>
     </forceEntry>
   </forceEntries>
