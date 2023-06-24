@@ -164,8 +164,8 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="roster" childId="6801-fa8f-3084-5088" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                    <condition type="greaterThan" value="0" field="selections" scope="roster" childId="a516-d676-c018-e7b0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="greaterThan" value="0" field="selections" scope="roster" childId="e4d6-1a77-132b-f39d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="greaterThan" value="0" field="selections" scope="roster" childId="af4c-b971-a31c-669c" shared="true" includeChildSelections="true" includeChildForces="true"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -182,8 +182,8 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition type="equalTo" value="0" field="selections" scope="roster" childId="6801-fa8f-3084-5088" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                    <condition type="equalTo" value="0" field="selections" scope="roster" childId="a516-d676-c018-e7b0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="equalTo" value="0" field="selections" scope="roster" childId="e4d6-1a77-132b-f39d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="equalTo" value="0" field="selections" scope="roster" childId="af4c-b971-a31c-669c" shared="true" includeChildSelections="true" includeChildForces="true"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -200,8 +200,8 @@
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="roster" childId="6801-fa8f-3084-5088" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                    <condition type="greaterThan" value="0" field="selections" scope="roster" childId="a516-d676-c018-e7b0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="greaterThan" value="0" field="selections" scope="roster" childId="e4d6-1a77-132b-f39d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="greaterThan" value="0" field="selections" scope="roster" childId="af4c-b971-a31c-669c" shared="true" includeChildSelections="true" includeChildForces="true"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
