@@ -676,6 +676,7 @@ enemy units, you can re-roll the Hit roll and you can re-roll the Wound roll.</c
     <categoryEntry name="Deathwatch Veterans" hidden="false" id="88ab-39b-e7ba-770e"/>
     <categoryEntry name="Proteus Kill Team" hidden="false" id="ae46-3df5-4feb-8e53"/>
     <categoryEntry name="Fortis Kill Team" hidden="false" id="a2bb-b582-9f57-27f5"/>
+    <categoryEntry name="Indomitor Kill Team" hidden="false" id="6acb-612b-3fe6-9061"/>
   </categoryEntries>
   <sharedSelectionEntries>
     <selectionEntry type="unit" import="true" name="Watch Master" hidden="false" id="f7c3-45d2-a7ac-d8bc" publicationId="4115-3627-e608-39f6" page="7">
@@ -2931,7 +2932,7 @@ In addition, that unit can be targeted with a Stratagem even while it is Battle-
         </modifier>
       </modifiers>
     </selectionEntry>
-    <selectionEntry type="unit" import="true" name="Fortis Kill Team" hidden="false" id="a077-e1c9-f8f0-d38" publicationId="4115-3627-e608-39f6" page="23" defaultAmount="">
+    <selectionEntry type="unit" import="true" name="Fortis Kill Team" hidden="false" id="a077-e1c9-f8f0-d38" publicationId="4115-3627-e608-39f6" page="23">
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="115"/>
       </costs>
@@ -3409,6 +3410,11 @@ In addition, that unit can be targeted with a Stratagem even while it is Battle-
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an attack that targets a unit that is Below Half-strength, add 1 to the Hit roll.</characteristic>
           </characteristics>
         </profile>
+        <profile name="Attached Unit" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a226-1a6e-44f-6113" publicationId="4115-3627-e608-39f6" page="24">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If a Character from your army with the Leader ability can be attached to an Intercessor Squad, it can be attached to this unit instead.</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Astartes chainsword" hidden="false" id="93dc-1a01-97b3-6565" publicationId="4115-3627-e608-39f6" page="23">
@@ -3427,6 +3433,600 @@ In addition, that unit can be targeted with a Stratagem even while it is Battle-
       </profiles>
       <comment>4/4/4/-1/1</comment>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Indomitor Kill Team" hidden="false" id="6cb-912c-c43-210b">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="135"/>
+      </costs>
+      <modifiers>
+        <modifier type="set" value="270" field="51b2-306e-1021-d207">
+          <conditions>
+            <condition type="greaterThan" value="5" field="selections" scope="6cb-912c-c43-210b" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <profiles>
+        <profile name="Indomitor Doctrines" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f8b6-3181-7e49-fb57" publicationId="4115-3627-e608-39f6" page="25">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Attached Unit" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b8a4-e32-bbbb-4e78" publicationId="4115-3627-e608-39f6" page="24">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If a Character unit from your army can be attached to a Heavy Intercessor Squad, it can be attached to this unit instead.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Squad Members" hidden="false" id="cecf-b6a2-6407-628a">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Core" hidden="false" id="87fd-7ec7-74d4-a46d" defaultSelectionEntryId="efe9-cc0e-2d87-504">
+              <selectionEntries>
+                <selectionEntry type="model" import="true" name="Kill Team Heavy Intercessor" hidden="false" id="efe9-cc0e-2d87-504">
+                  <entryLinks>
+                    <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="61f-ff61-fd53-8258" targetId="e957-5634-ec98-9d3d">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a59d-564e-8411-2bdc"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a3fb-4f17-29a-8639"/>
+                      </constraints>
+                    </entryLink>
+                    <entryLink import="true" name="Close combat weapon" hidden="false" type="selectionEntry" id="5e3e-b9d7-5b-e460" targetId="2078-20a8-181f-a708">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c012-f69-b125-50ea"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f60e-c75a-aa50-3441"/>
+                      </constraints>
+                    </entryLink>
+                  </entryLinks>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Heavy bolt rifle" hidden="false" id="6ea7-e02e-4be9-5c8f" publicationId="4115-3627-e608-39f6" page="25">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f568-ab8e-c137-88fe"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a565-d6e2-32-16ea"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Heavy bolt rifle" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="91a0-eb5f-15fd-c595">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">30&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Heavy</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Assault" hidden="false" type="rule" id="7902-8bba-ab07-c4b0" targetId="fc8a-8c24-bae9-cc1c"/>
+                        <infoLink name="Heavy" hidden="false" type="rule" id="2fed-b4fe-bdbd-4334" targetId="1202-10a8-78e9-4c67"/>
+                      </infoLinks>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <profiles>
+                    <profile name="Kill Team Heavy Intercessor" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="e920-50ed-2cd9-fb09" publicationId="4115-3627-e608-39f6" page="25">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <constraints>
+                    <constraint type="max" value="10" field="selections" scope="parent" shared="true" id="1408-6ca8-a5a8-68a"/>
+                  </constraints>
+                </selectionEntry>
+                <selectionEntry type="model" import="true" name="Kill Team Heavy Intercessor w/ Heavy Bolter" hidden="false" id="83ce-4339-bfd5-7635">
+                  <entryLinks>
+                    <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="ff70-fa6d-3525-c08a" targetId="e957-5634-ec98-9d3d">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a59d-564e-8411-2bdc"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a3fb-4f17-29a-8639"/>
+                      </constraints>
+                    </entryLink>
+                    <entryLink import="true" name="Close combat weapon" hidden="false" type="selectionEntry" id="3de7-1ff5-5d02-8e55" targetId="2078-20a8-181f-a708">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c012-f69-b125-50ea"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f60e-c75a-aa50-3441"/>
+                      </constraints>
+                    </entryLink>
+                  </entryLinks>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Heavy Bolter" hidden="false" id="46ee-696e-8631-b41e">
+                      <profiles>
+                        <profile name="Heavy Bolter" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="8dbf-1436-3106-296a" publicationId="4115-3627-e608-39f6" page="25">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">5+</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Heavy, Sustained Hits 1</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Assault" hidden="false" type="rule" id="f0c0-36d1-b5c8-6d87" targetId="fc8a-8c24-bae9-cc1c"/>
+                        <infoLink name="Heavy" hidden="false" type="rule" id="acf-4f3c-34ae-16d0" targetId="1202-10a8-78e9-4c67"/>
+                        <infoLink name="Sustained Hits" hidden="false" type="rule" id="f657-d214-4073-7e75" targetId="1897-c22c-9597-12b1"/>
+                      </infoLinks>
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="82e5-c306-28dc-7bf2"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="19e8-8d61-269d-a1e1"/>
+                      </constraints>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <profiles>
+                    <profile name="Kill Team Heavy Intercessor w/ Heavy Bolter" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="571d-b955-bdeb-9b94" publicationId="4115-3627-e608-39f6" page="25">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e50b-84f7-c7a7-f71b"/>
+                  </constraints>
+                  <modifiers>
+                    <modifier type="set" value="2" field="e50b-84f7-c7a7-f71b">
+                      <conditions>
+                        <condition type="equalTo" value="10" field="selections" scope="6cb-912c-c43-210b" childId="model" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                </selectionEntry>
+              </selectionEntries>
+              <constraints>
+                <constraint type="max" value="10" field="selections" scope="parent" shared="true" id="fd66-e364-ff25-6142"/>
+                <constraint type="min" value="5" field="selections" scope="parent" shared="true" id="8161-5c7-4d50-e3e"/>
+              </constraints>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Additional" hidden="false" id="3c68-34fc-53e0-334f">
+              <selectionEntries>
+                <selectionEntry type="model" import="true" name="Kill Team Heavy Intercessor w/ power fists &amp; Flamestorm" hidden="false" id="57b2-81f8-c015-35ce">
+                  <constraints>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="5edb-63c1-c391-467"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Kill Team Heavy Intercessor" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="344c-cc84-a0e9-55c2" publicationId="4115-3627-e608-39f6" page="25">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Flamestorm gauntlets" hidden="false" id="68f5-c900-2b46-177e" publicationId="4115-3627-e608-39f6" page="25">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="727-9974-8ae3-3731"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6207-7d2f-64f4-f944"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Flamestorm gauntlets" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="18de-a268-f9b6-83ac" publicationId="4115-3627-e608-39f6" page="25">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent, Twin-Linked</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                    </selectionEntry>
+                    <selectionEntry type="upgrade" import="true" name="Power fists" hidden="false" id="8873-9aef-aebc-bffe" publicationId="4115-3627-e608-39f6" page="25">
+                      <profiles>
+                        <profile name="Power fists" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="1cb6-66ee-2f81-942b" publicationId="4115-3627-e608-39f6" page="25">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Twin-Linked</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Twin-linked" hidden="false" type="rule" id="ff04-ba58-d2a6-8c11" targetId="cf93-ad4d-2f08-a79d"/>
+                      </infoLinks>
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="9a8e-206b-b925-5dba"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e772-c94a-46b4-3421"/>
+                      </constraints>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <modifiers>
+                    <modifier type="decrement" value="1" field="5edb-63c1-c391-467">
+                      <repeats>
+                        <repeat value="1" repeats="1" field="selections" scope="6cb-912c-c43-210b" childId="eeba-6f74-1592-5597" shared="true" roundUp="false" id="b452-7418-a6c-a139"/>
+                      </repeats>
+                    </modifier>
+                  </modifiers>
+                </selectionEntry>
+                <selectionEntry type="model" import="true" name="Kill Team Heavy Intercessor w/ power fists &amp; Auto Boltstorm" hidden="false" id="eeba-6f74-1592-5597">
+                  <constraints>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="5edb-63c1-c391-467"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Kill Team Heavy Intercessor" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="c3c6-efc4-4de3-f0fa" publicationId="4115-3627-e608-39f6" page="25">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Auto boltstorm gauntlets" hidden="false" id="2c78-95a7-76e0-dd2b" publicationId="4115-3627-e608-39f6" page="25">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="727-9974-8ae3-3731"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6207-7d2f-64f4-f944"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Auto boltstorm gauntlets" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="24e-e2ce-59c3-4f7">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc"/>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08"/>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e"/>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3"/>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15"/>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3"/>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Twin-Linked</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                    </selectionEntry>
+                    <selectionEntry type="upgrade" import="true" name="Power fists" hidden="false" id="78e1-23e9-fe4c-7ef2" publicationId="4115-3627-e608-39f6" page="25">
+                      <profiles>
+                        <profile name="Power fists" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="a0b8-dac7-fee7-7641" publicationId="4115-3627-e608-39f6" page="25">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Twin-Linked</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Twin-linked" hidden="false" type="rule" id="7f27-66b5-5968-e1e" targetId="cf93-ad4d-2f08-a79d"/>
+                      </infoLinks>
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="9a8e-206b-b925-5dba"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e772-c94a-46b4-3421"/>
+                      </constraints>
+                    </selectionEntry>
+                    <selectionEntry type="upgrade" import="true" name="Fragstorm grenade launcher" hidden="false" id="ea17-ae09-a76-3980" publicationId="4115-3627-e608-39f6" page="25">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="54a0-42f5-d69e-e897"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8eda-d01a-ef2-9ee5"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Fragstorm grenade launcher" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="ebd4-e68c-baf6-a0b6">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <modifiers>
+                    <modifier type="decrement" value="1" field="5edb-63c1-c391-467">
+                      <repeats>
+                        <repeat value="1" repeats="1" field="selections" scope="6cb-912c-c43-210b" childId="57b2-81f8-c015-35ce" shared="true" roundUp="false" id="27b7-2b37-8f11-4fd6"/>
+                      </repeats>
+                    </modifier>
+                  </modifiers>
+                </selectionEntry>
+                <selectionEntry type="model" import="true" name="Kill Team Heavy Intercessor w/ melta rifle" hidden="false" id="d171-7d41-4be1-3382">
+                  <constraints>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="bbff-354d-d423-9014"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Kill Team Heavy Intercessor" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="2d32-5ad7-f9ff-6782" publicationId="4115-3627-e608-39f6" page="25">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Melta rifle" hidden="false" id="3d5e-e20d-8e00-5b3d" publicationId="4115-3627-e608-39f6" page="25">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="79f7-8f04-c4e1-78d7"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3b74-78c8-446d-67be"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Melta rifle" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="e2fa-94aa-b18b-5443">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Melta 2</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Heavy" hidden="false" type="rule" id="1f38-659f-467b-3650" targetId="1202-10a8-78e9-4c67"/>
+                        <infoLink name="Melta" hidden="false" type="rule" id="a1f5-6830-fee0-161a" targetId="7cdb-fb99-44a9-8849"/>
+                      </infoLinks>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <entryLinks>
+                    <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="ae82-6562-497e-de55" targetId="e957-5634-ec98-9d3d">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a59d-564e-8411-2bdc"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a3fb-4f17-29a-8639"/>
+                      </constraints>
+                    </entryLink>
+                    <entryLink import="true" name="Close combat weapon" hidden="false" type="selectionEntry" id="c01f-c15f-c04e-dedb" targetId="2078-20a8-181f-a708">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c012-f69-b125-50ea"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f60e-c75a-aa50-3441"/>
+                      </constraints>
+                    </entryLink>
+                  </entryLinks>
+                  <modifiers>
+                    <modifier type="decrement" value="1" field="bbff-354d-d423-9014">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="6cb-912c-c43-210b" childId="a666-891-4187-a82" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                </selectionEntry>
+                <selectionEntry type="model" import="true" name="Kill Team Heavy Intercessor w/ Multi-melta" hidden="false" id="a666-891-4187-a82">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="bbff-354d-d423-9014"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Kill Team Heavy Intercessor" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="f2b7-a0b6-257a-c2b4" publicationId="4115-3627-e608-39f6" page="25">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Multi-melta" hidden="false" id="e80b-803e-b6a-c02e" publicationId="4115-3627-e608-39f6" page="25">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="79f7-8f04-c4e1-78d7"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3b74-78c8-446d-67be"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Melta rifle" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="be7f-d1d2-ffaf-f499">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Melta 2</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Heavy" hidden="false" type="rule" id="ceb8-3ac3-47ad-c3cf" targetId="1202-10a8-78e9-4c67"/>
+                        <infoLink name="Melta" hidden="false" type="rule" id="d4ce-6109-2998-a168" targetId="7cdb-fb99-44a9-8849"/>
+                      </infoLinks>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <entryLinks>
+                    <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="ff42-27b7-67c-e679" targetId="e957-5634-ec98-9d3d">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a59d-564e-8411-2bdc"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a3fb-4f17-29a-8639"/>
+                      </constraints>
+                    </entryLink>
+                    <entryLink import="true" name="Close combat weapon" hidden="false" type="selectionEntry" id="59aa-3a9-f9f9-5847" targetId="2078-20a8-181f-a708">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c012-f69-b125-50ea"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f60e-c75a-aa50-3441"/>
+                      </constraints>
+                    </entryLink>
+                  </entryLinks>
+                  <modifiers>
+                    <modifier type="set" value="0" field="bbff-354d-d423-9014">
+                      <conditions>
+                        <condition type="equalTo" value="2" field="selections" scope="6cb-912c-c43-210b" childId="d171-7d41-4be1-3382" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                </selectionEntry>
+                <selectionEntry type="model" import="true" name="Kill Team Heavy Intercessor w/ jump pack &amp; Assault bolters" hidden="false" id="eae4-486f-3512-d2dd">
+                  <profiles>
+                    <profile name="Kill Team Heavy Intercessor w/ jump pack" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="ecca-5b06-ee40-7e81" publicationId="4115-3627-e608-39f6" page="25">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                      </characteristics>
+                    </profile>
+                    <profile name="Jump pack" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c7b2-83c4-f951-a09b">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer has a Move characteristic of 10&quot; and can move over models and terrain features as if they were not there.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <constraints>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="f300-f8b1-138f-b3d"/>
+                  </constraints>
+                  <entryLinks>
+                    <entryLink import="true" name="Close combat weapon" hidden="false" type="selectionEntry" id="7010-44f5-d02-7d62" targetId="2078-20a8-181f-a708">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c012-f69-b125-50ea"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f60e-c75a-aa50-3441"/>
+                      </constraints>
+                    </entryLink>
+                  </entryLinks>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Assault bolters" hidden="false" id="1a1a-907c-43b2-13ed" publicationId="4115-3627-e608-39f6" page="25">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="9364-c74d-954d-9dbd"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4759-566d-db59-544b"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Assault bolters" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="c46d-14b5-1119-3954" publicationId="4115-3627-e608-39f6" page="25">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Pistol, Sustained Hits 2, Twin-Linked</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Assault" hidden="false" type="rule" id="a645-2037-5746-3b14" targetId="fc8a-8c24-bae9-cc1c"/>
+                        <infoLink name="Pistol" hidden="false" type="rule" id="dc8a-e009-9e37-d250" targetId="8bf7-8812-923d-29e4"/>
+                        <infoLink name="Sustained Hits" hidden="false" type="rule" id="b4b7-2ac2-4c09-5de6" targetId="1897-c22c-9597-12b1"/>
+                        <infoLink name="Twin-linked" hidden="false" type="rule" id="234-6500-5ac5-e9f2" targetId="cf93-ad4d-2f08-a79d"/>
+                      </infoLinks>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <modifiers>
+                    <modifier type="decrement" value="1" field="f300-f8b1-138f-b3d">
+                      <repeats>
+                        <repeat value="1" repeats="1" field="selections" scope="6cb-912c-c43-210b" childId="43ea-e14d-250a-7c15" shared="true" roundUp="false" id="a9fd-7d49-6dee-c893" includeChildSelections="true"/>
+                      </repeats>
+                    </modifier>
+                  </modifiers>
+                </selectionEntry>
+                <selectionEntry type="model" import="true" name="Kill Team Heavy Intercessor w/ jump pack &amp; Plasma exterminators" hidden="false" id="43ea-e14d-250a-7c15">
+                  <profiles>
+                    <profile name="Kill Team Heavy Intercessor w/ jump pack" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="3447-3f38-7f2-6348" publicationId="4115-3627-e608-39f6" page="25">
+                      <characteristics>
+                        <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
+                        <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
+                        <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                        <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+                        <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+                        <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                      </characteristics>
+                    </profile>
+                    <profile name="Jump pack" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="19a8-fa4f-693a-362a">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer has a Move characteristic of 10&quot; and can move over models and terrain features as if they were not there.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <constraints>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="f300-f8b1-138f-b3d"/>
+                  </constraints>
+                  <entryLinks>
+                    <entryLink import="true" name="Close combat weapon" hidden="false" type="selectionEntry" id="27c2-685a-5ee8-3d9a" targetId="2078-20a8-181f-a708">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c012-f69-b125-50ea"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f60e-c75a-aa50-3441"/>
+                      </constraints>
+                    </entryLink>
+                  </entryLinks>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Plasma exterminators" hidden="false" id="e836-b98c-89de-615f" publicationId="4115-3627-e608-39f6" page="25">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="9364-c74d-954d-9dbd"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4759-566d-db59-544b"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Plasma exterminators - Standard" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="c504-5703-10dc-4131" publicationId="4115-3627-e608-39f6" page="25">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Pistol, Twin-Linked</characteristic>
+                          </characteristics>
+                        </profile>
+                        <profile name="Plasma exterminators - Supercharge" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="d71d-8d08-7929-da74">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Hazardous, Pistol, Twin-Linked</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Assault" hidden="false" type="rule" id="76e-3e5a-e17b-975" targetId="fc8a-8c24-bae9-cc1c"/>
+                        <infoLink name="Pistol" hidden="false" type="rule" id="4159-3a02-695a-9acc" targetId="8bf7-8812-923d-29e4"/>
+                        <infoLink name="Twin-linked" hidden="false" type="rule" id="6c43-144a-d5b-4f15" targetId="cf93-ad4d-2f08-a79d"/>
+                        <infoLink name="Hazardous" hidden="false" type="rule" id="329f-166e-c491-1a8d" targetId="8367-374c-f87-c627"/>
+                      </infoLinks>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <modifiers>
+                    <modifier type="decrement" value="1" field="f300-f8b1-138f-b3d">
+                      <repeats>
+                        <repeat value="1" repeats="1" field="selections" scope="6cb-912c-c43-210b" childId="eae4-486f-3512-d2dd" shared="true" roundUp="false" id="369f-752c-d598-1077" includeChildSelections="true"/>
+                      </repeats>
+                    </modifier>
+                  </modifiers>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <constraints>
+            <constraint type="min" value="5" field="selections" scope="parent" shared="true" id="c395-db4b-c8b8-bdb8" includeChildSelections="true"/>
+            <constraint type="max" value="10" field="selections" scope="parent" shared="true" id="f87f-741f-4665-5417" includeChildSelections="true"/>
+          </constraints>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <categoryLinks>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="724-5cc5-c3ce-22ef" primary="true" name="Infantry"/>
+        <categoryLink targetId="5a61-81ac-eb7c-a87e" id="cb0b-4033-8cb9-3e7b" primary="false" name="Grenades"/>
+        <categoryLink targetId="aff3-d6a3-2a95-9dc" id="440d-60e0-37b3-eaf8" primary="false" name="Imperium"/>
+        <categoryLink targetId="d39c-9989-db7f-d815" id="6294-26c7-8e65-542e" primary="false" name="Faction: Deathwatch"/>
+        <categoryLink targetId="6e7-40c-58d9-e402" id="afbe-9af2-1a2a-41df" primary="false" name="Faction: Adeptus Astartes"/>
+        <categoryLink targetId="81f0-f40e-c36c-5a30" id="a381-6974-7b2c-a9db" primary="false" name="Gravis"/>
+        <categoryLink targetId="81b0-a893-4fb7-c298" id="9fcc-14ef-c63e-f571" primary="false" name="Kill Team"/>
+        <categoryLink targetId="6acb-612b-3fe6-9061" id="c96c-ed1-afd6-907" primary="false" name="Indomitor Kill Team"/>
+      </categoryLinks>
+    </selectionEntry>
   </sharedSelectionEntries>
   <entryLinks>
     <entryLink import="true" name="Watch Master" hidden="false" type="selectionEntry" id="d7e1-13bb-2177-b6bc" targetId="f7c3-45d2-a7ac-d8bc"/>
@@ -3438,6 +4038,7 @@ In addition, that unit can be targeted with a Stratagem even while it is Battle-
     <entryLink import="true" name="Deathwatch Veterans" hidden="false" type="selectionEntry" id="b078-34b9-e660-a4cb" targetId="8f5b-6c45-652c-33a1"/>
     <entryLink import="true" name="Proteus Kill Team" hidden="false" type="selectionEntry" id="bc53-8c26-8a1a-b2af" targetId="95fe-8a43-b82-7230"/>
     <entryLink import="true" name="Fortis Kill Team" hidden="false" type="selectionEntry" id="a5ae-26d2-12a0-13d7" targetId="a077-e1c9-f8f0-d38"/>
+    <entryLink import="true" name="Indomitor Kill Team" hidden="false" type="selectionEntry" id="6942-fa3c-d518-295f" targetId="6cb-912c-c43-210b"/>
   </entryLinks>
   <sharedProfiles>
     <profile name="Power Fist" hidden="false" id="27b9-ba9e-95a5-a6" typeName="Melee Weapons" publicationId="4115-3627-e608-39f6" page="16" typeId="8a40-4aaa-c780-9046">
