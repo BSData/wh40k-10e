@@ -40,6 +40,19 @@ Reclaim the Realm
     <entryLink import="true" name="Knight Preceptor" type="selectionEntry" id="13f9-f658-59aa-1a0f" targetId="ebd9-7175-3f0c-72a9"/>
     <entryLink import="true" name="Knight Castellan" type="selectionEntry" id="5b4b-4683-2ae9-abce" targetId="6e36-f85-1c3b-8bf3"/>
     <entryLink import="true" name="Knight Valiant" type="selectionEntry" id="9a1f-43c9-6220-94b0" targetId="8fb9-50b2-adc6-161a"/>
+    <entryLink import="true" name="Detachment" hidden="false" type="selectionEntry" id="b95f-2d4d-915b-be93" targetId="8609-685f-f598-44d5">
+      <entryLinks>
+        <entryLink import="true" name="Detachment" hidden="false" type="selectionEntryGroup" id="3bfd-dc5-e67b-8750" targetId="d793-8964-e815-3bb8">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </entryLink>
+      </entryLinks>
+    </entryLink>
   </entryLinks>
   <sharedSelectionEntries>
     <selectionEntry type="unit" import="true" name="Canis Rex" id="55fb-9c91-1a4f-3037">
@@ -1873,13 +1886,31 @@ Reclaim the Realm
           <conditionGroups>
             <conditionGroup type="or">
               <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="16e-fd79-2090-486a" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="e424-58f3-8e79-19a6" shared="true" includeChildSelections="true" includeChildForces="true"/>
                 <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true"/>
               </conditions>
             </conditionGroup>
           </conditionGroups>
         </modifier>
       </modifiers>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Detachment" id="d793-8964-e815-3bb8">
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Noble Lance" id="e424-58f3-8e79-19a6">
+          <rules>
+            <rule name="Indomitable Heroes" id="92f9-bfbb-ce23-f12a" hidden="false">
+              <description>All IMPERIAL KNIGHTS models from your army have the Feel No Pain 6+ ability. If your army is Honoured, those models have the Feel No Pain 5+ ability.</description>
+            </rule>
+          </rules>
+          <infoLinks>
+            <infoLink name="Feel No Pain" hidden="false" type="rule" id="28e7-aca3-4df7-2d32" targetId="9bf4-280f-bbe2-6fbb"/>
+          </infoLinks>
+        </selectionEntry>
+      </selectionEntries>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b27-2395-910d-8372" includeChildSelections="false"/>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="fa78-6df5-230f-2b4"/>
+      </constraints>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <sharedProfiles>

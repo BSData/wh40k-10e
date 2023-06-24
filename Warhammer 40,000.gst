@@ -386,6 +386,15 @@
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Detachment" id="8609-685f-f598-44d5">
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="a6a1-e91b-6f26-980f"/>
+        <constraint type="min" value="1" field="selections" scope="roster" shared="true" id="d0f3-2961-778-10d6"/>
+      </constraints>
+      <categoryLinks>
+        <categoryLink targetId="4ac9-fd30-1e3d-b249" id="f38e-e398-bc8f-943d" primary="true" name="Configuration"/>
+      </categoryLinks>
+    </selectionEntry>
   </sharedSelectionEntries>
   <sharedRules>
     <rule id="8bf7-8812-923d-29e4" name="Pistol" publicationId="48fc-15aa-b307-9443" page="25" hidden="false">
