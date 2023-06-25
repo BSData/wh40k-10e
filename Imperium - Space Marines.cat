@@ -49,7 +49,7 @@
     <categoryEntry id="25f4-2bec-a254-82a7" name="Relic Terminator Squad" hidden="false"/>
     <categoryEntry id="5de-1fc6-899f-701c" name="Centurion Assault Squad" hidden="false"/>
     <categoryEntry id="8c85-5611-5972-3071" name="Centurion Devastator Squad" hidden="false"/>
-    <categoryEntry id="facf-9dfb-9481-fd3f" name="Centurion Devastator Squad" hidden="false"/>
+    <categoryEntry id="facf-9dfb-9481-fd3f" name="Centurion" hidden="false"/>
     <categoryEntry id="258e-8a8c-d871-6eac" name="Invictor Tactical Warsuit" hidden="false"/>
     <categoryEntry id="a820-cf8-f29d-7b06" name="Dreadnought" hidden="false"/>
     <categoryEntry id="b0c6-f86f-b5-7a06" name="Contemptor Dreadnought" hidden="false"/>
@@ -2172,25 +2172,13 @@ this unit, add 1 to any armour saving throw made against that attack.</character
         <categoryLink targetId="2740-ec68-77ee-2830" id="63a7-8e52-1333-a977" primary="false" name="Tactical Squad"/>
       </categoryLinks>
       <selectionEntryGroups>
-        <selectionEntryGroup name="Tactical Marines" hidden="false" id="86de-e2b-99f0-1548">
+        <selectionEntryGroup name="Tactical Marines" hidden="false" id="86de-e2b-99f0-1548" defaultSelectionEntryId="fc38-382c-98c1-9b3d">
           <selectionEntries>
-            <selectionEntry type="model" import="true" name="Tactical Marines" hidden="false" id="fc38-382c-98c1-9b3d">
+            <selectionEntry type="model" import="true" name="Tactical Marine" hidden="false" id="fc38-382c-98c1-9b3d">
               <constraints>
-                <constraint type="min" value="9" field="selections" scope="parent" shared="true" id="bf86-6005-80d1-e554"/>
+                <constraint type="min" value="7" field="selections" scope="parent" shared="true" id="bf86-6005-80d1-e554"/>
                 <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="1a10-2f1d-5108-12aa"/>
               </constraints>
-              <modifiers>
-                <modifier type="decrement" value="1" field="bf86-6005-80d1-e554" id="30a3-6612-fe39-9027">
-                  <conditions>
-                    <condition type="equalTo" value="1" field="selections" scope="parent" childId="4e9-6371-352c-5076" shared="true" id="737f-3f82-edcc-d7d9"/>
-                  </conditions>
-                </modifier>
-                <modifier type="decrement" value="1" field="1a10-2f1d-5108-12aa" id="3e76-4fa8-87b-ffb6">
-                  <conditions>
-                    <condition type="equalTo" value="1" field="selections" scope="parent" childId="2e9d-b9a6-73ab-7ab3" shared="true" id="737f-3f82-edcc-d7d9"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
               <entryLinks>
                 <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="7524-1927-3f5f-31b3" targetId="18b0-8c2-173f-5">
                   <constraints>
@@ -2508,12 +2496,19 @@ this unit, add 1 to any armour saving throw made against that attack.</character
           <characteristics>
             <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
             <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
-            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
             <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
             <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Sustained Hits 1</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="set" value="4+" field="94d-8a98-cf90-183e">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true" id="3f28-9a49-517b-a2a8" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
       </profiles>
       <infoLinks>
@@ -4797,6 +4792,543 @@ by 1.</characteristic>
       <infoLinks>
         <infoLink name="Twin-linked" hidden="false" type="rule" id="f558-83c-1b37-8f6" targetId="cf93-ad4d-2f08-a79d"/>
       </infoLinks>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Centurion Assault Squad" hidden="false" id="2a8a-522d-51e4-3abc">
+      <categoryLinks>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="4bb7-f133-a97a-1ee6" primary="true" name="Infantry"/>
+        <categoryLink targetId="aff3-d6a3-2a95-9dc" id="8e7c-8452-8295-f28c" primary="false" name="Imperium"/>
+        <categoryLink targetId="5de-1fc6-899f-701c" id="9d28-423d-8d8d-c5b" primary="false" name="Centurion Assault Squad"/>
+        <categoryLink targetId="6e7-40c-58d9-e402" id="40ac-d1cc-18ff-378e" primary="false" name="Faction: Adeptus Astartes"/>
+        <categoryLink targetId="facf-9dfb-9481-fd3f" id="4e50-a0a8-ac7f-dd55" primary="false" name="Centurion"/>
+      </categoryLinks>
+      <profiles>
+        <profile name="Centurion Assault Squad" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="bef7-4533-2e5e-c58e">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">4&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">7</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">4</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Annihilator Protocols" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="dc57-888c-d72a-da1">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Melee weapons equipped by models in this unit have the [SUSTAINED HITS 2] ability when targeting Monster, Vehicle or Fortification units</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Assault Centurions" hidden="false" id="3c00-bc0b-795f-2733">
+          <selectionEntries>
+            <selectionEntry type="model" import="true" name="Assault Centurion Sergeant" hidden="false" id="4ab4-88a3-16be-10f3">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2101-67e9-8939-e454"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8186-a4b9-11bf-ff5"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Siege Drills" hidden="false" type="selectionEntry" id="6b70-8fcd-20a7-2216" targetId="49b6-aac1-32e6-e423"/>
+                <entryLink import="true" name="Centurion Option" hidden="false" type="selectionEntryGroup" id="ae17-f40b-340a-b776" targetId="bcb-1b24-917-3419"/>
+                <entryLink import="true" name="Weapon Option" hidden="false" type="selectionEntryGroup" id="7a5f-bdb9-58bf-68fc" targetId="2e61-a3ba-8898-a22f"/>
+              </entryLinks>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Assault Centurion" hidden="false" id="c1f0-b26e-4fea-5299">
+              <constraints>
+                <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="70a9-533b-33d9-6456"/>
+                <constraint type="max" value="5" field="selections" scope="parent" shared="true" id="9d63-d3ad-8999-c0b6"/>
+              </constraints>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Siege Drills" hidden="false" id="49b6-aac1-32e6-e423" collective="true">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7c2b-c756-1f8f-cf5a"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="81b8-f52c-d7b5-e7b3"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Siege Drills" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="ac05-6770-362b-2f97">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">10</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">3</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Twin-linked</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <infoLinks>
+                    <infoLink name="Twin-linked" hidden="false" type="rule" id="8e95-b438-a51c-4fef" targetId="cf93-ad4d-2f08-a79d"/>
+                  </infoLinks>
+                </selectionEntry>
+              </selectionEntries>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Centurion Option" hidden="false" id="bcb-1b24-917-3419" defaultSelectionEntryId="9eb2-303-2813-f6e9">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="ffe6-86bd-db10-cbb0"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2c8-b726-c21-32bb"/>
+                  </constraints>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Centurion Assault Launchers" hidden="false" id="b423-1f58-5f7c-67a3">
+                      <profiles>
+                        <profile name="Centurion Assault Launchers" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8dda-803-a7c9-c538">
+                          <characteristics>
+                            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer has the Grenades keyword.</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <categoryLinks>
+                        <categoryLink targetId="5a61-81ac-eb7c-a87e" id="9ecb-dd03-3347-fde9" primary="false" name="Grenades"/>
+                      </categoryLinks>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <entryLinks>
+                    <entryLink import="true" name="Centurion Bolters" hidden="false" type="selectionEntry" id="9eb2-303-2813-f6e9" targetId="953c-b525-10be-f7cd"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+                <selectionEntryGroup name="Weapon Option" hidden="false" id="2e61-a3ba-8898-a22f" defaultSelectionEntryId="aff3-7853-be23-5391">
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Twin Flamer" hidden="false" id="aff3-7853-be23-5391">
+                      <profiles>
+                        <profile name="Twin Flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="17ca-2023-3714-85bc">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent, Twin-linked</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Torrent" hidden="false" type="rule" id="2718-a8b-2e84-ce09" targetId="5edf-d619-23e0-9b56"/>
+                        <infoLink name="Ignores Cover" hidden="false" type="rule" id="a13a-9fae-19ac-aa21" targetId="4640-43e7-30b-215a"/>
+                        <infoLink name="Twin-linked" hidden="false" type="rule" id="db42-6bad-554b-2658" targetId="cf93-ad4d-2f08-a79d"/>
+                      </infoLinks>
+                    </selectionEntry>
+                    <selectionEntry type="upgrade" import="true" name="Twin Meltagun" hidden="false" id="275f-5c47-5dec-8b7d">
+                      <profiles>
+                        <profile name="Twin Meltagun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="8a97-f36a-2981-6310">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Melta 2, Twin-linked</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Melta" hidden="false" type="rule" id="4292-e64e-e735-45bb" targetId="7cdb-fb99-44a9-8849"/>
+                        <infoLink name="Twin-linked" hidden="false" type="rule" id="ba94-4e74-4cfe-2aa0" targetId="cf93-ad4d-2f08-a79d"/>
+                      </infoLinks>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e12d-1282-fb24-2ccb"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8f07-61d6-617e-8be5"/>
+                  </constraints>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="min" value="3" field="selections" scope="parent" shared="true" id="b555-cc8b-e52a-38e4"/>
+            <constraint type="max" value="6" field="selections" scope="parent" shared="true" id="2dcb-7fea-c423-7fd8"/>
+          </constraints>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="175"/>
+      </costs>
+      <modifiers>
+        <modifier type="set" value="350" field="51b2-306e-1021-d207">
+          <conditions>
+            <condition type="atLeast" value="4" field="selections" scope="2a8a-522d-51e4-3abc" childId="3c00-bc0b-795f-2733" shared="true" id="1de3-7544-ec39-3931"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="3cf9-1b1c-e7ac-71e1"/>
+      </constraints>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Centurion Devastator Squad" hidden="false" id="6ba0-cede-e278-f86b">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="210"/>
+      </costs>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="3cf9-1b1c-e7ac-71e1"/>
+      </constraints>
+      <profiles>
+        <profile name="Centurion Devastator Squad" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="6c47-af2d-4505-bc2">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1"/>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4"/>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da"/>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe"/>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc"/>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8"/>
+          </characteristics>
+        </profile>
+        <profile name="Decimator Protocols" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="4f61-91c6-eae4-94fa">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes a ranged attack, re-roll a Hit roll of 1. If the target of that attack is an enemy unit within range of an objective marker, you can re-roll the Hit roll instead.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Devastator Centurions" hidden="false" id="cd88-5a62-bbb7-eb2a">
+          <selectionEntries>
+            <selectionEntry type="model" import="true" name="Devastator Centurion Sergeant" hidden="false" id="69a7-c81b-197a-68af">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="130c-8b12-cbdd-38e1"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3ea-be6b-c6e3-db92"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Centurion Option" hidden="false" type="selectionEntryGroup" id="cc21-fdb5-ce36-a430" targetId="fb23-dc68-298a-13c4"/>
+                <entryLink import="true" name="Centurion Fists" hidden="false" type="selectionEntry" id="6cf2-346f-ed8c-fa7c" targetId="90b8-aced-49e6-c2ae"/>
+                <entryLink import="true" name="Weapon Option" hidden="false" type="selectionEntryGroup" id="144a-447-54ab-74e" targetId="a461-656d-b18-a31f"/>
+              </entryLinks>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Devastator Centurion" hidden="false" id="b3ad-8603-c71a-a3e3">
+              <constraints>
+                <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="1-110d-e7dd-2735"/>
+                <constraint type="max" value="5" field="selections" scope="parent" shared="true" id="d7f6-29d5-50b5-bc90"/>
+              </constraints>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Centurion Fists" hidden="false" id="90b8-aced-49e6-c2ae">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2dc8-5da5-e221-785f"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f0c4-3a4e-d43c-c4ac"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Centurion Fists" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="bc41-607a-40a8-67fe">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Centurion Option" hidden="false" id="fb23-dc68-298a-13c4" defaultSelectionEntryId="8866-3f9-fc9b-80bd">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7f51-288f-af88-f2a7"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8df7-2225-a0e3-e5cb"/>
+                  </constraints>
+                  <entryLinks>
+                    <entryLink import="true" name="Centurion Bolters" hidden="false" type="selectionEntry" id="8866-3f9-fc9b-80bd" targetId="953c-b525-10be-f7cd"/>
+                  </entryLinks>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Centurion Missile Launcher" hidden="false" id="4c77-da48-37f6-9c52">
+                      <profiles>
+                        <profile name="Centurion Missile Launcher" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="aca6-1388-3c53-36e8">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D3</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Blast" hidden="false" type="rule" id="709c-f77f-295e-c265" targetId="6c1f-1cf7-ff25-c99e"/>
+                      </infoLinks>
+                    </selectionEntry>
+                  </selectionEntries>
+                </selectionEntryGroup>
+                <selectionEntryGroup name="Weapon Option" hidden="false" id="a461-656d-b18-a31f" defaultSelectionEntryId="f6a1-a037-fa1c-4cb5">
+                  <entryLinks>
+                    <entryLink import="true" name="Twin Heavy Bolter" hidden="false" type="selectionEntry" id="177e-5011-437e-c8e1" targetId="d107-1e89-9d3f-c9c7"/>
+                    <entryLink import="true" name="Twin Lascannon" hidden="false" type="selectionEntry" id="fa3d-edc1-e04f-7d7c" targetId="e008-470a-83cb-c5e6"/>
+                  </entryLinks>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Grav-cannon" hidden="false" id="f6a1-a037-fa1c-4cb5">
+                      <profiles>
+                        <profile name="Grav-cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="9004-fe8c-2b3a-81c8">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-vehicle 2+</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Heavy" hidden="false" type="rule" id="226a-ed5f-63fe-ef8e" targetId="1202-10a8-78e9-4c67"/>
+                        <infoLink name="Anti-" hidden="false" type="rule" id="c789-2784-d46f-f1df" targetId="4111-82e3-9444-e942"/>
+                      </infoLinks>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="95f9-187b-eb6b-2f05"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="fe68-af3c-a6b7-e969"/>
+                  </constraints>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="min" value="3" field="selections" scope="parent" shared="true" id="b555-cc8b-e52a-38e4"/>
+            <constraint type="max" value="6" field="selections" scope="parent" shared="true" id="2dcb-7fea-c423-7fd8"/>
+          </constraints>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <modifiers>
+        <modifier type="set" value="410" field="51b2-306e-1021-d207">
+          <conditions>
+            <condition type="atLeast" value="4" field="selections" scope="6ba0-cede-e278-f86b" childId="cd88-5a62-bbb7-eb2a" shared="true" id="4e3a-158a-baa1-87c8"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <categoryLinks>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="453f-9db3-cefd-21cd" primary="true" name="Infantry"/>
+        <categoryLink targetId="aff3-d6a3-2a95-9dc" id="34a6-37d5-6619-b0d7" primary="false" name="Imperium"/>
+        <categoryLink targetId="8c85-5611-5972-3071" id="ec91-a963-1f56-d9" primary="false" name="Centurion Devastator Squad"/>
+        <categoryLink targetId="facf-9dfb-9481-fd3f" id="6b9d-288b-d66f-386e" primary="false" name="Centurion"/>
+        <categoryLink targetId="6e7-40c-58d9-e402" id="25b4-2e16-3ba-efb5" primary="false" name="Faction: Adeptus Astartes"/>
+      </categoryLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Centurion Bolters" hidden="false" id="953c-b525-10be-f7cd">
+      <profiles>
+        <profile name="Centurion Bolters" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="ff26-fcab-318-9503">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire 3, Twin-linked</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Twin-linked" hidden="false" type="rule" id="6154-f39f-42d2-8ba1" targetId="cf93-ad4d-2f08-a79d"/>
+        <infoLink name="Rapid Fire" hidden="false" type="rule" id="9f01-c823-4e52-b3c9" targetId="c5c8-8b58-b8b6-7786"/>
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Twin Lascannon" hidden="false" id="e008-470a-83cb-c5e6">
+      <profiles>
+        <profile name="Twin Lascannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="a57b-cba0-79c1-5d71">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">12</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6+1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Twin-linked</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Twin-linked" hidden="false" type="rule" id="d033-2e44-be89-70f7" targetId="cf93-ad4d-2f08-a79d"/>
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Twin Heavy Bolter" hidden="false" id="d107-1e89-9d3f-c9c7">
+      <infoLinks>
+        <infoLink name="Sustained Hits" hidden="false" type="rule" id="1228-b5cc-a06e-2a06" targetId="1897-c22c-9597-12b1"/>
+        <infoLink name="Twin-linked" hidden="false" type="rule" id="904a-5854-e599-21a7" targetId="cf93-ad4d-2f08-a79d"/>
+      </infoLinks>
+      <profiles>
+        <profile name="Twin Heavy Bolter" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="edd0-6f1c-83e7-c0ea">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Sustained Hits 1, Twin-linked</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Fragstorm Grenade Launcher" hidden="false" id="2557-ebbd-6ea5-3785">
+      <profiles>
+        <profile name="Fragstorm Grenade Launcher" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="b2-9e09-20e1-6b64">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Blast" hidden="false" type="rule" id="5b3e-7dee-bc9-351" targetId="6c1f-1cf7-ff25-c99e"/>
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Twin Ironhail Heavy Stubber" hidden="false" id="1e6c-bd54-f166-edbc">
+      <profiles>
+        <profile name="Twin Ironhail Heavy Stubber" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="d066-efef-7153-fb0">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire, Twin-linked</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Rapid Fire" hidden="false" type="rule" id="f796-2c2c-7f87-c7f9" targetId="c5c8-8b58-b8b6-7786"/>
+        <infoLink name="Twin-linked" hidden="false" type="rule" id="8254-8eeb-b773-1b60" targetId="cf93-ad4d-2f08-a79d"/>
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Invictor Tactical Warsuit" hidden="false" id="24df-fdd6-4d7b-fc0e">
+      <categoryLinks>
+        <categoryLink targetId="dbd4-63-af05-998" id="c1d3-903c-c5dd-de94" primary="true" name="Vehicle"/>
+        <categoryLink targetId="6dda-e157-334d-e93a" id="770f-fc94-90cb-573f" primary="false" name="Walker"/>
+        <categoryLink targetId="258e-8a8c-d871-6eac" id="4fbe-1ec7-59bd-8ee2" primary="false" name="Invictor Tactical Warsuit"/>
+        <categoryLink targetId="6e7-40c-58d9-e402" id="edc-e2f4-9ba4-a262" primary="false" name="Faction: Adeptus Astartes"/>
+        <categoryLink targetId="aff3-d6a3-2a95-9dc" id="a4ec-606e-6115-2b57" primary="false" name="Imperium"/>
+        <categoryLink targetId="7295-ed65-8ff4-7a5f" id="a987-9b0b-eed4-59db" primary="false" name="Phobos"/>
+      </categoryLinks>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="160"/>
+      </costs>
+      <profiles>
+        <profile name="Invictor Tactical Warsuit" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="df61-85d7-8976-f520">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">8&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">8</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">12</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">4</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Combat Support" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e58e-7a39-e2bd-a58b">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per turn, in your opponent’s Shooting phase, when a friendly Adeptus Astartes Phobos Infantry unit within 6&quot; of this model is selected as the target of an attack, this model can use this ability. If it does, after that enemy model’s unit has finished making its attacks, this model can shoot as if it were your Shooting phase, but when resolving those attacks it can only target that enemy unit (and only if it is an eligible target).</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="c105-f7af-4d06-65b0"/>
+      </constraints>
+      <infoLinks>
+        <infoLink name="Scouts" hidden="false" type="rule" id="ad49-683e-3ff7-e872" targetId="ada6-bac1-ffe0-d6f7">
+          <modifiers>
+            <modifier type="append" value="8&quot;" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="bc34-de8a-f798-16b5" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D3" field="name"/>
+          </modifiers>
+        </infoLink>
+      </infoLinks>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Invictor Fist" hidden="false" id="8b91-1640-42e9-f304">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="ba42-e6d6-f85-9fc9"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ea36-2ccf-8941-4cf1"/>
+          </constraints>
+          <profiles>
+            <profile name="Invictor Fist" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="69c8-9e7f-f7ae-b926">
+              <characteristics>
+                <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
+                <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">14</characteristic>
+                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                <characteristic name="D" typeId="3254-9fe6-d824-513e">3</characteristic>
+                <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+      </selectionEntries>
+      <entryLinks>
+        <entryLink import="true" name="Twin Ironhail Heavy Stubber" hidden="false" type="selectionEntry" id="1a21-d162-c530-f5c1" targetId="1e6c-bd54-f166-edbc">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="59ec-d0b8-e05-8126"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6066-1c9a-62f0-b5de"/>
+          </constraints>
+        </entryLink>
+        <entryLink import="true" name="Fragstorm Grenade Launcher" hidden="false" type="selectionEntry" id="a344-5644-62e7-ff92" targetId="2557-ebbd-6ea5-3785">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="fdb5-20ca-4912-e4c5"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1cb5-86d6-19a2-432d"/>
+          </constraints>
+        </entryLink>
+        <entryLink import="true" name="Heavy Bolter" hidden="false" type="selectionEntry" id="b61e-64ab-9a2b-689b" targetId="58c-876b-8430-a0e6">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2dfe-6c49-bf0-d631"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cb48-3b29-debe-4186"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Main Weapon" hidden="false" id="80c0-6ccf-e658-99a5" defaultSelectionEntryId="14ed-c94e-6f45-4f65">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Incendium Cannon" hidden="false" id="14ed-c94e-6f45-4f65">
+              <profiles>
+                <profile name="Incendium Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="39aa-eedf-b708-d095">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Torrent" hidden="false" type="rule" id="7b8d-bcdc-8663-d088" targetId="5edf-d619-23e0-9b56"/>
+                <infoLink name="Ignores Cover" hidden="false" type="rule" id="3c91-9e2d-c663-da65" targetId="4640-43e7-30b-215a"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Twin Ironhail Autocannon" hidden="false" id="72cf-3f4e-e850-4265">
+              <profiles>
+                <profile name="Twin Ironhail Autocannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="e195-f8b4-f130-12e7">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Twin-linked</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Twin-linked" hidden="false" type="rule" id="bc00-219d-a3f4-2a2c" targetId="cf93-ad4d-2f08-a79d"/>
+              </infoLinks>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="9958-fb8a-d9fa-edf2"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="572a-7cec-cb4b-ed21"/>
+          </constraints>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedProfiles>
