@@ -15090,31 +15090,17 @@ makes an attack, subtract 1 from the Hit roll</characteristic>
         </selectionEntry>
       </selectionEntries>
     </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Battle Host" hidden="false" id="4228-6f84-4eae-d1c4">
-      <rules>
-        <rule name="Unparalleled Foresight" hidden="false" id="3c51-8bff-46d2-2da9">
-          <description>Each time an Aeldari unit from your army is selected to shoot or fight, you can re-roll one Hit roll and you can re-roll one Wound roll when resolving those attacks.</description>
-        </rule>
-      </rules>
+    <selectionEntry type="upgrade" import="false" name="Detachment" hidden="false" id="6711-4e83-ec8d-c7f0">
       <constraints>
-        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6646-58a-efd4-f8a"/>
-        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="224c-1a91-1484-d83"/>
+        <constraint type="min" value="1" field="selections" scope="roster" shared="true" id="537b-7036-a6cf-54a5" includeChildSelections="true" includeChildForces="true"/>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="6f8d-7ce6-5f74-bd13" includeChildSelections="true" includeChildForces="true"/>
       </constraints>
-    </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Realspace Raiders" hidden="false" id="46e2-e9d9-716a-746f">
-      <rules>
-        <rule name="Realspace Raiders" hidden="false" id="2bff-9f74-9eff-9852">
-          <description>At the start of the battle, you gain an additional 1 Pain token for each of the following your army contains:
-■ One or more Archon models
-■ One or more Succubus models
-■ One or more Haemonculus models
-Designer’s Note: These are all cumulative, so if your army contains at least one Archon, at least one Succubus and at least one Haemonculus, you would start the battle with an additional 3 Pain tokens</description>
-        </rule>
-      </rules>
-      <constraints>
-        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3a84-7bea-7655-a8e6"/>
-        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="1997-9538-803c-f7dc"/>
-      </constraints>
+      <categoryLinks>
+        <categoryLink targetId="4ac9-fd30-1e3d-b249" id="e366-d876-bf5-1dc8" primary="true" name="Configuration"/>
+      </categoryLinks>
+      <entryLinks>
+        <entryLink import="true" name="Detachment Selection" hidden="false" type="selectionEntryGroup" id="5b19-f5a7-c819-e37c" targetId="d812-1e0c-f979-cab2"/>
+      </entryLinks>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
@@ -15264,6 +15250,54 @@ Designer’s Note: These are all cumulative, so if your army contains at least o
       <constraints>
         <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e476-e23d-5ae6-55d5"/>
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2f7a-ac04-3b21-e150"/>
+      </constraints>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Detachment Selection" hidden="false" id="d812-1e0c-f979-cab2">
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Battle Host" hidden="false" id="b14f-b3cb-e54e-8c30">
+          <rules>
+            <rule name="Unparalleled Foresight" hidden="false" id="ba0f-f0bd-c1a3-a489">
+              <description>Each time an Aeldari unit from your army is selected to shoot or fight, you can re-roll one Hit roll and you can re-roll one Wound roll when resolving those attacks.</description>
+            </rule>
+          </rules>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6646-58a-efd4-f8a"/>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="224c-1a91-1484-d83"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Realspace Raiders" hidden="false" id="d13b-5a1b-25-184">
+          <rules>
+            <rule name="Realspace Raiders" hidden="false" id="8b24-af68-9404-eb83">
+              <description>At the start of the battle, you gain an additional 1 Pain token for each of the following your army contains:
+■ One or more Archon models
+■ One or more Succubus models
+■ One or more Haemonculus models
+Designer’s Note: These are all cumulative, so if your army contains at least one Archon, at least one Succubus and at least one Haemonculus, you would start the battle with an additional 3 Pain tokens</description>
+            </rule>
+          </rules>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3a84-7bea-7655-a8e6"/>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="1997-9538-803c-f7dc"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+      </selectionEntries>
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c57f-460d-37e-29a6" includeChildSelections="true"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="78d0-9e4-566c-c03f" includeChildSelections="true"/>
       </constraints>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>

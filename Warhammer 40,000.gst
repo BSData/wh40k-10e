@@ -319,6 +319,15 @@
     <categoryEntry name="Armiger" id="4c40-ab9-54af-d290" hidden="false"/>
     <categoryEntry name="Questoris" id="e4d6-1a77-132b-f39d"/>
     <categoryEntry name="Dominus" id="af4c-b971-a31c-669c"/>
+    <categoryEntry name="Allied Units" hidden="false" id="887b-ab87-92a2-20f5">
+      <modifiers>
+        <modifier type="set" value="Brood Brothers" field="name">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="3bdf-a114-5035-c6ac" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </categoryEntry>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
@@ -341,7 +350,7 @@
         <categoryLink id="cf3e-2c24-fe34-39f9" name="Dedicated Transport" hidden="false" targetId="ba07-411c-2832-1f79" primary="false"/>
         <categoryLink id="9198-c35d-71cd-eea3" name="Fortification" hidden="false" targetId="19d7-9c74-2140-5851" primary="false"/>
         <categoryLink id="a41a-6330-4718-d8d2" name="Unit" hidden="false" targetId="1160-70ae-a862-b1a8" primary="false"/>
-        <categoryLink name="Retinue" hidden="false" id="bbb1-2c73-9723-5389" targetId="cc77-a53-fca8-f48e" type="category"/>
+        <categoryLink name="Allied Units" hidden="false" id="8d39-1cfc-6e44-2dae" targetId="887b-ab87-92a2-20f5" type="category"/>
       </categoryLinks>
     </forceEntry>
   </forceEntries>
@@ -385,15 +394,6 @@
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
-    </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Detachment" id="8609-685f-f598-44d5">
-      <constraints>
-        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="a6a1-e91b-6f26-980f"/>
-        <constraint type="min" value="1" field="selections" scope="roster" shared="true" id="d0f3-2961-778-10d6"/>
-      </constraints>
-      <categoryLinks>
-        <categoryLink targetId="4ac9-fd30-1e3d-b249" id="f38e-e398-bc8f-943d" primary="true" name="Configuration"/>
-      </categoryLinks>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedRules>
