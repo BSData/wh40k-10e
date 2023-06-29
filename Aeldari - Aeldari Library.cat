@@ -16854,6 +16854,23 @@ You can attach this model to one of the above units, even if one other Leader u
         </selectionEntry>
       </selectionEntries>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="false" name="Detachment" hidden="false" id="68f1-24f4-a4c6-303f">
+      <entryLinks>
+        <entryLink import="true" name="Detachments" hidden="false" type="selectionEntryGroup" id="128c-b8b7-52f5-b487" targetId="7466-16bc-8db6-814">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4dc2-8250-9575-7e49"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9b1e-c831-981-9b28"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="roster" shared="true" id="cfd1-1eb1-d0dd-4a4d"/>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="f493-adf0-4a7e-b875"/>
+      </constraints>
+      <categoryLinks>
+        <categoryLink targetId="4ac9-fd30-1e3d-b249" id="dbcd-e446-9be2-ed7f" primary="true" name="Configuration"/>
+      </categoryLinks>
+    </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
     <selectionEntryGroup id="e26f-c156-51e9-9608" name="Battle Host Enhancements" hidden="false" collective="false" import="true">
@@ -16889,17 +16906,24 @@ You can attach this model to one of the above units, even if one other Leader u
       <modifiers>
         <modifier type="set" value="true" field="hidden">
           <conditionGroups>
-            <conditionGroup type="and">
+            <conditionGroup type="or">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="34a5-8c7e-f468-82d1" shared="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1f1-47f9-a3a4-9bfb" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
               <conditions>
-                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="34a5-8c7e-f468-82d1" shared="true"/>
-                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1f1-47f9-a3a4-9bfb" shared="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="3c31-6fac-9914-827a" shared="true" includeChildSelections="true" includeChildForces="true"/>
               </conditions>
             </conditionGroup>
           </conditionGroups>
         </modifier>
       </modifiers>
     </selectionEntryGroup>
-    <selectionEntryGroup id="33a3-43a6-44d6-b5bf" name="Realspace Raiders" hidden="false" collective="false" import="true">
+    <selectionEntryGroup id="33a3-43a6-44d6-b5bf" name="Realspace Raiders Enhancements" hidden="false" collective="false" import="true">
       <selectionEntries>
         <selectionEntry id="651b-340c-8698-732d" name="Crucible of Malediction" hidden="false" collective="false" import="true" type="upgrade">
           <costs>
@@ -17003,6 +17027,33 @@ You can attach this model to one of the above units, even if one other Leader u
         <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e476-e23d-5ae6-55d5"/>
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2f7a-ac04-3b21-e150"/>
       </constraints>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Detachments" hidden="false" id="7466-16bc-8db6-814">
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Battle Host" hidden="false" id="3c31-6fac-9914-827a">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="34a5-8c7e-f468-82d1" shared="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1f1-47f9-a3a4-9bfb" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Realspace Raiders" hidden="false" id="e299-e560-ccec-eeb3">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+      </selectionEntries>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <sharedRules>
