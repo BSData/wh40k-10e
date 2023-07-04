@@ -336,6 +336,7 @@
     </categoryEntry>
     <categoryEntry name="Acastus" hidden="false" id="f76f-29c1-de9-74c2"/>
     <categoryEntry name="Cerastus" hidden="false" id="481c-3b2e-5c99-c248"/>
+    <categoryEntry name="Artillery" hidden="false" id="8cab-448d-37b7-32bc"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
