@@ -6695,12 +6695,12 @@ by 1.</characteristic>
                     <entryLink import="true" name="Hand Flamer" hidden="false" type="selectionEntry" id="da93-4b74-e610-8a4e" targetId="9dc6-6ad8-818e-db2e"/>
                   </entryLinks>
                   <modifiers>
-                    <modifier type="set" value="0" field="36ca-83d3-30ab-a459">
+                    <modifier type="set" value="0" field="5cde-5f7-cc6b-ab97">
                       <conditions>
                         <condition type="atLeast" value="1" field="selections" scope="9bc3-4557-ad-ec14" childId="12dc-fcb6-2ac2-7354" shared="true" id="cd05-d8f-d4ea-8313"/>
                       </conditions>
                     </modifier>
-                    <modifier type="set" value="0" field="347c-6d1f-751c-4e5c">
+                    <modifier type="set" value="0" field="9053-492f-ce2b-7885">
                       <conditions>
                         <condition type="atLeast" value="1" field="selections" scope="9bc3-4557-ad-ec14" childId="12dc-fcb6-2ac2-7354" shared="true" id="cd05-d8f-d4ea-8313"/>
                       </conditions>
@@ -12879,7 +12879,7 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
                 <condition type="atLeast" value="1" field="selections" scope="2a27-5525-af12-f32e" childId="fd43-829-68bc-b28f" shared="true"/>
               </conditions>
             </modifier>
-            <modifier type="set" value="0" field="2047-fb5f-3f1b-af7e" id="ea71-74c2-9ec8-9427">
+            <modifier type="set" value="0" field="2c3c-3e58-e4bf-e464" id="ea71-74c2-9ec8-9427">
               <conditions>
                 <condition type="atLeast" value="1" field="selections" scope="2a27-5525-af12-f32e" childId="fd43-829-68bc-b28f" shared="true"/>
               </conditions>
@@ -15876,6 +15876,34 @@ This unit is eligible to declare a charge in a turn in which it Advanced.</chara
               </conditions>
             </modifier>
           </modifiers>
+          <profiles>
+            <profile name="Templar Vows" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5b6b-2f54-a092-39b2">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the first battle round, select one of the four Templar Vows below to be active for Adeptus Astartes units from your army until the end of the battle</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="Vow - Suffer Not the Unclean to Live" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="95ab-4f48-1ffa-57cd">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Melee weapons equipped by models in this unit have the [LETHAL HITS] ability.</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="Vow - Accept Any Challenge No Matter the Odds" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8475-f93f-e677-87d7">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Melee weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="Vow - Abhor the Witch, Destroy the Witch" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="fd52-b536-1487-a7e3">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Models in this unithave a 4+ invulnerable save against Psychic Attacks and melee weapons equipped by models in this unit 
+have the [ANTI-PSYKER 4+] ability.</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="Vow - Uphold the Honour of the Emperor" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="cc51-2c2c-ccd1-fad7">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Models in this unit have the Feel No Pain 6+ ability and a Leadership characteristic of 5+.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Champions of Russ" hidden="false" id="7047-73a6-28e-c859">
           <modifiers>
@@ -15916,6 +15944,22 @@ This unit is eligible to declare a charge in a turn in which it Advanced.</chara
               </characteristics>
             </profile>
           </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Sons of Sanguinius" hidden="false" id="5ff-1ac3-bc73-8273">
+          <profiles>
+            <profile name="The Red Thirst" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3b1d-d38-bc89-c856">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time an Adeptus Astartes unit from your army is selected to fight, if that unit made a Charge move this turn, until the end of the phase, add 1 to the Strength and Attacks characteristics of melee weapons equipped by models in that unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="4ef9-15ce-e3e6-36de" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
@@ -16132,6 +16176,66 @@ This unit is eligible to declare a charge in a turn in which it Advanced.</chara
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="883e-7372-3228-a333"/>
             <constraint type="max" value="3" field="selections" scope="force" shared="true" id="fe9e-6d6d-b82d-12e2" includeChildSelections="true"/>
           </constraints>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Sons of Sanguinius Enhancements" hidden="false" id="967c-8b2d-c10d-ddfc">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="4ef9-15ce-e3e6-36de" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Artisan of War" hidden="false" id="7ff3-5681-9afa-d421">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="roster" shared="true" id="488-53a5-a15-7a3b" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Artisan of War" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7944-44a2-f707-1e1e">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. Improve the Armour Penetration characteristic of the bearer’s weapons by 1, and the bearer has a Save characteristic of 2+.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Archangel&apos;s Shard" hidden="false" id="1ab8-6f4d-8ee8-60a6">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="roster" shared="true" id="7557-6f3e-1f41-5e74" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Archangel&apos;s Shard" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a4f9-320-5eb0-4cb6">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. The bearer’s melee weapons have the [ANTI-CHAOS 5+] and [LANCE] abilities.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Visage of Death" hidden="false" id="62d4-d909-3d3b-6656">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="roster" shared="true" id="fcc5-bc31-28f5-66f9" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Visage of Death" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e822-a619-33f3-c20b">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. While an enemy unit (excluding Monsters and Vehicles) is within Engagement Range of the bearer’s unit, halve the Objective Control characteristic of models in that unit.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Icon of the Angel" hidden="false" id="28d1-17ae-798-cc7">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="roster" shared="true" id="c2ce-529c-3cf4-ee97" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Icon of the Angel" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5a65-7b25-83cc-bdd1">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. Each time an enemy unit (excluding Monsters and Vehicles) within Engagement Range of the bearer’s unit is selected to Fall Back, models in that enemy unit must take Desperate Escape tests as if their unit was
+Battle-shocked. When doing so, if that enemy unit is also Battle-shocked by other means, subtract 1 from each of those Desperate Escape tests.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
         </selectionEntryGroup>
       </selectionEntryGroups>
     </selectionEntryGroup>
