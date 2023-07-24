@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="1" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="2" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
   </publications>
@@ -263,7 +263,7 @@
     <categoryEntry id="ed0d-8e2a-225c-2340" name="Nurgle" hidden="false"/>
     <categoryEntry id="4bd-5ee0-f179-2fc5" name="Khorne" hidden="false"/>
     <categoryEntry id="b188-114f-6ba5-79a1" name="Tzeentch" hidden="false"/>
-	<categoryEntry id="6e7-40c-58d9-e402" name="Faction: Adeptus Astartes" hidden="false"/>
+    <categoryEntry id="6e7-40c-58d9-e402" name="Faction: Adeptus Astartes" hidden="false"/>
     <categoryEntry id="5418-f86b-6e76-c5a" name="Faction: Adeptus Mechanicus" hidden="false"/>
     <categoryEntry id="226b-cf1e-353a-ae7f" name="Faction: Genestealer Cults" hidden="false"/>
     <categoryEntry id="bd1d-c1a5-6ca2-c791" name="Faction: World Eaters" hidden="false"/>
@@ -387,6 +387,7 @@
   </forceEntries>
   <entryLinks>
     <entryLink id="7380-3e40-6ed6-b7cc" name="Battle Size" hidden="false" collective="false" import="true" targetId="564e-fbc6-5266-3ea4" type="selectionEntry"/>
+    <entryLink import="true" name="Show Legends" hidden="false" type="selectionEntry" id="fe1b-5ec5-5135-bdd" targetId="9ed-cbf4-bfe5-90bf"/>
   </entryLinks>
   <sharedSelectionEntries>
     <selectionEntry id="564e-fbc6-5266-3ea4" name="Battle Size" hidden="false" collective="false" import="true" type="upgrade">
@@ -425,6 +426,17 @@
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Show Legends" hidden="false" id="9ed-cbf4-bfe5-90bf">
+      <categoryLinks>
+        <categoryLink targetId="4ac9-fd30-1e3d-b249" id="8f35-ad49-afb5-715" primary="true" name="Configuration"/>
+      </categoryLinks>
+      <constraints>
+        <constraint field="selections" scope="force" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="7cbd-24e3-bacb-1eb1" type="min"/>
+      </constraints>
+      <modifiers>
+        <modifier type="set" field="7cbd-24e3-bacb-1eb1" value="0"/>
+      </modifiers>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedRules>
