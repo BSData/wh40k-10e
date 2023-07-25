@@ -158,7 +158,7 @@
           <conditionGroups>
             <conditionGroup type="and">
               <conditions>
-                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true" includeChildForces="false"/>
                 <condition type="equalTo" value="0" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
               </conditions>
               <conditionGroups>
@@ -178,7 +178,7 @@
           <conditionGroups>
             <conditionGroup type="and">
               <conditions>
-                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true" includeChildForces="false"/>
                 <condition type="atLeast" value="1" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
               </conditions>
               <conditionGroups>
@@ -198,7 +198,7 @@
           <conditionGroups>
             <conditionGroup type="and">
               <conditions>
-                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1b6d-dc06-5db9-c7d1" shared="true" includeChildForces="false"/>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true" includeChildForces="false"/>
                 <condition type="atLeast" value="1" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
               </conditions>
               <conditionGroups>
@@ -298,28 +298,7 @@
     <categoryEntry id="b00b-5bae-444f-964e" name="Swarm" hidden="false"/>
     <categoryEntry id="2471-e2e0-3f55-d6cb" name="Drone" hidden="false"/>
     <categoryEntry id="7850-cc5a-c191-b80d" name="Great Devourer" hidden="false"/>
-    <categoryEntry name="Retinue" hidden="false" id="cc77-a53-fca8-f48e">
-      <modifiers>
-        <modifier type="set" value="1" field="d9f0-95cb-2ef5-f100">
-          <conditions>
-            <condition type="atLeast" value="1" field="selections" scope="roster" childId="d62d-db22-4893-4bc0" shared="true" includeChildSelections="true" includeChildForces="true"/>
-          </conditions>
-        </modifier>
-        <modifier type="set" value="2" field="d9f0-95cb-2ef5-f100">
-          <conditions>
-            <condition type="atLeast" value="1" field="selections" scope="roster" childId="baf8-997f-e323-a090" shared="true" includeChildSelections="true" includeChildForces="true"/>
-          </conditions>
-        </modifier>
-        <modifier type="set" value="3" field="d9f0-95cb-2ef5-f100">
-          <conditions>
-            <condition type="atLeast" value="1" field="selections" scope="roster" childId="4204-82d0-908c-a62a" shared="true" includeChildSelections="true" includeChildForces="true"/>
-          </conditions>
-        </modifier>
-      </modifiers>
-      <constraints>
-        <constraint type="max" value="0" field="selections" scope="roster" shared="true" id="d9f0-95cb-2ef5-f100" includeChildSelections="true" includeChildForces="true"/>
-      </constraints>
-    </categoryEntry>
+    <categoryEntry name="Retinue" hidden="false" id="cc77-a53-fca8-f48e"/>
     <categoryEntry name="Terminator" hidden="false" id="740a-892c-8958-defa"/>
     <categoryEntry name="Rhino" hidden="false" id="50a2-5557-84bb-ca4d"/>
     <categoryEntry id="dda2-bb0a-215e-ad9c" name="Jump Pack" hidden="false"/>
