@@ -1,8 +1,468 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue id="581a-46b9-5b86-44b7" name="Unaligned Forces" revision="1" battleScribeVersion="2.03" authorName="WindstormSCR" authorContact="" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="2" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
+<catalogue id="581a-46b9-5b86-44b7" name="Unaligned Forces" revision="2" battleScribeVersion="2.03" authorName="WindstormSCR" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="2" xmlns="http://www.battlescribe.net/schema/catalogueSchema" type="catalogue">
   <sharedSelectionEntries>
-    <selectionEntry id="e85b-17c7-1ad9-8375" name="Ambull" hidden="false" collective="false" import="true" type="model"/>
-    <selectionEntry id="112c-0034-f3b4-a660" name="Show Unaligned Forces" hidden="false" collective="false" import="true" type="upgrade"/>
-    <selectionEntry id="abb9-0e46-cf9c-615c" name="Show Unaligned Fortifications" hidden="false" collective="false" import="true" type="upgrade"/>
+    <selectionEntry id="e85b-17c7-1ad9-8375" name="Ambull" hidden="false" collective="false" import="true" type="model">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="85"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="a2c1-3a0f-d4cc-b72f" primary="false" name="Unaligned Forces"/>
+        <categoryLink targetId="887b-ab87-92a2-20f5" id="4fb7-9a37-3b26-6013" primary="true" name="Allied Units"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="112c-0034-f3b4-a660" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry id="112c-0034-f3b4-a660" name="Show Unaligned Forces" hidden="false" collective="false" import="true" type="upgrade">
+      <categoryLinks>
+        <categoryLink targetId="4ac9-fd30-1e3d-b249" id="1bfa-3da9-2da9-7179" primary="true" name="Configuration"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="set" field="f692-193-102f-e0ae" value="0"/>
+      </modifiers>
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="force" shared="true" id="f692-193-102f-e0ae"/>
+      </constraints>
+    </selectionEntry>
+    <selectionEntry id="abb9-0e46-cf9c-615c" name="Show Unaligned Fortifications" hidden="false" collective="false" import="true" type="upgrade">
+      <categoryLinks>
+        <categoryLink targetId="4ac9-fd30-1e3d-b249" id="7fc2-ae6d-fa91-a6fe" primary="true" name="Configuration"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="set" field="3e4c-fdc2-ea02-307c" value="0"/>
+      </modifiers>
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="force" shared="true" id="3e4c-fdc2-ea02-307c"/>
+      </constraints>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Aegis Defence Line with Weapon Emplacement" hidden="false" id="5b1d-134a-9996-b634">
+      <categoryLinks>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="cf8d-689e-9c13-9b07" primary="false" name="Unaligned Forces"/>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="ad99-b97b-bc8-88e8" primary="true" name="Fortification"/>
+      </categoryLinks>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="145"/>
+      </costs>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Bastion" hidden="false" id="5134-5fe9-e489-43c4">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="275"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="e07e-c03b-ad9a-1258" primary="false" name="Unaligned Forces"/>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="64c1-a6ab-be04-eb8" primary="true" name="Fortification"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Firestorm Redoubt" hidden="false" id="71b0-77b9-522c-17d6">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="260"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="f867-d876-adaf-5cc2" primary="true" name="Fortification"/>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="ce3a-8b8-a633-f6be" primary="false" name="Unaligned Forces"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Fortress of Redemption" hidden="false" id="c4d1-c85a-a20e-6c94">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="480"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="9dfe-ec11-d032-124" primary="true" name="Fortification"/>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="9772-8c1a-1294-8ba7" primary="false" name="Unaligned Forces"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Guardian Drone" hidden="false" id="e3ba-7f87-c32-229">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="45"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="2686-fb2f-dd21-e510" primary="false" name="Unaligned Forces"/>
+        <categoryLink targetId="887b-ab87-92a2-20f5" id="626e-a5f3-46e8-3f23" primary="true" name="Allied Units"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="112c-0034-f3b4-a660" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Macro-cannon Aquila Strongpoint" hidden="false" id="3b75-e314-ecd5-cd63">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="550"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="ccdf-3ffb-2694-737c" primary="true" name="Fortification"/>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="70c7-12cf-85e0-1ba5" primary="false" name="Unaligned Forces"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Plasma Obliterator" hidden="false" id="cabe-2c66-c8b6-de6c">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="225"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="d8e7-14c-ee1b-6154" primary="true" name="Fortification"/>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="79e1-53d9-ebc6-2c" primary="false" name="Unaligned Forces"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Primaris Redoubt" hidden="false" id="f39-fc54-f95a-8395">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="220"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="2af-2f4e-f879-7505" primary="true" name="Fortification"/>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="b1c5-523c-f9bf-283e" primary="false" name="Unaligned Forces"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Skyshield Landing Pad" hidden="false" id="54c-8b9f-b1d8-93c3">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="125"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="edde-b509-c48c-3822" primary="true" name="Fortification"/>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="17b8-8604-3df5-e7ab" primary="false" name="Unaligned Forces"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Spindle Drones" hidden="false" id="da76-e18f-523e-d45a">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="35"/>
+      </costs>
+      <selectionEntries>
+        <selectionEntry type="model" import="true" name="Spindle Drone" hidden="false" id="e32d-ae0a-732f-5864">
+          <constraints>
+            <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="aca2-1adb-691f-bb3c"/>
+            <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="feec-4e88-ffe1-d175"/>
+          </constraints>
+        </selectionEntry>
+      </selectionEntries>
+      <categoryLinks>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="a1b4-5e25-f583-d5b" primary="false" name="Unaligned Forces"/>
+        <categoryLink targetId="887b-ab87-92a2-20f5" id="3bea-1908-e216-3a6" primary="true" name="Allied Units"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="112c-0034-f3b4-a660" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="The Archivist" hidden="false" id="11b2-8348-ae67-fa98">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="70"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="eb77-4bd0-3fc0-6934" primary="false" name="Unaligned Forces"/>
+        <categoryLink targetId="887b-ab87-92a2-20f5" id="7aa5-803c-aaf8-7b22" primary="true" name="Allied Units"/>
+      </categoryLinks>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="221e-e703-450c-56de" includeChildForces="true" includeChildSelections="true"/>
+      </constraints>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="112c-0034-f3b4-a660" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Vengeance Weapon Battery" hidden="false" id="14fe-18ed-9c25-189c">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="140"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="7542-8baf-5d33-16f3" primary="true" name="Fortification"/>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="6c21-3770-fb57-7883" primary="false" name="Unaligned Forces"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Void Shield Generator" hidden="false" id="4501-646d-e705-9dca">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="155"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="5634-bf7a-ae36-ba7b" primary="true" name="Fortification"/>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="4684-2b81-abfd-1427" primary="false" name="Unaligned Forces"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Vortex Missile Strongpoint" hidden="false" id="5c81-92c5-e20b-edf1">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="525"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="12c0-1ff3-a2c6-baee" primary="true" name="Fortification"/>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="bbce-8a13-637d-ff5f" primary="false" name="Unaligned Forces"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Wall of Martyrs Bunker" hidden="false" id="9698-2e0-15ac-1193">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="180"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="85de-6217-acf-6dc3" primary="true" name="Fortification"/>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="a82-7e85-2f7a-2a97" primary="false" name="Unaligned Forces"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Wall of Martyrs Defence Emplacement" hidden="false" id="8419-8133-33f3-e0a4">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="140"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="926a-219c-813d-236d" primary="true" name="Fortification"/>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="de3b-d738-3d7d-ddd6" primary="false" name="Unaligned Forces"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Wall of Martyrs Defence Line" hidden="false" id="64b7-a2df-416a-9963">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="140"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink targetId="19d7-9c74-2140-5851" id="d465-107d-b082-f710" primary="true" name="Fortification"/>
+        <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="e2e5-878c-c561-39cc" primary="false" name="Unaligned Forces"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
   </sharedSelectionEntries>
+  <entryLinks>
+    <entryLink import="true" name="Show Unaligned Forces" hidden="false" type="selectionEntry" id="29e5-7d1e-8100-4611" targetId="112c-0034-f3b4-a660"/>
+    <entryLink import="true" name="Show Unaligned Fortifications" hidden="false" type="selectionEntry" id="70dc-6326-e685-377b" targetId="abb9-0e46-cf9c-615c"/>
+    <entryLink import="true" name="Aegis Defence Line with Weapon Emplacement" hidden="false" type="selectionEntry" id="33b3-aedd-9cc0-f799" targetId="5b1d-134a-9996-b634"/>
+    <entryLink import="true" name="Ambull" hidden="false" type="selectionEntry" id="60d8-7d2-71d-6e4a" targetId="e85b-17c7-1ad9-8375"/>
+    <entryLink import="true" name="Bastion" hidden="false" type="selectionEntry" id="89f2-5111-a9c4-6016" targetId="5134-5fe9-e489-43c4"/>
+    <entryLink import="true" name="Firestorm Redoubt" hidden="false" type="selectionEntry" id="578b-5072-a0d5-ba2" targetId="71b0-77b9-522c-17d6"/>
+    <entryLink import="true" name="Fortress of Redemption" hidden="false" type="selectionEntry" id="ecf6-b23e-96d9-2d16" targetId="c4d1-c85a-a20e-6c94"/>
+    <entryLink import="true" name="Guardian Drone" hidden="false" type="selectionEntry" id="da3c-7385-5909-abd5" targetId="e3ba-7f87-c32-229"/>
+    <entryLink import="true" name="Macro-cannon Aquila Strongpoint" hidden="false" type="selectionEntry" id="3bf4-89cc-17ce-960e" targetId="3b75-e314-ecd5-cd63"/>
+    <entryLink import="true" name="Plasma Obliterator" hidden="false" type="selectionEntry" id="5c0d-9412-2c43-1069" targetId="cabe-2c66-c8b6-de6c"/>
+    <entryLink import="true" name="Primaris Redoubt" hidden="false" type="selectionEntry" id="984f-d7af-c493-9c5a" targetId="f39-fc54-f95a-8395"/>
+    <entryLink import="true" name="Skyshield Landing Pad" hidden="false" type="selectionEntry" id="f0b7-283f-7d6e-6812" targetId="54c-8b9f-b1d8-93c3"/>
+    <entryLink import="true" name="Spindle Drones" hidden="false" type="selectionEntry" id="4ad3-7c1d-33a0-9852" targetId="da76-e18f-523e-d45a"/>
+    <entryLink import="true" name="The Archivist" hidden="false" type="selectionEntry" id="5716-86b8-dbda-f28a" targetId="11b2-8348-ae67-fa98"/>
+    <entryLink import="true" name="Vengeance Weapon Battery" hidden="false" type="selectionEntry" id="26f9-f5fb-b25f-64e5" targetId="14fe-18ed-9c25-189c"/>
+    <entryLink import="true" name="Void Shield Generator" hidden="false" type="selectionEntry" id="e42e-790e-c6e6-3a43" targetId="4501-646d-e705-9dca"/>
+    <entryLink import="true" name="Vortex Missile Strongpoint" hidden="false" type="selectionEntry" id="24f-c20d-7833-92c1" targetId="5c81-92c5-e20b-edf1"/>
+    <entryLink import="true" name="Wall of Martyrs Bunker" hidden="false" type="selectionEntry" id="45f-d20b-3b71-e29d" targetId="9698-2e0-15ac-1193"/>
+    <entryLink import="true" name="Wall of Martyrs Defence Emplacement" hidden="false" type="selectionEntry" id="9d11-211d-1d25-1c24" targetId="8419-8133-33f3-e0a4"/>
+    <entryLink import="true" name="Wall of Martyrs Defence Line" hidden="false" type="selectionEntry" id="138c-e220-9e95-f8a3" targetId="64b7-a2df-416a-9963"/>
+  </entryLinks>
+  <categoryEntries>
+    <categoryEntry name="Unaligned Forces" hidden="false" id="e1ff-c0fa-2ca7-3466">
+      <modifiers>
+        <modifier type="set" value="250" field="223b-e22c-21da-9aee">
+          <conditions>
+            <condition type="greaterThan" value="0" field="selections" scope="force" childId="d62d-db22-4893-4bc0" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="set" value="500" field="223b-e22c-21da-9aee">
+          <conditions>
+            <condition type="greaterThan" value="0" field="selections" scope="force" childId="baf8-997f-e323-a090" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="1000" field="51b2-306e-1021-d207" scope="roster" shared="true" id="223b-e22c-21da-9aee" includeChildForces="true" includeChildSelections="true"/>
+      </constraints>
+    </categoryEntry>
+  </categoryEntries>
+  <xmlns>http://www.battlescribe.net/schema/catalogueSchema</xmlns>
 </catalogue>
