@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="2" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="3" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
+    <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
   </publications>
   <costTypes>
     <costType id="51b2-306e-1021-d207" name="pts" defaultCostLimit="0" hidden="false"/>
@@ -458,7 +459,6 @@ If a model is equipped with one or more Pistols, unless it is a MONSTER or VEHIC
       <description>Some models have &apos;Feel No Pain x+&apos; listed in their abilities. Each time a model with this ability suffers damage and so would lose a wound (including wounds lost due to mortal wounds), roll one D6: if the result is greater than or equal to the number denoted by &apos;x: that wound is ignored and is not lost. If a model has more than one Feel No Pain ability, you can only use one of those abilities each time that model
 suffers damage and so would lose a wound.</description>
     </rule>
-    <rule id="f75f-ee67-c3cb-669e" name="Invulnerable Save" hidden="false"/>
     <rule id="6c1f-1cf7-ff25-c99e" name="Blast" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
       <description>Weapons with [BLAST] in their profile are known as Blast weapons, and they make a random number of attacks. Each time you determine how many attacks are made with a Blast weapon, add 1 to the result for every five models that were in the target unit when you selected it as the target (rounding down). Blast weapons can never be used to make attacks against a unit that is within Engagement Range of one or more units from the attacking model’s army (including its own unit).</description>
     </rule>
@@ -533,5 +533,4 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
       </characteristics>
     </profile>
   </sharedProfiles>
-  <xmlns>http://www.battlescribe.net/schema/gameSystemSchema</xmlns>
 </gameSystem>
