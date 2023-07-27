@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue id="581a-46b9-5b86-44b7" name="Unaligned Forces" revision="2" battleScribeVersion="2.03" authorName="WindstormSCR" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="2" xmlns="http://www.battlescribe.net/schema/catalogueSchema" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="581a-46b9-5b86-44b7" name="Unaligned Forces" revision="3" battleScribeVersion="2.03" authorName="WindstormSCR" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="2" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry id="e85b-17c7-1ad9-8375" name="Ambull" hidden="false" collective="false" import="true" type="model">
       <costs>
@@ -21,21 +21,66 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <infoLinks>
+        <infoLink name="Deep Strike" hidden="false" type="rule" id="435a-e270-1c67-af4" targetId="7cb5-dd6b-dd87-ad3b"/>
+        <infoLink name="Feel No Pain" hidden="false" type="rule" id="2308-ce93-5765-7e7e" targetId="9bf4-280f-bbe2-6fbb">
+          <modifiers>
+            <modifier type="append" value="5+" field="name"/>
+          </modifiers>
+        </infoLink>
+      </infoLinks>
+      <profiles>
+        <profile name="Ambull" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="f274-7ebf-75d0-44b5">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">8</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">8</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">8+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">3</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Enormous Claws" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="fdfd-6caa-63fb-6657">
+          <characteristics>
+            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+            <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
+            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+            <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+            <characteristic name="D" typeId="3254-9fe6-d824-513e">D3</characteristic>
+            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+          </characteristics>
+        </profile>
+        <profile name="Frenzy" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f481-16a8-9242-1441">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time an enemy unit is selected to shoot or fight, after it has finished making its attacks, if one or more of those attacks targeted this model and this model is not destroyed, this model can fight as if it were the Fight phase</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Borewyrm Infestation" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c551-a719-4c3-93f5">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Twice per battle, at the end of your opponent’s turn, if this model is not within Engagement Range of one or more enemy units, you can remove this model from the battlefield. In the Reinforcements step of your next Movement phase, set it up anywhere on the battlefield that
+is more than 9&quot; horizontally away from all enemy models. If the battle ends and this unit is not on the battlefield, it is destroyed. 
+
+
+Designer’s Note: Place two Borewyrm Infestation tokens next to this model, removing one each time this ability has been used.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
     </selectionEntry>
     <selectionEntry id="112c-0034-f3b4-a660" name="Show Unaligned Forces" hidden="false" collective="false" import="true" type="upgrade">
       <categoryLinks>
         <categoryLink targetId="4ac9-fd30-1e3d-b249" id="1bfa-3da9-2da9-7179" primary="true" name="Configuration"/>
       </categoryLinks>
       <modifiers>
+        <modifier type="set" field="dbe8-bc79-c135-de4d" value="0"/>
         <modifier type="set" value="true" field="hidden">
           <conditions>
             <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
-        <modifier type="set" field="f692-193-102f-e0ae" value="0"/>
       </modifiers>
       <constraints>
-        <constraint type="min" value="1" field="selections" scope="force" shared="true" id="f692-193-102f-e0ae"/>
+        <constraint type="min" value="1" field="selections" scope="force" shared="true" id="dbe8-bc79-c135-de4d"/>
       </constraints>
     </selectionEntry>
     <selectionEntry id="abb9-0e46-cf9c-615c" name="Show Unaligned Fortifications" hidden="false" collective="false" import="true" type="upgrade">
@@ -74,6 +119,34 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Gun Option" hidden="false" id="8b0c-3772-861a-a7cd" defaultSelectionEntryId="870c-dae1-65e2-9cee">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c3e3-6297-6e4a-44c3"/>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="de-b500-9e4b-c6a9"/>
+          </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Quad-gun" hidden="false" type="selectionEntry" id="870c-dae1-65e2-9cee" targetId="aece-7cae-ceb6-4079"/>
+            <entryLink import="true" name="Icarus Lascannon" hidden="false" type="selectionEntry" id="352e-36c6-3ae5-ead0" targetId="72e7-16-6f4c-ecbd"/>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <infoLinks>
+        <infoLink targetId="29fe-dbb0-2a7-a301" id="78aa-6c41-72c9-43d7" type="profile" name="Defence Line" hidden="false"/>
+        <infoLink targetId="241c-8bed-ca28-f77" id="cd03-3481-2344-6024" type="profile" name="Reinforced Cover" hidden="false"/>
+      </infoLinks>
+      <profiles>
+        <profile name="Aegis Defence Line with Weapon Emplacement" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="2236-7917-c04c-971c">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">-</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">12</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">10</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Bastion" hidden="false" id="5134-5fe9-e489-43c4">
       <costs>
@@ -95,6 +168,61 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Weapons Array" hidden="false" id="14be-d879-c755-3d93">
+          <entryLinks>
+            <entryLink import="true" name="Comms Antenna" hidden="false" type="selectionEntry" id="866d-5d02-6bbe-81c" targetId="4985-9124-1e83-10f0"/>
+            <entryLink import="true" name="Icarus Lascannon" hidden="false" type="selectionEntry" id="db5a-f3-5b74-3acb" targetId="72e7-16-6f4c-ecbd"/>
+            <entryLink import="true" name="Quad-gun" hidden="false" type="selectionEntry" id="3cba-8def-5bb4-bb6d" targetId="aece-7cae-ceb6-4079"/>
+          </entryLinks>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ca20-66ee-5b18-35a4"/>
+          </constraints>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <infoLinks>
+        <infoLink targetId="241c-8bed-ca28-f77" id="27a2-8f94-8c48-644c" type="profile" name="Reinforced Cover" hidden="false"/>
+        <infoLink targetId="2e62-f126-df89-60d" id="8673-27bf-352-2e44" type="profile" name="Roof Access" hidden="false"/>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="be81-1fbf-f631-d522" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D6" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Firing Deck" hidden="false" type="rule" id="56dc-bf08-7894-a324" targetId="13b2-6518-dab3-7ea1">
+          <modifiers>
+            <modifier type="append" value="10" field="name"/>
+          </modifiers>
+        </infoLink>
+      </infoLinks>
+      <entryLinks>
+        <entryLink targetId="9772-d936-9e34-8549" id="5db6-55c1-807b-6be" type="selectionEntry" name="Heavy Bolter" hidden="false" collective="false">
+          <constraints>
+            <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="6c0d-c99f-67ca-ef22"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <profiles>
+        <profile name="Bastion" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="149c-4cc5-8542-5d0a">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">-</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">13</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">18</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Damaged: 1-6 wounds remaining" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="db15-1e44-23f2-339c">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model has 1-6 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Bastion" typeId="74f8-5443-9d6d-1f1e" typeName="Transport" hidden="false" id="252a-f4bd-bf4-c66f">
+          <characteristics>
+            <characteristic name="Capacity" typeId="30f2-be70-861d-1b84">This Fortification has a transport capacity of 15 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Firestorm Redoubt" hidden="false" id="71b0-77b9-522c-17d6">
       <costs>
@@ -116,6 +244,71 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <infoLinks>
+        <infoLink targetId="2e62-f126-df89-60d" id="c31e-dc63-d357-8820" type="profile" name="Roof Access" hidden="false"/>
+        <infoLink targetId="241c-8bed-ca28-f77" id="6f98-d4bb-fa0d-ea61" type="profile" name="Reinforced Cover" hidden="false"/>
+        <infoLink name="Firing Deck" hidden="false" type="rule" id="1b46-162b-cd21-a03f" targetId="13b2-6518-dab3-7ea1">
+          <modifiers>
+            <modifier type="append" value="10" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="c796-6e8b-194b-3da9" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D6" field="name"/>
+          </modifiers>
+        </infoLink>
+      </infoLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Weapons Array" hidden="false" id="b2f0-fef3-2b51-8edc">
+          <entryLinks>
+            <entryLink import="true" name="Comms Antenna" hidden="false" type="selectionEntry" id="9710-3051-3a09-af77" targetId="4985-9124-1e83-10f0"/>
+            <entryLink import="true" name="Icarus Lascannon" hidden="false" type="selectionEntry" id="c049-f816-4822-920c" targetId="72e7-16-6f4c-ecbd"/>
+            <entryLink import="true" name="Quad-gun" hidden="false" type="selectionEntry" id="efa1-186c-7f51-6ae0" targetId="aece-7cae-ceb6-4079"/>
+          </entryLinks>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ca20-66ee-5b18-35a4"/>
+          </constraints>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Turret 1" hidden="false" id="9df9-6944-3f63-2226" defaultSelectionEntryId="4d19-a2f6-5d6e-e53f">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="70ea-5a02-2aa0-dd20"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4226-42bf-fea8-2883"/>
+          </constraints>
+          <entryLinks>
+            <entryLink targetId="837d-5927-b2f1-d4b8" id="d6aa-a1ef-3d1c-54" type="selectionEntry" name="Battle-cannon" hidden="false"/>
+            <entryLink targetId="708f-a01b-953d-d59e" id="5f73-2391-368b-6c4a" type="selectionEntry" name="Punisher Gatling Cannon" hidden="false"/>
+            <entryLink targetId="e55-db9a-8f67-b41f" id="4d19-a2f6-5d6e-e53f" type="selectionEntry" name="Quad Lascannon" hidden="false"/>
+          </entryLinks>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Turret 2" hidden="false" id="8fbe-7fa-d0a-9a27" defaultSelectionEntryId="e011-f935-d573-5749">
+          <entryLinks>
+            <entryLink targetId="837d-5927-b2f1-d4b8" id="73cd-5f1e-efe4-a1cc" type="selectionEntry" name="Battle-cannon" hidden="false"/>
+            <entryLink targetId="708f-a01b-953d-d59e" id="4c3d-81d6-8dc9-5e3a" type="selectionEntry" name="Punisher Gatling Cannon" hidden="false"/>
+            <entryLink targetId="e55-db9a-8f67-b41f" id="e011-f935-d573-5749" type="selectionEntry" name="Quad Lascannon" hidden="false"/>
+          </entryLinks>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3c2c-a3bc-c46a-662f"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7661-1845-2367-e906"/>
+          </constraints>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <profiles>
+        <profile name="Firestorm Redoubt" typeId="74f8-5443-9d6d-1f1e" typeName="Transport" hidden="false" id="7656-106-5438-9066">
+          <characteristics>
+            <characteristic name="Capacity" typeId="30f2-be70-861d-1b84">This Fortification has a transport capacity of 15 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Firestorm Redoubt" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="32ca-14bb-af34-51f5">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">-</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">13</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">18</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Fortress of Redemption" hidden="false" id="c4d1-c85a-a20e-6c94">
       <costs>
@@ -145,6 +338,7 @@
       <categoryLinks>
         <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="2686-fb2f-dd21-e510" primary="false" name="Unaligned Forces"/>
         <categoryLink targetId="887b-ab87-92a2-20f5" id="626e-a5f3-46e8-3f23" primary="true" name="Allied Units"/>
+        <categoryLink targetId="9693-cf84-fe69-37a9" id="956e-7d12-7fb0-12a8" primary="false" name="Monster"/>
       </categoryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -158,6 +352,81 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Destroyer Pulse" hidden="false" id="1ab6-25ac-947b-bf5f">
+          <profiles>
+            <profile name="Destroyer Pulse" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="6468-f7a-cf-1f16">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="ab00-ab55-b236-6f62"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9727-3f6-1e2b-6fe0"/>
+          </constraints>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Guardian Salvo Launchers" hidden="false" id="3200-448d-b069-ce9b">
+          <profiles>
+            <profile name="Guardian Salvo Launchers" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="6317-ed6f-87cc-a6b4">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="742f-d8d8-3732-606b"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2400-47a0-8b36-c508"/>
+          </constraints>
+        </selectionEntry>
+      </selectionEntries>
+      <profiles>
+        <profile name="Manipulator Limbs" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="8097-d75d-d5c8-2ff2">
+          <characteristics>
+            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+            <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
+            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+            <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
+            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+          </characteristics>
+        </profile>
+        <profile name="Drone Commander (Aura)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6177-edd5-89f8-10f0">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly Spindle Drones unit is within 6 of this model, each time a model in that unit makes an attack, add 1 to the Hit roll.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Guardian Drone" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="2164-a8b3-1e0a-ff34">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">7</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">7</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Feel No Pain" hidden="false" type="rule" id="3af9-eb06-6d3e-afce" targetId="9bf4-280f-bbe2-6fbb">
+          <modifiers>
+            <modifier type="append" value="5+" field="name"/>
+          </modifiers>
+        </infoLink>
+      </infoLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Macro-cannon Aquila Strongpoint" hidden="false" id="3b75-e314-ecd5-cd63">
       <costs>
@@ -200,6 +469,26 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <infoLinks>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="ed84-eb04-6df-648" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D6" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Firing Deck" hidden="false" type="rule" id="92b8-5a61-d777-85d5" targetId="13b2-6518-dab3-7ea1">
+          <modifiers>
+            <modifier type="append" value="10" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink targetId="241c-8bed-ca28-f77" id="d1ab-f479-9229-194f" type="profile" name="Reinforced Cover" hidden="false"/>
+      </infoLinks>
+      <profiles>
+        <profile name="Damaged: 1-6 wounds remaining" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ae80-66a1-2a3a-d0d3">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model has 1-6 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Primaris Redoubt" hidden="false" id="f39-fc54-f95a-8395">
       <costs>
@@ -221,6 +510,66 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <profiles>
+        <profile name="Invulnerable Save" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="191f-a4ed-9da3-a045">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model has a 5+ invulnerable save</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Primaris Redoubt" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="f45f-a0c7-9c25-85d7">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">-</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">12</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">18</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Damaged: 1-6 wounds remaining" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b72a-fb2e-1572-3596">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model has 1-6 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink targetId="241c-8bed-ca28-f77" id="6ec5-bb67-ec46-104b" type="profile" name="Reinforced Cover" hidden="false"/>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="3b2-2b91-6ebc-3282" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D6" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink targetId="f791-bfaa-d110-9379" id="f8ff-6545-642a-6f2f" type="profile" name="Gates" hidden="false"/>
+        <infoLink targetId="f644-db15-d1f0-3c48" id="faf3-5a9-c2da-204f" type="profile" name="Battlements" hidden="false"/>
+      </infoLinks>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Primaris Redoubt turbo-laser destructor" hidden="false" id="b6ab-e70d-f8f3-731a">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5c75-6534-272d-48a5"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b44e-5a03-a5d-24e6"/>
+          </constraints>
+          <profiles>
+            <profile name="Primaris Redoubt turbo-laser destructor" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="9b49-efd7-71e3-762a">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">96&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3+1</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">16</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6+3</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+      </selectionEntries>
+      <entryLinks>
+        <entryLink targetId="9772-d936-9e34-8549" id="f271-c70e-dbf1-bb1c" type="selectionEntry" name="Heavy Bolter" hidden="false" collective="false">
+          <constraints>
+            <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="6c0d-c99f-67ca-ef22"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Skyshield Landing Pad" hidden="false" id="54c-8b9f-b1d8-93c3">
       <costs>
@@ -242,22 +591,104 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <infoLinks>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="b0fa-7e98-2331-2fe" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D3" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink targetId="241c-8bed-ca28-f77" id="c3e-bf7f-2c22-752f" type="profile" name="Reinforced Cover" hidden="false"/>
+      </infoLinks>
+      <profiles>
+        <profile name="Skyshield Landing Pad" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="56d6-8cd4-6ca9-baf6">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">-</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">12</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">16</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Invulnerable Save" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5ac7-2cbe-21b5-7929">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model has a 5+ invulnerable save</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Skyshield" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ac7c-2faf-a4ba-1a7b">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Friendly Infantry models and friendly units that can Fly can be set up or end any type of move on top of the platform section of this Fortification. While such a model is on the platform section of this Fortification, that model has a 5+ invulnerable save against ranged attacks</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Repair Aircraft" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="de21-5f57-8fd9-3c1a">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of your Movement phase, if there is a friendly Aircraft model on top of this Fortification, that Aircraft regains up to D3 lost wounds</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Spindle Drones" hidden="false" id="da76-e18f-523e-d45a">
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="35"/>
       </costs>
       <selectionEntries>
-        <selectionEntry type="model" import="true" name="Spindle Drone" hidden="false" id="e32d-ae0a-732f-5864">
+        <selectionEntry type="model" import="true" name="Spindle Drone" hidden="false" id="e32d-ae0a-732f-5864" collective="true">
           <constraints>
             <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="aca2-1adb-691f-bb3c"/>
             <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="feec-4e88-ffe1-d175"/>
           </constraints>
+          <profiles>
+            <profile name="Drone Pulse" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="2174-8df8-bbc4-1099">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
+              </characteristics>
+            </profile>
+            <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="86e5-2aef-78da-c4ec">
+              <characteristics>
+                <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                <characteristic name="A" typeId="2337-daa1-6682-b110">1</characteristic>
+                <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+              </characteristics>
+            </profile>
+            <profile name="Spindle Drone" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="a470-533e-a14a-bcb2">
+              <characteristics>
+                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
+                <characteristic name="SV" typeId="450-a17e-9d5e-29da">4+</characteristic>
+                <characteristic name="W" typeId="750a-a2ec-90d3-21fe">2</characteristic>
+                <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="Threat Level Rising" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="839a-dbe6-f30a-20a1">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Feel No Pain" hidden="false" type="rule" id="bd29-e1d9-68d-a45b" targetId="9bf4-280f-bbe2-6fbb">
+              <modifiers>
+                <modifier type="append" value="5+" field="name"/>
+              </modifiers>
+            </infoLink>
+          </infoLinks>
         </selectionEntry>
       </selectionEntries>
       <categoryLinks>
         <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="a1b4-5e25-f583-d5b" primary="false" name="Unaligned Forces"/>
         <categoryLink targetId="887b-ab87-92a2-20f5" id="3bea-1908-e216-3a6" primary="true" name="Allied Units"/>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="bf1c-22b1-6ac4-1852" primary="false" name="Infantry"/>
       </categoryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -279,6 +710,9 @@
       <categoryLinks>
         <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="eb77-4bd0-3fc0-6934" primary="false" name="Unaligned Forces"/>
         <categoryLink targetId="887b-ab87-92a2-20f5" id="7aa5-803c-aaf8-7b22" primary="true" name="Allied Units"/>
+        <categoryLink targetId="9693-cf84-fe69-37a9" id="bf9e-c4ad-47d7-addc" primary="false" name="Monster"/>
+        <categoryLink targetId="4f3a-f0f7-6647-348d" id="a401-4542-364d-ded9" primary="false" name="Epic Hero"/>
+        <categoryLink targetId="9cfd-1c32-585f-7d5c" id="296a-c343-6dc-563c" primary="false" name="Character"/>
       </categoryLinks>
       <constraints>
         <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="221e-e703-450c-56de" includeChildForces="true" includeChildSelections="true"/>
@@ -295,6 +729,53 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <profiles>
+        <profile name="The Archivist" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="9048-aa3f-1224-25fe">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">6</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Fearsome Assault" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="128a-9f8e-e659-fa7e">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the Fight phase, each enemy unit within Engagement Range of one or more units with this ability must take a Battle-shock test.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Disruptive Influence (Aura)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6e34-22d9-a4ab-22ad">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While an enemy unit is within 6&quot; of this model, each time that unit takes a Battle-shock or Leadership test, subtract 1 from that test.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Atomic disassembler" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="bffd-c6d4-8599-1b40">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores cover, Pistol</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Eradicator glove" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="d830-513b-70bf-6a9">
+          <characteristics>
+            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+            <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
+            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+            <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
+            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+            <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Lone Operative" hidden="false" type="rule" id="f4a3-f6d6-6a8d-acf8" targetId="a8a0-8fe7-898-e0f3"/>
+      </infoLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Vengeance Weapon Battery" hidden="false" id="14fe-18ed-9c25-189c">
       <costs>
@@ -337,6 +818,36 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <infoLinks>
+        <infoLink name="Reinforced Cover" hidden="false" type="profile" id="6b4d-4247-a218-2985" targetId="241c-8bed-ca28-f77"/>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="ceac-9e39-a387-e8ae" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D6" field="name"/>
+          </modifiers>
+        </infoLink>
+      </infoLinks>
+      <profiles>
+        <profile name="Invulnerable Save" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ebe4-e271-269c-ac83">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model has a 4+ invulnerable save</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Projected Void Shields (aura)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="37d7-4c6f-14e0-42c0">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly model is wholly within 6&quot; of this Fortification, that model has a 4+ invulnerable save against ranged attacks.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Void Shield Generator" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="70d7-d25d-676f-b6b3">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">-</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">12</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">16</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Vortex Missile Strongpoint" hidden="false" id="5c81-92c5-e20b-edf1">
       <costs>
@@ -379,6 +890,54 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <profiles>
+        <profile name="Wall of Martyrs Bunker" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="bba8-cdc1-94df-18da">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">-</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">13</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">10</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Inviolable Bastion" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f194-faba-c927-ba75">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time an attack is allocated to this Fortification, subtract 1 from the Damage characteristic of that attack.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Wall of Martyrs Bunker" typeId="74f8-5443-9d6d-1f1e" typeName="Transport" hidden="false" id="f3b0-c322-3ef3-e396">
+          <characteristics>
+            <characteristic name="Capacity" typeId="30f2-be70-861d-1b84">This Fortification has a transport capacity of 11 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Weapons Array" hidden="false" id="44b8-6fae-e8ac-c347">
+          <entryLinks>
+            <entryLink import="true" name="Comms Antenna" hidden="false" type="selectionEntry" id="e8ef-45f3-f3c2-5c99" targetId="4985-9124-1e83-10f0"/>
+            <entryLink import="true" name="Icarus Lascannon" hidden="false" type="selectionEntry" id="1999-209e-c01e-b74d" targetId="72e7-16-6f4c-ecbd"/>
+            <entryLink import="true" name="Quad-gun" hidden="false" type="selectionEntry" id="f7aa-cc26-fbca-79c2" targetId="aece-7cae-ceb6-4079"/>
+          </entryLinks>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ca20-66ee-5b18-35a4"/>
+          </constraints>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <infoLinks>
+        <infoLink name="Firing Deck" hidden="false" type="rule" id="c11b-49aa-ba9c-b091" targetId="13b2-6518-dab3-7ea1">
+          <modifiers>
+            <modifier type="append" value="6" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink targetId="241c-8bed-ca28-f77" id="5aa9-30a4-5505-4ad6" type="profile" name="Reinforced Cover" hidden="false"/>
+        <infoLink targetId="2e62-f126-df89-60d" id="ab63-c935-c4d0-b17f" type="profile" name="Roof Access" hidden="false"/>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="c156-79ef-fd95-2ce1" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D3" field="name"/>
+          </modifiers>
+        </infoLink>
+      </infoLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Wall of Martyrs Defence Emplacement" hidden="false" id="8419-8133-33f3-e0a4">
       <costs>
@@ -400,6 +959,49 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <infoLinks>
+        <infoLink targetId="7669-c371-7ee3-ce0f" id="195f-ca2a-89c9-33e7" type="profile" name="Trench Line" hidden="false"/>
+        <infoLink targetId="241c-8bed-ca28-f77" id="a983-a306-db69-f16e" type="profile" name="Reinforced Cover" hidden="false"/>
+        <infoLink name="Defence Line" hidden="false" type="profile" id="8698-5901-84cb-a7b9" targetId="29fe-dbb0-2a7-a301"/>
+      </infoLinks>
+      <selectionEntries>
+        <selectionEntry type="model" import="true" name="Wall of Martyrs Defence Emplacement" hidden="false" id="b95c-fe84-5dc1-aef0">
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="140"/>
+          </costs>
+          <categoryLinks>
+            <categoryLink targetId="19d7-9c74-2140-5851" id="8df9-b164-9415-f350" primary="true" name="Fortification"/>
+            <categoryLink targetId="e1ff-c0fa-2ca7-3466" id="5370-40c7-b5d1-ac01" primary="false" name="Unaligned Forces"/>
+          </categoryLinks>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="abb9-0e46-cf9c-615c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <infoLinks>
+            <infoLink targetId="7669-c371-7ee3-ce0f" id="899e-44a8-4e53-63a5" type="profile" name="Trench Line" hidden="false"/>
+          </infoLinks>
+        </selectionEntry>
+      </selectionEntries>
+      <profiles>
+        <profile name="Wall of Martyrs Defence Emplacement" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="181b-ba69-e96f-c1ff">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">-</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">12</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">10</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Wall of Martyrs Defence Line" hidden="false" id="64b7-a2df-416a-9963">
       <costs>
@@ -421,6 +1023,122 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+      <profiles>
+        <profile name="Wall of Martyrs Defence Line" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="2de-a65a-c42e-c2c9">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">-</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">12</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">10</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink targetId="241c-8bed-ca28-f77" id="9bca-724f-5dea-e32a" type="profile" name="Reinforced Cover" hidden="false"/>
+        <infoLink targetId="7669-c371-7ee3-ce0f" id="4cd7-83d2-7822-c37f" type="profile" name="Trench Line" hidden="false"/>
+        <infoLink name="Defence Line" hidden="false" type="profile" id="fe35-2586-346b-a3" targetId="29fe-dbb0-2a7-a301"/>
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Comms Antenna" hidden="false" id="4985-9124-1e83-10f0">
+      <profiles>
+        <profile name="Comms Antenna" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e4e8-32c4-fe76-76e">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Command phase, if one or more Character models are embarked within this Fortification, roll one D6: on a 5+, you gain 1CP</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Icarus Lascannon" hidden="false" id="72e7-16-6f4c-ecbd">
+      <profiles>
+        <profile name="Icarus Lascannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="22ce-ef35-75b0-f0f3">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">12</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6+1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-Fly 2+</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Quad-gun" hidden="false" id="aece-7cae-ceb6-4079">
+      <profiles>
+        <profile name="Quad-gun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="a103-4e16-9e2-b099">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">4</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Twin-linked, Anti-fly 3+</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Heavy Bolter" hidden="false" id="9772-d936-9e34-8549">
+      <profiles>
+        <profile name="Heavy Bolter" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="ae44-5e76-8f9d-b613">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Sustained Hits 1</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Quad Lascannon" hidden="false" id="e55-db9a-8f67-b41f">
+      <profiles>
+        <profile name="Quad Lascannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="c317-5f56-6f74-d4d2">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">12</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6+1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Twin-linked, Anti-fly 2+</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Punisher Gatling Cannon" hidden="false" id="708f-a01b-953d-d59e">
+      <profiles>
+        <profile name="Punisher Gatling Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="5df7-e2e1-d087-be41">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">20</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Battle-cannon" hidden="false" id="837d-5927-b2f1-d4b8">
+      <profiles>
+        <profile name="Battle-cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="b8fa-1557-64ec-760f">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
     </selectionEntry>
   </sharedSelectionEntries>
   <entryLinks>
@@ -464,5 +1182,48 @@
       </constraints>
     </categoryEntry>
   </categoryEntries>
-  <xmlns>http://www.battlescribe.net/schema/catalogueSchema</xmlns>
+  <sharedProfiles>
+    <profile name="Reinforced Cover" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="241c-8bed-ca28-f77">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this Fortification, that model has the Benefit of Cover against that attack.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Roof Access" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2e62-f126-df89-60d">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Friendly Infantry models can be set up or end any type of move on top of the roof section of this Fortification</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Gates" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f791-bfaa-d110-9379">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">When this Fortification is first set up on the battlefield, each gate section can be set up with its gate open or closed. In your Command phase, you can open or close the gate of each of this model’s gate sections. While a gate is open, models can move and draw line of sight through it as if it were not there.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Battlements" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f644-db15-d1f0-3c48">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Friendly Infantry models can be set up or end any type of move on top of the flat battlement sections of this Fortification.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Defence Line" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="29fe-dbb0-2a7-a301">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">When this Fortification is set up, all parts of it must be set up within 1&quot; of another part. While an Infantry model has the Benefit of Cover as a result of this Fortification (see below), that model has a 4+ invulnerable save.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Trench Line" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7669-c371-7ee3-ce0f">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Friendly Infantry models can be set up or end any type of move on top of the flat platform section of this Fortification.</characteristic>
+      </characteristics>
+    </profile>
+  </sharedProfiles>
+  <sharedSelectionEntryGroups>
+    <selectionEntryGroup name="Weapons Array" hidden="false" id="3370-2b7c-d563-de8a">
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8fe2-36b4-2298-442e"/>
+      </constraints>
+      <entryLinks>
+        <entryLink targetId="aece-7cae-ceb6-4079" id="e6e1-dd03-845b-dfde" type="selectionEntry" name="Quad-gun" hidden="false"/>
+        <entryLink targetId="72e7-16-6f4c-ecbd" id="70ad-3faf-fbcc-61a1" type="selectionEntry" name="Icarus Lascannon" hidden="false"/>
+        <entryLink targetId="4985-9124-1e83-10f0" id="6444-c1d6-c8db-1ba0" type="selectionEntry" name="Comms Antenna" hidden="false"/>
+      </entryLinks>
+    </selectionEntryGroup>
+  </sharedSelectionEntryGroups>
 </catalogue>
