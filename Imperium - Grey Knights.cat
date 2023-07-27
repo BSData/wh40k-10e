@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="50c4-3e83-fe54-97c4" name="Imperium - Grey Knights" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="3" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="50c4-3e83-fe54-97c4" name="Imperium - Grey Knights" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="4" battleScribeVersion="2.03" type="catalogue">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights" id="f3e4-7fc3-8f57-6303" importRootEntries="true" targetId="1b6d-dc06-5db9-c7d1"/>
     <catalogueLink type="catalogue" name="Imperium - Imperial Agents" id="575c-d0f9-7fdc-2ddb" targetId="b00-cd86-4b4c-97ba" importRootEntries="true"/>
@@ -439,6 +439,7 @@
         </profile>
       </profiles>
       <infoLinks>
+        <infoLink name="Leader" hidden="false" type="rule" id="6f29-bc30-ecca-c1a1" targetId="b4dd-3e1f-41cb-218f"/>
         <infoLink name="Deep Strike" hidden="false" type="rule" id="ce58-94f6-4b8f-3c7b" targetId="7cb5-dd6b-dd87-ad3b"/>
       </infoLinks>
       <selectionEntries>
@@ -2003,7 +2004,7 @@
       <profiles>
         <profile name="Grey Knights Land Raider Crusader" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="88aa-3a4d-4ff3-1b4c">
           <characteristics>
-            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">12&quot;</characteristic>
             <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">12</characteristic>
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">16</characteristic>
@@ -2171,7 +2172,7 @@
       <profiles>
         <profile name="Grey Knights Land Raider Redeemer" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="36a8-d1b9-a5e8-b70f">
           <characteristics>
-            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">12&quot;</characteristic>
             <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">12</characteristic>
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">16</characteristic>
@@ -5633,6 +5634,7 @@
       </entryLinks>
       <constraints>
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f1c7-34b8-6dc3-8c60"/>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e456-f904-cb4b-d10e"/>
       </constraints>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Warlord" hidden="false" id="beae-4593-3686-1672">
@@ -5649,51 +5651,108 @@
     <selectionEntryGroup name="Enhancements - Teleport Strike Force" hidden="false" id="c440-b056-f09a-c88a">
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Domina Liber Daemonica" hidden="false" id="5311-c819-50b2-1464">
+          <profiles>
+            <profile name="Domina Liber Daemonica" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="a4g6-h8l0-1x7l-0jt5">
+              <characteristics>
+              <characteristic name="Description" typeId="3c5h-9n5f-x6h9-wfry">Grey Knights model only. Each time the bearer makes a melee attack add 1 to the Wound roll and, if that attack targets a Daemon unit, add 1 to the Damage characteristic of that attack as well.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="5311-c819-50b2-1464" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="parent" childId="5311-c819-50b2-1464" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
           </costs>
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9a54-fa4e-9e93-ae90"/>
-            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="c91b-239e-33c8-1609"/>
-          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="First to the Fray" hidden="false" id="f290-4bcc-1798-6868">
+          <profiles>
+            <profile name="First to the Fray" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="p1x9-r402-ww99-xorm">
+              <characteristics>
+              <characteristic name="Description" typeId="mpz5-ac04-dc93-ppc1">Grey Knights model with the Deep Strike ability only. The bearer’s unit must start the battle in Reserves, but neither it, nor any Transport it is embarked within, is counted towards any limits the mission places on the number of Strategic Reserves units you can have. That unit can be set up using its Deep Strike ability in the Reinforcements step of your first, second or third Movement phase, regardless of any mission rules.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+              <conditionGroup type="and">
+                <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="f290-4bcc-1798-6868" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="parent" childId="f290-4bcc-1798-6868" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                </conditions>
+              </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="35"/>
           </costs>
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="455c-ee6c-6789-e7db"/>
-            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="3cf1-3d19-f10d-bb79"/>
-          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Inescapable Wrath" hidden="false" id="8084-85d-a3a4-87e6">
+          <profiles>
+            <profile name="Inescapable Wrath" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="4o2d-b9qr-3b0z-8855">
+              <characteristics>
+              <characteristic name="Description" typeId="7j40-a0c4-gguu-3390">Grey Knights model only. Add 1 to Charge rolls made for the bearer’s unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+              <conditionGroup type="and">
+                <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="8084-85d-a3a4-87e6" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="parent" childId="8084-85d-a3a4-87e6" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                </conditions>
+              </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
           </costs>
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="bd27-c279-a7be-bcee"/>
-            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="77d9-12c8-1126-dfda"/>
-          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Sigil of Exigence" hidden="false" id="d0c9-fd98-de1b-6d43">
+          <profiles>
+            <profile name="Sigil of Exigence" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="b262-6252-ce59-4b30">
+              <characteristics>
+                <characteristic name="Description" typeId="p1x4-jt0e-8t67-v40d">Grey Knights model only. Once per battle, in your opponent’s Shooting phase, when the bearer’s unit is selected as the target of a ranged attack, you can remove the bearer’s unit from the battlefield and then set it back up again anywhere on the battlefield that is more than 9&quot; horizontally away from all enemy models. If the bearer is no longer an eligible target, your opponent can then select new targets for any attacks that had targeted the bearer’s unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="d0c9-fd98-de1b-6d43" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="parent" childId="d0c9-fd98-de1b-6d43" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="30"/>
           </costs>
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5949-8594-99d9-ba42"/>
-            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="3442-9152-fa27-4c30"/>
-          </constraints>
         </selectionEntry>
       </selectionEntries>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="lessThan" value="1" field="selections" scope="roster" childId="bcb7-c2a7-e7fb-3aae" shared="true" includeChildSelections="true"/>
-          </conditions>
-        </modifier>
-      </modifiers>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5d83-78f6-ed20-4114" includeChildSelections="false" includeChildForces="false"/>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="1d7d-b153-bb06-1a4f" includeChildForces="true" includeChildSelections="true"/>
+      </constraints>
     </selectionEntryGroup>
-    <selectionEntryGroup name="Detachments" hidden="false" id="f7f3-a061-3f69-1432">
+    <selectionEntryGroup name="Detachments" hidden="false" id="f7f3-a061-3f69-1432" defaultSelectionEntryId="bcb7-c2a7-e7fb-3aae">
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Teleport Strike Force" hidden="false" id="bcb7-c2a7-e7fb-3aae"/>
       </selectionEntries>
