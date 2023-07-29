@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="4" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="5" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="539-7da4-d962-1a64" name="Primaris" hidden="false"/>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
@@ -1132,7 +1132,7 @@
         </profile>
       </profiles>
     </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Combi-weapon" id="2c13-8cdd-f66b-bcae">
+    <selectionEntry type="upgrade" import="true" name="Combi-weapon" id="2c13-8cdd-f66b-bcae" collective="true">
       <profiles>
         <profile name="Combi-weapon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" id="23be-25e0-7210-cb7f">
           <characteristics>
@@ -3992,11 +3992,10 @@ of 1.</characteristic>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="105"/>
       </costs>
       <selectionEntryGroups>
-        <selectionEntryGroup name="Sternguard Veterans" hidden="false" id="edfc-d6af-480a-d5fc">
+        <selectionEntryGroup name="Sternguard Veterans" hidden="false" id="edfc-d6af-480a-d5fc" defaultSelectionEntryId="5700-4122-349a-e5da">
           <selectionEntries>
-            <selectionEntry type="model" import="true" name="Sternguard Veterans" hidden="false" id="5700-4122-349a-e5da">
+            <selectionEntry type="model" import="true" name="Sternguard Veteran w/Bolt Rifle" hidden="false" id="5700-4122-349a-e5da">
               <constraints>
-                <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="64c0-83a4-7891-3b55"/>
                 <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="fb71-c797-ed3a-1b2f"/>
               </constraints>
               <selectionEntries>
@@ -4068,13 +4067,6 @@ of 1.</characteristic>
                   </profiles>
                 </selectionEntry>
               </selectionEntries>
-              <modifiers>
-                <modifier type="decrement" value="1" field="64c0-83a4-7891-3b55">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="907f-11-c4d1-ec21" childId="afda-2132-147f-d0f1" shared="true" id="d367-64f9-fcd8-5abd"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Sternguard Veteran Sergeant" hidden="false" id="97cd-6365-ce27-d73f">
               <constraints>
@@ -4087,7 +4079,7 @@ of 1.</characteristic>
                 <entryLink import="true" name="Close Combat Weapon" hidden="false" type="selectionEntry" id="5ed6-c521-aa2e-f818" targetId="65fb-f320-3884-492e"/>
               </entryLinks>
             </selectionEntry>
-            <selectionEntry type="model" import="true" name="Sternguard Veteran w/ Heavy Bolter" hidden="false" id="afda-2132-147f-d0f1">
+            <selectionEntry type="model" import="true" name="Sternguard Veteran w/Heavy Bolter" hidden="false" id="afda-2132-147f-d0f1">
               <entryLinks>
                 <entryLink import="true" name="Close Combat Weapon" hidden="false" type="selectionEntry" id="41d3-abb4-64fe-60a6" targetId="65fb-f320-3884-492e"/>
                 <entryLink import="true" name="Sternguard Bolt Pistol" hidden="false" type="selectionEntry" id="5fa1-7d11-730-b2b" targetId="4f36-2df5-903a-5541"/>
@@ -4128,6 +4120,21 @@ of 1.</characteristic>
                   </conditions>
                 </modifier>
               </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Sternguard Veteran w/Combi-weapon" hidden="false" id="e2b3-464a-a329-99ec">
+              <constraints>
+                <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="4e66-ce89-b436-b78f"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Sternguard Bolt Pistol" hidden="false" type="selectionEntry" id="f517-99c5-49a5-429" targetId="4f36-2df5-903a-5541"/>
+                <entryLink import="true" name="Close Combat Weapon" hidden="false" type="selectionEntry" id="6794-71ab-d011-9234" targetId="65fb-f320-3884-492e"/>
+                <entryLink import="true" name="Combi-weapon" hidden="false" type="selectionEntry" id="7bea-4fc7-4dca-176a" targetId="2c13-8cdd-f66b-bcae">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="50a4-a4a8-bf31-e7d3"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8918-4e06-8ccb-9f6d"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
             </selectionEntry>
           </selectionEntries>
           <constraints>
@@ -4571,6 +4578,9 @@ by 1.</characteristic>
                   </constraints>
                 </selectionEntry>
               </selectionEntries>
+              <constraints>
+                <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="ce64-7947-1a97-7c69"/>
+              </constraints>
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Assault Terminators w/ Twin Lightning Claws" hidden="false" id="c435-bd14-2d69-1c38">
               <entryLinks>
@@ -4581,6 +4591,9 @@ by 1.</characteristic>
                   </constraints>
                 </entryLink>
               </entryLinks>
+              <constraints>
+                <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="3fa0-7493-ce34-8dd9"/>
+              </constraints>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Assault Terminator Sergeant" hidden="false" id="c3d5-605c-2976-9ee1">
               <constraints>
@@ -8974,6 +8987,9 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
                       <infoLinks>
                         <infoLink name="Precision" hidden="false" type="rule" id="1857-4c14-b9e9-3072" targetId="9143-31ae-e0a6-6007"/>
                       </infoLinks>
+                      <constraints>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2a8a-9355-862a-749d"/>
+                      </constraints>
                     </selectionEntry>
                   </selectionEntries>
                 </selectionEntryGroup>
@@ -9005,6 +9021,9 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
                         <infoLink name="Precision" hidden="false" type="rule" id="22f0-92b5-f48a-24b4" targetId="9143-31ae-e0a6-6007"/>
                         <infoLink name="Heavy" hidden="false" type="rule" id="11c9-cb4a-81ca-394d" targetId="1202-10a8-78e9-4c67"/>
                       </infoLinks>
+                      <constraints>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2400-ba83-7f4c-ac3c"/>
+                      </constraints>
                     </selectionEntry>
                     <selectionEntry type="upgrade" import="true" name="Las Fusil" hidden="false" id="a376-5077-e6ca-7f6" collective="true">
                       <profiles>
@@ -9023,6 +9042,9 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
                       <infoLinks>
                         <infoLink name="Heavy" hidden="false" type="rule" id="947b-e405-5ea2-d641" targetId="1202-10a8-78e9-4c67"/>
                       </infoLinks>
+                      <constraints>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="608b-58c9-7ce4-1563"/>
+                      </constraints>
                     </selectionEntry>
                   </selectionEntries>
                   <constraints>
@@ -15364,16 +15386,20 @@ Attacks characteristic of 7.</characteristic>
       <profiles>
         <profile name="Bolt Rifle" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="837b-6918-767-152b">
           <characteristics>
-            <characteristic name="Range" typeId="9896-9419-16a1-92fc"/>
-            <characteristic name="A" typeId="3bb-c35f-f54-fb08"/>
-            <characteristic name="BS" typeId="94d-8a98-cf90-183e"/>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3"/>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15"/>
-            <characteristic name="D" typeId="a354-c1c8-a745-f9e3"/>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Heavy</characteristic>
           </characteristics>
         </profile>
       </profiles>
+      <infoLinks>
+        <infoLink name="Assault" hidden="false" type="rule" id="4bf4-3dc0-ba78-1ef" targetId="fc8a-8c24-bae9-cc1c"/>
+        <infoLink name="Heavy" hidden="false" type="rule" id="86d2-1aee-5b65-4b52" targetId="1202-10a8-78e9-4c67"/>
+      </infoLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Primaris Captain" hidden="false" id="6c10-5b51-5bc0-8d2c">
       <costs>
@@ -16632,5 +16658,4 @@ is Battle-shocked, models in that unit have the Feel No Pain 4+ ability instead.
       </characteristicTypes>
     </profileType>
   </profileTypes>
-  <xmlns>http://www.battlescribe.net/schema/catalogueSchema</xmlns>
 </catalogue>
