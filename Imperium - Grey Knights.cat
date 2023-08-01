@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="50c4-3e83-fe54-97c4" name="Imperium - Grey Knights" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="4" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="50c4-3e83-fe54-97c4" name="Imperium - Grey Knights" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="5" battleScribeVersion="2.03" type="catalogue">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights" id="f3e4-7fc3-8f57-6303" importRootEntries="true" targetId="1b6d-dc06-5db9-c7d1"/>
     <catalogueLink type="catalogue" name="Imperium - Imperial Agents" id="575c-d0f9-7fdc-2ddb" targetId="b00-cd86-4b4c-97ba" importRootEntries="true"/>
@@ -5655,7 +5655,7 @@
         <categoryLink id="c871-7041-f747-162c" name="Imperium" hidden="false" targetId="aff3-d6a3-2a95-9dc" primary="false"/>
       </categoryLinks>
       <selectionEntryGroups>
-        <selectionEntryGroup id="e10a-c76f-4f9c-a9a7" name="Left Arm" hidden="false" collective="false" import="true">
+        <selectionEntryGroup id="e10a-c76f-4f9c-a9a7" name="Left Arm" hidden="false" collective="false" import="true" defaultSelectionEntryId="aa02-2e73-1439-6345">
           <constraints>
             <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="41f8-4a04-7532-1699" type="min"/>
             <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="f8b4-e0e8-e65b-3738" type="max"/>
@@ -5819,7 +5819,7 @@
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
-        <selectionEntryGroup id="b641-c591-955e-302c" name="Right Arm" hidden="false" collective="false" import="true">
+        <selectionEntryGroup id="b641-c591-955e-302c" name="Right Arm" hidden="false" collective="false" import="true" defaultSelectionEntryId="52a2-574b-f679-fba4">
           <constraints>
             <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="167-9181-f765-30b8" type="min"/>
             <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="6056-bbc8-ff6b-143e" type="max"/>
@@ -5932,6 +5932,13 @@
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="160"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry id="54f0-4b3f-3abe-081b" name="Grey Knights Relic Razorback [Legends]" hidden="false" collective="false" import="true" type="model">
       <profiles>
@@ -6119,7 +6126,14 @@
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="95"/>
       </costs>
-    </selectionEntry>    
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Detachment" hidden="false" id="c05f-e67a-d2db-b3de">
       <categoryLinks>
         <categoryLink targetId="4ac9-fd30-1e3d-b249" id="9aae-3f8d-a1c6-2d54" primary="true" name="Configuration"/>
@@ -6154,7 +6168,7 @@
           <profiles>
             <profile name="Domina Liber Daemonica" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="a4g6-h8l0-1x7l-0jt5">
               <characteristics>
-              <characteristic name="Description" typeId="3c5h-9n5f-x6h9-wfry">Grey Knights model only. Each time the bearer makes a melee attack add 1 to the Wound roll and, if that attack targets a Daemon unit, add 1 to the Damage characteristic of that attack as well.</characteristic>
+                <characteristic name="Description" typeId="3c5h-9n5f-x6h9-wfry">Grey Knights model only. Each time the bearer makes a melee attack add 1 to the Wound roll and, if that attack targets a Daemon unit, add 1 to the Damage characteristic of that attack as well.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -6178,19 +6192,19 @@
           <profiles>
             <profile name="First to the Fray" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="p1x9-r402-ww99-xorm">
               <characteristics>
-              <characteristic name="Description" typeId="mpz5-ac04-dc93-ppc1">Grey Knights model with the Deep Strike ability only. The bearer’s unit must start the battle in Reserves, but neither it, nor any Transport it is embarked within, is counted towards any limits the mission places on the number of Strategic Reserves units you can have. That unit can be set up using its Deep Strike ability in the Reinforcements step of your first, second or third Movement phase, regardless of any mission rules.</characteristic>
+                <characteristic name="Description" typeId="mpz5-ac04-dc93-ppc1">Grey Knights model with the Deep Strike ability only. The bearer’s unit must start the battle in Reserves, but neither it, nor any Transport it is embarked within, is counted towards any limits the mission places on the number of Strategic Reserves units you can have. That unit can be set up using its Deep Strike ability in the Reinforcements step of your first, second or third Movement phase, regardless of any mission rules.</characteristic>
               </characteristics>
             </profile>
           </profiles>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-              <conditionGroup type="and">
-                <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="roster" childId="f290-4bcc-1798-6868" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                <condition type="lessThan" value="1" field="selections" scope="parent" childId="f290-4bcc-1798-6868" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                </conditions>
-              </conditionGroup>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="f290-4bcc-1798-6868" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="parent" childId="f290-4bcc-1798-6868" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
               </conditionGroups>
             </modifier>
           </modifiers>
@@ -6202,19 +6216,19 @@
           <profiles>
             <profile name="Inescapable Wrath" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="4o2d-b9qr-3b0z-8855">
               <characteristics>
-              <characteristic name="Description" typeId="7j40-a0c4-gguu-3390">Grey Knights model only. Add 1 to Charge rolls made for the bearer’s unit.</characteristic>
+                <characteristic name="Description" typeId="7j40-a0c4-gguu-3390">Grey Knights model only. Add 1 to Charge rolls made for the bearer’s unit.</characteristic>
               </characteristics>
             </profile>
           </profiles>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-              <conditionGroup type="and">
-                <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="roster" childId="8084-85d-a3a4-87e6" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                <condition type="lessThan" value="1" field="selections" scope="parent" childId="8084-85d-a3a4-87e6" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                </conditions>
-              </conditionGroup>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="8084-85d-a3a4-87e6" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="parent" childId="8084-85d-a3a4-87e6" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
               </conditionGroups>
             </modifier>
           </modifiers>
@@ -6290,6 +6304,8 @@
     <entryLink import="true" name="Servitors" hidden="false" type="selectionEntry" id="52b1-79b1-5bc6-575e" targetId="35ed-7890-6c56-18b7"/>
     <entryLink import="true" name="Strike Squad" hidden="false" type="selectionEntry" id="45ef-125c-ae4f-394d" targetId="d81f-c9ac-e338-ba37"/>
     <entryLink import="true" name="Detachment" hidden="false" type="selectionEntry" id="b859-7064-3a1e-1577" targetId="c05f-e67a-d2db-b3de"/>
+    <entryLink import="true" name="Grey Knights Relic Razorback [Legends]" hidden="false" type="selectionEntry" id="b234-2a9e-174d-90b3" targetId="54f0-4b3f-3abe-081b"/>
+    <entryLink import="true" name="Grey Knights Dreadnought [Legends]" hidden="false" type="selectionEntry" id="4bb5-c50e-a835-38d1" targetId="28d0-5a52-501a-441d"/>
   </entryLinks>
   <categoryEntries>
     <categoryEntry name="Brother-Captain" hidden="false" id="71ac-a100-1ec8-14e9"/>
