@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b39e-4401-8f3e-fdf7" name="Imperium - Adepta Sororitas" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="6" battleScribeVersion="2.03" authorName="CrusherJoe" type="catalogue" authorContact="@CrusherJoe on Discord">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b39e-4401-8f3e-fdf7" name="Imperium - Adepta Sororitas" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="7" battleScribeVersion="2.03" authorName="CrusherJoe" type="catalogue" authorContact="@CrusherJoe on Discord">
   <categoryEntries>
     <categoryEntry name="Aestred Thurga and Agathae Dolan" hidden="false" id="c8ba-2b2d-e47f-d7a6"/>
     <categoryEntry name="Arco-flagellants" hidden="false" id="63f8-3a5d-ef9c-d86e"/>
@@ -165,7 +165,7 @@
         <constraint type="max" value="1" field="selections" scope="force" shared="true" id="a322-26c3-3116-4a08"/>
       </constraints>
       <selectionEntryGroups>
-        <selectionEntryGroup name="Detachment" hidden="false" id="ed1-baac-1f26-3ed7">
+        <selectionEntryGroup name="Detachment" hidden="false" id="ed1-baac-1f26-3ed7" defaultSelectionEntryId="8e26-78e2-10bd-6982">
           <constraints>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="9108-4f3b-bdd8-8f0b"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="48a2-629-cd21-4e9b"/>
@@ -179,6 +179,9 @@
           </selectionEntries>
         </selectionEntryGroup>
       </selectionEntryGroups>
+      <categoryLinks>
+        <categoryLink targetId="4ac9-fd30-1e3d-b249" id="8c15-fd85-9c6d-a73e" primary="true" name="Configuration"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Arco-Flagellants" hidden="false" id="ca59-3760-5efc-9846">
       <infoLinks>
@@ -210,18 +213,11 @@
             <constraint type="min" value="3" field="selections" scope="parent" shared="true" id="39b7-a8a2-989f-6338"/>
             <constraint type="max" value="10" field="selections" scope="parent" shared="true" id="5c84-8b-d5f7-cd13"/>
           </constraints>
-          <modifiers>
-            <modifier type="set" value="150" field="51b2-306e-1021-d207">
-              <conditions>
-                <condition type="atLeast" value="4" field="selections" scope="parent" childId="4950-9b2a-c4de-5e" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
-          </modifiers>
           <infoLinks>
             <infoLink name="Arco-flails" hidden="false" type="profile" id="4ffd-4fbd-578a-377f" targetId="cd36-d957-436b-94c5"/>
           </infoLinks>
           <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
           </costs>
         </selectionEntry>
       </selectionEntries>
@@ -232,6 +228,16 @@
           </characteristics>
         </profile>
       </profiles>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="45"/>
+      </costs>
+      <modifiers>
+        <modifier type="set" value="150" field="51b2-306e-1021-d207">
+          <conditions>
+            <condition type="atLeast" value="4" field="selections" scope="parent" childId="4950-9b2a-c4de-5e" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Arco-flails" hidden="false" id="18b2-c74e-5aaa-9ace" collective="true">
       <profiles>
@@ -900,7 +906,7 @@
         <infoLink name="Hunter-killer missile" hidden="false" type="profile" id="3c80-2599-8a83-e248" targetId="81a5-2a6-87cc-81e2"/>
       </infoLinks>
     </selectionEntry>
-    <selectionEntry type="unit" import="true" name="Castigator" hidden="false" id="820-1e76-78cc-931a">
+    <selectionEntry type="model" import="true" name="Castigator" hidden="false" id="820-1e76-78cc-931a">
       <categoryLinks>
         <categoryLink targetId="dbd4-63-af05-998" id="3db1-c91c-4dd5-371c" primary="true" name="Vehicle"/>
         <categoryLink targetId="6df-937-16bc-8c1a" id="d8ca-c02d-7b5b-50da" primary="false" name="Smoke"/>
@@ -1961,7 +1967,7 @@ This model can be attached to a Battle Sisters Squad, even if one Canoness, Pala
         </selectionEntry>
       </selectionEntries>
     </selectionEntry>
-    <selectionEntry type="unit" import="true" name="Hospitaller" hidden="false" id="938e-1c24-4e63-4cf3">
+    <selectionEntry type="model" import="true" name="Hospitaller" hidden="false" id="938e-1c24-4e63-4cf3">
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="40"/>
       </costs>
@@ -5772,18 +5778,30 @@ melee weapons equipped by models in that unit have the [LETHAL HITS] ability.</c
   </sharedProfiles>
   <sharedRules>
     <rule name="Acts of Faith" hidden="false" id="7ef7-dca6-e2ea-ecc8">
-      <description>If your Army Faction is ADEPTA SORORITAS,, each unit from your army with this ability can perform one Act of Faith per phase. This is done using Miracle dice.
+      <description>If your Army Faction is ADEPTA SORORITAS, each unit from your army with this ability can perform one Act of Faith per phase. This is done using Miracle dice.
 
-If your Army Faction is Adepta Sororitas, you gain 1 Miracle dice:
+
+GAINING MIRACLE DICE
+If your Army Faction is ADEPTA SORORITAS, you gain 1 Miracle dice:
 ■ At the start of each turn.
-■ Each time an Adepta Sororitas unit from your army is destroyed.
+■ Each time an ADEPTA SORORITAS unit from your army is destroyed.
+Each time you gain a Miracle dice, roll one D6. The number you roll is the value of that Miracle dice. This value cannot be changed or re-rolled, unless a rule specifically states  otherwise. Keep your Miracle dice to one side – this is your Miracle dice pool.
 
-You can use Miracle dice on the following rolls: Advance, Battle-shock test, Charge, Damage, Hit, Saving throw, Wound roll.
 
-The VERY FIRST card in our Index is dedicated to Acts of Faith and how to use Miracle dice. I&apos;m not typing that in, and you should have it memorized already.</description>
+PERFORMING AN ACT OF FAITH
+Before making a dice roll for a model or unit from your army with the Acts of Faith ability, if you have one or more dice in your Miracle dice pool, that unit can perform an Act of Faith. If it does, select one of the dice from your Miracle dice pool to substitute that dice roll (if a roll involves more than one dice, e.g. a Charge roll or Battle-shock test, only a single dice can
+be substituted). The dice that is being substituted is not rolled; instead the value of the selected Miracle dice is used as if it had been rolled (this counts as an unmodified dice roll of that value for all rules purposes). Each Miracle dice can only be selected for substitution once. Once all Miracle dice substitutions have been made, remove the chosen Miracle dice from your Miracle dice pool, and roll all remaining, unsubstituted dice that are a part of the dice roll. You can use Miracle dice when a unit performs an Act of Faith for any of the following types of dice roll:
+■ Advance roll
+■ Battle-shock test
+■ Charge roll
+■ Damage roll
+■ Hit roll
+■ Saving throw
+■ Wound roll
+</description>
     </rule>
     <rule name="The Blood of Martyrs" hidden="false" id="afa4-169c-3aaa-650">
-      <description>Each time an Adepta Sororitas model from your army makes an attack, add 1 to the Hit roll if that model’s unit is below its Starting Strength, and add 1 to the Wound roll, as well, if that model’s unit is Below Half-strength. For the purposes of this ability, if a unit has a Starting Strength of 1, it is considered to be below its Starting Strength while it has lost one or more wounds.</description>
+      <description>Each time an ADEPTA SORORITAS model from your army makes an attack, add 1 to the Hit roll if that model’s unit is below its Starting Strength, and add 1 to the Wound roll, as well, if that model’s unit is Below Half-strength. For the purposes of this ability, if a unit has a Starting Strength of 1, it is considered to be below its Starting Strength while it has lost one or more wounds.</description>
     </rule>
   </sharedRules>
   <sharedSelectionEntryGroups>
@@ -6038,6 +6056,7 @@ The VERY FIRST card in our Index is dedicated to Acts of Faith and how to use Mi
     <entryLink import="true" name="Triumph of Saint Katherine" hidden="false" type="selectionEntry" id="59f4-f4db-60d4-dfec" targetId="9f5f-d769-7900-c8a1"/>
     <entryLink import="true" name="Zephyrim Squad" hidden="false" type="selectionEntry" id="f2b9-cd8a-1e39-4cad" targetId="22f0-a7d8-b2b6-e26"/>
     <entryLink import="true" name="Daemonifuge" hidden="false" type="selectionEntry" id="ee6b-e1a3-5bb0-61c7" targetId="8569-2390-d4db-30fd"/>
+    <entryLink import="true" name="Detachment Choice" hidden="false" type="selectionEntry" id="ebb6-6e42-e707-22c1" targetId="9cc-e2b2-81eb-df6"/>
   </entryLinks>
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights" id="f82d-fbeb-8ed2-4284" targetId="1b6d-dc06-5db9-c7d1" importRootEntries="true"/>
