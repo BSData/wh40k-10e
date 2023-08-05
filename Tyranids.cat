@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="b984-7317-81cc-20f" name="Xenos - Tyranids" revision="7" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="FitalShell" authorContact="fitalshell">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="b984-7317-81cc-20f" name="Xenos - Tyranids" revision="9" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="FitalShell" authorContact="fitalshell">
   <categoryEntries>
     <categoryEntry name="Synapse" hidden="false" id="4129-a453-686a-d38a"/>
     <categoryEntry id="4f10-fe01-4b80-8d6b" name="Winged Hive Tyrant" hidden="false"/>
@@ -113,9 +113,6 @@
     <rule id="86aa-437f-260b-5cad" name="Synapse" hidden="false">
       <description>If your Army Faction is TYRANIDS, while a TYRANIDS unit from your army is within 6&quot; of one or more SYNAPSE models from your army, that unit is said to be within Synapse Range of your army. Each time a TYRANIDS unit from your army takes a Battle-shock test, if it is within Synapse Range of your army, take that test on 3D6 instead of 2D6.</description>
     </rule>
-    <rule id="5e57-2478-724a-bd40" name="Shadow in the Warp" hidden="false">
-      <description>If your Army Faction is TYRANIDS, once per battle, in either player’s Command phase, if one or more units from your army with this ability are on the battlefield, you can unleash the Shadow in the Warp. When you do, each enemy unit on the battlefield must take a Battle-shock test.</description>
-    </rule>
   </rules>
   <sharedSelectionEntries>
     <selectionEntry id="fa68-fcb9-38c-cd0f" name="Winged Hive Tyrant" hidden="false" collective="false" import="true" type="model">
@@ -147,6 +144,7 @@
         </infoLink>
         <infoLink id="b12e-7b6d-4af8-4757" name="Deep Strike" hidden="false" targetId="7cb5-dd6b-dd87-ad3b" type="rule"/>
         <infoLink id="f648-e374-1db3-509c" name="Invulnerable Save 4+" hidden="false" targetId="a2fa-ebfd-7b32-9a75" type="profile"/>
+        <infoLink name="Shadow in the Warp" hidden="false" type="rule" id="d052-102a-fd71-ef99" targetId="395b-a159-b293-27aa"/>
       </infoLinks>
       <categoryLinks>
         <categoryLink id="843-f94e-913a-e630" name="Monster" hidden="false" targetId="9693-cf84-fe69-37a9" primary="false"/>
@@ -179,7 +177,18 @@
           </profiles>
           <entryLinks>
             <entryLink id="2019-583b-ca88-546c" name="Monstrous Scything Talons" hidden="false" collective="false" import="true" targetId="d0cf-a582-5166-fbba" type="selectionEntry"/>
-            <entryLink id="79d7-2c8d-a55e-af25" name="Stranglethorn Cannon" hidden="false" collective="false" import="true" targetId="b9ec-cb81-44f6-49" type="selectionEntry"/>
+            <entryLink id="79d7-2c8d-a55e-af25" name="Stranglethorn Cannon" hidden="false" collective="false" import="true" targetId="b9ec-cb81-44f6-49" type="selectionEntry">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1ca6-3b0a-4f4-dcc5" includeChildSelections="true"/>
+              </constraints>
+              <modifiers>
+                <modifier type="set" value="0" field="1ca6-3b0a-4f4-dcc5">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="parent" childId="1504-4096-b992-65c3" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </entryLink>
             <entryLink id="46a7-e00d-e612-2a6d" name="Heavy Venom Cannon" hidden="false" collective="false" import="true" targetId="1504-4096-b992-65c3" type="selectionEntry"/>
             <entryLink id="777b-826-ebd3-6a1a" name="Monstrous Bonesword and Lash Whip" hidden="false" collective="false" import="true" targetId="effb-d65d-a1b1-51d6" type="selectionEntry"/>
           </entryLinks>
@@ -237,6 +246,12 @@
       </constraints>
       <infoLinks>
         <infoLink id="f729-3654-edaa-c166" name="Invulnerable Save 4+" hidden="false" targetId="a2fa-ebfd-7b32-9a75" type="profile"/>
+        <infoLink id="c1b-3112-2cfe-dac" name="Deadly Demise" hidden="false" targetId="b68a-5ded-65ac-98c" type="rule">
+          <modifiers>
+            <modifier type="append" field="name" value="D3"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Shadow in the Warp" hidden="false" type="rule" id="fda-4228-90fc-4631" targetId="395b-a159-b293-27aa"/>
       </infoLinks>
       <categoryLinks>
         <categoryLink id="121b-5c62-2542-1433" name="Monster" hidden="false" targetId="9693-cf84-fe69-37a9" primary="false"/>
@@ -277,11 +292,7 @@
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="false" includeChildSelections="false" includeChildForces="false" id="8011-7f8f-e852-5ded" type="max"/>
                   </constraints>
                 </entryLink>
-                <entryLink id="bb4e-c104-1a32-ad5d" name="Stranglethorn Cannon" hidden="false" collective="false" import="true" targetId="b9ec-cb81-44f6-49" type="selectionEntry">
-                  <constraints>
-                    <constraint field="selections" scope="3e96-8098-3401-77af" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="8b2f-e77b-ce26-5403" type="max"/>
-                  </constraints>
-                </entryLink>
+                <entryLink id="bb4e-c104-1a32-ad5d" name="Stranglethorn Cannon" hidden="false" collective="false" import="true" targetId="b9ec-cb81-44f6-49" type="selectionEntry"/>
                 <entryLink id="c352-60ee-2742-dba2" name="Heavy Venom Cannon" hidden="false" collective="false" import="true" targetId="1504-4096-b992-65c3" type="selectionEntry">
                   <constraints>
                     <constraint field="selections" scope="3e96-8098-3401-77af" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="8b2f-e77b-ce26-5403" type="max"/>
@@ -326,6 +337,11 @@
             <characteristic name="OC" typeId="bef7-942a-1a23-59f8">3</characteristic>
           </characteristics>
         </profile>
+        <profile name="Onslaught (Aura, Psychic)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d038-2f3d-1c4a-a15">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly TYRANIDS unit is within 6&quot; of this model, ranged weapons equipped by models in that unit have the [ASSAULT] ability.</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
     </selectionEntry>
     <selectionEntry id="effb-d65d-a1b1-51d6" name="Monstrous Bonesword and Lash Whip" hidden="false" collective="false" import="true" type="upgrade">
@@ -354,7 +370,7 @@
     </selectionEntry>
     <selectionEntry id="1504-4096-b992-65c3" name="Heavy Venom Cannon" hidden="false" collective="false" import="true" type="upgrade">
       <constraints>
-        <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="4fd2-2615-c652-6829" type="max"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2757-6b0f-d7eb-bb6a"/>
       </constraints>
       <profiles>
         <profile id="953d-482e-624b-2465" name="Heavy Venom Cannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
@@ -375,10 +391,17 @@
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="0" field="2757-6b0f-d7eb-bb6a">
+          <conditions>
+            <condition type="greaterThan" value="0" field="selections" scope="parent" childId="b9ec-cb81-44f6-49" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry id="b9ec-cb81-44f6-49" name="Stranglethorn Cannon" hidden="false" collective="false" import="true" type="upgrade">
       <constraints>
-        <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="f4cd-ba2e-8631-d3a7" type="max"/>
+        <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="3c31-e2f4-bcd4-e9e5" type="max"/>
       </constraints>
       <profiles>
         <profile id="3803-1fe1-edde-12e1" name="Stranglethorn Cannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
@@ -399,6 +422,13 @@
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="0" field="3c31-e2f4-bcd4-e9e5">
+          <conditions>
+            <condition type="greaterThan" value="0" field="selections" scope="parent" childId="1504-4096-b992-65c3" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry id="d0cf-a582-5166-fbba" name="Monstrous Scything Talons" hidden="false" collective="false" import="true" type="upgrade">
       <profiles>
@@ -471,6 +501,7 @@
             <modifier type="append" field="name" value="D6"/>
           </modifiers>
         </infoLink>
+        <infoLink name="Shadow in the Warp" hidden="false" type="rule" id="7300-fb6b-da38-8f07" targetId="395b-a159-b293-27aa"/>
       </infoLinks>
       <categoryLinks>
         <categoryLink id="8b67-4a16-3736-df3" name="Character" hidden="false" targetId="9cfd-1c32-585f-7d5c" primary="true"/>
@@ -591,6 +622,7 @@
           </modifiers>
         </infoLink>
         <infoLink id="03e9-1e26-bc4b-42a5" name="Invulnerable Save 4+" hidden="false" targetId="a2fa-ebfd-7b32-9a75" type="profile"/>
+        <infoLink name="Shadow in the Warp" hidden="false" type="rule" id="da26-aec0-ce49-9117" targetId="395b-a159-b293-27aa"/>
       </infoLinks>
       <categoryLinks>
         <categoryLink id="f4dd-e30f-8467-8223" name="Epic Hero" hidden="false" targetId="4f3a-f0f7-6647-348d" primary="true"/>
@@ -790,6 +822,7 @@
       <infoLinks>
         <infoLink id="8a73-df5e-3dbe-473e" name="Deep Strike" hidden="false" targetId="7cb5-dd6b-dd87-ad3b" type="rule"/>
         <infoLink name="Synapse" hidden="false" type="rule" id="928c-8494-2e2e-5495" targetId="86aa-437f-260b-5cad"/>
+        <infoLink name="Shadow in the Warp" hidden="false" type="rule" id="563c-dd94-fae4-b249" targetId="395b-a159-b293-27aa"/>
       </infoLinks>
       <categoryLinks>
         <categoryLink id="8c3d-baaf-703c-b6d3" name="Winged Tyranid Prime" hidden="false" targetId="d5b9-2986-70fe-f755" primary="false"/>
@@ -939,6 +972,13 @@
           </infoLinks>
         </infoGroup>
       </infoGroups>
+      <infoLinks>
+        <infoLink name="Feel No Pain" hidden="false" type="rule" id="43fc-bc3a-2963-cebd" targetId="9bf4-280f-bbe2-6fbb">
+          <modifiers>
+            <modifier type="append" value="5+" field="name"/>
+          </modifiers>
+        </infoLink>
+      </infoLinks>
     </selectionEntry>
     <selectionEntry id="a125-b6fb-2945-56a" name="Tyranid Warriors with Ranged Bio-Weapons" hidden="false" collective="false" import="true" type="unit">
       <profiles>
@@ -1172,6 +1212,9 @@
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="40be-d448-295c-f3f3" includeChildSelections="true" includeChildForces="true"/>
       </constraints>
+      <infoLinks>
+        <infoLink name="Shadow in the Warp" hidden="false" type="rule" id="6543-53fc-4f58-7f2e" targetId="395b-a159-b293-27aa"/>
+      </infoLinks>
     </selectionEntry>
     <selectionEntry id="5815-871c-9260-287a" name="Tyranid Warriors with Melee Bio-Weapons" hidden="false" collective="false" import="true" type="unit">
       <profiles>
@@ -1299,6 +1342,9 @@
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="40be-d448-295c-f3f3" includeChildSelections="true" includeChildForces="true"/>
       </constraints>
+      <infoLinks>
+        <infoLink name="Shadow in the Warp" hidden="false" type="rule" id="7b3e-d941-8ec7-cf66" targetId="395b-a159-b293-27aa"/>
+      </infoLinks>
     </selectionEntry>
     <selectionEntry id="359c-db2c-681a-8d62" name="Termagants" hidden="false" collective="false" import="true" type="unit">
       <constraints>
@@ -1839,6 +1885,7 @@
       </profiles>
       <infoLinks>
         <infoLink id="f6c8-e11d-0fee-1359" name="Invulnerable Save 4+" hidden="false" targetId="a2fa-ebfd-7b32-9a75" type="profile"/>
+        <infoLink name="Shadow in the Warp" hidden="false" type="rule" id="9fc3-bae9-df73-3fbd" targetId="395b-a159-b293-27aa"/>
       </infoLinks>
       <categoryLinks>
         <categoryLink id="e7b8-74e9-3268-e5fa" name="New CategoryLink" hidden="false" targetId="9cfd-1c32-585f-7d5c" primary="true"/>
@@ -2054,6 +2101,7 @@
           </modifiers>
         </infoLink>
         <infoLink name="Invulnerable Save 4+" hidden="false" type="profile" id="b661-5cbe-6ad-1757" targetId="a2fa-ebfd-7b32-9a75"/>
+        <infoLink name="Shadow in the Warp" hidden="false" type="rule" id="c57d-d17b-6b28-c84d" targetId="395b-a159-b293-27aa"/>
       </infoLinks>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Psychic Overload" hidden="false" id="8124-9c22-8028-433c">
@@ -2459,6 +2507,11 @@
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You can target this unit with the Heroic Intervention Stratagem for 0CP, and can do so even if you have already used that Stratagem on a different unit this phase.</characteristic>
           </characteristics>
         </profile>
+        <profile name="Invulnerable Save" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2c81-2b4b-afd8-3a8b">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This Unit has a 6+ Invulnerable Save</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
       <categoryLinks>
         <categoryLink targetId="cf47-a0d7-7207-29dc" id="d613-54fd-ce49-6a92" primary="true" name="Infantry"/>
@@ -2754,6 +2807,7 @@
       </profiles>
       <infoLinks>
         <infoLink name="Invulnerable Save 4+" hidden="false" type="profile" id="527f-db5f-51f5-8de4" targetId="a2fa-ebfd-7b32-9a75"/>
+        <infoLink name="Shadow in the Warp" hidden="false" type="rule" id="85f9-750a-d39a-e74d" targetId="395b-a159-b293-27aa"/>
       </infoLinks>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Ripper Swarm" hidden="false" id="1de2-b57b-aa0a-1f0d">
@@ -4943,6 +4997,11 @@
             <characteristic name="Capacity" typeId="30f2-be70-861d-1b84">This model has a transport capacity of 20 TYRANIDS INFANTRY models. Each model with a Wounds characteristic of more than 1 takes up the space of 3 models. This model cannot transport models that can FLY.</characteristic>
           </characteristics>
         </profile>
+        <profile name="Invulnerable Save" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="579e-5e5f-31cf-5923">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This Model has a 5+ Invulnerable Save</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Dire bio-cannon" hidden="false" id="344c-f9e4-3661-6315">
@@ -5731,4 +5790,9 @@ HIVE PREDATORS Each time a Tyranids model with this Hyper-adaptation makes an at
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Unaligned Forces" id="e1d1-13ae-8bc4-4330" targetId="581a-46b9-5b86-44b7" importRootEntries="true"/>
   </catalogueLinks>
+  <sharedRules>
+    <rule id="395b-a159-b293-27aa" name="Shadow in the Warp" hidden="false">
+      <description>If your Army Faction is TYRANIDS, once per battle, in either player’s Command phase, if one or more units from your army with this ability are on the battlefield, you can unleash the Shadow in the Warp. When you do, each enemy unit on the battlefield must take a Battle-shock test.</description>
+    </rule>
+  </sharedRules>
 </catalogue>
