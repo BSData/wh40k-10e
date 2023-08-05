@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="b984-7317-81cc-20f" name="Xenos - Tyranids" revision="7" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="FitalShell" authorContact="fitalshell">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="b984-7317-81cc-20f" name="Xenos - Tyranids" revision="8" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="FitalShell" authorContact="fitalshell">
   <categoryEntries>
     <categoryEntry name="Synapse" hidden="false" id="4129-a453-686a-d38a"/>
     <categoryEntry id="4f10-fe01-4b80-8d6b" name="Winged Hive Tyrant" hidden="false"/>
@@ -179,7 +179,18 @@
           </profiles>
           <entryLinks>
             <entryLink id="2019-583b-ca88-546c" name="Monstrous Scything Talons" hidden="false" collective="false" import="true" targetId="d0cf-a582-5166-fbba" type="selectionEntry"/>
-            <entryLink id="79d7-2c8d-a55e-af25" name="Stranglethorn Cannon" hidden="false" collective="false" import="true" targetId="b9ec-cb81-44f6-49" type="selectionEntry"/>
+            <entryLink id="79d7-2c8d-a55e-af25" name="Stranglethorn Cannon" hidden="false" collective="false" import="true" targetId="b9ec-cb81-44f6-49" type="selectionEntry">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1ca6-3b0a-4f4-dcc5" includeChildSelections="true"/>
+              </constraints>
+              <modifiers>
+                <modifier type="set" value="0" field="1ca6-3b0a-4f4-dcc5">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="parent" childId="1504-4096-b992-65c3" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </entryLink>
             <entryLink id="46a7-e00d-e612-2a6d" name="Heavy Venom Cannon" hidden="false" collective="false" import="true" targetId="1504-4096-b992-65c3" type="selectionEntry"/>
             <entryLink id="777b-826-ebd3-6a1a" name="Monstrous Bonesword and Lash Whip" hidden="false" collective="false" import="true" targetId="effb-d65d-a1b1-51d6" type="selectionEntry"/>
           </entryLinks>
@@ -237,6 +248,11 @@
       </constraints>
       <infoLinks>
         <infoLink id="f729-3654-edaa-c166" name="Invulnerable Save 4+" hidden="false" targetId="a2fa-ebfd-7b32-9a75" type="profile"/>
+        <infoLink id="c1b-3112-2cfe-dac" name="Deadly Demise" hidden="false" targetId="b68a-5ded-65ac-98c" type="rule">
+          <modifiers>
+            <modifier type="append" field="name" value="D3"/>
+          </modifiers>
+        </infoLink>
       </infoLinks>
       <categoryLinks>
         <categoryLink id="121b-5c62-2542-1433" name="Monster" hidden="false" targetId="9693-cf84-fe69-37a9" primary="false"/>
@@ -277,11 +293,7 @@
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="false" includeChildSelections="false" includeChildForces="false" id="8011-7f8f-e852-5ded" type="max"/>
                   </constraints>
                 </entryLink>
-                <entryLink id="bb4e-c104-1a32-ad5d" name="Stranglethorn Cannon" hidden="false" collective="false" import="true" targetId="b9ec-cb81-44f6-49" type="selectionEntry">
-                  <constraints>
-                    <constraint field="selections" scope="3e96-8098-3401-77af" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="8b2f-e77b-ce26-5403" type="max"/>
-                  </constraints>
-                </entryLink>
+                <entryLink id="bb4e-c104-1a32-ad5d" name="Stranglethorn Cannon" hidden="false" collective="false" import="true" targetId="b9ec-cb81-44f6-49" type="selectionEntry"/>
                 <entryLink id="c352-60ee-2742-dba2" name="Heavy Venom Cannon" hidden="false" collective="false" import="true" targetId="1504-4096-b992-65c3" type="selectionEntry">
                   <constraints>
                     <constraint field="selections" scope="3e96-8098-3401-77af" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="8b2f-e77b-ce26-5403" type="max"/>
@@ -326,6 +338,11 @@
             <characteristic name="OC" typeId="bef7-942a-1a23-59f8">3</characteristic>
           </characteristics>
         </profile>
+        <profile name="Onslaught (Aura, Psychic)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d038-2f3d-1c4a-a15">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly TYRANIDS unit is within 6&quot; of this model, ranged weapons equipped by models in that unit have the [ASSAULT] ability.</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
     </selectionEntry>
     <selectionEntry id="effb-d65d-a1b1-51d6" name="Monstrous Bonesword and Lash Whip" hidden="false" collective="false" import="true" type="upgrade">
@@ -354,7 +371,7 @@
     </selectionEntry>
     <selectionEntry id="1504-4096-b992-65c3" name="Heavy Venom Cannon" hidden="false" collective="false" import="true" type="upgrade">
       <constraints>
-        <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="4fd2-2615-c652-6829" type="max"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2757-6b0f-d7eb-bb6a"/>
       </constraints>
       <profiles>
         <profile id="953d-482e-624b-2465" name="Heavy Venom Cannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
@@ -375,10 +392,17 @@
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="0" field="2757-6b0f-d7eb-bb6a">
+          <conditions>
+            <condition type="greaterThan" value="0" field="selections" scope="parent" childId="b9ec-cb81-44f6-49" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry id="b9ec-cb81-44f6-49" name="Stranglethorn Cannon" hidden="false" collective="false" import="true" type="upgrade">
       <constraints>
-        <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="f4cd-ba2e-8631-d3a7" type="max"/>
+        <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="3c31-e2f4-bcd4-e9e5" type="max"/>
       </constraints>
       <profiles>
         <profile id="3803-1fe1-edde-12e1" name="Stranglethorn Cannon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
@@ -399,6 +423,13 @@
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="0" field="3c31-e2f4-bcd4-e9e5">
+          <conditions>
+            <condition type="greaterThan" value="0" field="selections" scope="parent" childId="1504-4096-b992-65c3" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry id="d0cf-a582-5166-fbba" name="Monstrous Scything Talons" hidden="false" collective="false" import="true" type="upgrade">
       <profiles>
@@ -4941,6 +4972,11 @@
         <profile name="Hierophant" typeId="74f8-5443-9d6d-1f1e" typeName="Transport" hidden="false" id="eff-a90a-8077-bb0d">
           <characteristics>
             <characteristic name="Capacity" typeId="30f2-be70-861d-1b84">This model has a transport capacity of 20 TYRANIDS INFANTRY models. Each model with a Wounds characteristic of more than 1 takes up the space of 3 models. This model cannot transport models that can FLY.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Invulnerable Save" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="579e-5e5f-31cf-5923">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This Model has a 5+ Invulnerable Save</characteristic>
           </characteristics>
         </profile>
       </profiles>
