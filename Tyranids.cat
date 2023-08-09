@@ -1502,13 +1502,6 @@
           <characteristics>
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This unit is eligible to declare a charge in a turn in which it Advanced.</characteristic>
           </characteristics>
-          <modifiers>
-            <modifier type="set" value="140" field="name">
-              <conditions>
-                <condition type="greaterThan" value="10" field="selections" scope="f15b-9f9c-9bf0-8160" childId="model" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
-          </modifiers>
         </profile>
       </profiles>
       <categoryLinks>
@@ -1552,6 +1545,10 @@
                   </characteristics>
                 </profile>
               </profiles>
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2943-853e-14d8-b2a6"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cc7e-c130-57e2-7b24"/>
+              </constraints>
             </selectionEntry>
           </selectionEntries>
         </selectionEntry>
@@ -2195,12 +2192,12 @@
           <profiles>
             <profile name="Pyrovores" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="ad98-8da-6e74-c4d2">
               <characteristics>
-                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1"/>
-                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4"/>
-                <characteristic name="SV" typeId="450-a17e-9d5e-29da"/>
-                <characteristic name="W" typeId="750a-a2ec-90d3-21fe"/>
-                <characteristic name="LD" typeId="58d2-b879-49c7-43bc"/>
-                <characteristic name="OC" typeId="bef7-942a-1a23-59f8"/>
+                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
+                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
+                <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                <characteristic name="W" typeId="750a-a2ec-90d3-21fe">4</characteristic>
+                <characteristic name="LD" typeId="58d2-b879-49c7-43bc">8+</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -2849,14 +2846,15 @@
           <selectionEntries>
             <selectionEntry type="upgrade" import="true" name="Xenos Claws and Teeth" hidden="false" id="f5e3-ad89-8888-4bd4" collective="true">
               <profiles>
-                <profile name="Xenos Claws and Teeth" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="82ab-174c-7668-94">
+                <profile name="Xenos Claws and Teeth" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="82ab-174c-7668-94">
                   <characteristics>
-                    <characteristic name="M" typeId="e703-ecb6-5ce7-aec1"/>
-                    <characteristic name="T" typeId="d29d-cf75-fc2d-34a4"/>
-                    <characteristic name="SV" typeId="450-a17e-9d5e-29da"/>
-                    <characteristic name="W" typeId="750a-a2ec-90d3-21fe"/>
-                    <characteristic name="LD" typeId="58d2-b879-49c7-43bc"/>
-                    <characteristic name="OC" typeId="bef7-942a-1a23-59f8"/>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">5+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">2</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Sustained Hits 1</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -2864,6 +2862,13 @@
                 <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e072-9b3a-24e5-7fa0" includeChildSelections="true"/>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6395-bebf-710b-1a5e" includeChildSelections="true"/>
               </constraints>
+              <infoLinks>
+                <infoLink name="Sustained Hits" hidden="false" type="rule" id="de0a-505d-c465-5ab4" targetId="1897-c22c-9597-12b1">
+                  <modifiers>
+                    <modifier type="append" value="1" field="name"/>
+                  </modifiers>
+                </infoLink>
+              </infoLinks>
             </selectionEntry>
           </selectionEntries>
           <selectionEntryGroups>
