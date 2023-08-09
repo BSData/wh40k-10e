@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="3bdf-a114-5035-c6ac" name="Xenos - Genestealer Cults" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="7" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="3bdf-a114-5035-c6ac" name="Xenos - Genestealer Cults" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="9" battleScribeVersion="2.03" type="catalogue">
   <rules>
     <rule name="Brood Brothers" hidden="false" id="d1a5-97a5-30da-7fd">
       <description>If your Army Faction is GENESTEALER CULTS, you can include ASTRA MILITARUM units in your army, even though they do not have the GENESTEALER CULTS Faction keyword. The combined points cost of ASTRA MILITARUM units you can include in your army depends on your battle size, as follows:
@@ -19,7 +19,12 @@ No ASTRA MILITARUM models in your army can be your Warlord, and they cannot be g
         <categoryLink targetId="4ac9-fd30-1e3d-b249" id="7685-6aec-9739-88c7" primary="true" name="Configuration"/>
       </categoryLinks>
       <entryLinks>
-        <entryLink import="true" name="Detachment" hidden="false" type="selectionEntryGroup" id="6c8a-a2ef-13ea-516b" targetId="7170-c243-d89f-6644"/>
+        <entryLink import="true" name="Detachment" hidden="false" type="selectionEntryGroup" id="6c8a-a2ef-13ea-516b" targetId="7170-c243-d89f-6644">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="1cfe-4506-7c64-b62b"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1951-f4c-826-26ab" includeChildSelections="true"/>
+          </constraints>
+        </entryLink>
       </entryLinks>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Aberrants" hidden="false" id="f51d-bc51-f301-9dee">
@@ -581,29 +586,13 @@ No ASTRA MILITARUM models in your army can be your Warlord, and they cannot be g
                         <infoLink name="Assault" hidden="false" type="rule" id="d270-7ee4-2ce3-4e5c" targetId="fc8a-8c24-bae9-cc1c"/>
                       </infoLinks>
                     </selectionEntry>
-                    <selectionEntry type="upgrade" import="true" name="Cult Claws and Knife" hidden="false" id="661-4ada-993b-de26" collective="true">
-                      <profiles>
-                        <profile name="Cult Claws and Knife" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="a38c-b699-dbc6-b9cf">
-                          <characteristics>
-                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
-                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
-                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
-                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
-                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
-                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <constraints>
-                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a7ea-f6fc-7911-cb6a"/>
-                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8c35-2e86-6fec-baf7"/>
-                      </constraints>
-                    </selectionEntry>
                   </selectionEntries>
                   <infoLinks>
                     <infoLink targetId="346a-8364-5e27-ffbd" id="7531-e453-1374-e88d" type="profile" name="Acolyte Hybrid" hidden="false"/>
                   </infoLinks>
+                  <entryLinks>
+                    <entryLink targetId="661-4ada-993b-de26" id="716a-949a-a22-5335" type="selectionEntry" name="Cult Claws and Knife" hidden="false" collective="true"/>
+                  </entryLinks>
                 </selectionEntry>
                 <selectionEntry type="model" import="true" name="Acolyte Hybrid w/ Heavy Mining Tool" hidden="false" id="e687-9c09-cb0b-f511">
                   <selectionEntries>
@@ -647,7 +636,13 @@ No ASTRA MILITARUM models in your army can be your Warlord, and they cannot be g
           <selectionEntries>
             <selectionEntry type="model" import="true" name="Acolyte Hybrid w/ Auto Pistol" hidden="false" id="839-19b5-4fde-4a30">
               <entryLinks>
-                <entryLink import="true" name="Autopistol" hidden="false" type="selectionEntry" id="fa96-b6c4-ceeb-93b9" targetId="c213-e6c4-7183-4041"/>
+                <entryLink import="true" name="Autopistol" hidden="false" type="selectionEntry" id="fa96-b6c4-ceeb-93b9" targetId="c213-e6c4-7183-4041">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2b2-25f5-9f5f-ad3f"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7fe0-6d3f-a74-f1f2"/>
+                  </constraints>
+                </entryLink>
+                <entryLink targetId="661-4ada-993b-de26" id="1ae9-c5e6-b8-588a" type="selectionEntry" name="Cult Claws and Knife" hidden="false" collective="true"/>
               </entryLinks>
               <infoLinks>
                 <infoLink targetId="346a-8364-5e27-ffbd" id="f597-db5d-523a-63ff" type="profile" name="Acolyte Hybrid" hidden="false"/>
@@ -656,6 +651,7 @@ No ASTRA MILITARUM models in your army can be your Warlord, and they cannot be g
             <selectionEntry type="model" import="true" name="Acolyte Hybrid w/ Hand Flamer" hidden="false" id="dc3b-5f0a-b29a-4932">
               <entryLinks>
                 <entryLink import="true" name="Hand Flamer" hidden="false" type="selectionEntry" id="6247-5653-5d2b-fee2" targetId="2847-d130-817-7064"/>
+                <entryLink targetId="661-4ada-993b-de26" id="3186-21f4-3e77-de03" type="selectionEntry" name="Cult Claws and Knife" hidden="false" collective="true"/>
               </entryLinks>
               <infoLinks>
                 <infoLink targetId="346a-8364-5e27-ffbd" id="514d-a83b-976f-3a4b" type="profile" name="Acolyte Hybrid" hidden="false"/>
@@ -667,6 +663,7 @@ No ASTRA MILITARUM models in your army can be your Warlord, and they cannot be g
               </constraints>
               <entryLinks>
                 <entryLink targetId="3338-b9a2-7d75-33e6" id="6c64-bd22-77af-7d44" type="selectionEntry" name="Cult Icon" hidden="false" collective="true"/>
+                <entryLink targetId="661-4ada-993b-de26" id="6946-f3b1-498a-a120" type="selectionEntry" name="Cult Claws and Knife" hidden="false" collective="true"/>
               </entryLinks>
               <infoLinks>
                 <infoLink targetId="346a-8364-5e27-ffbd" id="f478-5eeb-a453-ffbb" type="profile" name="Acolyte Hybrid" hidden="false"/>
@@ -2197,7 +2194,7 @@ You can attach this model to a GENESTEALER CULTS BATTLELINE unit, even if a PRIM
                       <profiles>
                         <profile name="Seismic Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="8e40-1ced-3c41-9851">
                           <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">34&quot;</characteristic>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
                             <characteristic name="A" typeId="3bb-c35f-f54-fb08">4</characteristic>
                             <characteristic name="BS" typeId="94d-8a98-cf90-183e">5+</characteristic>
                             <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
@@ -3362,6 +3359,25 @@ You can attach this model to a GENESTEALER CULTS BATTLELINE unit, even if a PRIM
         <cost name="pts" typeId="51b2-306e-1021-d207" value="125"/>
       </costs>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Cult Claws and Knife" hidden="false" id="661-4ada-993b-de26" collective="true">
+      <profiles>
+        <profile name="Cult Claws and Knife" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="a38c-b699-dbc6-b9cf">
+          <characteristics>
+            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+            <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a7ea-f6fc-7911-cb6a"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8c35-2e86-6fec-baf7"/>
+      </constraints>
+    </selectionEntry>
   </sharedSelectionEntries>
   <entryLinks>
     <entryLink import="true" name="Aberrants" hidden="false" type="selectionEntry" id="7a4f-4a45-c8ff-71fe" targetId="f51d-bc51-f301-9dee"/>
@@ -3548,6 +3564,9 @@ You can attach this model to a GENESTEALER CULTS BATTLELINE unit, even if a PRIM
               </conditions>
             </modifier>
           </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3d5e-d547-3b73-8b9c"/>
+          </constraints>
         </selectionEntryGroup>
       </selectionEntryGroups>
     </selectionEntryGroup>
@@ -3563,9 +3582,6 @@ You can attach this model to a GENESTEALER CULTS BATTLELINE unit, even if a PRIM
           </profiles>
         </selectionEntry>
       </selectionEntries>
-      <constraints>
-        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9a63-dffb-73aa-5dea" includeChildSelections="true"/>
-      </constraints>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <categoryEntries>
