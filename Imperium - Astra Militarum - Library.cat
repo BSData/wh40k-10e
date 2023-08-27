@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="14" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="15" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Aegis Defence Line" hidden="false" id="cb99-456-f100-40ed">
       <categoryLinks>
@@ -2878,196 +2878,265 @@
           <selectionEntries>
             <selectionEntry type="upgrade" import="true" name="1 Sergeant and 9 Guardsmen" hidden="false" id="3167-a16a-6a56-858f">
               <entryLinks>
-                <entryLink import="true" name="Guardsmen Selection" hidden="false" type="selectionEntryGroup" id="4f54-2254-785b-783e" targetId="a6d1-ad7-9f1f-88a6">
-                  <constraints>
-                    <constraint type="min" value="9" field="selections" scope="parent" shared="true" id="e158-12aa-85bb-1769" includeChildSelections="true" includeChildForces="true"/>
-                    <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="be5f-c5f-b20d-f7d8" includeChildSelections="true" includeChildForces="true"/>
-                  </constraints>
-                  <entryLinks>
-                    <entryLink targetId="9e42-70ac-702c-819d" id="4008-15d0-a489-a52b" type="selectionEntryGroup" name="Guardsman w/ Special Weapon" hidden="false">
-                      <constraints>
-                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="867-ab44-a7fe-573d" includeChildSelections="true" includeChildForces="true"/>
-                      </constraints>
-                    </entryLink>
-                    <entryLink targetId="47cc-2173-cdbd-c86c" id="eb2-b51f-e1a-20d" type="selectionEntry" name="Guardsmen w/ Vox Caster" hidden="false">
-                      <constraints>
-                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6dfe-4b2f-e2c1-2d00"/>
-                      </constraints>
-                    </entryLink>
-                  </entryLinks>
-                </entryLink>
                 <entryLink targetId="df22-5dc1-57dc-e347" id="464-76d4-319-a7df" type="selectionEntry" name="Sergeant" hidden="false">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="201f-a4eb-5f57-2702"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e1b5-deb4-9984-48a3"/>
                   </constraints>
                 </entryLink>
+                <entryLink import="true" name="Guardsman" hidden="false" type="selectionEntry" id="19ae-24e8-6b8e-b6df" targetId="6401-bf57-ca2b-995b">
+                  <constraints>
+                    <constraint type="min" value="9" field="selections" scope="parent" shared="true" id="4f19-3e4-4928-57c0"/>
+                    <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="d3e2-d033-4660-7f61"/>
+                  </constraints>
+                  <modifiers>
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="d3e2-d033-4660-7f61">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
+                      <repeats>
+                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="c1ca-89f3-1a2d-a8fa"/>
+                      </repeats>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="d3e2-d033-4660-7f61">
+                      <repeats>
+                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="2202-9356-96eb-dda6"/>
+                      </repeats>
+                    </modifier>
+                  </modifiers>
+                </entryLink>
+                <entryLink import="true" name="Guardsman w/ Vox Caster" hidden="false" type="selectionEntry" id="a4dc-c4ff-f330-cda1" targetId="47cc-2173-cdbd-c86c">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6cce-fa7d-9b02-de1b" includeChildSelections="true"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Guardsman w/ Special Weapon" hidden="false" type="selectionEntryGroup" id="4598-1f86-d98f-e3eb" targetId="9e42-70ac-702c-819d"/>
               </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="1 Sergeant, 7 Guardsmen and 1 Heavy Weapons Team" hidden="false" id="3d0-a1eb-3f4-ca7a">
               <entryLinks>
-                <entryLink import="true" name="Guardsmen Selection" hidden="false" type="selectionEntryGroup" id="fbb2-f454-2f1d-3057" targetId="a6d1-ad7-9f1f-88a6">
-                  <constraints>
-                    <constraint type="min" value="7" field="selections" scope="parent" shared="true" id="e158-12aa-85bb-1769" includeChildSelections="true" includeChildForces="true"/>
-                    <constraint type="max" value="7" field="selections" scope="parent" shared="true" id="be5f-c5f-b20d-f7d8" includeChildSelections="true" includeChildForces="true"/>
-                  </constraints>
-                  <entryLinks>
-                    <entryLink targetId="9e42-70ac-702c-819d" id="ffef-ced2-61e2-a9b4" type="selectionEntryGroup" name="Guardsman w/ Special Weapon" hidden="false">
-                      <constraints>
-                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="867-ab44-a7fe-573d" includeChildSelections="true" includeChildForces="true"/>
-                      </constraints>
-                    </entryLink>
-                    <entryLink targetId="47cc-2173-cdbd-c86c" id="4172-37d2-6ff4-8cb4" type="selectionEntry" name="Guardsmen w/ Vox Caster" hidden="false">
-                      <constraints>
-                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6dfe-4b2f-e2c1-2d00"/>
-                      </constraints>
-                    </entryLink>
-                  </entryLinks>
-                </entryLink>
-                <entryLink import="true" name="Heavy Weapons Team" hidden="false" type="selectionEntryGroup" id="fbb4-91a6-79c3-e392" targetId="ee24-85ca-c73d-9eb4">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2e93-2a46-4b97-7717"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ddc5-b573-d773-2ca6"/>
-                  </constraints>
-                </entryLink>
                 <entryLink targetId="df22-5dc1-57dc-e347" id="2e69-508b-257-c0dc" type="selectionEntry" name="Sergeant" hidden="false">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8497-e5f9-9626-393f"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6643-c780-e0a2-9d21"/>
                   </constraints>
                 </entryLink>
+                <entryLink import="true" name="Guardsman" hidden="false" type="selectionEntry" id="93c7-236-efda-5d38" targetId="6401-bf57-ca2b-995b">
+                  <constraints>
+                    <constraint type="min" value="7" field="selections" scope="parent" shared="true" id="4f19-3e4-4928-57c0"/>
+                    <constraint type="max" value="7" field="selections" scope="parent" shared="true" id="d3e2-d033-4660-7f61"/>
+                  </constraints>
+                  <modifiers>
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="d3e2-d033-4660-7f61">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
+                      <repeats>
+                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="15c7-cb8-5a33-410"/>
+                      </repeats>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="d3e2-d033-4660-7f61">
+                      <repeats>
+                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="7a06-9a23-afd1-477c"/>
+                      </repeats>
+                    </modifier>
+                  </modifiers>
+                </entryLink>
+                <entryLink import="true" name="Guardsman w/ Vox Caster" hidden="false" type="selectionEntry" id="1724-c2a2-2069-ebb9" targetId="47cc-2173-cdbd-c86c">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6cce-fa7d-9b02-de1b" includeChildSelections="true"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Guardsman w/ Special Weapon" hidden="false" type="selectionEntryGroup" id="6a71-88f6-19c3-e0a6" targetId="9e42-70ac-702c-819d"/>
+                <entryLink import="true" name="Heavy Weapons Team" hidden="false" type="selectionEntry" id="e898-bc76-32b3-7598" targetId="c4e3-2813-f26d-5991">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="214c-ce5f-d795-d73d"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="32dd-d87c-a9d0-a8dd"/>
+                  </constraints>
+                </entryLink>
               </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="2 Sergeants and 18 Guardsmen" hidden="false" id="9119-b865-bb29-158c">
               <entryLinks>
-                <entryLink import="true" name="Sergeant" hidden="false" type="selectionEntryGroup" id="140e-fb49-dcb7-2841" targetId="dd6-3d5c-e58f-acfe">
+                <entryLink import="true" name="Sergeant" hidden="false" type="selectionEntry" id="fb8b-7d6a-4f16-198f" targetId="df22-5dc1-57dc-e347">
                   <constraints>
-                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="448c-fc01-b2db-a974" includeChildSelections="true" includeChildForces="true"/>
-                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="1088-f0aa-9e5b-6473" includeChildSelections="true" includeChildForces="true"/>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="ac32-b7f1-4377-31fd"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="7c8f-ed4-405b-5337"/>
                   </constraints>
                 </entryLink>
-                <entryLink import="true" name="Guardsmen Selection" hidden="false" type="selectionEntryGroup" id="4dad-f6ba-e56d-d3e4" targetId="a6d1-ad7-9f1f-88a6">
+                <entryLink import="true" name="Guardsman" hidden="false" type="selectionEntry" id="f914-adb3-c7ce-29a" targetId="6401-bf57-ca2b-995b">
                   <constraints>
-                    <constraint type="min" value="18" field="selections" scope="parent" shared="true" id="e158-12aa-85bb-1769" includeChildSelections="true" includeChildForces="true"/>
-                    <constraint type="max" value="18" field="selections" scope="parent" shared="true" id="be5f-c5f-b20d-f7d8" includeChildSelections="true" includeChildForces="true"/>
+                    <constraint type="min" value="18" field="selections" scope="parent" shared="true" id="4f19-3e4-4928-57c0"/>
+                    <constraint type="max" value="18" field="selections" scope="parent" shared="true" id="d3e2-d033-4660-7f61"/>
                   </constraints>
-                  <entryLinks>
-                    <entryLink targetId="9e42-70ac-702c-819d" id="8fb6-d9ee-5c73-cea5" type="selectionEntryGroup" name="Guardsman w/ Special Weapon" hidden="false">
-                      <constraints>
-                        <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="867-ab44-a7fe-573d" includeChildSelections="true" includeChildForces="true"/>
-                      </constraints>
-                    </entryLink>
-                    <entryLink targetId="47cc-2173-cdbd-c86c" id="4693-ab1e-7a17-2a25" type="selectionEntry" name="Guardsmen w/ Vox Caster" hidden="false">
-                      <constraints>
-                        <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="6dfe-4b2f-e2c1-2d00"/>
-                      </constraints>
-                    </entryLink>
-                  </entryLinks>
                   <modifiers>
-                    <modifier type="decrement" value="1" field="be5f-c5f-b20d-f7d8">
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="d3e2-d033-4660-7f61">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
                       <repeats>
-                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="ded-40c9-67f7-a54f"/>
+                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="1860-df04-a21f-4d22"/>
                       </repeats>
                     </modifier>
-                    <modifier type="decrement" value="1" field="e158-12aa-85bb-1769">
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="d3e2-d033-4660-7f61">
                       <repeats>
-                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="ded-40c9-67f7-a54f"/>
+                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="770e-9f6-dc7d-c675"/>
                       </repeats>
                     </modifier>
                   </modifiers>
                 </entryLink>
+                <entryLink import="true" name="Guardsman w/ Vox Caster" hidden="false" type="selectionEntry" id="32d9-de88-5f6-9dd5" targetId="47cc-2173-cdbd-c86c">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6cce-fa7d-9b02-de1b" includeChildSelections="true"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Guardsman w/ Special Weapon" hidden="false" type="selectionEntryGroup" id="85ec-9e2-69c1-4eee" targetId="9e42-70ac-702c-819d"/>
               </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="2 Sergeants, 16 Guardsmen and 1 Heavy Weapons Team" hidden="false" id="d56-7397-bb1a-eab6">
               <entryLinks>
-                <entryLink import="true" name="Guardsmen Selection" hidden="false" type="selectionEntryGroup" id="d65f-3460-64d3-a98d" targetId="a6d1-ad7-9f1f-88a6">
+                <entryLink import="true" name="Guardsman" hidden="false" type="selectionEntry" id="a461-840-800c-f89f" targetId="6401-bf57-ca2b-995b">
                   <constraints>
-                    <constraint type="min" value="16" field="selections" scope="parent" shared="true" id="e158-12aa-85bb-1769" includeChildSelections="true" includeChildForces="true"/>
-                    <constraint type="max" value="16" field="selections" scope="parent" shared="true" id="be5f-c5f-b20d-f7d8" includeChildSelections="true" includeChildForces="true"/>
+                    <constraint type="min" value="16" field="selections" scope="parent" shared="true" id="4f19-3e4-4928-57c0"/>
+                    <constraint type="max" value="16" field="selections" scope="parent" shared="true" id="d3e2-d033-4660-7f61"/>
                   </constraints>
-                  <entryLinks>
-                    <entryLink targetId="9e42-70ac-702c-819d" id="b590-4642-9c64-ba92" type="selectionEntryGroup" name="Guardsman w/ Special Weapon" hidden="false">
-                      <constraints>
-                        <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="867-ab44-a7fe-573d" includeChildForces="true" includeChildSelections="true"/>
-                      </constraints>
-                    </entryLink>
-                    <entryLink targetId="47cc-2173-cdbd-c86c" id="76db-d437-a64f-3568" type="selectionEntry" name="Guardsmen w/ Vox Caster" hidden="false">
-                      <constraints>
-                        <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="6dfe-4b2f-e2c1-2d00"/>
-                      </constraints>
-                    </entryLink>
-                  </entryLinks>
                   <modifiers>
-                    <modifier type="decrement" value="1" field="e158-12aa-85bb-1769">
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="d3e2-d033-4660-7f61">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
                       <repeats>
-                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="a088-7bab-a35c-5d6f"/>
+                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="1331-a8b-fec2-29b4"/>
                       </repeats>
                     </modifier>
-                    <modifier type="decrement" value="1" field="be5f-c5f-b20d-f7d8">
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="d3e2-d033-4660-7f61">
                       <repeats>
-                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="346f-216a-b297-df23"/>
+                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="5a77-81f-6099-a8d6"/>
                       </repeats>
                     </modifier>
                   </modifiers>
                 </entryLink>
-                <entryLink import="true" name="Heavy Weapons Team" hidden="false" type="selectionEntryGroup" id="2808-536f-d56d-b70e" targetId="ee24-85ca-c73d-9eb4">
+                <entryLink import="true" name="Guardsman w/ Vox Caster" hidden="false" type="selectionEntry" id="71df-68d5-35f3-5830" targetId="47cc-2173-cdbd-c86c">
                   <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2e93-2a46-4b97-7717"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ddc5-b573-d773-2ca6"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6cce-fa7d-9b02-de1b" includeChildSelections="true"/>
                   </constraints>
                 </entryLink>
-                <entryLink import="true" name="Sergeant" hidden="false" type="selectionEntryGroup" id="d174-6337-5b9a-e497" targetId="dd6-3d5c-e58f-acfe">
+                <entryLink import="true" name="Guardsman w/ Special Weapon" hidden="false" type="selectionEntryGroup" id="422e-c685-3ce9-e34a" targetId="9e42-70ac-702c-819d"/>
+                <entryLink import="true" name="Heavy Weapons Team" hidden="false" type="selectionEntry" id="5c6d-46c9-4706-2f04" targetId="c4e3-2813-f26d-5991">
                   <constraints>
-                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="448c-fc01-b2db-a974"/>
-                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="1088-f0aa-9e5b-6473"/>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="214c-ce5f-d795-d73d"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="32dd-d87c-a9d0-a8dd"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Sergeant" hidden="false" type="selectionEntry" id="f493-54e5-afbe-7d3b" targetId="df22-5dc1-57dc-e347">
+                  <constraints>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="ac32-b7f1-4377-31fd"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="7c8f-ed4-405b-5337"/>
                   </constraints>
                 </entryLink>
               </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="2 Sergeants, 14 Guardsmen and 2 Heavy Weapons Team" hidden="false" id="87c0-6e5f-1cfe-8281">
               <entryLinks>
-                <entryLink import="true" name="Guardsmen Selection" hidden="false" type="selectionEntryGroup" id="5eae-2b3a-2765-e06c" targetId="a6d1-ad7-9f1f-88a6">
+                <entryLink import="true" name="Sergeant" hidden="false" type="selectionEntry" id="8558-f041-e25-e9fd" targetId="df22-5dc1-57dc-e347">
                   <constraints>
-                    <constraint type="min" value="14" field="selections" scope="parent" shared="true" id="e158-12aa-85bb-1769" includeChildSelections="true" includeChildForces="true"/>
-                    <constraint type="max" value="14" field="selections" scope="parent" shared="true" id="be5f-c5f-b20d-f7d8" includeChildSelections="true" includeChildForces="true"/>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="ac32-b7f1-4377-31fd"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="7c8f-ed4-405b-5337"/>
                   </constraints>
-                  <entryLinks>
-                    <entryLink targetId="9e42-70ac-702c-819d" id="65ca-7992-abde-ca58" type="selectionEntryGroup" name="Guardsman w/ Special Weapon" hidden="false">
-                      <constraints>
-                        <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="867-ab44-a7fe-573d" includeChildSelections="true"/>
-                      </constraints>
-                    </entryLink>
-                    <entryLink targetId="47cc-2173-cdbd-c86c" id="d175-4447-5e65-f8f0" type="selectionEntry" name="Guardsmen w/ Vox Caster" hidden="false">
-                      <constraints>
-                        <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="6dfe-4b2f-e2c1-2d00"/>
-                      </constraints>
-                    </entryLink>
-                  </entryLinks>
+                </entryLink>
+                <entryLink import="true" name="Guardsman" hidden="false" type="selectionEntry" id="5e87-c9c0-539a-de59" targetId="6401-bf57-ca2b-995b">
+                  <constraints>
+                    <constraint type="min" value="14" field="selections" scope="parent" shared="true" id="4f19-3e4-4928-57c0"/>
+                    <constraint type="max" value="14" field="selections" scope="parent" shared="true" id="d3e2-d033-4660-7f61"/>
+                  </constraints>
                   <modifiers>
-                    <modifier type="decrement" value="1" field="e158-12aa-85bb-1769">
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="d3e2-d033-4660-7f61">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
                       <repeats>
-                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="1ea2-c5c1-1a6f-2dab"/>
+                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="a68b-2932-cdbd-251c"/>
                       </repeats>
                     </modifier>
-                    <modifier type="decrement" value="1" field="be5f-c5f-b20d-f7d8">
+                    <modifier type="decrement" value="1" field="4f19-3e4-4928-57c0">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="47cc-2173-cdbd-c86c" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="d3e2-d033-4660-7f61">
                       <repeats>
-                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="441d-13f9-b949-1eb8"/>
+                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="9e42-70ac-702c-819d" shared="true" roundUp="false" id="8e7e-cae6-efd0-7673"/>
                       </repeats>
                     </modifier>
                   </modifiers>
                 </entryLink>
-                <entryLink import="true" name="Heavy Weapons Team" hidden="false" type="selectionEntryGroup" id="b69-ed3-3956-6741" targetId="ee24-85ca-c73d-9eb4">
+                <entryLink import="true" name="Guardsman w/ Vox Caster" hidden="false" type="selectionEntry" id="f381-3aa3-bc15-b0dc" targetId="47cc-2173-cdbd-c86c">
                   <constraints>
-                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="2e93-2a46-4b97-7717" includeChildSelections="true" includeChildForces="true"/>
-                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="ddc5-b573-d773-2ca6" includeChildSelections="true" includeChildForces="true"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6cce-fa7d-9b02-de1b" includeChildSelections="true"/>
                   </constraints>
                 </entryLink>
-                <entryLink import="true" name="Sergeant" hidden="false" type="selectionEntryGroup" id="1835-c6dc-13d7-1ef3" targetId="dd6-3d5c-e58f-acfe">
+                <entryLink import="true" name="Heavy Weapons Team" hidden="false" type="selectionEntry" id="5efd-e6d8-44b2-60b5" targetId="c4e3-2813-f26d-5991">
                   <constraints>
-                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="448c-fc01-b2db-a974" includeChildSelections="true" includeChildForces="true"/>
-                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="1088-f0aa-9e5b-6473"/>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="214c-ce5f-d795-d73d"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="32dd-d87c-a9d0-a8dd"/>
                   </constraints>
                 </entryLink>
+                <entryLink import="true" name="Guardsman w/ Special Weapon" hidden="false" type="selectionEntryGroup" id="2e8f-a36b-4e4c-1778" targetId="9e42-70ac-702c-819d"/>
               </entryLinks>
             </selectionEntry>
           </selectionEntries>
@@ -13539,8 +13608,7 @@
             <profile name="Leader" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e87d-4b67-1992-ed3c">
               <characteristics>
                 <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model can be attached to the following units:
-■ DEATH RIDER SQUADRON
-</characteristic>
+■ DEATH RIDER SQUADRON</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -14331,16 +14399,7 @@ While this model is joined to a unit, it can embark within any Transport that un
         <entryLink import="true" name="Heavy Weapons Team" hidden="false" type="selectionEntry" id="e200-ca45-7eca-99c7" targetId="c4e3-2813-f26d-5991"/>
       </entryLinks>
     </selectionEntryGroup>
-    <selectionEntryGroup name="Guardsmen Selection" hidden="false" id="a6d1-ad7-9f1f-88a6" defaultSelectionEntryId="6555-eaec-b226-57f7">
-      <entryLinks>
-        <entryLink targetId="6401-bf57-ca2b-995b" id="6555-eaec-b226-57f7" type="selectionEntry" name="Guardsmen" hidden="false"/>
-      </entryLinks>
-    </selectionEntryGroup>
-    <selectionEntryGroup name="Sergeant" hidden="false" id="dd6-3d5c-e58f-acfe" defaultSelectionEntryId="24af-72d4-af4d-99f5">
-      <entryLinks>
-        <entryLink targetId="df22-5dc1-57dc-e347" id="24af-72d4-af4d-99f5" type="selectionEntry" name="Sergeant" hidden="false"/>
-      </entryLinks>
-    </selectionEntryGroup>
+    <selectionEntryGroup name="Sergeant" hidden="false" id="dd6-3d5c-e58f-acfe" defaultSelectionEntryId="24af-72d4-af4d-99f5"/>
     <selectionEntryGroup name="Guardsman w/ Special Weapon" hidden="false" id="9e42-70ac-702c-819d">
       <selectionEntries>
         <selectionEntry type="model" import="true" name="Guardsman w/ Flamer" hidden="false" id="d07c-678c-ef3-6d9d">
@@ -14439,6 +14498,22 @@ While this model is joined to a unit, it can embark within any Transport that un
           </infoLinks>
         </selectionEntry>
       </selectionEntries>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7462-7d15-784-599d"/>
+      </constraints>
+      <modifiers>
+        <modifier type="increment" value="1" field="7462-7d15-784-599d">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="d56-7397-bb1a-eab6" shared="true" includeChildSelections="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="9119-b865-bb29-158c" shared="true" includeChildSelections="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="87c0-6e5f-1cfe-8281" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup name="Shock Trooper Selections" hidden="false" id="f384-513c-6f63-19ee" defaultSelectionEntryId="fb80-8b30-6cde-d674">
       <entryLinks>
