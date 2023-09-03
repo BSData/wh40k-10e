@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="17" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="18" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="539-7da4-d962-1a64" name="Primaris" hidden="false"/>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
@@ -17459,7 +17459,7 @@ enemy units, you can re-roll the Hit roll and you can re-roll the Wound roll.</c
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
               </costs>
             </selectionEntry>
-            <selectionEntry type="upgrade" import="true" name="Pennant of Remembrance" hidden="false" id="52e-b4c4-4bd0-282f" page="5">
+            <selectionEntry type="upgrade" import="true" name="Pennant of Remembrance" hidden="true" id="52e-b4c4-4bd0-282f" page="5">
               <profiles>
                 <profile name="Pennant of Remembrance" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d8ce-aae1-b531-1bb1" page="5">
                   <characteristics>
@@ -17469,10 +17469,16 @@ is Battle-shocked, models in that unit have the Feel No Pain 4+ ability instead.
                 </profile>
               </profiles>
               <modifiers>
-                <modifier type="set" value="true" field="hidden">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9bb1-7b6c-326a-da2c" shared="true" includeChildSelections="true"/>
-                  </conditions>
+                <modifier type="set" value="false" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditions>
+                        <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="9bb1-7b6c-326a-da2c" shared="true" includeChildSelections="true"/>
+                        <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="2427-3b30-841d-5ea3" shared="true" includeChildSelections="true"/>
+                        <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c8a5-558c-b987-78e2" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
               </modifiers>
               <constraints>
