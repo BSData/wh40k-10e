@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="94bb-3284-ee14-57a1" name="Imperium - Adeptus Astartes - Space Wolves" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="5" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="94bb-3284-ee14-57a1" name="Imperium - Adeptus Astartes - Space Wolves" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="6" battleScribeVersion="2.03" type="catalogue">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Space Marines" id="cb5b-3605-7522-c561" targetId="e0af-67df-9d63-8fb7" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights" id="2e06-13ae-6789-b591" targetId="1b6d-dc06-5db9-c7d1" importRootEntries="true"/>
@@ -5044,6 +5044,7 @@ You must attach this model to one of the above units, and can do so even if one
               </entryLinks>
               <constraints>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a5f5-9520-be-f440"/>
+                <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="4dc2-7713-1931-a5ed"/>
               </constraints>
               <modifiers>
                 <modifier type="set" value="0" field="a5f5-9520-be-f440" id="4490-aff9-7d59-a3cd">
@@ -5057,11 +5058,16 @@ You must attach this model to one of the above units, and can do so even if one
                     </conditionGroup>
                   </conditionGroups>
                 </modifier>
+                <modifier type="set" value="1" field="4dc2-7713-1931-a5ed" id="ff16-fac2-9c74-7047">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="a341-f355-7305-58bb" childId="f34a-8afa-ac8d-2fd0" shared="true" id="49f9-1054-1ff4-196a" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
               </modifiers>
             </selectionEntryGroup>
             <selectionEntryGroup name="Melee weapons" hidden="false" id="101b-7ee1-9356-dba">
               <constraints>
-                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="5324-9c62-86e5-46f9"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5324-9c62-86e5-46f9"/>
               </constraints>
               <selectionEntries>
                 <selectionEntry type="upgrade" import="true" name="Twin lightning claws" hidden="false" id="f7d4-ad85-2546-d706">
@@ -5081,6 +5087,18 @@ You must attach this model to one of the above units, and can do so even if one
                   <constraints>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a77f-8b2a-2b2c-fe34"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="0" field="a77f-8b2a-2b2c-fe34">
+                      <conditionGroups>
+                        <conditionGroup type="or">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="a341-f355-7305-58bb" childId="cd5-b25e-6471-3613" shared="true" includeChildSelections="true"/>
+                            <condition type="atLeast" value="1" field="selections" scope="a341-f355-7305-58bb" childId="d90b-16a6-dca6-21f9" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </modifier>
+                  </modifiers>
                 </selectionEntry>
               </selectionEntries>
               <entryLinks>
@@ -5095,7 +5113,18 @@ You must attach this model to one of the above units, and can do so even if one
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="1cbf-d685-e2da-af51"/>
                   </constraints>
                   <modifiers>
-                    <modifier type="set" value="0" field="1cbf-d685-e2da-af51" id="c4dd-1b33-6f3f-3a35"/>
+                    <modifier type="set" value="0" field="56e7-35a2-9f44-916e">
+                      <conditionGroups>
+                        <conditionGroup type="or">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="a341-f355-7305-58bb" childId="d90b-16a6-dca6-21f9" shared="true" includeChildSelections="true"/>
+                            <condition type="atLeast" value="2" field="selections" scope="a341-f355-7305-58bb" childId="101b-7ee1-9356-dba" shared="true" id="2a08-a63-68ef-5cf8" includeChildSelections="true"/>
+                            <condition type="atLeast" value="1" field="selections" scope="a341-f355-7305-58bb" childId="cd5-b25e-6471-3613" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </modifier>
+                    <modifier type="set" value="0" field="1cbf-d685-e2da-af51"/>
                   </modifiers>
                 </entryLink>
                 <entryLink import="true" name="Chainfist" hidden="false" type="selectionEntry" id="63b2-67a8-bff1-9d39" targetId="5a2-c6a5-9b4b-605f">
@@ -5109,6 +5138,18 @@ You must attach this model to one of the above units, and can do so even if one
                   </constraints>
                 </entryLink>
               </entryLinks>
+              <modifiers>
+                <modifier type="set" value="2" field="5324-9c62-86e5-46f9" id="ee53-7c37-4a6a-2737">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="a341-f355-7305-58bb" childId="f7d4-ad85-2546-d706" shared="true" id="d238-d60e-7fe3-826b" includeChildSelections="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="a341-f355-7305-58bb" childId="f34a-8afa-ac8d-2fd0" shared="true" id="2235-b12f-eaff-8e43" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
             </selectionEntryGroup>
           </selectionEntryGroups>
           <modifiers>
@@ -5120,6 +5161,16 @@ You must attach this model to one of the above units, and can do so even if one
             <modifier type="set" value="1" field="6f79-69cb-da8-19bb" id="ca06-770c-ede1-2244">
               <conditions>
                 <condition type="atLeast" value="1" field="selections" scope="a341-f355-7305-58bb" childId="f7d4-ad85-2546-d706" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="1" field="7eaf-840e-6bef-8665" id="f21e-f18f-8f73-8b43">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="a341-f355-7305-58bb" childId="f34a-8afa-ac8d-2fd0" shared="true" id="a4e7-e7dc-6582-daa5"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="1" field="6f79-69cb-da8-19bb" id="409b-8-bc5c-bb46">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="a341-f355-7305-58bb" childId="f34a-8afa-ac8d-2fd0" shared="true" id="3a2c-abed-4770-b52a"/>
               </conditions>
             </modifier>
           </modifiers>
