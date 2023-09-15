@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="22" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="25" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Aegis Defence Line" hidden="false" id="cb99-456-f100-40ed">
       <categoryLinks>
@@ -5361,6 +5361,16 @@
         <profile name="Psychic Barrier (Psychic)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9609-45b8-af09-de5b">
           <characteristics>
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of your opponent’s Shooting phase, you can roll one D6: on a 1, this Psyker’s unit suffers D3 mortal wounds; on a 2+, until the end of the phase, models in this Psyker’s unit have a 4+ invulnerable save.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Primaris Psyker" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="b4fa-4ea-3e1e-75d0">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -13261,11 +13271,168 @@
         <categoryLink targetId="6df-937-16bc-8c1a" id="7621-d63d-10d1-c581" primary="false" name="Smoke"/>
         <categoryLink targetId="46b5-829f-9df-9c04" id="1590-6a53-3343-b587" primary="false" name="Dominus Armoured Siege Bombard"/>
       </categoryLinks>
+      <modifiers>
+        <modifier type="set-primary" value="887b-ab87-92a2-20f5" field="category">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="3bdf-a114-5035-c6ac" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Gorgon Heavy Transport [Legends]" hidden="false" id="5d8e-2b2a-6ed1-8309">
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="275"/>
       </costs>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="50d4-3844-bb6f-c017" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+      <profiles>
+        <profile name="Gorgon Heavy Transport" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="2c35-4011-c6e3-8ebe">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">9&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">13</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">20</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">8</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Invulnerable Save" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="abfa-7ff8-56a4-4204">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This unit has a 5+ Invulnerable Save against ranged attacks.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Transport" typeId="74f8-5443-9d6d-1f1e" typeName="Transport" hidden="false" id="4b48-4a9d-515d-536a">
+          <characteristics>
+            <characteristic name="Capacity" typeId="30f2-be70-861d-1b84">This model has a transport capacity of 30 Astra Militarum Infantry models. Each Heavy Weapons Team model and Veteran Heavy Weapons Team model takes up the space of 2 models. Each Ogryn model takes up the space of 3 models. It cannot transport Artillery models.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Mount Up!" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e198-4e1a-984e-307a">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of your opponent’s Movement phase, if there are no models currently embarked within this Transport, you can select one friendly Astra Militarum Infantry unit (excluding Artillery units) that is wholly within 6&quot; of this Transport. Unless that unit is within Engagement Range of one or more enemy units, it can embark within this Transport.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Landing Ramp" hidden="false" id="6553-615f-fed-3b31">
+          <profiles>
+            <profile name="Landing Ramp" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="6e37-ee5b-bb31-b127">
+              <characteristics>
+                <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
+                <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
+                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3f5e-f905-3bd6-478"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b4c1-d3bb-5fd8-847d"/>
+          </constraints>
+        </selectionEntry>
+      </selectionEntries>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Gorgon Mortar Selection" hidden="false" id="12b0-f5fd-8d06-79b9" defaultSelectionEntryId="6a14-62b3-3047-6ab9">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="2 Gorgon Mortas" hidden="false" id="6a14-62b3-3047-6ab9">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Gorgon Mortar" hidden="false" id="a80e-8108-f165-dff3">
+                  <constraints>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="9381-a826-457e-7fde"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="5937-ad49-f5a3-aee8"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Gorgon Mortar" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="5dfa-8f80-f35c-4b4a">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Indirect Fire</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <infoLinks>
+                    <infoLink name="Blast" hidden="false" type="rule" id="26f9-12b3-7924-675e" targetId="6c1f-1cf7-ff25-c99e"/>
+                    <infoLink name="Indirect Fire" hidden="false" type="rule" id="854-1eb2-fb47-ebc8" targetId="4ddd-4e29-acdd-5e6d"/>
+                  </infoLinks>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="4 Heavy Bolters" hidden="false" id="2282-195f-3d13-bafb">
+              <entryLinks>
+                <entryLink import="true" name="Heavy Bolter" hidden="false" type="selectionEntry" id="96f5-c478-9329-314e" targetId="51a8-ffe2-928f-3f50">
+                  <constraints>
+                    <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="8bca-2207-ffd4-ba4a"/>
+                    <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="7d6a-5fb8-edfe-dccf"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="4 Heavy Flamers" hidden="false" id="5d50-ddff-1230-35a6">
+              <entryLinks>
+                <entryLink import="true" name="Heavy Flamer" hidden="false" type="selectionEntry" id="17af-3bc4-6a1d-abea" targetId="6fef-cbbd-be33-44a4">
+                  <constraints>
+                    <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="8bca-2207-ffd4-ba4a"/>
+                    <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="7d6a-5fb8-edfe-dccf"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="4 Heavy Stubbers" hidden="false" id="93a2-990b-ce63-ba78">
+              <entryLinks>
+                <entryLink import="true" name="Heavy Stubber" hidden="false" type="selectionEntry" id="137a-b61b-92e2-239a" targetId="d20f-db4b-d083-7c0a">
+                  <constraints>
+                    <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="8bca-2207-ffd4-ba4a"/>
+                    <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="7d6a-5fb8-edfe-dccf"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5203-7f23-dbdb-c660"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5cd2-b7d3-98dc-337a"/>
+          </constraints>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <entryLinks>
+        <entryLink import="true" name="Hunter-killer Missile" hidden="false" type="selectionEntry" id="65e9-5a3d-c71d-f12f" targetId="37aa-e4f5-30bd-c59c"/>
+        <entryLink import="true" name="Twin Heavy Stubbers" hidden="false" type="selectionEntry" id="ecb3-98e5-eb27-4db2" targetId="ea02-8862-eeb3-afe6">
+          <constraints>
+            <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="8153-ab0f-25e4-dbf3" includeChildSelections="true"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <infoLinks>
+        <infoLink name="Damaged: 1-7 Wounds Remaining" hidden="false" type="profile" id="af89-3a24-285a-e91a" targetId="4ca9-3652-f045-85ba"/>
+        <infoLink name="Deadly Demise" hidden="false" type="rule" id="bb62-7e65-7b3b-1acc" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D6+2" field="name"/>
+          </modifiers>
+        </infoLink>
+      </infoLinks>
+      <categoryLinks>
+        <categoryLink targetId="e4f5-b819-90cb-2ee" id="1ae0-f4e4-bae-b92a" primary="false" name="Gorgon Heavy Transport"/>
+        <categoryLink targetId="fa45-57e-930e-602b" id="4cc1-bb8f-e8a-cfed" primary="false" name="Faction: Astra Militarum"/>
+        <categoryLink targetId="dbd4-63-af05-998" id="bbcd-8870-9e6f-e8be" primary="true" name="Vehicle"/>
+        <categoryLink targetId="6df-937-16bc-8c1a" id="4f21-6f8c-dd77-1fc2" primary="false" name="Smoke"/>
+        <categoryLink targetId="75e8-57c4-40e3-1817" id="9869-da72-f3b7-1c30" primary="false" name="Transport"/>
+        <categoryLink targetId="aff3-d6a3-2a95-9dc" id="ef6e-5041-cc7d-9360" primary="false" name="Imperium"/>
+        <categoryLink targetId="5929-ad51-d006-e008" id="b8af-6996-4c2-6309" primary="false" name="Titanic"/>
+      </categoryLinks>
+      <modifiers>
+        <modifier type="set-primary" value="887b-ab87-92a2-20f5" field="category">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="3bdf-a114-5035-c6ac" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Death Korps Grenadier Squad [Legends]" hidden="false" id="8a25-2a0c-87d2-3ea6">
       <costs>
@@ -13357,11 +13524,22 @@
           </constraints>
         </selectionEntryGroup>
       </selectionEntryGroups>
-    </selectionEntry>
-    <selectionEntry type="model" import="true" name="Storm Chimera [Legends]" hidden="false" id="9d97-2bc0-181a-d977">
-      <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="90"/>
-      </costs>
+      <modifiers>
+        <modifier type="set-primary" value="887b-ab87-92a2-20f5" field="category">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="3bdf-a114-5035-c6ac" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <categoryLinks>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="da9f-6923-f121-2e29" primary="true" name="Infantry"/>
+        <categoryLink targetId="aff3-d6a3-2a95-9dc" id="4c07-16-67c-b6e" primary="false" name="Imperium"/>
+        <categoryLink targetId="fa45-57e-930e-602b" id="e763-7756-a8c6-c419" primary="false" name="Faction: Astra Militarum"/>
+        <categoryLink targetId="5a61-81ac-eb7c-a87e" id="c30a-c85c-a2fe-818c" primary="false" name="Grenades"/>
+        <categoryLink targetId="c8a1-fef-5569-61c9" id="742f-2419-8dab-245d" primary="false" name="Regiment"/>
+        <categoryLink targetId="edff-c2d-8999-4f45" id="a98d-5498-5687-3339" primary="false" name="Platoon"/>
+        <categoryLink targetId="e14-aebc-74ba-3c82" id="8f5-d699-ef39-452f" primary="false" name="Death Korps Grenadier Squad"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Centaur Light Carrier [Legends]" hidden="false" id="81d4-2ed9-b0a4-6bdd">
       <costs>
@@ -13394,13 +13572,13 @@
       </costs>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Sabre Weapons Battery [Legends]" hidden="false" id="3597-3243-6870-70a1">
-      <selectionEntries>
-        <selectionEntry type="model" import="true" name="New Entry" hidden="false" id="b1d6-e6d1-991e-a844">
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="45"/>
-          </costs>
-        </selectionEntry>
-      </selectionEntries>
+      <modifiers>
+        <modifier type="set-primary" value="887b-ab87-92a2-20f5" field="category">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="3bdf-a114-5035-c6ac" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Elysian Drop Sentinel [Legends]" hidden="false" id="badd-6133-a469-613c">
       <costs>
@@ -13465,11 +13643,34 @@
           </characteristics>
         </profile>
       </profiles>
+      <modifiers>
+        <modifier type="set-primary" value="887b-ab87-92a2-20f5" field="category">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="3bdf-a114-5035-c6ac" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <categoryLinks>
+        <categoryLink targetId="6869-9e1a-ee8f-39ca" id="8a7f-74de-70cf-5953" primary="false" name="Heavy Mortar Team"/>
+        <categoryLink targetId="fa45-57e-930e-602b" id="9e72-a919-9ba8-61e2" primary="false" name="Faction: Astra Militarum"/>
+        <categoryLink targetId="8cab-448d-37b7-32bc" id="e906-886c-dce9-be70" primary="false" name="Artillery"/>
+        <categoryLink targetId="5a61-81ac-eb7c-a87e" id="adc9-6c6c-bc50-6701" primary="false" name="Grenades"/>
+        <categoryLink targetId="aff3-d6a3-2a95-9dc" id="1b5c-751-c288-64ef" primary="false" name="Imperium"/>
+        <categoryLink targetId="c8a1-fef-5569-61c9" id="ef58-a3f7-8889-bb37" primary="false" name="Regiment"/>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="615a-ffed-af44-2ac1" primary="true" name="Infantry"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Armageddon-pattern Medusa [Legends]" hidden="false" id="a96a-83e1-9200-c88b">
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="105"/>
       </costs>
+      <modifiers>
+        <modifier type="set-primary" value="887b-ab87-92a2-20f5" field="category">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="3bdf-a114-5035-c6ac" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Heavy Quad Launcher Team [Legends]" hidden="false" id="5762-f71e-7693-49a6">
       <costs>
@@ -13523,6 +13724,22 @@
       <entryLinks>
         <entryLink import="true" name="Close Combat Weapons" hidden="false" type="selectionEntry" id="8355-7cc6-107e-6932" targetId="c772-1b47-5ec7-4d06"/>
       </entryLinks>
+      <modifiers>
+        <modifier type="set-primary" value="887b-ab87-92a2-20f5" field="category">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="3bdf-a114-5035-c6ac" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <categoryLinks>
+        <categoryLink targetId="40e6-275e-58de-e80f" id="eea4-27e8-142e-6257" primary="false" name="Heavy Quad Launcher Team"/>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="bfad-485e-e443-3404" primary="true" name="Infantry"/>
+        <categoryLink targetId="fa45-57e-930e-602b" id="2ac-8a4e-e178-5a8" primary="false" name="Faction: Astra Militarum"/>
+        <categoryLink targetId="8cab-448d-37b7-32bc" id="29b5-211a-2c1-e6b0" primary="false" name="Artillery"/>
+        <categoryLink targetId="5a61-81ac-eb7c-a87e" id="6fb-bfc4-d9d8-766c" primary="false" name="Grenades"/>
+        <categoryLink targetId="aff3-d6a3-2a95-9dc" id="40d9-47cb-1b09-2f05" primary="false" name="Imperium"/>
+        <categoryLink targetId="c8a1-fef-5569-61c9" id="96fd-484c-765a-6e0c" primary="false" name="Regiment"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Arvus Lighter [Legends]" hidden="false" id="8b13-7c06-de12-4227">
       <costs>
@@ -13592,6 +13809,13 @@
       <entryLinks>
         <entryLink import="true" name="Armoured Tracks" hidden="false" type="selectionEntry" id="34da-b9ca-4e05-d41c" targetId="5ba9-b266-8524-54f5"/>
       </entryLinks>
+      <modifiers>
+        <modifier type="set-primary" value="887b-ab87-92a2-20f5" field="category">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="3bdf-a114-5035-c6ac" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Death Rider Commissar [Legends]" hidden="false" id="d58c-e97f-5062-d9e1">
       <costs>
@@ -13703,6 +13927,26 @@
           </profiles>
         </selectionEntry>
       </selectionEntries>
+      <modifiers>
+        <modifier type="set-primary" value="887b-ab87-92a2-20f5" field="category">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="3bdf-a114-5035-c6ac" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <categoryLinks>
+        <categoryLink targetId="14a0-40c9-2748-ae6e" id="61f8-bec8-71db-d753" primary="false" name="Mounted"/>
+        <categoryLink targetId="9cfd-1c32-585f-7d5c" id="aa31-dfd1-98c8-229a" primary="true" name="Character"/>
+        <categoryLink targetId="aff3-d6a3-2a95-9dc" id="2fc6-975a-31f4-79ee" primary="false" name="Imperium"/>
+        <categoryLink targetId="5a61-81ac-eb7c-a87e" id="1483-d3f1-3140-6b4d" primary="false" name="Grenades"/>
+        <categoryLink targetId="e4d8-c6a1-7c23-ae25" id="65c2-92fd-ab00-856a" primary="false" name="Officer"/>
+        <categoryLink targetId="c9e9-9c67-6420-6ecc" id="3c46-93f1-feb8-5d83" primary="false" name="Death Rider Commissar"/>
+        <categoryLink targetId="fa45-57e-930e-602b" id="9039-8981-274f-f516" primary="false" name="Faction: Astra Militarum"/>
+      </categoryLinks>
+      <entryLinks>
+        <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="905e-550a-9166-83e5" targetId="ea3f-b52b-8dc7-d365"/>
+        <entryLink import="true" name="Enhancements" hidden="false" type="selectionEntryGroup" id="66f5-2e7b-deaa-b01f" targetId="33fd-bb93-1bf4-f1c"/>
+      </entryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Sentinel Powerlifter [Legends]" hidden="false" id="8cc1-8512-710f-f15f">
       <costs>
@@ -13908,6 +14152,13 @@
         <categoryLink targetId="fa45-57e-930e-602b" id="d5fd-8798-fb90-f998" primary="false" name="Faction: Astra Militarum"/>
         <categoryLink targetId="51c2-a4c3-f32d-b0b1" id="544a-6952-c2e5-4fcf" primary="false" name="Arkurian Stormhammer"/>
       </categoryLinks>
+      <modifiers>
+        <modifier type="set-primary" value="887b-ab87-92a2-20f5" field="category">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="3bdf-a114-5035-c6ac" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Grenade Launcher" hidden="false" id="4e85-9167-68ce-8738">
       <profiles>
@@ -14140,6 +14391,34 @@
         <infoLink name="Hazardous" hidden="false" type="rule" id="3d43-45bd-ba26-a775" targetId="8367-374c-f87-c627"/>
       </infoLinks>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Twin Heavy Stubbers" hidden="false" id="ea02-8862-eeb3-afe6">
+      <profiles>
+        <profile name="Twin Heavy Stubbers" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="1764-765-cda6-1ad8">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid fire 3, Twin-linked</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Rapid Fire" hidden="false" type="rule" id="92b8-ad4-27e4-7a48" targetId="c5c8-8b58-b8b6-7786">
+          <modifiers>
+            <modifier type="append" value="3" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Twin-linked" hidden="false" type="rule" id="d0a8-bda9-c8e9-da75" targetId="cf93-ad4d-2f08-a79d"/>
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Storm Chimera [Legends]" hidden="false" id="b6a7-4d64-1155-70c1">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="90"/>
+      </costs>
+    </selectionEntry>
   </sharedSelectionEntries>
   <categoryEntries>
     <categoryEntry name="Aegis Defence Line" hidden="false" id="a56a-23f-9ea1-d8ee"/>
@@ -14241,6 +14520,11 @@
     <categoryEntry name="Aquila Lander" hidden="false" id="1b9a-d186-aff6-fa18"/>
     <categoryEntry name="Dominus Armoured Siege Bombard" hidden="false" id="46b5-829f-9df-9c04"/>
     <categoryEntry name="Arkurian Stormhammer" hidden="false" id="51c2-a4c3-f32d-b0b1"/>
+    <categoryEntry name="Gorgon Heavy Transport" hidden="false" id="e4f5-b819-90cb-2ee"/>
+    <categoryEntry name="Death Korps Grenadier Squad" hidden="false" id="e14-aebc-74ba-3c82"/>
+    <categoryEntry name="Death Rider Commissar" hidden="false" id="c9e9-9c67-6420-6ecc"/>
+    <categoryEntry name="Heavy Mortar Team" hidden="false" id="6869-9e1a-ee8f-39ca"/>
+    <categoryEntry name="Heavy Quad Launcher Team" hidden="false" id="40e6-275e-58de-e80f"/>
   </categoryEntries>
   <sharedProfiles>
     <profile name="Invulnerable Save 5+" hidden="false" id="3a3d-9e14-64a6-c032" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
