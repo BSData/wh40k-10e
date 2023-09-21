@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="22" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="23" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="539-7da4-d962-1a64" name="Primaris" hidden="false"/>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
@@ -723,7 +723,7 @@
                 </selectionEntry>
               </selectionEntries>
             </selectionEntry>
-            <selectionEntry id="dc86-5f80-455a-b73c" name="Boltstorm Gauntlet, Powerfist, and Relic" hidden="false" collective="false" import="true" type="upgrade">
+            <selectionEntry id="dc86-5f80-455a-b73c" name="Boltstorm Gauntlet, Powerfist, and Relic weapon" hidden="false" collective="false" import="true" type="upgrade">
               <modifiers>
                 <modifier type="append" field="name" value="Chainsword">
                   <conditions>
@@ -912,8 +912,15 @@
             <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
             <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
             <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
-            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="set" value="6" field="2337-daa1-6682-b110">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="2d7f-1892-2fd0-e29c" shared="true" id="4ef4-7cb5-9f42-9ea4"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
       </profiles>
     </selectionEntry>
@@ -1367,7 +1374,7 @@
         <infoLink name="Oath of Moment" hidden="false" type="rule" id="b627-2d2f-1341-cac7" targetId="3b76-4053-ece9-6e7d"/>
       </infoLinks>
       <selectionEntryGroups>
-        <selectionEntryGroup name="Weapon 1" id="4f9a-148a-edeb-8665" defaultSelectionEntryId="5a38-24a8-48bc-1dac">
+        <selectionEntryGroup name="Replace master-crafted boltgun" id="4f9a-148a-edeb-8665" defaultSelectionEntryId="5a38-24a8-48bc-1dac">
           <entryLinks>
             <entryLink import="true" name="Combi-weapon" hidden="false" type="selectionEntry" id="dbe7-c243-1621-fa26" targetId="2c13-8cdd-f66b-bcae"/>
             <entryLink import="true" name="Power Fist" hidden="false" type="selectionEntry" id="f4ec-7800-2109-c9b3" targetId="99de-5985-8cb8-f571"/>
@@ -1379,6 +1386,7 @@
             <entryLink import="true" name="Grav-pistol" hidden="false" type="selectionEntry" id="cb77-8cd3-c6ec-a72e" targetId="1f74-a1b-2835-ccdd"/>
             <entryLink import="true" name="Hand-flamer" hidden="false" type="selectionEntry" id="7fe9-ca1d-b581-595e" targetId="9dc6-6ad8-818e-db2e"/>
             <entryLink import="true" name="Inferno Pistol" hidden="false" type="selectionEntry" id="846f-707d-ecf6-2e10" targetId="d8bf-e17f-d6fa-b7e8"/>
+            <entryLink import="true" name="Plasma Pistol" hidden="false" type="selectionEntry" id="2669-b297-2c80-641" targetId="25c2-104f-fa0c-809e"/>
           </entryLinks>
           <constraints>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a9b1-1796-4f45-9e7f"/>
@@ -1392,7 +1400,7 @@
             </modifier>
           </modifiers>
         </selectionEntryGroup>
-        <selectionEntryGroup name="Weapon 2" hidden="false" id="a4e5-bd0a-312d-2445" defaultSelectionEntryId="6e92-c5f0-6d22-ebde">
+        <selectionEntryGroup name="Replace Astartes chainsword" hidden="false" id="a4e5-bd0a-312d-2445" defaultSelectionEntryId="6e92-c5f0-6d22-ebde">
           <entryLinks>
             <entryLink import="true" name="Power Fist" hidden="false" type="selectionEntry" id="8020-dfae-57a1-ccb7" targetId="99de-5985-8cb8-f571"/>
             <entryLink import="true" name="Thunder Hammer" hidden="false" type="selectionEntry" id="9957-aa33-c29a-a226" targetId="62ad-da0b-24f7-fe33"/>
@@ -4928,7 +4936,7 @@ by 1.</characteristic>
       <profiles>
         <profile name="Teleport Homer" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2378-55a7-34ce-284d">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, you can set up one Teleport Homer token for this unit anywhere on the battlefield that is not in your opponent’s deployment one. If you do, once per battle, you can target this unit with the Rapid Ingress Stratagem for 0CP, but when resolving that Stratagem, you must set this unit up within 3&quot; horizontally of that token and not within 9&quot; horizontally of any enemy models. That token is then removed.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, you can set up one Teleport Homer token for this unit anywhere on the battlefield that is not in your opponent’s deployment zone. If you do, once per battle, you can target this unit with the Rapid Ingress Stratagem for 0CP, but when resolving that Stratagem, you must set this unit up within 3&quot; horizontally of that token and not within 9&quot; horizontally of any enemy models. That token is then removed.</characteristic>
           </characteristics>
         </profile>
         <profile name="Terminator Squad" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="193e-37f8-3973-79fb">
@@ -5975,7 +5983,7 @@ by 1.</characteristic>
               <profiles>
                 <profile name="Twin Ironhail Autocannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="e195-f8b4-f130-12e7">
                   <characteristics>
-                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
                     <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
                     <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
                     <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
@@ -12920,13 +12928,17 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
         <infoLink name="Oath of Moment" hidden="false" type="rule" id="7171-d377-ac3-5056" targetId="3b76-4053-ece9-6e7d"/>
       </infoLinks>
       <selectionEntryGroups>
-        <selectionEntryGroup name="Weapon 1" id="ff9b-7d31-69e6-1ef0" defaultSelectionEntryId="e25e-ba6e-b399-919">
+        <selectionEntryGroup name="Replace bolt pistol" id="ff9b-7d31-69e6-1ef0" defaultSelectionEntryId="e25e-ba6e-b399-919">
           <entryLinks>
             <entryLink import="true" name="Combi-weapon" hidden="false" type="selectionEntry" id="53a0-4426-db16-be3c" targetId="2c13-8cdd-f66b-bcae"/>
             <entryLink import="true" name="Power Fist" hidden="false" type="selectionEntry" id="90cf-ed16-4591-c589" targetId="99de-5985-8cb8-f571"/>
             <entryLink import="true" name="Master-crafted Boltgun" hidden="false" type="selectionEntry" id="51bf-de7-994a-4a70" targetId="442d-a6c1-5b5b-3a57"/>
             <entryLink import="true" name="Relic Weapon" hidden="false" type="selectionEntry" id="860a-46a7-6332-8b42" targetId="5baf-8a8a-b5ba-1223"/>
-            <entryLink import="true" name="Relic Shield" hidden="false" type="selectionEntry" id="fd95-3ca6-cfea-885d" targetId="6198-7228-4a39-7926"/>
+            <entryLink import="true" name="Relic Shield" hidden="false" type="selectionEntry" id="fd95-3ca6-cfea-885d" targetId="6198-7228-4a39-7926">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="faf9-bf62-8eb5-a3cb" shared="true" id="3cf3-72f7-3a2d-61a5" includeChildSelections="true"/>
+              </constraints>
+            </entryLink>
             <entryLink import="true" name="Storm Bolter" hidden="false" type="selectionEntry" id="bb61-26af-a2c2-7f19" targetId="eb61-5cd0-5242-74cc"/>
             <entryLink import="true" name="Hand-flamer" hidden="false" type="selectionEntry" id="3009-cd9f-4194-6c24" targetId="9dc6-6ad8-818e-db2e"/>
             <entryLink import="true" name="Inferno Pistol" hidden="false" type="selectionEntry" id="e545-6cc-2ede-a29b" targetId="d8bf-e17f-d6fa-b7e8"/>
@@ -12946,7 +12958,7 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
             </modifier>
           </modifiers>
         </selectionEntryGroup>
-        <selectionEntryGroup name="Weapon 2" hidden="false" id="9024-1cd9-2377-3627" defaultSelectionEntryId="7b88-6217-70a1-edb4">
+        <selectionEntryGroup name="Replace Astartes chainsword" hidden="false" id="9024-1cd9-2377-3627" defaultSelectionEntryId="7b88-6217-70a1-edb4">
           <entryLinks>
             <entryLink import="true" name="Power Fist" hidden="false" type="selectionEntry" id="d1b7-1054-477f-a2ae" targetId="99de-5985-8cb8-f571"/>
             <entryLink import="true" name="Relic Weapon" hidden="false" type="selectionEntry" id="3969-72a0-3390-c0e3" targetId="5baf-8a8a-b5ba-1223"/>
