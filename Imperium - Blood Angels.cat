@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="12" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="13" battleScribeVersion="2.03" type="catalogue">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Space Marines" id="abd0-8ebd-6fbd-2d94" targetId="e0af-67df-9d63-8fb7" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights" id="9c08-8ffc-d746-7384" targetId="1b6d-dc06-5db9-c7d1" importRootEntries="true"/>
@@ -942,7 +942,7 @@
           <selectionEntries>
             <selectionEntry type="model" import="true" name="Death Company Intercessor" hidden="false" id="8d8d-9a24-5d23-8283">
               <selectionEntryGroups>
-                <selectionEntryGroup name="Weapon Option" hidden="false" id="b780-ab8-35fc-3caf">
+                <selectionEntryGroup name="Weapon Option" hidden="false" id="b780-ab8-35fc-3caf" defaultSelectionEntryId="b160-79d-7e6f-402c">
                   <selectionEntries>
                     <selectionEntry type="upgrade" import="true" name="Bolt Rifle, Bolt Pistol &amp; Close Combat Weapon" hidden="false" id="b160-79d-7e6f-402c" collective="true">
                       <entryLinks>
@@ -965,6 +965,9 @@
                           </constraints>
                         </entryLink>
                       </entryLinks>
+                      <constraints>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="49f8-5d1c-2134-12ad"/>
+                      </constraints>
                     </selectionEntry>
                     <selectionEntry type="upgrade" import="true" name="Astartes Chainsword &amp; Heavy Bolt Pistol" hidden="false" id="c71f-5f1d-137f-e212" collective="true">
                       <entryLinks>
@@ -980,7 +983,16 @@
                             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4008-3ee1-3d80-89be"/>
                           </constraints>
                         </entryLink>
+                        <entryLink import="true" name="Close Combat Weapon" hidden="false" type="selectionEntry" id="a64c-9a97-52fb-a967" targetId="6c7d-af5b-482-6fbe">
+                          <constraints>
+                            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7bf7-88de-ca27-7428"/>
+                            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="84c3-32a6-a0c1-1cc5"/>
+                          </constraints>
+                        </entryLink>
                       </entryLinks>
+                      <constraints>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="eac8-47e5-2edf-4f7"/>
+                      </constraints>
                     </selectionEntry>
                   </selectionEntries>
                   <constraints>
@@ -991,7 +1003,104 @@
               </selectionEntryGroups>
               <constraints>
                 <constraint type="max" value="10" field="selections" scope="parent" shared="true" id="986b-27a6-151e-ade8"/>
+                <constraint type="min" value="3" field="selections" scope="parent" shared="true" id="cb8c-2890-e340-16c1"/>
               </constraints>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Intercessor w/ melee weapon" hidden="false" id="9f43-bd70-ab1c-3cc5">
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Melee weapon" hidden="false" id="ae89-2cd9-80d4-6b96">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2c7d-86d9-7591-3c69"/>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4e2c-f736-31a3-a4dd"/>
+                  </constraints>
+                  <entryLinks>
+                    <entryLink import="true" name="Power Fist" hidden="false" type="selectionEntry" id="b198-fd3c-1a46-b4c1" targetId="f8d8-7e77-4b71-faac"/>
+                    <entryLink import="true" name="Thunder Hammer" hidden="false" type="selectionEntry" id="704a-7184-da47-4059" targetId="4913-96d4-2b1f-2c21"/>
+                    <entryLink import="true" name="Power Weapon" hidden="false" type="selectionEntry" id="f60c-8ff0-7084-492b" targetId="50dd-3e76-d993-4d1a"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+                <selectionEntryGroup name="Pistol option" hidden="false" id="a9b9-681f-c9b1-4b3b">
+                  <entryLinks>
+                    <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="bd8-f5f2-8c54-4b6a" targetId="18b0-8c2-173f-5">
+                      <constraints>
+                        <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="3ceb-693d-6d43-de29"/>
+                      </constraints>
+                      <modifiers>
+                        <modifier type="set" value="1" field="3ceb-693d-6d43-de29" id="34c2-11d8-9f79-e36b">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="bb83-db85-6ce1-9a61" childId="b160-79d-7e6f-402c" shared="true" id="c045-3a64-77d-1342" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </entryLink>
+                    <entryLink import="true" name="Heavy Bolt Pistol" hidden="false" type="selectionEntry" id="1691-f771-8d23-37ad" targetId="3b8f-1cb7-3c6e-4455">
+                      <constraints>
+                        <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="d72b-80a6-5117-83b1"/>
+                      </constraints>
+                      <modifiers>
+                        <modifier type="set" value="1" field="d72b-80a6-5117-83b1" id="7fb8-b552-7467-2fb4">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="bb83-db85-6ce1-9a61" childId="c71f-5f1d-137f-e212" shared="true" id="e571-877e-ae45-fe4b" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </entryLink>
+                  </entryLinks>
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9e93-8adc-6205-a838"/>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5c47-d957-10e8-11fd"/>
+                  </constraints>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ff28-199d-9823-4142"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Close Combat Weapon" hidden="false" type="selectionEntry" id="f02a-e90-a66f-3ee0" targetId="6c7d-af5b-482-6fbe">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="b18a-abf4-21f0-fda"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cd47-8510-20e4-1af"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Intercessor w/ alternate pistol" hidden="false" id="475a-72a4-6048-5b46">
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Pistol option" hidden="false" id="328b-11c-b96e-f9ad">
+                  <entryLinks>
+                    <entryLink import="true" name="Hand Flamer" hidden="false" type="selectionEntry" id="7491-bba9-6b61-97" targetId="9dc6-6ad8-818e-db2e"/>
+                    <entryLink import="true" name="Plasma Pistol" hidden="false" type="selectionEntry" id="4017-9b90-5cda-866d" targetId="25c2-104f-fa0c-809e"/>
+                  </entryLinks>
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cb6e-b615-7698-b3ed"/>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5511-19d7-67b9-6631"/>
+                  </constraints>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8651-2041-3d83-a8c7"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Astartes Chainsword" hidden="false" type="selectionEntry" id="f9de-9311-13b5-9f4b" targetId="efcd-180-d07-b4d6">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5e73-7843-9a15-3ce6"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3669-ed5e-3203-4447"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Close Combat Weapon" hidden="false" type="selectionEntry" id="5acd-bc3e-b0c8-d17d" targetId="6c7d-af5b-482-6fbe">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="65a3-9f2e-74-5712"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="91c9-d9-b910-bbac"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="parent" childId="b160-79d-7e6f-402c" shared="true" id="b29f-e100-db76-b16b" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
           </selectionEntries>
           <constraints>
@@ -999,40 +1108,14 @@
             <constraint type="max" value="10" field="selections" scope="parent" shared="true" id="ba04-a8f9-3d2-e54a"/>
           </constraints>
         </selectionEntryGroup>
-        <selectionEntryGroup name="One Model Replace Bolt Rifle or Astartes Chainsword" hidden="false" id="28e8-974d-dd3d-3389">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3bb1-eb37-6c34-466b"/>
-          </constraints>
-          <entryLinks>
-            <entryLink import="true" name="Power Fist" hidden="false" type="selectionEntry" id="72a6-eee2-2206-9e38" targetId="f8d8-7e77-4b71-faac"/>
-            <entryLink import="true" name="Thunder Hammer" hidden="false" type="selectionEntry" id="c8c0-8ff5-1c7d-8b6c" targetId="4913-96d4-2b1f-2c21"/>
-            <entryLink import="true" name="Power Weapon" hidden="false" type="selectionEntry" id="bee1-c8ba-4b32-f31c" targetId="50dd-3e76-d993-4d1a"/>
-          </entryLinks>
-        </selectionEntryGroup>
-        <selectionEntryGroup name="One Model Replace Heavy Bolt Pistol" hidden="false" id="837f-75bc-92f5-f51a">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7ac-7096-a653-845a"/>
-          </constraints>
-          <entryLinks>
-            <entryLink import="true" name="Hand Flamer" hidden="false" type="selectionEntry" id="b5cb-be68-5e32-6423" targetId="9dc6-6ad8-818e-db2e"/>
-            <entryLink import="true" name="Plasma Pistol" hidden="false" type="selectionEntry" id="b375-a661-90a4-2a22" targetId="25c2-104f-fa0c-809e"/>
-          </entryLinks>
-          <modifiers>
-            <modifier type="set" value="true" field="hidden">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="parent" childId="b160-79d-7e6f-402c" shared="true" id="4454-a143-c297-3dc6" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
-          </modifiers>
-        </selectionEntryGroup>
       </selectionEntryGroups>
       <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Astartes Grendade Launcher" hidden="false" id="c5e8-f7eb-fc26-4125">
+        <selectionEntry type="upgrade" import="true" name="Astartes Grenade Launcher" hidden="false" id="c5e8-f7eb-fc26-4125">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="22f8-8351-ea09-1fb6"/>
           </constraints>
           <profiles>
-            <profile name="➤ Astartes Grendade Launcher - Frag" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="a331-e139-5bed-c95a">
+            <profile name="➤ Astartes Grenade Launcher - Frag" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="a331-e139-5bed-c95a">
               <characteristics>
                 <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
                 <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
@@ -1043,7 +1126,7 @@
                 <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
               </characteristics>
             </profile>
-            <profile name="➤ Astartes Grendade Launcher - Krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="95b1-575a-6a11-2500">
+            <profile name="➤ Astartes Grenade Launcher - Krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="95b1-575a-6a11-2500">
               <characteristics>
                 <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
                 <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
@@ -1093,7 +1176,7 @@
         <categoryLink targetId="caed-a62d-2318-dda1" id="2ccd-fdf7-5b3a-e766" primary="false" name="Death Company Marines"/>
       </categoryLinks>
       <profiles>
-        <profile name="Death Company Marines" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="14d8-76b3-e3ea-e5d2">
+        <profile name="Death Company Marine" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="14d8-76b3-e3ea-e5d2">
           <characteristics>
             <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
             <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
@@ -1224,7 +1307,7 @@ Strength, or the [SUSTAINED HITS 2] ability if this unit is Below Half-strength
         <categoryLink targetId="bd17-5cbb-7db8-e23a" id="e2b3-7c2-f473-ba02" primary="false" name="Death Company Marines with Jump Packs"/>
       </categoryLinks>
       <profiles>
-        <profile name="Death Company Marines with Jump Packs" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="4d41-5eed-844a-2b1c">
+        <profile name="Death Company Marine with Jump Pack" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="4d41-5eed-844a-2b1c">
           <characteristics>
             <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">12&quot;</characteristic>
             <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
@@ -1273,9 +1356,9 @@ Strength, or the [SUSTAINED HITS 2] ability if this unit is Below Half-strength
                         </entryLink>
                       </entryLinks>
                     </selectionEntry>
-                    <selectionEntry type="upgrade" import="true" name="Astartes Chainsword and Bolt Pistol" hidden="false" id="d1c8-994e-2740-82ea">
+                    <selectionEntry type="upgrade" import="true" name="Melee weapon and pistol" hidden="false" id="d1c8-994e-2740-82ea">
                       <selectionEntryGroups>
-                        <selectionEntryGroup name="Melee Option" hidden="false" id="dd-7c5e-5a3-8788" defaultSelectionEntryId="d614-6eed-5be-36bf">
+                        <selectionEntryGroup name="Replace Astartes chainsword" hidden="false" id="dd-7c5e-5a3-8788" defaultSelectionEntryId="d614-6eed-5be-36bf">
                           <constraints>
                             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3b28-52a5-1a0f-b614"/>
                             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a41a-1534-e4ca-8bee"/>
@@ -1286,7 +1369,7 @@ Strength, or the [SUSTAINED HITS 2] ability if this unit is Below Half-strength
                             <entryLink import="true" name="Power Weapon" hidden="false" type="selectionEntry" id="2596-84b2-bc89-da3" targetId="50dd-3e76-d993-4d1a"/>
                           </entryLinks>
                         </selectionEntryGroup>
-                        <selectionEntryGroup name="Pistol Option" hidden="false" id="744d-e0d3-27af-f394" defaultSelectionEntryId="698a-d868-5c6f-59e1">
+                        <selectionEntryGroup name="Replace bolt pistol" hidden="false" id="744d-e0d3-27af-f394" defaultSelectionEntryId="698a-d868-5c6f-59e1">
                           <constraints>
                             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f5d7-afcd-c8b0-fa29"/>
                             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="67ce-9a5-5949-1618"/>
