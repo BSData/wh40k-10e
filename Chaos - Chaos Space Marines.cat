@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="28" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="29" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <profileTypes>
     <profileType id="3084-68b8-1d20-2f26" name="Marks of Chaos">
       <characteristicTypes>
@@ -1389,7 +1389,7 @@
         <cost name="pts" typeId="51b2-306e-1021-d207" value="195"/>
       </costs>
     </selectionEntry>
-    <selectionEntry id="cd9c-96e7-6dcb-bedf" name="Fabius Bile" hidden="false" collective="false" import="true" type="model">
+    <selectionEntry id="cd9c-96e7-6dcb-bedf" name="Fabius Bile" hidden="false" collective="false" import="true" type="unit">
       <constraints>
         <constraint field="selections" scope="force" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="d542-4b6-6728-981e" type="max"/>
       </constraints>
@@ -1424,7 +1424,7 @@
         <categoryLink id="4537-768d-e071-ecbb" name="Epic Hero" hidden="false" targetId="4f3a-f0f7-6647-348d" primary="true"/>
       </categoryLinks>
       <selectionEntries>
-        <selectionEntry id="9ddb-d7c2-e120-9b1d" name="Fabius Bile" hidden="false" collective="false" import="true" type="upgrade">
+        <selectionEntry id="9ddb-d7c2-e120-9b1d" name="Fabius Bile" hidden="false" collective="false" import="true" type="model">
           <constraints>
             <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="af01-5c56-c92-c801" type="min"/>
             <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="4ef2-ef5c-fca3-9388" type="max"/>
@@ -1531,7 +1531,7 @@
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry id="d523-2913-1201-3284" name="Surgeon Acolyte" hidden="false" collective="false" import="true" type="upgrade">
+        <selectionEntry id="d523-2913-1201-3284" name="Surgeon Acolyte" hidden="false" collective="false" import="true" type="model">
           <constraints>
             <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="8d0b-b6eb-f874-df25" type="min"/>
             <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="838d-f91-4eeb-9529" type="max"/>
@@ -1604,6 +1604,16 @@
         <profile id="bcfc-a73a-79f9-3908" name="Guns Blazing" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time an enemy unit is selected to shoot, if one or more of those attacks target a friendly HERETIC ASTARTES unit within 3&quot; of this model, after that enemy unit has finished making its attacks, this model can shoot as if it were your Shooting phase, but when doing so it must target only that enemy unit (and only if it is an eligible target).</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Cypher" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="62b5-7c85-3be5-28bc">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">5</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -3869,7 +3879,11 @@ You can attach this model to one of the above units even if one other CHARACTER 
               </selectionEntries>
               <entryLinks>
                 <entryLink id="b32-e48-57b8-ad3b" name="Bolt pistol" hidden="false" collective="false" import="true" targetId="ce4a-6df3-3c24-621b" type="selectionEntry"/>
-                <entryLink id="5385-7f51-1d3-a579" name="Plasma pistol" hidden="false" collective="false" import="true" targetId="14a5-4b2-415a-c1d" type="selectionEntry"/>
+                <entryLink id="5385-7f51-1d3-a579" name="Plasma pistol" hidden="false" collective="false" import="true" targetId="14a5-4b2-415a-c1d" type="selectionEntry">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="fecc-eb85-46b6-8f31" shared="true" id="b97d-b35a-b61f-daac" includeChildSelections="true"/>
+                  </constraints>
+                </entryLink>
               </entryLinks>
             </selectionEntryGroup>
           </selectionEntryGroups>
@@ -4232,14 +4246,15 @@ You can attach this model to one of the above units even if one other CHARACTER 
                         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
                       </costs>
                     </selectionEntry>
-                  </selectionEntries>
-                  <entryLinks>
-                    <entryLink id="8d41-3ff2-ffbf-1fde" name="Plasma pistol" hidden="false" collective="false" import="true" targetId="14a5-4b2-415a-c1d" type="selectionEntry">
+                    <selectionEntry type="upgrade" import="true" name="Plasma pistol" hidden="false" id="b63d-1885-e026-9de6">
+                      <infoLinks>
+                        <infoLink name="Plasma pistol" hidden="false" type="infoGroup" id="1e83-c864-87d6-7add" targetId="f6bd-a5e5-dfcd-a086"/>
+                      </infoLinks>
                       <constraints>
-                        <constraint field="selections" scope="615-e6bf-cfd2-9384" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="a5d8-984e-af7e-b5e6" type="max"/>
+                        <constraint type="max" value="1" field="selections" scope="615-e6bf-cfd2-9384" shared="true" id="92c5-7840-2706-b9fe" includeChildSelections="true"/>
                       </constraints>
-                    </entryLink>
-                  </entryLinks>
+                    </selectionEntry>
+                  </selectionEntries>
                 </selectionEntryGroup>
               </selectionEntryGroups>
               <entryLinks>
