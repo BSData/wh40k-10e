@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="28" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="29" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="539-7da4-d962-1a64" name="Primaris" hidden="false"/>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
@@ -124,6 +124,7 @@
     <categoryEntry name="Tarantula Air Defence Battery" hidden="false" id="fec5-c43d-8176-41b3"/>
     <categoryEntry name="Apothecary" hidden="false" id="2170-4f11-9bf7-ae56"/>
     <categoryEntry name="Assault Intercessors with Jump Packs" hidden="false" id="6c92-4e9d-b5e5-1287"/>
+    <categoryEntry name="Company Heroes" hidden="false" id="5956-471c-16ba-af95"/>
   </categoryEntries>
   <entryLinks>
     <entryLink import="true" name="Detachment" hidden="false" type="selectionEntry" id="e9ed-6763-ea0d-39fe" targetId="82cb-ba1-1aae-3b1d"/>
@@ -598,6 +599,7 @@
     <entryLink import="true" name="Rhino Primaris [Legends]" hidden="false" type="selectionEntry" id="5c5e-e5c9-70b-69df" targetId="80d1-496f-40fd-c154"/>
     <entryLink import="true" name="Land Raider Excelsior [Legends]" hidden="false" type="selectionEntry" id="3988-1455-febb-f046" targetId="c8e1-69a5-1121-6f79"/>
     <entryLink import="true" name="Assault Intercessors with Jump Packs" hidden="false" type="selectionEntry" id="ce90-be8f-9f47-6641" targetId="cdd9-efda-95-e7b2"/>
+    <entryLink import="true" name="Company Heroes" hidden="false" type="selectionEntry" id="8a1e-45c9-7719-b8c3" targetId="2f2e-d99b-b235-163a"/>
   </entryLinks>
   <rules>
     <rule id="3b76-4053-ece9-6e7d" name="Oath of Moment" hidden="false">
@@ -905,9 +907,14 @@
           </characteristics>
           <modifiers>
             <modifier type="set" value="6" field="2337-daa1-6682-b110">
-              <conditions>
-                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="2d7f-1892-2fd0-e29c" shared="true" id="4ef4-7cb5-9f42-9ea4"/>
-              </conditions>
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="2d7f-1892-2fd0-e29c" shared="true" id="be0c-55b4-b845-ff71"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="b365-b786-8fe6-1293" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </modifier>
           </modifiers>
         </profile>
@@ -6282,7 +6289,7 @@ by 1.</characteristic>
       </infoLinks>
       <comment>BS 3+</comment>
     </selectionEntry>
-    <selectionEntry type="model" import="true" name="Contemptor Dreadnought" hidden="false" id="99b0-1602-802-af54">
+    <selectionEntry type="model" import="true" name="Contemptor Dreadnought [Legends]" hidden="false" id="99b0-1602-802-af54">
       <categoryLinks>
         <categoryLink targetId="dbd4-63-af05-998" id="e6a8-29f2-dec5-fbb5" primary="true" name="Vehicle"/>
         <categoryLink targetId="6dda-e157-334d-e93a" id="ebae-7cf0-e64a-a22a" primary="false" name="Walker"/>
@@ -6371,6 +6378,13 @@ by 1.</characteristic>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="170"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="force" childId="9ed-cbf4-bfe5-90bf" shared="true" id="9a2f-ab0c-83aa-8a3d" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Ironclad Dreadnought [Legends]" hidden="true" id="64c7-8b87-1b4f-7850">
       <costs>
@@ -19545,6 +19559,297 @@ per turn.</characteristic>
         </modifier>
       </modifiers>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Company Heroes" hidden="false" id="2f2e-d99b-b235-163a">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="95"/>
+      </costs>
+      <profiles>
+        <profile name="Company Heroes" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="5dc2-5af0-bf6-43f9">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">4</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Ancient Banner" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9ced-4a20-1c04-203d">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this unit contains an Ancient, add 1 to the Objective Control characteristic of models in this unit</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Command Squad" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="cb97-8ee0-1cbf-e38f">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a Character model is leading this unit, each time an attack targets this unit, subtract 1 from the Wound roll. </characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Company Heroes" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8a9-4b06-b80-76df">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You must attach one Captain or Chapter Master model to this unit. If this is not possible, this unit does not take part in the battle and counts as having been destroyed. </characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Oath of Moment" hidden="false" type="rule" id="fb75-80ba-871f-155d" targetId="3b76-4053-ece9-6e7d"/>
+      </infoLinks>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Ancient" hidden="false" id="f26a-2b25-1582-ae68">
+          <entryLinks>
+            <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="cc94-34b5-4fab-f266" targetId="18b0-8c2-173f-5">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3de3-30b3-b75-e101-min"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3de3-30b3-b75-e101-max"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Bolt Rifle" hidden="false" id="67f5-4121-ff19-9540">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f902-d089-4673-66b1-min"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f902-d089-4673-66b1-max"/>
+              </constraints>
+              <profiles>
+                <profile name="Bolt Rifle" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="8c5d-9e54-5114-7bec">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3"/>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Close Combat Weapon" hidden="false" id="7b6a-eee7-6fd7-1a34">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="431e-be6e-b81d-7a13-min"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="431e-be6e-b81d-7a13-max"/>
+              </constraints>
+              <profiles>
+                <profile name="Close Combat Weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="37e8-2caa-b896-f721">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="18f-3e22-3551-1e6-min"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="18f-3e22-3551-1e6-max"/>
+          </constraints>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Company Champion" hidden="false" id="b365-b786-8fe6-1293">
+          <entryLinks>
+            <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="27d-1b00-1f3d-63d3" targetId="18b0-8c2-173f-5">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="429c-9fdc-c178-29db-min"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="429c-9fdc-c178-29db-max"/>
+              </constraints>
+            </entryLink>
+            <entryLink import="true" name="Master-crafted Power Weapon" hidden="false" type="selectionEntry" id="5825-e9c0-30e9-5f2" targetId="ebda-08ed-994a-b579">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8254-95e2-5302-a786-min"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8254-95e2-5302-a786-max"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="fbb5-acd7-4496-1e8-min"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="fbb5-acd7-4496-1e8-max"/>
+          </constraints>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Company Veteran w/ Heavy Bolter" hidden="false" id="b972-1787-fd71-9d11">
+          <entryLinks>
+            <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="b186-7687-2dfb-30b6" targetId="18b0-8c2-173f-5">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4779-6c95-6e1-34d3-min"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4779-6c95-6e1-34d3-max"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Master-crafted Heavy Bolter" hidden="false" id="27c3-9e15-fc4b-6060">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="bef3-8715-e37a-d49e-min"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="bef3-8715-e37a-d49e-max"/>
+              </constraints>
+              <profiles>
+                <profile name="Master-crafted Heavy Bolter" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="c23d-e030-307b-f383">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Sustained Hits 1</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Heavy" hidden="false" type="rule" id="36ff-82bc-42fc-4960" targetId="1202-10a8-78e9-4c67"/>
+                <infoLink name="Sustained Hits" hidden="false" type="rule" id="717-4c47-f5a9-1a3c" targetId="1897-c22c-9597-12b1"/>
+              </infoLinks>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Close Combat Weapon" hidden="false" id="57b4-bd7a-acb7-419d">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4173-ba6-c7ee-3426-min"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4173-ba6-c7ee-3426-max"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Close Combat Weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="c331-99f8-2879-cb67">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Close Combat Weapon" hidden="false" id="b663-be13-c587-5b28">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="9c4f-11e1-5bd4-89cd-min"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9c4f-11e1-5bd4-89cd-max"/>
+              </constraints>
+              <profiles>
+                <profile name="Close Combat Weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="7956-bb57-c91f-66cf">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d942-f87a-41bc-23e0-min"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d942-f87a-41bc-23e0-max"/>
+          </constraints>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Company Veteran w/ Bolt Rifle" hidden="false" id="311e-7cc5-94e7-128f">
+          <entryLinks>
+            <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="6544-72c6-e92d-aa9" targetId="18b0-8c2-173f-5">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="97aa-2b04-4ead-5e8a-min"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="97aa-2b04-4ead-5e8a-max"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Close Combat Weapon" hidden="false" id="7f3d-d849-724a-22a3">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d09c-4e0c-a808-5fe4-min"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d09c-4e0c-a808-5fe4-max"/>
+              </constraints>
+              <profiles>
+                <profile name="Close Combat Weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="dd36-b1eb-6b53-7595">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Master-crafted Bolt Rifle" hidden="false" id="4c78-3296-b3dd-a01a">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e380-fd77-9638-f332-min"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e380-fd77-9638-f332-max"/>
+              </constraints>
+              <profiles>
+                <profile name="Master-crafted Bolt Rifle" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="ad63-8eaa-314d-a3cd">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Devastating Wounds, Rapid Fire 1</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Devastating Wounds" hidden="false" type="rule" id="7d17-6812-2207-4032" targetId="be1e-ac8e-1e2c-3528"/>
+                <infoLink name="Rapid Fire" hidden="false" type="rule" id="a21-d2b-3c5a-eef0" targetId="c5c8-8b58-b8b6-7786"/>
+              </infoLinks>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="db8c-95d-4bfa-780d-min"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="db8c-95d-4bfa-780d-max"/>
+          </constraints>
+        </selectionEntry>
+      </selectionEntries>
+      <constraints>
+        <constraint type="max" value="0" field="selections" scope="roster" shared="true" id="1852-2e76-ee7b-15aa" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+      <modifiers>
+        <modifier type="set" value="1" field="1852-2e76-ee7b-15aa" id="69a7-b8b4-148-ce2c">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="equalTo" value="1" field="selections" scope="roster" childId="2d7f-1892-2fd0-e29c" shared="true" id="47a4-bf4c-bbfe-20d8" includeChildSelections="true" includeChildForces="true"/>
+                <condition type="equalTo" value="1" field="selections" scope="roster" childId="5bd8-882d-302b-48f3" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="2" field="1852-2e76-ee7b-15aa" id="a410-7775-61b4-d988">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="equalTo" value="2" field="selections" scope="roster" childId="2d7f-1892-2fd0-e29c" shared="true" id="96cd-567b-a6d0-cfcd" includeChildSelections="true" includeChildForces="true"/>
+                <condition type="equalTo" value="2" field="selections" scope="roster" childId="5bd8-882d-302b-48f3" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="3" field="1852-2e76-ee7b-15aa" id="99c5-a3fc-13a5-c5e7">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="equalTo" value="3" field="selections" scope="roster" childId="2d7f-1892-2fd0-e29c" shared="true" id="bc0b-78c8-89e6-59d9" includeChildSelections="true" includeChildForces="true"/>
+                <condition type="equalTo" value="3" field="selections" scope="roster" childId="5bd8-882d-302b-48f3" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+      <categoryLinks>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="5dd9-afbb-7248-e421" primary="true" name="Infantry"/>
+        <categoryLink targetId="5a61-81ac-eb7c-a87e" id="1078-bf77-c6f8-36fb" primary="false" name="Grenades"/>
+        <categoryLink targetId="aff3-d6a3-2a95-9dc" id="ad67-3b14-afee-471f" primary="false" name="Imperium"/>
+        <categoryLink targetId="5179-8ede-45e3-49a2" id="6dee-5122-e5f9-2ee4" primary="false" name="Tacticus"/>
+        <categoryLink targetId="5956-471c-16ba-af95" id="40e2-907c-816a-de15" primary="false" name="Company Heroes"/>
+        <categoryLink targetId="6e7-40c-58d9-e402" id="6895-b8fa-c3b8-dd23" primary="false" name="Faction: Adeptus Astartes"/>
+      </categoryLinks>
+    </selectionEntry>
   </sharedSelectionEntries>
   <sharedProfiles>
     <profile id="90c7-c55c-21e2-2232" name="Rites of Battle" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -20507,13 +20812,6 @@ is Battle-shocked, models in that unit have the Feel No Pain 4+ ability instead.
               <constraints>
                 <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="ebf-8288-1f6c-9a67" includeChildSelections="true"/>
               </constraints>
-              <modifiers>
-                <modifier type="set" value="true" field="hidden">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="14a0-40c9-2748-ae6e" shared="true" id="796-ad7e-6da2-fa47" includeChildSelections="true" includeChildForces="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
               </costs>
@@ -20532,6 +20830,13 @@ is Battle-shocked, models in that unit have the Feel No Pain 4+ ability instead.
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="10"/>
               </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="14a0-40c9-2748-ae6e" shared="true" id="713a-9db7-ac71-5068" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
           </selectionEntries>
           <constraints>
