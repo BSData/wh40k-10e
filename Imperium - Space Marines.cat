@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="29" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="30" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="539-7da4-d962-1a64" name="Primaris" hidden="false"/>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
@@ -857,7 +857,15 @@
         <cost name="pl" typeId="c5fb-5b9b-89f6-86c" value="0"/>
       </costs>
     </selectionEntry>
-    <selectionEntry id="6198-7228-4a39-7926" name="Relic Shield" hidden="false" collective="false" import="true" type="upgrade"/>
+    <selectionEntry id="6198-7228-4a39-7926" name="Relic Shield" hidden="false" collective="false" import="true" type="upgrade">
+      <profiles>
+        <profile name="Relic Shield" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d54c-ae42-9d78-71df">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 1 to the bearer&apos;s wound characteristics</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+    </selectionEntry>
     <selectionEntry id="b273-b85e-4018-a0cd" name="Bolt Pistol" hidden="false" collective="false" import="true" type="upgrade">
       <profiles>
         <profile id="3104-8d29-e431-05d7" name="Bolt Pistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
@@ -1261,6 +1269,13 @@
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
             <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="set" field="750a-a2ec-90d3-21fe" value="6">
+              <conditions>
+                <condition field="selections" scope="1319-45d-bb95-dfd4" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="6198-7228-4a39-7926" type="equalTo"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
         <profile name="Angel&apos;s Wrath" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b7b7-62a5-211-3f1c">
           <characteristics>
@@ -1299,7 +1314,7 @@
                     <entryLink import="true" name="Plasma Pistol" hidden="false" type="selectionEntry" id="d233-a440-1810-3f6c" targetId="25c2-104f-fa0c-809e"/>
                   </entryLinks>
                 </selectionEntryGroup>
-                <selectionEntryGroup name="Melee" hidden="false" id="bd11-868d-c000-1c92">
+                <selectionEntryGroup name="Melee" hidden="false" id="bd11-868d-c000-1c92" defaultSelectionEntryId="6448-d8cb-9698-9b45">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="9353-b9eb-ca77-199b-min"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9353-b9eb-ca77-199b-max"/>
@@ -2917,12 +2932,13 @@ this unit, add 1 to any armour saving throw made against that attack.</character
             <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
             <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-vehicle 2+</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-vehicle 2+, Heavy</characteristic>
           </characteristics>
         </profile>
       </profiles>
       <infoLinks>
         <infoLink name="Anti-" hidden="false" type="rule" id="d495-90f5-b359-f554" targetId="4111-82e3-9444-e942"/>
+        <infoLink name="Heavy" hidden="false" type="rule" id="3d77-ea09-2bb3-62dd" targetId="1202-10a8-78e9-4c67"/>
       </infoLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Lascannon" hidden="false" id="e0fb-ea05-d58d-1799">
@@ -3234,15 +3250,11 @@ this unit, add 1 to any armour saving throw made against that attack.</character
                   </entryLinks>
                   <selectionEntries>
                     <selectionEntry type="upgrade" import="true" name="Combat Knife" hidden="false" id="16c0-9ced-c92a-c42f" collective="false">
-                      <constraints>
-                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5eda-58ce-ac56-6247"/>
-                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4c9d-673d-cee3-b86a"/>
-                      </constraints>
                       <profiles>
                         <profile name="Combat Knife" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="b415-bae0-aaf7-3117">
                           <characteristics>
                             <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                            <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
                             <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
                             <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
                             <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
@@ -3253,10 +3265,6 @@ this unit, add 1 to any armour saving throw made against that attack.</character
                       </profiles>
                     </selectionEntry>
                     <selectionEntry type="upgrade" import="true" name="Astartes Shotgun" hidden="false" id="2bfb-f524-c9a9-de4" collective="false">
-                      <constraints>
-                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e91-94dc-9409-b40d"/>
-                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d3f8-dcfa-89d1-8668"/>
-                      </constraints>
                       <profiles>
                         <profile name="Astartes Shotgun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="2165-d95a-73f9-56c1">
                           <characteristics>
@@ -3346,7 +3354,7 @@ this unit, add 1 to any armour saving throw made against that attack.</character
                     <profile name="Combat Knife" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="40a9-dff6-e209-c7ae">
                       <characteristics>
                         <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                        <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
                         <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
                         <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
                         <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
@@ -3395,6 +3403,13 @@ this unit, add 1 to any armour saving throw made against that attack.</character
               <constraints>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5ccd-4fd1-59d5-a1a6"/>
               </constraints>
+              <modifiers>
+                <modifier type="set" value="2" field="5ccd-4fd1-59d5-a1a6">
+                  <conditions>
+                    <condition type="atLeast" value="10" field="selections" scope="parent" childId="d0cd-b8dc-82e-5eb8" shared="true" id="14bf-23c8-ee61-ef99" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Scout w/ Scout Sniper Rifle" hidden="false" id="428c-bf14-96d3-4692">
               <constraints>
@@ -3439,6 +3454,13 @@ this unit, add 1 to any armour saving throw made against that attack.</character
                   </constraints>
                 </entryLink>
               </entryLinks>
+              <modifiers>
+                <modifier type="set" value="2" field="1d3b-6c89-f925-3e63">
+                  <conditions>
+                    <condition type="atLeast" value="10" field="selections" scope="parent" childId="d0cd-b8dc-82e-5eb8" shared="true" id="1b04-10cf-44a-c1d5" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -4043,13 +4065,30 @@ Strategic Reserves.</characteristic>
                         <infoLink name="Pistol" hidden="false" type="rule" id="c33b-41ae-f6f5-2724" targetId="8bf7-8812-923d-29e4"/>
                       </infoLinks>
                     </selectionEntry>
+                    <selectionEntry type="upgrade" import="true" name="Bolt Pistol" hidden="false" id="e2c1-461e-7480-9a70">
+                      <profiles>
+                        <profile id="4e15-dc6f-8e8c-baf2" name="Bolt Pistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Pistol" hidden="false" type="rule" id="dad2-73ec-da9c-d6ad" targetId="8bf7-8812-923d-29e4"/>
+                      </infoLinks>
+                    </selectionEntry>
                   </selectionEntries>
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="33c-6407-f7a-5170"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1e5e-4895-4b44-34dc"/>
                   </constraints>
                   <entryLinks>
-                    <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="bfea-dd65-8266-d78c" targetId="18b0-8c2-173f-5"/>
                     <entryLink import="true" name="Plasma Pistol" hidden="false" type="selectionEntry" id="8bba-7d74-1a84-17f3" targetId="25c2-104f-fa0c-809e"/>
                     <entryLink import="true" name="Inferno Pistol" hidden="false" type="selectionEntry" id="4272-bff4-d645-508a" targetId="d8bf-e17f-d6fa-b7e8"/>
                     <entryLink import="true" name="Hand Flamer" hidden="false" type="selectionEntry" id="da32-2d60-3413-b489" targetId="9dc6-6ad8-818e-db2e"/>
@@ -4194,6 +4233,10 @@ Strategic Reserves.</characteristic>
                       </characteristics>
                     </profile>
                   </profiles>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="19bf-686e-18d6-839a-min"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="19bf-686e-18d6-839a-max"/>
+                  </constraints>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntry>
@@ -4697,17 +4740,17 @@ by 1.</characteristic>
                 <constraint type="max" value="5" field="selections" scope="parent" shared="true" id="258-219c-e846-e01f"/>
               </constraints>
               <selectionEntries>
-                <selectionEntry type="upgrade" import="true" name="Power Fist" hidden="false" id="6540-6a13-3ff0-ee9" collective="true">
+                <selectionEntry type="upgrade" import="true" name="Twin Power Fist" hidden="false" id="6540-6a13-3ff0-ee9" collective="true">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c150-7393-7edc-d762"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="226d-ca9d-6083-97"/>
                   </constraints>
                   <profiles>
-                    <profile name="Power Fist" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="8f43-5a49-353f-70a4">
+                    <profile name="Twin Power Fist" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="8f43-5a49-353f-70a4">
                       <characteristics>
                         <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
                         <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
-                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
                         <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
                         <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
                         <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
@@ -4998,7 +5041,7 @@ by 1.</characteristic>
         </profile>
         <profile name="Fury of the First" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="fe56-a10f-5d2-2e1a">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an attack, you can ignore any or all modifiers to that attack’s Ballistic Skill or Weapon Skill characteristic and/or to the Hit roll. In addition, each time a model in this unit makes an attack that targets the enemy unit you selected for the Oath of Moment ability this turn, add 1 to the Hit roll</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an attack that targets your Oath of Moment target, add 1 to the Hit roll.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -12909,6 +12952,13 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
             <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="set" field="750a-a2ec-90d3-21fe" value="7">
+              <conditions>
+                <condition field="selections" scope="faf9-bf62-8eb5-a3cb" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="6198-7228-4a39-7926" type="equalTo"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
         <profile name="Swift Assault" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c18-38-db11-f42b">
           <characteristics>
@@ -13481,7 +13531,7 @@ You can attach this model to one of the above units even if one Captain or Chap
         <entryLink import="true" name="Enhancements" hidden="false" type="selectionEntryGroup" id="9180-2020-d231-94f9" targetId="9e5d-de4c-c5d1-1d3e"/>
       </entryLinks>
       <profiles>
-        <profile name="Primaris Librarian" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="4d0f-7850-67ce-15b2">
+        <profile name="Librarian" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="4d0f-7850-67ce-15b2">
           <characteristics>
             <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
             <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
@@ -13857,7 +13907,7 @@ model is within 12&quot;.</characteristic>
         <constraint field="selections" scope="roster" value="3" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="fd1f-ab0d-a987-36aa" type="max"/>
       </constraints>
       <profiles>
-        <profile name="Primaris Chaplain" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="95da-f4c-98fc-d4a5">
+        <profile name="Chaplain" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="95da-f4c-98fc-d4a5">
           <characteristics>
             <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
             <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
@@ -13965,6 +14015,13 @@ model is within 12&quot;.</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">5+</characteristic>
             <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="set" field="750a-a2ec-90d3-21fe" value="6">
+              <conditions>
+                <condition field="selections" scope="c026-b762-d0a6-5ef1" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="6198-7228-4a39-7926" type="equalTo"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
         <profile name="Leader" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1f58-f4ff-f878-127d">
           <characteristics>
@@ -14213,7 +14270,7 @@ weapons equipped by models in this model’s unit have the [DEVASTATING WOUNDS]
         <constraint field="selections" scope="roster" value="3" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="6d0d-a4ca-5514-13d2" type="max"/>
       </constraints>
       <profiles>
-        <profile name="Primaris Techmarine" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="3eb3-b6eb-4967-a6b2">
+        <profile name="Techmarine" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="3eb3-b6eb-4967-a6b2">
           <characteristics>
             <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
             <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
@@ -15685,7 +15742,7 @@ You can attach this model to one of the above units even if one Captain, Chapte
         <infoLink name="Oath of Moment" hidden="false" type="rule" id="23b9-915-c3d6-3d21" targetId="3b76-4053-ece9-6e7d"/>
       </infoLinks>
       <profiles>
-        <profile id="c1ba-2289-ba1-9cb8" name="Primaris Captain" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
+        <profile id="c1ba-2289-ba1-9cb8" name="Captain" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
           <modifiers>
             <modifier type="set" field="750a-a2ec-90d3-21fe" value="6">
               <conditions>
