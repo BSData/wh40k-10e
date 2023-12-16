@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="33" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="34" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="539-7da4-d962-1a64" name="Primaris" hidden="false"/>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
@@ -35,7 +35,7 @@
     <categoryEntry id="86aa-6d9d-d258-23ef" name="Scout Sniper Squad" hidden="false"/>
     <categoryEntry id="9eb5-4b2e-2cdb-ee15" name="Primaris Company Champion" hidden="false"/>
     <categoryEntry id="4b5c-b618-4edd-788c" name="Primaris Apothecary" hidden="false"/>
-    <categoryEntry id="c4f4-6617-71b7-cba3" name="Apothecary Biologis" hidden="false"/>
+    <categoryEntry id="c4f4-6617-71b7-cba3" name="Biologis" hidden="false"/>
     <categoryEntry id="c8a5-558c-b987-78e2" name="Primaris Ancient" hidden="false"/>
     <categoryEntry id="2427-3b30-841d-5ea3" name="Bladeguard Ancient" hidden="false"/>
     <categoryEntry id="9bb1-7b6c-326a-da2c" name="Ancient" hidden="false"/>
@@ -130,7 +130,15 @@
     <entryLink import="true" name="Detachment" hidden="false" type="selectionEntry" id="e9ed-6763-ea0d-39fe" targetId="82cb-ba1-1aae-3b1d"/>
     <entryLink import="true" name="Aggressor Squad" hidden="false" type="selectionEntry" id="d0e-d643-2621-7cc9" targetId="129d-2da5-66f3-f4ec"/>
     <entryLink import="true" name="Ancient in Terminator Armor" hidden="false" type="selectionEntry" id="13b9-6251-7254-4b83" targetId="fc7f-8176-c10c-ca8"/>
-    <entryLink import="true" name="Apothecary Biologis" hidden="false" type="selectionEntry" id="63c3-df64-ac9f-cae" targetId="c6e9-c0c8-5f13-5771"/>
+    <entryLink import="true" name="Apothecary Biologis" hidden="false" type="selectionEntry" id="63c3-df64-ac9f-cae" targetId="c6e9-c0c8-5f13-5771">
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="7047-73a6-28e-c859" shared="true" id="dcb3-a64b-b7ad-97e3" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </entryLink>
     <entryLink import="true" name="Assault Intercessor Squad" hidden="false" type="selectionEntry" id="c432-5254-8a25-6c8a" targetId="a10b-fbfe-b1fa-6f0c"/>
     <entryLink import="true" name="Assault Squad" hidden="false" type="selectionEntry" id="db5-450b-5c4b-5743" targetId="ca4e-47d5-a704-8e5a">
       <modifiers>
@@ -590,7 +598,15 @@
     <entryLink import="true" name="Company Veterans on Bikes" hidden="false" type="selectionEntry" id="3413-f351-cfb0-d33b" targetId="a40-ff3f-c1ea-fea7"/>
     <entryLink import="true" name="Company Champion on Bike [Legends]" hidden="false" type="selectionEntry" id="2567-b3bf-f1b-26d5" targetId="97c3-20c8-4c99-39e5"/>
     <entryLink import="true" name="Ancient on Bike [Legends]" hidden="false" type="selectionEntry" id="1135-ac85-67e9-25aa" targetId="e4c7-b10c-6896-3f0"/>
-    <entryLink import="true" name="Apothecary on Bike [Legends]" hidden="false" type="selectionEntry" id="3e83-39d9-ee6a-7157" targetId="449f-a74d-e85a-2684"/>
+    <entryLink import="true" name="Apothecary on Bike [Legends]" hidden="false" type="selectionEntry" id="3e83-39d9-ee6a-7157" targetId="449f-a74d-e85a-2684">
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="7047-73a6-28e-c859" shared="true" id="23fd-142c-3fb1-99a3" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </entryLink>
     <entryLink import="true" name="Techmarine on Bike [Legends]" hidden="false" type="selectionEntry" id="f044-7d53-b48f-f6b5" targetId="33e2-3ddf-7063-df9e"/>
     <entryLink import="true" name="Librarian on Bike [Legends]" hidden="false" type="selectionEntry" id="faf9-d221-4c79-88cf" targetId="1039-4a94-c791-9e1d">
       <modifiers>
@@ -4330,7 +4346,7 @@ Strategic Reserves.</characteristic>
                             <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
                             <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
                             <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
-                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
                           </characteristics>
                         </profile>
                       </profiles>
@@ -9338,17 +9354,28 @@ by 1.</characteristic>
                   </constraints>
                 </entryLink>
                 <entryLink import="true" name="Plasma Incinerator" hidden="false" type="selectionEntry" id="9119-f6ca-9836-c7ca" targetId="bb24-ed3f-7468-4f61"/>
-                <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="8f33-f471-e7f7-e1fd" targetId="18b0-8c2-173f-5">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e468-e13f-9b0-d416-min"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e468-e13f-9b0-d416-max"/>
-                  </constraints>
-                </entryLink>
               </entryLinks>
               <constraints>
                 <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d72a-650d-af19-3132"/>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8c04-91bc-13be-f906"/>
               </constraints>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Pistol" hidden="false" id="6ee6-2b73-9e21-fbe0" defaultSelectionEntryId="46ff-ef38-a484-f4cd">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8f6a-6f57-5578-96bf-min"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8f6a-6f57-5578-96bf-max"/>
+                  </constraints>
+                  <entryLinks>
+                    <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="46ff-ef38-a484-f4cd" targetId="18b0-8c2-173f-5">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3a6-a714-96a7-6747"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2818-5851-a97b-2f8"/>
+                      </constraints>
+                    </entryLink>
+                    <entryLink import="true" name="Plasma Pistol" hidden="false" type="selectionEntry" id="b915-38f5-7d75-2bb3" targetId="25c2-104f-fa0c-809e"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Hellblaster" hidden="false" id="1e78-8fcd-1fa7-ec47">
               <constraints>
@@ -12693,14 +12720,6 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
             <modifier type="set" value="Armoured Hull" field="name"/>
           </modifiers>
         </entryLink>
-        <entryLink import="true" name="Hurricane Bolter" hidden="false" type="selectionEntry" id="2e65-228f-db14-c7e" targetId="7a12-df2-b214-30be">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2c7-694a-46-2e20"/>
-          </constraints>
-          <modifiers>
-            <modifier type="append" value="2 Hurricane Bolters" field="name"/>
-          </modifiers>
-        </entryLink>
       </entryLinks>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="af5a-48d7-800f-bd4d"/>
@@ -12738,13 +12757,13 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
         </profile>
       </profiles>
       <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Stormstrike Missiles" hidden="false" id="8a3a-15b2-ffdf-dfb9">
+        <selectionEntry type="upgrade" import="true" name="Stormstrike missile launcher" hidden="false" id="8a3a-15b2-ffdf-dfb9">
           <constraints>
             <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="a8d3-a769-8978-2eb3"/>
             <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="b07c-d964-56c2-6d5a"/>
           </constraints>
           <profiles>
-            <profile name="Stormstrike Missile Launcher" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="ebc0-7394-7e25-3c4a">
+            <profile name="Stormstrike missile launcher" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="ebc0-7394-7e25-3c4a">
               <characteristics>
                 <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
                 <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
@@ -12752,14 +12771,27 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
                 <characteristic name="S" typeId="2229-f494-25db-c5d3">10</characteristic>
                 <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
                 <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
-                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
               </characteristics>
             </profile>
           </profiles>
         </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="2 hurricane bolters" hidden="false" id="37d4-af2f-dfd4-3219">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="acda-766a-d788-cea9"/>
+          </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Hurricane Bolter" hidden="false" type="selectionEntry" id="a255-4f09-f2fe-2c4a" targetId="7a12-df2-b214-30be">
+              <constraints>
+                <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="b3-b010-8225-150f-min"/>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="b3-b010-8225-150f-max"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+        </selectionEntry>
       </selectionEntries>
       <selectionEntryGroups>
-        <selectionEntryGroup name="Weapon Option 1" hidden="false" id="a8f-409c-1ccd-1db6" defaultSelectionEntryId="1f11-61a2-4762-de66">
+        <selectionEntryGroup name="Replace twin assault cannon" hidden="false" id="a8f-409c-1ccd-1db6" defaultSelectionEntryId="1f11-61a2-4762-de66">
           <constraints>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4dd8-1ddf-b1dd-c5f9"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5a03-eec1-f422-1d2e"/>
@@ -12771,7 +12803,7 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
           <selectionEntries>
             <selectionEntry type="upgrade" import="true" name="Twin Heavy Plasma Cannon" hidden="false" id="9c79-fea0-a4a-bae9">
               <profiles>
-                <profile name="➤ Twin Heavy Plasma Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="fa29-4109-9b58-bfd1">
+                <profile name="➤ Twin Heavy Plasma Cannon - standard" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="fa29-4109-9b58-bfd1">
                   <characteristics>
                     <characteristic name="Range" typeId="9896-9419-16a1-92fc">46&quot;</characteristic>
                     <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
@@ -12782,7 +12814,7 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Twin-linked</characteristic>
                   </characteristics>
                 </profile>
-                <profile name="➤ Twin Heavy Plasma Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="359b-684e-a4-1da5">
+                <profile name="➤ Twin Heavy Plasma Cannon - supercharge" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="359b-684e-a4-1da5">
                   <characteristics>
                     <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
                     <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
@@ -12790,18 +12822,19 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
                     <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
                     <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
-                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Twin-linked</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Hazardous, Twin-linked</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
               <infoLinks>
                 <infoLink name="Twin-linked" hidden="false" type="rule" id="4c27-8a96-5142-fda" targetId="cf93-ad4d-2f08-a79d"/>
                 <infoLink name="Blast" hidden="false" type="rule" id="3b80-18eb-27c9-522c" targetId="6c1f-1cf7-ff25-c99e"/>
+                <infoLink name="Hazardous" hidden="false" type="rule" id="5e36-c28a-ed09-64c5" targetId="8367-374c-f87-c627"/>
               </infoLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
-        <selectionEntryGroup name="Weapon Option 2" hidden="false" id="a7ab-b4cb-44b5-a556" defaultSelectionEntryId="2164-e213-260c-d79b">
+        <selectionEntryGroup name="Replace typhoon missile launcher" hidden="false" id="a7ab-b4cb-44b5-a556" defaultSelectionEntryId="2164-e213-260c-d79b">
           <constraints>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="dfc7-8753-7034-e24c"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="eb35-a933-cec6-9884"/>
@@ -14837,7 +14870,8 @@ You can attach this model to one of the above units even if one Captain, Chapte
         <categoryLink targetId="aff3-d6a3-2a95-9dc" id="30cd-5ef0-a575-31dd" primary="false" name="Imperium"/>
         <categoryLink targetId="81f0-f40e-c36c-5a30" id="3850-3181-1036-af3a" primary="false" name="Gravis"/>
         <categoryLink targetId="6e7-40c-58d9-e402" id="b4b9-9ea0-a345-a5ac" primary="false" name="Faction: Adeptus Astartes"/>
-        <categoryLink targetId="c4f4-6617-71b7-cba3" id="e65c-c70d-eeca-75a9" primary="false" name="Apothecary Biologis"/>
+        <categoryLink targetId="c4f4-6617-71b7-cba3" id="74b6-6fd2-342c-cb5" primary="false" name="Apothecary Biologis"/>
+        <categoryLink targetId="2170-4f11-9bf7-ae56" id="e82d-d4e5-64dc-9331" primary="false" name="Apothecary"/>
       </categoryLinks>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="90f4-c9af-9a6-128e"/>
