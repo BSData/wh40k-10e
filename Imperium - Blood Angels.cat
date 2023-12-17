@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="14" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="15" battleScribeVersion="2.03" type="catalogue">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Space Marines" id="abd0-8ebd-6fbd-2d94" targetId="e0af-67df-9d63-8fb7" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights" id="9c08-8ffc-d746-7384" targetId="1b6d-dc06-5db9-c7d1" importRootEntries="true"/>
@@ -252,6 +252,8 @@
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model can be attached to the following units:
 
 ■ Assault Squad
+■ Assault Intercessor Squad
+■ Sternguard Veteran Squad
 ■ Devastator Squad
 ■ Tactical Squad
 ■ Vanguard Veteran Squad</characteristic>
@@ -368,6 +370,9 @@
 
 ■ Assault Squad
 ■ Command Squad
+■ Assault Intercessor Squad
+■ Sternguard Veteran Squad
+■ Company Heroes
 ■ Tactical Squad
 ■ Vanguard Veteran Squad</characteristic>
           </characteristics>
@@ -731,7 +736,8 @@
 
 ■ Assault Squad with Jump Packs
 ■ Sanguinary Guard
-■ Vanguard Veteran Squad with Jump Packs</characteristic>
+■ Vanguard Veteran Squad with Jump Packs
+■ Assault Intercessors with Jump Packs</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -1054,9 +1060,14 @@
                       </constraints>
                       <modifiers>
                         <modifier type="set" value="1" field="d72b-80a6-5117-83b1" id="7fb8-b552-7467-2fb4">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="bb83-db85-6ce1-9a61" childId="c71f-5f1d-137f-e212" shared="true" id="e571-877e-ae45-fe4b" includeChildSelections="true"/>
-                          </conditions>
+                          <conditionGroups>
+                            <conditionGroup type="and">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="bb83-db85-6ce1-9a61" childId="c71f-5f1d-137f-e212" shared="true" id="f3cb-a177-2ee0-8cf6" includeChildSelections="true"/>
+                                <condition type="equalTo" value="0" field="selections" scope="parent" childId="6bdf-2ee2-d8b8-2ecb" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </conditionGroup>
+                          </conditionGroups>
                         </modifier>
                       </modifiers>
                     </entryLink>
@@ -1065,6 +1076,29 @@
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9e93-8adc-6205-a838"/>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5c47-d957-10e8-11fd"/>
                   </constraints>
+                  <selectionEntryGroups>
+                    <selectionEntryGroup name="Special Pistol" hidden="false" id="6bdf-2ee2-d8b8-2ecb">
+                      <entryLinks>
+                        <entryLink import="true" name="Hand Flamer" hidden="false" type="selectionEntry" id="955c-f478-fb14-19d9" targetId="9dc6-6ad8-818e-db2e"/>
+                        <entryLink import="true" name="Plasma Pistol" hidden="false" type="selectionEntry" id="65db-d1f9-a618-8f0c" targetId="25c2-104f-fa0c-809e"/>
+                      </entryLinks>
+                      <constraints>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a64f-bb88-c82c-4cd6"/>
+                      </constraints>
+                      <modifiers>
+                        <modifier type="set" value="0" field="a64f-bb88-c82c-4cd6">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="parent" childId="3b8f-1cb7-3c6e-4455" shared="true" id="f721-38de-30f8-eb08"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="set" value="true" field="hidden">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="parent" childId="18b0-8c2-173f-5" shared="true" id="bf05-94d-6e72-cfed"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </selectionEntryGroup>
+                  </selectionEntryGroups>
                 </selectionEntryGroup>
               </selectionEntryGroups>
               <constraints>
@@ -1113,6 +1147,11 @@
                 <modifier type="set" value="true" field="hidden">
                   <conditions>
                     <condition type="atLeast" value="1" field="selections" scope="parent" childId="b160-79d-7e6f-402c" shared="true" id="b29f-e100-db76-b16b" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="set" value="0" field="8651-2041-3d83-a8c7">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="bb83-db85-6ce1-9a61" childId="6bdf-2ee2-d8b8-2ecb" shared="true" id="23c3-5f4f-4f90-ccb4" includeChildSelections="true" includeChildForces="true"/>
                   </conditions>
                 </modifier>
               </modifiers>
@@ -1335,6 +1374,11 @@ Strength, or the [SUSTAINED HITS 2] ability if this unit is Below Half-strength
         <profile name="Berserk Fury" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6353-b576-82ad-a3fb">
           <characteristics>
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You can re-roll Charge rolls made for this unit.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Death Company" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="fa3d-61ea-538d-3a98">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">‘If a Chaplain model from your army with the Leader ability can be attached to Assault Intercessors with Jump Packs or an Assault Squad with Jump Packs, it can be attached to this unit instead</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -1732,7 +1776,10 @@ Strength, or the [SUSTAINED HITS 2] ability if this unit is Below Half-strength
 ■ Assault Squad
 ■ Command Squad
 ■ Tactical Squad
-■ Vanguard Veteran Squad</characteristic>
+■ Vanguard Veteran Squad
+■ Assault Intercessor Squad
+■ Company Heroes
+■ Sternguard Veteran Squad</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -2065,6 +2112,11 @@ horizontally away from all enemy models.</characteristic>
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a Warlord model is leading this unit, each time a melee attack targets this unit, subtract 1 from the Wound roll.</characteristic>
           </characteristics>
         </profile>
+        <profile name="Attached Unit" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="62ff-e5e0-9783-7024">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If a Captain model from your army with the Leader ability can be attached to Assault Intercessors with Jump Packs or an Assault Squad with Jump Packs, it can be attached to this unit instead.</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
       <selectionEntryGroups>
         <selectionEntryGroup name="Sanguinary Guard" hidden="false" id="b36d-e83-6a91-e2b4" defaultSelectionEntryId="8e33-50a5-d053-ee15">
@@ -2251,6 +2303,8 @@ horizontally away from all enemy models.</characteristic>
 ■ Devastator Squad
 ■ Tactical Squad
 ■ Vanguard Veteran Squad
+■ Assault Intercessor Squad
+■ Sternguard Veteran Squad
 
 You can attach this model to one of the above units, even if one Captain, Chapter Master or Lieutenant model has already been attached to it. If you do, and that Bodyguard unit is destroyed, the Leader units attached to it become separate units, with their original Starting Strengths.</characteristic>
           </characteristics>
@@ -2419,6 +2473,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
 
 ■ Assault Squad with Jump Packs
 ■ Vanguard Veteran Squad with Jump packs
+■ Assault Intercessors with Jump Packs
 
 You can attach this model to one of the above units, even if one Captain, Chapter Master or Lieutenant model has already been attached to it. If you do, and that Bodyguard unit is destroyed, the Leader units attached to it become separate units, with their original Starting Strengths.</characteristic>
           </characteristics>

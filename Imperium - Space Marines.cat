@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="33" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="34" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="539-7da4-d962-1a64" name="Primaris" hidden="false"/>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
@@ -9338,17 +9338,27 @@ by 1.</characteristic>
                   </constraints>
                 </entryLink>
                 <entryLink import="true" name="Plasma Incinerator" hidden="false" type="selectionEntry" id="9119-f6ca-9836-c7ca" targetId="bb24-ed3f-7468-4f61"/>
-                <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="8f33-f471-e7f7-e1fd" targetId="18b0-8c2-173f-5">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e468-e13f-9b0-d416-min"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e468-e13f-9b0-d416-max"/>
-                  </constraints>
-                </entryLink>
               </entryLinks>
               <constraints>
                 <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d72a-650d-af19-3132"/>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8c04-91bc-13be-f906"/>
               </constraints>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Pistol Option" hidden="false" id="adf2-4bf1-bc97-2b18">
+                  <entryLinks>
+                    <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="64d9-976-6c0a-d06f" targetId="18b0-8c2-173f-5">
+                      <constraints>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4e04-173e-b837-331a"/>
+                      </constraints>
+                    </entryLink>
+                    <entryLink import="true" name="Plasma Pistol" hidden="false" type="selectionEntry" id="5241-3404-a0f7-3d05" targetId="25c2-104f-fa0c-809e"/>
+                  </entryLinks>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c5c5-e232-d07f-f459-min"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c5c5-e232-d07f-f459-max"/>
+                  </constraints>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Hellblaster" hidden="false" id="1e78-8fcd-1fa7-ec47">
               <constraints>
@@ -12771,7 +12781,7 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
           <selectionEntries>
             <selectionEntry type="upgrade" import="true" name="Twin Heavy Plasma Cannon" hidden="false" id="9c79-fea0-a4a-bae9">
               <profiles>
-                <profile name="➤ Twin Heavy Plasma Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="fa29-4109-9b58-bfd1">
+                <profile name="➤ Twin Heavy Plasma Cannon - Standard" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="fa29-4109-9b58-bfd1">
                   <characteristics>
                     <characteristic name="Range" typeId="9896-9419-16a1-92fc">46&quot;</characteristic>
                     <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
@@ -12782,7 +12792,7 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Twin-linked</characteristic>
                   </characteristics>
                 </profile>
-                <profile name="➤ Twin Heavy Plasma Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="359b-684e-a4-1da5">
+                <profile name="➤ Twin Heavy Plasma Cannon - Supercharge" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="359b-684e-a4-1da5">
                   <characteristics>
                     <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
                     <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
@@ -12790,13 +12800,14 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
                     <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
                     <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
-                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Twin-linked</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Hazardous, Twin-linked</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
               <infoLinks>
                 <infoLink name="Twin-linked" hidden="false" type="rule" id="4c27-8a96-5142-fda" targetId="cf93-ad4d-2f08-a79d"/>
-                <infoLink name="Blast" hidden="false" type="rule" id="3b80-18eb-27c9-522c" targetId="6c1f-1cf7-ff25-c99e"/>
+                <infoLink name="Hazardous" hidden="false" type="rule" id="3b80-18eb-27c9-522c" targetId="8367-374c-f87-c627"/>
+                <infoLink name="Blast" hidden="false" type="rule" id="b0a1-1f6-33ee-671b" targetId="6c1f-1cf7-ff25-c99e"/>
               </infoLinks>
             </selectionEntry>
           </selectionEntries>
