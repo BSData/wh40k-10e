@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="22" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="23" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
   <rules>
     <rule name="For The Greater Good" hidden="false" id="eeb6-c42-48f7-cc21">
       <description>If your Army Faction is T’AU EMPIRE, then in your Shooting phase units from your army can work in pairs to help each other target specific enemy units. When they do this, one unit is the Observer unit and the other is their Guided unit. The enemy they are targeting is called their Spotted unit.
@@ -3204,6 +3204,15 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
           </modifiers>
         </infoLink>
         <infoLink name="For The Greater Good" hidden="false" type="rule" id="d80a-bd90-4bf1-4a0d" targetId="eeb6-c42-48f7-cc21"/>
+        <infoLink name="Infiltrators" hidden="false" type="rule" id="b4c9-99fe-512c-ffe0" targetId="c05d-f4c3-f091-4938">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="2598-d700-9952-e439" childId="11e-9041-cc19-afaf" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </infoLink>
       </infoLinks>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="712a-bc0d-1fb8-72f7"/>
@@ -3251,6 +3260,30 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                       </characteristics>
                     </profile>
                   </profiles>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Drone burst cannon" hidden="false" id="54a0-1370-9b79-a6f4">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="14eb-2420-ce94-56f"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="bb80-4b66-fe40-4606"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Drone burst cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="c566-7cab-f7c7-8ba3">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">4</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">5+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c"/>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <infoLinks>
+                    <infoLink name="Infiltrators" hidden="false" type="rule" id="4495-60de-6329-dc25" targetId="c05d-f4c3-f091-4938"/>
+                  </infoLinks>
                 </selectionEntry>
               </selectionEntries>
               <constraints>
