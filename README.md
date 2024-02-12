@@ -19,7 +19,7 @@ to develop - cool! We need you! Take a look at [our homepage][BSData.net]
 
 __Okay, nice project. Is it actually working?__ _I just want those files..._
 
-Yeah! We have it hosted on AppSpot. Take a look: [BattleScribe Data on Appspot][]
+Yeah! We have it hosted on AppSpot. Take a look: [BattleScribe Data on Appspot](https://battlescribedata.appspot.com/#/repos)
 
 __I found a bug!__ / *I have another request*
 
