@@ -7891,6 +7891,11 @@ by 1.</characteristic>
             <condition type="instanceOf" value="0" field="selections" scope="primary-catalogue" childId="470a-6daa-9014-12df" shared="true" includeChildSelections="false" includeChildForces="false"/>
           </conditions>
         </modifier>
+        <modifier type="set-primary" value="e338-111e-d0c6-b687" field="category">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="force" childId="41e6-d47c-5e68-e066" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
       <profiles>
         <profile name="Outrider Squad" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="471-5df5-428a-ab67">
@@ -20510,6 +20515,38 @@ have the [ANTI-PSYKER 4+] ability.</characteristic>
             </profile>
           </profiles>
         </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Inner Circle Task Force" hidden="false" id="a141-49c8-fd84-4c6d">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="470a-6daa-9014-12df" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Vowed Target" hidden="false" id="b6fc-b93d-1d1e-39e5" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of your Command phase, select one objective marker. Until the start of your next Command phase, that objective marker is your Vowed objective marker. Each time a Deathwing Infantry unit from your army makes an attack that targets a unit within range of your Vowed objective marker, add 1 to the Wound roll.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Company of Hunters" hidden="false" id="41e6-d47c-5e68-e066">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="470a-6daa-9014-12df" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Company of Hunters" hidden="false" id="f91-37e5-7b97-97bf" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes units from your army are eligible to shoot in a turn in which they Advanced or Fell Back.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
     <selectionEntryGroup name="Enhancements" hidden="false" id="9e5d-de4c-c5d1-1d3e">
@@ -21581,6 +21618,188 @@ is Battle-shocked, models in that unit have the Feel No Pain 4+ ability instead.
               </conditions>
             </modifier>
           </modifiers>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Company of Hunters Enhancements" hidden="false" id="ec87-a124-bfd1-f293">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="force" childId="41e6-d47c-5e68-e066" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Master-crafted Weapon" hidden="false" id="14d-7f50-6c23-9f23">
+              <profiles>
+                <profile name="Master-crafted Weapon" hidden="false" id="aaa9-7040-ea01-8d0" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Ravenwing model only. Melee weapons equipped by the bearer have the Precision ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7ca8-cdb-d93d-5de1" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="becf-941a-1dec-2d41" includeChildSelections="true"/>
+              </constraints>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-category" childId="e9c7-1590-1bda-bf7f" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Mounted Strategist" hidden="false" id="8b00-6c88-ba06-faf8">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2079-406f-d65-240e" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="31f7-f19d-20ee-b91f" includeChildSelections="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Mounted Strategist" hidden="false" id="10e5-28ab-67d6-7770" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Ravenwing model only. The bearer&apos;s unit is eligible to declare a charge in a turn in which it Advanced or Fell Back.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-category" childId="e9c7-1590-1bda-bf7f" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Master of Manoeuvre" hidden="false" id="4a78-c296-60e-59bd">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9913-3dbc-b79d-c4a3" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="f1b8-c9cb-23c8-d10d" includeChildSelections="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Master of Manoeuver" hidden="false" id="a2f2-90a7-7200-2913" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Ravenwing model only. If the bearer&apos;s unit starts the battle in Strategic Reserves, its points value does not count towards the combined points limit for units from your army that are in Strategic Reserve, and for the purposes of setting up that unit on the battlefield, treat the current battle round number as being one higher than it actually is.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-category" childId="e9c7-1590-1bda-bf7f" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Recon Hunter" hidden="false" id="919d-2556-c95e-1e09">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="fe76-3a-750b-ab45" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="9338-b3b5-b8aa-d267" includeChildSelections="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Recon Hunter" hidden="false" id="e02c-8857-d5ac-9ef8" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Ravenwing model only. Models in the bearer&apos;s unit have the Scouts 9&quot; ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-category" childId="e9c7-1590-1bda-bf7f" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Inner Circle Task Force Enhancements" hidden="false" id="26aa-9e9d-891e-69e">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="force" childId="a141-49c8-fd84-4c6d" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Eye of the Unseen" hidden="false" id="af7f-e794-ccee-36ab">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-category" childId="e21f-8e64-c5d-7df0" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c175-5c64-2b6d-4181" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="fcfd-698-1d78-67bd" includeChildSelections="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Eye of the Unseen" hidden="false" id="ab51-9f1e-c8ee-7900" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Deathwing model only. Each time you target the bearer&apos;s unit with a Stratagem, roll one D6, adding 1 if the bearer is within range of your Vowed objective marker: on a 5+ you cain 1CP.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Champion of the Deathwing" hidden="false" id="cdb1-80f9-2b2c-b2ac">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-category" childId="e21f-8e64-c5d-7df0" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9eff-2a2c-e3c4-7756" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="96c9-2d72-9ac2-ed1f" includeChildSelections="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Champion of the Deathwing" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d65c-2c0a-65fc-b14d">
+                  <characteristics>
+                    <characteristic name="Description" hidden="false" id="51f3-baa8-652a-8be6" typeId="9b8f-694b-e5e-b573">Deathwing model only. Melee weapons equipped by the bearer have the Lethal Hits ability, and each time the bearer makes a melee attack, if it is within range of your Vowed objective marker, a Critical Hit is scored on an unmodified Hit roll of 5+.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Singular Will" hidden="false" id="f010-6495-d321-4b78">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-category" childId="e21f-8e64-c5d-7df0" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d778-708b-2275-9483" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="43e-39e0-653f-a3f2" includeChildSelections="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Singular Will" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3cc0-d7ab-a7aa-d0a1">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Deathwing model only. Each time the bearer&apos;s unit Pile In or Consolidates, models in that unit can move an additional 3&quot;.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Deathwing Assault" hidden="false" id="28ae-5b7a-65da-f0d7">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-category" childId="e21f-8e64-c5d-7df0" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="52ac-a6c9-c58c-823f" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="e5-6401-cc54-634f" includeChildSelections="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Deathwing Assault" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="68a2-88c9-98c4-6b47">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Deathwing model with the Deep Strike ability only. The bearer&apos;s unit can set up using the Deep Strike ability in the Reinforcement step of your first, second or third Movement phase, regardless of any mission rules.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
         </selectionEntryGroup>
       </selectionEntryGroups>
     </selectionEntryGroup>
