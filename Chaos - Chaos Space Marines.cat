@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="46" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="47" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <profileTypes>
     <profileType id="3084-68b8-1d20-2f26" name="Marks of Chaos">
       <characteristicTypes>
@@ -68,7 +68,7 @@
     <categoryEntry id="22a9-60bd-27be-487" name="Berzerkers" hidden="false"/>
     <categoryEntry id="e88f-abf0-b358-2c4f" name="Rubric Marines" hidden="false"/>
     <categoryEntry id="3110-244e-ee26-bcea" name="Plague Marines" hidden="false"/>
-    <categoryEntry id="c536-60f4-afed-45ff" name="The Lost and the Damned" hidden="false">
+    <categoryEntry id="c536-60f4-afed-45ff" name="Cults of the Dark Gods" hidden="false">
       <modifiers>
         <modifier type="set" field="b9a6-1702-143b-322e" value="250">
           <conditions>
@@ -109,6 +109,8 @@
     <categoryEntry name="Renegade Ogryn Beast Handler" hidden="false" id="6830-ab92-7d3e-cd40"/>
     <categoryEntry name="Chaos Lord on Bike" hidden="false" id="26ab-e8d8-6fef-41c9"/>
     <categoryEntry name="Deimos Predator" hidden="false" id="6dc8-bac-96d3-ec87"/>
+    <categoryEntry name="Damned" id="4026-8a3e-9922-eec" hidden="false"/>
+    <categoryEntry name="Fallen" id="f17d-7f65-1950-ba63" hidden="false"/>
   </categoryEntries>
   <entryLinks>
     <entryLink id="b75a-a1ec-551f-523" name="Lucius the Eternal" hidden="false" collective="false" import="true" targetId="e390-b58b-db9-816" type="selectionEntry"/>
@@ -549,9 +551,10 @@
         <entryLink import="true" name="Show Tzeentch Daemons" hidden="false" type="selectionEntry" id="114-7052-519b-4cab" targetId="1248-8642-b42f-1dca"/>
       </entryLinks>
     </entryLink>
+    <entryLink import="true" name="Chaos Lord with Jump Pack" hidden="false" id="2ba-c206-8528-f2cd" type="selectionEntry" targetId="d880-9968-2ed9-5a21"/>
   </entryLinks>
   <sharedSelectionEntries>
-    <selectionEntry id="e390-b58b-db9-816" name="Lucius the Eternal" hidden="false" collective="false" import="true" type="model">
+    <selectionEntry id="e390-b58b-db9-816" name="Lucius the Eternal" hidden="true" collective="false" import="true" type="model">
       <profiles>
         <profile id="151-cb0c-1bc8-3b02" name="Lucius the Eternal" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
           <characteristics>
@@ -648,43 +651,128 @@
             <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="9d54-3ff5-bd60-5d93" type="max"/>
           </constraints>
           <selectionEntries>
-            <selectionEntry id="53dd-68f7-7c1f-3e5d" name="Slaves to Darkness" hidden="false" collective="false" import="true" type="upgrade">
+            <selectionEntry id="53dd-68f7-7c1f-3e5d" name="Pact-bound Zealots" hidden="false" collective="false" import="true" type="upgrade">
               <profiles>
-                <profile id="ebae-28c1-8652-7e1b" name="-" hidden="false" typeId="3084-68b8-1d20-2f26" typeName="Marks of Chaos">
+                <profile id="ebae-28c1-8652-7e1b" name="- Marks of Chaos" hidden="false" typeId="3084-68b8-1d20-2f26" typeName="Marks of Chaos">
                   <characteristics>
-                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">When mustering your army, each time you select a HERETIC ASTARTES unit to include in your army, if that unit is not an EPIC HERO and does not already have one or more of the keywords listed below, you must select one of the keywords listed below for that unit to gain (note which units gain which keywords in this way on your Army Roster). Each time a unit with one of these keywords makes a Dark Pact, it gains the associated ability below until the end of the phase.
-A unit can only embark within (or start the battle embarked within) a TRANSPORT if both of those units share one of the same keywords from the list below.</characteristic>
+                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">When mustering your army, when you select a HERETIC ASTARTES unit to include in your army, if that unit is not an EPIC HERO and does not already have one of the following keywords, you must select one for that unit to gain and note it on your Army Roster: KHORNE, TZEENTCH, NURGLE, SLAANESH, CHAOS UNDIVIDED.
+
+Each time a unit with one of these keywords gains a weapon ability as the result of a Dark Pact and does not fail the resulting Leadership test, until the end of the phase, that unit gains the associated ability below.
+
+
+RESTRICTIONS
+- You cannot select the KHORNE keyword for a PSYKER unit.
+- A CHARACTER unit can only be attached to a unit if both units share the same keyword from the list below.
+
+</characteristic>
                   </characteristics>
                 </profile>
                 <profile id="f5e9-d620-78a2-c552" name="KHORNE" hidden="false" typeId="3084-68b8-1d20-2f26" typeName="Marks of Chaos">
                   <characteristics>
-                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">Blood Fury: In the Fight phase, if this unit’s weapons gained the [LETHAL HITS] ability this phase as the result of a Dark Pact, each time a model in this unit makes an attack, an unmodified Hit roll of 5+ scores a Critical Hit.</characteristic>
+                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">[LETHAL HITS]: Each time a model in this unit makes a melee attack, an unmodified Hit roll of 5+ scores a Critical Hit.</characteristic>
                   </characteristics>
                 </profile>
                 <profile id="8ea6-fee-bfab-1e0d" name="TZEENTCH" hidden="false" typeId="3084-68b8-1d20-2f26" typeName="Marks of Chaos">
                   <characteristics>
-                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">Warpfire: In the Shooting phase, if this unit’s weapons gained the [LETHAL HITS] ability this phase as the result of a Dark Pact, each time a model in this unit makes an attack, an unmodified Hit roll of 5+ scores a Critical Hit.</characteristic>
+                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">[LETHAL HITS]: Each time a model in this unit makes a ranged attack, an unmodified Hit roll of 5+ scores a Critical Hit.</characteristic>
                   </characteristics>
                 </profile>
                 <profile id="5c9d-32dd-3d99-2a40" name="NURGLE" hidden="false" typeId="3084-68b8-1d20-2f26" typeName="Marks of Chaos">
                   <characteristics>
-                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">Spreading Sickness: In the Shooting phase, if this unit’s weapons gained the [SUSTAINED HITS 1] ability this phase as the result of a Dark Pact, each time a model in this unit makes an attack, an unmodified Hit roll of 5+ scores a Critical Hit.</characteristic>
+                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">[SUSTAINED HITS 1]: Each time a model in this unit makes a ranged attack, an unmodified Hit roll of 5+ scores a Critical Hit.</characteristic>
                   </characteristics>
                 </profile>
                 <profile id="68fd-c5a2-77de-96d5" name="SLAANESH" hidden="false" typeId="3084-68b8-1d20-2f26" typeName="Marks of Chaos">
                   <characteristics>
-                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">Excessive Cruelty: In the Fight phase, if this unit’s weapons gained the [SUSTAINED HITS 1] ability this phase as the result of a Dark Pact, each time a model in this unit makes an attack, an unmodified Hit roll of 5+ scores a Critical Hit.</characteristic>
+                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">[SUSTAINED HITS 1]: Each time a model in this unit makes an attack, an unmodified Hit roll of 5+ scores a Critical Hit.</characteristic>
                   </characteristics>
                 </profile>
                 <profile id="642a-a7ad-4f42-250" name="CHAOS UNDIVIDED" hidden="false" typeId="3084-68b8-1d20-2f26" typeName="Marks of Chaos">
                   <characteristics>
-                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">Glory to Chaos: Each time a model in this unit makes an attack, re-roll a Hit roll of 1.</characteristic>
+                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">[LETHAL HITS]: Each time a model in this unit makes an attack, re-roll a Hit roll of 1.
+[SUSTAINED HITS 1]: Each time a model in this unit makes an attack, re-roll a Hit roll of 1.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Veterans of the Long War" hidden="false" id="a5ea-d708-db75-226c">
+              <profiles>
+                <profile name="Focus of Hatred" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="4589-66cc-1121-2113">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of your Command phase, select one unit from your opponent&apos;s army to be your focus of hatred. Until the start of your next Command phase, each time a HERETIC ASTARTES model from your army (excluding DAMNED models) makes an attack that targets your focus of hatred, you can re-roll the Hit roll.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Deceptors" hidden="false" id="4972-a08d-9d88-5f7a">
+              <profiles>
+                <profile name="Masters of Misdirection" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5e61-f570-a397-c05b">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In the Declare Battle Formations step, you can select a number of LEGIONARIES and CULTIST MOB units from your army; until the end of the battle, those units, and any CHARACTER units attached to them (excluding EPIC HEROES), have the Infiltrator ability. The maximum number of units you can select in this way depends on the battle size, as shown below.
+Battle Size | Legionaries | Cultist Mobs
+
+Incursion | Up to 2 units | Up to 2 units
+Strike Force | Up to 3 units | Up to 3 units
+Onslaught | Up to 4 units | Up to 4 units</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Renegade Raiders" hidden="false" id="b906-aa42-9cd9-c6f2">
+              <profiles>
+                <profile name="Raiders and Reavers" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9c5c-fdf9-fc16-c184">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Ranged weapons equipped by HERETIC ASTARTES models from your army have the [ASSAULT] ability, and each time a HERETIC ASTARTES model from your army makes a ranged attack that targets a unit within range of an objective marker, improve the Armour Penetration characteristic of that attack by 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Dread Talons" hidden="false" id="d11c-e4a9-32c7-b761">
+              <profiles>
+                <profile name="Terror Descends (Aura)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="31e9-6670-7f6f-b345">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In the Battle-shock step of your opponent&apos;s Command phase, if an enemy unit that is below its Starting Strength is within 12&quot; of one or more HERETIC ASTARTES units from your army, that enemy unit must take a Battle-shock test.
+Each time an enemy unit within 12&quot; of one or more HERETIC ASTARTES units from your army takes a Battle-shock test, subtract 1 from the result.
+Enemy units affected by this Detachment rule do not need to take any other Battle-shock tests in the same phase.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Fellhammer Siege-host" hidden="false" id="89a5-170b-1bf3-7016">
+              <profiles>
+                <profile name="Iron Fortitude" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f790-5f78-595a-e9f3">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ranged attack targets a HERETIC ASTARTES unit from your army (excluding DAMNED units), if the Strength characteristic of that attack is greater than the Toughness characteristic of that unit, subtract 1 from the Wound roll.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Chaos Cult" hidden="false" id="6cec-4da4-a89d-fb98">
+              <profiles>
+                <profile name="Desperate Devotion" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5350-e746-7413-9e84">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a DAMNED unit from your army with the Dark Pacts ability is selected to make a Normal or Advance move or declare a charge (excluding units that arrived from Reserves this turn) it can make a Desperate Pact. If it does, until the end of the phase, add 2&quot; to the Move characteristic of models in that unit and add 2 to Charge rolls made for that unit.
+
+
+Desperate Pacts
+Each time a unit makes a Desperate Pact, it must first take a Leadership test; if that test is failed, the unit suffers D3 mortal wounds before any effects of the Desperate Pact are resolved.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Soulforged Warpack" hidden="false" id="a523-e0fe-4e1c-bc70">
+              <profiles>
+                <profile name="Debt to the Soulforge" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8e00-1e2a-c36a-c96c">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a HERETIC ASTARTES model from your army makes a Dark Pact, it can invoke its contract. If it does, subtract 1 from the resulting Leadership test when making that Dark Pact and, until the end of the phase:
+- Each time a model in that unit makes a ranged attack, add 1 to the Wound roll.
+- Add 2 to the Attacks characteristic of melee weapons equipped by models in that unit.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -715,29 +803,29 @@ A unit can only embark within (or start the battle embarked within) a TRANSPORT 
         </profile>
         <profile id="c6c6-4956-b0e4-8e3c" name="Dark Destiny" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a Dark Pact and does not fail the resulting Leadership test, roll one D6: on a 2+, you gain 1CP.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a Dark Pact and does not fail the resulting Leadership test, if the result of that test was 7+, you gain 1CP.</characteristic>
           </characteristics>
         </profile>
         <profile id="8b8a-6967-9f60-3de0" name="Paragon of Hatred (Aura)" hidden="false" typeId="796e-cfd7-cc85-240d" typeName="Warmaster">
           <characteristics>
-            <characteristic name="Ability" typeId="2008-312b-5ac0-60ee">While a friendly HERETIC ASTARTES unit is within 6&quot; of this model, each time a model in that unit makes an attack, you can re-roll the Hit roll.</characteristic>
+            <characteristic name="Ability" typeId="2008-312b-5ac0-60ee">While a friendly HERETIC ASTARTES unit (excluding DAMNED units) is within 6&quot; of this model, each time a model in that unit makes an attack, you can re-roll the Hit roll.</characteristic>
           </characteristics>
         </profile>
         <profile id="77ac-e2e-7ada-8e25" name="Mark of Chaos Ascendant (Aura)" hidden="false" typeId="796e-cfd7-cc85-240d" typeName="Warmaster">
           <characteristics>
-            <characteristic name="Ability" typeId="2008-312b-5ac0-60ee">While a friendly HERETIC ASTARTES INFANTRY or HERETIC ASTARTES MOUNTED unit is within 6&quot; of this model, models in that unit have a 4+ invulnerable save.</characteristic>
+            <characteristic name="Ability" typeId="2008-312b-5ac0-60ee">While a friendly HERETIC ASTARTES INFANTRY or HERETIC ASTARTES MOUNTED unit (excluding DAMNED units) is within 6&quot; of this model, models in that unit have a 4+ invulnerable save.</characteristic>
           </characteristics>
         </profile>
         <profile id="fee4-165-4f5a-4fa6" name="Lord of the Traitor Legions (Aura)" hidden="false" typeId="796e-cfd7-cc85-240d" typeName="Warmaster">
           <characteristics>
-            <characteristic name="Ability" typeId="2008-312b-5ac0-60ee">While a friendly HERETIC ASTARTES unit is within 6&quot; of this model, you can re-roll Leadership and Battle-shock tests taken for that unit.</characteristic>
+            <characteristic name="Ability" typeId="2008-312b-5ac0-60ee">While a friendly HERETIC ASTARTES unit (excluding DAMNED units) is within 6&quot; of this model, you can re-roll Leadership and Battle-shock tests taken for that unit.</characteristic>
           </characteristics>
         </profile>
         <profile id="840f-5d08-8f3c-8d60" name="Leader" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model can be attached to the following units:
 ■ CHAOS TERMINATOR SQUAD
-■ LEGIONARIES</characteristic>
+■ CHOSEN</characteristic>
           </characteristics>
         </profile>
         <profile id="c12f-5970-7d8d-beb1" name="Invulnerable Save" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -759,10 +847,6 @@ A unit can only embark within (or start the battle embarked within) a TRANSPORT 
         <categoryLink id="2556-36be-8135-d931" name="Terminator" hidden="false" targetId="740a-892c-8958-defa" primary="false"/>
         <categoryLink id="b077-94c3-de1d-6643" name="Chaos Undivided" hidden="false" targetId="2c5c-6ca6-777-c633" primary="false"/>
         <categoryLink id="b507-225f-6ad-885e" name="Chaos" hidden="false" targetId="4c00-2578-faf5-6918" primary="false"/>
-        <categoryLink id="ff22-de32-e4b8-e18" name="Khorne" hidden="false" targetId="4bd-5ee0-f179-2fc5" primary="false"/>
-        <categoryLink id="d20d-bba3-8ca0-7ec2" name="Slaanesh" hidden="false" targetId="b2a9-ede5-7a83-4da8" primary="false"/>
-        <categoryLink id="41cb-49a2-be67-ea1e" name="Nurgle" hidden="false" targetId="ed0d-8e2a-225c-2340" primary="false"/>
-        <categoryLink id="109a-4e8e-e203-8443" name="Tzeentch" hidden="false" targetId="b188-114f-6ba5-79a1" primary="false"/>
         <categoryLink id="fbd1-5363-5507-8a42" name="Abaddon the Despoiler" hidden="false" targetId="a86c-a6a7-50db-d628" primary="false"/>
       </categoryLinks>
       <selectionEntries>
@@ -830,7 +914,11 @@ A unit can only embark within (or start the battle embarked within) a TRANSPORT 
         </selectionEntry>
       </selectionEntries>
       <entryLinks>
-        <entryLink id="d6ff-c996-52e7-f213" name="Warlord" hidden="false" collective="false" import="true" targetId="1a34-f1cc-ec01-ca32" type="selectionEntry"/>
+        <entryLink id="d6ff-c996-52e7-f213" name="Warlord" hidden="false" collective="false" import="true" targetId="1a34-f1cc-ec01-ca32" type="selectionEntry">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="b8c1-50ab-bf56-7f8c"/>
+          </constraints>
+        </entryLink>
       </entryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="310"/>
@@ -870,7 +958,7 @@ A unit can only embark within (or start the battle embarked within) a TRANSPORT 
         </profile>
         <profile id="849-eef4-da9f-1f47" name="Head Taker" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model is leading a unit, each time this model’s unit ends a Charge move, select one enemy unit within Engagement Range of this model’s unit and roll one D6 for each model in this model’s unit: for each 4+, that enemy unit suffers 1 mortal wound.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model is leading a unit, each time this model’s unit ends a Charge move, select one enemy unit within Engagement Range of this model’s unit and roll one D6 for each model in this model’s unit which is within Engagement Range of that enemy unit: for each 4+, that enemy unit suffers 1 mortal wound.</characteristic>
           </characteristics>
         </profile>
         <profile id="8033-5a4b-e17b-4658" name="Herald of the Apocalypse (Aura)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -1403,7 +1491,9 @@ A unit can only embark within (or start the battle embarked within) a TRANSPORT 
         <profile id="1f0d-2787-4129-313e" name="Leader" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model can be attached to the following units:
+■ ACCURSED CULTISTS
 ■ CHOSEN
+■ CULTIST MOB
 ■ LEGIONARIES</characteristic>
           </characteristics>
         </profile>
@@ -1414,7 +1504,7 @@ A unit can only embark within (or start the battle embarked within) a TRANSPORT 
         </profile>
         <profile id="8f97-ea59-d469-e0bc" name="Chirurgeon" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The first time this unit’s Fabius Bile model is destroyed, roll one D6: on a 2+, set it back up on the battlefield, as close as possible to where it was destroyed and not within Engagement Range of any enemy models, with its full wounds remaining. If that model was attached to a unit when it was destroyed, it must be set up attached to that unit.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The first time this unit’s FABIUS BILE model is destroyed, roll one D6: on a 2+, set it back up on the battlefield, as close as possible to where it was destroyed and not within Engagement Range of any enemy models, with its full wounds remaining. If that model was attached to a unit when it was destroyed, it must be set up attached to that unit.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -1602,14 +1692,14 @@ A unit can only embark within (or start the battle embarked within) a TRANSPORT 
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model has a 4+ invulnerable save.</characteristic>
           </characteristics>
         </profile>
-        <profile id="b637-21a9-85e9-61a0" name="Agent of Discord" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+        <profile id="b637-21a9-85e9-61a0" name="Agent of Discord (Aura)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, after your opponent uses a Stratagem, if this model is on the battlefield, it can use this ability. If it does, until the end of the battle, increase that Stratagem’s cost to your opponent by 1CP.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time your opponent targets a unit from their army with a Stratagem, if that unit is within 12&quot; of this model, increase the cost of that use of that Stratagem by 1CP.</characteristic>
           </characteristics>
         </profile>
         <profile id="bcfc-a73a-79f9-3908" name="Guns Blazing" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time an enemy unit is selected to shoot, if one or more of those attacks target a friendly HERETIC ASTARTES unit within 3&quot; of this model, after that enemy unit has finished making its attacks, this model can shoot as if it were your Shooting phase, but when doing so it must target only that enemy unit (and only if it is an eligible target).</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per turn, in your opponent&apos;s Shooting phase, when an enemy unit makes a ranged attacks that targets a friendly HERETIC ASTARTES unit within 3&quot; of this model, after that enemy unit has shot, this model can shoot as if it were your Shooting phase, but it must target only that enemy unit when doing so and can only do so if that enemy unit is an eligible target.</characteristic>
           </characteristics>
         </profile>
         <profile name="Cypher" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="62b5-7c85-3be5-28bc">
@@ -1634,6 +1724,7 @@ A unit can only embark within (or start the battle embarked within) a TRANSPORT 
         <categoryLink id="5cc2-1a5-5a45-6fdd" name="Epic Hero" hidden="false" targetId="4f3a-f0f7-6647-348d" primary="true"/>
         <categoryLink id="74b1-602d-1e7d-6515" name="Chaos" hidden="false" targetId="4c00-2578-faf5-6918" primary="false"/>
         <categoryLink id="aaa6-9fb9-621c-7523" name="Cypher" hidden="false" targetId="f029-7060-b5a7-b95" primary="false"/>
+        <categoryLink targetId="f17d-7f65-1950-ba63" id="8e69-6335-aab0-3f5f" primary="false" name="Fallen"/>
       </categoryLinks>
       <selectionEntries>
         <selectionEntry id="658d-a5b2-d8ba-dc5a" name="Cypher&apos;s bolt pistol" hidden="false" collective="false" import="true" type="upgrade">
@@ -1651,6 +1742,17 @@ A unit can only embark within (or start the battle embarked within) a TRANSPORT 
                 <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
                 <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                 <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Pistol, Sustained Hits 1</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="Cypher&apos;s bolt pistol" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="54b7-ae91-fab1-90b9">
+              <characteristics>
+                <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
+                <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Sustained Hits 1</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -1680,62 +1782,24 @@ A unit can only embark within (or start the battle embarked within) a TRANSPORT 
                 <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Pistol, Sustained Hits 1</characteristic>
               </characteristics>
             </profile>
+            <profile name="Cypher&apos;s plasma pistol" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="b4c7-44bd-d904-1f43">
+              <characteristics>
+                <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
+                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-3</characteristic>
+                <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Extra Attacks</characteristic>
+              </characteristics>
+            </profile>
           </profiles>
           <infoLinks>
             <infoLink id="58f4-6876-ca8-f0ae" name="Assault" hidden="false" targetId="fc8a-8c24-bae9-cc1c" type="rule"/>
             <infoLink id="8ce8-8ed9-f138-1570" name="Pistol" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
             <infoLink id="c10d-e4ec-84dd-7b98" name="Sustained Hits" hidden="false" targetId="1897-c22c-9597-12b1" type="rule"/>
+            <infoLink name="Extra Attacks" id="34-6929-800b-a8ef" hidden="false" type="rule" targetId="115b-79dc-f723-d761"/>
           </infoLinks>
-          <selectionEntries>
-            <selectionEntry id="39e7-c872-2f12-6a2d" name="Cypher&apos;s plasma pistol" hidden="false" collective="false" import="true" type="upgrade">
-              <constraints>
-                <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="6bdc-2280-1306-2a8d" type="min"/>
-                <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="e395-9a61-922d-12c4" type="max"/>
-              </constraints>
-              <profiles>
-                <profile id="dd11-1475-aa16-160f" name="Cypher&apos;s plasma pistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
-                  <characteristics>
-                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
-                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
-                    <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
-                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
-                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
-                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Pistol, Sustained Hits 1</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <infoLinks>
-                <infoLink id="2677-eb41-7061-6be3" name="Assault" hidden="false" targetId="fc8a-8c24-bae9-cc1c" type="rule"/>
-                <infoLink id="dfd2-6045-6a8f-88d6" name="Pistol" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
-              </infoLinks>
-              <costs>
-                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-              </costs>
-            </selectionEntry>
-          </selectionEntries>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-          </costs>
-        </selectionEntry>
-        <selectionEntry id="3490-ce5d-2d07-467e" name="Close combat weapon" hidden="false" collective="false" import="true" type="upgrade">
-          <constraints>
-            <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="a1f8-b2f8-fda9-88b7" type="min"/>
-            <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="7df7-2c58-4594-a060" type="max"/>
-          </constraints>
-          <profiles>
-            <profile id="6f7b-8fde-700f-1e2c" name="Close combat weapon" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
-              <characteristics>
-                <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
-                <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
-                <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
-                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
-                <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
-                <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
           </costs>
@@ -1986,9 +2050,9 @@ Penetration and Damage characteristics of melee weapons equipped by this model b
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
             </selectionEntry>
-            <selectionEntry id="acbd-b7c1-e512-bced" name="Astartes chainsword" hidden="false" collective="false" import="true" type="upgrade">
+            <selectionEntry id="acbd-b7c1-e512-bced" name="Astartes chainblade" hidden="false" collective="false" import="true" type="upgrade">
               <profiles>
-                <profile id="433d-3a63-a34d-72ec" name="Astartes chainsword" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                <profile id="433d-3a63-a34d-72ec" name="Astartes chainblade" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
                   <characteristics>
                     <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
                     <characteristic name="A" typeId="2337-daa1-6682-b110">7</characteristic>
@@ -1996,24 +2060,6 @@ Penetration and Damage characteristics of melee weapons equipped by this model b
                     <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
                     <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
                     <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
-                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <costs>
-                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-              </costs>
-            </selectionEntry>
-            <selectionEntry id="a776-a9e3-e513-d9ed" name="Power fist" hidden="false" collective="false" import="true" type="upgrade">
-              <profiles>
-                <profile id="b8a7-7796-deba-ba14" name="Power fist" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
-                  <characteristics>
-                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                    <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
-                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
-                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
-                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
-                    <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
                     <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
                   </characteristics>
                 </profile>
@@ -2063,63 +2109,6 @@ Penetration and Damage characteristics of melee weapons equipped by this model b
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
             </selectionEntry>
-            <selectionEntry id="d14c-aa22-8cf2-faa0" name="Bolt pistol" hidden="false" collective="false" import="true" type="upgrade">
-              <profiles>
-                <profile id="200f-a2bf-292d-108c" name="Bolt pistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
-                  <characteristics>
-                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
-                    <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <costs>
-                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-              </costs>
-            </selectionEntry>
-            <selectionEntry id="f5b1-2759-d9d9-5e40" name="Astartes chainsword" hidden="false" collective="false" import="true" type="upgrade">
-              <profiles>
-                <profile id="b822-92a1-5d63-811d" name="Astartes chainsword" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
-                  <characteristics>
-                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                    <characteristic name="A" typeId="2337-daa1-6682-b110">7</characteristic>
-                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
-                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
-                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
-                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
-                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <costs>
-                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-              </costs>
-            </selectionEntry>
-            <selectionEntry id="f0a-22cc-5555-9f23" name="Daemon hammer" hidden="false" collective="false" import="true" type="upgrade">
-              <profiles>
-                <profile id="3c6e-2b55-fda7-8339" name="Daemon hammer" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
-                  <characteristics>
-                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                    <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
-                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
-                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
-                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
-                    <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
-                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Devastating Wounds</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <infoLinks>
-                <infoLink id="5826-3911-e841-bd55" name="Devastating Wounds" hidden="false" targetId="be1e-ac8e-1e2c-3528" type="rule"/>
-              </infoLinks>
-              <costs>
-                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-              </costs>
-            </selectionEntry>
             <selectionEntry id="d3f9-838e-2a13-fd27" name="Power fist" hidden="false" collective="false" import="true" type="upgrade">
               <profiles>
                 <profile id="7d0f-3c40-9c91-5839" name="Power fist" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
@@ -2130,24 +2119,6 @@ Penetration and Damage characteristics of melee weapons equipped by this model b
                     <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
                     <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
                     <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
-                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <costs>
-                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-              </costs>
-            </selectionEntry>
-            <selectionEntry id="f5c1-74b2-8314-f9c3" name="Accursed weapon" hidden="false" collective="false" import="true" type="upgrade">
-              <profiles>
-                <profile id="d2f1-beb7-78e5-4047" name="Accursed weapon" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
-                  <characteristics>
-                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                    <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
-                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
-                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
-                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
-                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
                     <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
                   </characteristics>
                 </profile>
@@ -3384,8 +3355,8 @@ You can attach this model to one of the above units even if one other CHARACTER 
       </selectionEntries>
       <entryLinks>
         <entryLink id="dfda-3c89-2dc3-672d" name="Mark of Chaos" hidden="false" collective="false" import="true" targetId="5581-5d38-90b8-f8cd" type="selectionEntryGroup"/>
-        <entryLink id="55bd-19f8-1f4-1776" name="Enhancements" hidden="false" collective="false" import="true" targetId="f4dd-5662-f7ca-a614" type="selectionEntryGroup"/>
         <entryLink id="5f0e-2fc2-f608-ffe9" name="Warlord" hidden="false" collective="false" import="true" targetId="1a34-f1cc-ec01-ca32" type="selectionEntry"/>
+        <entryLink import="true" name="Enhancements" hidden="false" id="55bd-19f8-1f4-1776" collective="false" targetId="f4dd-5662-f7ca-a614" type="selectionEntryGroup"/>
       </entryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="75"/>
@@ -3420,6 +3391,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
       </infoLinks>
       <categoryLinks>
         <categoryLink id="4eeb-165a-ea8-4bcd" name="Character" hidden="false" targetId="9cfd-1c32-585f-7d5c" primary="true"/>
+        <categoryLink targetId="4026-8a3e-9922-eec" id="f0e9-5f9a-f65d-9c07" primary="false" name="Damned"/>
       </categoryLinks>
       <selectionEntries>
         <selectionEntry id="872e-581b-7ec4-6798" name="Cult Demagogue" hidden="false" collective="false" import="true" type="model">
@@ -5872,6 +5844,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
         <categoryLink id="cb5c-121-5860-2179" name="Chaos" hidden="false" targetId="4c00-2578-faf5-6918" primary="false"/>
         <categoryLink id="7692-819a-776-bcb6" name="Slaanesh" hidden="false" targetId="b2a9-ede5-7a83-4da8" primary="false"/>
         <categoryLink id="ca53-7a60-abce-b51a" name="Noise Marines" hidden="false" targetId="5d38-1a04-92d0-d8a" primary="false"/>
+        <categoryLink targetId="c536-60f4-afed-45ff" id="a91e-cfcd-1c9b-180" primary="false" name="Cults of the Dark Gods"/>
       </categoryLinks>
       <selectionEntries>
         <selectionEntry id="c56d-9884-5124-44ef" name="Noise Champion" hidden="false" collective="false" import="true" type="model">
@@ -7608,7 +7581,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
         <profile id="5d05-bf5a-a9e0-5a65" name="Vashtorr the Arkifane" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
           <characteristics>
             <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">12&quot;</characteristic>
-            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">9</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">10</characteristic>
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">14</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
@@ -7625,9 +7598,9 @@ You can attach this model to one of the above units even if one other CHARACTER 
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly DAEMON VEHICLE unit is within 6&quot; of this model, add 1 to the Strength characteristic of weapons equipped by models in that unit.</characteristic>
           </characteristics>
         </profile>
-        <profile id="197b-d89e-1c1-403e" name="Agonise Machine Spirits" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+        <profile id="197b-d89e-1c1-403e" name="Reorder Reality" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of your Movement phase, select one enemy VEHICLE unit within 18&quot; of and visible to this model. Until the start of your next Movement phase, halve the Move characteristic of models in that unit and subtract 1 from the Attacks characteristic of melee weapons equipped by models in that unit.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time an enemy unit within 18&quot; of this model targets this model, until the end of the phase, that enemy unit&apos;s ranged weapons have the [HAZARDOUS] keyword.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -7666,12 +7639,13 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
                 <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
                 <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Torrent</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-VEHICLE 4+, Torrent</characteristic>
               </characteristics>
             </profile>
           </profiles>
           <infoLinks>
             <infoLink id="65ce-7dd0-5819-416e" name="Torrent" hidden="false" targetId="5edf-d619-23e0-9b56" type="rule"/>
+            <infoLink name="Anti-" id="6c0e-8316-6ccc-f991" hidden="false" type="rule" targetId="4111-82e3-9444-e942"/>
           </infoLinks>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
@@ -7688,8 +7662,8 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
                 <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
                 <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
-                <characteristic name="S" typeId="ab33-d393-96ce-ccba">9</characteristic>
-                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">14</characteristic>
+                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
                 <characteristic name="D" typeId="3254-9fe6-d824-513e">3</characteristic>
                 <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Anti-VEHICLE 4+, Devastating Wounds</characteristic>
               </characteristics>
@@ -7699,7 +7673,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
                 <characteristic name="A" typeId="2337-daa1-6682-b110">14</characteristic>
                 <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
-                <characteristic name="S" typeId="ab33-d393-96ce-ccba">7</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
                 <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
                 <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
                 <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Anti-VEHICLE 4+</characteristic>
@@ -16183,16 +16157,198 @@ You can attach this model to one of the above units even if one other CHARACTER 
         <categoryLink targetId="6dc8-bac-96d3-ec87" id="98fa-fdbd-5698-cd88" primary="false" name="Deimos Predator"/>
       </categoryLinks>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Chaos Lord with Jump Pack" hidden="false" id="d880-9968-2ed9-5a21">
+      <categoryLinks>
+        <categoryLink targetId="1e42-dfae-cbdd-207d" id="89b2-f3d0-8b74-97e2" primary="false" name="Faction: Heretic Astartes"/>
+        <categoryLink targetId="544c-7152-ce3a-a85c" id="ea38-fe76-aee3-5753" primary="false" name="Chaos Lord"/>
+        <categoryLink targetId="dda2-bb0a-215e-ad9c" id="71ca-3c01-c5ff-aa02" primary="false" name="Jump Pack"/>
+        <categoryLink targetId="9cfd-1c32-585f-7d5c" id="ba55-fc2a-8574-53cc" primary="true" name="Character"/>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="5b2f-6420-9a11-b05c" primary="false" name="Infantry"/>
+        <categoryLink targetId="c619-2086-bbcf-69c9" id="375c-225c-22ba-4c89" primary="false" name="Fly"/>
+        <categoryLink targetId="5a61-81ac-eb7c-a87e" id="eb67-c6ff-cc90-5238" primary="false" name="Grenades"/>
+        <categoryLink targetId="4c00-2578-faf5-6918" id="74bf-4915-9dd1-d32a" primary="false" name="Chaos"/>
+      </categoryLinks>
+      <entryLinks>
+        <entryLink import="true" name="Enhancements" hidden="false" id="7d95-55af-31dc-343f" type="selectionEntryGroup" targetId="f4dd-5662-f7ca-a614"/>
+        <entryLink import="true" name="Warlord" hidden="false" id="3665-e9af-63ca-43fc" type="selectionEntry" targetId="1a34-f1cc-ec01-ca32"/>
+      </entryLinks>
+      <profiles>
+        <profile name="Chaos Lord with Jump Pack" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="9f97-b4a9-511a-9a2d">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">12&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">5</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Invulnerable Save" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="54c7-50fa-f44d-1448">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model has a 4+ invulnerable save.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Leader" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9e47-9881-298c-5d07">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model can be attached to the following units:
+■ RAPTORS
+</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Cruel Hunter" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c7c1-daef-4791-caed">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model is leading a unit, each time that unit Piles In or Consolidates, each model in that unit can move up to 6&quot; instead of up to 3&quot;.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Leader" id="56d6-1960-9a11-e9cf" hidden="false" targetId="b4dd-3e1f-41cb-218f" type="rule"/>
+        <infoLink name="Deep Strike" id="c78c-c561-348a-c6e8" hidden="false" targetId="7cb5-dd6b-dd87-ad3b" type="rule"/>
+        <infoLink name="Lord of Chaos" id="7487-5b8-e9a0-cbad" hidden="false" type="profile" targetId="73e9-284e-fd62-4056"/>
+        <infoLink name="Dark Pacts" id="cfd3-2a58-ef1a-f1ba" hidden="false" targetId="fd69-68cc-5d63-c84d" type="rule"/>
+      </infoLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Replace bolt pistol" id="3f52-33f1-cad9-1c3d" hidden="false" collective="false" import="true" defaultSelectionEntryId="acc8-e6b5-727b-a1a">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d9dc-9664-2041-d619" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="449b-e2d9-cb4a-2d04" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Plasma pistol" hidden="false" id="244-694c-22c-74fb" collective="false">
+              <profiles>
+                <profile name="➤ Plasma pistol - standard" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="229b-efc2-e2f5-5e56">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                  </characteristics>
+                </profile>
+                <profile name="➤ Plasma pistol - supercharge" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="cf81-8980-5b7b-8b84">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Hazardous, Pistol</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Hazardous" id="d1b9-e332-6bef-d57c" hidden="false" targetId="8367-374c-f87-c627" type="rule"/>
+                <infoLink name="Pistol" id="44bf-307c-c029-cc86" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
+              </infoLinks>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Bolt pistol" hidden="false" id="acc8-e6b5-727b-a1a">
+              <profiles>
+                <profile name="Bolt pistol" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="c10d-eb30-fe17-6dcc">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Pistol" id="1f0e-2a41-2845-5b77" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
+              </infoLinks>
+            </selectionEntry>
+          </selectionEntries>
+          <modifiers>
+            <modifier type="set" value="0" field="d9dc-9664-2041-d619">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="d880-9968-2ed9-5a21" childId="2e9e-c1f7-c274-b3ce" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="0" field="449b-e2d9-cb4a-2d04">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="d880-9968-2ed9-5a21" childId="2e9e-c1f7-c274-b3ce" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Replace accursed weapon" id="d913-ccab-bccf-b6d4" hidden="false">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="21f7-bd02-3c86-f692-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="21f7-bd02-3c86-f692-max" includeChildSelections="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Accursed weapon" hidden="false" id="983e-62bd-f8ce-8035" collective="false">
+              <profiles>
+                <profile name="Accursed weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="4607-fb25-6ddb-1eb1">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Power fist" hidden="false" id="26a8-7384-ad0f-21b6" collective="false">
+              <profiles>
+                <profile name="Power fist" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="2df0-1341-a7d6-907a">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Twin lightning claws" hidden="false" id="2e9e-c1f7-c274-b3ce" collective="false">
+              <profiles>
+                <profile name="Twin lightning claws" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="7105-d47a-c155-9514">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Twin-linked</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Twin-linked" id="54ca-c101-c59a-e5e9" hidden="false" targetId="cf93-ad4d-2f08-a79d" type="rule"/>
+              </infoLinks>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+              </costs>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+    </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
     <selectionEntryGroup id="f4dd-5662-f7ca-a614" name="Enhancements" hidden="false" collective="false" import="true">
-      <modifiers>
-        <modifier type="set" field="hidden" value="true">
-          <conditions>
-            <condition field="selections" scope="force" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="53dd-68f7-7c1f-3e5d" type="lessThan"/>
-          </conditions>
-        </modifier>
-      </modifiers>
       <constraints>
         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="f429-4484-d800-2114" type="max"/>
         <constraint field="selections" scope="force" value="3" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="8de4-2e34-c378-2697" type="max"/>
@@ -16202,11 +16358,18 @@ You can attach this model to one of the above units even if one other CHARACTER 
           <modifiers>
             <modifier type="set" field="hidden" value="true">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4bd-5ee0-f179-2fc5" type="lessThan"/>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="4bd-5ee0-f179-2fc5" type="notInstanceOf"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="53dd-68f7-7c1f-3e5d" shared="true" includeChildSelections="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="4bd-5ee0-f179-2fc5" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="4bd-5ee0-f179-2fc5" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
@@ -16217,7 +16380,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
           <profiles>
             <profile id="982c-cb4c-5e4a-5d2c" name="Talisman of Burning Blood" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">HERETIC ASTARTES KHORNE model only. Add 1 to the Attacks and Strength characteristics of the bearer’s melee weapons. Each time the bearer’s unit makes a Dark Pact, until the end of the phase, add D3 to the Attacks and Strength characteristics of the bearer’s melee weapons instead.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 1 to the Attacks and Strength characteristics of the bearer’s melee weapons. Each time the bearer’s unit makes a Dark Pact and does not fail the resulting Leadership test, roll one D3; until the end of the phase, add the result to the Attacks and Strength characteristics of the bearer’s melee weapons instead.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -16227,13 +16390,20 @@ You can attach this model to one of the above units even if one other CHARACTER 
         </selectionEntry>
         <selectionEntry id="6ba0-8b1e-9e0d-20fd" name="Eye of Tzeentch" hidden="false" collective="false" import="true" type="upgrade">
           <modifiers>
-            <modifier type="set" field="hidden" value="true">
+            <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="b188-114f-6ba5-79a1" type="lessThan"/>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="b188-114f-6ba5-79a1" type="notInstanceOf"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="53dd-68f7-7c1f-3e5d" shared="true" includeChildSelections="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="b188-114f-6ba5-79a1" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b188-114f-6ba5-79a1" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
@@ -16244,7 +16414,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
           <profiles>
             <profile id="9927-e1fe-c360-6674" name="Eye of Tzeentch" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">HERETIC ASTARTES TZEENTCH model only. Each time the bearer’s unit makes a Dark Pact, take a Leadership test for the bearer: if that test is passed, you gain 1CP.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the bearer’s unit makes a Dark Pact and does not fail the resulting Leadership test, if the result of that test was 8 or more, you gain 1CP.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -16254,13 +16424,20 @@ You can attach this model to one of the above units even if one other CHARACTER 
         </selectionEntry>
         <selectionEntry id="f2ce-c4b6-6976-e1d5" name="Orbs of Unlife" hidden="false" collective="false" import="true" type="upgrade">
           <modifiers>
-            <modifier type="set" field="hidden" value="true">
+            <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="ed0d-8e2a-225c-2340" type="lessThan"/>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="ed0d-8e2a-225c-2340" type="notInstanceOf"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="53dd-68f7-7c1f-3e5d" shared="true" includeChildSelections="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="ed0d-8e2a-225c-2340" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="ed0d-8e2a-225c-2340" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
@@ -16271,7 +16448,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
           <profiles>
             <profile id="cd63-fd56-c219-6722" name="Orbs of Unlife" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">HERETIC ASTARTES NURGLE model only. At the end of the Fight phase, roll one D6 for every enemy unit within 6&quot; of the bearer, adding 1 to the result if the bearer’s unit made a Dark Pact that phase: on a 4+, that enemy unit suffers D3 mortal wounds.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of the Fight phase, roll one D6 for every enemy unit within 3&quot; of the bearer, adding 1 to the result if the bearer’s unit made a Dark Pact that phase and did not fail the resulting Leadership test: on a 4+, that enemy unit suffers D3 mortal wounds.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -16281,13 +16458,20 @@ You can attach this model to one of the above units even if one other CHARACTER 
         </selectionEntry>
         <selectionEntry id="8d30-bc8b-6d57-ef08" name="Intoxicating Elixir" hidden="false" collective="false" import="true" type="upgrade">
           <modifiers>
-            <modifier type="set" field="hidden" value="true">
+            <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="b2a9-ede5-7a83-4da8" type="lessThan"/>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="b2a9-ede5-7a83-4da8" type="notInstanceOf"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="53dd-68f7-7c1f-3e5d" shared="true" includeChildSelections="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="b2a9-ede5-7a83-4da8" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b2a9-ede5-7a83-4da8" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
@@ -16298,7 +16482,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
           <profiles>
             <profile id="11f2-63db-2fdc-f92" name="Intoxicating Elixir" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">HERETIC ASTARTES SLAANESH model only. The bearer has the Feel No Pain 5+ ability. Each time the bearer shoots or fights, if the bearer’s unit made a Dark Pact this phase, after the bearer has resolved those attacks, select one enemy unit that was hit by one or more of those attacks; that enemy unit must take a Battle-shock test.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer has the Feel No Pain 5+ ability. Each time the bearer shoots or fights, if the bearer’s unit made a Dark Pact this phase and did not fail the resulting Leadership test, after the bearer has resolved those attacks, select one enemy unit that was hit by one or more of those attacks; that enemy unit must take a Battle-shock test.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -16306,7 +16490,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
             <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
           </costs>
         </selectionEntry>
-        <selectionEntry id="1894-259f-ea20-5759" name="Liber Hereticus" hidden="false" collective="false" import="true" type="upgrade">
+        <selectionEntry id="1894-259f-ea20-5759" name="Liber Hereticus" hidden="true" collective="false" import="true" type="upgrade">
           <modifiers>
             <modifier type="set" field="hidden" value="true">
               <conditions>
@@ -16327,6 +16511,573 @@ You can attach this model to one of the above units even if one other CHARACTER 
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="40"/>
           </costs>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Warmaster&apos;s Gift" hidden="false" id="9a33-6b21-25e3-b5ac">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="a5ea-d708-db75-226c" shared="true" includeChildSelections="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="544c-7152-ce3a-a85c" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Warmaster&apos;s Gift" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="aa53-101f-7e51-2f50">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the bearer makes an attack that targets your focus of hatred, an unmodified successful wound roll of 5+ scores a Critical Wound.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Eager for Vengeance" hidden="false" id="bb91-cc38-e79d-7ce0">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="a5ea-d708-db75-226c" shared="true" includeChildSelections="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4026-8a3e-9922-eec" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Eager for Vengeance" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ba05-359b-e969-76c2">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer&apos;s unit is eligible to shoot and declare a charge in a turn in which it Fell Back. While doing so, each time a model in that unit makes an attack that targets your focus of hatred, add 1 to the Hit roll and each time you select your focus of hatred as a target of that unit&apos;s charge, add 1 to the Charge roll.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Eye of Abaddon" hidden="false" id="b06a-cbc9-6820-6a93">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="a5ea-d708-db75-226c" shared="true" includeChildSelections="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4026-8a3e-9922-eec" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Eye of Abaddon" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b5ab-750b-3c69-6cdf">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While the bearer is on the battlefield, each time your focus of hatred is destroyed, roll one D6; on a 4+, you gain 1CP.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Mark of Legend" hidden="false" id="aaa6-f20e-362a-f55d">
+          <profiles>
+            <profile name="Mark of Legend" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="134f-6a3c-ce86-fda0">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per turn, you can re-roll one Hit roll, one Wound roll or one saving throw made for the bearer.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="a5ea-d708-db75-226c" shared="true" includeChildSelections="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4026-8a3e-9922-eec" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Falsehood" hidden="false" id="361e-2839-f32e-1873">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="4972-a08d-9d88-5f7a" shared="true" includeChildSelections="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="544c-7152-ce3a-a85c" shared="true" includeChildSelections="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="740a-892c-8958-defa" shared="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="dda2-bb0a-215e-ad9c" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Falsehood" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="90eb-1545-5399-ea3c">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the bearer makes an attack that targets your focus of hatred, an unmodified successful wound roll of 5+ scores a Critical Wound.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Cursed Fang" hidden="false" id="6ee9-ec28-2608-c8c6">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="4972-a08d-9d88-5f7a" shared="true" includeChildSelections="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Cursed Fang" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d14f-417-f02c-7ce6">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Improve the Armour Penetration characteristic of the bearer&apos;s melee weapons by 1, and the bearer&apos;s melee weapons have the [PRECISION] ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Shroud of Obfuscation" hidden="false" id="a469-ca0-3e09-ae0a">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="4972-a08d-9d88-5f7a" shared="true" includeChildSelections="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Shroud of Obfuscation" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="4aae-ec60-9e0d-f551">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer has the Stealth and Lone Operative abilities.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Stealth" id="d174-f60f-ea75-f9e5" hidden="false" type="rule" targetId="bec5-4288-34a6-ccfa"/>
+            <infoLink name="Lone Operative" id="ef1-99db-da97-5959" hidden="false" type="rule" targetId="a8a0-8fe7-898-e0f3"/>
+          </infoLinks>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Soul Link" hidden="false" id="56cd-b0f6-199-92c7">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="4972-a08d-9d88-5f7a" shared="true" includeChildSelections="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Soul Link" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="143f-5f7-38f1-2808">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of your Command phase, you can select one other HERETIC ASTARTES INFANTRY CHARACTER model from your army (excluding EPIC HEROES). Until the start of your next Command phase, the bearer gains the PSYKER keyword, and replace the bearer&apos;s datasheet abilities with the datasheet abilities of the CHARACTER you selected.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Despot&apos;s Claim" hidden="false" id="18c9-6770-6371-582b">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="b906-aa42-9cd9-c6f2" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Despot&apos;s Claim" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="fb58-bc38-c5f0-48f1">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of your Command phase, if the bearer is on the battlefield, roll one D6, adding one to the result if the bearer is wholly within 12&quot; of your opponent&apos;s deployment zone; on a 5+, you gain 1CP.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Dread Reaver" hidden="false" id="a3f6-e18b-d9e6-b841">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="b906-aa42-9cd9-c6f2" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Dread Reaver" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="29c3-7ef-ae82-6eae">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the bearer makes a melee attack, if the bearer is wholly within 12&quot; of your opponent&apos;s deployment zone, you can re-roll the Hit roll and you can re-roll the Wound roll.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Mark of the Hound" hidden="false" id="b5e6-8586-a9a9-b6b">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="b906-aa42-9cd9-c6f2" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Mark of the Hound" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7b44-fdaf-5b75-ae98">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Models in the bearer&apos;s unit have the Scouts 6&quot; ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Tyrant&apos;s Lash" hidden="false" id="8ee0-de8d-3895-b1ac">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="b906-aa42-9cd9-c6f2" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Tyrant&apos;s Lash" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a306-494a-51da-b38b">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You can re-roll Advance rolls made for the bearer&apos;s unit, and the bearer&apos;s unit is eligible to shoot in a turn in which it Fell Back.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Willbreaker" hidden="false" id="d3d-1a0c-87b8-3401">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="d11c-e4a9-32c7-b761" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Willbreaker" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2f92-eeaa-8e38-60a">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In the Fight phase, after the bearer has made its attacks, select one enemy unit hit by one or more of those attacks. That unit must take a Battle-shock test.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Night&apos;s Shroud" hidden="false" id="8a4b-3777-e4ec-fb5e">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="d11c-e4a9-32c7-b761" shared="true" includeChildSelections="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="544c-7152-ce3a-a85c" shared="true" includeChildSelections="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="740a-892c-8958-defa" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Night&apos;s Shroud" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="52f2-f4c-5512-94a4">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Models in the bearer&apos;s unit have the Stealth ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Stealth" id="5f62-b535-55ba-3aed" hidden="false" type="rule" targetId="bec5-4288-34a6-ccfa"/>
+          </infoLinks>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Forge&apos;s Blessing" hidden="false" id="5bd4-e482-a053-1184">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="a523-e0fe-4e1c-bc70" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Forge&apos;s Blessing" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5ca0-fa4b-9ccf-aad5">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Command phase, select one friendly HERETIC ASTARTES VEHICLE unit within 12&quot; of the bearer. Until the start of your next Command phase, that unit has the Feel No Pain 6+ ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Eater of Dread" hidden="false" id="f208-950f-f62d-943a">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="d11c-e4a9-32c7-b761" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Eater of Dread" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6221-cad8-1974-57e4">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of your Command phase, if the bearer is on the battlefield, roll one D6, adding 1 to the result for each Battle-shocked enemy unit that is on the battlefield: on a 5+, you gain 1CP.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Bastion Plate" hidden="false" id="5a26-9010-9370-8043">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="89a5-170b-1bf3-7016" shared="true" includeChildSelections="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="544c-7152-ce3a-a85c" shared="true" includeChildSelections="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="dda2-bb0a-215e-ad9c" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Bastion Plate" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1616-7709-6f77-5dc1">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle round, when a saving throw is failed for the bearer, you can change the Damage characteristic of that attack to 0.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Ironbound Enmity" hidden="false" id="281c-52a2-198-1047">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="89a5-170b-1bf3-7016" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Ironbound Enmity" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="171d-8e5e-5354-738d">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the bearer makes an attack while within range of an objective marker, add 1 to the Wound roll.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Warp Tracer" hidden="false" id="786c-288a-5ed6-676e">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="89a5-170b-1bf3-7016" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Warp Tracer" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c4e4-ef49-3b7a-b725">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Shooting phase, after the bearer has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, that enemy unit cannot have the Benefit of Cover.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Iron Artifice" hidden="false" id="5723-e257-6177-ac5">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="89a5-170b-1bf3-7016" shared="true" includeChildSelections="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Iron Artifice" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="552d-c1ce-b79b-54c4">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer&apos;s weapons have the [ANTI-VEHICLE 4+] and [ANTI-FORTIFICATION 4+] abilities.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Amulet of Tainted Vigour" hidden="false" id="2c8-9d0d-72d7-7375">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="6cec-4da4-a89d-fb98" shared="true" includeChildSelections="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="d2b8-454a-d061-b592" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Amulet of Tainted Vigour" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c9ea-d3de-6844-8fb7">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Command phase, you can return up to D3 destroyed DAMNED models (excluding CHARACTER models) to the bearer&apos;s unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Incendiary Goad" hidden="false" id="c791-aaac-2c1f-1d9a">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="6cec-4da4-a89d-fb98" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="d2b8-454a-d061-b592" shared="true" includeChildSelections="true"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="4026-8a3e-9922-eec" shared="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Incendiary Goad" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6da8-e648-6af4-7d9f">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While the bearer&apos;s unit is below its Starting Strength, add 1 to the Strength characteristic of melee weapons equipped by DAMNED models in that unit, and while that unit is Below Half-Strength, add 1 to the Attacks characteristic of those weapons as well.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Cultist&apos;s Brand" hidden="false" id="42ab-1d5e-7a31-2de7">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="6cec-4da4-a89d-fb98" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="d2b8-454a-d061-b592" shared="true" includeChildSelections="true"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="4026-8a3e-9922-eec" shared="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Cultist&apos;s Brand" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="89be-107f-ecb-79f0">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If every other model in the bearer&apos;s unit (excluding Dark Disciples) is DAMNED, you can re-roll Advance and Charge rolls made for the bearer&apos;s unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Warped Foresight" hidden="false" id="a660-3c2c-2f05-a6a1">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="6cec-4da4-a89d-fb98" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="d2b8-454a-d061-b592" shared="true" includeChildSelections="true"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="4026-8a3e-9922-eec" shared="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Warped Foresight" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b749-d2f7-baae-db7b">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer has the Scouts 6&quot; ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Warp-fuelled Thrusters" hidden="false" id="1b4d-d584-df1c-c158">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="d11c-e4a9-32c7-b761" shared="true" includeChildSelections="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="2ba-c206-8528-f2cd" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Warp-fuelled Thrusters" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e733-4366-1f01-b0f0">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of your opponent&apos;s turn, if the bearer&apos;s unit is not within Engagement Range of one or more enemy units, you can remove the bearer&apos;s unit from the battlefield and place it into Strategic Reserves.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Invigorated Mechatendrils" hidden="false" id="3bc1-957b-473-faa0">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="a523-e0fe-4e1c-bc70" shared="true" includeChildSelections="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="2b3b-8232-a809-4b79" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Invigorated Mechatendrils" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="69a6-310e-82c-13d2">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 4&quot; to the bearer&apos;s Move characteristic.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Soul Harvester" hidden="false" id="da72-b2d6-58a6-b821">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="a523-e0fe-4e1c-bc70" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Soul Harvester" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="4200-335a-c25f-de4c">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While the bearer is on the battlefield, each time an enemy unit within 12&quot; of the bearer is destroyed, roll one D6; on a 5+, you gain 1CP.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Tempting Addendum" hidden="false" id="a82c-bf6-f3dd-81ac">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="a523-e0fe-4e1c-bc70" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Tempting Addendum" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c738-a378-7b40-dcbd">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a HERETIC ASTARTES DAEMON VEHICLE from your army invokes its contract while within 3&quot; of the bearer:
+- If it suffers one or more mortal wounds as a result of that Dark Pact, add 1 to the number of mortal wounds it suffers.
+- Until the end of the phase, each time a model in that unit makes an attack, you can re-roll the Hit roll.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
         </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
@@ -16422,14 +17173,26 @@ You can attach this model to one of the above units even if one other CHARACTER 
           </modifiers>
         </selectionEntry>
       </selectionEntries>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="53dd-68f7-7c1f-3e5d" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="set" value="0" field="d4ae-1dc8-3dfe-e03a">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="parent" childId="5581-5d38-90b8-f8cd" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <sharedRules>
     <rule id="fd69-68cc-5d63-c84d" name="Dark Pacts" hidden="false">
-      <description>If your Army Faction is HERETIC ASTARTES, each time a unit with this ability is selected to shoot or fight, it can make a Dark Pact. If it does, select one of the following abilities for that unit’s weapons to gain until the end of the phase:
+      <description>If your Army Faction is HERETIC ASTARTES, each time a unit with this ability is selected to shoot or fight, it can make a Dark Pact. If it does, it must first take a Leadership test before any effects of the Dark Pact are resolved; if that test is failed, that unit suffers D3 mortal wounds. Then, select one of the following abilities for that unit’s weapons to gain until the end of the phase:
 ■ [LETHAL HITS]
 ■ [SUSTAINED HITS 1]
-Each time a unit makes a Dark Pact, after it has resolved its attacks, it must take a Leadership test; if that test is failed, that unit suffers D3 mortal wounds.</description>
+</description>
     </rule>
   </sharedRules>
   <sharedProfiles>
