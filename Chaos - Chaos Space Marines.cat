@@ -648,7 +648,7 @@
         <categoryLink id="d957-b4b5-928-c430" name="Configuration" hidden="false" targetId="4ac9-fd30-1e3d-b249" primary="true"/>
       </categoryLinks>
       <selectionEntryGroups>
-        <selectionEntryGroup id="9fe0-d70e-a220-1c06" name="Detachment" hidden="false" collective="false" import="true" defaultSelectionEntryId="53dd-68f7-7c1f-3e5d">
+        <selectionEntryGroup id="9fe0-d70e-a220-1c06" name="Detachment" hidden="false" collective="false" import="true">
           <constraints>
             <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="3db9-1a73-cb6f-f20a" type="min"/>
             <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="9d54-3ff5-bd60-5d93" type="max"/>
@@ -4282,6 +4282,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <comment>Collective</comment>
       <constraints>
         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="6993-55b7-2f54-9083" type="max"/>
+        <constraint type="max" value="2" field="selections" scope="4e85-615b-5d49-dfa4" shared="true" id="e85a-7948-8b43-894a" includeChildSelections="true"/>
       </constraints>
       <infoLinks>
         <infoLink id="d80c-2a9-9be0-a0c8" name="Plasma pistol" hidden="false" targetId="f6bd-a5e5-dfcd-a086" type="infoGroup"/>
@@ -4289,6 +4290,13 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="4" field="e85a-7948-8b43-894a">
+          <conditions>
+            <condition type="atLeast" value="10" field="selections" scope="4e85-615b-5d49-dfa4" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry id="c297-6f9c-b046-f2ad" name="Astartes chainsword" hidden="false" collective="true" import="true" type="upgrade">
       <comment>Collective</comment>
@@ -4721,20 +4729,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
               </constraints>
               <entryLinks>
                 <entryLink id="2b20-8249-3b1f-905b" name="Power fist" hidden="false" collective="false" import="true" targetId="8154-2146-1197-90be" type="selectionEntry">
-                  <modifiers>
-                    <modifier type="set" field="a843-4403-a6f8-ae2e" value="6">
-                      <conditions>
-                        <condition field="selections" scope="203d-c50f-a438-4982" value="10" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="atLeast"/>
-                      </conditions>
-                    </modifier>
-                    <modifier type="decrement" field="a843-4403-a6f8-ae2e" value="1">
-                      <repeats>
-                        <repeat field="selections" scope="203d-c50f-a438-4982" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="cb16-d239-4f7a-91be" repeats="1" roundUp="false"/>
-                      </repeats>
-                    </modifier>
-                  </modifiers>
                   <constraints>
-                    <constraint field="selections" scope="203d-c50f-a438-4982" value="3" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="a843-4403-a6f8-ae2e" type="max"/>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="c963-60ac-1c59-7573" type="min"/>
                   </constraints>
                 </entryLink>
@@ -4754,20 +4749,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
               </constraints>
               <entryLinks>
                 <entryLink id="58fa-7692-7dee-1958" name="Chainfist" hidden="false" collective="false" import="true" targetId="8a3b-f35b-1b6a-6196" type="selectionEntry">
-                  <modifiers>
-                    <modifier type="decrement" field="b551-79ff-9c8e-6c9e" value="1">
-                      <conditions>
-                        <condition field="selections" scope="203d-c50f-a438-4982" value="10" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="lessThan"/>
-                      </conditions>
-                    </modifier>
-                    <modifier type="decrement" value="1" field="b551-79ff-9c8e-6c9e">
-                      <repeats>
-                        <repeat value="1" repeats="1" field="selections" scope="203d-c50f-a438-4982" childId="127c-7c09-70ad-da72" shared="true" roundUp="false" includeChildSelections="true"/>
-                      </repeats>
-                    </modifier>
-                  </modifiers>
                   <constraints>
-                    <constraint field="selections" scope="203d-c50f-a438-4982" value="2" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="b551-79ff-9c8e-6c9e" type="max"/>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="2c13-f4b4-7f8f-ebc2" type="min"/>
                   </constraints>
                 </entryLink>
@@ -4861,40 +4843,8 @@ You can attach this model to one of the above units even if one other CHARACTER 
                     </selectionEntry>
                   </selectionEntries>
                   <entryLinks>
-                    <entryLink id="3633-3bdb-8d4-b840" name="Chainfist" hidden="false" collective="false" import="true" targetId="127c-7c09-70ad-da72" type="selectionEntry">
-                      <constraints>
-                        <constraint type="max" value="2" field="selections" scope="203d-c50f-a438-4982" shared="true" id="83c6-cd0e-f8a0-1068" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
-                      </constraints>
-                      <modifiers>
-                        <modifier type="decrement" value="1" field="83c6-cd0e-f8a0-1068">
-                          <conditions>
-                            <condition type="lessThan" value="10" field="selections" scope="203d-c50f-a438-4982" childId="model" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="decrement" value="1" field="83c6-cd0e-f8a0-1068">
-                          <repeats>
-                            <repeat value="1" repeats="1" field="selections" scope="203d-c50f-a438-4982" childId="8a3b-f35b-1b6a-6196" shared="true" roundUp="false" includeChildSelections="true"/>
-                          </repeats>
-                        </modifier>
-                      </modifiers>
-                    </entryLink>
-                    <entryLink id="a0e5-8a8-827a-9f56" name="Power fist" hidden="false" collective="false" import="true" targetId="cb16-d239-4f7a-91be" type="selectionEntry">
-                      <constraints>
-                        <constraint type="max" value="3" field="selections" scope="203d-c50f-a438-4982" shared="true" id="f00a-6161-fdb0-bab" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
-                      </constraints>
-                      <modifiers>
-                        <modifier type="set" value="6" field="f00a-6161-fdb0-bab">
-                          <conditions>
-                            <condition type="atLeast" value="10" field="selections" scope="203d-c50f-a438-4982" childId="model" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="decrement" value="1" field="f00a-6161-fdb0-bab">
-                          <repeats>
-                            <repeat value="1" repeats="1" field="selections" scope="203d-c50f-a438-4982" childId="8154-2146-1197-90be" shared="true" roundUp="false" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
-                          </repeats>
-                        </modifier>
-                      </modifiers>
-                    </entryLink>
+                    <entryLink id="3633-3bdb-8d4-b840" name="Chainfist" hidden="false" collective="false" import="true" targetId="8a3b-f35b-1b6a-6196" type="selectionEntry"/>
+                    <entryLink id="a0e5-8a8-827a-9f56" name="Power fist" hidden="false" collective="false" import="true" targetId="8154-2146-1197-90be" type="selectionEntry"/>
                   </entryLinks>
                 </selectionEntryGroup>
               </selectionEntryGroups>
@@ -4912,20 +4862,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 <entryLink id="6e7b-2e38-9057-b69" name="Power fist" hidden="false" collective="false" import="true" targetId="8154-2146-1197-90be" type="selectionEntry">
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="c963-60ac-1c59-7573" type="min"/>
-                    <constraint type="max" value="3" field="selections" scope="203d-c50f-a438-4982" shared="true" id="9c6b-736d-9db9-4191" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
                   </constraints>
-                  <modifiers>
-                    <modifier type="set" value="6" field="9c6b-736d-9db9-4191">
-                      <conditions>
-                        <condition type="atLeast" value="10" field="selections" scope="203d-c50f-a438-4982" childId="model" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
-                      </conditions>
-                    </modifier>
-                    <modifier type="decrement" value="1" field="9c6b-736d-9db9-4191">
-                      <repeats>
-                        <repeat value="1" repeats="1" field="selections" scope="203d-c50f-a438-4982" childId="cb16-d239-4f7a-91be" shared="true" roundUp="false" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
-                      </repeats>
-                    </modifier>
-                  </modifiers>
                 </entryLink>
               </entryLinks>
               <costs>
@@ -4943,20 +4880,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 <entryLink id="35fc-7f2e-aa58-11f9" name="Chainfist" hidden="false" collective="false" import="true" targetId="8a3b-f35b-1b6a-6196" type="selectionEntry">
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="fff0-a1d7-e4af-f95e" type="min"/>
-                    <constraint type="max" value="2" field="selections" scope="203d-c50f-a438-4982" shared="true" id="97f4-ab36-1ab4-466" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
                   </constraints>
-                  <modifiers>
-                    <modifier type="decrement" value="1" field="97f4-ab36-1ab4-466">
-                      <conditions>
-                        <condition type="lessThan" value="10" field="selections" scope="203d-c50f-a438-4982" childId="model" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
-                      </conditions>
-                    </modifier>
-                    <modifier type="decrement" value="1" field="97f4-ab36-1ab4-466">
-                      <repeats>
-                        <repeat value="1" repeats="1" field="selections" scope="203d-c50f-a438-4982" childId="127c-7c09-70ad-da72" shared="true" roundUp="false" includeChildSelections="true"/>
-                      </repeats>
-                    </modifier>
-                  </modifiers>
                 </entryLink>
                 <entryLink id="6292-7b14-e2e2-2ebb" name="Combi-weapon" hidden="false" collective="false" import="true" targetId="cc61-d9ed-f24-e511" type="selectionEntry">
                   <constraints>
@@ -4970,18 +4894,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Paired accursed weapons" hidden="false" id="2b20-3666-aa6a-4659">
               <entryLinks>
-                <entryLink import="true" name="Paired accursed weapons" hidden="false" type="selectionEntry" id="2f1f-6801-489-b56a" targetId="9d6f-4785-aaf0-5076">
-                  <constraints>
-                    <constraint type="max" value="1" field="selections" scope="203d-c50f-a438-4982" shared="true" id="326a-4c2-378b-8dce" includeChildSelections="true"/>
-                  </constraints>
-                  <modifiers>
-                    <modifier type="set" value="2" field="326a-4c2-378b-8dce" id="9202-a3f2-4648-f71c">
-                      <conditions>
-                        <condition type="atLeast" value="10" field="selections" scope="203d-c50f-a438-4982" childId="model" shared="true" id="398c-8f7a-aa7b-f796" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
-                </entryLink>
+                <entryLink import="true" name="Paired accursed weapons" hidden="false" type="selectionEntry" id="2f1f-6801-489-b56a" targetId="9d6f-4785-aaf0-5076"/>
               </entryLinks>
               <constraints>
                 <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="9891-1245-8746-34a" includeChildSelections="true"/>
@@ -5026,6 +4939,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <comment>Collective</comment>
       <constraints>
         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="378b-8673-118-8dd3" type="max"/>
+        <constraint type="max" value="2" field="selections" scope="4e85-615b-5d49-dfa4" shared="true" id="d995-46ca-b85a-764" includeChildSelections="true"/>
       </constraints>
       <profiles>
         <profile id="e3ad-464f-639e-be38" name="Combi-weapon" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
@@ -5048,6 +4962,13 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="4" field="d995-46ca-b85a-764">
+          <conditions>
+            <condition type="atLeast" value="10" field="selections" scope="4e85-615b-5d49-dfa4" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry id="c627-5d3-1420-c7f1" name="Combi-bolter" hidden="false" collective="false" import="true" type="upgrade">
       <constraints>
@@ -5065,6 +4986,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <comment>Collective</comment>
       <constraints>
         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="b51d-11cf-234a-514d" type="max"/>
+        <constraint type="max" value="2" field="selections" scope="203d-c50f-a438-4982" shared="true" id="55e4-7647-d0c0-5fc6" includeChildSelections="true"/>
       </constraints>
       <infoLinks>
         <infoLink id="4932-2af2-e5d2-98e" name="Anti-" hidden="false" targetId="4111-82e3-9444-e942" type="rule"/>
@@ -5073,11 +4995,19 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="1" field="55e4-7647-d0c0-5fc6">
+          <conditions>
+            <condition type="lessThan" value="10" field="selections" scope="203d-c50f-a438-4982" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry id="8154-2146-1197-90be" name="Power fist" hidden="false" collective="true" import="true" type="upgrade">
       <comment>3 Attacks Collective</comment>
       <constraints>
         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="b51d-11cf-234a-514d" type="max"/>
+        <constraint type="max" value="6" field="selections" scope="203d-c50f-a438-4982" shared="true" id="dc97-25d5-522e-4213" includeChildSelections="true"/>
       </constraints>
       <profiles>
         <profile id="6660-1717-d600-bb61" name="Power fist" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
@@ -5095,6 +5025,13 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="3" field="dc97-25d5-522e-4213">
+          <conditions>
+            <condition type="lessThan" value="10" field="selections" scope="203d-c50f-a438-4982" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry id="127c-7c09-70ad-da72" name="Chainfist" hidden="false" collective="false" import="true" type="upgrade">
       <constraints>
@@ -5391,15 +5328,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 <entryLink id="f80e-2459-5578-739d" name="Plasma pistol" hidden="false" collective="false" import="true" targetId="c668-d63-5427-7e32" type="selectionEntry">
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="1d42-153e-790a-e39b" type="min"/>
-                    <constraint type="max" value="2" field="selections" scope="4e85-615b-5d49-dfa4" shared="true" id="187d-1157-9fcf-17b3" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
                   </constraints>
-                  <modifiers>
-                    <modifier type="set" value="4" field="187d-1157-9fcf-17b3">
-                      <conditions>
-                        <condition type="atLeast" value="10" field="selections" scope="4e85-615b-5d49-dfa4" childId="model" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
                 </entryLink>
                 <entryLink id="78de-9df3-e95c-2337" name="Accursed weapon" hidden="false" collective="false" import="true" targetId="8094-a17b-7550-a066" type="selectionEntry">
                   <constraints>
@@ -5432,16 +5361,8 @@ You can attach this model to one of the above units even if one other CHARACTER 
                   </constraints>
                 </entryLink>
                 <entryLink id="328e-ce82-e1c2-750a" name="Combi-weapon" hidden="false" collective="false" import="true" targetId="cc61-d9ed-f24-e511" type="selectionEntry">
-                  <modifiers>
-                    <modifier type="set" field="6c1a-d8b6-ea0a-198d" value="4">
-                      <conditions>
-                        <condition field="selections" scope="4e85-615b-5d49-dfa4" value="10" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="atLeast"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="c613-7ea7-421b-ba81" type="min"/>
-                    <constraint field="selections" scope="4e85-615b-5d49-dfa4" value="2" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="6c1a-d8b6-ea0a-198d" type="max"/>
                   </constraints>
                 </entryLink>
               </entryLinks>
@@ -5457,15 +5378,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 <entryLink id="d808-1bb1-c116-b001" name="Plasma pistol" hidden="false" collective="false" import="true" targetId="c668-d63-5427-7e32" type="selectionEntry">
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="30ea-ba70-e045-e527" type="min"/>
-                    <constraint type="max" value="2" field="selections" scope="4e85-615b-5d49-dfa4" shared="true" id="c226-34bb-313e-2b90" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
                   </constraints>
-                  <modifiers>
-                    <modifier type="set" value="4" field="c226-34bb-313e-2b90">
-                      <conditions>
-                        <condition type="atLeast" value="10" field="selections" scope="4e85-615b-5d49-dfa4" childId="model" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
                 </entryLink>
                 <entryLink id="51ba-6a53-1512-6844" name="Paired accursed weapons" hidden="false" collective="false" import="true" targetId="9d6f-4785-aaf0-5076" type="selectionEntry"/>
               </entryLinks>
@@ -5489,16 +5402,8 @@ You can attach this model to one of the above units even if one other CHARACTER 
                   </constraints>
                 </entryLink>
                 <entryLink id="1a01-6182-cddd-8a1e" name="Power fist" hidden="false" collective="false" import="true" targetId="b48d-da72-19df-6e7b" type="selectionEntry">
-                  <modifiers>
-                    <modifier type="set" field="76e3-86ff-3ce9-f813" value="2">
-                      <conditions>
-                        <condition field="selections" scope="4e85-615b-5d49-dfa4" value="10" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="atLeast"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="f90f-ea3e-1dc6-f96d" type="min"/>
-                    <constraint field="selections" scope="4e85-615b-5d49-dfa4" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="76e3-86ff-3ce9-f813" type="max"/>
                   </constraints>
                 </entryLink>
               </entryLinks>
@@ -5517,16 +5422,8 @@ You can attach this model to one of the above units even if one other CHARACTER 
                   </constraints>
                 </entryLink>
                 <entryLink id="d242-4c18-13ba-5c51" name="Plasma pistol" hidden="false" collective="false" import="true" targetId="c668-d63-5427-7e32" type="selectionEntry">
-                  <modifiers>
-                    <modifier type="set" field="21b2-8e36-fb00-954" value="4">
-                      <conditions>
-                        <condition field="selections" scope="4e85-615b-5d49-dfa4" value="10" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="atLeast"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="c613-7ea7-421b-ba81" type="min"/>
-                    <constraint field="selections" scope="4e85-615b-5d49-dfa4" value="2" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="21b2-8e36-fb00-954" type="max"/>
                   </constraints>
                 </entryLink>
                 <entryLink id="3e03-71-8d1f-1c01" name="Combi-weapon" hidden="false" collective="false" import="true" targetId="cc61-d9ed-f24-e511" type="selectionEntry">
@@ -5549,18 +5446,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="30ea-ba70-e045-e527" type="min"/>
                   </constraints>
                 </entryLink>
-                <entryLink id="6ca0-1e32-65ca-8e35" name="Paired accursed weapons" hidden="false" collective="false" import="true" targetId="9d6f-4785-aaf0-5076" type="selectionEntry">
-                  <modifiers>
-                    <modifier type="set" field="d817-ef69-e975-3c60" value="2">
-                      <conditions>
-                        <condition field="selections" scope="4e85-615b-5d49-dfa4" value="10" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="model" type="atLeast"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
-                  <constraints>
-                    <constraint field="selections" scope="4e85-615b-5d49-dfa4" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="d817-ef69-e975-3c60" type="max"/>
-                  </constraints>
-                </entryLink>
+                <entryLink id="6ca0-1e32-65ca-8e35" name="Paired accursed weapons" hidden="false" collective="false" import="true" targetId="9d6f-4785-aaf0-5076" type="selectionEntry"/>
               </entryLinks>
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
@@ -5579,15 +5465,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 <entryLink id="6d82-7767-b08f-97bc" name="Plasma pistol" hidden="false" collective="false" import="true" targetId="c668-d63-5427-7e32" type="selectionEntry">
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="30ea-ba70-e045-e527" type="min"/>
-                    <constraint type="max" value="2" field="selections" scope="4e85-615b-5d49-dfa4" shared="true" id="44f4-d28b-3790-7bc6" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
                   </constraints>
-                  <modifiers>
-                    <modifier type="set" value="4" field="44f4-d28b-3790-7bc6">
-                      <conditions>
-                        <condition type="atLeast" value="10" field="selections" scope="4e85-615b-5d49-dfa4" childId="model" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
                 </entryLink>
                 <entryLink id="7eb2-2340-71e6-1fd5" name="Power fist" hidden="false" collective="false" import="true" targetId="b48d-da72-19df-6e7b" type="selectionEntry">
                   <constraints>
@@ -5619,6 +5497,8 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <constraints>
         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="b4d1-aa3e-8557-354b" type="min"/>
         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="cd07-c9f9-cf61-fa4f" type="max"/>
+        <constraint type="max" value="1" field="selections" scope="4e85-615b-5d49-dfa4" shared="true" id="8f9c-6570-5d85-5ee4" includeChildSelections="true"/>
+        <constraint type="max" value="1" field="selections" scope="203d-c50f-a438-4982" shared="true" id="3e7c-bbc0-3dc2-8ef4" includeChildSelections="true"/>
       </constraints>
       <profiles>
         <profile id="ae4b-feea-b2aa-871b" name="Paired accursed weapons" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
@@ -5639,11 +5519,24 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="2" field="8f9c-6570-5d85-5ee4">
+          <conditions>
+            <condition type="atLeast" value="10" field="selections" scope="4e85-615b-5d49-dfa4" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="set" value="2" field="3e7c-bbc0-3dc2-8ef4">
+          <conditions>
+            <condition type="atLeast" value="10" field="selections" scope="203d-c50f-a438-4982" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry id="b48d-da72-19df-6e7b" name="Power fist" hidden="false" collective="true" import="true" type="upgrade">
       <comment>4 Attacks Collective</comment>
       <constraints>
         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="b51d-11cf-234a-514d" type="max"/>
+        <constraint type="max" value="2" field="selections" scope="4e85-615b-5d49-dfa4" shared="true" id="c915-12c6-ef14-70c5" includeChildSelections="true"/>
       </constraints>
       <profiles>
         <profile id="fa70-c3da-12f1-de9a" name="Power fist" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
@@ -5661,6 +5554,13 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
+      <modifiers>
+        <modifier type="set" value="2" field="c915-12c6-ef14-70c5">
+          <conditions>
+            <condition type="atLeast" value="10" field="selections" scope="4e85-615b-5d49-dfa4" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry id="1c45-9fd6-6303-a943" name="Noise Marines" hidden="true" collective="false" import="true" type="unit">
       <modifiers>
@@ -6041,7 +5941,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
         </profile>
         <profile id="15bc-376d-3c82-73b2" name="Soul Eater" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of any phase, if one or more attacks made by this model that phase destroyed one or more enemy units, until the end of the battle, add 1 to the Attacks characteristic of this model’s weapons.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of the Fight phase, if one or more attacks made by this model that phase destroyed one or more enemy units, until the end of the battle, add 1 to the Attacks characteristic of this model’s weapons.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -7251,7 +7151,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <profiles>
         <profile id="1d0e-bd07-97ab-6322" name="Warp Rift Firepower" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, when this unit makes a Dark Pact, it can use this ability. If it does, until the end of the phase, ranged weapons models in this unit are equipped with have the [INDIRECT FIRE] ability.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, when this unit makes a Dark Pact, it can use this ability. If it does, until the end of the phase, ranged weapons equipped by models in this unit have the [INDIRECT FIRE] ability.</characteristic>
           </characteristics>
         </profile>
         <profile id="54b2-a2e1-aea7-7662" name="Invulnerable Save" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -7285,7 +7185,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
         <selectionEntry id="1db9-89c3-c7cb-2041" name="Obliterator" hidden="false" collective="false" import="true" type="model">
           <constraints>
             <constraint field="selections" scope="parent" value="2" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="8049-396a-b484-2243" type="min"/>
-            <constraint field="selections" scope="parent" value="4" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="fa31-358b-97a5-dde" type="max"/>
+            <constraint field="selections" scope="parent" value="2" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="fa31-358b-97a5-dde" type="max"/>
           </constraints>
           <selectionEntries>
             <selectionEntry id="2e47-9a3-ad3e-ae4c" name="Fleshmetal guns" hidden="false" collective="true" import="true" type="upgrade">
@@ -7296,7 +7196,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
               <profiles>
                 <profile id="32b3-2969-c4ec-b229" name="➤ Fleshmetal guns - focused malice" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
                   <characteristics>
-                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
                     <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
                     <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
                     <characteristic name="S" typeId="2229-f494-25db-c5d3">12</characteristic>
@@ -7389,7 +7289,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
         </profile>
         <profile id="5705-83ba-9004-6b3c" name="Malevolent Locus (Aura)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly HERETIC ASTARTES model is wholly within 9&quot; of this Fortification, that model has a 4+ invulnerable save.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly HERETIC ASTARTES unit is within 9&quot; of this Fortification, improve that unit&apos;s Leadership characteristic by 1.</characteristic>
           </characteristics>
         </profile>
         <profile id="2728-2a25-69af-e7af" name="Malign Cover" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -8716,7 +8616,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
         </profile>
         <profile id="4c0f-1b93-e310-b2a8" name="Annihilator" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a ranged attack that targets a MONSTER or VEHICLE unit, re-roll a Damage roll of 1.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ranged attack made by this model is allocated to a MONSTER or VEHICLE model, re-roll a Damage roll of 1.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -9110,6 +9010,11 @@ You can attach this model to one of the above units even if one other CHARACTER 
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model has a 5+ invulnerable save.</characteristic>
           </characteristics>
         </profile>
+        <profile name="Daemonforge" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5355-f47e-aa06-32bf">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per Fight phase, one unit from your army with this ability can be targeted with the Counter-Offensive Stratagem for 0CP, even if you have already targeted a different unit with that Stratagem this phase.</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
       <infoLinks>
         <infoLink id="3d03-e62b-a687-ed8a" name="Deadly Demise" hidden="false" targetId="b68a-5ded-65ac-98c" type="rule">
@@ -9396,7 +9301,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="b499-7041-cf73-e3f1" type="max"/>
                   </constraints>
                   <profiles>
-                    <profile id="f35d-7a13-92ea-ae2" name="Forgefiend claws" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
+                    <profile id="f35d-7a13-92ea-ae2" name="Armoured limbs" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
                       <characteristics>
                         <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
                         <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
@@ -9849,7 +9754,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <profiles>
         <profile id="17bd-f4a1-e0a4-41ea" name="Airborne Predator" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes an attack that targets a unit that can Fly, add 1 to the Hit roll.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes an attack that targets a unit that can FLY, add 1 to the Hit roll.</characteristic>
           </characteristics>
         </profile>
         <profile id="7a5-d670-2b5c-668b" name="Heldrake" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
@@ -9974,7 +9879,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
         </profile>
         <profile id="a03e-2570-1658-1bc2" name="Siege Crawler" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You can re-roll Advance and Charge rolls made for this model, and you can ignore any or all modifiers to its Move characteristic and to Advance and Charge rolls made for it.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You can ignore any or all modifiers to this model&apos;s Move characteristic and to Advance and Charge rolls made for it.</characteristic>
           </characteristics>
         </profile>
         <profile id="7ae4-ab1-343c-ace0" name="Invulnerable Save" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -10291,7 +10196,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
                     <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
                     <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
                     <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
-                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">-2</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
                   </characteristics>
                 </profile>
@@ -17438,4 +17343,19 @@ You can attach this model to one of the above units even if one other CHARACTER 
   <infoLinks>
     <infoLink name="Psychic" hidden="false" type="rule" id="f8a6-57a0-d186-247f" targetId="e9c4-2bb8-12ee-cd1b"/>
   </infoLinks>
+  <selectionEntries>
+    <selectionEntry type="upgrade" import="true" name="NOTICE - This catalogue is no longer fully supported in Battlescribe. Please use https://newrecruit.eu for full compatibility." hidden="false" id="1a3f-f8cd-7b5a-1c86">
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a7bd-ad66-8827-8762" includeChildSelections="false"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5109-3078-3766-78db" includeChildSelections="false"/>
+      </constraints>
+      <modifiers>
+        <modifier type="set" value="0" field="a7bd-ad66-8827-8762"/>
+        <modifier type="set" value="0" field="5109-3078-3766-78db"/>
+      </modifiers>
+      <categoryLinks>
+        <categoryLink targetId="4ac9-fd30-1e3d-b249" id="9789-9610-ecc1-6775" primary="true" name="Configuration"/>
+      </categoryLinks>
+    </selectionEntry>
+  </selectionEntries>
 </catalogue>
