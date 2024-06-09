@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b39e-4401-8f3e-fdf7" name="Imperium - Adepta Sororitas" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="28" battleScribeVersion="2.03" authorName="CrusherJoe" type="catalogue" authorContact="@CrusherJoe on Discord" authorUrl="Sometimes GitHub blows">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b39e-4401-8f3e-fdf7" name="Imperium - Adepta Sororitas" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="29" battleScribeVersion="2.03" authorName="CrusherJoe" type="catalogue" authorContact="@CrusherJoe on Discord" authorUrl="Sometimes GitHub blows">
   <categoryEntries>
     <categoryEntry name="Aestred Thurga and Agathae Dolan" hidden="false" id="c8ba-2b2d-e47f-d7a6"/>
     <categoryEntry name="Arco-flagellants" hidden="false" id="63f8-3a5d-ef9c-d86e"/>
@@ -602,12 +602,12 @@
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Ministorum hand flamer" hidden="false" id="c462-3995-88b0-200c">
       <infoLinks>
-        <infoLink name="Ignores Cover" hidden="false" type="rule" id="afeb-1d49-689-43d0" targetId="4640-43e7-30b-215a"/>
-        <infoLink name="Torrent" hidden="false" type="rule" id="2567-cb1a-d953-c948" targetId="5edf-d619-23e0-9b56"/>
-        <infoLink name="Pistol" hidden="false" type="rule" id="b259-3174-6bb9-e5f2" targetId="8bf7-8812-923d-29e4"/>
+        <infoLink name="Ignores Cover" id="afeb-1d49-689-43d0" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
+        <infoLink name="Pistol" id="b259-3174-6bb9-e5f2" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
+        <infoLink name="Torrent" id="2567-cb1a-d953-c948" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
       </infoLinks>
       <profiles>
-        <profile name="Ministorum hand flamer" hidden="false" id="1456-cb87-f320-1136" typeName="Ranged Weapons" typeId="f77d-b953-8fa4-b762">
+        <profile name="Ministorum hand flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="1456-cb87-f320-1136">
           <characteristics>
             <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
             <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
@@ -5090,6 +5090,11 @@ of your Command phase, you can choose one of the following:
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly Adepta Sororitas unit is within 6&quot; of this model, improve the Armour Penetration characteristic of melee weapons equipped by model in that unit by 1.</characteristic>
           </characteristics>
         </profile>
+        <profile name="Solemn Procession" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3d31-2f99-c625-f047">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle round, if this model is on the battlefield, you gain 1 Miracle Dice showing a value of 6.</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Zephyrim Squad" hidden="false" id="22f0-a7d8-b2b6-e26" publicationId="7d85-6d0f-57e0-5dea">
@@ -5759,29 +5764,35 @@ Before making your selection, if this unit made a Charge move this turn, you can
               <constraints>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3f19-0d80-501c-db03" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
               </constraints>
-              <entryLinks>
-                <entryLink import="true" name="Blessed Halberd" hidden="false" id="9688-25ac-8466-dd20" type="selectionEntry" targetId="1e0e-33b7-df99-1bbf">
-                  <constraints>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f012-bdb3-9178-e091"/>
-                  </constraints>
-                </entryLink>
-              </entryLinks>
+              <profiles>
+                <profile name="Blessed Halberd" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="ee64-108f-ec59-9c81">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Ministorum Hand Flamer and Power Weapon" hidden="false" id="3e57-1862-633f-637e" collective="false">
               <constraints>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1767-9f32-f8c9-8aa7"/>
               </constraints>
               <entryLinks>
-                <entryLink import="true" name="Ministorum hand flamer" hidden="false" id="d7f2-cdd9-c3e1-ebf5" type="selectionEntry" targetId="c462-3995-88b0-200c">
+                <entryLink import="true" name="Ministorum hand flamer" hidden="false" id="68d0-1cf1-6877-1d17" type="selectionEntry" targetId="c462-3995-88b0-200c">
                   <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4bde-b764-1d08-7db7"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="71f5-42a3-b006-a734"/>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="828a-e1bb-6e0d-2d14-min"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="828a-e1bb-6e0d-2d14-max"/>
                   </constraints>
                 </entryLink>
-                <entryLink import="true" name="Power weapon" hidden="false" id="d741-a4d6-a61c-eb1a" type="selectionEntry" targetId="8d5-7912-fa27-bdde">
+                <entryLink import="true" name="Power weapon" hidden="false" id="fd37-ab13-64b5-e596" type="selectionEntry" targetId="8d5-7912-fa27-bdde">
                   <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="01b0-11e8-c4d3-a67d"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="21ae-16c1-3e8d-dac4"/>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="eb05-65a9-357f-14ba-min"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="eb05-65a9-357f-14ba-max"/>
                   </constraints>
                 </entryLink>
               </entryLinks>
@@ -5790,9 +5801,22 @@ Before making your selection, if this unit made a Charge move this turn, you can
               <constraints>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b684-397f-e884-0d49"/>
               </constraints>
-              <entryLinks>
-                <entryLink import="true" name="Holy Eviscerator" hidden="false" id="7821-9bcc-817d-624f" type="selectionEntry" targetId="0a4c-48a9-c662-082f"/>
-              </entryLinks>
+              <profiles>
+                <profile name="Holy Eviscerator" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="b50f-d5dc-fb26-39c7">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Sustained Hits 1</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Sustained Hits" id="070a-5c8e-8179-4b90" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
+              </infoLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -5852,39 +5876,8 @@ Before making your selection, if this unit made a Charge move this turn, you can
         <entryLink import="true" name="Enhancements" hidden="false" id="c4da-1049-03aa-6784" type="selectionEntryGroup" targetId="09e3-bb9d-b978-8202"/>
       </entryLinks>
     </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Blessed Halberd" hidden="false" id="1e0e-33b7-df99-1bbf">
-      <profiles>
-        <profile name="Blessed Halberd" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="ee64-108f-ec59-9c81">
-          <characteristics>
-            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-            <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
-            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
-            <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
-            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
-            <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
-            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e"/>
-          </characteristics>
-        </profile>
-      </profiles>
-    </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Holy Eviscerator" hidden="false" id="0a4c-48a9-c662-082f">
-      <infoLinks>
-        <infoLink name="Sustained Hits" id="070a-5c8e-8179-4b90" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
-      </infoLinks>
-      <profiles>
-        <profile name="Holy Eviscerator" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="b50f-d5dc-fb26-39c7">
-          <characteristics>
-            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
-            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
-            <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
-            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
-            <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
-            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Sustained Hits 1</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
-    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Blessed Halberd" hidden="false" id="1e0e-33b7-df99-1bbf"/>
+    <selectionEntry type="upgrade" import="true" name="Holy Eviscerator" hidden="false" id="0a4c-48a9-c662-082f"/>
     <selectionEntry type="upgrade" import="true" name="Hallowed Chainsword" hidden="false" id="e580-8335-3315-f716">
       <profiles>
         <profile name="Hallowed Chainsword" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="688d-22c4-b7be-be16">
@@ -6338,7 +6331,7 @@ Death Before Disgrace: Each time a PENITENT model from your army is destroyed by
               <profiles>
                 <profile name="Triptych of the Macharian Crusade" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="854e-64e3-4b87-3eef">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">ADEPTA SORORITAS model only. Each time the bearer use and Act of Faith to substitute a saving throw, that saving throw is successful, irrespective of the value of the Miracle dice used.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">ADEPTA SORORITAS model only. Each time the bearer uses an Act of Faith to substitute a saving throw, that saving throw is successful, irrespective of the value of the Miracle dice used.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
