@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="42" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="43" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
   <rules>
     <rule name="For The Greater Good" hidden="false" id="eeb6-c42-48f7-cc21">
       <description>If your Army Faction is T’AU EMPIRE, then in your Shooting phase units from your army can work in pairs to help each other target specific enemy units. When they do this, one unit is the Observer unit and the other is their Guided unit. The enemy they are targeting is called their Spotted unit.
@@ -1877,7 +1877,7 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
             </selectionEntry>
           </selectionEntries>
           <profiles>
-            <profile name="Strike Team (Shas&apos;ui)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="eee2-f339-6ce-7d3a">
+            <profile name="Strike Team" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="eee2-f339-6ce-7d3a">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
@@ -1892,6 +1892,11 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
                 </modifier>
+                <modifier type="set" value="Fire Warrior Shas&apos;ui" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
               </modifiers>
             </profile>
           </profiles>
@@ -1905,12 +1910,6 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                 <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="26d-538d-d677-f79d"/>
               </constraints>
               <entryLinks>
-                <entryLink import="true" name="Pulse carbine" hidden="false" type="selectionEntry" id="f16f-5128-f3f1-3ab0" targetId="132e-eb89-c531-4947" collective="false">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="dda8-79b0-cd32-6337"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1e59-6b59-c5de-f62a"/>
-                  </constraints>
-                </entryLink>
                 <entryLink import="true" name="Pulse pistol" hidden="false" type="selectionEntry" id="1ec1-f63-fb6a-cd2" targetId="4310-a1ce-dde7-70e3" collective="false">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="19fd-6b5a-9e54-d832"/>
@@ -1936,6 +1935,25 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a502-ab17-79c6-fe0b"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a6c5-2a7-eb5-bd27"/>
+                  </constraints>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Pulse carbine" hidden="false" id="fcad-3a78-5a92-28a5" collective="true">
+                  <profiles>
+                    <profile name="Pulse carbine" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="d283-f3f3-499a-dcad">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">20&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="76a2-5f3d-5d79-39a3" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3f4d-e6c9-d541-acda" includeChildSelections="false"/>
                   </constraints>
                 </selectionEntry>
               </selectionEntries>
@@ -2140,7 +2158,7 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
             </selectionEntry>
           </selectionEntries>
           <profiles>
-            <profile name="Breacher Team (Shas&apos;ui)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="2f9d-f2ca-4d58-bab0">
+            <profile name="Breacher Team" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="2f9d-f2ca-4d58-bab0">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
@@ -2154,6 +2172,11 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                   <repeats>
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
+                </modifier>
+                <modifier type="set" value="Breacher Fire Warrior Shas&apos;ui" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
                 </modifier>
               </modifiers>
             </profile>
@@ -2737,7 +2760,7 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
             </entryLink>
           </entryLinks>
           <profiles>
-            <profile name="Crisis Battlesuits (Shas’vre)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="91a7-3ab5-464e-5620">
+            <profile name="Crisis Battlesuits" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="91a7-3ab5-464e-5620">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
@@ -2751,6 +2774,11 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                   <repeats>
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
+                </modifier>
+                <modifier type="set" value="Crisis Shas’vre" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
                 </modifier>
               </modifiers>
             </profile>
@@ -2779,7 +2807,7 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
             </entryLink>
           </entryLinks>
           <profiles>
-            <profile name="Crisis Battlesuits (Shas’ui)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="9cc3-7e40-79d1-8932">
+            <profile name="Crisis Battlesuits" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="9cc3-7e40-79d1-8932">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
@@ -2793,6 +2821,11 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                   <repeats>
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
+                </modifier>
+                <modifier type="set" value="Crisis Shas’ui" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
                 </modifier>
               </modifiers>
             </profile>
@@ -3027,7 +3060,7 @@ Designer’s Note: Place a Homing Beacon token next to this unit, removing it on
             </selectionEntry>
           </selectionEntries>
           <profiles>
-            <profile name="Stealth Battlesuits (Shas&apos;vre)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="0f19-12dc-b675-ecbe">
+            <profile name="Stealth Battlesuits" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="0f19-12dc-b675-ecbe">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">8&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
@@ -3041,6 +3074,11 @@ Designer’s Note: Place a Homing Beacon token next to this unit, removing it on
                   <repeats>
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
+                </modifier>
+                <modifier type="set" value="Stealth Shas&apos;vre" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
                 </modifier>
               </modifiers>
             </profile>
@@ -3655,6 +3693,13 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="set" value="26&quot;" field="9896-9419-16a1-92fc">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="296b-c47c-fbbc-bf11" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
               </profiles>
               <constraints>
@@ -3664,7 +3709,7 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
             </selectionEntry>
           </selectionEntries>
           <profiles>
-            <profile name="Pathfinder Team (Shas&apos;ui)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="6f80-849f-3473-6b30">
+            <profile name="Pathfinder Team" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="6f80-849f-3473-6b30">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">7&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
@@ -3678,6 +3723,11 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                   <repeats>
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
+                </modifier>
+                <modifier type="set" value="Pathfinder Shas&apos;ui" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
                 </modifier>
               </modifiers>
             </profile>
@@ -3693,12 +3743,6 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                 <constraint type="min" value="9" field="selections" scope="parent" shared="true" id="850f-6d92-773b-312f"/>
               </constraints>
               <entryLinks>
-                <entryLink import="true" name="Pulse carbine" hidden="false" type="selectionEntry" id="bb02-3bc3-6f75-3718" targetId="132e-eb89-c531-4947" collective="false">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3a58-d1e7-c61-6bb2"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e789-9ed1-a92a-278b"/>
-                  </constraints>
-                </entryLink>
                 <entryLink import="true" name="Pulse pistol" hidden="false" type="selectionEntry" id="e5aa-3658-c141-4e1e" targetId="4310-a1ce-dde7-70e3">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a7dc-b6c4-afd9-8d96"/>
@@ -3734,6 +3778,32 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="48ac-181b-daa2-851"/>
                   </constraints>
                 </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Pulse carbine" hidden="false" id="541e-ed7b-b4c3-08cb" collective="true">
+                  <profiles>
+                    <profile name="Pulse carbine" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="a7f7-7c20-1c7f-8207">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">20&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
+                      </characteristics>
+                      <modifiers>
+                        <modifier type="set" value="26&quot;" field="9896-9419-16a1-92fc">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="296b-c47c-fbbc-bf11" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </profile>
+                  </profiles>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="26e3-72ed-6f87-3382" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f6e9-13ff-3f34-6313" includeChildSelections="false"/>
+                  </constraints>
+                </selectionEntry>
               </selectionEntries>
               <profiles>
                 <profile name="Pathfinder Team" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="292e-7ca6-fb95-0fd7">
@@ -3753,12 +3823,6 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="eb76-3e3f-1a38-7195"/>
               </constraints>
               <entryLinks>
-                <entryLink import="true" name="Pulse carbine" hidden="false" type="selectionEntry" id="ef62-6176-8252-1709" targetId="132e-eb89-c531-4947" collective="false">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3a58-d1e7-c61-6bb2"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e789-9ed1-a92a-278b"/>
-                  </constraints>
-                </entryLink>
                 <entryLink import="true" name="Semi-automatic grenade launcher" hidden="false" type="selectionEntry" id="2bb8-5cce-e0d1-b0b7" targetId="6af0-a6dd-ddeb-4178">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4043-f0b2-78d5-acae"/>
@@ -3797,6 +3861,32 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2567-841-e849-8028"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="48ac-181b-daa2-851"/>
+                  </constraints>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Pulse carbine" hidden="false" id="c0a5-db56-0099-a2b1" collective="true">
+                  <profiles>
+                    <profile name="Pulse carbine" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="8323-cecd-27fd-83b8">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">20&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
+                      </characteristics>
+                      <modifiers>
+                        <modifier type="set" value="26&quot;" field="9896-9419-16a1-92fc">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="296b-c47c-fbbc-bf11" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </profile>
+                  </profiles>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3ce2-3ba5-c126-35b6" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f3f1-a33b-e36f-403d" includeChildSelections="false"/>
                   </constraints>
                 </selectionEntry>
               </selectionEntries>
@@ -4365,7 +4455,7 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
             <entryLink import="true" name="Support Systems (0-2)" hidden="false" type="selectionEntryGroup" id="59fa-a629-b70f-b96a" targetId="e845-7d85-5776-246a"/>
           </entryLinks>
           <profiles>
-            <profile name="Broadside Battlesuits (Shas’vre)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="0ab4-daaa-d899-93d3">
+            <profile name="Broadside Battlesuits" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="0ab4-daaa-d899-93d3">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
@@ -4379,6 +4469,11 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                   <repeats>
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
+                </modifier>
+                <modifier type="set" value="Broadside Shas’vre" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
                 </modifier>
               </modifiers>
             </profile>
@@ -4404,7 +4499,7 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                 <entryLink import="true" name="Support Systems (0-2)" hidden="false" type="selectionEntryGroup" id="ba2a-9b52-d5c0-8cd0" targetId="e845-7d85-5776-246a"/>
               </entryLinks>
               <profiles>
-                <profile name="Broadside Battlesuits (Shas’ui)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="22e7-1153-6133-896b">
+                <profile name="Broadside Battlesuits" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="22e7-1153-6133-896b">
                   <characteristics>
                     <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
                     <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
@@ -4418,6 +4513,11 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
                       <repeats>
                         <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                       </repeats>
+                    </modifier>
+                    <modifier type="set" value="Broadside Shas’ui" field="name">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                      </conditions>
                     </modifier>
                   </modifiers>
                 </profile>
@@ -9086,7 +9186,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
             </entryLink>
           </entryLinks>
           <profiles>
-            <profile name="Crisis Battlesuits (Shas’vre)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="ac8a-d52a-edc4-b45a">
+            <profile name="Crisis Sunforge Battlesuits" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="ac8a-d52a-edc4-b45a">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
@@ -9100,6 +9200,11 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
                   <repeats>
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
+                </modifier>
+                <modifier type="set" value="Crisis Sunforge Shas’vre" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
                 </modifier>
               </modifiers>
             </profile>
@@ -9126,7 +9231,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
             </entryLink>
           </entryLinks>
           <profiles>
-            <profile name="Crisis Battlesuits (Shas’ui)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="bf85-bf2c-4b20-5bbc">
+            <profile name="Crisis Sunforge Battlesuits" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="bf85-bf2c-4b20-5bbc">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
@@ -9140,6 +9245,11 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
                   <repeats>
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
+                </modifier>
+                <modifier type="set" value="Crisis Sunforge Shas’ui" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
                 </modifier>
               </modifiers>
             </profile>
@@ -9218,7 +9328,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
             </selectionEntryGroup>
           </selectionEntryGroups>
           <profiles>
-            <profile name="Crisis Battlesuits (Shas’vre)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="a6db-e4b2-4859-a620">
+            <profile name="Crisis Fireknife Battlesuits" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="a6db-e4b2-4859-a620">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
@@ -9232,6 +9342,11 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
                   <repeats>
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
+                </modifier>
+                <modifier type="set" value="Crisis Fireknife Shas’vre" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
                 </modifier>
               </modifiers>
             </profile>
@@ -9280,7 +9395,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
             </selectionEntryGroup>
           </selectionEntryGroups>
           <profiles>
-            <profile name="Crisis Battlesuits (Shas’ui)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="7c53-caae-a6de-aac1">
+            <profile name="Crisis Fireknife Battlesuits" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="7c53-caae-a6de-aac1">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
@@ -9294,6 +9409,11 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
                   <repeats>
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
+                </modifier>
+                <modifier type="set" value="Crisis Fireknife Shas’ui" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
                 </modifier>
               </modifiers>
             </profile>
@@ -9373,7 +9493,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
             </selectionEntryGroup>
           </selectionEntryGroups>
           <profiles>
-            <profile name="Crisis Battlesuits (Shas’vre)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="49e2-86ee-b35a-8dfd">
+            <profile name="Crisis Starscythe Battlesuits" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="49e2-86ee-b35a-8dfd">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
@@ -9387,6 +9507,11 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
                   <repeats>
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
+                </modifier>
+                <modifier type="set" value="Crisis Starscythe Shas’vre" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
                 </modifier>
               </modifiers>
             </profile>
@@ -9435,7 +9560,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
             </selectionEntryGroup>
           </selectionEntryGroups>
           <profiles>
-            <profile name="Crisis Battlesuits (Shas’ui)" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="6d47-e3be-3c23-7abc">
+            <profile name="Crisis Starscythe Battlesuits" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="6d47-e3be-3c23-7abc">
               <characteristics>
                 <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
                 <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
@@ -9449,6 +9574,11 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
                   <repeats>
                     <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="false" roundUp="false" includeChildSelections="true"/>
                   </repeats>
+                </modifier>
+                <modifier type="set" value="Crisis Starscythe Shas’ui" field="name">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="ancestor" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
+                  </conditions>
                 </modifier>
               </modifiers>
             </profile>
