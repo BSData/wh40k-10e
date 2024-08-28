@@ -861,9 +861,15 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
             <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
           </conditions>
         </modifier>
+        <modifier type="set" value="1" field="2a14-db5e-c5ad-5ae9">
+          <conditions>
+            <condition type="equalTo" value="0.5" field="75bb-ded1-c86d-bdf0" scope="self" childId="any" shared="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
       <constraints>
         <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="b96f-03f7-d8a1-92ce" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="2a14-db5e-c5ad-5ae9"/>
       </constraints>
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="a877-78a7-06f2-f04d" hidden="false" collapsible="true">
