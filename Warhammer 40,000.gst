@@ -864,6 +864,39 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                 <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
                 <condition type="lessThan" value="1" field="selections" scope="ancestor" childId="d1a5-4297-168b-11cd" shared="true" includeChildSelections="true" includeChildForces="false"/>
               </conditions>
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="self" childId="any" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="equalTo" value="6" field="75bb-ded1-c86d-bdf0" scope="unit" childId="any" shared="true" includeChildSelections="true"/>
+                            <condition type="atLeast" value="1" field="selections" scope="unit" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="equalTo" value="3" field="75bb-ded1-c86d-bdf0" scope="unit" childId="any" shared="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="unit" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="true"/>
+                            <condition type="equalTo" value="6" field="75bb-ded1-c86d-bdf0" scope="unit" childId="any" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </conditionGroup>
+                  </conditionGroups>
+                </conditionGroup>
+              </conditionGroups>
             </conditionGroup>
           </conditionGroups>
         </modifier>
