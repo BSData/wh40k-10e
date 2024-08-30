@@ -5,7 +5,7 @@
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
   </publications>
   <costTypes>
-    <costType id="51b2-306e-1021-d207" name="pts" defaultCostLimit="0" hidden="false">
+    <costType id="51b2-306e-1021-d207" name="pts" defaultCostLimit="-1" hidden="false">
       <modifiers>
         <modifier type="set" value="true" field="hidden">
           <conditionGroups>
@@ -37,6 +37,9 @@
       <comment>Tracking number for Crusade</comment>
     </costType>
     <costType name="Crusade: Experience" id="a623-fe74-1d33-cddf" defaultCostLimit="-1" hidden="true">
+      <comment>Tracking number for Crusade</comment>
+    </costType>
+    <costType name="Crusade: Weapon Modifications" id="716d-91b7-d55a-1022" defaultCostLimit="-1" hidden="true">
       <comment>Tracking number for Crusade</comment>
     </costType>
   </costTypes>
@@ -791,7 +794,8 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
             <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0.5"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
           </costs>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Armour Piercing (AP+1)" hidden="false" id="d181-a615-5566-8e5a">
@@ -801,8 +805,8 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
             <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0.5"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
           </costs>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Precise" hidden="false" id="658a-396c-f9a0-d15f">
@@ -822,7 +826,8 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
             <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0.5"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
           </costs>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Master-worked (D+1)" hidden="false" id="4b25-c6e7-3350-9c1c">
@@ -832,7 +837,8 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
             <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0.5"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
           </costs>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Heirloom (A+1)" hidden="false" id="09c4-6313-8cd5-d77a">
@@ -842,7 +848,8 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
             <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0.5"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
           </costs>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Finely Balanced (BS/WS+1)" hidden="false" id="13b7-d8d5-72c2-1f72">
@@ -852,7 +859,8 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
             <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0.5"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
           </costs>
         </selectionEntry>
       </selectionEntries>
@@ -874,22 +882,22 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                       <conditionGroups>
                         <conditionGroup type="and">
                           <conditions>
-                            <condition type="equalTo" value="6" field="75bb-ded1-c86d-bdf0" scope="unit" childId="any" shared="true" includeChildSelections="true"/>
-                            <condition type="atLeast" value="1" field="selections" scope="unit" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+                            <condition type="equalTo" value="6" field="75bb-ded1-c86d-bdf0" scope="model-or-unit" childId="any" shared="true" includeChildSelections="true"/>
+                            <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
                             <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="true"/>
                           </conditions>
                         </conditionGroup>
                         <conditionGroup type="and">
                           <conditions>
-                            <condition type="equalTo" value="3" field="75bb-ded1-c86d-bdf0" scope="unit" childId="any" shared="true" includeChildSelections="true"/>
-                            <condition type="lessThan" value="1" field="selections" scope="unit" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+                            <condition type="equalTo" value="3" field="75bb-ded1-c86d-bdf0" scope="model-or-unit" childId="any" shared="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="model-or-unit" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
                             <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="true"/>
                           </conditions>
                         </conditionGroup>
                         <conditionGroup type="and">
                           <conditions>
                             <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="true"/>
-                            <condition type="equalTo" value="6" field="75bb-ded1-c86d-bdf0" scope="unit" childId="any" shared="true" includeChildSelections="true"/>
+                            <condition type="equalTo" value="6" field="75bb-ded1-c86d-bdf0" scope="model-or-unit" childId="any" shared="true" includeChildSelections="true"/>
                           </conditions>
                         </conditionGroup>
                       </conditionGroups>
@@ -900,15 +908,15 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
             </conditionGroup>
           </conditionGroups>
         </modifier>
-        <modifier type="set" value="1" field="2a14-db5e-c5ad-5ae9">
+        <modifier type="set" value="2" field="2a14-db5e-c5ad-5ae9">
           <conditions>
-            <condition type="equalTo" value="0.5" field="75bb-ded1-c86d-bdf0" scope="self" childId="any" shared="true"/>
+            <condition type="equalTo" value="1" field="selections" scope="self" childId="any" shared="true"/>
           </conditions>
         </modifier>
       </modifiers>
       <constraints>
-        <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="b96f-03f7-d8a1-92ce" includeChildSelections="false"/>
-        <constraint type="min" value="0" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="2a14-db5e-c5ad-5ae9"/>
+        <constraint type="max" value="2" field="selections" scope="self" shared="true" id="b96f-03f7-d8a1-92ce" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="selections" scope="self" shared="true" id="2a14-db5e-c5ad-5ae9"/>
       </constraints>
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="a877-78a7-06f2-f04d" hidden="false" collapsible="true">
@@ -972,8 +980,9 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
             <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
       </selectionEntries>
