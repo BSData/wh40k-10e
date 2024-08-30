@@ -802,6 +802,7 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
             <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
             <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0.5"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
           </costs>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Precise" hidden="false" id="658a-396c-f9a0-d15f">
@@ -929,7 +930,18 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                 </conditionGroup>
               </conditionGroups>
             </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
           </modifiers>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+          </costs>
         </selectionEntry>
       </selectionEntries>
       <modifiers>
@@ -953,6 +965,12 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                   </characteristics>
                 </profile>
               </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="-1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+              </costs>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Battle-weary" hidden="false" id="856a-44c0-4d44-4fd6">
               <constraints>
@@ -965,6 +983,12 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                   </characteristics>
                 </profile>
               </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="-1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+              </costs>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Crippling Damage" hidden="false" id="4135-1065-ae32-09a4">
               <constraints>
@@ -977,6 +1001,12 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                   </characteristics>
                 </profile>
               </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="-1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+              </costs>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Deep Scars" hidden="false" id="e20d-1f8c-2b62-2abb">
               <constraints>
@@ -989,6 +1019,12 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                   </characteristics>
                 </profile>
               </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="-1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+              </costs>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Mark of Shame" hidden="false" id="0e21-97c3-92fa-e2a1">
               <constraints>
@@ -1001,6 +1037,12 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                   </characteristics>
                 </profile>
               </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="-1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+              </costs>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Disgraced" hidden="false" id="e3a2-6b61-fd36-df18">
               <constraints>
@@ -1013,6 +1055,12 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                   </characteristics>
                 </profile>
               </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="-1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+              </costs>
             </selectionEntry>
           </selectionEntries>
           <constraints>
