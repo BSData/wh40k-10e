@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="62" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="63" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Aegis Defence Line" hidden="false" id="cb99-456-f100-40ed">
       <categoryLinks>
@@ -636,6 +636,7 @@
         <categoryLink targetId="8cab-448d-37b7-32bc" id="caa6-487b-83cb-85ff" primary="false" name="Artillery"/>
         <categoryLink targetId="dbd4-63-af05-998" id="b592-ee76-8404-b9cc" primary="true" name="Vehicle"/>
         <categoryLink targetId="4780-be29-8c52-1d20" id="9daf-a295-13e4-f588" primary="false" name="Squadron"/>
+        <categoryLink name="Smoke" hidden="false" id="e59e-7056-cb26-00be" targetId="6df-937-16bc-8c1a" primary="false"/>
       </categoryLinks>
       <modifiers>
         <modifier type="set-primary" value="887b-ab87-92a2-20f5" field="category">
@@ -861,6 +862,11 @@
         <profile name="Get Back in the Fight" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="cd15-5c13-fa1e-b2eb">
           <characteristics>
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model is leading a unit, that unit is eligible to shoot in a turn in which it Fell Back.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Invulnerable Save" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="205b-90a2-6a4a-ee7a">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model has a 5+ invulnerable save.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -1774,6 +1780,11 @@
         <profile name="Officer" typeId="3fc9-16d8-8670-c8e2" typeName="Orders" hidden="false" id="11a-efa7-7a1e-27e9">
           <characteristics>
             <characteristic name="Officer" typeId="36b-c3c9-245f-e97d">This Officer can issue 1 Order to a Regiment unit. This Officer can only issue the Duty and Honour! and Fix Bayonets! Orders.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Invulnerable Save" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d266-e218-b4b4-a05e">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model has a 5+ invulnerable save.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -8028,6 +8039,7 @@
         <categoryLink targetId="5a61-81ac-eb7c-a87e" id="2f5e-9a78-a3b8-35ab" primary="false" name="Grenades"/>
         <categoryLink targetId="c8a1-fef-5569-61c9" id="f7c2-77a6-9a6f-8375" primary="false" name="Regiment"/>
         <categoryLink targetId="f168-1b04-e10d-e9a" id="7ea-d8fa-44de-771" primary="false" name="Militarum Tempestus"/>
+        <categoryLink name="Imperium" hidden="false" id="499b-44bd-dacd-9c7c" targetId="aff3-d6a3-2a95-9dc" primary="false"/>
       </categoryLinks>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="acd1-da30-2656-832a" includeChildSelections="true" includeChildForces="true"/>
@@ -8615,7 +8627,7 @@
                     <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="cf38-2338-aa71-ed56" shared="true"/>
                     <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="fbc0-10db-204-9142" shared="true" includeChildSelections="false"/>
                     <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="54e3-5045-251e-8453" shared="true"/>
-                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="e830-b3b0-1c4f-cc0d" shared="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4d28-f2a7-67c1-eb2e" shared="true"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -8734,24 +8746,11 @@
             <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
             <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
             <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
             <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
           </characteristics>
-          <modifiers>
-            <modifier type="set" value="5" field="2229-f494-25db-c5d3">
-              <conditionGroups>
-                <conditionGroup type="or">
-                  <conditions>
-                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="dbd4-63-af05-998" shared="true"/>
-                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="be36-7cb1-29f-f344" shared="true"/>
-                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="7f88-f3e8-592b-2de0" shared="true"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
         </profile>
       </profiles>
       <infoLinks>
@@ -11695,10 +11694,17 @@
                 </entryLink>
               </entryLinks>
             </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Two heavy flamers" hidden="false" id="15ea-5805-44ff-ff5a">
+              <entryLinks>
+                <entryLink import="true" name="Heavy Flamer" hidden="false" id="7285-d5e8-c587-970d" type="selectionEntry" targetId="6fef-cbbd-be33-44a4">
+                  <constraints>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="640b-cb0b-3b58-2419"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="ce68-b8b7-d8bb-3413"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+            </selectionEntry>
           </selectionEntries>
-          <entryLinks>
-            <entryLink import="true" name="Heavy Flamer" hidden="false" type="selectionEntry" id="1b15-5ee3-8d8c-82d5" targetId="6fef-cbbd-be33-44a4"/>
-          </entryLinks>
         </selectionEntryGroup>
         <selectionEntryGroup name="Pintle weapon" hidden="false" id="a861-3b45-d7d9-c57f">
           <constraints>
