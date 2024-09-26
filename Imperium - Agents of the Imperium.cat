@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="35" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="36" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Vindicare Assassin" hidden="false" id="efa3-2cf5-dcfb-b976">
       <categoryLinks>
@@ -514,6 +514,7 @@
         <categoryLink targetId="aff3-d6a3-2a95-9dc" id="5445-dd3d-e789-14e3" primary="false" name="Imperium"/>
         <categoryLink targetId="6c5b-17c8-6475-5a74" id="cce0-5c57-7c21-168d" primary="false" name="Rogue Trader Entourage"/>
         <categoryLink name="Voidfarers" hidden="false" id="e24c-a935-cb0d-1a63" targetId="7aea-df68-2ade-9bd6" primary="false"/>
+        <categoryLink name="Voidfarer Character" hidden="false" id="9679-87fc-83c2-89b6" targetId="dc9f-a416-58db-fe5a" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Invulnerable Save" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1ac1-b5e7-896-e7c">
@@ -927,7 +928,7 @@
           <profiles>
             <profile name="Navy Bodyguard" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="06ef-9a1f-72c7-c2ef">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If you attach one or more VOIDFARERS CHARACTER units to this unit, this unit does not count towards the total number of RETINUE selections in your army.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If your Army Faction is not Agents of the Imperium, then for each VOIDFARERS CHARACTER unit you include in your army, you can include one VOIDSMEN-AT-ARMS unit in your army that does not count towards the number of RETINUE units your army can include.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -4814,6 +4815,7 @@ Select one objective marker on the battlefield. Until the start of your next Com
         <categoryLink name="Imperium" hidden="false" id="70bb-2350-5384-dfde" targetId="aff3-d6a3-2a95-9dc" primary="false"/>
         <categoryLink name="Voidfarers" hidden="false" id="ca05-a94e-ef1c-0e2c" targetId="7aea-df68-2ade-9bd6" primary="false"/>
         <categoryLink name="Navigator" hidden="false" id="88f2-761d-3534-c2f1" targetId="9922-bda1-77ca-84e9" primary="false"/>
+        <categoryLink name="Voidfarer Character" hidden="false" id="00ae-7af3-fe47-8f5a" targetId="dc9f-a416-58db-fe5a" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Navigator" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="dbd9-a367-c039-19f8">
@@ -5430,7 +5432,7 @@ Select one objective marker on the battlefield. Until the start of your next Com
           <profiles>
             <profile name="Inquisitorial Henchmen" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="0e46-e68b-8ade-cf66">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If you attach one or more INQUISTOR models to this unit, this unit does not count towards the total number of RETINUE selections in your army.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If your Army Faction is not Agents of the Imperium, then for each INQUISITOR unit you include in your army, you can include one INQUISITORIAL AGENTS unit in your army that does not count towards the number of RETINUE units your army can include.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -7084,7 +7086,7 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
         <constraint type="max" value="1" field="selections" scope="force" shared="true" id="b529-969a-a864-bf2a" includeChildSelections="true"/>
       </constraints>
     </categoryEntry>
-    <categoryEntry name="Assigned Agents - Character" hidden="false" id="49d5-cc63-72d1-7bcb">
+    <categoryEntry name="Assigned Agents - Character" hidden="true" id="49d5-cc63-72d1-7bcb">
       <comment>Characters</comment>
       <constraints>
         <constraint type="max" value="0" field="selections" scope="force" shared="true" id="77aa-f5f6-f7b5-b974" includeChildSelections="true"/>
@@ -7204,7 +7206,7 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
         <constraint type="max" value="3" field="selections" scope="force" shared="true" id="9e1c-e0b-5d37-7a99" includeChildSelections="true"/>
       </constraints>
     </categoryEntry>
-    <categoryEntry name="Assigned Agents - Retinue" hidden="false" id="1eb4-fcfc-7e90-1ea0">
+    <categoryEntry name="Assigned Agents - Retinue" hidden="true" id="1eb4-fcfc-7e90-1ea0">
       <constraints>
         <constraint type="max" value="0" field="selections" scope="force" shared="true" id="2842-fde8-36ca-60f7" includeChildSelections="true"/>
       </constraints>
@@ -7225,38 +7227,80 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
           </conditions>
         </modifier>
         <modifier type="increment" value="1" field="2842-fde8-36ca-60f7">
-          <repeats>
-            <repeat value="1" repeats="1" field="selections" scope="force" childId="9d77-a14d-d0ca-088c" shared="true" roundUp="false" includeChildSelections="true" includeChildForces="true"/>
-            <repeat value="1" repeats="1" field="selections" scope="force" childId="701b-07a8-22cf-c3f0" shared="true" roundUp="false" includeChildSelections="true" includeChildForces="false"/>
-          </repeats>
-        </modifier>
-        <modifier type="increment" value="1" field="2842-fde8-36ca-60f7">
           <conditionGroups>
-            <conditionGroup type="and">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="force" childId="ec84-2fe2-fbf8-5993" shared="true" includeChildSelections="true"/>
-                <condition type="atLeast" value="1" field="selections" scope="force" childId="d328-29e2-67d0-2185" shared="true" includeChildSelections="true"/>
-              </conditions>
+            <conditionGroup type="or">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="92d3-447e-a71e-6739" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="d328-29e2-67d0-2185" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="ec84-2fe2-fbf8-5993" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="d328-29e2-67d0-2185" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="d75b-79c6-fe15-a72a" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="dc9f-a416-58db-fe5a" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </conditionGroup>
           </conditionGroups>
         </modifier>
         <modifier type="increment" value="2" field="2842-fde8-36ca-60f7">
           <conditionGroups>
-            <conditionGroup type="and">
-              <conditions>
-                <condition type="atLeast" value="2" field="selections" scope="force" childId="ec84-2fe2-fbf8-5993" shared="true" includeChildSelections="true"/>
-                <condition type="atLeast" value="2" field="selections" scope="force" childId="d328-29e2-67d0-2185" shared="true" includeChildSelections="true"/>
-              </conditions>
+            <conditionGroup type="or">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="2" field="selections" scope="force" childId="ec84-2fe2-fbf8-5993" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="2" field="selections" scope="force" childId="d328-29e2-67d0-2185" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="2" field="selections" scope="force" childId="92d3-447e-a71e-6739" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="2" field="selections" scope="force" childId="d328-29e2-67d0-2185" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="2" field="selections" scope="force" childId="d75b-79c6-fe15-a72a" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="2" field="selections" scope="force" childId="dc9f-a416-58db-fe5a" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </conditionGroup>
           </conditionGroups>
         </modifier>
         <modifier type="increment" value="3" field="2842-fde8-36ca-60f7">
           <conditionGroups>
-            <conditionGroup type="and">
-              <conditions>
-                <condition type="atLeast" value="3" field="selections" scope="force" childId="ec84-2fe2-fbf8-5993" shared="true" includeChildSelections="true"/>
-                <condition type="atLeast" value="3" field="selections" scope="force" childId="d328-29e2-67d0-2185" shared="true" includeChildSelections="true"/>
-              </conditions>
+            <conditionGroup type="or">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="3" field="selections" scope="force" childId="ec84-2fe2-fbf8-5993" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="3" field="selections" scope="force" childId="d328-29e2-67d0-2185" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="3" field="selections" scope="force" childId="92d3-447e-a71e-6739" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="3" field="selections" scope="force" childId="d328-29e2-67d0-2185" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="3" field="selections" scope="force" childId="d75b-79c6-fe15-a72a" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="3" field="selections" scope="force" childId="dc9f-a416-58db-fe5a" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </conditionGroup>
           </conditionGroups>
         </modifier>
@@ -7294,7 +7338,7 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
     <categoryEntry name="Ordo Hereticus" id="cc90-ec2e-cca3-e44d" hidden="false"/>
     <categoryEntry name="Navigator" id="9922-bda1-77ca-84e9" hidden="false"/>
     <categoryEntry name="Inquisitorial Agents" id="d328-29e2-67d0-2185" hidden="false"/>
-    <categoryEntry name="Assigned Agents - Requisitioned" id="d074-7a54-bf4f-768c" hidden="false">
+    <categoryEntry name="Assigned Agents - Requisitioned" id="d074-7a54-bf4f-768c" hidden="true">
       <constraints>
         <constraint type="max" value="0" field="selections" scope="force" shared="true" id="7cb1-09e0-acd9-5a8f" includeChildSelections="true"/>
       </constraints>
@@ -7327,14 +7371,15 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
     <categoryEntry name="Sisters of Battle Immolator" id="a860-cde8-a263-dfa0" hidden="false"/>
     <categoryEntry name="Daemonhost" id="ec84-2fe2-fbf8-5993" hidden="false"/>
     <categoryEntry name="Jokaero Weaponsmith" id="2ba8-cb91-7a80-93fc" hidden="false"/>
+    <categoryEntry name="Voidfarer Character" id="dc9f-a416-58db-fe5a" hidden="true"/>
   </categoryEntries>
   <sharedRules>
     <rule name="Assigned Agents" hidden="false" id="58c1-ec7a-74f5-26b9">
       <description>If your army Faction is not AGENTS OF THE IMPERIUM, but every model in your army has the IMPERIUM keyword, you can include AGENTS OF THE IMPERIUM units in your army even if they do not have the Faction keyword you selected in the Select Army Faction step. In this case, the maximum number of AGENTS OF THE IMPERIUM units you can include in your army depends on the battle size, as shown below.
 
 Incursion: 1 RETINUE, 1 CHARACTER, 1 REQUISITIONED
-Strike Force: 2 RETINUE, 2 CHARACTER, 2 REQUISITIONED
-Onslaught: 3 RETINUE, 3 CHARACTER, 3 REQUISITIONED
+Strike Force: 2 RETINUE, 2 CHARACTER, 1 REQUISITIONED
+Onslaught: 3 RETINUE, 3 CHARACTER, 2 REQUISITIONED
 
 
 Note that you can include AGENTS OF THE IMPERIUM DEDICATED TRANSPORT units in such an army as normal, but each unit must start the battle with one or more units embarked within it, or it cannot be deployed for that battle and will count as having been destroyed during the first battle round.</description>
