@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="49" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="50" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
   <rules>
     <rule name="For The Greater Good" hidden="false" id="eeb6-c42-48f7-cc21">
       <description>If your Army Faction is T’AU EMPIRE, then in your Shooting phase units from your army can work in pairs to help each other target specific enemy units. When they do this, one unit is the Observer unit and the other is their Guided unit. The enemy they are targeting is called their Spotted unit.
@@ -10127,9 +10127,16 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                 </entryLink>
                 <entryLink import="true" name="Battlesuit support system" hidden="false" id="7ccb-965d-72e1-6b2b" type="selectionEntry" targetId="d00f-7725-16e3-c8ad">
                   <constraints>
-                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="9b01-6f63-eddc-5dbb" includeChildSelections="false"/>
-                    <constraint type="max" value="2" field="selections" scope="5d3a-803e-7cbc-b2f1" shared="true" id="8520-86b2-7c2e-5f4a" includeChildSelections="true"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9b01-6f63-eddc-5dbb" includeChildSelections="false"/>
+                    <constraint type="max" value="2" field="selections" scope="unit" shared="true" id="8520-86b2-7c2e-5f4a" includeChildSelections="true"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="decrement" value="1" field="8520-86b2-7c2e-5f4a">
+                      <conditions>
+                        <condition type="lessThan" value="4" field="selections" scope="unit" childId="model" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
               </entryLinks>
               <modifiers>
@@ -10222,22 +10229,44 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                 <entryLink import="true" name="Battlesuit support system" hidden="false" id="7f83-cf1a-7e9d-b453" type="selectionEntry" targetId="d00f-7725-16e3-c8ad">
                   <constraints>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3795-fb4a-e770-1bc7" includeChildSelections="false"/>
-                    <constraint type="max" value="2" field="selections" scope="5d3a-803e-7cbc-b2f1" shared="true" id="c770-49af-9c32-4699" includeChildSelections="true"/>
+                    <constraint type="max" value="2" field="selections" scope="unit" shared="true" id="c770-49af-9c32-4699" includeChildSelections="true"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="decrement" value="1" field="c770-49af-9c32-4699">
+                      <conditions>
+                        <condition type="lessThan" value="4" field="selections" scope="unit" childId="model" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
               </entryLinks>
               <modifiers>
-                <modifier type="decrement" value="1" field="a12f-e569-a9f-3417">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="5d3a-803e-7cbc-b2f1" childId="c191-ef1d-193a-4b4e" shared="true" includeChildSelections="true"/>
-                  </conditions>
+                <modifier type="set" value="1" field="a12f-e569-a9f-3417">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="unit" childId="c191-ef1d-193a-4b4e" shared="true" includeChildSelections="true"/>
+                            <condition type="equalTo" value="6" field="selections" scope="unit" childId="model" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="equalTo" value="0" field="selections" scope="unit" childId="c191-ef1d-193a-4b4e" shared="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="6" field="selections" scope="unit" childId="model" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
-                <modifier type="decrement" value="2" field="a12f-e569-a9f-3417">
+                <modifier type="set" value="0" field="a12f-e569-a9f-3417">
                   <conditionGroups>
                     <conditionGroup type="and">
                       <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="5d3a-803e-7cbc-b2f1" childId="c191-ef1d-193a-4b4e" shared="true" includeChildSelections="true"/>
-                        <condition type="lessThan" value="6" field="selections" scope="parent" childId="model" shared="true" includeChildSelections="true"/>
+                        <condition type="atLeast" value="1" field="selections" scope="unit" childId="c191-ef1d-193a-4b4e" shared="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="6" field="selections" scope="unit" childId="model" shared="true" includeChildSelections="true"/>
                       </conditions>
                     </conditionGroup>
                   </conditionGroups>
@@ -10326,7 +10355,7 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                         <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="56c1-dc31-78b4-a087"/>
                       </constraints>
                     </selectionEntryGroup>
-                    <selectionEntryGroup name="Burst cannon" id="64ed-7a58-bc2f-e280" hidden="false" defaultSelectionEntryId="a002-b639-376d-4cca">
+                    <selectionEntryGroup name="Burst cannon" id="64ed-7a58-bc2f-e280" hidden="false" defaultSelectionEntryId="a168-6b68-b915-bdf6">
                       <comment>Stealth Shas&apos;vre</comment>
                       <constraints>
                         <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4968-35e0-6c02-10cb"/>
@@ -10647,9 +10676,16 @@ Designer’s Note: Place a Homing Beacon token next to this unit, removing it on
                   <entryLinks>
                     <entryLink import="true" name="Battlesuit support system" hidden="false" id="93be-8b0e-b529-8b23" type="selectionEntry" targetId="d00f-7725-16e3-c8ad">
                       <constraints>
-                        <constraint type="max" value="2" field="selections" scope="5d3a-803e-7cbc-b2f1" shared="true" id="ef45-9ad6-4471-2366" includeChildSelections="true"/>
+                        <constraint type="max" value="2" field="selections" scope="unit" shared="true" id="ef45-9ad6-4471-2366" includeChildSelections="true"/>
                         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4cf6-06c3-5a95-3b18" includeChildSelections="false"/>
                       </constraints>
+                      <modifiers>
+                        <modifier type="decrement" value="1" field="ef45-9ad6-4471-2366">
+                          <conditions>
+                            <condition type="lessThan" value="4" field="selections" scope="unit" childId="model" shared="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
                     </entryLink>
                   </entryLinks>
                 </selectionEntryGroup>
