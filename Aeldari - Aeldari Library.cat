@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="50" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="51" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <publications>
     <publication id="442c-a37c-3908-d701" name="Index: Aeldari" shortName="I:Aeldari" publisher="Index: Aeldari" publicationDate="6/15/2023"/>
     <publication id="1427-7c5c-863f-ac94" name="Index: Drukhari" shortName="I:Drukhari" publisher="Index: Drukhari" publicationDate="6/15/2023"/>
@@ -4277,6 +4277,9 @@
           </conditions>
         </modifier>
       </modifiers>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="d4a8-c18f-837f-7f78" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="b2f5-8219-f875-917e" name="Farseer" hidden="false" collective="false" import="true" type="model">
       <categoryLinks>
@@ -4471,6 +4474,9 @@
         <infoLink id="d97e-c486-508b-6057" name="Strands of Fate" hidden="false" targetId="c324-e193-e23c-7d2e" type="rule"/>
         <infoLink name="Leader" hidden="false" type="rule" id="a210-21b1-f22c-1c20" targetId="b4dd-3e1f-41cb-218f"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="4556-68da-0b62-ef7a" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="833b-55bc-73be-8862" name="Farseer Skyrunner" hidden="false" collective="false" import="true" type="model">
       <categoryLinks>
@@ -6925,9 +6931,9 @@
             </conditionGroup>
           </conditionGroups>
         </modifier>
-        <modifier type="increment" value="3" field="c312-7a4e-3c9e-d35a">
+        <modifier type="set" value="3" field="c312-7a4e-3c9e-d35a">
           <conditions>
-            <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
+            <condition type="lessThan" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="true"/>
           </conditions>
         </modifier>
         <modifier type="decrement" value="1" field="c312-7a4e-3c9e-d35a">
@@ -9739,6 +9745,11 @@ become separate units, with their original Starting Strengths.</characteristic>
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="add" value="e338-111e-d0c6-b687" field="category">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="f22-4c82-57e8-3613" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
       <constraints>
         <constraint type="max" value="-1" field="selections" scope="force" shared="true" id="c312-7a4e-3c9e-d35a"/>
@@ -9966,9 +9977,9 @@ become separate units, with their original Starting Strengths.</characteristic>
             </conditionGroup>
           </conditionGroups>
         </modifier>
-        <modifier type="increment" value="3" field="c312-7a4e-3c9e-d35a">
+        <modifier type="set" value="3" field="c312-7a4e-3c9e-d35a">
           <conditions>
-            <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
+            <condition type="lessThan" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildForces="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
         <modifier type="decrement" value="1" field="c312-7a4e-3c9e-d35a">
@@ -10349,6 +10360,7 @@ become separate units, with their original Starting Strengths.</characteristic>
       </modifiers>
       <constraints>
         <constraint type="max" value="-1" field="selections" scope="force" shared="true" id="aa83-44e2-b45f-7d08"/>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="5d21-333b-0049-ae85" includeChildSelections="true"/>
       </constraints>
       <entryLinks>
         <entryLink import="true" name="Warlock" hidden="false" type="selectionEntry" id="e857-79ba-3961-e182" targetId="ab89-7505-ff1e-4ed">
@@ -10689,6 +10701,9 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
           </modifiers>
         </infoLink>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="52ef-fc1b-648d-c4e5" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="ecfe-8994-b61e-f1c5" name="Warlock Skyrunner Conclave" hidden="false" collective="false" import="true" type="unit">
       <modifiers>
@@ -13140,6 +13155,9 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
       <infoLinks>
         <infoLink name="Power from Pain" hidden="false" type="rule" id="b9c3-3139-68-e45" targetId="5e02-2ddc-f55-e6dd"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="e789-b8cd-6de6-b1da" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="a5d3-e21b-bf13-a952" name="Cronos" hidden="false" collective="false" import="true" type="unit">
       <modifiers>
@@ -13276,6 +13294,9 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
         </infoLink>
         <infoLink name="Power from Pain" hidden="false" type="rule" id="ebe0-6266-ff7f-ae1c" targetId="5e02-2ddc-f55-e6dd"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="4c4f-762d-28a3-8adb" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="a30b-b966-d264-e935" name="Drazhar" hidden="false" collective="false" import="true" type="model">
       <categoryLinks>
@@ -13469,6 +13490,9 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
         </infoLink>
         <infoLink name="Power from Pain" hidden="false" type="rule" id="f0f4-19d-9f70-a4b5" targetId="5e02-2ddc-f55-e6dd"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="ca75-fd97-612b-0b91" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="32ff-aec4-9669-c8a2" name="Haemonculus" hidden="false" collective="false" import="true" type="model">
       <categoryLinks>
@@ -13578,6 +13602,9 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
           </infoLinks>
         </selectionEntry>
       </selectionEntries>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="9fd2-80d2-ff8b-9879" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="2311-9feb-9d0a-8154" name="Hellions" hidden="false" collective="false" import="true" type="unit">
       <modifiers>
@@ -13799,6 +13826,9 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
       <infoLinks>
         <infoLink name="Power from Pain" hidden="false" type="rule" id="6bd7-c4ab-cfe4-4444" targetId="5e02-2ddc-f55-e6dd"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="9283-4d50-27c9-6a08" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="1529-793d-481b-82bf" name="Incubi" hidden="false" collective="false" import="true" type="unit">
       <modifiers>
@@ -13953,6 +13983,9 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
       <infoLinks>
         <infoLink name="Power from Pain" hidden="false" type="rule" id="5887-7d8e-c023-f4fe" targetId="5e02-2ddc-f55-e6dd"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="ce67-e35b-8b43-f729" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="d20b-783-ccf6-b29d" name="Kabalite Warriors" hidden="false" collective="false" import="true" type="unit">
       <categoryLinks>
@@ -14382,6 +14415,9 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
       <infoLinks>
         <infoLink name="Power from Pain" hidden="false" type="rule" id="8893-bd16-b2a8-f000" targetId="5e02-2ddc-f55-e6dd"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="cfa9-883b-67f1-e041" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="ae1b-1a96-5b4c-cecc" name="Lelith Hesperax" hidden="false" collective="false" import="true" type="model">
       <categoryLinks>
@@ -14623,6 +14659,9 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
           </characteristics>
         </profile>
       </profiles>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="3550-c949-9288-d31a" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="635b-21f4-f801-453" name="Raider" hidden="false" collective="false" import="true" type="model">
       <categoryLinks>
@@ -14746,6 +14785,9 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
           </profiles>
         </selectionEntry>
       </selectionEntries>
+      <constraints>
+        <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="85af-66d0-1811-e9c1" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="3376-d337-6a33-4bca" name="Ravager" hidden="false" collective="false" import="true" type="model">
       <categoryLinks>
@@ -14863,6 +14905,9 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
           </profiles>
         </selectionEntry>
       </selectionEntries>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="d290-13ee-0dab-946a" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="fbc4-c7d0-db5b-91c" name="Razorwing Jetfighter" hidden="false" collective="false" import="true" type="model">
       <categoryLinks>
@@ -16668,6 +16713,9 @@ Before the battle, at the start of the Declare Battle Formations step, you can 
           </conditions>
         </modifier>
       </modifiers>
+      <constraints>
+        <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="1c2b-fcf2-11d3-5d5e" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="71e1-7d54-4856-4ce1" name="Voidraven Bomber" hidden="false" collective="false" import="true" type="model">
       <categoryLinks>
@@ -16829,6 +16877,9 @@ Before the battle, at the start of the Declare Battle Formations step, you can 
           </conditions>
         </modifier>
       </modifiers>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="3fd3-36c0-a6fa-6e6f" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="2659-7a1b-3ce6-8e4b" name="Wracks" hidden="false" collective="false" import="true" type="unit">
       <modifiers>
@@ -17110,6 +17161,9 @@ Before the battle, at the start of the Declare Battle Formations step, you can 
           </modifiers>
         </infoLink>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="c934-e675-a26d-f3b8" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="edca-1a1b-902d-421a" name="Wyches" hidden="false" collective="false" import="true" type="unit">
       <categoryLinks>
@@ -17299,6 +17353,9 @@ improved to a 4+ against melee attacks.</characteristic>
       <infoLinks>
         <infoLink name="Power from Pain" hidden="false" type="rule" id="6b24-7296-cc4f-f27c" targetId="5e02-2ddc-f55-e6dd"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="9eb4-b813-9d40-25a5" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry id="3924-7fd-61b4-f4ec" name="Shuriken Cannon" hidden="false" collective="false" import="true" type="upgrade">
       <profiles>
@@ -17526,6 +17583,9 @@ makes an attack, subtract 1 from the Hit roll</characteristic>
           </conditions>
         </modifier>
       </modifiers>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="05e0-60e6-7cc9-88ca" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Scorpion" hidden="false" id="1420-c80d-66fc-6a">
       <costs>
@@ -19932,6 +19992,9 @@ You can attach this model to one of the above units, even if one other Leader u
         <infoLink name="Lone Operative" hidden="false" type="rule" id="c744-394-1472-1a8f" targetId="a8a0-8fe7-898-e0f3"/>
         <infoLink id="356a-8fa5-3ea6-bd04" name="Strands of Fate" hidden="false" targetId="c324-e193-e23c-7d2e" type="rule"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="5ecb-0c44-0c34-b216" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Bonesinger [Legends]" hidden="false" id="2384-4154-b67a-3827">
       <costs>
@@ -20417,6 +20480,9 @@ You can attach this model to one of the above units, even if one other Leader u
           </constraints>
         </selectionEntryGroup>
       </selectionEntryGroups>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="3bfa-5cbf-d428-9d46" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Corsair Reaver Band [Legends]" hidden="false" id="758b-bfd2-96ed-52b">
       <categoryLinks>
@@ -21171,6 +21237,9 @@ You can attach this model to one of the above units, even if one other Leader u
           </characteristics>
         </profile>
       </profiles>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="098c-2293-f899-badd" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Corsair Skyreaver Band [Legends]" hidden="false" id="4146-4127-52f7-5786">
       <costs>
@@ -22057,6 +22126,9 @@ You can attach this model to one of the above units, even if one other Leader u
           </selectionEntryGroups>
         </selectionEntryGroup>
       </selectionEntryGroups>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="5306-60f4-e091-671b" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Firestorm [Legends]" hidden="false" id="d11f-239d-94b4-c194">
       <costs>
@@ -22210,6 +22282,9 @@ You can attach this model to one of the above units, even if one other Leader u
           </profiles>
         </selectionEntry>
       </selectionEntries>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="0585-2ff3-8ebf-e543" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Phoenix [Legends]" hidden="false" id="6083-affa-5163-a94c">
       <categoryLinks>
@@ -22345,6 +22420,9 @@ You can attach this model to one of the above units, even if one other Leader u
           </infoLinks>
         </selectionEntry>
       </selectionEntries>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="ebfd-6226-6b5e-0dc6" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Vampire Hunter [Legends]" hidden="false" id="22ea-9a4-cda3-a24">
       <categoryLinks>
@@ -22485,6 +22563,9 @@ You can attach this model to one of the above units, even if one other Leader u
           </profiles>
         </selectionEntry>
       </selectionEntries>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="dfb0-4c97-ad25-e01e" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Vampire Raider [Legends]" hidden="false" id="4016-44d3-c64b-cc1a">
       <categoryLinks>
@@ -22615,6 +22696,9 @@ charge in a turn in which it Advanced</characteristic>
           </profiles>
         </selectionEntry>
       </selectionEntries>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="c011-5540-2f4a-ce59" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Wasp Assault Walker [Legends]" hidden="false" id="6c50-7486-7c0d-52d0">
       <costs>

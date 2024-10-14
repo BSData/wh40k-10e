@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="53" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="55" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
   <rules>
     <rule name="For The Greater Good" hidden="false" id="eeb6-c42-48f7-cc21">
       <description>If your Army Faction is T’AU EMPIRE, then in your Shooting phase units from your army can work in pairs to help each other target specific enemy units. When they do this, one unit is the Observer unit and the other is their Guided unit. The enemy they are targeting is called their Spotted unit.
@@ -192,6 +192,10 @@ Until the end of the phase:
               </characteristics>
             </profile>
           </profiles>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2343-1d75-6374-12f9" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9cbe-273a-9182-c7d4" includeChildSelections="false"/>
+          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Pulse pistol" hidden="false" id="47e9-0b88-b35f-0939">
           <infoLinks>
@@ -14292,6 +14296,11 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
           <repeats>
             <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
           </repeats>
+        </modifier>
+        <modifier type="set" value="130" field="51b2-306e-1021-d207">
+          <conditions>
+            <condition type="atLeast" value="6" field="selections" scope="self" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
         </modifier>
       </modifiers>
       <entryLinks>
@@ -35229,7 +35238,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
                         </entryLink>
                         <entryLink import="true" name="Shield Drone" hidden="false" id="57b6-2108-a935-ebd9" type="selectionEntry" targetId="3ef0-a48a-cafc-ce23">
                           <constraints>
-                            <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="1372-6bae-daf0-838b"/>
+                            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1372-6bae-daf0-838b"/>
                           </constraints>
                         </entryLink>
                         <entryLink import="true" name="Gun Drone" hidden="false" id="1986-1308-bad1-51a9" type="selectionEntry" targetId="caf5-ab72-8da1-04a8">
@@ -35239,7 +35248,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
                         </entryLink>
                       </entryLinks>
                       <constraints>
-                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0080-eb73-20ba-038d"/>
+                        <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="0080-eb73-20ba-038d"/>
                       </constraints>
                     </selectionEntryGroup>
                     <selectionEntryGroup name="Weapons" id="e17f-45c5-b242-a5d1" hidden="false" sortIndex="2">
