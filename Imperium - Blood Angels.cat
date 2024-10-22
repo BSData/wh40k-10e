@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="23" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="24" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Space Marines" id="abd0-8ebd-6fbd-2d94" targetId="e0af-67df-9d63-8fb7" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights - Library" id="9c08-8ffc-d746-7384" targetId="1b6d-dc06-5db9-c7d1" importRootEntries="true"/>
@@ -645,7 +645,7 @@
         </profile>
         <profile name="Transfixing Gaze [Aura, Psychic]" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b48f-aef0-7aa9-3500">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While an enemy unit is within 6&quot; of this model, each time that unit is selected to Fall Back, it must take a Leadership test. If that test is failed, that unit must Remain Stationary this phase instead. </characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While an enemy unit is within 6&quot; of this model, each time that unit is selected to Fall Back, it must take a Leadership test. If that test is failed, that unit must Remain Stationary this phase instead.</characteristic>
           </characteristics>
         </profile>
         <profile name="Invulnerable Save 5+" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b2e5-6730-a3c2-8011">
@@ -1434,6 +1434,11 @@
         <modifier type="set" value="250" field="51b2-306e-1021-d207">
           <conditions>
             <condition type="atLeast" value="6" field="selections" scope="6562-9dcd-afea-d4ae" childId="d39b-8861-f88d-b9ac" shared="true" id="dd0-d0a6-bc24-a640" includeChildSelections="false"/>
+          </conditions>
+        </modifier>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="force" childId="9ed-cbf4-bfe5-90bf" shared="true" id="27be-7f03-3845-1927" includeChildSelections="true"/>
           </conditions>
         </modifier>
       </modifiers>
@@ -2362,105 +2367,104 @@ horizontally away from all enemy models.</characteristic>
         <selectionEntryGroup name="Sanguinary Guard" hidden="false" id="b36d-e83-6a91-e2b4" defaultSelectionEntryId="8e33-50a5-d053-ee15">
           <selectionEntries>
             <selectionEntry type="model" import="true" name="Sanguinary Guard" hidden="false" id="8e33-50a5-d053-ee15">
-              <selectionEntries>
-                <selectionEntry type="upgrade" import="true" name="Angelus Boltgun" hidden="false" id="f64-f4db-cee7-c077">
-                  <profiles>
-                    <profile name="Angelus Boltgun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="13c6-39cb-bc57-3ee0">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Pistol" id="7d61-e571-3ea4-9365" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
-                  </infoLinks>
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e7ff-9d6a-77df-2210" includeChildSelections="false"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="470a-5699-55f8-f8c8" includeChildSelections="false"/>
-                  </constraints>
-                </selectionEntry>
-              </selectionEntries>
               <constraints>
-                <constraint type="min" value="3" field="selections" scope="parent" shared="true" id="31de-f599-9b38-a07c" includeChildSelections="false"/>
                 <constraint type="max" value="6" field="selections" scope="parent" shared="true" id="c829-d98f-6cf8-8fc7"/>
               </constraints>
-              <modifiers>
-                <modifier type="decrement" value="1" field="31de-f599-9b38-a07c">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="b36d-e83-6a91-e2b4" childId="1227-6bd9-5796-2348" shared="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
-            </selectionEntry>
-            <selectionEntry type="upgrade" import="true" name="Sanguinary Guard w/Inferno Pistol" hidden="false" id="1227-6bd9-5796-2348">
-              <entryLinks>
-                <entryLink import="true" name="Inferno Pistol" hidden="false" id="5a6-4bd-c3b2-f33f" type="selectionEntry" targetId="d8bf-e17f-d6fa-b7e8">
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Melee Weapon" id="6ddc-8f45-ecd6-1db6" hidden="false" defaultSelectionEntryId="8776-3451-c6e-aa6c">
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Encarmine Blade" hidden="false" id="8776-3451-c6e-aa6c" collective="false">
+                      <profiles>
+                        <profile name="Encarmine Blade" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="5315-e49c-146b-c157">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-3</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                    </selectionEntry>
+                    <selectionEntry type="upgrade" import="true" name="Encarmine Spear" hidden="false" id="e116-2740-11c0-34ed" collective="false">
+                      <profiles>
+                        <profile name="Encarmine Spear" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="46c8-05c2-743b-b8a5">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Lance</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Lance" id="f8c4-b326-77fd-c4f8" hidden="false" type="rule" targetId="2ebc-abdf-8129-6c57"/>
+                      </infoLinks>
+                    </selectionEntry>
+                  </selectionEntries>
                   <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f821-9967-3f8b-c41b" includeChildSelections="false"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0d59-6084-e4d8-24d3" includeChildSelections="false"/>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="72b5-6bc5-b921-e38b" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3d50-350e-ded5-9729" includeChildSelections="false"/>
                   </constraints>
-                </entryLink>
-              </entryLinks>
-              <constraints>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="80f4-d2ac-5ded-df20" includeChildSelections="false"/>
-              </constraints>
+                </selectionEntryGroup>
+                <selectionEntryGroup name="Ranged Weapon" id="7713-28f3-c9d1-4da1" hidden="false">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d34e-a394-d6b3-98c8" includeChildSelections="false"/>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e994-820c-344c-7d8a" includeChildSelections="false"/>
+                  </constraints>
+                  <entryLinks>
+                    <entryLink import="true" name="Inferno Pistol" hidden="false" id="5a6-4bd-c3b2-f33f" type="selectionEntry" targetId="d8bf-e17f-d6fa-b7e8">
+                      <constraints>
+                        <constraint type="max" value="1" field="selections" scope="b36d-e83-6a91-e2b4" shared="true" id="67a8-ce4c-e798-884e" includeChildSelections="true"/>
+                      </constraints>
+                      <modifiers>
+                        <modifier type="increment" value="1" field="67a8-ce4c-e798-884e">
+                          <conditions>
+                            <condition type="atLeast" value="6" field="selections" scope="b36d-e83-6a91-e2b4" childId="8e33-50a5-d053-ee15" shared="true" includeChildSelections="false"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </entryLink>
+                  </entryLinks>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Angelus Boltgun" hidden="false" id="f64-f4db-cee7-c077">
+                      <profiles>
+                        <profile name="Angelus Boltgun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="13c6-39cb-bc57-3ee0">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Pistol" id="7d61-e571-3ea4-9365" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
+                      </infoLinks>
+                    </selectionEntry>
+                  </selectionEntries>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
             </selectionEntry>
           </selectionEntries>
-          <selectionEntryGroups>
-            <selectionEntryGroup name="Weapon Option" id="6ddc-8f45-ecd6-1db6" hidden="false" defaultSelectionEntryId="8776-3451-c6e-aa6c">
-              <selectionEntries>
-                <selectionEntry type="upgrade" import="true" name="Encarmine Blade" hidden="false" id="8776-3451-c6e-aa6c" collective="true">
-                  <profiles>
-                    <profile name="Encarmine Blade" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="5315-e49c-146b-c157">
-                      <characteristics>
-                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                        <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
-                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
-                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
-                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-3</characteristic>
-                        <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
-                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Encarmine Spear" hidden="false" id="e116-2740-11c0-34ed" collective="true">
-                  <profiles>
-                    <profile name="Encarmine Spear" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="46c8-05c2-743b-b8a5">
-                      <characteristics>
-                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                        <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
-                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
-                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
-                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
-                        <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
-                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Lance</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Lance" id="f8c4-b326-77fd-c4f8" hidden="false" type="rule" targetId="2ebc-abdf-8129-6c57"/>
-                  </infoLinks>
-                </selectionEntry>
-              </selectionEntries>
-              <constraints>
-                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="72b5-6bc5-b921-e38b" includeChildSelections="false"/>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3d50-350e-ded5-9729" includeChildSelections="false"/>
-              </constraints>
-            </selectionEntryGroup>
-          </selectionEntryGroups>
+          <constraints>
+            <constraint type="min" value="3" field="selections" scope="parent" shared="true" id="a433-90e3-b0e1-725f" includeChildSelections="false"/>
+            <constraint type="max" value="6" field="selections" scope="parent" shared="true" id="d250-ae8d-af79-4707" includeChildSelections="false"/>
+          </constraints>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <modifiers>
         <modifier type="set" value="270" field="51b2-306e-1021-d207">
           <conditions>
-            <condition type="atLeast" value="4" field="selections" scope="25e4-ead-faac-2531" childId="b36d-e83-6a91-e2b4" shared="true" id="91f1-bb67-e1ee-4bad"/>
+            <condition type="atLeast" value="4" field="selections" scope="25e4-ead-faac-2531" childId="b36d-e83-6a91-e2b4" shared="true" id="91f1-bb67-e1ee-4bad" includeChildSelections="true"/>
           </conditions>
         </modifier>
       </modifiers>
@@ -2660,7 +2664,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
         <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="c335-71bb-55b2-31a1" targetId="caa-f869-3cbd-b48e"/>
       </entryLinks>
     </selectionEntry>
-    <selectionEntry type="model" import="true" name="Sanguinary Priest with Jump Pack [Legends]" hidden="true" id="fa13-ba8a-8711-87b6">
+    <selectionEntry type="model" import="true" name="Sanguinary Priest with Jump Pack [Legends]" hidden="false" id="fa13-ba8a-8711-87b6">
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="100"/>
       </costs>
@@ -2976,7 +2980,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
         </modifier>
       </modifiers>
     </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Blood Angels Captain" hidden="false" id="829b-da42-2d62-6daf">
+    <selectionEntry type="model" import="true" name="Blood Angels Captain" hidden="false" id="829b-da42-2d62-6daf">
       <infoLinks>
         <infoLink name="Invulnerable Save" id="b7c0-e928-c33b-8d2a" hidden="false" type="profile" targetId="db19-dee7-9530-ef0e"/>
         <infoLink name="Rites of Battle" id="3bd4-65eb-4488-6318" hidden="false" type="profile" targetId="90c7-c55c-21e2-2232"/>
@@ -3002,8 +3006,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
 ■ Intercessor Squad
 ■ Sternguard Veteran Squad
 ■ Company Heroes
-■ Tactical Squad
-</characteristic>
+■ Tactical Squad</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -3082,8 +3085,12 @@ You can attach this model to one of the above units, even if one Captain, Chapt
         <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
         <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
       </costs>
+      <entryLinks>
+        <entryLink import="true" name="Warlord" hidden="false" id="9276-3032-f308-c509" type="selectionEntry" targetId="caa-f869-3cbd-b48e"/>
+        <entryLink import="true" name="Enhancements" hidden="false" id="1b90-5986-ff96-ca68" type="selectionEntryGroup" targetId="9e5d-de4c-c5d1-1d3e"/>
+      </entryLinks>
     </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Death Company Captain" hidden="false" id="4743-6dc9-fda7-0a8c">
+    <selectionEntry type="model" import="true" name="Death Company Captain" hidden="false" id="4743-6dc9-fda7-0a8c">
       <infoLinks>
         <infoLink name="Invulnerable Save" id="e4b7-a76f-3668-bbac" hidden="false" type="profile" targetId="db19-dee7-9530-ef0e"/>
         <infoLink name="Black Rage" id="ec5d-4d33-a0e0-3910" hidden="false" type="profile" targetId="3e0a-31f-8be-e293"/>
@@ -3114,7 +3121,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
         </profile>
         <profile name="Death Vision of Sanguinius" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b276-0bcd-8baf-3c14">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If this model is destroyed by a melee attack, after the attacking unit has finished making its attacks, you can roll one D6, adding 2 to the result if the attacking unit contains the enemy Warlord. On a 2-3, that enemy unit suffers D3 mortal wounds; on a 4-5, that enemy unit suffers 3 mortal wounds; on a 6+ that enemy unit suffers D3+3 mortal wounds. </characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If this model is destroyed by a melee attack, after the attacking unit has finished making its attacks, you can roll one D6, adding 2 to the result if the attacking unit contains the enemy Warlord. On a 2-3, that enemy unit suffers D3 mortal wounds; on a 4-5, that enemy unit suffers 3 mortal wounds; on a 6+ that enemy unit suffers D3+3 mortal wounds.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -3194,8 +3201,12 @@ You can attach this model to one of the above units, even if one Captain, Chapt
         <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
         <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
       </costs>
+      <entryLinks>
+        <entryLink import="true" name="Warlord" hidden="false" id="adce-94a5-2638-fd0c" type="selectionEntry" targetId="caa-f869-3cbd-b48e"/>
+        <entryLink import="true" name="Enhancements" hidden="false" id="1f83-4438-eec7-568d" type="selectionEntryGroup" targetId="9e5d-de4c-c5d1-1d3e"/>
+      </entryLinks>
     </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Death Company Captain with Jump Pack" hidden="false" id="2574-a949-ae3f-58c2">
+    <selectionEntry type="model" import="true" name="Death Company Captain with Jump Pack" hidden="false" id="2574-a949-ae3f-58c2">
       <infoLinks>
         <infoLink name="Invulnerable Save" id="2885-4ff2-a92d-00c5" hidden="false" type="profile" targetId="db19-dee7-9530-ef0e"/>
         <infoLink name="Black Rage" id="4a7e-ccae-6697-63ca" hidden="false" type="profile" targetId="3e0a-31f-8be-e293"/>
@@ -3203,7 +3214,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
       <profiles>
         <profile name="Death Vision of Sanguinius" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="165c-259e-fbfe-4298">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If this model is destroyed by a melee attack, after the attacking unit has finished making its attacks, you can roll one D6, adding 2 to the result if the attacking unit contains the enemy Warlord. On a 2-3, that enemy unit suffers D3 mortal wounds; on a 4-5, that enemy unit suffers 3 mortal wounds; on a 6+ that enemy unit suffers D3+3 mortal wounds. </characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If this model is destroyed by a melee attack, after the attacking unit has finished making its attacks, you can roll one D6, adding 2 to the result if the attacking unit contains the enemy Warlord. On a 2-3, that enemy unit suffers D3 mortal wounds; on a 4-5, that enemy unit suffers 3 mortal wounds; on a 6+ that enemy unit suffers D3+3 mortal wounds.</characteristic>
           </characteristics>
         </profile>
         <profile name="Death Company Captain with Jump Pack" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="7c67-3ef1-6e01-f830">
@@ -3225,8 +3236,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
           <characteristics>
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model can be attached to the following units:
 
-■ Death Company Marines with Jump Packs
-</characteristic>
+■ Death Company Marines with Jump Packs</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -3293,6 +3303,10 @@ You can attach this model to one of the above units, even if one Captain, Chapt
         <categoryLink targetId="1e3d-c738-8087-792c" id="3146-12d8-e189-9ca8" primary="false" name="Death Company"/>
         <categoryLink targetId="5179-8ede-45e3-49a2" id="e184-d760-e70e-4a2e" primary="false" name="Tacticus"/>
       </categoryLinks>
+      <entryLinks>
+        <entryLink import="true" name="Warlord" hidden="false" id="6211-3c34-ea00-dc03" type="selectionEntry" targetId="caa-f869-3cbd-b48e"/>
+        <entryLink import="true" name="Enhancements" hidden="false" id="64d0-c579-79a1-fd4a" type="selectionEntryGroup" targetId="9e5d-de4c-c5d1-1d3e"/>
+      </entryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Death Company Marines with Bolt Rifles" hidden="false" id="4aab-3ca5-0435-ed5e">
       <selectionEntryGroups>
@@ -3827,7 +3841,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
         </modifier>
       </modifiers>
     </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Death Company Dreadnought" hidden="false" id="3b6e-cc3e-c2a4-0cbd">
+    <selectionEntry type="model" import="true" name="Death Company Dreadnought" hidden="false" id="3b6e-cc3e-c2a4-0cbd">
       <profiles>
         <profile name="Death Company Dreadnought" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="938d-28a6-8b07-8cc6">
           <characteristics>
@@ -3841,7 +3855,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
         </profile>
         <profile name="Driven by Fury" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="973b-a866-fedb-54d7">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your opponent&apos;s Shooting phase, each time an enemy unit has shot, if this model was hit by one or more of those attacks, it can make a Driven by Fury move. To do so, roll one D6 and add 2 to the roll; this model moves a number of inches up to the result, but must finish as close as possible to the closest enemy unit [excluding Aircraft]. A model cannot make a Driven by Fury move while it is Battle-shocked or within Engagement Range of one or more enemy units, and can only make one Driven by Fury move per phase. </characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your opponent&apos;s Shooting phase, each time an enemy unit has shot, if this model was hit by one or more of those attacks, it can make a Driven by Fury move. To do so, roll one D6 and add 2 to the roll; this model moves a number of inches up to the result, but must finish as close as possible to the closest enemy unit [excluding Aircraft]. A model cannot make a Driven by Fury move while it is Battle-shocked or within Engagement Range of one or more enemy units, and can only make one Driven by Fury move per phase.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -4025,21 +4039,21 @@ You can attach this model to one of the above units, even if one Captain, Chapt
     <entryLink import="true" name="Death Company Intercessors" hidden="false" type="selectionEntry" id="995-6e4c-ec61-ec2c" targetId="bb83-db85-6ce1-9a61"/>
     <entryLink import="true" name="Astorath" hidden="false" type="selectionEntry" id="1032-6744-7fe5-1975" targetId="f943-72c8-581c-e6f2"/>
     <entryLink import="true" name="Baal Predator" hidden="false" type="selectionEntry" id="eacb-5067-279-84c4" targetId="640-9969-d5b9-875c"/>
-    <entryLink import="true" name="Brother Corbulo" hidden="false" type="selectionEntry" id="4abd-de59-2daa-fe2e" targetId="8d87-ee8a-6af4-3715"/>
-    <entryLink import="true" name="Captain Tycho" hidden="false" type="selectionEntry" id="22a0-b94-dd32-bcd3" targetId="ae0a-e23c-2184-7c65"/>
+    <entryLink import="true" name="Brother Corbulo [Legends]" hidden="false" type="selectionEntry" id="4abd-de59-2daa-fe2e" targetId="8d87-ee8a-6af4-3715"/>
+    <entryLink import="true" name="Captain Tycho [Legends]" hidden="false" type="selectionEntry" id="22a0-b94-dd32-bcd3" targetId="ae0a-e23c-2184-7c65"/>
     <entryLink import="true" name="Chief Librarian Mephiston" hidden="false" type="selectionEntry" id="af4f-95a4-dbfc-3987" targetId="ab35-2c36-9389-d1d5"/>
     <entryLink import="true" name="Commander Dante" hidden="false" type="selectionEntry" id="d641-aa45-acbb-beff" targetId="7323-ebf-9afe-7e7a"/>
-    <entryLink import="true" name="Death Company Dreadnought" hidden="false" type="selectionEntry" id="4369-60d9-853-801" targetId="e7ee-e70-bd87-7c5c"/>
-    <entryLink import="true" name="Furioso Dreadnought" hidden="false" type="selectionEntry" id="e2d6-f4d8-8388-2312" targetId="c954-8157-25fd-5f99"/>
-    <entryLink import="true" name="Gabriel Seth" hidden="false" type="selectionEntry" id="36e-e56f-90cc-8981" targetId="462-f17c-3bb-16a"/>
+    <entryLink import="true" name="Death Company Dreadnought with Magna-Grapple [Legends]" hidden="false" type="selectionEntry" id="4369-60d9-853-801" targetId="e7ee-e70-bd87-7c5c"/>
+    <entryLink import="true" name="Furioso Dreadnought [Legends]" hidden="false" type="selectionEntry" id="e2d6-f4d8-8388-2312" targetId="c954-8157-25fd-5f99"/>
+    <entryLink import="true" name="Gabriel Seth [Legends]" hidden="false" type="selectionEntry" id="36e-e56f-90cc-8981" targetId="462-f17c-3bb-16a"/>
     <entryLink import="true" name="Lemartes" hidden="false" type="selectionEntry" id="2ac0-a864-7232-daa1" targetId="cbc2-18c9-45b6-6327"/>
-    <entryLink import="true" name="Librarian Dreadnought" hidden="false" type="selectionEntry" id="273-d9f3-a459-c5a3" targetId="b6e0-b465-801c-24c8"/>
+    <entryLink import="true" name="Librarian Dreadnought [Legends]" hidden="false" type="selectionEntry" id="273-d9f3-a459-c5a3" targetId="b6e0-b465-801c-24c8"/>
     <entryLink import="true" name="Sanguinary Guard" hidden="false" type="selectionEntry" id="60a7-f8f9-1a93-41f0" targetId="25e4-ead-faac-2531"/>
     <entryLink import="true" name="Sanguinary Priest" hidden="false" type="selectionEntry" id="eea1-54d-9cb-4857" targetId="f80-be5-d17c-db23"/>
-    <entryLink import="true" name="Tycho the Lost" hidden="false" type="selectionEntry" id="5772-efa1-a8a2-a2e4" targetId="8577-8a5d-75f6-a630"/>
+    <entryLink import="true" name="Tycho the Lost [Legends]" hidden="false" type="selectionEntry" id="5772-efa1-a8a2-a2e4" targetId="8577-8a5d-75f6-a630"/>
     <entryLink import="true" name="The Sanguinor" hidden="false" type="selectionEntry" id="8f52-7888-656e-133a" targetId="29f1-bb28-6424-6d14"/>
-    <entryLink import="true" name="Sanguinary Priest with Jump Pack" hidden="false" type="selectionEntry" id="518c-6b44-f47b-225" targetId="fa13-ba8a-8711-87b6"/>
-    <entryLink import="true" name="Death Company Marines" hidden="false" type="selectionEntry" id="4877-5e0e-e27c-75d3" targetId="6562-9dcd-afea-d4ae"/>
+    <entryLink import="true" name="Sanguinary Priest with Jump Pack [Legends]" hidden="false" type="selectionEntry" id="518c-6b44-f47b-225" targetId="fa13-ba8a-8711-87b6"/>
+    <entryLink import="true" name="Death Company Marines [Legends]" hidden="false" type="selectionEntry" id="4877-5e0e-e27c-75d3" targetId="6562-9dcd-afea-d4ae"/>
     <entryLink import="true" name="Death Company Marines with Jump Packs" hidden="false" type="selectionEntry" id="8e5b-4b8e-a9cc-9dfd" targetId="65f6-18df-f6df-7e39"/>
     <entryLink import="true" name="Sanguinary Priest on Bike [Legends]" hidden="false" type="selectionEntry" id="7b49-f741-1011-5f29" targetId="3621-b460-722-8954"/>
     <entryLink import="true" name="Blood Angels Captain" hidden="false" id="2f4d-a03c-622b-d553" type="selectionEntry" targetId="829b-da42-2d62-6daf"/>
