@@ -10393,9 +10393,6 @@ become separate units, with their original Starting Strengths.</characteristic>
           </categoryLinks>
         </entryLink>
       </entryLinks>
-      <infoLinks>
-        <infoLink id="1cc2-4a67-d25f-72da" name="Strands of Fate" hidden="false" targetId="c324-e193-e23c-7d2e" type="rule"/>
-      </infoLinks>
     </selectionEntry>
     <selectionEntry id="d61-c058-6bd1-112f" name="Warlock Conclave" hidden="false" collective="false" import="true" type="unit">
       <modifiers>
@@ -10501,7 +10498,11 @@ become separate units, with their original Starting Strengths.</characteristic>
         <categoryLink id="ba58-4675-41b7-61b3" name="Faction: Aeldari" hidden="false" targetId="4378-1827-4988-be4e" primary="false"/>
       </categoryLinks>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="55"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
       </costs>
       <profiles>
         <profile id="878c-98c7-a2aa-a82" name="Invulnerable Save (Warlock)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -10725,9 +10726,6 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
           </modifiers>
         </infoLink>
       </infoLinks>
-      <constraints>
-        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="52ef-fc1b-648d-c4e5" includeChildSelections="true"/>
-      </constraints>
     </selectionEntry>
     <selectionEntry id="ecfe-8994-b61e-f1c5" name="Warlock Skyrunner Conclave" hidden="false" collective="false" import="true" type="unit">
       <modifiers>
@@ -23255,6 +23253,61 @@ charge in a turn in which it Advanced</characteristic>
         <infoLink name="Assault" hidden="false" type="rule" id="8c34-468d-dfa3-1ea6" targetId="fc8a-8c24-bae9-cc1c"/>
         <infoLink name="Pistol" hidden="false" type="rule" id="9dba-d8c1-2d79-e1f6" targetId="8bf7-8812-923d-29e4"/>
       </infoLinks>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Warlock Skyrunner" hidden="false" id="f52d-1814-7d66-1f7b" collective="false">
+      <categoryLinks>
+        <categoryLink name="Character" hidden="false" id="70d2-9016-9aa9-76e2" targetId="9cfd-1c32-585f-7d5c" primary="true"/>
+        <categoryLink name="Psyker" hidden="false" id="3e23-9c6c-198e-9ed8" targetId="13bf-2bee-3ae0-b414" primary="false"/>
+        <categoryLink name="Faction: Aeldari" hidden="false" id="0b1e-ee6a-d7e8-2d5e" targetId="4378-1827-4988-be4e" primary="false"/>
+        <categoryLink targetId="14a0-40c9-2748-ae6e" id="a896-5a14-ffcb-232e" primary="false" name="Mounted"/>
+        <categoryLink targetId="5f58-cbe9-8f98-1dca" id="649f-6fb8-dd90-b3f6" primary="false" name="Warlock Skyrunner"/>
+      </categoryLinks>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="55"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+      </costs>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="ffed-8509-9bf7-820e" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="7d34-c046-e08f-13e1" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+              <conditions>
+                <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="1" field="7c82-ba35-7333-01eb">
+          <conditions>
+            <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="-1" field="selections" scope="force" shared="true" id="7c82-ba35-7333-01eb"/>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="59db-8b35-d0a9-ab2f" includeChildSelections="true"/>
+      </constraints>
+      <entryLinks>
+        <entryLink import="true" name="Warlock Skyrunner" hidden="false" id="bd36-0d0a-36b3-782d" type="selectionEntry" targetId="b98a-4fbb-a3d8-1ada">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d7f5-8d1c-04e1-3c52"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c15f-7d45-52e8-87b7"/>
+          </constraints>
+          <categoryLinks>
+            <categoryLink name="Faction: Aeldari" hidden="false" id="f464-5a4d-1c4f-8776" targetId="4378-1827-4988-be4e" primary="false"/>
+          </categoryLinks>
+        </entryLink>
+      </entryLinks>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
