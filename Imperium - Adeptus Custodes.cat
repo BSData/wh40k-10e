@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="1f19-6509-d906-ca10" name="Imperium - Adeptus Custodes" revision="40" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="1f19-6509-d906-ca10" name="Imperium - Adeptus Custodes" revision="41" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <categoryEntries>
     <categoryEntry id="a43a-4cf6-6443-f48e" name="Aleya" hidden="false"/>
     <categoryEntry id="5386-42fc-f4d0-7d64" name="Allarus Custodians" hidden="false"/>
@@ -2191,7 +2191,7 @@
         </selectionEntryGroup>
       </selectionEntryGroups>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="161"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="160"/>
         <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
         <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
         <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
@@ -4141,6 +4141,9 @@
               <infoLinks>
                 <infoLink name="Devastating Wounds" hidden="false" type="rule" id="77db-d06d-7063-eff7" targetId="be1e-ac8e-1e2c-3528"/>
               </infoLinks>
+              <constraints>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="b9f7-4de5-ab7d-0dfe" includeChildSelections="false"/>
+              </constraints>
             </selectionEntry>
             <selectionEntry id="896a-dae8-2bad-b241" name="Iliastus accelerator culverin" hidden="false" collective="false" import="true" type="upgrade">
               <profiles>
@@ -4159,6 +4162,9 @@
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
+              <constraints>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="2e59-749b-531d-e503" includeChildSelections="false"/>
+              </constraints>
             </selectionEntry>
             <selectionEntry id="7317-2717-46b6-a19e" name="Telemon Caestus &amp; twin plasma projector" hidden="false" collective="false" import="true" type="upgrade">
               <profiles>
@@ -4172,6 +4178,13 @@
                     <characteristic name="D" typeId="3254-9fe6-d824-513e">3</characteristic>
                     <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="set" value="7" field="2337-daa1-6682-b110">
+                      <conditions>
+                        <condition type="atLeast" value="2" field="selections" scope="e7d8-1c73-7d03-8b62" childId="7317-2717-46b6-a19e" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
                 <profile id="bda2-9034-7807-d694" name="Twin plasma projector" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
                   <characteristics>
@@ -4184,6 +4197,18 @@
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Torrent, Twin-linked</characteristic>
                   </characteristics>
                 </profile>
+                <profile name="Devoted to Destruction" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="true" id="bad7-0704-956b-29e3">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If this model is equipped with 2 Telemon caestus weapons in addition to its armoured feet weapon, add 2 to the Attacks characteristic of those Telemon caestus weapons.</characteristic>
+                  </characteristics>
+                  <modifiers>
+                    <modifier type="set" value="false" field="hidden">
+                      <conditions>
+                        <condition type="atLeast" value="2" field="selections" scope="e7d8-1c73-7d03-8b62" childId="7317-2717-46b6-a19e" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                </profile>
               </profiles>
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
@@ -4192,6 +4217,9 @@
                 <infoLink name="Torrent" hidden="false" type="rule" id="8f3f-7c88-7a54-9616" targetId="5edf-d619-23e0-9b56"/>
                 <infoLink name="Twin-linked" hidden="false" type="rule" id="89dd-69d7-a23b-81b0" targetId="cf93-ad4d-2f08-a79d"/>
               </infoLinks>
+              <constraints>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="3b88-0222-1655-d26f" includeChildSelections="false"/>
+              </constraints>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -4796,11 +4824,11 @@ Null Aegis (Aura)</description>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="1e45-4ce0-9cdf-d90f" includeChildSelections="true"/>
       </constraints>
       <selectionEntries>
-        <selectionEntry id="8d42-66ef-fdf8-2323" name="Raptor&apos;s Blade" hidden="false" collective="false" import="true" type="upgrade">
+        <selectionEntry id="8d42-66ef-fdf8-2323" name="Raptor Blade" hidden="false" collective="false" import="true" type="upgrade">
           <profiles>
-            <profile id="8c82-5364-20d8-6dd6" name="Raptor&apos;s Blade" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
+            <profile id="8c82-5364-20d8-6dd6" name="Raptor Blade" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
               <characteristics>
-                <characteristic name="Description" id="388-598d-abdc-18db" hidden="false" typeId="9b8f-694b-e5e-b573">Add 2 to the bearer&apos;s Wounds characteristic.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 1 to the Attacks, Strength and Damage characteristics of the bearer&apos;s melee weapons. While the bearer is within Engagement Range of one or more enemy PSYKER units that are Battle-shocked, add 2 to the Attacks, Strength and Damage characteristics of the bearer&apos;s melee weapons instead.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -5245,7 +5273,7 @@ Melee weapons equipped by models in this unit have the [LETHAL HITS] ability.</d
     </profile>
     <profile name="Strategic Mastery" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5a38-d608-89c4-6377">
       <characteristics>
-        <characteristic name="Description" id="f08d-e9-4437-bdb0" hidden="false" typeId="9b8f-694b-e5e-b573">Once per battle round, you can select one model from your army with this ability. You can target that model&apos;s unit with a Stratagem for 0 CP, and can do so even you have already targeted a different unit with that Stratagem this phase.</characteristic>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle round, one unit from your army with this ability can use it when its unit is targeted with a Stratagem. If it does, reduce the CP cost of that use of that Stratagem by 1CP.</characteristic>
       </characteristics>
     </profile>
   </sharedProfiles>
