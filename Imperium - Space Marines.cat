@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="71" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="72" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="539-7da4-d962-1a64" name="Primaris" hidden="false"/>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
@@ -1376,6 +1376,21 @@
       <infoLinks>
         <infoLink name="Pistol" hidden="false" type="rule" id="3852-5446-e10a-a9a7" targetId="8bf7-8812-923d-29e4"/>
       </infoLinks>
+      <modifiers>
+        <modifier type="increment" value="1" field="0d45-3676-5e1b-1b43">
+          <conditions>
+            <condition type="atLeast" value="10" field="selections" scope="65f6-18df-f6df-7e39" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="decrement" value="1" field="0d45-3676-5e1b-1b43">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="65f6-18df-f6df-7e39" childId="d8bf-e17f-d6fa-b7e8" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="65f6-18df-f6df-7e39" shared="true" id="0d45-3676-5e1b-1b43" includeChildSelections="false"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Inferno Pistol" hidden="false" id="d8bf-e17f-d6fa-b7e8">
       <profiles>
@@ -1405,6 +1420,21 @@
       <infoLinks>
         <infoLink name="Pistol" hidden="false" type="rule" id="8caa-34c3-b1ea-1940" targetId="8bf7-8812-923d-29e4"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="65f6-18df-f6df-7e39" shared="true" id="1851-0d8a-d7e6-dc69" includeChildSelections="false"/>
+      </constraints>
+      <modifiers>
+        <modifier type="increment" value="1" field="1851-0d8a-d7e6-dc69">
+          <conditions>
+            <condition type="atLeast" value="10" field="selections" scope="65f6-18df-f6df-7e39" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="decrement" value="1" field="1851-0d8a-d7e6-dc69">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="65f6-18df-f6df-7e39" childId="9dc6-6ad8-818e-db2e" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Twin Lightning Claws" id="fd43-829-68bc-b28f">
       <constraints>
@@ -1677,6 +1707,22 @@
         <infoLink name="Hazardous" hidden="false" type="rule" id="dfa2-3bc4-90a7-5a2a" targetId="8367-374c-f87-c627"/>
         <infoLink name="Pistol" hidden="false" type="rule" id="e0d3-e72e-9be4-fa60" targetId="8bf7-8812-923d-29e4"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="2" field="selections" scope="65f6-18df-f6df-7e39" shared="true" id="fe38-bdb5-bd5c-1e53" includeChildSelections="true"/>
+      </constraints>
+      <modifiers>
+        <modifier type="increment" value="2" field="fe38-bdb5-bd5c-1e53">
+          <conditions>
+            <condition type="atLeast" value="10" field="selections" scope="65f6-18df-f6df-7e39" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="decrement" value="1" field="fe38-bdb5-bd5c-1e53">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="65f6-18df-f6df-7e39" childId="9dc6-6ad8-818e-db2e" shared="true" roundUp="false" includeChildSelections="true"/>
+            <repeat value="1" repeats="1" field="selections" scope="65f6-18df-f6df-7e39" childId="d8bf-e17f-d6fa-b7e8" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Astartes Chainsword" hidden="false" id="c1b9-f39d-7390-d4cb" collective="true">
       <profiles>
@@ -12483,18 +12529,28 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="ea55-48c6-bc6c-900e"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="689-e464-5676-1384"/>
           </constraints>
-          <entryLinks>
-            <entryLink import="true" name="Storm Bolter" hidden="false" type="selectionEntry" id="6716-dd41-6f4c-ef3c" targetId="eb61-5cd0-5242-74cc">
-              <modifiers>
-                <modifier type="set" value="2 Storm Bolters" field="name"/>
-              </modifiers>
-            </entryLink>
-            <entryLink import="true" name="Fragstorm Grenade Launcher" hidden="false" type="selectionEntry" id="d6f3-9d7-b601-5cdc" targetId="2557-ebbd-6ea5-3785">
-              <modifiers>
-                <modifier type="set" value="2 Fragstorm Grenade Launchers" field="name"/>
-              </modifiers>
-            </entryLink>
-          </entryLinks>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="2 Storm Bolters" hidden="false" id="52d7-5eff-50c4-6803">
+              <entryLinks>
+                <entryLink import="true" name="Storm Bolter" hidden="false" id="69fa-8e3f-a78a-b95f" type="selectionEntry" targetId="eb61-5cd0-5242-74cc">
+                  <constraints>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="fcfc-ee58-ca53-ba8a" includeChildSelections="false"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="0fa2-855e-01eb-35bb" includeChildSelections="false"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="2 Fragstorm Grenade Launchers" hidden="false" id="350f-6499-fe30-0e98">
+              <entryLinks>
+                <entryLink import="true" name="Fragstorm Grenade Launcher" hidden="false" id="821f-5459-6d29-eafd" type="selectionEntry" targetId="2557-ebbd-6ea5-3785">
+                  <constraints>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="7c5a-3f7d-78a8-5aec" includeChildSelections="false"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="9ac5-c813-eacd-03d0" includeChildSelections="false"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+            </selectionEntry>
+          </selectionEntries>
         </selectionEntryGroup>
         <selectionEntryGroup name="Option" hidden="false" id="7cb1-cc03-7afd-60a3">
           <selectionEntries>
@@ -16770,6 +16826,21 @@ You can attach this model to one of the above units even if one Captain, Chapte
         </profile>
       </profiles>
       <comment>A4 WS 3+</comment>
+      <constraints>
+        <constraint type="max" value="2" field="selections" scope="65f6-18df-f6df-7e39" shared="true" id="44e6-a494-4e45-3021" includeChildSelections="true"/>
+      </constraints>
+      <modifiers>
+        <modifier type="increment" value="1" field="44e6-a494-4e45-3021">
+          <conditions>
+            <condition type="atLeast" value="10" field="selections" scope="65f6-18df-f6df-7e39" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="decrement" value="1" field="44e6-a494-4e45-3021">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="65f6-18df-f6df-7e39" childId="6cd5-6917-bf15-72c2" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Power Fist" hidden="false" id="ae9d-92b6-ba7b-3f52">
       <profiles>
@@ -20543,6 +20614,36 @@ per turn.</characteristic>
           </characteristics>
         </profile>
       </profiles>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Power Fist" hidden="false" id="6cd5-6917-bf15-72c2">
+      <profiles>
+        <profile name="Power Fist" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="4433-d0f4-e84a-981e">
+          <characteristics>
+            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+            <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
+            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+            <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="max" value="2" field="selections" scope="65f6-18df-f6df-7e39" shared="true" id="c02e-8fae-3d01-285f" includeChildSelections="true"/>
+      </constraints>
+      <modifiers>
+        <modifier type="increment" value="1" field="c02e-8fae-3d01-285f">
+          <conditions>
+            <condition type="atLeast" value="10" field="selections" scope="65f6-18df-f6df-7e39" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="decrement" value="1" field="c02e-8fae-3d01-285f">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="65f6-18df-f6df-7e39" childId="c4b5-68e-2266-f459" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+      </modifiers>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedProfiles>

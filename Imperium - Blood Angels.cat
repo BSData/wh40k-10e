@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="24" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="25" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Space Marines" id="abd0-8ebd-6fbd-2d94" targetId="e0af-67df-9d63-8fb7" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights - Library" id="9c08-8ffc-d746-7384" targetId="1b6d-dc06-5db9-c7d1" importRootEntries="true"/>
@@ -1529,7 +1529,24 @@
                 </selectionEntryGroup>
                 <selectionEntryGroup name="Melee Weapon" id="9068-ef9c-8583-ceb2" hidden="false" defaultSelectionEntryId="05ea-4b2e-bcbb-7c9b">
                   <entryLinks>
-                    <entryLink import="true" name="Power Weapon" hidden="false" id="bead-7f68-bd5c-5f80" type="selectionEntry" targetId="c4b5-68e-2266-f459"/>
+                    <entryLink import="true" name="Power Weapon" hidden="false" id="bead-7f68-bd5c-5f80" type="selectionEntry" targetId="c4b5-68e-2266-f459">
+                      <constraints>
+                        <constraint type="max" value="2" field="selections" scope="65f6-18df-f6df-7e39" shared="true" id="0c6f-de1e-1af8-b817" includeChildSelections="true"/>
+                      </constraints>
+                      <modifiers>
+                        <modifier type="increment" value="1" field="0c6f-de1e-1af8-b817">
+                          <conditions>
+                            <condition type="atLeast" value="10" field="selections" scope="65f6-18df-f6df-7e39" childId="38dc-f876-6405-8f17" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="decrement" value="1" field="0c6f-de1e-1af8-b817">
+                          <repeats>
+                            <repeat value="1" repeats="1" field="selections" scope="9068-ef9c-8583-ceb2" childId="7d2f-9b90-4675-eecf" shared="true" roundUp="false" includeChildSelections="true"/>
+                          </repeats>
+                        </modifier>
+                      </modifiers>
+                    </entryLink>
+                    <entryLink import="true" name="Power Fist" hidden="false" id="0688-b876-0ae0-5a62" type="selectionEntry" targetId="6cd5-6917-bf15-72c2"/>
                   </entryLinks>
                   <selectionEntries>
                     <selectionEntry type="upgrade" import="true" name="Astartes Chainsword" hidden="false" id="05ea-4b2e-bcbb-7c9b">
@@ -1561,6 +1578,21 @@
                           </characteristics>
                         </profile>
                       </profiles>
+                      <constraints>
+                        <constraint type="max" value="2" field="selections" scope="65f6-18df-f6df-7e39" shared="true" id="0f89-6897-9a5e-bf4b" includeChildSelections="true"/>
+                      </constraints>
+                      <modifiers>
+                        <modifier type="increment" value="1" field="0f89-6897-9a5e-bf4b">
+                          <conditions>
+                            <condition type="atLeast" value="10" field="selections" scope="65f6-18df-f6df-7e39" childId="38dc-f876-6405-8f17" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="decrement" value="1" field="0f89-6897-9a5e-bf4b">
+                          <repeats>
+                            <repeat value="1" repeats="1" field="selections" scope="65f6-18df-f6df-7e39" childId="c4b5-68e-2266-f459" shared="true" roundUp="false" includeChildSelections="true"/>
+                          </repeats>
+                        </modifier>
+                      </modifiers>
                     </selectionEntry>
                   </selectionEntries>
                   <constraints>
@@ -1569,84 +1601,59 @@
                   </constraints>
                 </selectionEntryGroup>
               </selectionEntryGroups>
-              <constraints>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6c73-ffd4-c5d0-f943"/>
-              </constraints>
-              <modifiers>
-                <modifier type="increment" value="1" field="6c73-ffd4-c5d0-f943">
-                  <conditions>
-                    <condition type="atLeast" value="10" field="selections" scope="38dc-f876-6405-8f17" childId="38dc-f876-6405-8f17" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
             </selectionEntry>
-            <selectionEntry type="model" import="true" name="Death Company Marine w/ Eviscerator" hidden="false" id="c92f-dbaa-2858-608d">
-              <selectionEntryGroups>
-                <selectionEntryGroup name="Pistol Option" id="59b1-0c65-672e-d151" hidden="false">
+            <selectionEntry type="model" import="true" name="Death Company w/ Evsicerator" hidden="false" id="5eb4-4667-4a63-4222">
+              <entryLinks>
+                <entryLink import="true" name="Eviscerator" hidden="false" id="1370-9b15-c522-5927" type="selectionEntry" targetId="515e-8dca-b455-dc02">
                   <constraints>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="22a2-c5d8-3d65-9f5b" includeChildSelections="false"/>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7268-c196-ebf3-ff9b" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="62b7-2ee7-ba3b-54a0" includeChildSelections="false"/>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3023-1d3e-c4ed-7437" includeChildSelections="false"/>
                   </constraints>
+                </entryLink>
+              </entryLinks>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Pistol Weapon" id="bada-0ac0-b07b-8f28" hidden="false" defaultSelectionEntryId="8e8b-6242-e163-9510">
                   <entryLinks>
-                    <entryLink import="true" name="Heavy Bolt Pistol" hidden="false" id="1502-4a8a-f7b7-74f8" type="selectionEntry" targetId="3b8f-1cb7-3c6e-4455"/>
-                    <entryLink import="true" name="Plasma Pistol" hidden="false" id="ded0-3c5b-0e8d-f9df" type="selectionEntry" targetId="25c2-104f-fa0c-809e"/>
+                    <entryLink import="true" name="Heavy Bolt Pistol" hidden="false" id="8e8b-6242-e163-9510" type="selectionEntry" targetId="3b8f-1cb7-3c6e-4455"/>
+                    <entryLink import="true" name="Plasma Pistol" hidden="false" id="8dae-a61f-e908-d2b5" type="selectionEntry" targetId="25c2-104f-fa0c-809e"/>
+                    <entryLink import="true" name="Hand Flamer" hidden="false" id="4e46-4e8b-6947-1ab8" type="selectionEntry" targetId="9dc6-6ad8-818e-db2e"/>
+                    <entryLink import="true" name="Inferno Pistol" hidden="false" id="8894-3d1e-46cd-1bdb" type="selectionEntry" targetId="d8bf-e17f-d6fa-b7e8"/>
                   </entryLinks>
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9c90-d049-ec67-b7d2" includeChildSelections="false"/>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2b08-b481-8fbc-acc9" includeChildSelections="false"/>
+                  </constraints>
                 </selectionEntryGroup>
               </selectionEntryGroups>
-              <constraints>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="66b9-384f-6fd4-e23a"/>
-              </constraints>
-              <modifiers>
-                <modifier type="increment" value="1" field="66b9-384f-6fd4-e23a">
-                  <conditions>
-                    <condition type="atLeast" value="10" field="selections" scope="38dc-f876-6405-8f17" childId="38dc-f876-6405-8f17" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
-              <entryLinks>
-                <entryLink import="true" name="Eviscerator" hidden="false" id="7e03-42e9-9741-316d" type="selectionEntry" targetId="515e-8dca-b455-dc02">
-                  <constraints>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="024f-4bea-380a-ee86" includeChildSelections="false"/>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f94e-93d6-150c-3f7b" includeChildSelections="false"/>
-                  </constraints>
-                </entryLink>
-              </entryLinks>
             </selectionEntry>
-            <selectionEntry type="model" import="true" name="Death Company Marine w/ Plasma Pistol" hidden="false" id="defe-9553-0d38-12af">
-              <entryLinks>
-                <entryLink import="true" name="Astartes Chainsword" hidden="false" id="5560-8ab9-4da6-d76e" type="selectionEntry" targetId="efcd-180-d07-b4d6">
-                  <constraints>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="19ed-04da-dcfc-4e53" includeChildSelections="false"/>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8278-5fda-6ea3-40cc" includeChildSelections="false"/>
-                  </constraints>
-                </entryLink>
-                <entryLink import="true" name="Plasma Pistol" hidden="false" id="a7bd-f85f-55a9-73a5" type="selectionEntry" targetId="25c2-104f-fa0c-809e">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="6afe-8626-b67f-f381" includeChildSelections="false"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3d24-9bf9-eca9-466f" includeChildSelections="false"/>
-                  </constraints>
-                </entryLink>
-              </entryLinks>
+            <selectionEntry type="model" import="true" name="Death Company Marine w/ Power Weapon/Fist" hidden="false" id="cf78-7fd4-77c8-72c7">
               <constraints>
-                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="3386-1ee5-c314-4ca2"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="fecf-62b0-248d-e760" includeChildSelections="false"/>
               </constraints>
-              <modifiers>
-                <modifier type="decrement" value="1" field="3386-1ee5-c314-4ca2">
-                  <conditions>
-                    <condition type="lessThan" value="10" field="selections" scope="38dc-f876-6405-8f17" childId="38dc-f876-6405-8f17" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="decrement" value="1" field="3386-1ee5-c314-4ca2">
-                  <conditions>
-                    <condition type="equalTo" value="1" field="selections" scope="38dc-f876-6405-8f17" childId="ded0-3c5b-0e8d-f9df" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="set" value="0" field="3386-1ee5-c314-4ca2">
-                  <conditions>
-                    <condition type="equalTo" value="2" field="selections" scope="38dc-f876-6405-8f17" childId="ded0-3c5b-0e8d-f9df" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Melee Weapon" id="6d32-4ca8-88ff-2a4a" hidden="false" defaultSelectionEntryId="05ea-4b2e-bcbb-7c9b">
+                  <entryLinks>
+                    <entryLink import="true" name="Power Weapon" hidden="false" id="7950-92e0-7296-dfb2" type="selectionEntry" targetId="c4b5-68e-2266-f459"/>
+                    <entryLink import="true" name="Power Fist" hidden="false" id="bc0b-9678-9179-db2a" type="selectionEntry" targetId="7d2f-9b90-4675-eecf"/>
+                  </entryLinks>
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="bcea-5084-a3e5-28db" includeChildSelections="false"/>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5be7-4946-ad6d-64ba" includeChildSelections="false"/>
+                  </constraints>
+                </selectionEntryGroup>
+                <selectionEntryGroup name="Pistol Weapon" id="22d8-9429-0cda-a95e" hidden="false" defaultSelectionEntryId="1a25-3b75-833d-5956">
+                  <entryLinks>
+                    <entryLink import="true" name="Heavy Bolt Pistol" hidden="false" id="1a25-3b75-833d-5956" type="selectionEntry" targetId="3b8f-1cb7-3c6e-4455"/>
+                    <entryLink import="true" name="Plasma Pistol" hidden="false" id="14b4-0532-258f-f481" type="selectionEntry" targetId="25c2-104f-fa0c-809e"/>
+                    <entryLink import="true" name="Hand Flamer" hidden="false" id="6be6-55c7-8dc5-0f78" type="selectionEntry" targetId="9dc6-6ad8-818e-db2e"/>
+                    <entryLink import="true" name="Inferno Pistol" hidden="false" id="6ca6-d645-1182-a691" type="selectionEntry" targetId="d8bf-e17f-d6fa-b7e8"/>
+                  </entryLinks>
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0948-ff84-834d-13c1" includeChildSelections="false"/>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="606e-dc0e-0a23-2752" includeChildSelections="false"/>
+                  </constraints>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
             </selectionEntry>
           </selectionEntries>
           <constraints>
@@ -1658,7 +1665,7 @@
       <modifiers>
         <modifier type="set" value="240" field="51b2-306e-1021-d207">
           <conditions>
-            <condition type="atLeast" value="6" field="selections" scope="65f6-18df-f6df-7e39" childId="38dc-f876-6405-8f17" shared="true" id="4a95-a7bd-d401-9728" includeChildSelections="false"/>
+            <condition type="atLeast" value="6" field="selections" scope="65f6-18df-f6df-7e39" childId="model" shared="true" id="4a95-a7bd-d401-9728" includeChildSelections="true"/>
           </conditions>
         </modifier>
       </modifiers>
@@ -1981,7 +1988,8 @@
 ■ Vanguard Veteran Squad
 ■ Assault Intercessor Squad
 ■ Company Heroes
-■ Sternguard Veteran Squad</characteristic>
+■ Sternguard Veteran Squad
+■ Bladeguard Veteran Squad</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -3291,7 +3299,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
         </selectionEntryGroup>
       </selectionEntryGroups>
       <categoryLinks>
-        <categoryLink targetId="9cfd-1c32-585f-7d5c" id="0bdf-50ed-4cad-4033" primary="false" name="Character"/>
+        <categoryLink targetId="9cfd-1c32-585f-7d5c" id="0bdf-50ed-4cad-4033" primary="true" name="Character"/>
         <categoryLink targetId="cf47-a0d7-7207-29dc" id="6bfc-b46e-d68d-e94d" primary="false" name="Infantry"/>
         <categoryLink targetId="2d7f-1892-2fd0-e29c" id="b066-4071-288a-4769" primary="false" name="Captain"/>
         <categoryLink targetId="5a61-81ac-eb7c-a87e" id="f677-afd3-7ec6-a2a6" primary="false" name="Grenades"/>
@@ -3608,11 +3616,16 @@ You can attach this model to one of the above units, even if one Captain, Chapt
             <condition type="atLeast" value="1" field="selections" scope="roster" childId="9d32-d514-00a8-6423" shared="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
+        <modifier type="set" value="6" field="8e4c-cf17-a45a-b02a">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="9d32-d514-00a8-6423" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Death Company Marines" hidden="false" id="3825-ac3a-75ec-fa0d">
       <selectionEntryGroups>
-        <selectionEntryGroup name="Death Company Marines" id="edee-48a2-1e8a-2539" hidden="false" defaultSelectionEntryId="1fcf-41cb-e457-99e3">
+        <selectionEntryGroup name="Death Company Marine" id="edee-48a2-1e8a-2539" hidden="false" defaultSelectionEntryId="1fcf-41cb-e457-99e3">
           <selectionEntries>
             <selectionEntry type="model" import="true" name="Death Company Marine w/Eviscerator" hidden="false" id="b62d-bfee-e5d1-fcaf">
               <entryLinks>
@@ -3652,7 +3665,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
                           <conditions>
                             <condition type="atLeast" value="1" field="selections" scope="edee-48a2-1e8a-2539" childId="8b60-76dc-a440-ae23" shared="true" includeChildSelections="true"/>
                             <condition type="equalTo" value="0" field="selections" scope="parent" childId="04ea-7b9e-30ed-3093" shared="true"/>
-                            <condition type="lessThan" value="2" field="selections" scope="edee-48a2-1e8a-2539" childId="a3b1-a4d1-6857-384c" shared="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="edee-48a2-1e8a-2539" childId="a3b1-a4d1-6857-384c" shared="true" includeChildSelections="true"/>
                           </conditions>
                         </conditionGroup>
                       </conditionGroups>
@@ -3676,10 +3689,14 @@ You can attach this model to one of the above units, even if one Captain, Chapt
                   </constraints>
                 </entryLink>
               </entryLinks>
+              <constraints>
+                <constraint type="min" value="3" field="selections" scope="parent" shared="true" id="899a-92e5-9f05-b5b7" includeChildSelections="false"/>
+                <constraint type="max" value="10" field="selections" scope="parent" shared="true" id="652f-47ba-c020-047f" includeChildSelections="false"/>
+              </constraints>
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Death Company Marine w/ alternate weapons" hidden="false" id="ac37-ff8c-03e1-afe1">
               <selectionEntryGroups>
-                <selectionEntryGroup name="Replace Pistol" id="8b60-76dc-a440-ae23" hidden="false" defaultSelectionEntryId="ff1a-be4a-53f6-d80b">
+                <selectionEntryGroup name="Replace Pistol" id="8b60-76dc-a440-ae23" hidden="false" defaultSelectionEntryId="a3b1-a4d1-6857-384c">
                   <entryLinks>
                     <entryLink import="true" name="Hand Flamer" hidden="false" id="8520-b102-fa69-aefb" type="selectionEntry" targetId="9dc6-6ad8-818e-db2e"/>
                     <entryLink import="true" name="Inferno Pistol" hidden="false" id="2ba5-9580-1492-bdde" type="selectionEntry" targetId="d8bf-e17f-d6fa-b7e8"/>
@@ -3831,7 +3848,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
       <modifiers>
         <modifier type="set" value="180" field="51b2-306e-1021-d207">
           <conditions>
-            <condition type="atLeast" value="6" field="selections" scope="3825-ac3a-75ec-fa0d" childId="d39b-8861-f88d-b9ac" shared="true" id="c524-f843-2ef6-f2ab" includeChildSelections="true"/>
+            <condition type="atLeast" value="6" field="selections" scope="3825-ac3a-75ec-fa0d" childId="model" shared="true" id="c524-f843-2ef6-f2ab" includeChildSelections="true"/>
           </conditions>
         </modifier>
         <modifier type="set-primary" value="e338-111e-d0c6-b687" field="category">
@@ -3839,7 +3856,15 @@ You can attach this model to one of the above units, even if one Captain, Chapt
             <condition type="atLeast" value="1" field="selections" scope="roster" childId="9d32-d514-00a8-6423" shared="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
+        <modifier type="set" value="6" field="d4b4-df13-559a-8e76">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="9d32-d514-00a8-6423" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="d4b4-df13-559a-8e76"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Death Company Dreadnought" hidden="false" id="3b6e-cc3e-c2a4-0cbd">
       <profiles>
