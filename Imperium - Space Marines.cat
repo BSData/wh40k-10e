@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="74" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="75" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="539-7da4-d962-1a64" name="Primaris" hidden="false"/>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
@@ -1759,8 +1759,15 @@
       </profiles>
       <comment>A3 WS 3+ Collective</comment>
       <constraints>
-        <constraint type="max" value="3" field="selections" scope="65f6-18df-f6df-7e39" shared="true" id="61ed-1137-50cb-b3a7" includeChildSelections="true"/>
+        <constraint type="max" value="2" field="selections" scope="65f6-18df-f6df-7e39" shared="true" id="61ed-1137-50cb-b3a7" includeChildSelections="true"/>
       </constraints>
+      <modifiers>
+        <modifier type="increment" value="1" field="61ed-1137-50cb-b3a7">
+          <conditions>
+            <condition type="atLeast" value="10" field="selections" scope="65f6-18df-f6df-7e39" childId="model" shared="true" includeChildSelections="false"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Thunder Hammer" hidden="false" id="4913-96d4-2b1f-2c21" collective="true">
       <profiles>
@@ -5054,16 +5061,6 @@ by 1.</characteristic>
         <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
       </costs>
       <profiles>
-        <profile name="Assault Terminator" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="6fd7-3791-b5ec-a941">
-          <characteristics>
-            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
-            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
-            <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
-            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
-            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
-            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
-          </characteristics>
-        </profile>
         <profile name="Teleport Homer" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e126-4dd7-71ec-52fb">
           <characteristics>
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, you can set up one Teleport Homer token for this unit anywhere on the battlefield that is not in your opponent’s deployment zone. If you do, once per battle, you can target this unit with the Rapid Ingress Stratagem for 0CP, but when resolving that Stratagem, you must set this unit up within 3&quot; horizontally of that token and not within 9&quot; horizontally of any enemy models. That token is then removed.</characteristic>
@@ -5116,7 +5113,7 @@ by 1.</characteristic>
                 <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="ce64-7947-1a97-7c69"/>
               </constraints>
               <profiles>
-                <profile name="Terminator with Storm Shield" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="a844-5297-7c96-b7f3">
+                <profile name="Assault Terminator w/ Storm Shield" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="a844-5297-7c96-b7f3">
                   <characteristics>
                     <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
                     <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
@@ -5140,6 +5137,18 @@ by 1.</characteristic>
               <constraints>
                 <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="3fa0-7493-ce34-8dd9"/>
               </constraints>
+              <profiles>
+                <profile name="Assault Terminator w/ Lightning Claws" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="6fd7-3791-b5ec-a941">
+                  <characteristics>
+                    <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">5&quot;</characteristic>
+                    <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
+                    <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+                    <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+                    <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+                    <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Assault Terminator Sergeant" hidden="false" id="c3d5-605c-2976-9ee1">
               <constraints>
@@ -5194,6 +5203,21 @@ by 1.</characteristic>
                     <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
                     <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
                   </characteristics>
+                  <modifierGroups>
+                    <modifierGroup type="and">
+                      <modifiers>
+                        <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="c3d5-605c-2976-9ee1" childId="96bf-3cb4-69ff-a8ce" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="set" value="Assault Terminator Sergeant w/ Storm Shield" field="name"/>
+                      </modifiers>
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="c3d5-605c-2976-9ee1" childId="96bf-3cb4-69ff-a8ce" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifierGroup>
+                  </modifierGroups>
                 </profile>
               </profiles>
             </selectionEntry>
@@ -16868,8 +16892,15 @@ You can attach this model to one of the above units even if one Captain, Chapte
       </profiles>
       <comment>A4 WS 3+</comment>
       <constraints>
-        <constraint type="max" value="3" field="selections" scope="65f6-18df-f6df-7e39" shared="true" id="44e6-a494-4e45-3021" includeChildSelections="true"/>
+        <constraint type="max" value="2" field="selections" scope="65f6-18df-f6df-7e39" shared="true" id="44e6-a494-4e45-3021" includeChildSelections="true"/>
       </constraints>
+      <modifiers>
+        <modifier type="increment" value="1" field="44e6-a494-4e45-3021">
+          <conditions>
+            <condition type="atLeast" value="10" field="selections" scope="65f6-18df-f6df-7e39" childId="model" shared="true" includeChildSelections="false"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Power Fist" hidden="false" id="ae9d-92b6-ba7b-3f52">
       <profiles>
