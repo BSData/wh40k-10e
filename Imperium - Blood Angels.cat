@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="26" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="27" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Space Marines" id="abd0-8ebd-6fbd-2d94" targetId="e0af-67df-9d63-8fb7" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights - Library" id="9c08-8ffc-d746-7384" targetId="1b6d-dc06-5db9-c7d1" importRootEntries="true"/>
@@ -617,14 +617,9 @@
         <infoLink name="Fights First" hidden="false" type="rule" id="c09b-5168-fe10-510" targetId="24-c886-e8ba-5a89"/>
         <infoLink name="Feel No Pain" hidden="false" type="rule" id="5f6-7507-b7e2-652" targetId="9bf4-280f-bbe2-6fbb">
           <modifiers>
-            <modifier type="append" value="4+" field="name">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="roster" childId="any" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
+            <modifier type="append" value="4+" field="name"/>
           </modifiers>
         </infoLink>
-        <infoLink name="Psychic Hood" hidden="false" type="profile" id="5b16-b8d5-1cbc-9de6" targetId="116b-b23c-4ea4-30ed"/>
         <infoLink name="Oath of Moment" id="f68e-d897-dfbc-6937" hidden="false" type="rule" targetId="3b76-4053-ece9-6e7d"/>
       </infoLinks>
       <profiles>
@@ -640,7 +635,7 @@
         </profile>
         <profile name="The Quickening [Psychic]" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f775-5667-be0b-35bc">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model is eligible to declare a charge in a turn which it Advanced</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model is eligible to declare a charge in a turn which it Advanced.</characteristic>
           </characteristics>
         </profile>
         <profile name="Transfixing Gaze [Aura, Psychic]" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b48f-aef0-7aa9-3500">
@@ -911,6 +906,18 @@
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time an enemy unit targets this model, after that unit has finished making its attacks, this model can either shoot as if it were your Shooting phase or fight as if it were the Fight phase.</characteristic>
           </characteristics>
         </profile>
+        <profile name="Magna-grapple" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="bdca-ea55-dd4a-8d3f">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 2 to Charge rolls made for the bearer if one or more of the targets of that charge is a MOSNTER or VEHICLE unit.</characteristic>
+          </characteristics>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="self" childId="68c9-5ae0-948c-bb78" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </profile>
       </profiles>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="136b-450c-66b0-8e79"/>
@@ -937,7 +944,7 @@
         </modifier>
       </modifiers>
       <selectionEntryGroups>
-        <selectionEntryGroup name="Weapon Option 1" hidden="false" id="35bb-90d7-6a16-fee4">
+        <selectionEntryGroup name="Weapon Option 1" hidden="false" id="35bb-90d7-6a16-fee4" defaultSelectionEntryId="de07-4256-a577-5ff6">
           <constraints>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="9ab8-80b-ba7c-814c"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3476-6e43-b85-8efb"/>
@@ -966,7 +973,7 @@
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
-        <selectionEntryGroup name="Weapon Option 2" hidden="false" id="72eb-3928-12be-62a3">
+        <selectionEntryGroup name="Weapon Option 2" hidden="false" id="72eb-3928-12be-62a3" defaultSelectionEntryId="2a75-2b92-1185-d20b">
           <constraints>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="896b-2f02-5cde-d88b"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="334b-76f1-21bd-6ca7"/>
@@ -976,7 +983,7 @@
             <entryLink import="true" name="Heavy Flamer" hidden="false" type="selectionEntry" id="5ce5-4183-b5ea-b056" targetId="b3e6-f7a7-8357-2055"/>
           </entryLinks>
         </selectionEntryGroup>
-        <selectionEntryGroup name="Melee Weapon" hidden="false" id="52f3-82d5-c00a-1471" defaultSelectionEntryId="eaab-c081-1b83-d006">
+        <selectionEntryGroup name="Melee Weapon" hidden="false" id="52f3-82d5-c00a-1471" defaultSelectionEntryId="f802-ccaf-2016-12d6">
           <constraints>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="11ea-d1d4-2ebe-e474"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f4ef-a401-294f-a37b"/>
@@ -995,19 +1002,6 @@
           <categoryLinks>
             <categoryLink targetId="6df-937-16bc-8c1a" id="1b59-0e82-de9a-187f" primary="false" name="Smoke"/>
           </categoryLinks>
-        </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Magna-Grapple" hidden="false" id="21a6-0cc4-03d6-cd70">
-          <profiles>
-            <profile name="Magna-grapple" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="bdca-ea55-dd4a-8d3f">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 2 to Charge rolls made for the bearer if one or more of the targets of that charge is a Monster or Vehicle unit</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3bd8-e08d-b6b7-cd41" includeChildSelections="false"/>
-            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="1c60-df14-ec26-8732" includeChildSelections="false"/>
-          </constraints>
         </selectionEntry>
       </selectionEntries>
     </selectionEntry>
@@ -1308,7 +1302,7 @@
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="540f-f347-c069-b8f0"/>
       </constraints>
     </selectionEntry>
-    <selectionEntry type="unit" import="true" name="Death Company Marines [Legends]" hidden="false" id="6562-9dcd-afea-d4ae">
+    <selectionEntry type="unit" import="true" name="Death Company Marines with Boltguns [Legends]" hidden="false" id="6562-9dcd-afea-d4ae">
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="125"/>
       </costs>
@@ -3317,7 +3311,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
         <entryLink import="true" name="Enhancements" hidden="false" id="64d0-c579-79a1-fd4a" type="selectionEntryGroup" targetId="9e5d-de4c-c5d1-1d3e"/>
       </entryLinks>
     </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Death Company Marines with Bolt Rifles" hidden="false" id="4aab-3ca5-0435-ed5e">
+    <selectionEntry type="unit" import="true" name="Death Company Marines with Bolt Rifles" hidden="false" id="4aab-3ca5-0435-ed5e">
       <selectionEntryGroups>
         <selectionEntryGroup name="Death Company Marines" id="2ed1-aba1-feec-a885" hidden="false" defaultSelectionEntryId="e047-0de8-e48f-d8cd">
           <selectionEntries>
@@ -3609,7 +3603,7 @@ You can attach this model to one of the above units, even if one Captain, Chapt
       <modifiers>
         <modifier type="set" value="180" field="51b2-306e-1021-d207">
           <conditions>
-            <condition type="atLeast" value="6" field="selections" scope="parent" childId="2ed1-aba1-feec-a885" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="6" field="selections" scope="self" childId="2ed1-aba1-feec-a885" shared="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
         <modifier type="set-primary" value="e338-111e-d0c6-b687" field="category">
