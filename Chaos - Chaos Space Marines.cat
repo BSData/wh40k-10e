@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="74" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="75" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <profileTypes>
     <profileType id="3084-68b8-1d20-2f26" name="Marks of Chaos">
       <characteristicTypes>
@@ -115,6 +115,7 @@
     <categoryEntry name="Devoted to Destruction" id="cc28-28aa-37ad-c23c" hidden="true"/>
     <categoryEntry name="Faction: Emperor&apos;s Children" id="55c2-7a26-1990-46f7" hidden="false"/>
     <categoryEntry name="Cultist Mob with Firearms" id="f7bb-53a2-b453-cefc" hidden="false"/>
+    <categoryEntry name="Nemesis Claw" id="9a91-8185-2e0d-5153" hidden="false"/>
   </categoryEntries>
   <entryLinks>
     <entryLink id="b75a-a1ec-551f-523" name="Lucius the Eternal" hidden="false" collective="false" import="true" targetId="e390-b58b-db9-816" type="selectionEntry"/>
@@ -558,6 +559,7 @@
     <entryLink import="true" name="Chaos Lord with Jump Pack" hidden="false" id="2ba-c206-8528-f2cd" type="selectionEntry" targetId="d880-9968-2ed9-5a21"/>
     <entryLink import="true" name="Cultist Firebrand" hidden="false" id="48dd-35ab-40a0-5613" type="selectionEntry" targetId="cb66-af7-2cca-1c85"/>
     <entryLink import="true" name="Cultist Mob with Firearms [Legends]" hidden="false" id="f0e2-1aec-9f03-cd0a" type="selectionEntry" targetId="478-9d24-e5c8-c6f7"/>
+    <entryLink import="true" name="Nemesis Claw" hidden="false" id="f89d-80b7-730f-0d1b" type="selectionEntry" targetId="f666-1f5d-0c20-06c1"/>
   </entryLinks>
   <sharedSelectionEntries>
     <selectionEntry id="e390-b58b-db9-816" name="Lucius the Eternal" hidden="false" collective="false" import="true" type="model">
@@ -5603,6 +5605,13 @@ You can attach this model to one of the above units even if one other CHARACTER 
             <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
             <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Twin-linked</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="set" value="4" field="2337-daa1-6682-b110">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="9a91-8185-2e0d-5153" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
       </profiles>
       <infoLinks>
@@ -16868,6 +16877,455 @@ You can attach this model to one of the above units even if one other CHARACTER 
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="50"/>
       </costs>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Nemesis Claw" hidden="false" id="f666-1f5d-0c20-06c1">
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="110"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink name="Infantry" hidden="false" id="0fba-c7cf-2724-2882" targetId="cf47-a0d7-7207-29dc" primary="true"/>
+        <categoryLink name="Psyker" hidden="false" id="4ace-4f9d-0e13-649e" targetId="13bf-2bee-3ae0-b414" primary="false"/>
+        <categoryLink name="Grenades" hidden="false" id="ec29-29aa-6b75-7787" targetId="5a61-81ac-eb7c-a87e" primary="false"/>
+        <categoryLink name="Nemesis Claw" hidden="false" id="0806-1b8c-4d6b-0bc8" targetId="9a91-8185-2e0d-5153" primary="false"/>
+        <categoryLink name="Faction: Heretic Astartes" hidden="false" id="fc0f-9ee2-3c8c-e8b1" targetId="1e42-dfae-cbdd-207d" primary="false"/>
+        <categoryLink name="Chaos" hidden="false" id="bf44-ba71-a78c-7d86" targetId="4c00-2578-faf5-6918" primary="false"/>
+      </categoryLinks>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="force" shared="true" id="5ab3-ba84-8ef2-b0b2" includeChildSelections="false"/>
+      </constraints>
+      <selectionEntries>
+        <selectionEntry type="model" import="true" name="Visionary" hidden="false" id="6cd8-62e0-c6e4-74b3">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="416f-5652-bba5-fe96-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="416f-5652-bba5-fe96-max" includeChildSelections="false"/>
+          </constraints>
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Melee weapon" id="c61b-b077-38e3-32dc" hidden="false" defaultSelectionEntryId="ecbb-dff6-492a-16f6">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="0b34-fea0-31b0-39d9-min" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0b34-fea0-31b0-39d9-max" includeChildSelections="false"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Accursed weapon" hidden="false" id="ffe2-6122-fe2d-0887" type="selectionEntry" targetId="4f12-4c0a-d156-4cf0"/>
+                <entryLink import="true" name="Power fist" hidden="false" id="3f10-4328-b494-418a" type="selectionEntry" targetId="cb16-d239-4f7a-91be"/>
+              </entryLinks>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Nostraman chainblade" hidden="false" id="ecbb-dff6-492a-16f6">
+                  <profiles>
+                    <profile name="Nostraman chainblade" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="fc25-9885-183a-3027">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">5</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Sustained Hits 1</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <infoLinks>
+                    <infoLink name="Sustained Hits" id="90e5-bb86-2140-0561" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
+                  </infoLinks>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Pistol" id="4508-2166-7314-5755" hidden="false" defaultSelectionEntryId="cc3d-4f37-5929-15db">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="cfd2-38a3-4849-158d-min" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cfd2-38a3-4849-158d-max" includeChildSelections="false"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Bolt pistol" hidden="false" id="cc3d-4f37-5929-15db" type="selectionEntry" targetId="ce4a-6df3-3c24-621b"/>
+                <entryLink import="true" name="Plasma pistol" hidden="false" id="d55e-3a1b-5fb7-7478" type="selectionEntry" targetId="14a5-4b2-415a-c1d"/>
+              </entryLinks>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+        </selectionEntry>
+      </selectionEntries>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="4 - 9 Legionaries" id="ba84-53a5-716c-bc48" hidden="false" collective="false" import="true" defaultSelectionEntryId="61da-b89e-f4be-859e">
+          <constraints>
+            <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="dd06-79bb-919b-9848" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+            <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="ff97-2228-0bbe-57c2" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="model" import="true" name="Legionary w/ boltgun" hidden="false" id="61da-b89e-f4be-859e" collective="false">
+              <constraints>
+                <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="1f00-4cd5-488b-7f33" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Boltgun" hidden="false" id="eb6b-79d8-3e98-6ef1" collective="false" targetId="b27c-673f-7c7f-cc78" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7874-fb96-d98d-0109" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Bolt pistol" hidden="false" id="321b-3085-6899-40fa" collective="false" targetId="5541-daf-9f4a-ce3d" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="bee8-1875-4e71-5443" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Close combat weapon" hidden="false" id="034f-766f-1d52-af8d" collective="false" targetId="3854-44a6-5746-d602" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="849b-b47a-83c9-9a5a" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Legionary w/ chainsword" hidden="false" id="5620-1a85-ac27-aa0a" collective="false">
+              <constraints>
+                <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="cfa3-5e16-d7da-3f71" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Astartes chainsword" hidden="false" id="42a2-dcfc-4efb-2547" collective="false" targetId="c297-6f9c-b046-f2ad" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="dd6f-a2bc-eb9b-6bde" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Bolt pistol" hidden="false" id="5972-7212-7361-7f58" collective="false" targetId="5541-daf-9f4a-ce3d" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="0354-12c6-4916-3da0" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Close combat weapon" hidden="false" id="755a-5346-5ed5-0be4" collective="false" targetId="3854-44a6-5746-d602" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a751-ecbe-75b7-89ed" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Legionary w/ heavy weapon" hidden="false" id="bf36-b035-9bce-5250" collective="false">
+              <modifiers>
+                <modifier type="set" value="1" field="32e7-537a-7fe8-bbf8">
+                  <conditions>
+                    <condition type="atLeast" value="9" field="selections" scope="ba84-53a5-716c-bc48" childId="model" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <constraints>
+                <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="32e7-537a-7fe8-bbf8" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+              </constraints>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon" id="535b-16c2-c75e-d156" hidden="false" collective="false" import="true" defaultSelectionEntryId="none">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7edc-8ed0-fe23-f256-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7edc-8ed0-fe23-f256-max" includeChildSelections="false"/>
+                  </constraints>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Heavy bolter" hidden="false" id="2a05-4952-e811-64c3" collective="false">
+                      <profiles>
+                        <profile name="Heavy bolter" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="58cf-0f68-33b1-d2cf">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Sustained Hits 1</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Heavy" id="01fa-29c1-f5c3-f37d" hidden="false" targetId="1202-10a8-78e9-4c67" type="rule"/>
+                        <infoLink name="Sustained Hits" id="2a87-c105-6e15-ce4f" hidden="false" targetId="1897-c22c-9597-12b1" type="rule"/>
+                      </infoLinks>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                      </costs>
+                    </selectionEntry>
+                    <selectionEntry type="upgrade" import="true" name="Missile launcher" hidden="false" id="6f4b-6cd0-b7db-56c0" collective="false">
+                      <profiles>
+                        <profile name="➤ Missile launcher - frag" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="49ba-a854-50dd-3103">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Heavy</characteristic>
+                          </characteristics>
+                        </profile>
+                        <profile name="➤ Missile launcher - krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="6f97-2a1d-7470-ecfa">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Blast" id="c2e1-69d6-a230-abf3" hidden="false" targetId="6c1f-1cf7-ff25-c99e" type="rule"/>
+                        <infoLink name="Heavy" id="2fca-79a8-5e0d-902c" hidden="false" targetId="1202-10a8-78e9-4c67" type="rule"/>
+                      </infoLinks>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                      </costs>
+                    </selectionEntry>
+                  </selectionEntries>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <entryLinks>
+                <entryLink import="true" name="Bolt pistol" hidden="false" id="8f9b-e768-b480-2f51" collective="false" targetId="5541-daf-9f4a-ce3d" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d9a7-33dd-634b-7c19" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Close combat weapon" hidden="false" id="6b45-a6c4-dd12-b80b" collective="false" targetId="3854-44a6-5746-d602" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7f44-adb2-5485-55b7" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Legionary w/ special weapon" hidden="false" id="57b0-18a4-ceb0-2def" collective="false">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1952-a7f1-ec07-5ae0" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+              </constraints>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon" id="e2c1-6079-26be-b720" hidden="false" collective="false" import="true" defaultSelectionEntryId="none">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c218-d9f7-846c-41c5-min" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c218-d9f7-846c-41c5-max" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Flamer" hidden="false" id="28f7-c1cc-3438-cf4c" collective="false">
+                      <profiles>
+                        <profile name="Flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="66f0-3ec6-eb6c-a9d0">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Ignores Cover" id="a7ec-6666-d18f-6917" hidden="false" targetId="4640-43e7-30b-215a" type="rule"/>
+                        <infoLink name="Torrent" id="f11a-cc8e-2f44-b93e" hidden="false" targetId="5edf-d619-23e0-9b56" type="rule"/>
+                      </infoLinks>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                      </costs>
+                    </selectionEntry>
+                    <selectionEntry type="upgrade" import="true" name="Meltagun" hidden="false" id="5a9b-115c-580c-2c14" collective="false">
+                      <profiles>
+                        <profile name="Meltagun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="455b-661c-3798-db93">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Melta 2</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Melta" id="7db7-f1c6-d749-ad7a" hidden="false" targetId="7cdb-fb99-44a9-8849" type="rule"/>
+                      </infoLinks>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                      </costs>
+                    </selectionEntry>
+                    <selectionEntry type="upgrade" import="true" name="Plasma gun" hidden="false" id="f7dc-a17d-aece-165a" collective="false">
+                      <infoLinks>
+                        <infoLink name="Hazardous" id="b62a-a124-7f44-1893" hidden="false" targetId="8367-374c-f87-c627" type="rule"/>
+                        <infoLink name="Rapid Fire" id="545d-6067-6a51-b45e" hidden="false" targetId="c5c8-8b58-b8b6-7786" type="rule"/>
+                        <infoLink name="Plasma gun" id="85b3-d832-3b4d-75a6" hidden="false" targetId="38a7-7b6c-0f3d-6547" type="infoGroup"/>
+                      </infoLinks>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                      </costs>
+                    </selectionEntry>
+                  </selectionEntries>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <entryLinks>
+                <entryLink import="true" name="Bolt pistol" hidden="false" id="4e09-81c7-2240-52ef" collective="false" targetId="5541-daf-9f4a-ce3d" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5f55-aed5-c796-148a" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Close combat weapon" hidden="false" id="fb6e-2828-691e-8065" collective="false" targetId="3854-44a6-5746-d602" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3548-ea11-2f54-40c8" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Legionary w/ accursed weapon" hidden="false" id="afb2-86ce-eb1a-b453">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="98f4-9876-198f-881a" includeChildSelections="false"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Bolt pistol" hidden="false" id="34dc-a290-bf83-d101" collective="false" targetId="5541-daf-9f4a-ce3d" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5f95-1ce5-80dd-6676" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Accursed weapon" hidden="false" id="e0b2-254c-db4a-ee5d" collective="false" targetId="4f12-4c0a-d156-4cf0" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="1743-3a4c-3b28-94e0" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Close combat weapon" hidden="false" id="b612-e546-626d-67dc" collective="false" targetId="3854-44a6-5746-d602" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="58c3-5120-bd87-da86" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Legionary w/ Nostraman chainglaive" hidden="false" id="7848-a1bb-5e54-a383">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d969-9698-ecc8-ee16" includeChildSelections="false"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Bolt pistol" hidden="false" id="1eb3-e61d-3691-6ee5" collective="false" targetId="5541-daf-9f4a-ce3d" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="1361-cb21-b348-e558" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Close combat weapon" hidden="false" id="47a8-151c-35e7-e086" collective="false" targetId="3854-44a6-5746-d602" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="1bed-928c-3899-d1e1" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Nostraman chainglaive" hidden="false" id="db97-9aa4-717e-6766">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="76ae-b035-16cf-2fe8-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="76ae-b035-16cf-2fe8-max" includeChildSelections="false"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Nostraman chainglaive" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="4007-daf6-c6a0-926a">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Sustained Hits 1</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <infoLinks>
+                    <infoLink name="Sustained Hits" id="00f4-1682-cbe6-f0a6" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
+                  </infoLinks>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Legionary w/ paired accursed weapons" hidden="false" id="4eac-1303-a0d6-2827">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9461-9f29-70c8-9ad4" includeChildSelections="false"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Bolt pistol" hidden="false" id="9d85-a91f-d3c6-cf25" collective="false" targetId="5541-daf-9f4a-ce3d" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="1b5d-f0e0-23a6-51ac" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Paired accursed weapons" hidden="false" id="4404-05c0-fca2-7ab1" collective="false" targetId="9d6f-4785-aaf0-5076" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="6417-316f-f152-f3d8" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Close combat weapon" hidden="false" id="0fe3-2203-153a-b1db" collective="false" targetId="3854-44a6-5746-d602" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="b02c-3319-5a9d-7238" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Legionary w/ voice eater" hidden="false" id="5390-4445-c0f4-654b" collective="false">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="021e-1e0b-6ed6-a304" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+              </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Astartes chainsword" hidden="false" id="1a3a-3795-8c08-5324" collective="false" targetId="c297-6f9c-b046-f2ad" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c1ab-169f-1f37-b60b" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Bolt pistol" hidden="false" id="a9df-e22c-dc74-6202" collective="false" targetId="5541-daf-9f4a-ce3d" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e4c6-b0de-9f9c-9e38" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Close combat weapon" hidden="false" id="8085-90c2-29bd-8f84" collective="false" targetId="3854-44a6-5746-d602" type="selectionEntry">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="6cbc-f8d7-aa92-77f0" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+              </costs>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Voice eater" hidden="false" id="98ba-1a51-57f5-38fc">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="ba52-9157-13ab-c481-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ba52-9157-13ab-c481-max" includeChildSelections="false"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Voice eater" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3b70-a446-b26a-d12a">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Enemy units (excluding MONSTERS and VEHICLES) cannot be targeted with Stratagems while they are within Engagement Range of the bearer’s unit.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <profiles>
+        <profile name="Visions of Suffering (Psychic)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="cb72-1c0b-76ff-5950">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an attack that targets an enemy unit that is below its Starting Strength, add 1 to the Hit roll. If that enemy unit is Below Half-strength, add 1 to the Wound roll as well.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Attached Unit" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="91c7-ded2-ebcb-c423">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If a CHARACTER UNIT unit from your army with the Leader ability (excluding EPIC HEROES) can be attached to a LEGIONARIES unit, it can be attached to this unit instead.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <modifiers>
+        <modifier type="set" value="190" field="51b2-306e-1021-d207">
+          <conditions>
+            <condition type="atLeast" value="6" field="selections" scope="f666-1f5d-0c20-06c1" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
