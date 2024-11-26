@@ -32,5 +32,7 @@ Great, thank you! Please [Report a bug][bug report] - you can also suggest enhan
 * [Bluescribe homepage](https://bluewinds.github.io/bluescribe/)
 * [BattleScribe app homepage](https://www.battlescribe.net/)
 
+--> Editado aquí <--
+
 [BSData.net]: https://www.bsdata.net/
 [bug report]: https://github.com/BSData/wh40k-10e/issues/new/choose
