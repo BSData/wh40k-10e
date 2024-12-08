@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="46" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="47" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Vindicare Assassin" hidden="false" id="efa3-2cf5-dcfb-b976">
       <categoryLinks>
@@ -62,6 +62,13 @@
                 <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D3+3</characteristic>
                 <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Devastating Wounds, Heavy, Ignores Cover, Precision</characteristic>
               </characteristics>
+              <modifiers>
+                <modifier type="set" value="Anti-MONSTER 4+, Anti-VEHICLE 4+, Devastating Wounds, Heavy, Ignores Cover, Precision" field="7f1b-8591-2fcf-d01c" affects="">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="efa3-2cf5-dcfb-b976" childId="bcba-352d-f7f2-84ba" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </profile>
           </profiles>
           <infoLinks>
@@ -69,6 +76,15 @@
             <infoLink name="Ignores Cover" hidden="false" type="rule" id="509b-6e77-c6cd-bd03" targetId="4640-43e7-30b-215a"/>
             <infoLink name="Precision" hidden="false" type="rule" id="deed-6e78-b25f-27e7" targetId="9143-31ae-e0a6-6007"/>
             <infoLink name="Heavy" id="dc5c-fa9b-6ca7-1ee1" hidden="false" type="rule" targetId="1202-10a8-78e9-4c67"/>
+            <infoLink name="Anti-" id="add4-7b47-485a-2fe4" hidden="false" type="rule" targetId="4111-82e3-9444-e942">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="efa3-2cf5-dcfb-b976" childId="bcba-352d-f7f2-84ba" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </infoLink>
           </infoLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Exitus pistol" hidden="false" id="b5a4-fd8b-d27c-3c8f">
@@ -114,6 +130,37 @@
               </characteristics>
             </profile>
           </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Micromelta Round" hidden="true" id="bcba-352d-f7f2-84ba">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="739e-281f-b103-c96a" includeChildSelections="false"/>
+            <constraint type="min" value="-1" field="selections" scope="parent" shared="true" id="6651-4ef1-484f-30a1" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="45"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Micromelta Round" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2992-78d6-3deb-f5b7">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573"> This model’s exitus rifle has the [ANTI‑MONSTER 4+] and [ANTI‑VEHICLE 4+] abilities.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="set" value="false" field="hidden"/>
+                <modifier type="set" value="1" field="6651-4ef1-484f-30a1"/>
+              </modifiers>
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="e203-73dc-18d9-f390" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
       </selectionEntries>
       <costs>
@@ -251,6 +298,37 @@
             <infoLink name="Precision" hidden="false" type="rule" id="e5ba-9a37-7588-d489" targetId="9143-31ae-e0a6-6007"/>
           </infoLinks>
         </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Esoteric Explosives" hidden="true" id="cb38-27d5-6d94-baca">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="817a-e756-2a83-061b" includeChildSelections="false"/>
+            <constraint type="min" value="-1" field="selections" scope="parent" shared="true" id="b178-2e42-4b6c-804f" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="40"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Esoteric Explosives" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3228-4b06-ece1-3172">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model is targeted with the Grenades Stratagem, 1 mortal wound is inflicted for each D6 roll of 3+ instead of for each 4+</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="set" value="false" field="hidden"/>
+                <modifier type="set" value="1" field="b178-2e42-4b6c-804f"/>
+              </modifiers>
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="e203-73dc-18d9-f390" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
       </selectionEntries>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -371,6 +449,37 @@
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="aa5d-9820-fe62-e35f"/>
           </constraints>
         </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Intra-neural Biotech" hidden="true" id="40ac-b010-39d2-5e11">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="18dc-1c3e-9685-ba95" includeChildSelections="false"/>
+            <constraint type="min" value="-1" field="selections" scope="parent" shared="true" id="0d17-33c8-c997-2a32" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="35"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Intra-neural Biotech" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c559-51ad-e4b4-c952">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle round, you can target this model with the Heroic Intervention or Counter‑offensive Stratagem for 0CP, and can do so even if you have already used that Stratagem on a different unit this phase.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="set" value="false" field="hidden"/>
+                <modifier type="set" value="1" field="0d17-33c8-c997-2a32"/>
+              </modifiers>
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="e203-73dc-18d9-f390" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
       </selectionEntries>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -486,6 +595,37 @@
             <infoLink name="Lethal Hits" hidden="false" type="rule" id="fe05-c916-9d32-7eae" targetId="d1d1-611e-5191-1095"/>
             <infoLink name="Precision" hidden="false" type="rule" id="f55-93b4-38df-8b92" targetId="9143-31ae-e0a6-6007"/>
           </infoLinks>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Decoy Targets" hidden="true" id="eb7b-611d-308e-6436">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="34eb-75e3-0ede-d629" includeChildSelections="false"/>
+            <constraint type="min" value="-1" field="selections" scope="parent" shared="true" id="8a04-ccf3-9c4f-4e4e" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="40"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Decoy Targets" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2acb-2bfc-7514-1867">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Twice per battle, in your Movement phase, you can select one other friendly INFANTRY model that is on the battlefield and not within Engagement Range of one or more enemy units. The selected model is destroyed (ignoring any rules that are triggered when a model is destroyed) and this model is removed from the battlefield and set up again as close as possible to where that destroyed model was and not within Engagement Range of one or more enemy units. This ability cannot be used more than once in the same battle round.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="set" value="false" field="hidden"/>
+                <modifier type="set" value="1" field="8a04-ccf3-9c4f-4e4e"/>
+              </modifiers>
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="e203-73dc-18d9-f390" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
       </selectionEntries>
       <modifiers>
@@ -4748,7 +4888,7 @@
         <constraint type="max" value="1" field="selections" scope="force" shared="true" id="2a66-7fdc-7f03-4324" includeChildSelections="false"/>
       </constraints>
       <selectionEntryGroups>
-        <selectionEntryGroup name="Detachment Choice" id="bd35-3b86-9066-a78e" hidden="false">
+        <selectionEntryGroup name="Detachment Choice" id="bd35-3b86-9066-a78e" hidden="false" defaultSelectionEntryId="none">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9d64-9c4f-5486-ef76" includeChildSelections="false"/>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="6bb7-7e2e-1173-c71f" includeChildSelections="false"/>
@@ -4802,6 +4942,16 @@ Select one enemy unit on the battlefield. Until the start of your next Command p
 
 **Acquire At All Costs**
 Select one objective marker on the battlefield. Until the start of your next Command phase, while an AGENTS OF THE IMPERIUM unit from your army is within range of that objective marker, improve the Leadership and Objective Control characteristics of models in that unit by 1 and models in that unit have a 5+ invulnerable save.</description>
+                </rule>
+              </rules>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Veiled Blade Elimination Force" hidden="false" id="e203-73dc-18d9-f390">
+              <rules>
+                <rule name="Extremis Sanction" id="1da6-2e09-b9c2-9504" hidden="false">
+                  <description>OFFICIO ASSASSINORUM units from your army can use the Overkill, Soulless Horror and Shieldbreaker abilities twice per battle, instead of once per battle (but cannot use such an ability more than once in the same battle round). 
+
+
+When mustering your army, each OFFICIO ASSASSINORUM unit from your army has the relevant Extremis ability shown on the right, and you must increase the points cost of each of those units by the amount shown. If this causes your army to exceed the points limit for the battle you are playing, you cannot include that unit in your army.</description>
                 </rule>
               </rules>
             </selectionEntry>
