@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="f89b-84e0-6e3b-f1e2" name="Imperium - Adeptus Astartes - Deathwatch" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="30" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="f89b-84e0-6e3b-f1e2" name="Imperium - Adeptus Astartes - Deathwatch" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="31" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntryGroups>
     <selectionEntryGroup name="Terminator Weapons" hidden="false" id="ead7-caae-cc7e-f148" defaultSelectionEntryId="ad9-d7f5-59b8-cd0d">
       <selectionEntries>
@@ -2750,7 +2750,7 @@
               <selectionEntries>
                 <selectionEntry type="model" import="true" name="Kill Team Intercessor w/ vengor launcher" hidden="false" id="65e5-1485-c2a9-8cc2" publicationId="4115-3627-e608-39f6" page="23" collective="false">
                   <constraints>
-                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="bd6e-cfe5-6513-6554"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="bd6e-cfe5-6513-6554"/>
                   </constraints>
                   <profiles>
                     <profile name="Kill Team Intercessor" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="bd89-86bc-4a04-4560" publicationId="4115-3627-e608-39f6" page="23">
@@ -3094,6 +3094,26 @@
               </constraints>
             </selectionEntryGroup>
           </selectionEntryGroups>
+          <entryLinks>
+            <entryLink import="true" name="Astartes Grenade Launcher" hidden="false" id="ab02-913c-6cba-5d5c" type="selectionEntry" targetId="ca2b-3d9a-e739-cb21">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="a077-e1c9-f8f0-d38" shared="true" id="8293-0f24-5332-443f" includeChildSelections="true"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5a06-a34a-5324-b64d" includeChildSelections="false"/>
+              </constraints>
+              <modifiers>
+                <modifier type="increment" value="1" field="8293-0f24-5332-443f">
+                  <conditions>
+                    <condition type="atLeast" value="10" field="selections" scope="a077-e1c9-f8f0-d38" childId="model" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="set" value="0" field="5a06-a34a-5324-b64d">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="4962-be6c-d809-e206" childId="ad6a-c679-52ea-6059" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </entryLink>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
     </selectionEntry>
@@ -3124,7 +3144,7 @@
       <profiles>
         <profile name="Indomitor Doctrines" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f8b6-3181-7e49-fb57" publicationId="4115-3627-e608-39f6" page="25">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes a ranged attack that targets the closest eligible target, or makes a melee attack in a turn in which it made a Charge move, improve the Strength characteristic of that attack by 2. </characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes a ranged attack that targets the closest eligible target, or makes a melee attack in a turn in which it made a Charge move, improve the Strength characteristic of that attack by 2.</characteristic>
           </characteristics>
         </profile>
         <profile name="Attached Unit" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b8a4-e32-bbbb-4e78" publicationId="4115-3627-e608-39f6" page="24">
@@ -3939,23 +3959,13 @@ If this unit has a Leader unit attached to it during the Declare Battle Formatio
                             <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
                             <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
                             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Precision</characteristic>
-                          </characteristics>
-                        </profile>
-                        <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="681b-96ee-0b60-ea7c">
-                          <characteristics>
-                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
-                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
-                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
-                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
-                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
-                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Lethal Hits, Precision</characteristic>
                           </characteristics>
                         </profile>
                       </profiles>
                       <infoLinks>
                         <infoLink name="Precision" id="8a26-d165-b611-be15" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
+                        <infoLink name="Lethal Hits" id="3be3-d695-11e7-9af0" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
                       </infoLinks>
                       <constraints>
                         <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="df9a-1cc7-c897-4b80-min"/>
@@ -5021,8 +5031,8 @@ If this unit has a Leader unit attached to it during the Declare Battle Formatio
             <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
             <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
             <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Heavy, Lethal Hits</characteristic>
           </characteristics>
@@ -5041,12 +5051,12 @@ If this unit has a Leader unit attached to it during the Declare Battle Formatio
     <entryLink import="false" name="Corvus Blackstar" hidden="false" type="selectionEntry" id="319e-5b9d-5c49-4e57" targetId="d861-972b-54f9-bdfa"/>
     <entryLink import="false" name="Kill Team Cassius [Legends]" hidden="false" type="selectionEntry" id="7211-5200-e107-dcac" targetId="4042-67ce-8d45-ed33"/>
     <entryLink import="false" name="Veteran Bike Squad [Legends]" hidden="false" type="selectionEntry" id="f3e5-83fc-3580-eab9" targetId="8615-561f-33a5-aa47"/>
-    <entryLink import="false" name="Deathwatch Terminator Squad [Legends]" hidden="false" type="selectionEntry" id="9a-d0b0-480d-21cd" targetId="390e-706b-a059-378b"/>
+    <entryLink import="false" name="Deathwatch Terminator Squad" hidden="false" type="selectionEntry" id="9a-d0b0-480d-21cd" targetId="390e-706b-a059-378b"/>
     <entryLink import="false" name="Proteus Kill Team [Legends]" hidden="false" type="selectionEntry" id="bc53-8c26-8a1a-b2af" targetId="95fe-8a43-b82-7230"/>
-    <entryLink import="false" name="Fortis Kill Team [Legends]" hidden="false" type="selectionEntry" id="a5ae-26d2-12a0-13d7" targetId="a077-e1c9-f8f0-d38"/>
-    <entryLink import="false" name="Indomitor Kill Team [Legends]" hidden="false" type="selectionEntry" id="6942-fa3c-d518-295f" targetId="6cb-912c-c43-210b"/>
-    <entryLink import="false" name="Spectrus Kill Team [Legends]" hidden="false" type="selectionEntry" id="6482-591d-fe98-7961" targetId="2544-5189-7806-30f3"/>
-    <entryLink import="false" name="Deathwatch Kill Team" hidden="false" id="e17b-05e3-61c0-2ad9" type="selectionEntry" targetId="66ab-476a-134e-ec7b"/>
+    <entryLink import="false" name="Fortis Kill Team" hidden="false" type="selectionEntry" id="a5ae-26d2-12a0-13d7" targetId="a077-e1c9-f8f0-d38"/>
+    <entryLink import="false" name="Indomitor Kill Team" hidden="false" type="selectionEntry" id="6942-fa3c-d518-295f" targetId="6cb-912c-c43-210b"/>
+    <entryLink import="false" name="Spectrus Kill Team" hidden="false" type="selectionEntry" id="6482-591d-fe98-7961" targetId="2544-5189-7806-30f3"/>
+    <entryLink import="false" name="Deathwatch Veterans" hidden="false" id="e17b-05e3-61c0-2ad9" type="selectionEntry" targetId="66ab-476a-134e-ec7b"/>
     <entryLink import="true" name="Talonstrike Kill Team" hidden="false" id="3fda-b554-1ac7-a635" type="selectionEntry" targetId="c679-f252-32b1-ebcc"/>
   </entryLinks>
   <sharedProfiles>
