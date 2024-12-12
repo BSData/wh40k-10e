@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="8106-aad2-918a-9ac" name="Chaos - Chaos Knights Library" revision="22" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="8106-aad2-918a-9ac" name="Chaos - Chaos Knights Library" revision="23" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <categoryEntries>
     <categoryEntry id="99dc-0f47-85e2-75da" name="War Dog" hidden="false">
       <modifiers>
@@ -2097,7 +2097,7 @@
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
               <infoLinks>
-                <infoLink name="Harbingers of Dread" id="039f-7cdf-4844-c21e" hidden="false" type="rule" targetId="d71a-a59f-aafd-3723"/>
+                <infoLink name="Forged in Terror (Aura)" id="4ead-25fd-7f6c-baaf" hidden="false" type="profile" targetId="9717-2058-eae3-602e"/>
               </infoLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Iconoclast Fiefdom" hidden="false" id="7fe8-de91-8976-e705">
@@ -3931,19 +3931,7 @@ this phase.</characteristic>
   </sharedSelectionEntryGroups>
   <sharedRules>
     <rule id="d71a-a59f-aafd-3723" name="Harbingers of Dread" hidden="false">
-      <modifiers>
-        <modifier type="set" field="hidden" value="true">
-          <conditionGroups>
-            <conditionGroup type="and">
-              <conditions>
-                <condition type="equalTo" value="0" field="selections" scope="force" childId="603e-6bcd-927f-cb70" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
-                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="603e-6bcd-927f-cb70" shared="true"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
-        </modifier>
-      </modifiers>
-      <description>If your Army Faction is Chaos Knights, each model from your army with this ability has the following Dread abilities:
+      <description>If your Army Faction is CHAOS KNIGHTS, each model from your army with this ability has the following Dread abilities:
 
 
 DESPAIR (AURA)
@@ -3992,15 +3980,20 @@ Dark Sacrifice: Each time a CHAOS KNIGHTS unit with this ability is selected to 
     <profile id="9717-2058-eae3-602e" name="Forged in Terror (Aura)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
       <modifiers>
         <modifier type="set" field="hidden" value="true">
-          <conditions>
-            <condition field="selections" scope="force" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="603e-6bcd-927f-cb70" type="equalTo"/>
-          </conditions>
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="equalTo" value="0" field="selections" scope="force" childId="603e-6bcd-927f-cb70" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                <condition type="notInstanceOf" value="0" field="selections" scope="ancestor" childId="603e-6bcd-927f-cb70" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
         </modifier>
       </modifiers>
       <characteristics>
         <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In the Battle-shock step of your opponent’s Command phase, if an enemy unit that is below its Starting Strength is within 12&quot; of a CHAOS KNIGHTS model from your army, that enemy unit must take a Battleshock test. For the purposes of this ability, if a unit has a Starting Strength of 1, it is considered to be below its Starting Strength while it has lost one or more wounds.
 
-Designer’s Note: This means that all enemy units within range of this Aura ability that have lost one or more models must take a Battle-shock test in your opponent’s Command phase, not just those that are Below Half-strength.</characteristic>
+**Designer’s Note:** *This means that all enemy units within range of this Aura ability that have lost one or more models must take a Battle-shock test in your opponent’s Command phase, not just those that are Below Half-strength.*</characteristic>
       </characteristics>
     </profile>
     <profile id="7400-7387-dae-781f" name="Damaged: 1-10 wounds remaining" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
