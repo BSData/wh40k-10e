@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="81" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="82" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Aegis Defence Line" hidden="false" id="cb99-456-f100-40ed">
       <categoryLinks>
@@ -4604,10 +4604,13 @@
           <selectionEntries>
             <selectionEntry type="upgrade" import="true" name="Warlord" hidden="false" id="264d-bd86-d12-3bf1">
               <entryLinks>
-                <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="5b7b-d63e-9f9a-c64e" targetId="ea3f-b52b-8dc7-d365">
+                <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="5b7b-d63e-9f9a-c64e" targetId="ea3f-b52b-8dc7-d365" flatten="true">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8ba6-66f4-a4cc-6fb4"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="Militarum Tempestus Warlord" field="name"/>
+                  </modifiers>
                 </entryLink>
               </entryLinks>
               <constraints>
@@ -5921,6 +5924,7 @@
           </constraints>
         </entryLink>
         <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="ed9b-bf53-3395-5277" targetId="ea3f-b52b-8dc7-d365"/>
+        <entryLink import="true" name="Enhancements" hidden="false" id="c4a2-c608-0add-817a" type="selectionEntryGroup" targetId="33fd-bb93-1bf4-f1c"/>
       </entryLinks>
       <profiles>
         <profile name="Malign Wardings(Psychic)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="90b9-635e-d3e3-7701">
@@ -18717,7 +18721,6 @@ While this model is joined to a unit, it can embark within any Transport that un
               <characteristics>
                 <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in a REGIMENT unit from your army makes a ranged attack that targets a visible unit (excluding MONSTER and VEHICLES) that attack has the [LETHAL HITS] ability.
 
-
 Each time a model in a SQUADRON unit from your army makes a ranged attack that targets a visible MONSTER or VEHICLE unit, that attack has the [LETHAL HITS] ability.</characteristic>
               </characteristics>
             </profile>
@@ -18725,6 +18728,25 @@ Each time a model in a SQUADRON unit from your army makes a ranged attack that t
           <infoLinks>
             <infoLink name="Lethal Hits" hidden="false" type="rule" id="dac0-f686-9164-51ca" targetId="d1d1-611e-5191-1095"/>
           </infoLinks>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Bridgehead Strike" hidden="false" id="7afb-a0f6-b95d-e791">
+          <profiles>
+            <profile name="Only The Best" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ddb1-7849-1959-3a91">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time an ASTRA MILITARUM INFANTRY model from your army makes a ranged attack, re‐roll a Hit roll of 1.</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="Fire Zone Purge" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8cb7-eb05-f6c3-179f">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a MILITARUM TEMPESTUS model from your army makes a ranged attack in a turn in which it was set up on the battlefield from Reserves or it disembarked from a TRANSPORT, add 1 to the Wound roll.</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="Keywords" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f342-50ad-488e-211e">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If a MILITARUM TEMPESTUS OFFICER model from your army is your WARLORD, TEMPESTUS SCIONS units from your army gain the BATTLELINE keyword, and while such a unit is not Battle‑shocked, add 1 to the Objective Control characteristic of TEMPESTUS SCIONS models in that unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
         </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
@@ -18743,24 +18765,41 @@ Each time a model in a SQUADRON unit from your army makes a ranged attack that t
         <selectionEntryGroup name="Combined Regiment Enhancements" hidden="false" id="d572-4471-c9b8-dea5">
           <modifiers>
             <modifier type="set" value="true" field="hidden">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="67ce-ebd5-b428-e4f7" shared="true" includeChildSelections="true" includeChildForces="true"/>
-              </conditions>
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="67ce-ebd5-b428-e4f7" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </modifier>
           </modifiers>
           <selectionEntries>
             <selectionEntry type="upgrade" import="true" name="Death Mask of Ollanius" hidden="false" id="c955-175d-be85-537e">
               <modifiers>
                 <modifier type="set" value="true" field="hidden">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
-                  </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="67ce-ebd5-b428-e4f7" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
               </modifiers>
               <profiles>
                 <profile name="Death Mask of Ollanius" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9a72-d886-d400-44e3">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Officer model only. While the bearer’s unit is Battle-shocked, subtract 1 from the Objective Control characteristic of models in that unit, instead of changing it to 0</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">OFFICER model only. While the bearer’s unit is Battle-shocked, subtract 1 from the Objective Control characteristic of models in that unit, instead of changing it to 0</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -18775,15 +18814,27 @@ Each time a model in a SQUADRON unit from your army makes a ranged attack that t
             <selectionEntry type="upgrade" import="true" name="Drill Commander" hidden="false" id="272b-eecc-fd09-6723">
               <modifiers>
                 <modifier type="set" value="true" field="hidden">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
-                  </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="67ce-ebd5-b428-e4f7" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
               </modifiers>
               <profiles>
                 <profile name="Drill Commander" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="393e-1194-2f16-2738">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Officer model only. While the bearer is leading a unit, each time a model in that unit makes a ranged attack, if that unit Remained Stationary this turn, a Critical Hit is scored on a successful unmodified Hit roll of 5+.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">OFFICER model only. While the bearer is leading a unit, each time a model in that unit makes a ranged attack, if that unit Remained Stationary this turn, a Critical Hit is scored on a successful unmodified Hit roll of 5+.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -18798,15 +18849,27 @@ Each time a model in a SQUADRON unit from your army makes a ranged attack that t
             <selectionEntry type="upgrade" import="true" name="Kurov&apos;s Aquila" hidden="false" id="8002-5863-16-cb86">
               <modifiers>
                 <modifier type="set" value="true" field="hidden">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
-                  </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="67ce-ebd5-b428-e4f7" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
               </modifiers>
               <profiles>
                 <profile name="Kurov&apos;s Aquila" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="true" id="5365-459d-acd3-9845">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Officer model only. Once per battle, just after your opponent has used a Stratagem, the bearer can use this Enhancement. If it does, until the end of the battle, the CP cost your opponent must pay to use that Stratagem again is increased by 1CP.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">OFFICER model only. Once per battle, just after your opponent has used a Stratagem, the bearer can use this Enhancement. If it does, until the end of the battle, the CP cost your opponent must pay to use that Stratagem again is increased by 1CP.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -18824,9 +18887,21 @@ Each time a model in a SQUADRON unit from your army makes a ranged attack that t
             <selectionEntry type="upgrade" import="true" name="Grand Strategist" hidden="false" id="c637-e130-e2f9-ba98">
               <modifiers>
                 <modifier type="set" value="true" field="hidden">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
-                  </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="67ce-ebd5-b428-e4f7" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
               </modifiers>
               <profiles>
@@ -18847,6 +18922,184 @@ Each time a model in a SQUADRON unit from your army makes a ranged attack that t
           </selectionEntries>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7079-affa-c362-2d0b"/>
+          </constraints>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Bridgehead Strike Enhancements" hidden="false" id="eda0-9510-3829-9c5d">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="7afb-a0f6-b95d-e791" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Bombast-class Vox-array" hidden="false" id="7fb7-808e-aae6-534e">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="7afb-a0f6-b95d-e791" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="or">
+                          <conditions>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="f168-1b04-e10d-e9a" shared="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <profiles>
+                <profile name="Bombast-class Vox-array" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1cf9-954f-2a1e-902b">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">MILITARUM TEMPESTUS OFFICER model only. Each time the bearer issues an Order, if the bearer’s unit contains one or more models equipped with a master vox, it can issue that Order to up to three different REGIMENT units, instead of only one.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8681-6b62-3ae4-a99d"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="c7cf-b3b3-6c6b-0518" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Priority-drop Beacon" hidden="false" id="9b12-3ad1-60ca-055f">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="7afb-a0f6-b95d-e791" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="or">
+                          <conditions>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="f168-1b04-e10d-e9a" shared="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <profiles>
+                <profile name="Priority-drop Beacon" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d013-1b7e-7caf-c0a5">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">MILITARUM TEMPESTUS OFFICER model only. The bearer’s unit can be set up using the Deep Strike ability in the Reinforcements step of your first, second or third Movement phase, regardless of any mission rules.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="930e-b923-f364-0b71"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="3ea0-34b5-8927-6a02" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="30"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Advance Augury" hidden="false" id="d2e8-492b-6c04-a2df">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="7afb-a0f6-b95d-e791" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="or">
+                          <conditions>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <profiles>
+                <profile name="Advance Augury" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="true" id="e5e1-a39d-d3da-d45d">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">INFANTRY OFFICER MODEL only. After both players have deployed their armies, select up to three REGIMENT units from your army and redeploy them. When doing so, you can set those units up in Strategic Reserves, regardless of how many units are already in 1 Strategic Reserves.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="eccd-d0b9-a828-eead"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="9ddc-d0b1-4d8a-3938" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Shroud Projector" hidden="false" id="d2dc-1b3b-04b9-4e4c">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="7afb-a0f6-b95d-e791" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="or">
+                          <conditions>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="f168-1b04-e10d-e9a" shared="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <profiles>
+                <profile name="Shroud Projector" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="148a-06f0-e0fd-1ad2">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">MILITARUM TEMPESTUS OFFICER model only. Enemy units cannot use the Fire Overwatch Stratagem to shoot at the bearer’s unit.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3b4b-953f-121c-92cd"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="eaac-a080-212f-cbd4" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+              </costs>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a14e-0010-6dbf-9b4c"/>
           </constraints>
         </selectionEntryGroup>
       </selectionEntryGroups>
