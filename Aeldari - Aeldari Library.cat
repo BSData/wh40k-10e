@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="58" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="59" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <publications>
     <publication id="442c-a37c-3908-d701" name="Index: Aeldari" shortName="I:Aeldari" publisher="Index: Aeldari" publicationDate="6/15/2023"/>
     <publication id="1427-7c5c-863f-ac94" name="Index: Drukhari" shortName="I:Drukhari" publisher="Index: Drukhari" publicationDate="6/15/2023"/>
@@ -162,6 +162,51 @@
     <categoryEntry name="Corsair Cloud Dancer Band" hidden="false" id="5eed-c42b-80bf-d553"/>
     <categoryEntry name="Corsair Skyreaver Band" hidden="false" id="4de0-99b0-1887-1ed6"/>
     <categoryEntry name="Corsair Reaver Band" hidden="false" id="a50d-f450-3ab8-3289"/>
+    <categoryEntry name="Harlequin Allies" id="83bb-5ddb-b1d9-39b8" hidden="false">
+      <constraints>
+        <constraint type="max" value="-1" field="51b2-306e-1021-d207" scope="force" shared="true" id="b20a-1ea7-d523-fab4" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+      <modifiers>
+        <modifier type="set" value="500" field="b20a-1ea7-d523-fab4">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="d62d-db22-4893-4bc0" shared="true" includeChildSelections="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true"/>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="e688-8140-bc36-3cee" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="1000" field="b20a-1ea7-d523-fab4">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="baf8-997f-e323-a090" shared="true" includeChildSelections="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true"/>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="e688-8140-bc36-3cee" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="1500" field="b20a-1ea7-d523-fab4">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="4204-82d0-908c-a62a" shared="true" includeChildSelections="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true"/>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="e688-8140-bc36-3cee" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </categoryEntry>
   </categoryEntries>
   <sharedSelectionEntries>
     <selectionEntry id="828d-840a-9a67-9074" name="Asurmen" publicationId="442c-a37c-3908-d701" page="7" hidden="false" collective="false" import="true" type="model">
@@ -1411,10 +1456,17 @@
         </modifier>
         <modifier type="set" value="true" field="hidden">
           <conditionGroups>
-            <conditionGroup type="and">
+            <conditionGroup type="or">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="ffed-8509-9bf7-820e" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
               <conditions>
-                <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
-                <condition type="atLeast" value="1" field="selections" scope="force" childId="ffed-8509-9bf7-820e" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="e688-8140-bc36-3cee" shared="true"/>
               </conditions>
             </conditionGroup>
           </conditionGroups>
@@ -2039,20 +2091,27 @@
             <condition field="selections" scope="cbb7-6669-a014-36fe" value="5" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="greaterThan"/>
           </conditions>
         </modifier>
-        <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="and">
-              <conditions>
-                <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
-                <condition type="atLeast" value="1" field="selections" scope="force" childId="ffed-8509-9bf7-820e" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
-        </modifier>
         <modifier type="set" value="1" field="8f4a-1c6c-bd7c-25ff">
           <conditions>
             <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
           </conditions>
+        </modifier>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="ffed-8509-9bf7-820e" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="e688-8140-bc36-3cee" shared="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
         </modifier>
       </modifiers>
       <profiles>
@@ -3530,6 +3589,7 @@
         <categoryLink id="5f21-3843-a697-faf0" name="Harlequins" hidden="false" targetId="ffed-8509-9bf7-820e" primary="false"/>
         <categoryLink id="a64b-60aa-a354-5c69" name="Death Jester" hidden="false" targetId="c593-9ffa-a9c4-377c" primary="false"/>
         <categoryLink id="52be-12a6-6659-688b" name="Faction: Aeldari" hidden="false" targetId="4378-1827-4988-be4e" primary="false"/>
+        <categoryLink targetId="83bb-5ddb-b1d9-39b8" id="69b9-5015-b8a4-b177" primary="false" name="Harlequin Allies"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="90"/>
@@ -6789,6 +6849,7 @@
         <categoryLink id="6bc2-7d07-b89c-2ab7" name="Harlequins" hidden="false" targetId="ffed-8509-9bf7-820e" primary="false"/>
         <categoryLink id="42e-c876-1ba9-9133" name="Faction: Aeldari" hidden="false" targetId="4378-1827-4988-be4e" primary="false"/>
         <categoryLink id="f202-7db5-f48f-e6e4" name="Corsairs and Travelling players" hidden="false" targetId="d39d-c104-5d92-3d58" primary="false"/>
+        <categoryLink targetId="83bb-5ddb-b1d9-39b8" id="5f13-a2da-5363-0f09" primary="false" name="Harlequin Allies"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="60"/>
@@ -7469,6 +7530,7 @@
         <categoryLink id="8572-a257-6921-7886" name="Harlequins" hidden="false" targetId="ffed-8509-9bf7-820e" primary="false"/>
         <categoryLink id="ea20-c74-2f6c-67e5" name="Faction: Aeldari" hidden="false" targetId="4378-1827-4988-be4e" primary="false"/>
         <categoryLink id="48e3-ec3f-450a-fc5c" name="Corsairs and Travelling players" hidden="false" targetId="d39d-c104-5d92-3d58" primary="false"/>
+        <categoryLink targetId="83bb-5ddb-b1d9-39b8" id="2806-2636-a779-a67e" primary="false" name="Harlequin Allies"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="105"/>
@@ -7614,6 +7676,7 @@
         <categoryLink id="66ec-69ab-f02c-59de" name="Infantry" hidden="false" targetId="cf47-a0d7-7207-29dc" primary="false"/>
         <categoryLink id="ae71-376b-2219-b1bd" name="Faction: Aeldari" hidden="false" targetId="4378-1827-4988-be4e" primary="false"/>
         <categoryLink id="3080-fd67-cc2a-9670" name="Corsairs and Travelling players" hidden="false" targetId="d39d-c104-5d92-3d58" primary="false"/>
+        <categoryLink targetId="83bb-5ddb-b1d9-39b8" id="e1a8-5abc-7585-8888" primary="false" name="Harlequin Allies"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="115"/>
@@ -9388,6 +9451,7 @@ become separate units, with their original Starting Strengths.</characteristic>
         <categoryLink id="9584-2346-8da4-8337" name="Grenades" hidden="false" targetId="5a61-81ac-eb7c-a87e" primary="false"/>
         <categoryLink id="9188-a763-371-97ce" name="Faction: Aeldari" hidden="false" targetId="4378-1827-4988-be4e" primary="false"/>
         <categoryLink id="e113-4004-79bb-e89e" name="Corsairs and Travelling players" hidden="false" targetId="d39d-c104-5d92-3d58" primary="false"/>
+        <categoryLink targetId="83bb-5ddb-b1d9-39b8" id="bfbf-cbf4-5bf8-fabe" primary="false" name="Harlequin Allies"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="75"/>
@@ -9815,6 +9879,7 @@ become separate units, with their original Starting Strengths.</characteristic>
         <categoryLink id="9a67-6b82-21e5-7d21" name="Harlequins" hidden="false" targetId="ffed-8509-9bf7-820e" primary="false"/>
         <categoryLink id="5723-4880-2797-b89d" name="Faction: Aeldari" hidden="false" targetId="4378-1827-4988-be4e" primary="false"/>
         <categoryLink id="c1f6-ec11-7ab1-4bc9" name="Corsairs and Travelling players" hidden="false" targetId="d39d-c104-5d92-3d58" primary="false"/>
+        <categoryLink targetId="83bb-5ddb-b1d9-39b8" id="1ce1-3092-3da7-e426" primary="false" name="Harlequin Allies"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="55"/>
@@ -10062,6 +10127,7 @@ become separate units, with their original Starting Strengths.</characteristic>
         <categoryLink id="dfc8-a2-7f4c-5c59" name="Smoke" hidden="false" targetId="6df-937-16bc-8c1a" primary="false"/>
         <categoryLink id="1dcd-99cd-1cb5-8c2b" name="Faction: Aeldari" hidden="false" targetId="4378-1827-4988-be4e" primary="false"/>
         <categoryLink id="2f88-4719-2409-2bf0" name="Corsairs and Travelling players" hidden="false" targetId="d39d-c104-5d92-3d58" primary="false"/>
+        <categoryLink targetId="83bb-5ddb-b1d9-39b8" id="f812-eaea-de0e-4c1b" primary="false" name="Harlequin Allies"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="115"/>
@@ -12565,54 +12631,6 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
         <infoLink id="b3ae-408e-f0dc-7100" name="Strands of Fate" hidden="false" targetId="c324-e193-e23c-7d2e" type="rule"/>
       </infoLinks>
     </selectionEntry>
-    <selectionEntry id="dab9-c5f2-a09f-c524" name="Fate&apos;s Messenger" hidden="false" collective="false" import="true" type="upgrade">
-      <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
-      </costs>
-      <profiles>
-        <profile name="Fate&apos;s Messenger" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="be33-f12d-911a-8fc4">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Aeldari model only. Once per turn, just after making a Hit roll, a Wound roll or a saving throw for the bearer, you can treat the result as an unmodified roll of 6 instead.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
-    </selectionEntry>
-    <selectionEntry id="3c85-7aba-e35d-27be" name="Reader of the Runes" hidden="false" collective="false" import="true" type="upgrade">
-      <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
-      </costs>
-      <profiles>
-        <profile name="Reader of the Runes" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5401-a04-29e8-1b72">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Aeldari Psyker model only. In your Command phase, you can select one dice in your Fate dice pool, re-roll it, then add it back to your Fate dice pool displaying the result you just rolled</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
-    </selectionEntry>
-    <selectionEntry id="607f-8f46-48c4-edb7" name="The Phoenix Gem" hidden="false" collective="false" import="true" type="upgrade">
-      <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="35"/>
-      </costs>
-      <profiles>
-        <profile name="The Phoenix Gem" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="bcf5-ae36-1885-a978">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Aeldari model only. The first time the bearer is destroyed, roll one D6: on a 2+, keep it to one side. At the end of the phase, set the bearer back up again, as close as possible to its previous position and not within Engagement Range of any enemy models, with its full wounds remaining.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
-    </selectionEntry>
-    <selectionEntry id="6605-bd06-4048-9e14" name="The Weeping Stones" hidden="false" collective="false" import="true" type="upgrade">
-      <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
-      </costs>
-      <profiles>
-        <profile name="The Weeping Stones" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3f73-8bbc-22e7-6075">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Aeldari model only. Each time the bearer’s unit destroys an enemy unit, roll one D6 and add it to your Fate dice pool displaying the result you just rolled</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
-    </selectionEntry>
     <selectionEntry id="5c1c-fa4a-3234-c711" name="Archon" publicationId="1427-7c5c-863f-ac94" page="7" hidden="false" collective="false" import="true" type="model">
       <categoryLinks>
         <categoryLink id="ef4c-903b-a840-afef" name="Character" hidden="false" targetId="9cfd-1c32-585f-7d5c" primary="true"/>
@@ -12740,6 +12758,7 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
         <entryLink id="5bc6-d563-4510-9c78" name="Warlord" hidden="false" collective="false" import="true" targetId="3f04-19ab-bfb0-6c67" type="selectionEntry"/>
         <entryLink import="true" name="Realspace Raiders Enhancements" hidden="false" type="selectionEntryGroup" id="c2ba-6806-c22d-a192" targetId="33a3-43a6-44d6-b5bf"/>
         <entryLink import="true" name="Skysplinter Assault Enhancements" hidden="false" id="1aef-f4c9-91e6-516" type="selectionEntryGroup" targetId="9a90-50ad-4693-a585"/>
+        <entryLink import="true" name="Reaper&apos;s Wager Enhancements" hidden="false" id="643e-3b04-0065-eb23" type="selectionEntryGroup" targetId="90b8-32e1-d346-a0ec"/>
       </entryLinks>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="force" shared="true" id="b38e-81e-cce2-16c" includeChildSelections="true"/>
@@ -12838,6 +12857,7 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
             <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="28bb-2115-bbf0-d63e" targetId="3f04-19ab-bfb0-6c67"/>
             <entryLink import="true" name="Realspace Raiders Enhancements" hidden="false" type="selectionEntryGroup" id="6199-e5b1-6be9-4c9c" targetId="33a3-43a6-44d6-b5bf"/>
             <entryLink import="true" name="Skysplinter Assault Enhancements" hidden="false" id="4083-f0ba-f625-c629" type="selectionEntryGroup" targetId="9a90-50ad-4693-a585"/>
+            <entryLink import="true" name="Reaper&apos;s Wager Enhancements" hidden="false" id="b135-1981-9cb7-b92a" type="selectionEntryGroup" targetId="90b8-32e1-d346-a0ec"/>
           </entryLinks>
         </selectionEntry>
         <selectionEntry type="model" import="true" name="Khymerae" hidden="false" id="d85b-8cc6-e7f9-b6aa">
@@ -13656,6 +13676,7 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
         <entryLink import="true" name="Realspace Raiders Enhancements" hidden="false" type="selectionEntryGroup" id="3250-babb-d385-291" targetId="33a3-43a6-44d6-b5bf"/>
         <entryLink id="a91-8800-1f19-b2e9" name="Warlord" hidden="false" collective="false" import="true" targetId="3f04-19ab-bfb0-6c67" type="selectionEntry"/>
         <entryLink import="true" name="Skysplinter Assault Enhancements" hidden="false" id="5db-a38-5a65-e11b" type="selectionEntryGroup" targetId="9a90-50ad-4693-a585"/>
+        <entryLink import="true" name="Reaper&apos;s Wager Enhancements" hidden="false" id="8187-b435-1e93-3da1" type="selectionEntryGroup" targetId="90b8-32e1-d346-a0ec"/>
       </entryLinks>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Haemonculus tools and scissorhands" hidden="false" id="a067-9ca-d073-2d67">
@@ -16264,6 +16285,7 @@ You can attach this unit to the above unit, even if one other Leader unit (excl
         <entryLink import="true" name="Realspace Raiders Enhancements" hidden="false" type="selectionEntryGroup" id="eba-3e76-bd5e-1df9" targetId="33a3-43a6-44d6-b5bf"/>
         <entryLink id="5395-a854-748a-ed49" name="Warlord" hidden="false" collective="false" import="true" targetId="3f04-19ab-bfb0-6c67" type="selectionEntry"/>
         <entryLink import="true" name="Skysplinter Assault Enhancements" hidden="false" id="c17f-e6d5-b877-5fa6" type="selectionEntryGroup" targetId="9a90-50ad-4693-a585"/>
+        <entryLink import="true" name="Reaper&apos;s Wager Enhancements" hidden="false" id="4ebc-db86-b282-77eb" type="selectionEntryGroup" targetId="90b8-32e1-d346-a0ec"/>
       </entryLinks>
       <infoLinks>
         <infoLink name="Power from Pain" hidden="false" type="rule" id="3ba9-8df3-7020-af9b" targetId="5e02-2ddc-f55-e6dd"/>
@@ -20258,16 +20280,19 @@ You can attach this model to one of the above units, even if one other Leader u
       </modifierGroups>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="true"/>
-          </conditions>
-        </modifier>
-        <modifier type="set" value="true" field="hidden">
           <conditionGroups>
-            <conditionGroup type="and">
+            <conditionGroup type="or">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="ffed-8509-9bf7-820e" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
               <conditions>
-                <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
-                <condition type="atLeast" value="1" field="selections" scope="force" childId="ffed-8509-9bf7-820e" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="e688-8140-bc36-3cee" shared="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="true"/>
               </conditions>
             </conditionGroup>
           </conditionGroups>
@@ -20647,16 +20672,19 @@ You can attach this model to one of the above units, even if one other Leader u
       </modifierGroups>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="true"/>
-          </conditions>
-        </modifier>
-        <modifier type="set" value="true" field="hidden">
           <conditionGroups>
-            <conditionGroup type="and">
+            <conditionGroup type="or">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="ffed-8509-9bf7-820e" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
               <conditions>
-                <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
-                <condition type="atLeast" value="1" field="selections" scope="force" childId="ffed-8509-9bf7-820e" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="e688-8140-bc36-3cee" shared="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="true"/>
               </conditions>
             </conditionGroup>
           </conditionGroups>
@@ -21379,11 +21407,6 @@ You can attach this model to one of the above units, even if one other Leader u
         <categoryLink targetId="4de0-99b0-1887-1ed6" id="cb2c-ef3e-df99-b3ee" primary="false" name="Corsair Skyreaver Band"/>
       </categoryLinks>
       <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="true"/>
-          </conditions>
-        </modifier>
         <modifier type="set" field="51b2-306e-1021-d207" value="150">
           <conditions>
             <condition type="greaterThan" value="5" field="selections" scope="4146-4127-52f7-5786" childId="model" shared="true" includeChildSelections="true"/>
@@ -21401,10 +21424,18 @@ You can attach this model to one of the above units, even if one other Leader u
         </modifier>
         <modifier type="set" value="true" field="hidden">
           <conditionGroups>
-            <conditionGroup type="and">
+            <conditionGroup type="or">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="ffed-8509-9bf7-820e" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
               <conditions>
-                <condition type="atLeast" value="1" field="forces" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true"/>
-                <condition type="atLeast" value="1" field="selections" scope="force" childId="ffed-8509-9bf7-820e" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="e688-8140-bc36-3cee" shared="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="true"/>
               </conditions>
             </conditionGroup>
           </conditionGroups>
@@ -23359,39 +23390,6 @@ charge in a turn in which it Advanced</characteristic>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
     <selectionEntryGroup id="e26f-c156-51e9-9608" name="Battle Host Enhancements" hidden="false" collective="false" import="true">
-      <entryLinks>
-        <entryLink id="2968-e2de-f559-45a2" name="Fate&apos;s Messenger" hidden="false" collective="false" import="true" targetId="dab9-c5f2-a09f-c524" type="selectionEntry">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="dbe7-4863-2b80-2ff4"/>
-            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="bb38-4dfc-2078-872d" includeChildSelections="true" includeChildForces="true"/>
-          </constraints>
-        </entryLink>
-        <entryLink id="850-adf2-fcb4-64fa" name="Reader of the Runes" hidden="false" collective="false" import="true" targetId="3c85-7aba-e35d-27be" type="selectionEntry">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7958-d9c5-aa80-d610"/>
-            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="eb66-a226-85e6-b66" includeChildSelections="true" includeChildForces="true"/>
-          </constraints>
-          <modifiers>
-            <modifier type="set" value="true" field="hidden">
-              <conditions>
-                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="13bf-2bee-3ae0-b414" shared="true"/>
-              </conditions>
-            </modifier>
-          </modifiers>
-        </entryLink>
-        <entryLink id="a695-cd5a-ec97-6d9c" name="The Phoenix Gem" hidden="false" collective="false" import="true" targetId="607f-8f46-48c4-edb7" type="selectionEntry">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b594-7ac-5ef1-105c"/>
-            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="a89b-5683-a74c-42d5" includeChildSelections="true" includeChildForces="true"/>
-          </constraints>
-        </entryLink>
-        <entryLink id="a20b-beda-f41e-ecad" name="The Weeping Stones" hidden="false" collective="false" import="true" targetId="6605-bd06-4048-9e14" type="selectionEntry">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d0aa-bec2-cfde-a79f"/>
-            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="e727-7f76-8cc9-d86" includeChildSelections="true" includeChildForces="true"/>
-          </constraints>
-        </entryLink>
-      </entryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
           <conditionGroups>
@@ -23416,6 +23414,56 @@ charge in a turn in which it Advanced</characteristic>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="df26-4d58-5c-9cbf" includeChildSelections="true" includeChildForces="true"/>
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="dc8e-1e1d-c538-77d8"/>
       </constraints>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="The Weeping Stones" hidden="false" id="6605-bd06-4048-9e14" collective="false">
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+          </costs>
+          <profiles>
+            <profile name="The Weeping Stones" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3f73-8bbc-22e7-6075">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Aeldari model only. Each time the bearer’s unit destroys an enemy unit, roll one D6 and add it to your Fate dice pool displaying the result you just rolled</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="The Phoenix Gem" hidden="false" id="607f-8f46-48c4-edb7" collective="false">
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="35"/>
+          </costs>
+          <profiles>
+            <profile name="The Phoenix Gem" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="bcf5-ae36-1885-a978">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Aeldari model only. The first time the bearer is destroyed, roll one D6: on a 2+, keep it to one side. At the end of the phase, set the bearer back up again, as close as possible to its previous position and not within Engagement Range of any enemy models, with its full wounds remaining.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Reader of the Runes" hidden="false" id="3c85-7aba-e35d-27be" collective="false">
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
+          </costs>
+          <profiles>
+            <profile name="Reader of the Runes" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5401-a04-29e8-1b72">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Aeldari Psyker model only. In your Command phase, you can select one dice in your Fate dice pool, re-roll it, then add it back to your Fate dice pool displaying the result you just rolled</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Fate&apos;s Messenger" hidden="false" id="dab9-c5f2-a09f-c524" collective="false">
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+          </costs>
+          <profiles>
+            <profile name="Fate&apos;s Messenger" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="be33-f12d-911a-8fc4">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Aeldari model only. Once per turn, just after making a Hit roll, a Wound roll or a saving throw for the bearer, you can treat the result as an unmodified roll of 6 instead.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+      </selectionEntries>
     </selectionEntryGroup>
     <selectionEntryGroup id="33a3-43a6-44d6-b5bf" name="Realspace Raiders Enhancements" hidden="false" collective="false" import="true">
       <selectionEntries>
@@ -23584,6 +23632,24 @@ Pain tokens.</description>
             </modifier>
           </modifiers>
         </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Reaper&apos;s Wager" hidden="false" id="e688-8140-bc36-3cee">
+          <rules>
+            <rule name="Callous Competition" id="134d-1e4d-5f9c-2905" hidden="false">
+              <description>At the start of the battle, Drukhari units from your army are winning the wager.
+Each time a Drukhari unit from your army destroys an enemy unit, Drukhari units from your army are winning the wager.
+Each time a Harlequins unit from your army destroys an enemy unit, Harlequin units from your army are winning the wager.
+While Drukhari units from your army are winning the wager, Harlequin units from your army are losing the wager, and vice versa.
+Each time a Drukhari or Harlequins model from your army makes an attack, if that model’s unit is losing the wager, re‑roll a Hit roll of 1 and re‑roll a Wound roll of 1.</description>
+            </rule>
+          </rules>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
     <selectionEntryGroup name="Skysplinter Assault Enhancements" hidden="false" id="9a90-50ad-4693-a585">
@@ -23698,6 +23764,113 @@ Pain tokens.</description>
       <constraints>
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ffe2-70f9-a7de-30d8"/>
       </constraints>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Reaper&apos;s Wager Enhancements" id="90b8-32e1-d346-a0ec" hidden="false">
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="e688-8140-bc36-3cee" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Archraider" hidden="false" id="8a73-4f00-0bb8-9298">
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b3bf-3513-9836-2a6d" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="f6ac-3d22-6cbc-5a5f" includeChildSelections="true" includeChildForces="true"/>
+          </constraints>
+          <profiles>
+            <profile name="Archraider" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f957-df14-5640-41be">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Harlequins or Drukhari model only. In the Declare Battle Formations step, if the bearer starts the battle embarked within a Dedicated Transport, that Dedicated Transport has the Scouts 9&quot; ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Webway walker" hidden="false" id="acb4-8fc5-8c22-82f2">
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ebcb-bbad-8e37-23c9" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="a5ff-01e9-95ad-185f" includeChildSelections="true" includeChildForces="true"/>
+          </constraints>
+          <profiles>
+            <profile name="Webway walker" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ed9c-b9c1-c2e7-fa97">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Harlequins or Drukhari model only. Models in the bearer’s unit have the Deep Strike ability. Each time the bearer’s unit is set up on the battlefield using the Deep Strike ability, if that unit is currently losing the wager, until the end of the turn, you can re‑roll Charge rolls made for that unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Reaper&apos;s Cowl" hidden="false" id="4483-1caf-6caa-d571">
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a489-53d8-564a-2caf" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="b078-8643-a1d5-a11a" includeChildSelections="true"/>
+          </constraints>
+          <profiles>
+            <profile name="Reaper&apos;s Cowl" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a6cb-7d6e-eb8c-79d5">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Harlequins model only. Models in the bearer’s unit have the Stealth and Infiltrators abilities.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="ffed-8509-9bf7-820e" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Conductor of Torment" hidden="false" id="25d9-822d-ff7f-53b5">
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9401-f630-8f20-337a" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="8ba7-d603-ce9a-c361" includeChildSelections="true"/>
+          </constraints>
+          <profiles>
+            <profile name="Conductor of Torment" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e28b-8f8e-887d-f9ab">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Drukhari model only. In your Command phase, you can do one of the following:
+■ If your Drukhari units are currently losing the wager, you can gain 1 Pain token. If you do, Drukhari units from your army are now winning the wager.
+■ If your Drukhari units are currently winning the wager, you can discard 1 Pain token. If you do, Harlequins units from your army are now winning the wager.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="1015-db48-a2fa-c7da" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+      </selectionEntries>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <sharedRules>
