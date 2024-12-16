@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="1b6d-dc06-5db9-c7d1" name="Imperium - Imperial Knights - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="32" battleScribeVersion="2.03" authorName="BSData Developers" type="catalogue" authorContact="Dunamis55 &amp; AbonShell">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="1b6d-dc06-5db9-c7d1" name="Imperium - Imperial Knights - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="33" battleScribeVersion="2.03" authorName="BSData Developers" type="catalogue" authorContact="Dunamis55 &amp; AbonShell">
   <rules>
     <rule name="Code Chivalric" id="cbd-943-bc7b-20ec">
       <description>If your Army Faction is IMPERIAL KNIGHTS, at the end of the Read Mission Objectives step, you must select one of the Oaths below to be active for your army. Models from your army with this ability gain the associated Oath ability, and you gain the associated Deed to complete.
@@ -3736,159 +3736,321 @@ Reclaim the Realm
       </constraints>
     </selectionEntryGroup>
     <selectionEntryGroup name="Enhancements" id="f77c-b744-c82a-a3cd">
-      <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Revered Knight (Aura)" id="f896-b511-a8f-9664">
-          <profiles>
-            <profile name="Revered Knight (Aura)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="34cd-b28e-192e-4e9b">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">IMPERIAL KNIGHTS model only. While a friendly IMPERIAL KNIGHTS model is within 6&quot; of the bearer, improve that model’s Leadership characteristic by 1. If your army is Honoured, increase the range of this Aura ability to 12&quot;.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-          <modifiers>
-            <modifier type="set" value="true" field="hidden">
-              <conditionGroups>
-                <conditionGroup type="and">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="f896-b511-a8f-9664" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="parent" childId="f896-b511-a8f-9664" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
-          </costs>
-        </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Mysterious Guardian" id="85e3-f8df-1f17-8c19">
-          <profiles>
-            <profile name="Mysterious Guardian" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="a3a8-3e6-b7c5-66e6">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">IMPERIAL KNIGHTS model only. The bearer has the Deep Strike ability. Once per battle, at the end of your opponent’s turn, if the bearer is not within Engagement Range of any enemy units, it can fade away. If it does, remove it from the battlefield then, in the Reinforcements step of your subsequent Movement phase, set it up anywhere on the battlefield that is more than 9&quot; horizontally away from all enemy models. If the battle ends and the bearer is not on the battlefield, it is destroyed.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-          <modifiers>
-            <modifier type="set" value="true" field="hidden">
-              <conditionGroups>
-                <conditionGroup type="and">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="85e3-f8df-1f17-8c19" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="parent" childId="85e3-f8df-1f17-8c19" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
-          </costs>
-        </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Mythic Hero" id="fbf6-98bd-fbdb-ea84">
-          <profiles>
-            <profile name="Mythic Hero" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="83da-5183-e99-e251">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">QUESTORIS model with a Bondsman ability only. Each time the bearer uses its Bondsman ability, you can select one additional friendly Armiger model within 12&quot; of the bearer that is not already being affected by a Bondsman ability. Until the start of your next Command phase, that model is also affected by that Bondsman ability.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Noble Lance Enhancements" id="1223-782e-cce2-bdfd" hidden="false">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Unyielding Paragon" hidden="false" id="42bd-f84f-46e2-c246">
+              <profiles>
+                <profile name="Unyielding Paragon" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a643-e955-2a58-24c">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">QUESTORIS model only. Each time an attack is allocated to the bearer, worsen the Armour Penetration characteristic of that attack by 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="e4d6-1a77-132b-f39d" shared="true"/>
+                      </conditions>
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="42bd-f84f-46e2-c246" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="parent" childId="42bd-f84f-46e2-c246" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="40"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Banner of Macharius Triumphant" hidden="false" id="56fc-6e31-3aec-9b74">
+              <profiles>
+                <profile name="Banner of Macharius Triumphant" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2cd4-5280-47cb-9eda">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">IMPERIAL KNIGHTS model only. If you control an objective marker at the end of your Command phase and the bearer is within range of that objective marker, that objective marker remains under your control even if you have no models within range of it, until your opponent controls it at the start or end of any turn.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="56fc-6e31-3aec-9b74" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="56fc-6e31-3aec-9b74" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="30"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Mysterious Guardian" hidden="false" id="85e3-f8df-1f17-8c19">
+              <profiles>
+                <profile name="Mysterious Guardian" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a3a8-3e6-b7c5-66e6">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">IMPERIAL KNIGHTS model only. The bearer has the Deep Strike ability. Once per battle, at the end of your opponent’s turn, if the bearer is not within Engagement Range of any enemy units, it can fade away. If it does, remove it from the battlefield then, in the Reinforcements step of your subsequent Movement phase, set it up anywhere on the battlefield that is more than 9&quot; horizontally away from all enemy models. If the battle ends and the bearer is not on the battlefield, it is destroyed.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="85e3-f8df-1f17-8c19" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="85e3-f8df-1f17-8c19" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Mythic Hero" hidden="false" id="fbf6-98bd-fbdb-ea84">
+              <profiles>
+                <profile name="Mythic Hero" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="83da-5183-e99-e251">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">QUESTORIS model with a Bondsman ability only. Each time the bearer uses its Bondsman ability, you can select one additional friendly Armiger model within 12&quot; of the bearer that is not already being affected by a Bondsman ability. Until the start of your next Command phase, that model is also affected by that Bondsman ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="e4d6-1a77-132b-f39d" shared="true"/>
+                      </conditions>
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="fbf6-98bd-fbdb-ea84" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="parent" childId="fbf6-98bd-fbdb-ea84" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Revered Knight (Aura)" hidden="false" id="f896-b511-a8f-9664">
+              <profiles>
+                <profile name="Revered Knight (Aura)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="34cd-b28e-192e-4e9b">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">IMPERIAL KNIGHTS model only. While a friendly IMPERIAL KNIGHTS model is within 6&quot; of the bearer, improve that model’s Leadership characteristic by 1. If your army is Honoured, increase the range of this Aura ability to 12&quot;.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="f896-b511-a8f-9664" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="f896-b511-a8f-9664" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+              </costs>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c584-44dc-3592-8040" includeChildSelections="false" includeChildForces="false"/>
+            <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="a167-1209-e0ec-6f61" includeChildForces="true" includeChildSelections="true"/>
+          </constraints>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="e4d6-1a77-132b-f39d" shared="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="e424-58f3-8e79-19a6" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true"/>
                   </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Questor Forgepact Enhancements" id="c6b4-5090-67be-ea17" hidden="false">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Vocifer Magnificat (Aura)" hidden="false" id="7385-ce64-2f90-3115">
+              <profiles>
+                <profile name="Vocifer Magnificat (Aura)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2870-c3d4-ed26-94f1">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">IMPERIAL KNIGHTS model only. While an enemy unit is within 6&quot; of the bearer, worsen the Leadership characteristic of models in that unit by 1. While a friendly ADEPTUS MECHANICUS unit is within 6&quot; of the bearer, improve the Leadership characteristic of 1 models in that ADEPTUS MECHANICUS unit by 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
                   <conditionGroups>
-                    <conditionGroup type="and">
+                    <conditionGroup type="or">
                       <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="fbf6-98bd-fbdb-ea84" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="fbf6-98bd-fbdb-ea84" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="b5e4-3253-c157-54fd" shared="true"/>
+                      </conditions>
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="7385-ce64-2f90-3115" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="parent" childId="7385-ce64-2f90-3115" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="40"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Magos Questoris" hidden="false" id="0f43-39c6-8a98-6817">
+              <profiles>
+                <profile name="Magos Questoris" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5031-2795-5f01-0c68">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">TECH‑PRIEST model only. While the bearer is within 3&quot; of one or more friendly IMPERIAL KNIGHTS units, it has the Lone Operative ability. In your Command phase, select one friendly IMPERIAL KNIGHTS model within 3&quot; of the bearer. That model regains up to 2 lost wounds.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="5418-f86b-6e76-c5a" shared="true"/>
+                      </conditions>
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="0f43-39c6-8a98-6817" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="parent" childId="0f43-39c6-8a98-6817" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="35"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <infoLinks>
+                <infoLink name="Lone Operative" id="92d3-21b1-1097-9dbf" hidden="false" type="rule" targetId="a8a0-8fe7-898-e0f3"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Knight of the Opus Machina" hidden="false" id="19ae-50d7-bfa6-1e5b">
+              <profiles>
+                <profile name="Knight of the Opus Machina" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="efb4-f7d7-d10d-f31a">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">IMPERIAL KNIGHTS model only. Each time the bearer makes a ranged attack, if the bearer is within 6&quot; of one or more friendly ADEPTUS MECHANICUS units, re‑roll a Hit roll of 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="19ae-50d7-bfa6-1e5b" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="parent" childId="19ae-50d7-bfa6-1e5b" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="b5e4-3253-c157-54fd" shared="true"/>
                       </conditions>
                     </conditionGroup>
                   </conditionGroups>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
-          </costs>
-        </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Banner of Macharius Triumphant" id="56fc-6e31-3aec-9b74">
-          <profiles>
-            <profile name="Banner of Macharius Triumphant" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="2cd4-5280-47cb-9eda">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">IMPERIAL KNIGHTS model only. If you control an objective marker at the end of your Command phase and the bearer is within range of that objective marker, that objective marker remains under your control even if you have no models within range of it, until your opponent controls it at the start or end of any turn.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-          <modifiers>
-            <modifier type="set" value="true" field="hidden">
-              <conditionGroups>
-                <conditionGroup type="and">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="56fc-6e31-3aec-9b74" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="parent" childId="56fc-6e31-3aec-9b74" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="30"/>
-          </costs>
-        </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Unyielding Paragon" id="42bd-f84f-46e2-c246">
-          <profiles>
-            <profile name="Unyielding Paragon" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="a643-e955-2a58-24c">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">QUESTORIS model only. Each time an attack is allocated to the bearer, worsen the Armour Penetration characteristic of that attack by 1.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Omnissian Champion" hidden="false" id="917e-6609-8abe-504e">
+              <profiles>
+                <profile name="Omnissian Champion" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="464b-bf8b-311c-754b">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">IMPERIAL KNIGHTS model only. Add 4 to the bearer’s Wounds characteristic.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="b5e4-3253-c157-54fd" shared="true"/>
+                      </conditions>
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="917e-6609-8abe-504e" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="parent" childId="917e-6609-8abe-504e" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="30"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="60d0-8946-43e0-79c5" includeChildSelections="false" includeChildForces="false"/>
+            <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="54cd-28b3-6899-5e36" includeChildForces="true" includeChildSelections="true"/>
+          </constraints>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="e4d6-1a77-132b-f39d" shared="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="9a4a-a4c8-a16a-c969" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true"/>
                   </conditions>
-                  <conditionGroups>
-                    <conditionGroup type="and">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="42bd-f84f-46e2-c246" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="42bd-f84f-46e2-c246" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                      </conditions>
-                    </conditionGroup>
-                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
           </modifiers>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="40"/>
-          </costs>
-        </selectionEntry>
-      </selectionEntries>
-      <constraints>
-        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c584-44dc-3592-8040" includeChildSelections="false" includeChildForces="false"/>
-        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="a167-1209-e0ec-6f61" includeChildForces="true" includeChildSelections="true"/>
-      </constraints>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="or">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="e424-58f3-8e79-19a6" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
-        </modifier>
-      </modifiers>
-      <comment>Noble Lance</comment>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntryGroup>
     <selectionEntryGroup name="Detachment" id="d793-8964-e815-3bb8">
       <selectionEntries>
@@ -3901,6 +4063,28 @@ Reclaim the Realm
           <infoLinks>
             <infoLink name="Feel No Pain" hidden="false" type="rule" id="28e7-aca3-4df7-2d32" targetId="9bf4-280f-bbe2-6fbb"/>
           </infoLinks>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Questor Forgepact" id="9a4a-a4c8-a16a-c969">
+          <rules>
+            <rule name="Cogbound Alliance" id="8558-649f-07a3-13ee" hidden="false">
+              <description>IMPERIAL KNIGHT units from your army have the following the ability:
+
+Sacristan Pledge: In your Command phase, one model in this unit regains 1 lost wound. If this unit is within 3&quot; of one or more friendly TECH‑PRIEST models, one model in this unit regains up to D3 lost wounds instead.
+
+ADEPTUS MECHANICUS units from your army have the following ability:
+
+Divine Inspiration: Each time a model in this unit makes a ranged attack, re‑roll a Hit roll of 1. If this unit is within 6&quot; of one or more friendly IMPERIAL KNIGHTS units, re‑roll a Wound roll of 1 as well.</description>
+            </rule>
+            <rule name="Forge World Allies" id="f6ed-f1b0-9371-8e98" hidden="false">
+              <description>You can include the following ADEPTUS MECHANICUS units in your army: TECH‑PRIEST DOMINUS; TECH‑PRIEST MANIPULUS; SKITARII MARSHAL; SKITARII RANGERS; SKITARII VANGUARD. The combined points cost of such units depends on your battle size:
+
+■ Incursion: Up to 250 pts
+■ Strike Force: Up to 500 pts
+■ Onslaught: Up to 750 pts
+
+No ADEPTUS MECHANICUS models from your army can be your WARLORD.</description>
+            </rule>
+          </rules>
         </selectionEntry>
       </selectionEntries>
       <constraints>
