@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="84" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Space Marines" revision="85" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="539-7da4-d962-1a64" name="Primaris" hidden="false"/>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
@@ -7173,7 +7173,7 @@ by 1.</characteristic>
               <characteristics>
                 <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
                 <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
-                <characteristic name="BS" typeId="94d-8a98-cf90-183e">3</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
                 <characteristic name="S" typeId="2229-f494-25db-c5d3">10</characteristic>
                 <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
                 <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
@@ -10350,7 +10350,7 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
             <selectionEntry type="model" import="true" name="Desolation Marine" hidden="false" id="c58f-8678-a51c-c0af">
               <constraints>
                 <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="fb99-7a1d-6e7c-cdc9"/>
-                <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="7421-bd78-6d97-cad2"/>
+                <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="7421-bd78-6d97-cad2"/>
               </constraints>
               <entryLinks>
                 <entryLink import="true" name="Bolt Pistol" hidden="false" type="selectionEntry" id="2c3f-71aa-d0c7-2d4" targetId="18b0-8c2-173f-5">
@@ -21217,6 +21217,35 @@ Each time a model in this unit makes an attack, you can ignore any or all modi
             </modifier>
           </modifiers>
         </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Wrathful Procession" hidden="false" id="1242-7b3f-a47e-503a">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="36d3-36bc-68dd-40ac" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Wrathful Procession" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1bae-8930-94fc-3c52">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle round, you can select one of the Litanies listed below. If you do, until the end of the battle round, that Litany is active and its effects apply to all Adeptus Astartes Infantry and
+Adeptus Astartes Mounted units from your army.
+
+
+Chorus of Relentless Hate
+Add 2&quot; to the Move characteristic of models in this unit and add 1 to Advance rolls made for it.
+
+
+Rite of Perfervid Wrath
+Add 1 to the Strength characteristic of melee weapons equipped by models in this unit.
+
+
+Chant of Deathless Devotion
+Models in this unit have a 5+ invulnerable save against ranged attacks</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
     <selectionEntryGroup name="Enhancements" hidden="false" id="9e5d-de4c-c5d1-1d3e">
@@ -22853,7 +22882,7 @@ is Battle-shocked, models in that unit have the Feel No Pain 4+ ability instead.
           <selectionEntries>
             <selectionEntry type="upgrade" import="true" name="Prescience" hidden="false" id="e096-95ba-7196-6dec">
               <costs>
-                <cost name="pts" typeId="51b2-306e-1021-d207" value="30"/>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
                 <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
                 <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
                 <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
@@ -22880,6 +22909,9 @@ make a Normal move of up to D6&quot;, or up to 6&quot; instead if the Divinatio
                   </conditions>
                 </modifier>
               </modifiers>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="9b64-9812-dd39-c81a" includeChildSelections="true"/>
+              </constraints>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Celerity" hidden="false" id="3ad6-26c4-206b-aa4f">
               <costs>
@@ -22903,6 +22935,9 @@ make a Normal move of up to D6&quot;, or up to 6&quot; instead if the Divinatio
                   </conditions>
                 </modifier>
               </modifiers>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="30f2-e9a5-9ec6-d871" includeChildSelections="true"/>
+              </constraints>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Obfuscation" hidden="false" id="3adc-5ebb-e384-4ac9">
               <costs>
@@ -22928,6 +22963,9 @@ targeted by ranged attacks unless the attacking model is within 18&quot;.</char
                   </conditions>
                 </modifier>
               </modifiers>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="9f32-743f-aa7e-1f99" includeChildSelections="true"/>
+              </constraints>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Fusillade" hidden="false" id="83b5-8f79-f92f-b64f">
               <costs>
@@ -22959,6 +22997,9 @@ your army</characteristic>
                   </conditions>
                 </modifier>
               </modifiers>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="4fa9-fe4a-84c1-6f26" includeChildSelections="true"/>
+              </constraints>
             </selectionEntry>
           </selectionEntries>
           <modifiers>
@@ -22968,6 +23009,128 @@ your army</characteristic>
               </conditions>
             </modifier>
           </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="caa4-fd42-f71e-284e"/>
+            <constraint type="max" value="3" field="selections" scope="force" shared="true" id="2f19-2e9b-4ffc-d61e" includeChildSelections="true"/>
+          </constraints>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Wrathful Procession Enhancements" id="079f-b692-3af8-4380" hidden="false">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="1242-7b3f-a47e-503a" shared="true" id="11e1-f89d-8dbc-fb5b" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="36d3-36bc-68dd-40ac" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c1a3-dcf2-c1e8-244b"/>
+            <constraint type="max" value="3" field="selections" scope="force" shared="true" id="401e-d67e-f87f-b7d6" includeChildSelections="true"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Pyrebrand" hidden="false" id="c354-670d-9f16-4ddf">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9249-acae-2882-d95" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <profiles>
+                <profile name="Pyrebrand" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="422e-02dc-afad-d8ae">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Black Templars model only. Models in the bearer’s unit have the Stealth ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="b11d-b5ae-b7f6-e4f8" includeChildSelections="true"/>
+              </constraints>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Sacred Rage" hidden="false" id="082b-065f-8f5b-cdc0">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="30"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Sacred Rage" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7a64-1b27-b6b3-a5ef">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. Once per battle, at the start of the Fight phase, the bearer can use
+this Enhancement. If it does, until the end of the phase, models in the bearer’s unit have the Fights First ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="3a21-091b-fbfd-2a42" includeChildSelections="true"/>
+              </constraints>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Taramond&apos;s Censer" hidden="false" id="4c07-c365-4880-1b71">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="f5f1-007a-2ee7-8b0c" includeChildSelections="true"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Taramond&apos;s Censer" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="960e-7912-b52a-6db4">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Black Templars model only. At the start of the Fight phase, each enemy unit within Engagement Range of the bearer’s unit must take a Battle‑shock test. When doing so, subtract 1 from the result</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9249-acae-2882-d95" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Benediction of Fury" hidden="false" id="10d4-d989-5296-4220">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="ce4c-f81c-f3cf-59d1" includeChildSelections="true"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="10"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Benediction of Fury" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f057-f4f6-f245-de73">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Chaplain model only. The bearer’s melee weapons have the [DEVASTATING WOUNDS] ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="1fb1-3603-a4bd-485" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+          </selectionEntries>
         </selectionEntryGroup>
       </selectionEntryGroups>
     </selectionEntryGroup>
