@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="55" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="56" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Vindicare Assassin" hidden="false" id="efa3-2cf5-dcfb-b976">
       <categoryLinks>
@@ -980,6 +980,18 @@
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes a ranged attack that targets the closest eligible target, that attack has the [LETHAL HITS] ability.</characteristic>
           </characteristics>
         </profile>
+        <profile name="Navy Bodyguards" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="06ef-9a1f-72c7-c2ef">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If your Army Faction is not AGENTS OF THE IMPERIUM, then for each VOIDFARERS CHARACTER unit you include in your army, you can include one VOIDSMEN-AT-ARMS unit in your army that does not count towards the number of RETINUE units your army can include.</characteristic>
+          </characteristics>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="b00-cd86-4b4c-97ba" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </profile>
       </profiles>
       <selectionEntries>
         <selectionEntry type="model" import="true" name="Voidmaster" hidden="false" id="6290-934f-5266-5265" sortIndex="2">
@@ -1046,32 +1058,6 @@
               </profiles>
             </selectionEntry>
           </selectionEntries>
-        </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Navy Bodyguards" hidden="false" id="9d77-a14d-d0ca-088c" sortIndex="1">
-          <constraints>
-            <constraint type="max" value="0" field="selections" scope="force" shared="true" id="fcd1-3e9b-1bff-b1b8" includeChildSelections="true"/>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="507e-ce1f-ba18-70ea" includeChildSelections="false"/>
-          </constraints>
-          <modifiers>
-            <modifier type="increment" value="1" field="fcd1-3e9b-1bff-b1b8">
-              <repeats>
-                <repeat value="1" repeats="1" field="selections" scope="force" childId="9922-bda1-77ca-84e9" shared="true" roundUp="false" includeChildSelections="true"/>
-                <repeat value="1" repeats="1" field="selections" scope="force" childId="6c5b-17c8-6475-5a74" shared="true" roundUp="false" includeChildSelections="true"/>
-              </repeats>
-            </modifier>
-            <modifier type="set" value="true" field="hidden">
-              <conditions>
-                <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="b00-cd86-4b4c-97ba" shared="true"/>
-              </conditions>
-            </modifier>
-          </modifiers>
-          <profiles>
-            <profile name="Navy Bodyguard" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="06ef-9a1f-72c7-c2ef">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If your Army Faction is not Agents of the Imperium, then for each VOIDFARERS CHARACTER unit you include in your army, you can include one VOIDSMEN-AT-ARMS unit in your army that does not count towards the number of RETINUE units your army can include.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
         </selectionEntry>
         <selectionEntry type="model" import="true" name="Voidsman" hidden="false" id="353f-c4db-6c24-55a5" sortIndex="3">
           <constraints>
@@ -5233,6 +5219,18 @@ When mustering your army, each OFFICIO ASSASSINORUM unit from your army has the 
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While an INQUISITOR model is leading this unit, each time an attack targets this unit, subtract 1 from the Wound roll.</characteristic>
           </characteristics>
         </profile>
+        <profile name="Inquisitorial Henchmen" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="0e46-e68b-8ade-cf66">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If your Army Faction is not AGENTS OF THE IMPERIUM, then for each INQUISITOR unit you include in your army, you can include one INQUISITORIAL AGENTS unit in your army that does not count towards the number of RETINUE units your army can include.</characteristic>
+          </characteristics>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="b00-cd86-4b4c-97ba" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </profile>
       </profiles>
       <selectionEntryGroups>
         <selectionEntryGroup name="5 - 10 Acolytes" id="fc96-fbec-1493-8dda" hidden="false" defaultSelectionEntryId="1c93-2dd5-5bb2-a581" sortIndex="2">
@@ -5574,33 +5572,6 @@ When mustering your army, each OFFICIO ASSASSINORUM unit from your army has the 
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="bcc0-0b7e-d4c1-bba7" includeChildSelections="true"/>
       </constraints>
-      <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Inquisitorial Henchmen" hidden="false" id="701b-07a8-22cf-c3f0" sortIndex="1">
-          <constraints>
-            <constraint type="max" value="0" field="selections" scope="force" shared="true" id="e7be-4685-9084-e414" includeChildSelections="true"/>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5982-cc03-9466-75fa" includeChildSelections="false"/>
-          </constraints>
-          <modifiers>
-            <modifier type="increment" value="1" field="e7be-4685-9084-e414">
-              <repeats>
-                <repeat value="1" repeats="1" field="selections" scope="force" childId="92d3-447e-a71e-6739" shared="true" roundUp="false" includeChildSelections="true"/>
-              </repeats>
-            </modifier>
-            <modifier type="set" value="true" field="hidden">
-              <conditions>
-                <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="b00-cd86-4b4c-97ba" shared="true"/>
-              </conditions>
-            </modifier>
-          </modifiers>
-          <profiles>
-            <profile name="Inquisitorial Henchmen" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="0e46-e68b-8ade-cf66">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If your Army Faction is not Agents of the Imperium, then for each INQUISITOR unit you include in your army, you can include one INQUISITORIAL AGENTS unit in your army that does not count towards the number of RETINUE units your army can include.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-        </selectionEntry>
-      </selectionEntries>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Agent firearm" hidden="false" id="0117-3fb8-aad2-c164" collective="true">
       <profiles>
