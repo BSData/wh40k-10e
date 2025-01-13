@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="56" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="57" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Vindicare Assassin" hidden="false" id="efa3-2cf5-dcfb-b976">
       <categoryLinks>
@@ -4445,7 +4445,7 @@
                         <profile name="Meltagun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="f5fd-61e7-6c49-33bd">
                           <characteristics>
                             <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
                             <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
                             <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
                             <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
@@ -4509,6 +4509,7 @@
                     <infoLink name="Pistol" hidden="false" type="rule" id="2f6b-3309-70e3-755b" targetId="8bf7-8812-923d-29e4"/>
                     <infoLink name="Bolt pistol" hidden="false" type="profile" id="619e-5f30-380a-d596" targetId="fa94-1dea-2352-1039"/>
                     <infoLink name="Power weapon" hidden="false" type="profile" id="1257-2254-1c84-261e" targetId="b7aa-61a9-2901-4af4"/>
+                    <infoLink name="Ignores Cover" id="5e1e-3582-8389-0587" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
                   </infoLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="Plasma pistol and power weapon" hidden="false" id="b10e-bba6-649b-bcc">
@@ -4522,6 +4523,7 @@
                     <infoLink name="Pistol" hidden="false" type="rule" id="37ba-6ad0-80e7-a784" targetId="8bf7-8812-923d-29e4"/>
                     <infoLink name="Bolt pistol" hidden="false" type="profile" id="43de-50b9-167e-1668" targetId="fa94-1dea-2352-1039"/>
                     <infoLink name="Astartes chainsword" hidden="false" type="profile" id="8daf-c0a2-4922-8df5" targetId="1891-44a7-8c33-ab75"/>
+                    <infoLink name="Ignores Cover" id="1e02-13b3-dd6e-ea51" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
                   </infoLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="Plasma pistol and astartes chainsword" hidden="false" id="2341-fd2-154d-6572">
@@ -4596,10 +4598,26 @@
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire 1</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="set" value="Ignores Cover" field="7f1b-8591-2fcf-d01c">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="81a3-a972-dfb1-24f9" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
       </profiles>
       <infoLinks>
         <infoLink name="Rapid Fire" hidden="false" type="rule" id="feff-2e13-e01-bbb5" targetId="c5c8-8b58-b8b6-7786"/>
+        <infoLink name="Ignores Cover" id="f41f-5589-d522-0e83" hidden="false" type="rule" targetId="4640-43e7-30b-215a">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="81a3-a972-dfb1-24f9" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </infoLink>
       </infoLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Inquisitor in Terminator Armour [Legends]" hidden="false" id="c29e-e398-9588-7f30">
@@ -6146,7 +6164,7 @@ When mustering your army, each OFFICIO ASSASSINORUM unit from your army has the 
               <characteristics>
                 <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
                 <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
-                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
                 <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
                 <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
                 <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
@@ -12662,7 +12680,7 @@ For the purposes of interacting with terrain features, all models in units with 
         <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
         <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Pistol</characteristic>
       </characteristics>
     </profile>
     <profile name="Power weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="b7aa-61a9-2901-4af4">
