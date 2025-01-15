@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="f616-3f08-ee8e-3349" name="Xenos - Leagues of Votann" revision="26" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="f616-3f08-ee8e-3349" name="Xenos - Leagues of Votann" revision="27" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <categoryEntries>
     <categoryEntry id="5a53-ae58-e0d9-0616" name="Hearthkyn Warriors" hidden="false"/>
     <categoryEntry id="a360-cb11-e139-55df" name="Ûthar the Destined" hidden="false"/>
@@ -2192,10 +2192,15 @@
             </selectionEntry>
             <selectionEntry id="4894-87e8-1f3a-a7d9" name="Beserk w/ twin concussion gauntlets" hidden="false" collective="false" import="true" type="model">
               <modifiers>
-                <modifier type="decrement" field="023d-c077-e268-19b0" value="1">
-                  <conditions>
-                    <condition field="selections" scope="415a-e6f6-d17f-d700" value="10" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="lessThan"/>
-                  </conditions>
+                <modifier type="add" value="Max 1 twin concussion gauntlets per 5 models" field="error">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="10" field="selections" scope="415a-e6f6-d17f-d700" childId="model" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                        <condition type="equalTo" value="2" field="selections" scope="415a-e6f6-d17f-d700" childId="4894-87e8-1f3a-a7d9" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
               </modifiers>
               <constraints>
@@ -2234,10 +2239,15 @@
             </selectionEntry>
             <selectionEntry id="2de1-61b9-615d-4056" name="Beserk w/ mole grenade launcher" hidden="false" collective="false" import="true" type="model">
               <modifiers>
-                <modifier type="decrement" field="41f2-2317-c0f3-eb73" value="1">
-                  <conditions>
-                    <condition field="selections" scope="415a-e6f6-d17f-d700" value="10" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="lessThan"/>
-                  </conditions>
+                <modifier type="add" field="error" value="Max 1 mole launcher per 5 models">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="10" field="selections" scope="415a-e6f6-d17f-d700" childId="model" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                        <condition type="equalTo" value="2" field="selections" scope="415a-e6f6-d17f-d700" childId="2de1-61b9-615d-4056" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
               </modifiers>
               <constraints>
