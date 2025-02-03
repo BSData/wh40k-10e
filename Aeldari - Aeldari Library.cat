@@ -23402,22 +23402,9 @@ charge in a turn in which it Advanced</characteristic>
     <selectionEntryGroup id="e26f-c156-51e9-9608" name="Warhost Enhancements" hidden="false" collective="false" import="true">
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="or">
-              <conditionGroups>
-                <conditionGroup type="and">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="34a5-8c7e-f468-82d1" shared="true"/>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1f1-47f9-a3a4-9bfb" shared="true"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="3c31-6fac-9914-827a" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="77aa-6492-a785-e1b9" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="3c31-6fac-9914-827a" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
         </modifier>
       </modifiers>
       <constraints>
@@ -23735,9 +23722,31 @@ In addition, at the end of your opponent&apos;s turn, you can select a number of
 ■ Incursion - 1
 ■ Strike Force - 2
 ■ Onslaught - 3
-</description>
+
+
+
+Windriders units from your army gain the Battleline keyword.</description>
             </rule>
           </rules>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Spirit Conclave" hidden="false" id="fc94-43bf-5247-8e7c">
+          <rules>
+            <rule name="Shepherds of the Dead" id="050c-5c05-99bc-905a" hidden="false">
+              <description>Each time an Asuryani Psyker model from your army is destroyed by an enemy unit, that unit gains a Vengeful Dead token. Each time a Wraith Construct model from your army makes an attack that targets a unit with one or more Vengeful Dead tokens, add 1 to the Hit roll and add 1 to the Wound roll.
+Asuryani Psyker models from your army have the following ability:
+Spirit Guides (Aura): while a Wraithblades, Wraithguard or Wraithlord unit from your army is within 12&quot; of this model, that unit has the Battle Focus ability.
+
+
+Wraithblades and Wraithguard units from your army gains the Battleline keyword.</description>
+            </rule>
+          </rules>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
@@ -24088,6 +24097,202 @@ In addition, at the end of your opponent&apos;s turn, you can select a number of
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="e744-6455-d71e-4973" includeChildSelections="true" includeChildForces="true"/>
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="188a-0fa4-58a4-9555"/>
+      </constraints>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Windrider Host Enhancements" id="0270-1299-a721-0221" hidden="false">
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Firstdrawn Blade" hidden="false" id="cb45-ba0f-165f-45dc">
+          <profiles>
+            <profile name="Firstdrawn Blade" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2571-55a7-42af-3eca">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Asuryani Mounted model only. Models in the bearer&apos;s unit have the Scouts 9&quot; ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="3894-30ab-46e4-b4a3" includeChildSelections="true"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4378-1827-4988-be4e" shared="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="14a0-40c9-2748-ae6e" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Mirage Field" hidden="false" id="9867-5fd8-af23-34a8">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="67b6-4365-f36b-c90c" includeChildSelections="true"/>
+          </constraints>
+          <profiles>
+            <profile name="Mirage Field" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="278f-3b22-7414-a670">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Asuryani Mounted model only. Each time an attack targets the bearer&apos;s unit, subtract 1 from the Hit roll.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4378-1827-4988-be4e" shared="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="14a0-40c9-2748-ae6e" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Seersight Strike" hidden="false" id="116d-f3dd-042d-4c4f">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="ce28-9d57-32e6-2fc3" includeChildSelections="true"/>
+          </constraints>
+          <profiles>
+            <profile name="Seersight Strike" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d212-dcdb-bb36-2f21">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Asuryani Mounted Psyker model only. Psychic weapons equipped by the nearer have the [Anti-Monster 2+] and [Anti-Vehicle 2+] abilities.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4378-1827-4988-be4e" shared="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="14a0-40c9-2748-ae6e" shared="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="parent" childId="13bf-2bee-3ae0-b414" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Echoes of Ulthanesh" hidden="false" id="81a9-3e2f-0181-e550">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="b5fa-0d74-cbd2-6e35" includeChildSelections="true"/>
+          </constraints>
+          <profiles>
+            <profile name="Echoes of Ulthanesh" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="dc5d-5a47-df20-8538">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Asuryani Mounted model only. In your Command phase, roll one D6, adding 1 to the result if the bearer is not within your deployment zone, and adding an additional 1 to the result if the bearer is within your opponent&apos;s deployment zone: on a 5+, you gain 1CP.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4378-1827-4988-be4e" shared="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="14a0-40c9-2748-ae6e" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+      </selectionEntries>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="17cc-9eba-ef7c-125c" includeChildSelections="true"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1bd4-a878-d8d6-eba3" includeChildSelections="false"/>
+      </constraints>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="c8a3-920b-166b-30d9" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Spirit Conclave Enhancements" id="b5fd-4dbd-d000-58fe" hidden="false">
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Light of Clarity" hidden="false" id="9898-7c41-c373-b3c9">
+          <profiles>
+            <profile name="Light of Clarity" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2337-b562-74ba-f2be">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Spiritseer model only. In your Command phase, select one friendly Wraith Construct unit within 12&quot; of the bearer. Until the start of your next Command phase, add 1 to the Objective Control characteristic of Infanty models in that unit and add 3 to the Objective Control characteristic of Monster models in that unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="7ffc-5ee2-121a-2659" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="07a0-1757-6048-0960" includeChildSelections="true"/>
+          </constraints>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Stave of Kurnous" hidden="false" id="3f52-2f29-e0d8-8bff">
+          <profiles>
+            <profile name="Stave of Kurnous" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b6db-35b5-dc12-881d">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Spiritseer model only. In your Command phase, select one friendly Wraith Construct unit within 12&quot; of the bearer (excluding Titanic units). Until the start of your next Command phase, each time a model in that unit makes an attack, on a Critical Would, that attack has the [Precision] ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="00cc-ad16-982a-9eb4" includeChildSelections="true"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="7ffc-5ee2-121a-2659" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Rune of Mists" hidden="false" id="0874-acfa-0e5d-ad23">
+          <profiles>
+            <profile name="Rune of Mists" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a161-0012-0894-e263">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Spiritseer model only. In your Command phase, select one friendly Wraith Construct unit within 12&quot; of the bearer. Until the start of your next Command phase, each time a ranged attack targets that unit, unless the attacking model is within 18, models in that unit have the Benefit of Cover against that attack.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="b0e1-cca7-58ae-be32" includeChildSelections="true"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="7ffc-5ee2-121a-2659" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Higher Duty" hidden="false" id="9647-0b96-2add-51a4">
+          <profiles>
+            <profile name="Higher Duty" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="298c-20bc-8ac1-f6ea">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Spiritseer model only. Oncer per turn, when an enemy unit ends a Normal, Advance or Fall Back move within 9&quot; of the bearer, the bearer&apos;s unit can make a normal move of up to 6&quot;.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="4383-f39e-6dc3-eb54" includeChildSelections="true"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="7ffc-5ee2-121a-2659" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+      </selectionEntries>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="0be0-ab65-7886-dc98" includeChildSelections="true"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d281-1aa0-d88d-0c08" includeChildSelections="false"/>
       </constraints>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
