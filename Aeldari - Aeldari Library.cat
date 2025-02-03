@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="63" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="64" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <publications>
     <publication id="442c-a37c-3908-d701" name="Index: Aeldari" shortName="I:Aeldari" publisher="Index: Aeldari" publicationDate="6/15/2023"/>
     <publication id="1427-7c5c-863f-ac94" name="Index: Drukhari" shortName="I:Drukhari" publisher="Index: Drukhari" publicationDate="6/15/2023"/>
@@ -10126,9 +10126,8 @@ become separate units, with their original Starting Strengths.</characteristic>
         <categoryLink id="f2c0-b7d6-3578-460b" name="Fly" hidden="false" targetId="c619-2086-bbcf-69c9" primary="false"/>
         <categoryLink id="7351-d315-8fcd-d551" name="Vehicle" hidden="false" targetId="dbd4-63-af05-998" primary="true"/>
         <categoryLink id="dfc8-a2-7f4c-5c59" name="Smoke" hidden="false" targetId="6df-937-16bc-8c1a" primary="false"/>
-        <categoryLink id="1dcd-99cd-1cb5-8c2b" name="Faction: Aeldari" hidden="false" targetId="4378-1827-4988-be4e" primary="false"/>
-        <categoryLink id="2f88-4719-2409-2bf0" name="Corsairs and Travelling players" hidden="false" targetId="d39d-c104-5d92-3d58" primary="false"/>
         <categoryLink targetId="83bb-5ddb-b1d9-39b8" id="f812-eaea-de0e-4c1b" primary="false" name="Harlequin Allies"/>
+        <categoryLink targetId="a5a2-d0c0-0349-d226" id="97fc-8173-aa89-0694" primary="false" name="Faction: Harlequins"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="115"/>
@@ -10170,6 +10169,7 @@ become separate units, with their original Starting Strengths.</characteristic>
           </modifiers>
         </infoLink>
         <infoLink id="ce65-e758-911d-6b93" name="Strands of Fate" hidden="false" targetId="c324-e193-e23c-7d2e" type="rule"/>
+        <infoLink name="Disparate Paths" id="3e5d-f943-2a64-dc3e" hidden="false" type="rule" targetId="10d8-3547-47ae-baab"/>
       </infoLinks>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Close Combat Weapon" hidden="false" id="9b6a-5658-e114-b9a1">
@@ -23399,7 +23399,7 @@ charge in a turn in which it Advanced</characteristic>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
-    <selectionEntryGroup id="e26f-c156-51e9-9608" name="Battle Host Enhancements" hidden="false" collective="false" import="true">
+    <selectionEntryGroup id="e26f-c156-51e9-9608" name="Warhost Enhancements" hidden="false" collective="false" import="true">
       <modifiers>
         <modifier type="set" value="true" field="hidden">
           <conditionGroups>
@@ -23425,20 +23425,32 @@ charge in a turn in which it Advanced</characteristic>
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="dc8e-1e1d-c538-77d8"/>
       </constraints>
       <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="The Weeping Stones" hidden="false" id="6605-bd06-4048-9e14" collective="false">
+        <selectionEntry type="upgrade" import="true" name="Psychic Destroyer" hidden="false" id="6605-bd06-4048-9e14" collective="false">
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
           </costs>
           <profiles>
-            <profile name="The Weeping Stones" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3f73-8bbc-22e7-6075">
+            <profile name="Psychic Destroyer" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3f73-8bbc-22e7-6075">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Aeldari model only. Each time the bearer’s unit destroys an enemy unit, roll one D6 and add it to your Fate dice pool displaying the result you just rolled</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Asuryani Psyker model only. Add 1 to the Damage characteristic of ranged Psychic weapons equipped by the bearer.</characteristic>
               </characteristics>
             </profile>
           </profiles>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="35aa-5307-9d7e-b64a" includeChildSelections="true"/>
           </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4378-1827-4988-be4e" shared="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="13bf-2bee-3ae0-b414" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="The Phoenix Gem" hidden="false" id="607f-8f46-48c4-edb7" collective="false">
           <costs>
@@ -23447,22 +23459,29 @@ charge in a turn in which it Advanced</characteristic>
           <profiles>
             <profile name="The Phoenix Gem" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="bcf5-ae36-1885-a978">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Aeldari model only. The first time the bearer is destroyed, roll one D6: on a 2+, keep it to one side. At the end of the phase, set the bearer back up again, as close as possible to its previous position and not within Engagement Range of any enemy models, with its full wounds remaining.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Asuryani model only. The first time the bearer is destroyed, remove it from play, then, at the end of the phase, roll one D6: on a 2+, set the bearer back up on the battlefield as close as possible to where it was destroyed and not within Engagement Range of one of more enemy units, with its full wounds remaining.</characteristic>
               </characteristics>
             </profile>
           </profiles>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="5710-5647-9b95-6a84" includeChildSelections="true"/>
           </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4378-1827-4988-be4e" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Reader of the Runes" hidden="false" id="3c85-7aba-e35d-27be" collective="false">
+        <selectionEntry type="upgrade" import="true" name="Gift of Foresight" hidden="false" id="3c85-7aba-e35d-27be" collective="false">
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
           </costs>
           <profiles>
-            <profile name="Reader of the Runes" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5401-a04-29e8-1b72">
+            <profile name="Gift of Foresight" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5401-a04-29e8-1b72">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Aeldari Psyker model only. In your Command phase, you can select one dice in your Fate dice pool, re-roll it, then add it back to your Fate dice pool displaying the result you just rolled</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Asuryani model only. Once per battle round, you can target the bearer&apos;s unit with the Command Re-roll Stratagem for 0CP.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -23472,25 +23491,32 @@ charge in a turn in which it Advanced</characteristic>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditions>
-                <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="13bf-2bee-3ae0-b414" shared="true"/>
+                <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4378-1827-4988-be4e" shared="true"/>
               </conditions>
             </modifier>
           </modifiers>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Fate&apos;s Messenger" hidden="false" id="dab9-c5f2-a09f-c524" collective="false">
+        <selectionEntry type="upgrade" import="true" name="Timeless Strategist" hidden="false" id="dab9-c5f2-a09f-c524" collective="false">
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
           </costs>
           <profiles>
-            <profile name="Fate&apos;s Messenger" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="be33-f12d-911a-8fc4">
+            <profile name="Timeless Strategist" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="be33-f12d-911a-8fc4">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Aeldari model only. Once per turn, just after making a Hit roll, a Wound roll or a saving throw for the bearer, you can treat the result as an unmodified roll of 6 instead.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Asuryani model only. At the start of the battle round, if the bearer is on the battlefield (or any Transport it is embarked within is on the battlefield), you receive 1 additional Battle Focus token.</characteristic>
               </characteristics>
             </profile>
           </profiles>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="a6be-4c6d-42b6-c89e" includeChildSelections="true"/>
           </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4378-1827-4988-be4e" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
@@ -23609,22 +23635,19 @@ charge in a turn in which it Advanced</characteristic>
     </selectionEntryGroup>
     <selectionEntryGroup name="Detachments" hidden="false" id="7466-16bc-8db6-814" defaultSelectionEntryId="none">
       <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Battle Host" hidden="false" id="3c31-6fac-9914-827a">
+        <selectionEntry type="upgrade" import="true" name="Warhost" hidden="false" id="3c31-6fac-9914-827a">
           <modifiers>
             <modifier type="set" value="true" field="hidden">
-              <conditionGroups>
-                <conditionGroup type="and">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="34a5-8c7e-f468-82d1" shared="true"/>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1f1-47f9-a3a4-9bfb" shared="true"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true"/>
+              </conditions>
             </modifier>
           </modifiers>
           <rules>
-            <rule name="Unparalleled Foresight" hidden="false" id="4f8a-8971-6ecb-742f">
-              <description>Each time an Aeldari unit from your army is selected to shoot or fight, you can re-roll one Hit roll and you can re-roll one Wound roll when resolving those attacks</description>
+            <rule name="Martial Grace" hidden="false" id="4f8a-8971-6ecb-742f">
+              <description>At the start of the battle round, you receive 1 additional Battle Focus token.
+Each time a unit from your army performs the Swift as the Wind Agile Manoeuvre, until the end of the phase, add an additional 1&quot; to the Move characteristic of models in that unit.
+Each time a unit from your army performs an Agile Manoeuvre that involves rolling a D6, add 1 to the result.</description>
             </rule>
           </rules>
         </selectionEntry>
@@ -23682,19 +23705,37 @@ Each time a Drukhari or Harlequins model from your army makes an attack, if th
         <selectionEntry type="upgrade" import="true" name="Armoured Warhost" hidden="false" id="a27b-ac32-f0fd-8111">
           <modifiers>
             <modifier type="set" value="true" field="hidden">
-              <conditionGroups>
-                <conditionGroup type="and">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="34a5-8c7e-f468-82d1" shared="true"/>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="1f1-47f9-a3a4-9bfb" shared="true"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true"/>
+              </conditions>
             </modifier>
           </modifiers>
           <rules>
             <rule name="Skilled Crews" id="a2c3-9df1-e4e7-0e28" hidden="false">
               <description>Ranged weapons equipped by Aeldari Vehicle models from your army have the [ASSAULT] ability and you can re‑roll Advance rolls made for Aeldari Vehicle Fly units from your army.</description>
+            </rule>
+          </rules>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Windrider Host" hidden="false" id="c8a3-920b-166b-30d9">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <rules>
+            <rule name="Ride the Wind" id="00f2-44cb-95e5-5143" hidden="false">
+              <description>In the Declare Battle Formations step you can set up Asuryani Mounted and Vyper units in Reserves.
+During the battle, such units can be set up on the battlefield as if they were arriving from Strategic Reserves. For the purposes of setting up Asuyani Mounted or Vyper units from your army on the battlefield, treat the current battle round number as being one higher than it actually is.
+
+
+In addition, at the end of your opponent&apos;s turn, you can select a number of Asuryani Mounted of Vyper units from your army (excluding units within Engagement Range of one or more enely units), then remove those units from the battlefield and place them into Strategic Reserves. The maximum number of units you can select depends on the battle size, as shown below:
+
+■ Incursion - 1
+■ Strike Force - 2
+■ Onslaught - 3
+</description>
             </rule>
           </rules>
         </selectionEntry>
@@ -24051,24 +24092,23 @@ Each time a Drukhari or Harlequins model from your army makes an attack, if th
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <sharedRules>
-    <rule id="c324-e193-e23c-7d2e" name="Strands of Fate" hidden="false">
-      <description>If your Army Faction is AELDARI, at the start of the battle, make a Strands of Fate roll by rolling six D6. 
+    <rule id="c324-e193-e23c-7d2e" name="Battle Focus" hidden="false">
+      <description>If your Army Faction is AELDARI, at the start of the battle round, you receive a number of Battle Focus tokens based on the battle size, as shown below:
 
 
-If you wish, you can then re-roll all of these dice, but if you do, roll one less D6. You can continue re-rolling all of the dice in this manner, rolling one less D6 each time you do, until you are satisfied with the results rolled (or until you only have a single D6 remaining).
+■ Incursion - 2
+■ Strike Force - 4
+■ Onslaught - 6
 
 
-When you are satisfied with the results rolled, those remaining dice become your Fate dice for the battle. These results cannot be changed or re-rolled further, unless a rule specifically states otherwise. Keep your Fate dice to one side – this is your Fate dice pool.
-
-
-Once per phase, before making a dice roll for a model or unit from your army with the Strands of Fate ability, if you have one or more dice in your Fate dice pool, you can use one of those Fate dice. To do so, select one of those Fate dice to substitute that dice roll. The dice that is being substituted is not rolled; instead, the value of the selected Fate dice is used as if it had been rolled (this counts as an unmodified dice roll of that value for all rules purposes). Each Fate dice can only be used in this way once. After using a Fate dice, remove it from your Fate dice pool and roll all remaining dice that are part of that dice roll (if any). You can use Fate dice for any of the following types of dice roll:
-■ Advance roll
-■ Battle-shock test
-■ Charge roll
-■ Damage roll
-■ Hit roll
-■ Saving throw
-■ Wound roll</description>
+Each time one of the triggers shown in the Agile Manoeuvres section of your codex occurs, you can spend one Battle focus token to enable the relevant eligible unit to perform that Agile Manoeuvre. A unit is eligible to perform an Agile Manoeuvre if it has this ability and has not already performed an Agile Manoeuvre in the same phase. Unless otherwise stated, you cannot trigger the same Agile Manoeuvre more than once per phase. At the end of the battle round, all unspent Battle Focus tokens are lost.</description>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true" id="6bd9-b78e-3ca3-6200"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </rule>
     <rule name="Power from Pain" hidden="false" id="5e02-2ddc-f55-e6dd">
       <description>If your Army Faction is DRUKHARI, units from your army with this ability can become Empowered Through Pain. This is done using Pain tokens.
@@ -24097,6 +24137,16 @@ At the start of any phase, you can expend one or more Pain tokens from your Pai
         <modifier type="set" value="true" field="hidden">
           <conditions>
             <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true" id="48e8-7037-a822-6674"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </rule>
+    <rule name="Disparate Paths" id="10d8-3547-47ae-baab" hidden="false">
+      <description>When mustering you army, you can include Harlequins units in your army, even though they do not have the Asuryani Faction keyword. Unless otherwise stated, you cannot select Harlequins or Ynnari as your Army Faction.</description>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="primary-catalogue" childId="38de-521f-1ce0-44a0" shared="true" id="6290-8ce8-d26b-e51c"/>
           </conditions>
         </modifier>
       </modifiers>

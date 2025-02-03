@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="26" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="27" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -182,7 +182,7 @@
         </modifier>
       </modifiers>
     </categoryEntry>
-    <categoryEntry id="4378-1827-4988-be4e" name="Faction: Aeldari" hidden="false"/>
+    <categoryEntry id="4378-1827-4988-be4e" name="Faction: Asuryani" hidden="false"/>
     <categoryEntry id="fa45-57e-930e-602b" name="Faction: Astra Militarum" hidden="false"/>
     <categoryEntry id="b5e4-3253-c157-54fd" name="Faction: Imperial Knights" hidden="false">
       <modifiers>
@@ -419,6 +419,8 @@
     <categoryEntry name="Cerastus" hidden="false" id="481c-3b2e-5c99-c248"/>
     <categoryEntry name="Artillery" hidden="false" id="8cab-448d-37b7-32bc"/>
     <categoryEntry name="Order of Battle" id="ac7e-be7b-eb02-4752" hidden="false"/>
+    <categoryEntry name="Faction: Harlequins" id="a5a2-d0c0-0349-d226" hidden="false"/>
+    <categoryEntry name="Faction: Ynnari" id="9a21-190a-9d31-35d2" hidden="false"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
