@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="df9a-59b2-f464-59ad" name="Chaos - World Eaters" revision="37" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="df9a-59b2-f464-59ad" name="Chaos - World Eaters" revision="38" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <profileTypes>
     <profileType id="02a0-fa96-6f9b-354f" name="Wrathful Presence">
       <characteristicTypes>
@@ -1307,6 +1307,7 @@
             <selectionEntry id="b568-8a23-be6f-a14d" name="Khorne Berserker" hidden="false" collective="false" import="true" type="model">
               <constraints>
                 <constraint field="selections" scope="parent" value="9" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="9a73-d7f9-8179-db60" type="max"/>
+                <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="168e-b157-a94d-739e" includeChildSelections="false"/>
               </constraints>
               <entryLinks>
                 <entryLink id="2b9d-2f55-fe06-c761" name="Berserker chainblade" hidden="false" collective="false" import="true" targetId="44b0-1947-ea4a-3005" type="selectionEntry"/>
@@ -1319,13 +1320,55 @@
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
+              <modifiers>
+                <modifier type="decrement" value="1" field="9a73-d7f9-8179-db60">
+                  <repeats>
+                    <repeat value="1" repeats="1" field="selections" scope="parent" childId="f2e9-2470-ad96-9ae0" shared="true" roundUp="false" includeChildSelections="true"/>
+                  </repeats>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry id="f2e9-2470-ad96-9ae0" name="Khorne Berserker w/ alternate weapons" hidden="false" collective="false" import="true" type="model">
               <modifiers>
-                <modifier type="set" field="7608-826b-4b1a-b7f4" value="2">
-                  <conditions>
-                    <condition field="selections" scope="f909-00c7-8ba4-018a" value="6" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="lessThan"/>
-                  </conditions>
+                <modifier type="add" field="error" value="Max 2 {this} per 5 models">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="10" field="selections" scope="f909-00c7-8ba4-018a" childId="model" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                        <condition type="greaterThan" value="2" field="selections" scope="f909-00c7-8ba4-018a" childId="f2e9-2470-ad96-9ae0" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+                <modifier type="set" value="Khorne Berserker w/ chainblade and plasma pistol" field="name">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="equalTo" value="1" field="selections" scope="f2e9-2470-ad96-9ae0" childId="ef2b-667a-9b7e-b262" shared="true" includeChildSelections="true"/>
+                        <condition type="equalTo" value="1" field="selections" scope="f2e9-2470-ad96-9ae0" childId="47e1-9e86-8a80-66e1" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+                <modifier type="set" value="Khorne Berserker w/ eviscerator and plasma pistol" field="name">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="equalTo" value="1" field="selections" scope="f2e9-2470-ad96-9ae0" childId="f03b-722a-282b-078e" shared="true" includeChildSelections="true"/>
+                        <condition type="equalTo" value="1" field="selections" scope="f2e9-2470-ad96-9ae0" childId="47e1-9e86-8a80-66e1" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+                <modifier type="set" value="Khorne Berserker w/ eviscerator and bolt pistol" field="name">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="equalTo" value="1" field="selections" scope="f2e9-2470-ad96-9ae0" childId="f03b-722a-282b-078e" shared="true" includeChildSelections="true"/>
+                        <condition type="equalTo" value="1" field="selections" scope="f2e9-2470-ad96-9ae0" childId="666f-bc0f-24e0-f6ce" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
               </modifiers>
               <constraints>
@@ -1606,6 +1649,66 @@
             <condition field="selections" scope="45f6-8429-a1d9-2a51" value="5" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="greaterThan"/>
           </conditions>
         </modifier>
+        <modifier type="add" value="Max 1 paired accursed weapons per 5 models" field="error">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="1" field="selections" scope="45f6-8429-a1d9-2a51" childId="32bc-0724-a7cf-f17c" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="10" field="selections" scope="45f6-8429-a1d9-2a51" childId="model" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="2" field="selections" scope="45f6-8429-a1d9-2a51" childId="32bc-0724-a7cf-f17c" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="10" field="selections" scope="45f6-8429-a1d9-2a51" childId="model" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="add" value="Max 3 power fists per 5 models" field="error">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="3" field="selections" scope="45f6-8429-a1d9-2a51" childId="a1b4-80b4-e85e-96ec" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="10" field="selections" scope="45f6-8429-a1d9-2a51" childId="model" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="6" field="selections" scope="45f6-8429-a1d9-2a51" childId="a1b4-80b4-e85e-96ec" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="10" field="selections" scope="45f6-8429-a1d9-2a51" childId="model" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="add" value="Max 1 chainfist per 5 models" field="error">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="1" field="selections" scope="45f6-8429-a1d9-2a51" childId="d2a3-be7e-4ec8-f9f6" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="10" field="selections" scope="45f6-8429-a1d9-2a51" childId="model" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="2" field="selections" scope="45f6-8429-a1d9-2a51" childId="d2a3-be7e-4ec8-f9f6" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="10" field="selections" scope="45f6-8429-a1d9-2a51" childId="model" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
       </modifiers>
       <constraints>
         <constraint field="selections" scope="force" value="3" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="bafc-43a3-0d00-77c9" type="max"/>
@@ -1737,17 +1840,9 @@
                 <selectionEntry id="7aaa-752f-16ab-98d3" name="Combi-bolter, chainfist" hidden="false" collective="false" import="true" type="upgrade">
                   <entryLinks>
                     <entryLink id="4f07-b038-51cd-4252" name="Chainfist" hidden="false" collective="false" import="true" targetId="d2a3-be7e-4ec8-f9f6" type="selectionEntry">
-                      <modifiers>
-                        <modifier type="set" field="11d4-df60-753f-26cf" value="2">
-                          <conditions>
-                            <condition field="selections" scope="45f6-8429-a1d9-2a51" value="10" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="atLeast"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
                       <constraints>
                         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="6829-688c-20cc-9bee" type="min"/>
                         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="f267-cb0d-96b6-a16f" type="max"/>
-                        <constraint field="selections" scope="45f6-8429-a1d9-2a51" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="11d4-df60-753f-26cf" type="max"/>
                       </constraints>
                     </entryLink>
                     <entryLink id="e1ae-1368-9031-ff6d" name="Combi-bolter" hidden="false" collective="false" import="true" targetId="2d4d-9623-1cea-b73a" type="selectionEntry">
@@ -1770,17 +1865,9 @@
                       </constraints>
                     </entryLink>
                     <entryLink id="11dd-abd0-b264-f792" name="Power fist" hidden="false" collective="false" import="true" targetId="a1b4-80b4-e85e-96ec" type="selectionEntry">
-                      <modifiers>
-                        <modifier type="set" field="3c3d-fec3-4aea-7de8" value="6">
-                          <conditions>
-                            <condition field="selections" scope="45f6-8429-a1d9-2a51" value="10" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="atLeast"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
                       <constraints>
                         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="0135-2030-e5bd-36d3" type="min"/>
                         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="6d9e-8e40-cc03-929c" type="max"/>
-                        <constraint field="selections" scope="45f6-8429-a1d9-2a51" value="3" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="3c3d-fec3-4aea-7de8" type="max"/>
                       </constraints>
                     </entryLink>
                   </entryLinks>
@@ -1790,18 +1877,7 @@
                 </selectionEntry>
               </selectionEntries>
               <entryLinks>
-                <entryLink id="b8d0-cc58-0fee-c02c" name="Paired accursed weapons" hidden="false" collective="false" import="true" targetId="32bc-0724-a7cf-f17c" type="selectionEntry">
-                  <modifiers>
-                    <modifier type="set" field="30c0-b20a-246d-7377" value="2">
-                      <conditions>
-                        <condition field="selections" scope="45f6-8429-a1d9-2a51" value="10" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="atLeast"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
-                  <constraints>
-                    <constraint field="selections" scope="45f6-8429-a1d9-2a51" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="30c0-b20a-246d-7377" type="max"/>
-                  </constraints>
-                </entryLink>
+                <entryLink id="b8d0-cc58-0fee-c02c" name="Paired accursed weapons" hidden="false" collective="false" import="true" targetId="32bc-0724-a7cf-f17c" type="selectionEntry"/>
               </entryLinks>
             </selectionEntryGroup>
           </selectionEntryGroups>
@@ -1817,7 +1893,7 @@
             <constraint field="selections" scope="parent" value="9" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="9bef-d87c-a1bb-8302" type="max"/>
           </constraints>
           <selectionEntries>
-            <selectionEntry id="cfd2-df58-3637-0a6c" name="Combi-bolter, accursed weapon" hidden="false" collective="false" import="true" type="model">
+            <selectionEntry id="cfd2-df58-3637-0a6c" name="Combi-bolter, accursed weapon" hidden="false" collective="false" import="true" type="model" sortIndex="1">
               <constraints>
                 <constraint field="selections" scope="parent" value="9" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="d99c-1c58-11bc-3181" type="max"/>
               </constraints>
@@ -1839,7 +1915,7 @@
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
             </selectionEntry>
-            <selectionEntry id="b0b9-9511-44c1-b272" name="Combi-bolter, chainfist" hidden="false" collective="false" import="true" type="model">
+            <selectionEntry id="b0b9-9511-44c1-b272" name="Combi-bolter, chainfist" hidden="false" collective="false" import="true" type="model" sortIndex="2">
               <constraints>
                 <constraint field="selections" scope="parent" value="2" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="669d-5dd3-0281-f40a" type="max"/>
               </constraints>
@@ -1861,7 +1937,7 @@
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
             </selectionEntry>
-            <selectionEntry id="782f-6bfe-7238-960a" name="Combi-bolter, power fist" hidden="false" collective="false" import="true" type="model">
+            <selectionEntry id="782f-6bfe-7238-960a" name="Combi-bolter, power fist" hidden="false" collective="false" import="true" type="model" sortIndex="3">
               <constraints>
                 <constraint field="selections" scope="parent" value="6" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="dc1d-1b9d-8970-4e51" type="max"/>
               </constraints>
@@ -1883,7 +1959,7 @@
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
             </selectionEntry>
-            <selectionEntry id="6f2b-96ea-9352-c5f4" name="Combi-weapon, accursed weapon" hidden="false" collective="false" import="true" type="model">
+            <selectionEntry id="6f2b-96ea-9352-c5f4" name="Combi-weapon, accursed weapon" hidden="false" collective="false" import="true" type="model" sortIndex="4">
               <constraints>
                 <constraint field="selections" scope="parent" value="9" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="bab3-ae83-c558-a421" type="max"/>
               </constraints>
@@ -1905,7 +1981,7 @@
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
             </selectionEntry>
-            <selectionEntry id="d372-f3e8-a5a0-a8b1" name="Combi-weapon, chainfist" hidden="false" collective="false" import="true" type="model">
+            <selectionEntry id="d372-f3e8-a5a0-a8b1" name="Combi-weapon, chainfist" hidden="false" collective="false" import="true" type="model" sortIndex="5">
               <constraints>
                 <constraint field="selections" scope="parent" value="2" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="a78d-f412-2a0f-e09f" type="max"/>
               </constraints>
@@ -1927,7 +2003,7 @@
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
             </selectionEntry>
-            <selectionEntry id="a2f9-42e2-efbf-fe40" name="Combi-weapon, power fist" hidden="false" collective="false" import="true" type="model">
+            <selectionEntry id="a2f9-42e2-efbf-fe40" name="Combi-weapon, power fist" hidden="false" collective="false" import="true" type="model" sortIndex="6">
               <constraints>
                 <constraint field="selections" scope="parent" value="6" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="ab14-485a-be77-6684" type="max"/>
               </constraints>
@@ -1949,7 +2025,7 @@
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
             </selectionEntry>
-            <selectionEntry id="10f6-ffca-ae38-250e" name="Paired accursed weapons" hidden="false" collective="false" import="true" type="model">
+            <selectionEntry id="10f6-ffca-ae38-250e" name="Paired accursed weapons" hidden="false" collective="false" import="true" type="model" sortIndex="7">
               <constraints>
                 <constraint field="selections" scope="parent" value="2" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="2c17-29f3-88d9-5d7b" type="max"/>
               </constraints>
@@ -1965,16 +2041,21 @@
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
             </selectionEntry>
-            <selectionEntry id="5f1f-f3bb-d6dd-6714" name="Heavy weapon" hidden="false" collective="false" import="true" type="model">
+            <selectionEntry id="5f1f-f3bb-d6dd-6714" name="Heavy weapon" hidden="false" collective="false" import="true" type="model" sortIndex="8">
               <modifiers>
-                <modifier type="set" field="6dfe-76a0-6932-8f99" value="2">
-                  <conditions>
-                    <condition field="selections" scope="45f6-8429-a1d9-2a51" value="10" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="model" type="atLeast"/>
-                  </conditions>
+                <modifier type="add" field="error" value="Max 1 {this} per 5 models">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="10" field="selections" scope="45f6-8429-a1d9-2a51" childId="model" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                        <condition type="greaterThan" value="1" field="selections" scope="45f6-8429-a1d9-2a51" childId="5f1f-f3bb-d6dd-6714" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
               </modifiers>
               <constraints>
-                <constraint field="selections" scope="45f6-8429-a1d9-2a51" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="6dfe-76a0-6932-8f99" type="max"/>
+                <constraint field="selections" scope="45f6-8429-a1d9-2a51" value="2" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="6dfe-76a0-6932-8f99" type="max"/>
               </constraints>
               <selectionEntryGroups>
                 <selectionEntryGroup id="0b10-6367-8a8c-15b1" name="Melee weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="2323-5c06-ade2-ffbc">
