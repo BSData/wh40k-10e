@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="1069-10ff-3ba9-873b" name="Chaos - Thousand Sons" revision="39" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="1069-10ff-3ba9-873b" name="Chaos - Thousand Sons" revision="40" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <publications>
     <publication id="015a-6212-d737-9044" name="Index - Thousand Sons"/>
   </publications>
@@ -298,6 +298,7 @@
         <entryLink import="true" name="Show Titans" hidden="false" type="selectionEntry" id="b017-73b9-43f3-534" targetId="f26b-79db-80e0-3a3b"/>
       </entryLinks>
     </entryLink>
+    <entryLink import="true" name="Order of Battle" hidden="false" id="2849-0532-5b58-f709" type="selectionEntry" targetId="eda7-8b4b-3719-af36"/>
   </entryLinks>
   <sharedSelectionEntries>
     <selectionEntry id="3b0d-dccf-8661-be1c" name="Detachment Choice" hidden="false" collective="false" import="true" type="upgrade">
@@ -1227,6 +1228,9 @@
     <selectionEntry id="60de-4c77-95e1-1337" name="Thousand Sons Chaos Spawn" hidden="false" collective="false" import="true" type="unit" publicationId="015a-6212-d737-9044" page="19-20">
       <constraints>
         <constraint field="selections" scope="force" value="3" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="9f3a-bee0-a8c9-7e27" type="max"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="13b7-1db9-0513-57b3" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="1b4f-9e27-aefc-f0e1" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="bc17-90d1-fb3e-c5da" includeChildSelections="false"/>
       </constraints>
       <profiles>
         <profile id="578c-1899-a289-8d3b" name="Thousand Sons Chaos Spawn" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
@@ -1303,6 +1307,75 @@
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="65"/>
       </costs>
+      <modifiers>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="13b7-1db9-0513-57b3">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="1b4f-9e27-aefc-f0e1">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="set" value="6" field="bc17-90d1-fb3e-c5da">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <entryLinks>
+        <entryLink import="true" name="Crusade" hidden="false" id="db1e-61f8-2eb1-5d7d" type="selectionEntryGroup" targetId="a877-78a7-06f2-f04d"/>
+      </entryLinks>
     </selectionEntry>
     <selectionEntry id="3413-b8fd-e22c-da4f" name="Thousand Sons Vindicator" hidden="false" collective="false" import="true" type="model" publicationId="015a-6212-d737-9044" page="21-22">
       <profiles>
@@ -3196,6 +3269,70 @@
             <condition type="greaterThan" value="5" field="selections" scope="5d3d-e13b-8b76-dad3" childId="model" shared="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="f4ee-edea-5e36-706b">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="604d-3527-348d-f430">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="set" value="6" field="2c86-bfc6-5935-801a">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
       <infoLinks>
         <infoLink name="Kindred Sorcery" hidden="false" type="rule" id="851c-88d1-39ec-3d1" targetId="4258-60ff-8457-a123"/>
@@ -3254,11 +3391,91 @@
                         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                         <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
                       </characteristics>
+                      <modifierGroups>
+                        <modifierGroup type="and">
+                          <comment>Armour Piercing</comment>
+                          <modifiers>
+                            <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="decrement" value="1" field="9ead-8a10-520-de15">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Brutal</comment>
+                          <modifiers>
+                            <modifier type="append" value="Brutal" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="2229-f494-25db-c5d3">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Finely Balanced</comment>
+                          <modifiers>
+                            <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="decrement" value="1" field="94d-8a98-cf90-183e">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Heirloom</comment>
+                          <modifiers>
+                            <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="3bb-c35f-f54-fb08">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Master-worked</comment>
+                          <modifiers>
+                            <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                      </modifierGroups>
                     </profile>
                   </profiles>
                   <infoLinks>
                     <infoLink id="4d73-4b6d-f37a-ffbc" name="Pistol" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
                   </infoLinks>
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="f46d-902c-c8e7-31c7" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
                 </selectionEntry>
                 <selectionEntry id="8f46-2434-4b74-bef8" name="Plasma pistol" hidden="false" collective="false" import="true" type="upgrade">
                   <profiles>
@@ -3272,6 +3489,83 @@
                         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                         <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
                       </characteristics>
+                      <modifierGroups>
+                        <modifierGroup type="and">
+                          <comment>Armour Piercing</comment>
+                          <modifiers>
+                            <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="decrement" value="1" field="9ead-8a10-520-de15">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Brutal</comment>
+                          <modifiers>
+                            <modifier type="append" value="Brutal" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="2229-f494-25db-c5d3">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Finely Balanced</comment>
+                          <modifiers>
+                            <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="decrement" value="1" field="94d-8a98-cf90-183e">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Heirloom</comment>
+                          <modifiers>
+                            <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="3bb-c35f-f54-fb08">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Master-worked</comment>
+                          <modifiers>
+                            <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                      </modifierGroups>
                     </profile>
                     <profile id="fddd-f19b-8c9-c477" name="➤ Plasma pistol - supercharge" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
                       <characteristics>
@@ -3283,12 +3577,92 @@
                         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
                         <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Hazardous, Pistol</characteristic>
                       </characteristics>
+                      <modifierGroups>
+                        <modifierGroup type="and">
+                          <comment>Armour Piercing</comment>
+                          <modifiers>
+                            <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="decrement" value="1" field="9ead-8a10-520-de15">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Brutal</comment>
+                          <modifiers>
+                            <modifier type="append" value="Brutal" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="2229-f494-25db-c5d3">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Finely Balanced</comment>
+                          <modifiers>
+                            <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="decrement" value="1" field="94d-8a98-cf90-183e">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Heirloom</comment>
+                          <modifiers>
+                            <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="3bb-c35f-f54-fb08">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Master-worked</comment>
+                          <modifiers>
+                            <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                      </modifierGroups>
                     </profile>
                   </profiles>
                   <infoLinks>
                     <infoLink id="10ee-288f-7d07-5d4f" name="Hazardous" hidden="false" targetId="8367-374c-f87-c627" type="rule"/>
                     <infoLink id="2f4d-904-12af-c6e1" name="Pistol" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
                   </infoLinks>
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="392c-636a-b9cf-1126" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
                 </selectionEntry>
                 <selectionEntry id="2e4b-dfab-27ef-87d9" name="Warpflame pistol" hidden="false" collective="false" import="true" type="upgrade">
                   <profiles>
@@ -3302,6 +3676,83 @@
                         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                         <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Pistol, Torrent</characteristic>
                       </characteristics>
+                      <modifierGroups>
+                        <modifierGroup type="and">
+                          <comment>Armour Piercing</comment>
+                          <modifiers>
+                            <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="decrement" value="1" field="9ead-8a10-520-de15">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Brutal</comment>
+                          <modifiers>
+                            <modifier type="append" value="Brutal" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="2229-f494-25db-c5d3">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Finely Balanced</comment>
+                          <modifiers>
+                            <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="decrement" value="1" field="94d-8a98-cf90-183e">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Heirloom</comment>
+                          <modifiers>
+                            <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="3bb-c35f-f54-fb08">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Master-worked</comment>
+                          <modifiers>
+                            <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                      </modifierGroups>
                     </profile>
                   </profiles>
                   <infoLinks>
@@ -3309,6 +3760,9 @@
                     <infoLink id="cd3-7397-aaa9-9b59" name="Torrent" hidden="false" targetId="5edf-d619-23e0-9b56" type="rule"/>
                     <infoLink id="8b12-722f-92ce-26ac" name="Ignores Cover" hidden="false" targetId="4640-43e7-30b-215a" type="rule"/>
                   </infoLinks>
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="c103-7517-27c7-045e" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntryGroup>
@@ -3330,11 +3784,91 @@
                     <characteristic name="D" typeId="3254-9fe6-d824-513e">D3</characteristic>
                     <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Psychic</characteristic>
                   </characteristics>
+                  <modifierGroups>
+                    <modifierGroup type="and">
+                      <comment>Armour Piercing</comment>
+                      <modifiers>
+                        <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Brutal</comment>
+                      <modifiers>
+                        <modifier type="append" value="Brutal" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="increment" value="1" field="ab33-d393-96ce-ccba">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Finely Balanced</comment>
+                      <modifiers>
+                        <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Heirloom</comment>
+                      <modifiers>
+                        <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="increment" value="1" field="2337-daa1-6682-b110">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Master-worked</comment>
+                      <modifiers>
+                        <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="increment" value="1" field="3254-9fe6-d824-513e">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                  </modifierGroups>
                 </profile>
               </profiles>
               <infoLinks>
                 <infoLink id="67ea-6316-b90b-c97d" name="Psychic" hidden="false" targetId="e9c4-2bb8-12ee-cd1b" type="rule"/>
               </infoLinks>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="e795-0eed-5a2c-bfbb" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Warpsmite" hidden="false" id="9551-b3d4-aa4c-516c">
               <constraints>
@@ -3352,6 +3886,83 @@
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-INFANTRY 4+, Devastating Wounds, Pistol, Psychic</characteristic>
                   </characteristics>
+                  <modifierGroups>
+                    <modifierGroup type="and">
+                      <comment>Armour Piercing</comment>
+                      <modifiers>
+                        <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="decrement" value="1" field="9ead-8a10-520-de15">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Brutal</comment>
+                      <modifiers>
+                        <modifier type="append" value="Brutal" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="increment" value="1" field="2229-f494-25db-c5d3">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Finely Balanced</comment>
+                      <modifiers>
+                        <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="decrement" value="1" field="94d-8a98-cf90-183e">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Heirloom</comment>
+                      <modifiers>
+                        <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="increment" value="1" field="3bb-c35f-f54-fb08">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Master-worked</comment>
+                      <modifiers>
+                        <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                  </modifierGroups>
                 </profile>
               </profiles>
               <infoLinks>
@@ -3360,6 +3971,9 @@
                 <infoLink name="Pistol" hidden="false" type="rule" id="4f39-3da0-b802-da69" targetId="8bf7-8812-923d-29e4"/>
                 <infoLink name="Psychic" hidden="false" type="rule" id="14fd-3be6-4e06-8ecd" targetId="e9c4-2bb8-12ee-cd1b"/>
               </infoLinks>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="da21-1532-c547-49da" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
           </selectionEntries>
           <categoryLinks>
@@ -3548,7 +4162,13 @@
       </selectionEntryGroups>
       <constraints>
         <constraint field="selections" scope="force" value="6" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="4c74-f13c-d125-ee54" type="max"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="f4ee-edea-5e36-706b" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="604d-3527-348d-f430" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="2c86-bfc6-5935-801a" includeChildSelections="false"/>
       </constraints>
+      <entryLinks>
+        <entryLink import="true" name="Crusade" hidden="false" id="90ef-5fb3-cd37-5184" type="selectionEntryGroup" targetId="a877-78a7-06f2-f04d"/>
+      </entryLinks>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Scarab Occult Terminators" hidden="false" id="b1cf-c5-5121-92a4" publicationId="015a-6212-d737-9044" page="45-46">
       <costs>
@@ -3559,6 +4179,70 @@
         <modifier type="set" value="380" field="51b2-306e-1021-d207">
           <conditions>
             <condition type="greaterThan" value="5" field="selections" scope="b1cf-c5-5121-92a4" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="89ab-40b2-aacf-a111">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="56ce-ca50-bc6c-8012">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="set" value="6" field="51aa-152a-640a-5a5b">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
       </modifiers>
@@ -3619,11 +4303,91 @@ Wound roll.</characteristic>
                     <characteristic name="D" typeId="3254-9fe6-d824-513e">D3</characteristic>
                     <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Psychic</characteristic>
                   </characteristics>
+                  <modifierGroups>
+                    <modifierGroup type="and">
+                      <comment>Armour Piercing</comment>
+                      <modifiers>
+                        <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Brutal</comment>
+                      <modifiers>
+                        <modifier type="append" value="Brutal" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="increment" value="1" field="ab33-d393-96ce-ccba">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Finely Balanced</comment>
+                      <modifiers>
+                        <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Heirloom</comment>
+                      <modifiers>
+                        <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="increment" value="1" field="2337-daa1-6682-b110">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Master-worked</comment>
+                      <modifiers>
+                        <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="increment" value="1" field="3254-9fe6-d824-513e">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                  </modifierGroups>
                 </profile>
               </profiles>
               <infoLinks>
                 <infoLink id="2572-21e7-ecb3-5242" name="Psychic" hidden="false" targetId="e9c4-2bb8-12ee-cd1b" type="rule"/>
               </infoLinks>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="c3e0-7369-ca1a-0b1c" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Warpsmite" hidden="false" id="f6b2-238a-4613-a59f">
               <constraints>
@@ -3641,6 +4405,83 @@ Wound roll.</characteristic>
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-INFANTRY 4+, Devastating Wounds, Pistol, Psychic</characteristic>
                   </characteristics>
+                  <modifierGroups>
+                    <modifierGroup type="and">
+                      <comment>Armour Piercing</comment>
+                      <modifiers>
+                        <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="decrement" value="1" field="9ead-8a10-520-de15">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Brutal</comment>
+                      <modifiers>
+                        <modifier type="append" value="Brutal" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="increment" value="1" field="2229-f494-25db-c5d3">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Finely Balanced</comment>
+                      <modifiers>
+                        <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="decrement" value="1" field="94d-8a98-cf90-183e">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Heirloom</comment>
+                      <modifiers>
+                        <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="increment" value="1" field="3bb-c35f-f54-fb08">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                    <modifierGroup type="and">
+                      <comment>Master-worked</comment>
+                      <modifiers>
+                        <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                  </modifierGroups>
                 </profile>
               </profiles>
               <infoLinks>
@@ -3649,6 +4490,9 @@ Wound roll.</characteristic>
                 <infoLink name="Pistol" hidden="false" type="rule" id="cc6f-f184-36a7-6200" targetId="8bf7-8812-923d-29e4"/>
                 <infoLink name="Psychic" hidden="false" type="rule" id="7849-5bdc-583f-7c30" targetId="e9c4-2bb8-12ee-cd1b"/>
               </infoLinks>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="c889-3972-8199-214e" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
           </selectionEntries>
           <selectionEntryGroups>
@@ -3677,8 +4521,88 @@ Wound roll.</characteristic>
                         <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
                         <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
                       </characteristics>
+                      <modifierGroups>
+                        <modifierGroup type="and">
+                          <comment>Armour Piercing</comment>
+                          <modifiers>
+                            <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Brutal</comment>
+                          <modifiers>
+                            <modifier type="append" value="Brutal" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="ab33-d393-96ce-ccba">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Finely Balanced</comment>
+                          <modifiers>
+                            <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Heirloom</comment>
+                          <modifiers>
+                            <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="2337-daa1-6682-b110">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                        <modifierGroup type="and">
+                          <comment>Master-worked</comment>
+                          <modifiers>
+                            <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                              <conditions>
+                                <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                            <modifier type="increment" value="1" field="3254-9fe6-d824-513e">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
+                        </modifierGroup>
+                      </modifierGroups>
                     </profile>
                   </profiles>
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="8b04-81f2-8384-1324" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntryGroup>
@@ -3903,7 +4827,13 @@ Wound roll.</characteristic>
       </categoryLinks>
       <constraints>
         <constraint field="selections" scope="force" value="3" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="4c74-f13c-d125-ee54" type="max"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="89ab-40b2-aacf-a111" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="56ce-ca50-bc6c-8012" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="51aa-152a-640a-5a5b" includeChildSelections="false"/>
       </constraints>
+      <entryLinks>
+        <entryLink import="true" name="Crusade" hidden="false" id="8739-89f3-8d33-fc85" type="selectionEntryGroup" targetId="a877-78a7-06f2-f04d"/>
+      </entryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Thousand Sons Sorcerer" hidden="false" id="af1e-9a3d-785c-47f8" publicationId="015a-6212-d737-9044" page="47-48">
       <categoryLinks>
@@ -4184,6 +5114,9 @@ Wound roll.</characteristic>
       </categoryLinks>
       <constraints>
         <constraint field="selections" scope="force" value="3" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="4c74-f13c-d125-ee54" type="max"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="dd05-db1a-646c-08d8" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="8aef-9196-98a2-d063" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="3823-ff7c-44ba-956d" includeChildSelections="false"/>
       </constraints>
       <infoLinks>
         <infoLink name="Kindred Sorcery" hidden="false" type="rule" id="91ae-8ad9-cfce-9177" targetId="4258-60ff-8457-a123"/>
@@ -4382,7 +5315,74 @@ Wound roll.</characteristic>
             <condition type="greaterThan" value="10" field="selections" scope="9cd8-1a0-914b-c212" childId="model" shared="true" id="da29-67e8-894c-732" includeChildSelections="true"/>
           </conditions>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="dd05-db1a-646c-08d8">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="8aef-9196-98a2-d063">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="set" value="6" field="3823-ff7c-44ba-956d">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
+      <entryLinks>
+        <entryLink import="true" name="Crusade" hidden="false" id="fba3-2027-a2ff-020d" type="selectionEntryGroup" targetId="a877-78a7-06f2-f04d"/>
+      </entryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Cultist firearm" hidden="false" id="e215-5f19-8d65-cd21" collective="true">
       <profiles>
@@ -4668,6 +5668,9 @@ Wound roll.</characteristic>
       </categoryLinks>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="force" shared="true" id="9332-3a7b-f583-cb22" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="b695-58ec-f258-94fd" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="834e-d472-053c-9804" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="3d20-590a-3f41-5908" includeChildSelections="false"/>
       </constraints>
       <profiles>
         <profile id="99d6-a18f-4410-862" name="Invulnerable Save" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -4845,7 +5848,74 @@ Wound roll.</characteristic>
             <condition type="greaterThan" value="3" field="selections" scope="1703-3edd-5eb3-fcef" childId="model" shared="true" id="f967-eaea-fef9-e164" includeChildSelections="true"/>
           </conditions>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="b695-58ec-f258-94fd">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="834e-d472-053c-9804">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="set" value="6" field="3d20-590a-3f41-5908">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
+      <entryLinks>
+        <entryLink import="true" name="Crusade" hidden="false" id="e9aa-2913-3874-5119" type="selectionEntryGroup" targetId="a877-78a7-06f2-f04d"/>
+      </entryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Tzaangor Shaman" hidden="false" id="c251-bd54-441-4799">
       <costs>
@@ -4971,6 +6041,70 @@ Wound roll.</characteristic>
             <condition type="greaterThan" value="10" field="selections" scope="f5b9-50c8-5c60-d8ea" childId="model" shared="true" id="ece4-2cf1-277-83d0" includeChildSelections="true"/>
           </conditions>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="3bfc-419a-857c-5fab">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="42c0-4552-c6ce-0d8f">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="set" value="6" field="ddb7-9974-572a-ad16">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
       <categoryLinks>
         <categoryLink targetId="7002-1fbb-7571-e8e7" id="f92f-4de2-55f2-daa4" primary="false" name="Faction: Thousand Sons"/>
@@ -4982,6 +6116,9 @@ Wound roll.</characteristic>
       </categoryLinks>
       <constraints>
         <constraint type="max" value="6" field="selections" scope="force" shared="true" id="2b10-13dc-60b-4933" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="3bfc-419a-857c-5fab" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="42c0-4552-c6ce-0d8f" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="ddb7-9974-572a-ad16" includeChildSelections="false"/>
       </constraints>
       <profiles>
         <profile name="Tzaangors" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="5d2f-669e-20ab-9841">
@@ -5153,11 +6290,167 @@ Wound roll.</characteristic>
                             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
                           </characteristics>
+                          <modifierGroups>
+                            <modifierGroup type="and">
+                              <comment>Armour Piercing</comment>
+                              <modifiers>
+                                <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="9ead-8a10-520-de15">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Brutal</comment>
+                              <modifiers>
+                                <modifier type="append" value="Brutal" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="2229-f494-25db-c5d3">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Finely Balanced</comment>
+                              <modifiers>
+                                <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="94d-8a98-cf90-183e">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Heirloom</comment>
+                              <modifiers>
+                                <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="3bb-c35f-f54-fb08">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Master-worked</comment>
+                              <modifiers>
+                                <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Armour Piercing</comment>
+                              <modifiers>
+                                <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="9ead-8a10-520-de15">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Brutal</comment>
+                              <modifiers>
+                                <modifier type="append" value="Brutal" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="2229-f494-25db-c5d3">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Finely Balanced</comment>
+                              <modifiers>
+                                <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="94d-8a98-cf90-183e">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Heirloom</comment>
+                              <modifiers>
+                                <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="3bb-c35f-f54-fb08">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Master-worked</comment>
+                              <modifiers>
+                                <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                          </modifierGroups>
                         </profile>
                       </profiles>
                       <infoLinks>
                         <infoLink name="Pistol" id="b434-f849-ef3c-5412" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
                       </infoLinks>
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="58a7-4708-238e-0b82" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="12fd-afcd-50ef-53e2" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                      </entryLinks>
                     </selectionEntry>
                     <selectionEntry type="upgrade" import="true" name="Chainsword" hidden="false" id="b951-afc2-e321-2dee" collective="true">
                       <constraints>
@@ -5175,8 +6468,164 @@ Wound roll.</characteristic>
                             <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
                             <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
                           </characteristics>
+                          <modifierGroups>
+                            <modifierGroup type="and">
+                              <comment>Armour Piercing</comment>
+                              <modifiers>
+                                <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Brutal</comment>
+                              <modifiers>
+                                <modifier type="append" value="Brutal" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="ab33-d393-96ce-ccba">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Finely Balanced</comment>
+                              <modifiers>
+                                <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Heirloom</comment>
+                              <modifiers>
+                                <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="2337-daa1-6682-b110">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Master-worked</comment>
+                              <modifiers>
+                                <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="3254-9fe6-d824-513e">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Armour Piercing</comment>
+                              <modifiers>
+                                <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Brutal</comment>
+                              <modifiers>
+                                <modifier type="append" value="Brutal" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="ab33-d393-96ce-ccba">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Finely Balanced</comment>
+                              <modifiers>
+                                <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Heirloom</comment>
+                              <modifiers>
+                                <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="2337-daa1-6682-b110">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Master-worked</comment>
+                              <modifiers>
+                                <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="3254-9fe6-d824-513e">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                          </modifierGroups>
                         </profile>
                       </profiles>
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="8732-bc2a-0f5f-a83d" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="294a-3108-a9b2-559a" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                      </entryLinks>
                     </selectionEntry>
                   </selectionEntries>
                 </selectionEntry>
@@ -5198,8 +6647,164 @@ Wound roll.</characteristic>
                             <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
                             <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
                           </characteristics>
+                          <modifierGroups>
+                            <modifierGroup type="and">
+                              <comment>Armour Piercing</comment>
+                              <modifiers>
+                                <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Brutal</comment>
+                              <modifiers>
+                                <modifier type="append" value="Brutal" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="ab33-d393-96ce-ccba">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Finely Balanced</comment>
+                              <modifiers>
+                                <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Heirloom</comment>
+                              <modifiers>
+                                <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="2337-daa1-6682-b110">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Master-worked</comment>
+                              <modifiers>
+                                <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="3254-9fe6-d824-513e">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Armour Piercing</comment>
+                              <modifiers>
+                                <modifier type="append" value="Armour Piercing" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Brutal</comment>
+                              <modifiers>
+                                <modifier type="append" value="Brutal" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="ab33-d393-96ce-ccba">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Finely Balanced</comment>
+                              <modifiers>
+                                <modifier type="append" value="Finely Balanced" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Heirloom</comment>
+                              <modifiers>
+                                <modifier type="append" value="Heirloom" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="2337-daa1-6682-b110">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                            <modifierGroup type="and">
+                              <comment>Master-worked</comment>
+                              <modifiers>
+                                <modifier type="append" value="Master-worked" field="annotation" join=", ">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="3254-9fe6-d824-513e">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="self" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                          </modifierGroups>
                         </profile>
                       </profiles>
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="d579-ca15-ab4a-7b4a" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="7249-dcce-c00c-6bcc" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                      </entryLinks>
                     </selectionEntry>
                   </selectionEntries>
                 </selectionEntry>
@@ -5212,6 +6817,9 @@ Wound roll.</characteristic>
           </constraints>
         </selectionEntry>
       </selectionEntries>
+      <entryLinks>
+        <entryLink import="true" name="Crusade" hidden="false" id="7297-d0dc-e8b7-b468" type="selectionEntryGroup" targetId="a877-78a7-06f2-f04d"/>
+      </entryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Hellblade [Legends]" hidden="false" id="c4ab-b52d-3ac0-5d56">
       <costs>
