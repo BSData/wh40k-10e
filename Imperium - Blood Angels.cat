@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="38" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="39" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Space Marines" id="abd0-8ebd-6fbd-2d94" targetId="e0af-67df-9d63-8fb7" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights - Library" id="9c08-8ffc-d746-7384" targetId="1b6d-dc06-5db9-c7d1" importRootEntries="true"/>
@@ -673,7 +673,7 @@
                 <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
                 <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
                 <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
-                <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
                 <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
                 <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Hazardous, Pistol</characteristic>
               </characteristics>
@@ -692,7 +692,7 @@
           <profiles>
             <profile name="➤ Fury of the Ancients - Witchfire" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="eb07-22b3-d1eb-7552">
               <characteristics>
-                <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
                 <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
                 <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
                 <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
@@ -3701,9 +3701,21 @@ You can attach this model to one of the above units, even if one Captain, Chapt
               <selectionEntryGroups>
                 <selectionEntryGroup name="Replace Pistol" id="8b60-76dc-a440-ae23" hidden="false" defaultSelectionEntryId="a3b1-a4d1-6857-384c">
                   <entryLinks>
-                    <entryLink import="true" name="Hand Flamer" hidden="false" id="8520-b102-fa69-aefb" type="selectionEntry" targetId="9dc6-6ad8-818e-db2e"/>
-                    <entryLink import="true" name="Inferno Pistol" hidden="false" id="2ba5-9580-1492-bdde" type="selectionEntry" targetId="d8bf-e17f-d6fa-b7e8"/>
-                    <entryLink import="true" name="Plasma Pistol" hidden="false" id="11cb-48d5-14ac-1916" type="selectionEntry" targetId="25c2-104f-fa0c-809e"/>
+                    <entryLink import="true" name="Hand Flamer" hidden="false" id="8520-b102-fa69-aefb" type="selectionEntry" targetId="9dc6-6ad8-818e-db2e">
+                      <categoryLinks>
+                        <categoryLink name="Pistol replacement" hidden="false" id="1194-ee45-4c41-dc10" targetId="f06c-dfec-c720-57f1" primary="false"/>
+                      </categoryLinks>
+                    </entryLink>
+                    <entryLink import="true" name="Inferno Pistol" hidden="false" id="2ba5-9580-1492-bdde" type="selectionEntry" targetId="d8bf-e17f-d6fa-b7e8">
+                      <categoryLinks>
+                        <categoryLink name="Pistol replacement" hidden="false" id="471d-b32a-3937-40b7" targetId="f06c-dfec-c720-57f1" primary="false"/>
+                      </categoryLinks>
+                    </entryLink>
+                    <entryLink import="true" name="Plasma Pistol" hidden="false" id="11cb-48d5-14ac-1916" type="selectionEntry" targetId="25c2-104f-fa0c-809e">
+                      <categoryLinks>
+                        <categoryLink name="Pistol replacement" hidden="false" id="4dca-64f5-dc6a-9fb4" targetId="f06c-dfec-c720-57f1" primary="false"/>
+                      </categoryLinks>
+                    </entryLink>
                   </entryLinks>
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c664-21c1-db6b-5cbf-min" includeChildSelections="false"/>
@@ -3856,9 +3868,9 @@ You can attach this model to one of the above units, even if one Captain, Chapt
             <condition type="atLeast" value="1" field="selections" scope="roster" childId="9d32-d514-00a8-6423" shared="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
-        <modifier type="add" value="Max 1 pistol Replacement in squad" field="error">
+        <modifier type="add" value="Max 1 pistol replacement in squad" field="error">
           <conditions>
-            <condition type="atLeast" value="2" field="selections" scope="parent" childId="8b60-76dc-a440-ae23" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="2" field="selections" scope="parent" childId="f06c-dfec-c720-57f1" shared="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
       </modifiers>
@@ -4202,6 +4214,7 @@ If a Character unit from your army with the Leader ability can be attached to a
     <categoryEntry name="The Sanguinor" hidden="false" id="8f39-9585-fc72-ba71"/>
     <categoryEntry name="Death Company" id="1e3d-c738-8087-792c" hidden="false"/>
     <categoryEntry name="Death Company Marines with Bolt Rifles" id="3055-9a0b-b062-5f31" hidden="false"/>
+    <categoryEntry name="Pistol replacement" id="f06c-dfec-c720-57f1" hidden="true"/>
   </categoryEntries>
   <sharedProfiles>
     <profile name="Black Rage" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3e0a-31f-8be-e293">
