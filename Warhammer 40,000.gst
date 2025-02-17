@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="27" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="28" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -1212,45 +1212,4 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
       </selectionEntryGroups>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
-  <sharedInfoGroups>
-    <infoGroup name="Feel No Pain 5+" id="8a4b-57b8-c4f4-ba03" hidden="false">
-      <infoLinks>
-        <infoLink name="Feel No Pain" id="5e49-829b-9b3f-d42e" hidden="false" type="rule" targetId="9bf4-280f-bbe2-6fbb"/>
-      </infoLinks>
-      <profiles>
-        <profile name="Feel No Pain 5+" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7fe0-0a9b-accc-230a">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model has the Feel No Pain 5+ ability.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
-      <comment>Single model</comment>
-    </infoGroup>
-    <infoGroup name="Feel No Pain 4+" id="2425-d48d-bb98-29c9" hidden="false">
-      <infoLinks>
-        <infoLink name="Feel No Pain" id="01cb-db1b-46fe-17e6" hidden="false" type="rule" targetId="9bf4-280f-bbe2-6fbb"/>
-      </infoLinks>
-      <profiles>
-        <profile name="Feel No Pain 4+" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1b52-9c42-049a-f04b">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model has the Feel No Pain 4+ ability against mortal wounds.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
-      <comment>Single model vs mortal wounds</comment>
-    </infoGroup>
-    <infoGroup name="Feel No Pain 6+" id="d213-0347-b195-cd21" hidden="false">
-      <infoLinks>
-        <infoLink name="Feel No Pain" id="1fed-4b06-089c-d26c" hidden="false" type="rule" targetId="9bf4-280f-bbe2-6fbb"/>
-      </infoLinks>
-      <profiles>
-        <profile name="Feel No Pain 6+" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ae25-5896-0ce9-6a20">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model has the Feel No Pain 6+ ability.</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
-      <comment>Single model</comment>
-    </infoGroup>
-  </sharedInfoGroups>
 </gameSystem>
