@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="78" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="79" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
   <rules>
     <rule name="For The Greater Good" hidden="false" id="eeb6-c42-48f7-cc21">
       <description>If your Army Faction is T’AU EMPIRE, then in your Shooting phase units from your army can work in pairs to help each other target specific enemy units. When they do this, one unit is the Observer unit and the other is their Guided unit. The enemy they are targeting is called their Spotted unit.
@@ -1449,7 +1449,7 @@ Until the end of the phase:
                       <modifiers>
                         <modifier type="append" value="Hover Drone" field="annotation" join=", " scope="model-or-unit" affects="self.entries.profiles.Unit">
                           <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="4135-1065-ae32-09a4" shared="true" includeChildSelections="true"/>
+                            <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="7b1c-902d-feb6-6fd6" shared="true" includeChildSelections="true"/>
                           </conditions>
                         </modifier>
                         <modifier type="increment" value="4" field="e703-ecb6-5ce7-aec1" scope="model-or-unit" affects="self.entries.profiles.Unit">
@@ -17005,6 +17005,9 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
                   </characteristics>
                 </profile>
               </profiles>
+              <infoLinks>
+                <infoLink name="Stealth" id="b60f-f8b7-bcc0-8f19" hidden="false" type="rule" targetId="bec5-4288-34a6-ccfa"/>
+              </infoLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Merciless Marksmen" hidden="false" id="240e-3f35-b12a-7716">
               <constraints>
@@ -17034,7 +17037,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
               <profiles>
                 <profile name="Merciless Marksmen" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="26c9-87df-bd88-1d5e">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Ranged weapons equipped by models in this unit (excluding support turrets) have the [LETHAL HITS] ability.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Ranged weapons equipped by models in this unit (excluding support turrets) have the **[LETHAL HITS]** ability.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -17074,6 +17077,22 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
                   </characteristics>
                 </profile>
               </profiles>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Practised Aim" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Ranged Weapons">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="e31f-8dc8-a9e8-5ed6" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" scope="model-or-unit" affects="self.entries.recursive.profiles.Ranged Weapons">
+                      <conditions>
+                        <condition type="equalTo" value="1" field="selections" scope="model-or-unit" childId="e31f-8dc8-a9e8-5ed6" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Prey Slayers" hidden="false" id="4ee8-de1a-0ab4-b871">
               <constraints>
@@ -17097,7 +17116,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
               <profiles>
                 <profile name="Prey Slayers" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="fed0-fa51-3add-ff75">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select one unit from your opponent’s army. Until the end of the battle, each time this KROOT unit makes an attack that targets that enemy unit, you can re-roll the Hit roll.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select one unit from your opponent’s army. Until the end of the battle, each time this **^^Kroot^^** unit makes an attack that targets that enemy unit, you can re-roll the Hit roll.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -17211,7 +17230,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
               <profiles>
                 <profile name="Takers of Heads" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c080-6d93-e857-2503">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this unit makes an attack that targets a CHARACTER unit, add 1 to the Hit roll.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this unit makes an attack that targets a **^^Character^^** unit, add 1 to the Hit roll.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -17238,7 +17257,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
               <profiles>
                 <profile name="Technological Trophies" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5d34-3c85-ef6b-be87">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this unit declares a charge, if you select a Monster or Vehicle unit as a target of that charge, until the end of the turn, melee weapons equipped by models in this unit have the [LANCE] ability.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this unit declares a charge, if you select a Monster or Vehicle unit as a target of that charge, until the end of the turn, melee weapons equipped by models in this unit have the **[LANCE]** ability.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -17268,7 +17287,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
               <profiles>
                 <profile name="The Healer&apos;s Hands" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a387-e610-97c9-9463">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of the battle, if this model was part of your Crusade army and was not destroyed during the battle, you can ignore one failed Out of Action test taken for a T&apos;AU EMPIRE unit; that test is treated as having been passed instead.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of the battle, if this model was part of your Crusade army and was not destroyed during the battle, you can ignore one failed Out of Action test taken for a **^^T&apos;au Empire^^** unit; that test is treated as having been passed instead.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -17318,7 +17337,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
                   <profiles>
                     <profile name="Totemic Infusions - Imperium" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3257-41a9-1808-dfbc">
                       <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While that SHAPER model is leading a unit, re-roll Battle-shock tests taken for that unit.</characteristic>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While that **^^Shaper^^** model is leading a unit, re-roll Battle-shock tests taken for that unit.</characteristic>
                       </characteristics>
                     </profile>
                   </profiles>
@@ -17337,7 +17356,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
                   <profiles>
                     <profile name="Totemic Infusions - Aeldari" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7342-4a38-d575-e8b3">
                       <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While that SHAPER model is leading a unit, add 2&quot; to that unit’s Move characteristic.</characteristic>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While that **^^Shaper^^** model is leading a unit, add 2&quot; to that unit’s Move characteristic.</characteristic>
                       </characteristics>
                     </profile>
                   </profiles>
@@ -17356,7 +17375,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
                   <profiles>
                     <profile name="Totemic Infusions - Orks" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="298f-418e-2bd7-9d49">
                       <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While that SHAPER model is leading a unit, add 1 to the Strength characteristic of melee weapons equipped by that unit.</characteristic>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While that **^^Shaper^^** model is leading a unit, add 1 to the Strength characteristic of melee weapons equipped by that unit.</characteristic>
                       </characteristics>
                     </profile>
                   </profiles>
@@ -17375,7 +17394,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
                   <profiles>
                     <profile name="Totemic Infusions - Leagues of Votann" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="da06-6971-6fd0-8105">
                       <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While that SHAPER model is leading a unit, add 1 to the Toughness characteristic of models in that unit.</characteristic>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While that **^^Shaper^^** model is leading a unit, add 1 to the Toughness characteristic of models in that unit.</characteristic>
                       </characteristics>
                     </profile>
                   </profiles>
@@ -17394,7 +17413,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
                   <profiles>
                     <profile name="Totemic Infusions - Other" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6d36-0053-d930-d4b2">
                       <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While that SHAPER model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.</characteristic>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While that **^^Shaper^^** model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.</characteristic>
                       </characteristics>
                     </profile>
                   </profiles>
