@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="83" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="84" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
   <rules>
     <rule name="For The Greater Good" hidden="false" id="eeb6-c42-48f7-cc21">
       <description>If your Army Faction is T’AU EMPIRE, then in your Shooting phase units from your army can work in pairs to help each other target specific enemy units. When they do this, one unit is the Observer unit and the other is their Guided unit. The enemy they are targeting is called their Spotted unit.
@@ -12630,7 +12630,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
           <selectionEntries>
             <selectionEntry type="model" import="true" name="XV9 Hazard Battlesuit" hidden="false" id="9a6b-c7be-b8fd-28">
               <selectionEntryGroups>
-                <selectionEntryGroup name="Support System" hidden="false" id="e90-a939-452-13c9">
+                <selectionEntryGroup name="Support System" hidden="false" id="e90-a939-452-13c9" sortIndex="2">
                   <entryLinks>
                     <entryLink import="true" name="Battlesuit support system" hidden="false" type="selectionEntry" id="8cce-e3d1-81c3-417b" targetId="d00f-7725-16e3-c8ad"/>
                     <entryLink import="true" name="Shield generator" hidden="false" type="selectionEntry" id="a42f-db29-6381-f9b" targetId="2186-437-6a63-8c8c"/>
@@ -12640,7 +12640,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a0ff-339a-fb17-de5" includeChildSelections="false"/>
                   </constraints>
                 </selectionEntryGroup>
-                <selectionEntryGroup name="Weapons" hidden="false" id="a951-a774-7459-fef2">
+                <selectionEntryGroup name="Weapons" hidden="false" id="a951-a774-7459-fef2" sortIndex="1">
                   <constraints>
                     <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="f669-4198-870a-e954"/>
                     <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="c138-8986-6b38-e3b4"/>
@@ -12731,65 +12731,13 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
                     <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
                     <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
                   </characteristics>
-                  <modifierGroups>
-                    <modifierGroup type="and">
-                      <comment>Battle Scars: Crippling Damage</comment>
-                      <modifiers>
-                        <modifier type="decrement" value="1" field="e703-ecb6-5ce7-aec1">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="unit" childId="4135-1065-ae32-09a4" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="append" value="Crippling Damage" field="annotation" join=", ">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="unit" childId="4135-1065-ae32-09a4" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
-                    </modifierGroup>
-                    <modifierGroup type="and">
-                      <modifiers>
-                        <modifier type="decrement" value="1" field="bef7-942a-1a23-59f8">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="unit" childId="9d70-a94e-3f89-5eed" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="append" value="Fatigued" field="annotation" join=", ">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="unit" childId="9d70-a94e-3f89-5eed" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
-                      <comment>Battle Scars: Fatigued</comment>
-                    </modifierGroup>
-                    <modifierGroup type="and">
-                      <comment>Shield Drones</comment>
-                      <modifiers>
-                        <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe">
-                          <repeats>
-                            <repeat value="1" repeats="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="true" roundUp="false" includeChildSelections="true"/>
-                          </repeats>
-                        </modifier>
-                        <modifier type="append" value="Shield Drone" field="annotation" join=", ">
-                          <conditions>
-                            <condition type="equalTo" value="1" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="append" value="2x Shield Drones" field="annotation" join=", ">
-                          <conditions>
-                            <condition type="atLeast" value="2" field="selections" scope="self" childId="3ef0-a48a-cafc-ce23" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
-                    </modifierGroup>
-                  </modifierGroups>
                   <attributes>
                     <attribute typeId="ee2c-fa85-08b6-ad86" name="New Attribute Type"/>
                   </attributes>
                 </profile>
               </profiles>
               <entryLinks>
-                <entryLink import="true" name="Battlesuit fists" hidden="false" id="45a3-fc00-6487-fa7d" type="selectionEntry" targetId="d357-859f-3b61-42f1">
+                <entryLink import="true" name="Battlesuit fists" hidden="false" id="45a3-fc00-6487-fa7d" type="selectionEntry" targetId="d357-859f-3b61-42f1" sortIndex="4">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="ad64-5b2f-e624-69b2" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
@@ -12798,7 +12746,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a9dc-6e49-8609-f4b4"/>
                   </constraints>
                 </entryLink>
-                <entryLink import="true" name="Drones (0-2)" hidden="false" id="e42c-9564-78a1-0f04" type="selectionEntryGroup" targetId="de95-b481-fb09-1bce"/>
+                <entryLink import="true" name="Drones (0-2)" hidden="false" id="e42c-9564-78a1-0f04" type="selectionEntryGroup" targetId="de95-b481-fb09-1bce" sortIndex="3"/>
               </entryLinks>
             </selectionEntry>
           </selectionEntries>
