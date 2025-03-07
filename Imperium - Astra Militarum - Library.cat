@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="105" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="106" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Aegis Defence Line" hidden="false" id="cb99-456-f100-40ed">
       <categoryLinks>
@@ -12099,6 +12099,9 @@ While this unit is joined to a unit, it can embark within any **^^Transport^^** 
               <infoLinks>
                 <infoLink name="Tempestus Scions" hidden="false" type="profile" id="801a-d6f0-c096-a1ff" targetId="2cd7-38d1-8603-afb5"/>
               </infoLinks>
+              <constraints>
+                <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="3fa9-e589-6a0d-b085" includeChildSelections="false"/>
+              </constraints>
             </selectionEntry>
           </selectionEntries>
           <constraints>
@@ -12260,8 +12263,15 @@ While this unit is joined to a unit, it can embark within any **^^Transport^^** 
                 </selectionEntry>
               </selectionEntries>
               <constraints>
-                <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="dd33-0a2e-98f9-f9e8" includeChildSelections="false"/>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="dd33-0a2e-98f9-f9e8" includeChildSelections="false"/>
               </constraints>
+              <modifiers>
+                <modifier type="set" value="4" field="dd33-0a2e-98f9-f9e8">
+                  <conditions>
+                    <condition type="atLeast" value="10" field="selections" scope="unit" childId="model" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntryGroup>
           </selectionEntryGroups>
         </selectionEntryGroup>
