@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="87" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="88" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
   <rules>
     <rule name="For The Greater Good" hidden="false" id="eeb6-c42-48f7-cc21">
       <description>If your Army Faction is T’AU EMPIRE, then in your Shooting phase units from your army can work in pairs to help each other target specific enemy units. When they do this, one unit is the Observer unit and the other is their Guided unit. The enemy they are targeting is called their Spotted unit.
@@ -378,7 +378,7 @@ Until the end of the phase:
         </rule>
       </rules>
     </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="T&apos;au flamer" hidden="false" id="6e8-cf2e-cedd-9028">
+    <selectionEntry type="upgrade" import="true" name="T&apos;au flamer" hidden="false" id="6e8-cf2e-cedd-9028" collective="false">
       <profiles>
         <profile name="T&apos;au flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="4f5a-58b-5a49-1c96">
           <characteristics>
@@ -499,10 +499,19 @@ Until the end of the phase:
                 <entryLink import="true" name="Airbursting fragmentation projector" hidden="false" id="7a71-3c5a-a5c9-ce67" type="selectionEntry" targetId="437e-0e4a-5c90-dbef">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="5ecf-1e57-7dbf-b19a" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Supernova Launcher upgrade" hidden="false" id="3cf1-1b5d-8159-e085" type="selectionEntry" targetId="e844-ec7e-9e46-1071"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3e7e-b985-2b6f-53a2"/>
+                    <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="6d43-a632-246e-29f9" includeChildSelections="false"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="6d43-a632-246e-29f9">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="8588-2b55-0468-0a97" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
                 <entryLink import="true" name="Cyclic ion blaster" hidden="false" id="6946-ead2-92f9-86c3" type="selectionEntry" targetId="9e40-f25b-c5dd-6712">
                   <entryLinks>
@@ -515,26 +524,53 @@ Until the end of the phase:
                 <entryLink import="true" name="T&apos;au flamer" hidden="false" id="ef8a-1a12-d664-f69f" type="selectionEntry" targetId="6e8-cf2e-cedd-9028">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="9a25-9390-2645-2dda" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Thermoneutronic Projector upgrade" hidden="false" id="499f-3c10-97ec-769c" type="selectionEntry" targetId="61f4-6563-bdb8-ec27"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="3f1d-cab6-47a3-ec03"/>
+                    <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="934c-1ab8-514a-3fca" includeChildSelections="false"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="934c-1ab8-514a-3fca">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="1184-c004-494b-642e" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
                 <entryLink import="true" name="Fusion blaster" hidden="false" id="c29e-1f09-bcd6-c83e" type="selectionEntry" targetId="a384-146f-1171-f49f">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="5c46-78f4-daae-f6aa" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Fusion Blades upgrade" hidden="false" id="b2ee-71e7-ed4c-2789" type="selectionEntry" targetId="4cb3-e969-20d8-b003" flatten="false" collapsible="false" collective="false"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="281d-6ec0-a779-bc2c"/>
+                    <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="4114-328b-f7ef-7d0b" includeChildSelections="false"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="4114-328b-f7ef-7d0b">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="fb72-80a9-f2b5-31a6" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
                 <entryLink import="true" name="Plasma rifle" hidden="false" id="d73b-0f77-90e7-3918" type="selectionEntry" targetId="e87a-3ab1-2834-bb10">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="5a80-639e-1fca-6a0d" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Plasma Accelerator Rifle upgrade" hidden="false" id="8410-1e4e-7a68-76e9" type="selectionEntry" targetId="e396-458e-e066-fdbb"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="6a48-ca72-acf6-3114"/>
+                    <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="744b-a833-b730-85ff" includeChildSelections="false"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="744b-a833-b730-85ff">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="bc44-f33b-73bc-5ae5" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
               </entryLinks>
               <constraints>
@@ -754,10 +790,19 @@ Until the end of the phase:
                 <entryLink import="true" name="Airbursting fragmentation projector" hidden="false" id="7a59-e857-9ead-a189" type="selectionEntry" targetId="437e-0e4a-5c90-dbef">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="a5e0-495f-9e4a-a52a" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Supernova Launcher upgrade" hidden="false" id="fbc1-0c62-466a-bff5" type="selectionEntry" targetId="e844-ec7e-9e46-1071"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0099-4c44-cb0d-d795"/>
+                    <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="1ccf-2ed5-8d98-e151" includeChildSelections="false"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="1ccf-2ed5-8d98-e151">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="8588-2b55-0468-0a97" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
                 <entryLink import="true" name="Cyclic ion blaster" hidden="false" id="c22d-f6d8-9402-21b9" type="selectionEntry" targetId="9e40-f25b-c5dd-6712">
                   <entryLinks>
@@ -770,26 +815,53 @@ Until the end of the phase:
                 <entryLink import="true" name="T&apos;au flamer" hidden="false" id="d850-2def-4a37-717a" type="selectionEntry" targetId="6e8-cf2e-cedd-9028">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="3814-e9fb-9624-6e92" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Thermoneutronic Projector upgrade" hidden="false" id="7b4c-8de9-cf17-6b2d" type="selectionEntry" targetId="61f4-6563-bdb8-ec27" flatten="false" collapsible="false" collective="false"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="3267-efa5-3ad1-b93d"/>
+                    <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="160b-6338-838c-afc4" includeChildSelections="false"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="160b-6338-838c-afc4">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="1184-c004-494b-642e" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
                 <entryLink import="true" name="Fusion blaster" hidden="false" id="2e46-a7fd-185c-8f94" type="selectionEntry" targetId="a384-146f-1171-f49f">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="24f8-683f-898c-eced" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Fusion Blades upgrade" hidden="false" id="94a2-94b0-7c70-2736" type="selectionEntry" targetId="4cb3-e969-20d8-b003" flatten="false" collapsible="false" collective="false"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="8488-feb3-d130-a9e2"/>
+                    <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="54d3-dc6d-bed9-a080" includeChildSelections="false"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="54d3-dc6d-bed9-a080">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="fb72-80a9-f2b5-31a6" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
                 <entryLink import="true" name="Plasma rifle" hidden="false" id="e1e7-ffd5-f7c3-9e85" type="selectionEntry" targetId="e87a-3ab1-2834-bb10">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="67c8-5fa3-0e8d-27eb" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Plasma Accelerator Rifle upgrade" hidden="false" id="58bd-4597-9d65-2537" type="selectionEntry" targetId="e396-458e-e066-fdbb"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="19ae-8342-6ba0-786f"/>
+                    <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="cbd2-999e-939c-3c4a" includeChildSelections="false"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="cbd2-999e-939c-3c4a">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="bc44-f33b-73bc-5ae5" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
               </entryLinks>
               <constraints>
@@ -1013,10 +1085,19 @@ Until the end of the phase:
                 <entryLink import="true" name="Airbursting fragmentation projector" hidden="false" id="da48-f97e-82ec-40cd" type="selectionEntry" targetId="437e-0e4a-5c90-dbef">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="10b9-5a0b-a115-4763" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Supernova Launcher upgrade" hidden="false" id="c65f-127f-c0ca-8548" type="selectionEntry" targetId="e844-ec7e-9e46-1071"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="849f-f1ac-7cf8-df85"/>
+                    <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="5e92-89d6-5716-fd93" includeChildSelections="false"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="5e92-89d6-5716-fd93">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="8588-2b55-0468-0a97" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
                 <entryLink import="true" name="Cyclic ion blaster" hidden="false" id="7dc9-1904-171d-80c0" type="selectionEntry" targetId="9e40-f25b-c5dd-6712">
                   <entryLinks>
@@ -1029,26 +1110,53 @@ Until the end of the phase:
                 <entryLink import="true" name="T&apos;au flamer" hidden="false" id="3e0a-6736-edf4-2654" type="selectionEntry" targetId="6e8-cf2e-cedd-9028">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="322a-1e67-0796-8113" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Thermoneutronic Projector upgrade" hidden="false" id="782f-88bb-8cde-4085" type="selectionEntry" targetId="61f4-6563-bdb8-ec27"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="284b-f979-c91b-5107"/>
+                    <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="d132-dfd4-4941-9ba1" includeChildSelections="false"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="d132-dfd4-4941-9ba1">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="1184-c004-494b-642e" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
                 <entryLink import="true" name="Fusion blaster" hidden="false" id="ca22-7e8c-cbac-025a" type="selectionEntry" targetId="a384-146f-1171-f49f">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="8872-f524-008e-e9b1" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Fusion Blades upgrade" hidden="false" id="df9e-7636-d633-0f8b" type="selectionEntry" targetId="4cb3-e969-20d8-b003" flatten="false" collapsible="false" collective="false"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="b0a7-fe8e-c153-130d"/>
+                    <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="4582-a7ac-1f9b-7bfa" includeChildSelections="false"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="4582-a7ac-1f9b-7bfa">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="fb72-80a9-f2b5-31a6" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
                 <entryLink import="true" name="Plasma rifle" hidden="false" id="fddd-9b4b-c121-8e96" type="selectionEntry" targetId="e87a-3ab1-2834-bb10">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="4d30-f28b-a912-7d5a" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Plasma Accelerator Rifle upgrade" hidden="false" id="5029-89e7-9e62-db24" type="selectionEntry" targetId="e396-458e-e066-fdbb"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="96da-1fc8-b680-0667"/>
+                    <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="c00f-9293-39b5-d67f" includeChildSelections="false"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="c00f-9293-39b5-d67f">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="bc44-f33b-73bc-5ae5" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
               </entryLinks>
               <constraints>
@@ -15585,6 +15693,235 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
       </infoLinks>
       <comment>BS4+ Assault</comment>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Supernova Launcher upgrade" hidden="false" id="e844-ec7e-9e46-1071">
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="model-or-unit" childId="8588-2b55-0468-0a97" shared="true" includeChildSelections="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4f3a-f0f7-6647-348d" shared="true"/>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="1" field="b154-2a39-236a-8de2">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="8588-2b55-0468-0a97" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="8334-982b-381e-2585" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="selections" scope="roster" shared="true" id="b154-2a39-236a-8de2" includeChildSelections="true"/>
+      </constraints>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="append" value="Supernova Launcher" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="e844-ec7e-9e46-1071" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="3" field="2229-f494-25db-c5d3" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="e844-ec7e-9e46-1071" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="decrement" value="1" field="9ead-8a10-520-de15" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="e844-ec7e-9e46-1071" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="e844-ec7e-9e46-1071" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
+      </modifierGroups>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Thermoneutronic Projector upgrade" hidden="false" id="61f4-6563-bdb8-ec27" collective="false">
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="model-or-unit" childId="1184-c004-494b-642e" shared="true" includeChildSelections="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4f3a-f0f7-6647-348d" shared="true"/>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true"/>
+              </conditions>
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="61f4-6563-bdb8-ec27" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="parent" childId="61f4-6563-bdb8-ec27" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="1" field="9558-f0bb-b86c-844c">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="1184-c004-494b-642e" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="c026-0d27-19ef-898d" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="selections" scope="roster" shared="true" id="9558-f0bb-b86c-844c" includeChildSelections="true"/>
+      </constraints>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="append" value="Thermoneutronic Projector" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="61f4-6563-bdb8-ec27" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="61f4-6563-bdb8-ec27" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="decrement" value="1" field="9ead-8a10-520-de15" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="61f4-6563-bdb8-ec27" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="61f4-6563-bdb8-ec27" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
+      </modifierGroups>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Plasma Accelerator Rifle upgrade" hidden="false" id="e396-458e-e066-fdbb" collective="false">
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="model-or-unit" childId="bc44-f33b-73bc-5ae5" shared="true" includeChildSelections="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4f3a-f0f7-6647-348d" shared="true"/>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true"/>
+              </conditions>
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="e396-458e-e066-fdbb" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="parent" childId="e396-458e-e066-fdbb" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="1" field="d2e0-1a7f-b5d2-7d01">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="bc44-f33b-73bc-5ae5" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="ea7f-7e30-c6d7-0d87" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="selections" scope="roster" shared="true" id="d2e0-1a7f-b5d2-7d01" includeChildSelections="true"/>
+      </constraints>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="append" value="Plasma Accelerator Rifle" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="e396-458e-e066-fdbb" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="e396-458e-e066-fdbb" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="decrement" value="1" field="9ead-8a10-520-de15" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="e396-458e-e066-fdbb" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="e396-458e-e066-fdbb" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="1" field="3bb-c35f-f54-fb08" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="e396-458e-e066-fdbb" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
+      </modifierGroups>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Fusion Blades upgrade" hidden="false" id="4cb3-e969-20d8-b003" collective="false">
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="model-or-unit" childId="fb72-80a9-f2b5-31a6" shared="true" includeChildSelections="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4f3a-f0f7-6647-348d" shared="true"/>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true"/>
+              </conditions>
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="4cb3-e969-20d8-b003" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="parent" childId="4cb3-e969-20d8-b003" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="1" field="db71-c17a-5b61-9e8c">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="fb72-80a9-f2b5-31a6" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="ecf6-b2fe-16d0-ff11" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="selections" scope="roster" shared="true" id="db71-c17a-5b61-9e8c" includeChildSelections="true"/>
+      </constraints>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="append" value="Fusion Blades" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="4cb3-e969-20d8-b003" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="3" field="2229-f494-25db-c5d3" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="4cb3-e969-20d8-b003" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="1" field="3bb-c35f-f54-fb08" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="4cb3-e969-20d8-b003" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Melta 4" field="7f1b-8591-2fcf-d01c" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="4cb3-e969-20d8-b003" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
+      </modifierGroups>
+    </selectionEntry>
   </sharedSelectionEntries>
   <entryLinks>
     <entryLink import="true" name="Detachment" hidden="false" type="selectionEntry" id="8e25-90a1-f6d-8c2b" targetId="5691-9564-6d30-64b0">
@@ -16490,6 +16827,154 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
             </modifier>
           </modifiers>
         </selectionEntryGroup>
+        <selectionEntryGroup name="Experimental Prototype Cadre Enhancements" hidden="false" id="7d37-ad8e-919a-6563" flatten="false" collapsible="true">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Fusion Blades" hidden="false" id="fb72-80a9-f2b5-31a6">
+              <profiles>
+                <profile name="Fusion Blades" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c940-22c6-dd77-179f">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^T’au Empire^^** model only. Select one fusion blaster equipped by the bearer. Improve the Attacks characteristic of that weapon by 1, improve the Strength characteristic of that weapon by 3, and that weapon has the **[MELTA 4]** ability. </characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="fb72-80a9-f2b5-31a6" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="fb72-80a9-f2b5-31a6" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+              </costs>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="c08b-6fd4-d4bc-c119" includeChildForces="true" includeChildSelections="true"/>
+              </constraints>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Thermoneutronic Projector" hidden="false" id="1184-c004-494b-642e">
+              <profiles>
+                <profile name="Thermoneutronic Projector" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a70a-bec9-6946-39fe">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^T’au Empire^^** model only. Select one T&apos;au flamer equipped by the bearer. Improve the Strength characteristic of that weapon by 2, and improve the Armour Penetration and Damage characteristics of that weapon by 1. </characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="1184-c004-494b-642e" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="1184-c004-494b-642e" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+              </costs>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="9cb9-fb30-1066-ab7f" includeChildForces="true" includeChildSelections="true"/>
+              </constraints>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Plasma Accelerator Rifle" hidden="false" id="bc44-f33b-73bc-5ae5">
+              <profiles>
+                <profile name="Plasma Accelerator Rifle" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b141-8e24-fab3-30d7">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^T’au Empire^^** model only. Select one plasma rifle equipped by the bearer. Improve the Strength characteristic of that weapon by 2, and improve the Attacks, Armour Penetration and Damage characteristics of that weapon by 1. </characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="bc44-f33b-73bc-5ae5" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="bc44-f33b-73bc-5ae5" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+              </costs>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="b526-8bde-fc33-3495" includeChildForces="true" includeChildSelections="true"/>
+              </constraints>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Supernova Launcher" hidden="false" id="8588-2b55-0468-0a97">
+              <profiles>
+                <profile name="Supernova Launcher" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="cf3b-e41a-078e-021a">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^T’au Empire^^** model only. Select one airbursting fragmentation projector equipped by the bearer. Improve the Strength characteristic of that weapon by 3, and improve the Armour Penetration and Damage characteristics of that weapon by 1. </characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="8588-2b55-0468-0a97" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="8588-2b55-0468-0a97" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+              </costs>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="ba98-9aaa-7ff2-c1fe" includeChildForces="true" includeChildSelections="true"/>
+              </constraints>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2f5d-049b-63fc-b0e5" includeChildSelections="false" includeChildForces="false"/>
+            <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="a5f2-9810-a40c-8754" includeChildForces="true" includeChildSelections="true"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="1520-c344-f4fe-b414" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </selectionEntryGroup>
       </selectionEntryGroups>
       <constraints>
         <constraint type="max" value="1" field="selections" scope="self" shared="true" id="2648-b29e-77d9-ad8f" includeChildSelections="true"/>
@@ -16631,6 +17116,29 @@ T’AU EMPIRE units (excluding KROOT and VESPID STINGWINGS units) from your army
 Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS unit is wholly within 6&quot; of and visible to this unit, that KROOT or VESPID STINGWINGS unit can only be selected as the target of a ranged attack if the attacking model is within 18&quot;.</description>
             </rule>
           </rules>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Experimental Prototype Cadre" id="1520-c344-f4fe-b414">
+          <rules>
+            <rule name="Superior Craftmanship" id="492b-52cc-f6f2-0d20" hidden="false">
+              <description>Add 6&quot; to the Range characteristic of ranged weapons equipped by **^^T&apos;au Empire^^** models from your army.</description>
+            </rule>
+          </rules>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Experimental Prototype Cadre" field="annotation" join=", " scope="force" affects="self.entries.forces.recursive.profiles.Ranged Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="force" childId="1520-c344-f4fe-b414" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="increment" value="6" field="9896-9419-16a1-92fc" scope="force" affects="self.entries.forces.recursive.profiles.Ranged Weapons">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="1520-c344-f4fe-b414" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
       </selectionEntries>
       <constraints>
