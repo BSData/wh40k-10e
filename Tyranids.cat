@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="b984-7317-81cc-20f" name="Xenos - Tyranids" revision="77" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Dunamis55" authorContact="">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="b984-7317-81cc-20f" name="Xenos - Tyranids" revision="81" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Dunamis55">
   <categoryEntries>
     <categoryEntry name="Synapse" hidden="false" id="4129-a453-686a-d38a"/>
     <categoryEntry id="4f10-fe01-4b80-8d6b" name="Winged Hive Tyrant" hidden="false"/>
@@ -795,7 +795,11 @@
         <entryLink import="true" name="Crusade" hidden="false" id="d57f-ef0f-8114-818a" type="selectionEntryGroup" targetId="2fa5-0a8d-013e-fc12" sortIndex="1"/>
       </entryLinks>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="235"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="225"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
       </costs>
       <infoGroups>
         <infoGroup name="Leader" hidden="false" id="ceb3-52af-6e6d-7b1b">
@@ -1804,6 +1808,16 @@
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This unit is eligible to shoot and declare a charge in a turn in which it Fell Back.</characteristic>
           </characteristics>
         </profile>
+        <profile name="Tyranid Warrior" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="3cd2-558d-c558-3df2">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">4+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
       <categoryLinks>
         <categoryLink id="719a-3115-48f-4408" name="Infantry" hidden="false" targetId="cf47-a0d7-7207-29dc" primary="true"/>
@@ -1827,6 +1841,11 @@
           </conditions>
         </modifier>
         <modifier type="set" value="6" field="40be-d448-295c-f3f3">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="7416-b7cc-fdbf-5bf0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="add" value="e3d4-6430-ea62-8d6d" field="category">
           <conditions>
             <condition type="atLeast" value="1" field="selections" scope="roster" childId="7416-b7cc-fdbf-5bf0" shared="true" includeChildSelections="true" includeChildForces="true"/>
           </conditions>
@@ -2124,6 +2143,7 @@
         <categoryLink id="dfec-5366-3785-f80d" name="Tyranid Warriors with Melee Bio-weapons" hidden="false" targetId="fb3c-c529-4e6c-2251" primary="false"/>
         <categoryLink targetId="7850-cc5a-c191-b80d" id="83ad-a194-f049-5b90" primary="false" name="Great Devourer"/>
         <categoryLink targetId="4129-a453-686a-d38a" id="ccb7-4c51-fdc7-aedf" primary="false" name="Synapse"/>
+        <categoryLink name="Tyranid Warriors" hidden="false" id="8969-54e1-66c8-2793" targetId="e3d4-6430-ea62-8d6d" primary="false"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="75"/>
@@ -2140,6 +2160,11 @@
           </conditions>
         </modifier>
         <modifier type="set" value="6" field="40be-d448-295c-f3f3">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="7416-b7cc-fdbf-5bf0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="add" value="e3d4-6430-ea62-8d6d" field="category">
           <conditions>
             <condition type="atLeast" value="1" field="selections" scope="roster" childId="7416-b7cc-fdbf-5bf0" shared="true" includeChildSelections="true" includeChildForces="true"/>
           </conditions>
@@ -3608,6 +3633,13 @@
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Psychic, Torrent</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
               </profiles>
               <infoLinks>
@@ -5683,7 +5715,7 @@
         <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="76e8-4d20-b1a4-845b" includeChildSelections="true"/>
       </constraints>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="150"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="140"/>
         <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
         <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
         <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
@@ -5944,7 +5976,11 @@
         <categoryLink targetId="d1d8-6ae0-1be7-e9e" id="b37b-701d-a93-4c71" primary="false" name="Faction: Tyranids"/>
       </categoryLinks>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="135"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="140"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
       </costs>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="40be-d448-295c-f3f3" includeChildSelections="true" includeChildForces="true"/>
@@ -7192,7 +7228,11 @@
         </selectionEntryGroup>
       </selectionEntryGroups>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="190"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="200"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
       </costs>
       <entryLinks>
         <entryLink import="true" name="Crusade" hidden="false" id="7660-6640-923b-ab97" type="selectionEntryGroup" targetId="2fa5-0a8d-013e-fc12" sortIndex="1"/>
@@ -7577,6 +7617,13 @@
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Torrent</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
               </profiles>
               <entryLinks>
@@ -8436,7 +8483,7 @@
         <categoryLink targetId="4ac9-fd30-1e3d-b249" id="5cf0-e77e-ee1e-db7f" primary="true" name="Configuration"/>
       </categoryLinks>
       <entryLinks>
-        <entryLink import="true" name="Detachment Rule" hidden="false" type="selectionEntryGroup" id="fd6d-19c0-da3d-4dba" targetId="7ada-e361-1f7e-af">
+        <entryLink import="true" name="Detachment" hidden="false" type="selectionEntryGroup" id="fd6d-19c0-da3d-4dba" targetId="7ada-e361-1f7e-af">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="49ea-ec65-dd72-4452" includeChildSelections="true"/>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2f05-b50-eb0c-faae" includeChildSelections="true"/>
@@ -8768,6 +8815,13 @@
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Torrent</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
               </profiles>
               <infoLinks>
@@ -9138,6 +9192,13 @@
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Torrent</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
               </profiles>
               <infoLinks>
@@ -10109,7 +10170,11 @@
         <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="40f8-1577-5c4d-1c99" includeChildSelections="true"/>
       </constraints>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="90"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="80"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
       </costs>
       <infoLinks>
         <infoLink name="Shadow in the Warp" hidden="false" type="rule" id="500d-6298-c46d-d8c1" targetId="395b-a159-b293-27aa"/>
@@ -10666,6 +10731,13 @@
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D3</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Precision, Psychic</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
                 <profile name="➤ Psychic tendril - neurolance" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="b22f-1012-772-79bb">
                   <characteristics>
@@ -10677,6 +10749,13 @@
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Melta 2, Psychic</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
                 <profile name="➤ Psychic tendril - neuroblast" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="34f1-b5d9-74bb-5d1e">
                   <characteristics>
@@ -10688,6 +10767,13 @@
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Psychic</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
               </profiles>
               <infoLinks>
@@ -10962,10 +11048,10 @@
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
-    <selectionEntryGroup id="7ada-e361-1f7e-af" name="Detachment Rule" hidden="false" collective="false" import="true" defaultSelectionEntryId="none">
+    <selectionEntryGroup id="7ada-e361-1f7e-af" name="Detachment" hidden="false" collective="false" import="true" defaultSelectionEntryId="none">
       <constraints>
-        <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" id="9771-9344-412d-6850" type="min"/>
-        <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" id="932-a6c9-b917-9279" type="max"/>
+        <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="9771-9344-412d-6850" type="min"/>
+        <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="932-a6c9-b917-9279" type="max"/>
       </constraints>
       <selectionEntries>
         <selectionEntry id="c2fe-bf23-bf24-aa43" name="Invasion Fleet" hidden="false" collective="false" import="true" type="upgrade">
@@ -11052,7 +11138,7 @@ Each time a Tyranids model with this Hyper-adaptation makes an attack that targe
           <profiles>
             <profile name="Leader-beasts" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2fad-3a56-b66f-a0e6">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">TYRANID WARRIORS (see below) and WINGED TYRANID PRIME units from your army have a 5+ invulnerable save.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">TYRANID WARRIORS and WINGED TYRANID PRIME units from your army have a 5+ invulnerable save.</characteristic>
               </characteristics>
             </profile>
             <profile name="Keywords" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="11a9-1ff2-8c17-d848">
@@ -11061,10 +11147,22 @@ Each time a Tyranids model with this Hyper-adaptation makes an attack that targe
               </characteristics>
             </profile>
           </profiles>
+          <modifiers>
+            <modifier type="increment" value="1" field="bef7-942a-1a23-59f8" affects="self.entries.forces.recursive.e3d4-6430-ea62-8d6d.profiles.Unit" scope="roster">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="7416-b7cc-fdbf-5bf0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Warrior Bioform Onslaught" field="annotation" affects="self.entries.forces.recursive.e3d4-6430-ea62-8d6d.profiles.Unit" scope="roster" join=", ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="7416-b7cc-fdbf-5bf0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
-    <selectionEntryGroup id="fa5b-f646-b960-a8d3" name="Enhancements" hidden="false" collective="false" import="true" flatten="false">
+    <selectionEntryGroup id="fa5b-f646-b960-a8d3" name="Enhancements" hidden="false" collective="false" import="true" flatten="false" collapsible="true">
       <constraints>
         <constraint field="selections" scope="roster" value="3" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" id="4856-7562-fc89-349b" type="max"/>
         <constraint field="selections" scope="self" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" id="5d2e-eca-98b1-336a" type="max"/>
@@ -11559,7 +11657,7 @@ Each time a Tyranids model with this Hyper-adaptation makes an attack that targe
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
-        <selectionEntryGroup id="5e04-7429-64d4-69d0" name="Unending Swarm Enhancements" hidden="false" collective="false" import="true">
+        <selectionEntryGroup id="5e04-7429-64d4-69d0" name="Unending Swarm Enhancements" hidden="false" collective="false" import="true" collapsible="false">
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
@@ -11670,7 +11768,7 @@ Each time a Tyranids model with this Hyper-adaptation makes an attack that targe
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
-        <selectionEntryGroup id="daed-f4d4-53d6-2dd8" name="Vanguard Onslaught Enhancements" hidden="false" collective="false" import="true">
+        <selectionEntryGroup id="daed-f4d4-53d6-2dd8" name="Vanguard Onslaught Enhancements" hidden="false" collective="false" import="true" collapsible="false">
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
@@ -11794,7 +11892,7 @@ Each time a Tyranids model with this Hyper-adaptation makes an attack that targe
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
-        <selectionEntryGroup id="dd4a-27d1-3e04-6b31" name="Warrior Bioform Onslaught Enhancements" hidden="false" collective="false" import="true">
+        <selectionEntryGroup id="dd4a-27d1-3e04-6b31" name="Warrior Bioform Onslaught Enhancements" hidden="false" collective="false" import="true" collapsible="false">
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>

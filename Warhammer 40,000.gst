@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="31" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="36" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -251,7 +251,43 @@
         <constraint type="max" value="-1" field="selections" scope="force" shared="true" id="807c-44c1-6f7d-dfb8" includeChildSelections="true" includeChildForces="true"/>
       </constraints>
     </categoryEntry>
-    <categoryEntry id="1e42-dfae-cbdd-207d" name="Faction: Heretic Astartes" hidden="false"/>
+    <categoryEntry id="1e42-dfae-cbdd-207d" name="Faction: Heretic Astartes" hidden="false">
+      <constraints>
+        <constraint type="max" value="-1" field="51b2-306e-1021-d207" scope="force" shared="true" id="fbba-7f7e-16a1-370a" includeChildSelections="true"/>
+      </constraints>
+      <modifiers>
+        <modifier type="set" value="500" field="fbba-7f7e-16a1-370a" id="4fa7-457c-8229-7e77">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="c8da-e875-58f7-f6d6" shared="true"/>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="d62d-db22-4893-4bc0" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="1000" field="fbba-7f7e-16a1-370a" id="94e5-8ddd-5373-00cf">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="c8da-e875-58f7-f6d6" shared="true"/>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="baf8-997f-e323-a090" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="1500" field="fbba-7f7e-16a1-370a" id="a7d0-0334-fd3e-416b">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="c8da-e875-58f7-f6d6" shared="true"/>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="4204-82d0-908c-a62a" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </categoryEntry>
     <categoryEntry id="fd71-afa6-b13b-7fda" name="Faction: Adepta Sororitas" hidden="false"/>
     <categoryEntry id="ee0-cf31-4fb5-6b26" name="Faction: Necrons" hidden="false"/>
     <categoryEntry id="571f-ec3a-a5a2-751a" name="Faction: Legiones Daemonica" hidden="false">
@@ -949,219 +985,6 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
   </sharedProfiles>
   <sharedSelectionEntryGroups>
     <selectionEntryGroup name="Weapon Modifications" id="f9da-852a-d7f0-92e9" hidden="false">
-      <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Brutal (S+1)" hidden="false" id="d92a-5d2e-0b38-ea01">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="75f5-1a3b-0da5-91b0" includeChildSelections="false"/>
-          </constraints>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
-          </costs>
-          <modifierGroups>
-            <modifierGroup type="and">
-              <comment>Brutal</comment>
-              <modifiers>
-                <modifier type="append" value="Brutal" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="increment" value="1" field="2229-f494-25db-c5d3" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" scope="upgrade" affects="self.entries.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="append" value="Brutal" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="d92a-5d2e-0b38-ea01" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
-            </modifierGroup>
-          </modifierGroups>
-        </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Armour Piercing (AP+1)" hidden="false" id="d181-a615-5566-8e5a">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3018-0ec7-e3e5-de6a" includeChildSelections="false"/>
-          </constraints>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
-          </costs>
-          <modifierGroups>
-            <modifierGroup type="and">
-              <comment>Armour Piercing</comment>
-              <modifiers>
-                <modifier type="append" value="Armour Piercing" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="decrement" value="1" field="9ead-8a10-520-de15" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="append" value="Armour Piercing" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="upgrade" affects="self.entries.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="d181-a615-5566-8e5a" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
-            </modifierGroup>
-          </modifierGroups>
-        </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Precise" hidden="false" id="658a-396c-f9a0-d15f">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6002-d56b-06a2-194a" includeChildSelections="false"/>
-          </constraints>
-          <profiles>
-            <profile name="Precise" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a3d2-6ce8-adf3-448a">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a Critical Wound is scored for an attack made with this weapon, that attack has the [PRECISION] ability.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-          <infoLinks>
-            <infoLink name="Precision" id="119c-b206-e441-6abe" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
-          </infoLinks>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
-          </costs>
-        </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Master-worked (D+1)" hidden="false" id="4b25-c6e7-3350-9c1c">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f492-ff46-c01c-fa7f" includeChildSelections="false"/>
-          </constraints>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
-          </costs>
-          <modifierGroups>
-            <modifierGroup type="and">
-              <comment>Master-worked</comment>
-              <modifiers>
-                <modifier type="append" value="Master-worked" field="annotation" join=", " scope="upgrade" affects="profiles.Ranged Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3" scope="upgrade" affects="profiles.Ranged Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="append" value="Master-worked" field="annotation" join=", " scope="upgrade" affects="profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="upgrade" affects="profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="4b25-c6e7-3350-9c1c" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
-            </modifierGroup>
-          </modifierGroups>
-        </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Heirloom (A+1)" hidden="false" id="09c4-6313-8cd5-d77a">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9712-b244-1f9c-e8c2" includeChildSelections="false"/>
-          </constraints>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
-          </costs>
-          <modifierGroups>
-            <modifierGroup type="and">
-              <comment>Heirloom</comment>
-              <modifiers>
-                <modifier type="append" value="Heirloom" field="annotation" join=", " scope="upgrade" affects="profiles.Ranged Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="increment" value="1" field="3bb-c35f-f54-fb08" scope="upgrade" affects="profiles.Ranged Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="upgrade" affects="profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="append" value="Heirloom" field="annotation" join=", " scope="upgrade" affects="profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="09c4-6313-8cd5-d77a" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
-            </modifierGroup>
-          </modifierGroups>
-        </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Finely Balanced (BS/WS+1)" hidden="false" id="13b7-d8d5-72c2-1f72">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="26be-21c9-e43a-04c0" includeChildSelections="false"/>
-          </constraints>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
-          </costs>
-          <modifierGroups>
-            <modifierGroup type="and">
-              <comment>Finely Balanced</comment>
-              <modifiers>
-                <modifier type="append" value="Finely Balanced" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6" scope="upgrade" affects="self.entries.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="append" value="Finely Balanced" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="13b7-d8d5-72c2-1f72" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
-            </modifierGroup>
-          </modifierGroups>
-        </selectionEntry>
-      </selectionEntries>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
           <conditionGroups>
@@ -1222,6 +1045,239 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
         <constraint type="min" value="0" field="selections" scope="self" shared="true" id="2a14-db5e-c5ad-5ae9"/>
       </constraints>
       <comment>Crusade content</comment>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Armour Piercing (AP+1)" hidden="false" id="128d-c573-273f-47b5">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="113d-f8b1-7c83-8844" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
+          </costs>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <comment>Armour Piercing</comment>
+              <modifiers>
+                <modifier type="append" value="Armour Piercing" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="128d-c573-273f-47b5" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="decrement" value="1" field="9ead-8a10-520-de15" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="128d-c573-273f-47b5" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="append" value="Armour Piercing" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Melee Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="128d-c573-273f-47b5" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="upgrade" affects="self.entries.profiles.Melee Weapons">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="128d-c573-273f-47b5" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Brutal (S+1)" hidden="false" id="c5fb-58f5-2d2f-cc09">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f0b9-cb53-9d50-446b" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
+          </costs>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <comment>Brutal</comment>
+              <modifiers>
+                <modifier type="append" value="Brutal" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="c5fb-58f5-2d2f-cc09" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="increment" value="1" field="2229-f494-25db-c5d3" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="c5fb-58f5-2d2f-cc09" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" scope="upgrade" affects="self.entries.profiles.Melee Weapons">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="c5fb-58f5-2d2f-cc09" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="append" value="Brutal" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Melee Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="c5fb-58f5-2d2f-cc09" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Finely Balanced (BS/WS+1)" hidden="false" id="a925-2f50-1580-0f5c">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2e35-2606-32de-f70e" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
+          </costs>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <comment>Finely Balanced</comment>
+              <modifiers>
+                <modifier type="append" value="Finely Balanced" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="a925-2f50-1580-0f5c" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" scope="upgrade" affects="self.entries.profiles.Ranged Weapons">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="a925-2f50-1580-0f5c" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6" scope="upgrade" affects="self.entries.profiles.Melee Weapons">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="a925-2f50-1580-0f5c" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="append" value="Finely Balanced" field="annotation" join=", " scope="upgrade" affects="self.entries.profiles.Melee Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="a925-2f50-1580-0f5c" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Heirloom (A+1)" hidden="false" id="2801-9f1c-645d-cb3d">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7351-cca3-269c-9d17" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
+          </costs>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <comment>Heirloom</comment>
+              <modifiers>
+                <modifier type="append" value="Heirloom" field="annotation" join=", " scope="upgrade" affects="profiles.Ranged Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="increment" value="1" field="3bb-c35f-f54-fb08" scope="upgrade" affects="profiles.Ranged Weapons" position="-1">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="upgrade" affects="profiles.Melee Weapons" position="-1">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="append" value="Heirloom" field="annotation" join=", " scope="upgrade" affects="profiles.Melee Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="replace" field="3bb-c35f-f54-fb08" scope="upgrade" affects="profiles.Ranged Weapons" arg="+0">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="replace" field="2337-daa1-6682-b110" scope="upgrade" affects="profiles.Melee Weapons" arg="+0">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Master-worked (D+1)" hidden="false" id="584b-5fa7-a3c3-942e">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a0b6-8226-f8e5-c390" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
+          </costs>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <comment>Master-worked</comment>
+              <modifiers>
+                <modifier type="append" value="Master-worked" field="annotation" join=", " scope="upgrade" affects="profiles.Ranged Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3" scope="upgrade" affects="profiles.Ranged Weapons" position="-1">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="append" value="Master-worked" field="annotation" join=", " scope="upgrade" affects="profiles.Melee Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="upgrade" affects="profiles.Melee Weapons" position="-1">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="replace" field="a354-c1c8-a745-f9e3" scope="upgrade" affects="profiles.Ranged Weapons" join="" arg="+0">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="replace" field="3254-9fe6-d824-513e" scope="upgrade" affects="profiles.Melee Weapons" join="" arg="+0">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Precise" hidden="false" id="56e5-82b6-8596-85f5">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="01a3-f7d7-2d1c-0425" includeChildSelections="false"/>
+          </constraints>
+          <profiles>
+            <profile name="Precise" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e257-ed3e-c157-a9c6">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a Critical Wound is scored for an attack made with this weapon, that attack has the [PRECISION] ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Precision" id="e2aa-a903-21c9-9a9b" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
+          </infoLinks>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
+          </costs>
+        </selectionEntry>
+      </selectionEntries>
     </selectionEntryGroup>
     <selectionEntryGroup name="Battle Scars" id="1576-e816-033f-828d" hidden="false">
       <constraints>
@@ -1284,6 +1340,16 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                       <conditions>
                         <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="4135-1065-ae32-09a4" shared="true" includeChildSelections="true"/>
                       </conditions>
+                    </modifier>
+                    <modifier type="floor" value="0" field="e703-ecb6-5ce7-aec1" affects="self.entries.profiles.Unit" scope="model-or-unit">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="4135-1065-ae32-09a4" shared="true" includeChildSelections="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="63f1-e6e8-f6f6-a4f0" shared="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
                     </modifier>
                   </modifiers>
                 </modifierGroup>
@@ -1351,6 +1417,11 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                       </conditions>
                     </modifier>
                     <modifier type="append" value="Fatigued" field="annotation" join=", " scope="model-or-unit" affects="self.entries.profiles.Unit">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="9d70-a94e-3f89-5eed" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="floor" value="0" field="bef7-942a-1a23-59f8" scope="model-or-unit" affects="self.entries.profiles.Unit">
                       <conditions>
                         <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="9d70-a94e-3f89-5eed" shared="true" includeChildSelections="true"/>
                       </conditions>
