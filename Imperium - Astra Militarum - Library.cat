@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="114" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="115" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Aegis Defence Line" hidden="false" id="cb99-456-f100-40ed">
       <categoryLinks>
@@ -3386,7 +3386,7 @@
           <selectionEntries>
             <selectionEntry type="upgrade" import="true" name="1 Death Korps Watchmaster and 9 Death Korps Troopers" hidden="false" id="c410-f974-c7c4-8732">
               <selectionEntryGroups>
-                <selectionEntryGroup name="9 Death Korps Troopers" id="4c39-2d84-6e06-46d4" hidden="false">
+                <selectionEntryGroup name="9 Death Korps Troopers" id="4c39-2d84-6e06-46d4" hidden="false" collapsible="true" sortIndex="2">
                   <selectionEntries>
                     <selectionEntry type="model" import="true" name="Death Korps Trooper" hidden="false" id="14e5-2f8d-e806-fd7d">
                       <infoLinks>
@@ -3407,7 +3407,7 @@
                         </entryLink>
                       </entryLinks>
                       <constraints>
-                        <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="3c89-8002-b3d5-79f9" includeChildSelections="false"/>
+                        <constraint type="min" value="5" field="selections" scope="parent" shared="true" id="3c89-8002-b3d5-79f9" includeChildSelections="false"/>
                         <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="ed85-bc63-cd3b-3181" includeChildSelections="false"/>
                       </constraints>
                     </selectionEntry>
@@ -3468,18 +3468,18 @@
                             </entryLink>
                           </entryLinks>
                           <constraints>
-                            <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="b09a-ad45-7670-6f0d"/>
+                            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b09a-ad45-7670-6f0d"/>
                           </constraints>
                           <modifiers>
-                            <modifier type="decrement" value="1" field="b09a-ad45-7670-6f0d">
-                              <repeats>
-                                <repeat value="1" repeats="1" field="selections" scope="parent" childId="95aa-4e62-c7d1-d5c1" shared="true" roundUp="false" includeChildSelections="true"/>
-                              </repeats>
-                            </modifier>
-                            <modifier type="decrement" value="1" field="b09a-ad45-7670-6f0d">
-                              <repeats>
-                                <repeat value="1" repeats="1" field="selections" scope="parent" childId="0abf-c931-3dbf-0605" shared="true" roundUp="false" includeChildSelections="true"/>
-                              </repeats>
+                            <modifier type="set" value="0" field="b09a-ad45-7670-6f0d">
+                              <conditionGroups>
+                                <conditionGroup type="and">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="unit" childId="95aa-4e62-c7d1-d5c1" shared="true" includeChildSelections="true"/>
+                                    <condition type="atLeast" value="1" field="selections" scope="unit" childId="0abf-c931-3dbf-0605" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </conditionGroup>
+                              </conditionGroups>
                             </modifier>
                           </modifiers>
                         </selectionEntry>
@@ -3599,7 +3599,7 @@
                             </selectionEntry>
                           </selectionEntries>
                           <constraints>
-                            <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="4f27-d555-80b3-f5c8"/>
+                            <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="4f27-d555-80b3-f5c8"/>
                           </constraints>
                         </selectionEntryGroup>
                       </selectionEntryGroups>
@@ -3610,99 +3610,101 @@
                     <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="ae8c-ae8f-3ba7-be82"/>
                   </constraints>
                 </selectionEntryGroup>
-              </selectionEntryGroups>
-              <selectionEntries>
-                <selectionEntry type="model" import="true" name="Death Korps Watchmaster" hidden="false" id="fc18-2ed4-59d6-ee75">
-                  <infoLinks>
-                    <infoLink name="Death Korps of Krieg" id="056f-b728-96c1-8517" hidden="false" type="profile" targetId="11ee-5a7d-7e13-e1ef"/>
-                  </infoLinks>
-                  <selectionEntryGroups>
-                    <selectionEntryGroup name="Wargear Options" id="a35a-538d-ffd0-27f4" hidden="false" defaultSelectionEntryId="c710-8e47-eda1-b9ed">
-                      <selectionEntries>
-                        <selectionEntry type="upgrade" import="true" name="Boltgun and close combat weapon" hidden="false" id="ded7-49f8-2797-2b2e">
-                          <entryLinks>
-                            <entryLink import="true" name="Close combat weapon" hidden="false" id="e702-4627-a16d-a1c0" type="selectionEntry" targetId="8fe1-438f-f00a-ef5c">
-                              <constraints>
-                                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="946c-edc9-edf9-5daf"/>
-                                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4ed8-4c4b-827d-c7f3"/>
-                              </constraints>
+                <selectionEntryGroup name="Death Korps Watchmaster" id="3277-5d57-2929-ddb8" hidden="false" sortIndex="1" collapsible="true">
+                  <selectionEntries>
+                    <selectionEntry type="model" import="true" name="Death Korps Watchmaster" hidden="false" id="fc18-2ed4-59d6-ee75">
+                      <infoLinks>
+                        <infoLink name="Death Korps of Krieg" id="056f-b728-96c1-8517" hidden="false" type="profile" targetId="11ee-5a7d-7e13-e1ef"/>
+                      </infoLinks>
+                      <selectionEntryGroups>
+                        <selectionEntryGroup name="Wargear Options" id="a35a-538d-ffd0-27f4" hidden="false" defaultSelectionEntryId="c710-8e47-eda1-b9ed">
+                          <selectionEntries>
+                            <selectionEntry type="upgrade" import="true" name="Boltgun and close combat weapon" hidden="false" id="ded7-49f8-2797-2b2e">
                               <entryLinks>
-                                <entryLink import="true" name="Weapon Modifications" hidden="false" id="0eb2-c09e-7cf1-f216" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
-                              </entryLinks>
-                            </entryLink>
-                            <entryLink import="true" name="Boltgun" hidden="false" id="26be-e41e-3a66-ac21" type="selectionEntry" targetId="1cd4-7b86-8d9d-bb46">
-                              <constraints>
-                                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3935-d794-7726-cef5" includeChildSelections="false"/>
-                                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3551-8b74-eebe-d6a2" includeChildSelections="false"/>
-                              </constraints>
-                              <entryLinks>
-                                <entryLink import="true" name="Weapon Modifications" hidden="false" id="f593-3e4c-5390-1c5e" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
-                              </entryLinks>
-                            </entryLink>
-                          </entryLinks>
-                        </selectionEntry>
-                        <selectionEntry type="upgrade" import="true" name="Laspistol and chainsword" hidden="false" id="c710-8e47-eda1-b9ed" flatten="true">
-                          <selectionEntryGroups>
-                            <selectionEntryGroup name="Chainsword" id="3e2b-7caa-5cb7-c8f1" hidden="false" defaultSelectionEntryId="c588-2dce-360c-ec98" flatten="false">
-                              <constraints>
-                                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="34bf-b66d-b675-29d8"/>
-                                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="72b5-b0cf-b7f2-ce02"/>
-                              </constraints>
-                              <entryLinks>
-                                <entryLink import="true" name="Chainsword" hidden="false" id="c588-2dce-360c-ec98" type="selectionEntry" targetId="7934-5223-153f-104e">
+                                <entryLink import="true" name="Close combat weapon" hidden="false" id="e702-4627-a16d-a1c0" type="selectionEntry" targetId="8fe1-438f-f00a-ef5c">
+                                  <constraints>
+                                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="946c-edc9-edf9-5daf"/>
+                                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4ed8-4c4b-827d-c7f3"/>
+                                  </constraints>
                                   <entryLinks>
-                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="49b5-47e8-99a5-0f81" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="0eb2-c09e-7cf1-f216" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                                   </entryLinks>
                                 </entryLink>
-                                <entryLink import="true" name="Power weapon" hidden="false" id="a100-73bc-87cb-92ff" type="selectionEntry" targetId="abb5-c410-8f2a-e60a">
+                                <entryLink import="true" name="Boltgun" hidden="false" id="26be-e41e-3a66-ac21" type="selectionEntry" targetId="1cd4-7b86-8d9d-bb46">
+                                  <constraints>
+                                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3935-d794-7726-cef5" includeChildSelections="false"/>
+                                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3551-8b74-eebe-d6a2" includeChildSelections="false"/>
+                                  </constraints>
                                   <entryLinks>
-                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="5fb1-0ec9-fb56-4ea5" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="f593-3e4c-5390-1c5e" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                                   </entryLinks>
                                 </entryLink>
                               </entryLinks>
-                            </selectionEntryGroup>
-                            <selectionEntryGroup name="Laspistol" id="d344-6b2b-dbfd-9004" hidden="false" defaultSelectionEntryId="ee4b-392d-48c9-e5a8" flatten="false">
-                              <entryLinks>
-                                <entryLink import="true" name="Laspistol" hidden="false" id="f0a9-1182-934f-85e9" type="selectionEntry" targetId="1211-ef94-5ea9-6a50">
+                            </selectionEntry>
+                            <selectionEntry type="upgrade" import="true" name="Laspistol and chainsword" hidden="false" id="c710-8e47-eda1-b9ed" flatten="true">
+                              <selectionEntryGroups>
+                                <selectionEntryGroup name="Chainsword" id="3e2b-7caa-5cb7-c8f1" hidden="false" defaultSelectionEntryId="c588-2dce-360c-ec98" flatten="false">
+                                  <constraints>
+                                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="34bf-b66d-b675-29d8"/>
+                                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="72b5-b0cf-b7f2-ce02"/>
+                                  </constraints>
                                   <entryLinks>
-                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="0a70-d94d-372c-8154" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                    <entryLink import="true" name="Chainsword" hidden="false" id="c588-2dce-360c-ec98" type="selectionEntry" targetId="7934-5223-153f-104e">
+                                      <entryLinks>
+                                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="49b5-47e8-99a5-0f81" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                      </entryLinks>
+                                    </entryLink>
+                                    <entryLink import="true" name="Power weapon" hidden="false" id="a100-73bc-87cb-92ff" type="selectionEntry" targetId="abb5-c410-8f2a-e60a">
+                                      <entryLinks>
+                                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="5fb1-0ec9-fb56-4ea5" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                      </entryLinks>
+                                    </entryLink>
                                   </entryLinks>
-                                </entryLink>
-                                <entryLink import="true" name="Bolt pistol" hidden="false" id="b779-5b90-96d8-0886" type="selectionEntry" targetId="edce-b2da-b8c3-7c8b">
+                                </selectionEntryGroup>
+                                <selectionEntryGroup name="Laspistol" id="d344-6b2b-dbfd-9004" hidden="false" defaultSelectionEntryId="ee4b-392d-48c9-e5a8" flatten="false">
                                   <entryLinks>
-                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="da26-46eb-8f0e-fd82" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                    <entryLink import="true" name="Laspistol" hidden="false" id="f0a9-1182-934f-85e9" type="selectionEntry" targetId="1211-ef94-5ea9-6a50">
+                                      <entryLinks>
+                                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="0a70-d94d-372c-8154" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                      </entryLinks>
+                                    </entryLink>
+                                    <entryLink import="true" name="Bolt pistol" hidden="false" id="b779-5b90-96d8-0886" type="selectionEntry" targetId="edce-b2da-b8c3-7c8b">
+                                      <entryLinks>
+                                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="da26-46eb-8f0e-fd82" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                      </entryLinks>
+                                    </entryLink>
+                                    <entryLink import="true" name="Plasma pistol" hidden="false" id="fb54-7917-179e-07bc" type="selectionEntry" targetId="abf2-656d-322e-3c7e">
+                                      <entryLinks>
+                                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="66a5-f108-f853-9cbf" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                      </entryLinks>
+                                    </entryLink>
                                   </entryLinks>
-                                </entryLink>
-                                <entryLink import="true" name="Plasma pistol" hidden="false" id="fb54-7917-179e-07bc" type="selectionEntry" targetId="abf2-656d-322e-3c7e">
-                                  <entryLinks>
-                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="66a5-f108-f853-9cbf" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
-                                  </entryLinks>
-                                </entryLink>
-                              </entryLinks>
-                              <constraints>
-                                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8151-41f8-b491-d818"/>
-                                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="928c-24f1-05fc-14ab"/>
-                              </constraints>
-                            </selectionEntryGroup>
-                          </selectionEntryGroups>
-                        </selectionEntry>
-                      </selectionEntries>
+                                  <constraints>
+                                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8151-41f8-b491-d818"/>
+                                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="928c-24f1-05fc-14ab"/>
+                                  </constraints>
+                                </selectionEntryGroup>
+                              </selectionEntryGroups>
+                            </selectionEntry>
+                          </selectionEntries>
+                          <constraints>
+                            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="84ad-3e7d-de3b-0f9a" includeChildSelections="false"/>
+                            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7ec1-ae4f-b1a9-4917" includeChildSelections="false"/>
+                          </constraints>
+                        </selectionEntryGroup>
+                      </selectionEntryGroups>
                       <constraints>
-                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="84ad-3e7d-de3b-0f9a" includeChildSelections="false"/>
-                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7ec1-ae4f-b1a9-4917" includeChildSelections="false"/>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="894d-594b-8fb7-e726"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8a69-b6fc-fa76-681e"/>
                       </constraints>
-                    </selectionEntryGroup>
-                  </selectionEntryGroups>
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="894d-594b-8fb7-e726"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8a69-b6fc-fa76-681e"/>
-                  </constraints>
-                </selectionEntry>
-              </selectionEntries>
+                    </selectionEntry>
+                  </selectionEntries>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="2 Death Korps Watchmaster and 18 Death Korps Troopers" hidden="false" id="fb5f-f0c4-e28-2496">
               <selectionEntryGroups>
-                <selectionEntryGroup name="18 Death Korps Troopers" id="663b-198c-c001-7be9" hidden="false">
+                <selectionEntryGroup name="18 Death Korps Troopers" id="663b-198c-c001-7be9" hidden="false" collapsible="true" sortIndex="2">
                   <selectionEntries>
                     <selectionEntry type="model" import="true" name="Death Korps Trooper" hidden="false" id="0201-6e78-d053-b52d">
                       <infoLinks>
@@ -3784,18 +3786,38 @@
                             </entryLink>
                           </entryLinks>
                           <constraints>
-                            <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="e15a-846c-5f3d-2a73"/>
+                            <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="e15a-846c-5f3d-2a73"/>
                           </constraints>
                           <modifiers>
-                            <modifier type="decrement" value="1" field="e15a-846c-5f3d-2a73">
-                              <repeats>
-                                <repeat value="1" repeats="1" field="selections" scope="parent" childId="16f3-e986-07b4-7ee3" shared="true" roundUp="false" includeChildSelections="true"/>
-                              </repeats>
+                            <modifier type="set" value="0" field="e15a-846c-5f3d-2a73">
+                              <conditionGroups>
+                                <conditionGroup type="and">
+                                  <conditions>
+                                    <condition type="atLeast" value="2" field="selections" scope="unit" childId="16f3-e986-07b4-7ee3" shared="true" includeChildSelections="true"/>
+                                    <condition type="atLeast" value="2" field="selections" scope="unit" childId="cc82-0ca7-eacb-5d9f" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </conditionGroup>
+                              </conditionGroups>
                             </modifier>
-                            <modifier type="decrement" value="1" field="e15a-846c-5f3d-2a73">
-                              <repeats>
-                                <repeat value="1" repeats="1" field="selections" scope="parent" childId="cc82-0ca7-eacb-5d9f" shared="true" roundUp="false" includeChildSelections="true"/>
-                              </repeats>
+                            <modifier type="set" value="1" field="e15a-846c-5f3d-2a73">
+                              <conditionGroups>
+                                <conditionGroup type="or">
+                                  <conditionGroups>
+                                    <conditionGroup type="and">
+                                      <conditions>
+                                        <condition type="equalTo" value="2" field="selections" scope="unit" childId="16f3-e986-07b4-7ee3" shared="true" includeChildSelections="true"/>
+                                        <condition type="equalTo" value="1" field="selections" scope="unit" childId="cc82-0ca7-eacb-5d9f" shared="true" includeChildSelections="true"/>
+                                      </conditions>
+                                    </conditionGroup>
+                                    <conditionGroup type="and">
+                                      <conditions>
+                                        <condition type="equalTo" value="1" field="selections" scope="unit" childId="16f3-e986-07b4-7ee3" shared="true" includeChildSelections="true"/>
+                                        <condition type="equalTo" value="2" field="selections" scope="unit" childId="cc82-0ca7-eacb-5d9f" shared="true" includeChildSelections="true"/>
+                                      </conditions>
+                                    </conditionGroup>
+                                  </conditionGroups>
+                                </conditionGroup>
+                              </conditionGroups>
                             </modifier>
                           </modifiers>
                         </selectionEntry>
@@ -3915,7 +3937,7 @@
                             </selectionEntry>
                           </selectionEntries>
                           <constraints>
-                            <constraint type="max" value="8" field="selections" scope="parent" shared="true" id="7094-a8f3-ddf3-7704"/>
+                            <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="7094-a8f3-ddf3-7704"/>
                           </constraints>
                         </selectionEntryGroup>
                       </selectionEntryGroups>
@@ -3926,95 +3948,97 @@
                     <constraint type="max" value="18" field="selections" scope="parent" shared="true" id="17a7-a147-f92c-bb14"/>
                   </constraints>
                 </selectionEntryGroup>
-              </selectionEntryGroups>
-              <selectionEntries>
-                <selectionEntry type="model" import="true" name="Death Korps Watchmaster" hidden="false" id="03e9-d9fc-1627-8f0f">
-                  <infoLinks>
-                    <infoLink name="Death Korps of Krieg" id="24e2-8908-7b61-f8a7" hidden="false" type="profile" targetId="11ee-5a7d-7e13-e1ef"/>
-                  </infoLinks>
-                  <selectionEntryGroups>
-                    <selectionEntryGroup name="Wargear Options" id="4f9d-35f1-6258-ece8" hidden="false" defaultSelectionEntryId="4633-edf0-0ed3-0c2a">
-                      <selectionEntries>
-                        <selectionEntry type="upgrade" import="true" name="Boltgun and close combat weapon" hidden="false" id="b496-cf44-0409-6942">
-                          <entryLinks>
-                            <entryLink import="true" name="Close combat weapon" hidden="false" id="17c6-f92c-743e-2f19" type="selectionEntry" targetId="8fe1-438f-f00a-ef5c">
-                              <constraints>
-                                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="0b62-d5ef-dd8f-6bd3"/>
-                                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a209-a584-0f9f-905f"/>
-                              </constraints>
+                <selectionEntryGroup name="2 Death Korps Watchmasters" id="6688-b15f-87a4-6c21" hidden="false" sortIndex="1" collapsible="true">
+                  <selectionEntries>
+                    <selectionEntry type="model" import="true" name="Death Korps Watchmaster" hidden="false" id="03e9-d9fc-1627-8f0f">
+                      <infoLinks>
+                        <infoLink name="Death Korps of Krieg" id="24e2-8908-7b61-f8a7" hidden="false" type="profile" targetId="11ee-5a7d-7e13-e1ef"/>
+                      </infoLinks>
+                      <selectionEntryGroups>
+                        <selectionEntryGroup name="Wargear Options" id="4f9d-35f1-6258-ece8" hidden="false" defaultSelectionEntryId="4633-edf0-0ed3-0c2a">
+                          <selectionEntries>
+                            <selectionEntry type="upgrade" import="true" name="Boltgun and close combat weapon" hidden="false" id="b496-cf44-0409-6942">
                               <entryLinks>
-                                <entryLink import="true" name="Weapon Modifications" hidden="false" id="5e9d-d9f4-c06d-1945" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
-                              </entryLinks>
-                            </entryLink>
-                            <entryLink import="true" name="Boltgun" hidden="false" id="8188-ea3f-8754-6af5" type="selectionEntry" targetId="1cd4-7b86-8d9d-bb46">
-                              <constraints>
-                                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4212-4693-eecd-57cd" includeChildSelections="false"/>
-                                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c431-fc67-e1aa-ddb5" includeChildSelections="false"/>
-                              </constraints>
-                              <entryLinks>
-                                <entryLink import="true" name="Weapon Modifications" hidden="false" id="1759-78be-d3d7-d2f7" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
-                              </entryLinks>
-                            </entryLink>
-                          </entryLinks>
-                        </selectionEntry>
-                        <selectionEntry type="upgrade" import="true" name="Laspistol and chainsword" hidden="false" id="4633-edf0-0ed3-0c2a" flatten="true">
-                          <selectionEntryGroups>
-                            <selectionEntryGroup name="Chainsword" id="905b-190c-7abc-b726" hidden="false" defaultSelectionEntryId="c588-2dce-360c-ec98">
-                              <constraints>
-                                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3536-a310-a788-c12f"/>
-                                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="577d-8ffa-ae41-20d3"/>
-                              </constraints>
-                              <entryLinks>
-                                <entryLink import="true" name="Chainsword" hidden="false" id="5ac2-2f1f-9c65-c628" type="selectionEntry" targetId="7934-5223-153f-104e">
+                                <entryLink import="true" name="Close combat weapon" hidden="false" id="17c6-f92c-743e-2f19" type="selectionEntry" targetId="8fe1-438f-f00a-ef5c">
+                                  <constraints>
+                                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="0b62-d5ef-dd8f-6bd3"/>
+                                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a209-a584-0f9f-905f"/>
+                                  </constraints>
                                   <entryLinks>
-                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="d62f-a8d4-1071-2c3c" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="5e9d-d9f4-c06d-1945" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                                   </entryLinks>
                                 </entryLink>
-                                <entryLink import="true" name="Power weapon" hidden="false" id="38e6-666d-9654-c1d6" type="selectionEntry" targetId="abb5-c410-8f2a-e60a">
+                                <entryLink import="true" name="Boltgun" hidden="false" id="8188-ea3f-8754-6af5" type="selectionEntry" targetId="1cd4-7b86-8d9d-bb46">
+                                  <constraints>
+                                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4212-4693-eecd-57cd" includeChildSelections="false"/>
+                                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c431-fc67-e1aa-ddb5" includeChildSelections="false"/>
+                                  </constraints>
                                   <entryLinks>
-                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="1cde-e1ca-e30d-3241" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="1759-78be-d3d7-d2f7" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                                   </entryLinks>
                                 </entryLink>
                               </entryLinks>
-                            </selectionEntryGroup>
-                            <selectionEntryGroup name="Laspistol" id="355e-a772-5b81-9cc5" hidden="false" defaultSelectionEntryId="ee4b-392d-48c9-e5a8">
-                              <entryLinks>
-                                <entryLink import="true" name="Laspistol" hidden="false" id="c9e8-e813-5f25-8783" type="selectionEntry" targetId="1211-ef94-5ea9-6a50">
+                            </selectionEntry>
+                            <selectionEntry type="upgrade" import="true" name="Laspistol and chainsword" hidden="false" id="4633-edf0-0ed3-0c2a" flatten="true">
+                              <selectionEntryGroups>
+                                <selectionEntryGroup name="Chainsword" id="905b-190c-7abc-b726" hidden="false" defaultSelectionEntryId="c588-2dce-360c-ec98">
+                                  <constraints>
+                                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3536-a310-a788-c12f"/>
+                                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="577d-8ffa-ae41-20d3"/>
+                                  </constraints>
                                   <entryLinks>
-                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="d3ea-375c-af76-c193" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                    <entryLink import="true" name="Chainsword" hidden="false" id="5ac2-2f1f-9c65-c628" type="selectionEntry" targetId="7934-5223-153f-104e">
+                                      <entryLinks>
+                                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="d62f-a8d4-1071-2c3c" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                      </entryLinks>
+                                    </entryLink>
+                                    <entryLink import="true" name="Power weapon" hidden="false" id="38e6-666d-9654-c1d6" type="selectionEntry" targetId="abb5-c410-8f2a-e60a">
+                                      <entryLinks>
+                                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="1cde-e1ca-e30d-3241" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                      </entryLinks>
+                                    </entryLink>
                                   </entryLinks>
-                                </entryLink>
-                                <entryLink import="true" name="Bolt pistol" hidden="false" id="2e80-196b-6f5a-10be" type="selectionEntry" targetId="edce-b2da-b8c3-7c8b">
+                                </selectionEntryGroup>
+                                <selectionEntryGroup name="Laspistol" id="355e-a772-5b81-9cc5" hidden="false" defaultSelectionEntryId="ee4b-392d-48c9-e5a8">
                                   <entryLinks>
-                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="4bc0-8f29-5cd9-e037" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                    <entryLink import="true" name="Laspistol" hidden="false" id="c9e8-e813-5f25-8783" type="selectionEntry" targetId="1211-ef94-5ea9-6a50">
+                                      <entryLinks>
+                                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="d3ea-375c-af76-c193" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                      </entryLinks>
+                                    </entryLink>
+                                    <entryLink import="true" name="Bolt pistol" hidden="false" id="2e80-196b-6f5a-10be" type="selectionEntry" targetId="edce-b2da-b8c3-7c8b">
+                                      <entryLinks>
+                                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="4bc0-8f29-5cd9-e037" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                      </entryLinks>
+                                    </entryLink>
+                                    <entryLink import="true" name="Plasma pistol" hidden="false" id="bd4f-d5e0-e2e4-bc6a" type="selectionEntry" targetId="abf2-656d-322e-3c7e">
+                                      <entryLinks>
+                                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="24ce-a051-fe53-2b87" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                                      </entryLinks>
+                                    </entryLink>
                                   </entryLinks>
-                                </entryLink>
-                                <entryLink import="true" name="Plasma pistol" hidden="false" id="bd4f-d5e0-e2e4-bc6a" type="selectionEntry" targetId="abf2-656d-322e-3c7e">
-                                  <entryLinks>
-                                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="24ce-a051-fe53-2b87" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
-                                  </entryLinks>
-                                </entryLink>
-                              </entryLinks>
-                              <constraints>
-                                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d6ce-ade3-10fa-86ae"/>
-                                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1a71-3225-398e-f7f3"/>
-                              </constraints>
-                            </selectionEntryGroup>
-                          </selectionEntryGroups>
-                        </selectionEntry>
-                      </selectionEntries>
+                                  <constraints>
+                                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d6ce-ade3-10fa-86ae"/>
+                                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1a71-3225-398e-f7f3"/>
+                                  </constraints>
+                                </selectionEntryGroup>
+                              </selectionEntryGroups>
+                            </selectionEntry>
+                          </selectionEntries>
+                          <constraints>
+                            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="1b4b-566b-7da8-4e58" includeChildSelections="false"/>
+                            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ab11-baa0-37a7-edd9" includeChildSelections="false"/>
+                          </constraints>
+                        </selectionEntryGroup>
+                      </selectionEntryGroups>
                       <constraints>
-                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="1b4b-566b-7da8-4e58" includeChildSelections="false"/>
-                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ab11-baa0-37a7-edd9" includeChildSelections="false"/>
+                        <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="96e9-9993-3dc6-efdb"/>
+                        <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="467e-2ffc-285b-ff2c"/>
                       </constraints>
-                    </selectionEntryGroup>
-                  </selectionEntryGroups>
-                  <constraints>
-                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="96e9-9993-3dc6-efdb"/>
-                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="467e-2ffc-285b-ff2c"/>
-                  </constraints>
-                </selectionEntry>
-              </selectionEntries>
+                    </selectionEntry>
+                  </selectionEntries>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
             </selectionEntry>
           </selectionEntries>
           <constraints>
