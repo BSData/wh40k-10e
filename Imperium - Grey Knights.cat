@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="50c4-3e83-fe54-97c4" name="Imperium - Grey Knights" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="49" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="50c4-3e83-fe54-97c4" name="Imperium - Grey Knights" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="50" battleScribeVersion="2.03" type="catalogue">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights - Library" id="f3e4-7fc3-8f57-6303" importRootEntries="true" targetId="1b6d-dc06-5db9-c7d1"/>
     <catalogueLink type="catalogue" name="Imperium - Agents of the Imperium" id="575c-d0f9-7fdc-2ddb" targetId="b00-cd86-4b4c-97ba" importRootEntries="true"/>
@@ -1211,7 +1211,7 @@
                 </selectionEntry>
               </selectionEntries>
               <selectionEntryGroups>
-                <selectionEntryGroup name="Weapon Choice" hidden="false" id="c9a0-cf4e-fb96-6bf1" defaultSelectionEntryId="33b5-e668-d503-7039">
+                <selectionEntryGroup name="Weapon Choice" hidden="false" id="c9a0-cf4e-fb96-6bf1" defaultSelectionEntryId="468a-4e44-8f46-a005">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="eaaa-819b-640a-c8a5"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="10ad-89fc-41f8-a5eb"/>
@@ -1273,6 +1273,30 @@
                     <entryLink import="true" name="Psilencer" hidden="false" type="selectionEntry" id="3ccf-db10-dc87-3038" targetId="d526-d040-807c-34f6"/>
                     <entryLink import="true" name="Psycannon" hidden="false" type="selectionEntry" id="39bd-f647-4b4d-9494" targetId="e520-9c7-d10c-897d"/>
                   </entryLinks>
+                  <modifiers>
+                    <modifier type="add" value="Terminator with Ancient&apos;s Banner already has a Heavy Weapon" field="error">
+                      <conditionGroups>
+                        <conditionGroup type="or">
+                          <conditionGroups>
+                            <conditionGroup type="and">
+                              <conditions>
+                                <condition type="lessThan" value="10" field="selections" scope="unit" childId="model" shared="true" includeChildSelections="true"/>
+                                <condition type="lessThan" value="1" field="selections" scope="unit" childId="468a-4e44-8f46-a005" shared="true" includeChildSelections="true"/>
+                                <condition type="atLeast" value="1" field="selections" scope="unit" childId="77d3-d321-bb86-dabe" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </conditionGroup>
+                            <conditionGroup type="and">
+                              <conditions>
+                                <condition type="atLeast" value="10" field="selections" scope="unit" childId="model" shared="true" includeChildSelections="true"/>
+                                <condition type="lessThan" value="1" field="selections" scope="unit" childId="468a-4e44-8f46-a005" shared="true" includeChildSelections="true"/>
+                                <condition type="atLeast" value="2" field="selections" scope="unit" childId="77d3-d321-bb86-dabe" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </conditionGroup>
+                          </conditionGroups>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </modifier>
+                  </modifiers>
                 </selectionEntryGroup>
               </selectionEntryGroups>
               <constraints>
