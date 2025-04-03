@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="1069-10ff-3ba9-873b" name="Chaos - Thousand Sons" revision="40" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="1069-10ff-3ba9-873b" name="Chaos - Thousand Sons" revision="41" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <publications>
     <publication id="015a-6212-d737-9044" name="Index - Thousand Sons"/>
   </publications>
@@ -47,6 +47,7 @@
     <categoryEntry name="Hell Talon" hidden="false" id="d975-1963-1946-b7cd"/>
     <categoryEntry name="Disc of Tzeentch" hidden="false" id="9783-ae8d-13dc-1e64"/>
     <categoryEntry name="Chaos Lord" hidden="false" id="f46d-bef6-a3e5-4b66"/>
+    <categoryEntry name="Heavy weapon" id="5d25-35ac-5458-4ba2" hidden="true"/>
   </categoryEntries>
   <selectionEntries>
     <selectionEntry id="87f0-0a14-9b6b-f367" name="Rituals reference" hidden="false" collective="false" import="true" type="upgrade">
@@ -3712,10 +3713,15 @@ Wound roll.</characteristic>
             <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="b2be-be6c-b808-5a50"/>
           </constraints>
           <modifiers>
-            <modifier type="set" value="1" field="b2be-be6c-b808-5a50">
-              <conditions>
-                <condition type="lessThan" value="10" field="selections" scope="b1cf-c5-5121-92a4" childId="model" shared="true" includeChildSelections="true"/>
-              </conditions>
+            <modifier type="add" value="Max 1 hellfyre rack per 5 models" field="error">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="10" field="selections" scope="b1cf-c5-5121-92a4" childId="model" shared="true" includeChildSelections="true"/>
+                    <condition type="greaterThan" value="1" field="selections" scope="b1cf-c5-5121-92a4" childId="9cea-2e7-8711-11bf" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </modifier>
           </modifiers>
           <profiles>
@@ -3731,6 +3737,9 @@ Wound roll.</characteristic>
               </characteristics>
             </profile>
           </profiles>
+          <associations>
+            <association min="1" max="1" scope="b1cf-c5-5121-92a4" childId="9fbe-3d53-a375-b987" name="Hellfyre missile rack" id="5711-b735-22db-7a5b"/>
+          </associations>
         </selectionEntry>
       </selectionEntries>
       <selectionEntryGroups>
@@ -3739,6 +3748,7 @@ Wound roll.</characteristic>
             <selectionEntry type="model" import="true" name="Scarab Occult Terminator" hidden="false" id="a7ee-9112-4e83-bc2">
               <constraints>
                 <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="9f9-b13c-476-9d77"/>
+                <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="b338-b430-8d84-bb79" includeChildSelections="false"/>
               </constraints>
               <selectionEntries>
                 <selectionEntry id="e92-e1d4-babd-22b2" name="Inferno combi-bolter" hidden="false" collective="true" import="true" type="upgrade">
@@ -3780,23 +3790,20 @@ Wound roll.</characteristic>
                   </profiles>
                 </selectionEntry>
               </selectionEntries>
+              <modifiers>
+                <modifier type="decrement" value="1" field="9f9-b13c-476-9d77">
+                  <repeats>
+                    <repeat value="1" repeats="1" field="selections" scope="b1cf-c5-5121-92a4" childId="6bc9-f53a-e7e6-19bc" shared="true" roundUp="false"/>
+                    <repeat value="1" repeats="1" field="selections" scope="b1cf-c5-5121-92a4" childId="f0e4-fd2b-1ba8-7234" shared="true" roundUp="false"/>
+                  </repeats>
+                </modifier>
+                <modifier type="floor" value="7" field="9f9-b13c-476-9d77"/>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Scarab Occult Terminator w/ heavy warpflamer" hidden="false" id="6bc9-f53a-e7e6-19bc">
               <constraints>
                 <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="3f6b-cd25-42e2-eef9"/>
               </constraints>
-              <modifiers>
-                <modifier type="set" value="1" field="3f6b-cd25-42e2-eef9">
-                  <conditions>
-                    <condition type="lessThan" value="10" field="selections" scope="b1cf-c5-5121-92a4" childId="model" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="decrement" value="1" field="3f6b-cd25-42e2-eef9">
-                  <repeats>
-                    <repeat value="1" repeats="1" field="selections" scope="b1cf-c5-5121-92a4" childId="f0e4-fd2b-1ba8-7234" shared="true" roundUp="false" id="73d6-71e5-a721-991" includeChildSelections="true"/>
-                  </repeats>
-                </modifier>
-              </modifiers>
               <selectionEntries>
                 <selectionEntry id="96c0-9357-6745-583e" name="Prosperine khopesh" hidden="false" collective="true" import="true" type="upgrade">
                   <constraints>
@@ -3839,6 +3846,9 @@ Wound roll.</characteristic>
                     <infoLink name="Ignores Cover" hidden="false" type="rule" id="66e0-67e2-5852-8127" targetId="4640-43e7-30b-215a"/>
                     <infoLink name="Torrent" hidden="false" type="rule" id="a118-3c8c-b28d-8dc8" targetId="5edf-d619-23e0-9b56"/>
                   </infoLinks>
+                  <categoryLinks>
+                    <categoryLink name="Heavy weapon" hidden="false" id="2579-7f95-6141-e449" targetId="5d25-35ac-5458-4ba2" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntry>
@@ -3846,18 +3856,6 @@ Wound roll.</characteristic>
               <constraints>
                 <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="3f6b-cd25-42e2-eef9"/>
               </constraints>
-              <modifiers>
-                <modifier type="set" value="1" field="3f6b-cd25-42e2-eef9">
-                  <conditions>
-                    <condition type="lessThan" value="10" field="selections" scope="b1cf-c5-5121-92a4" childId="model" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="decrement" value="1" field="3f6b-cd25-42e2-eef9">
-                  <repeats>
-                    <repeat value="1" repeats="1" field="selections" scope="b1cf-c5-5121-92a4" childId="6bc9-f53a-e7e6-19bc" shared="true" roundUp="false" id="73d6-71e5-a721-991" includeChildSelections="true"/>
-                  </repeats>
-                </modifier>
-              </modifiers>
               <selectionEntries>
                 <selectionEntry id="c248-3077-319a-7c4" name="Prosperine khopesh" hidden="false" collective="true" import="true" type="upgrade">
                   <constraints>
@@ -3899,6 +3897,9 @@ Wound roll.</characteristic>
                   <infoLinks>
                     <infoLink name="Devastating Wounds" hidden="false" type="rule" id="4500-4ea0-dabc-5949" targetId="be1e-ac8e-1e2c-3528"/>
                   </infoLinks>
+                  <categoryLinks>
+                    <categoryLink name="Heavy weapon" hidden="false" id="9390-74b1-ced6-3a3a" targetId="5d25-35ac-5458-4ba2" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntry>
@@ -3907,6 +3908,18 @@ Wound roll.</characteristic>
             <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="57d5-9a4c-87b8-86a0"/>
             <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="23d9-a462-8f17-3ba"/>
           </constraints>
+          <modifiers>
+            <modifier type="add" value="Max 1 heavy weapon per 5 models" field="error">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="10" field="selections" scope="b1cf-c5-5121-92a4" childId="model" shared="true" includeChildSelections="true"/>
+                    <condition type="greaterThan" value="1" field="selections" scope="b1cf-c5-5121-92a4" childId="5d25-35ac-5458-4ba2" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <categoryLinks>
