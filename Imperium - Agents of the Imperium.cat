@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="64" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="65" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Vindicare Assassin" hidden="false" id="efa3-2cf5-dcfb-b976">
       <categoryLinks>
@@ -10879,7 +10879,7 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
         <infoLink name="Ignores Cover" id="6f48-39c2-44ec-ce55" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
       </infoLinks>
     </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Plasma incinerator" hidden="false" id="313c-0c8f-db17-c947" collective="true">
+    <selectionEntry type="model" import="true" name="Plasma incinerator" hidden="false" id="313c-0c8f-db17-c947" collective="true" subType="mount">
       <constraints>
         <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="9e9b-409a-0200-85a9"/>
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="afa0-c132-1e04-f909"/>
@@ -11356,6 +11356,13 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
               </infoLinks>
             </selectionEntry>
           </selectionEntries>
+          <modifiers>
+            <modifier type="set" value="Missionary w/ meltagun" field="name">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="parent" childId="4df0-6ab2-6750-e5a4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
         <selectionEntry type="model" import="true" name="Missionary w/ flamer" hidden="false" id="1310-edc2-eefd-eae1" sortIndex="7">
           <constraints>
@@ -11364,32 +11371,13 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
           </constraints>
           <entryLinks>
             <entryLink import="true" name="Sanctifier melee weapon" hidden="false" id="2bed-4dca-a8c8-da3d" type="selectionEntry" targetId="e56f-68cb-9b0c-0e28"/>
-          </entryLinks>
-          <selectionEntries>
-            <selectionEntry type="upgrade" import="true" name="Ministorum flamer" hidden="false" id="2d6c-024b-2456-be30">
+            <entryLink import="true" name="Ministorum flamer" hidden="false" id="72af-a96f-d69a-7271" type="selectionEntry" targetId="375e-b143-c7b6-d71e">
               <constraints>
-                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="cd25-68f1-06d3-88b1-min" includeChildSelections="false"/>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cd25-68f1-06d3-88b1-max" includeChildSelections="false"/>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3982-314b-8a25-9051-min" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3982-314b-8a25-9051-max" includeChildSelections="false"/>
               </constraints>
-              <profiles>
-                <profile name="Ministorum flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="57a6-6fdf-70ec-e623">
-                  <characteristics>
-                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
-                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
-                    <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
-                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <infoLinks>
-                <infoLink name="Ignores Cover" id="5239-3af0-2d0c-6468" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
-                <infoLink name="Torrent" id="2b45-e844-0942-5867" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
-              </infoLinks>
-            </selectionEntry>
-          </selectionEntries>
+            </entryLink>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="model" import="true" name="Sanctifier w/ hand flamer" hidden="false" id="6bd4-6298-d795-5ab5" sortIndex="4">
           <constraints>
@@ -11398,32 +11386,13 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
           </constraints>
           <entryLinks>
             <entryLink import="true" name="Sanctifier melee weapon" hidden="false" id="c1c3-475c-5b00-e169" type="selectionEntry" targetId="e56f-68cb-9b0c-0e28"/>
-          </entryLinks>
-          <selectionEntries>
-            <selectionEntry type="upgrade" import="true" name="Ministorum hand flamer" hidden="false" id="3035-91a8-7c70-8f9c">
+            <entryLink import="true" name="Ministorum hand flamer" hidden="false" id="8869-ae60-8ae6-c518" type="selectionEntry" targetId="3035-91a8-7c70-8f9c">
               <constraints>
-                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f86c-779a-5c0b-5adb-min" includeChildSelections="false"/>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f86c-779a-5c0b-5adb-max" includeChildSelections="false"/>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3500-6ebe-52d3-5064-min" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3500-6ebe-52d3-5064-max" includeChildSelections="false"/>
               </constraints>
-              <profiles>
-                <profile name="Ministorum hand flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="b009-2692-d776-46c4">
-                  <characteristics>
-                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
-                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
-                    <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <infoLinks>
-                <infoLink name="Ignores Cover" id="f040-c3b7-9ceb-a513" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
-                <infoLink name="Torrent" id="33d3-6597-163e-4b8d" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
-              </infoLinks>
-            </selectionEntry>
-          </selectionEntries>
+            </entryLink>
+          </entryLinks>
           <modifiers>
             <modifier type="decrement" value="1" field="50bd-938b-63df-ed6d-min">
               <repeats>
@@ -11444,29 +11413,6 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b68c-cdb6-c825-4532" includeChildSelections="false" automatic="true"/>
           </constraints>
           <selectionEntries>
-            <selectionEntry type="upgrade" import="true" name="Ministorum hand flamer" hidden="false" id="5077-69ec-5605-6cc8">
-              <constraints>
-                <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="5b28-350c-ade4-daff-min" includeChildSelections="false"/>
-                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="5b28-350c-ade4-daff-max" includeChildSelections="false"/>
-              </constraints>
-              <profiles>
-                <profile name="Ministorum hand flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="fe28-24d2-6bff-81c4">
-                  <characteristics>
-                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
-                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
-                    <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <infoLinks>
-                <infoLink name="Ignores Cover" id="45a5-7689-9843-f9e1" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
-                <infoLink name="Torrent" id="17ca-81aa-20fc-8f5e" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
-              </infoLinks>
-            </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="1212-3a92-d112-1ab0" collective="false">
               <constraints>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d51c-5e38-8256-1b43"/>
@@ -11487,6 +11433,14 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
               </profiles>
             </selectionEntry>
           </selectionEntries>
+          <entryLinks>
+            <entryLink import="true" name="Ministorum hand flamer" hidden="false" id="da46-5cbc-13b2-f86b" type="selectionEntry" targetId="3035-91a8-7c70-8f9c">
+              <constraints>
+                <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="8186-b04f-2313-950e-min" includeChildSelections="false"/>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="8186-b04f-2313-950e-max" includeChildSelections="false"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="model" import="true" name="Sanctifier w/ simulacrum imperialis" hidden="false" id="f3f0-3f6f-7247-8073" sortIndex="1">
           <constraints>
@@ -11529,6 +11483,14 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
               </modifiers>
             </selectionEntry>
           </selectionEntries>
+          <entryLinks>
+            <entryLink import="true" name="Ministorum hand flamer" hidden="false" id="056a-fe95-a0b8-abed" type="selectionEntry" targetId="3035-91a8-7c70-8f9c">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7861-1ce5-7820-7c56-min" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7861-1ce5-7820-7c56-max" includeChildSelections="false"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <profiles>
@@ -11613,6 +11575,25 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
           </characteristics>
         </profile>
       </profiles>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Ministorum hand flamer" hidden="false" id="3035-91a8-7c70-8f9c">
+      <profiles>
+        <profile name="Ministorum hand flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="b009-2692-d776-46c4">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Ignores Cover" id="f040-c3b7-9ceb-a513" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
+        <infoLink name="Torrent" id="33d3-6597-163e-4b8d" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
+      </infoLinks>
     </selectionEntry>
   </sharedSelectionEntries>
   <categoryEntries>
