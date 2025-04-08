@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="1f19-6509-d906-ca10" name="Imperium - Adeptus Custodes" revision="58" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="1f19-6509-d906-ca10" name="Imperium - Adeptus Custodes" revision="59" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <categoryEntries>
     <categoryEntry id="a43a-4cf6-6443-f48e" name="Aleya" hidden="false"/>
     <categoryEntry id="5386-42fc-f4d0-7d64" name="Allarus Custodians" hidden="false"/>
@@ -30,6 +30,7 @@
     <categoryEntry id="a80f-9c76-be35-06cf" name="Coronus Grav-carrier" hidden="false"/>
     <categoryEntry id="efa6-8e65-9382-79a4" name="Orion Assault Dropship" hidden="false"/>
     <categoryEntry id="a075-bcec-0d00-50f7" name="Ares Gunship" hidden="false"/>
+    <categoryEntry name="AC Walker" id="5085-b471-39f3-1aa1" hidden="true"/>
   </categoryEntries>
   <entryLinks>
     <entryLink id="9f10-d8db-a7b3-5784" name="Allarus Custodians" hidden="false" collective="false" import="true" targetId="c8a6-a4c5-703e-b717" type="selectionEntry"/>
@@ -2232,6 +2233,7 @@
         <categoryLink id="463c-443b-14b1-52e7" name="Walker" hidden="false" targetId="6dda-e157-334d-e93a" primary="false"/>
         <categoryLink id="4d3c-c80d-6cc4-cb81" name="Imperium" hidden="false" targetId="aff3-d6a3-2a95-9dc" primary="false"/>
         <categoryLink id="da13-ff66-7830-9b76" name="Faction: Adeptus Custodes" hidden="false" targetId="eea5-aeaf-bbf0-d5ee" primary="false"/>
+        <categoryLink name="AC Walker" hidden="false" id="161a-f10b-c06a-d92f" targetId="5085-b471-39f3-1aa1" primary="false"/>
       </categoryLinks>
       <selectionEntryGroups>
         <selectionEntryGroup id="6ee7-91e7-5929-dbdb" name="equipped with" hidden="false" collective="false" import="true" defaultSelectionEntryId="8b8b-4b36-94ed-9483">
@@ -2859,7 +2861,7 @@
       <profiles>
         <profile id="6449-d735-2ac6-02b1" name="Sanctified Flames" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this unit shoots, after it has shot, select one enemy unit that was hit by one or more of those attacks. That unit must take a Battle-shock test.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Shooting phase, after this unit has shot, select one enemy unit that was hit by one or more of those attacks. That unit must take a Battle-shock test.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -3791,6 +3793,7 @@
         <categoryLink id="20e3-db87-6d13-7307" name="Vehicle" hidden="false" targetId="dbd4-63-af05-998" primary="true"/>
         <categoryLink id="d391-a935-b171-acdf" name="Walker" hidden="false" targetId="6dda-e157-334d-e93a" primary="false"/>
         <categoryLink id="2e74-e1dd-e09a-acc6" name="Imperium" hidden="false" targetId="aff3-d6a3-2a95-9dc" primary="false"/>
+        <categoryLink name="AC Walker" hidden="false" id="5426-ca61-cfc0-dd3e" targetId="5085-b471-39f3-1aa1" primary="false"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="165"/>
@@ -3881,6 +3884,7 @@
         <categoryLink id="195d-14a7-b423-69ed" name="Imperium" hidden="false" targetId="aff3-d6a3-2a95-9dc" primary="false"/>
         <categoryLink id="255c-11bd-6873-ea80" name="Walker" hidden="false" targetId="6dda-e157-334d-e93a" primary="false"/>
         <categoryLink id="2eb7-daa7-fc1e-60de" name="Contemptor-Achillus Dreadnought" hidden="false" targetId="b9be-3ff5-d407-fbf0" primary="false"/>
+        <categoryLink name="AC Walker" hidden="false" id="e525-6e53-4701-caef" targetId="5085-b471-39f3-1aa1" primary="false"/>
       </categoryLinks>
       <selectionEntryGroups>
         <selectionEntryGroup id="551e-4148-5814-7f07" name="equipped with" hidden="false" collective="false" import="true" defaultSelectionEntryId="d9a6-8dbd-2c01-862b">
@@ -4283,6 +4287,7 @@
         <categoryLink id="44dd-e98a-263c-0b2b" name="Faction: Adeptus Custodes" hidden="false" targetId="eea5-aeaf-bbf0-d5ee" primary="false"/>
         <categoryLink id="d42e-fb61-01b8-db7c" name="Telemon Heavy Dreadnought" hidden="false" targetId="1667-41fe-52be-6171" primary="false"/>
         <categoryLink id="37c2-c887-9319-8864" name="Walker" hidden="false" targetId="6dda-e157-334d-e93a" primary="false"/>
+        <categoryLink name="AC Walker" hidden="false" id="c79d-a227-7f42-883b" targetId="5085-b471-39f3-1aa1" primary="false"/>
       </categoryLinks>
       <selectionEntryGroups>
         <selectionEntryGroup id="1ad8-749e-76ed-07e6" name="equipped with" hidden="false" collective="false" import="true" defaultSelectionEntryId="896a-dae8-2bad-b241">
@@ -4850,55 +4855,60 @@
                 <rule name="Martial Mastery" hidden="false" id="d6d9-f1f1-2687-7b51">
                   <description>At the start of the battle round, you can select one of the bullet points below. If you do, until the start of the next battle round, that bullet point’s effects apply.
 
-- Each time an ADEPTUS CUSTODES model from your army with the Martial Ka&apos;tah ability makes a melee attack, a successful unmodified attack roll of 5+ scores a Critical Hit.
-- Improve the Armour Penetration characteristic of melee weapons equipped by ADEPTUS CUSTODES models from your army with the Martial Ka&apos;tah ability by 1.</description>
+- Each time an ^^**Adeptus Custodes^^** model from your army with the Martial Ka&apos;tah ability makes a melee attack, a successful unmodified attack roll of 5+ scores a Critical Hit.
+- Improve the Armour Penetration characteristic of melee weapons equipped by ^^**Adeptus Custodes^^** models from your army with the Martial Ka&apos;tah ability by 1.</description>
                 </rule>
               </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Talons of the Emperor" hidden="false" id="757a-b5ed-a43f-3cdd" sortIndex="6">
               <rules>
                 <rule name="Revered Companions" id="a02c-6c3c-b9f4-4ef" hidden="false">
-                  <description>ANATHEMA PSYKANA units from your army gain the following ability:
+                  <description>^^**Anathema Psykana^^** units from your army gain the following ability:
+**Null Aegis (Aura)**: While an ^^**Adeptus Custodes^^** unit is within 6&quot; of this unit, models in that unit have the Feel No Pain 5+ ability against Psychic Attacks and mortal wounds.
 
-Null Aegis (Aura)</description>
+
+All other **^^Adeptus Custodes**^^ units from your army gain the following ability:
+**Deadly Unity (Aura)**: While an **^Anathema Psykana^^** unit is within 6&quot; of this unit, each time a model in that ^^**Anathema Psykana^^** unit makes an attack, add 1 to the Hit roll.
+
+</description>
                 </rule>
               </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Null Maiden Vigil" hidden="false" id="d3ee-47e1-4540-dfe5" sortIndex="3">
               <rules>
                 <rule name="Creeping Dread (Aura)" id="bda3-9533-2380-a4e1" hidden="false">
-                  <description>In the Battle-shock step of your opponent&apos;s Command phase, if an enemy unit that is either a PSYKER unit or below its Starting Strength is within 12&quot; of one or more ANATHEMA PSYKANA models from your army, that enemy unit must take a Battle-shock test. If that unit is below Half-strength, it must subtract 1 from its Battle-shock test this phase instead.</description>
+                  <description>In the Battle-shock step of your opponent&apos;s Command phase, if an enemy unit that is either a ^^**Psyker^^** unit or below its Starting Strength is within 12&quot; of one or more ^^**Anathema Psykana^^** models from your army, that enemy unit must take a Battle-shock test. If that unit is below Half-strength, it must subtract 1 from its Battle-shock test this phase instead.</description>
                 </rule>
               </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Auric Champions" hidden="false" id="a36b-bb22-1a15-2a48" sortIndex="1">
               <rules>
                 <rule name="Assemblage of Might" id="9eb2-2cdd-3df7-a94e" hidden="false">
-                  <description>At the start of your Command phase, select one unit from your opponent’s army. Until the start of your next Command phase, each time a model in an Adeptus Custodes Character unit from your army makes an attack that targets that enemy unit, add 1 to the Wound roll.</description>
+                  <description>At the start of your Command phase, select one unit from your opponent’s army. Until the start of your next Command phase, each time a model in an ^^**Adeptus Custodes Character^^** unit from your army makes an attack that targets that enemy unit, add 1 to the Wound roll.</description>
                 </rule>
               </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Solar Spearhead" hidden="false" id="a060-3a8d-670c-25f0" sortIndex="5">
               <rules>
                 <rule name="Auric Armour" id="bd48-ecd6-2149-355e" hidden="false">
-                  <description>■ While an Adeptus Custodes Vehicle unit from your army is at Starting Strength, unless that unit is an
-Aircraft or it is Battle‑shocked, add 2 to the Objective Control characteristic of models in that unit.
+                  <description>■ While an ^^**Adeptus Custodes Vehicle^^** unit from your army is at Starting Strength, unless that unit is an ^^**Aircraft^^** or it is Battle‑shocked, add 2 to the Objective Control characteristic of models in that unit.
 
+■ While an ^^**Adeptus Custodes Vehicle^^** unit from your army is below Starting Strength, each time a model in that unit makes an attack, re‑roll a Hit roll of 1.
 
-■ While an Adeptus Custodes Vehicle unit from your army is below Starting Strength, each time a model in that unit makes an attack, re‑roll a Hit roll of 1.
-
-
-■ While an Adeptus Custodes Vehicle unit from your army is Below Half‑strength, each time a model in that unit makes an attack, re‑roll a Hit roll of 1 and re‑roll a Wound roll of 1.</description>
+■ While an ^^**Adeptus Custodes Vehicle^^** unit from your army is Below Half‑strength, each time a model in that unit makes an attack, re‑roll a Hit roll of 1 and re‑roll a Wound roll of 1.</description>
                 </rule>
                 <rule name="Moritoi Ancients" id="2f52-4efc-7a76-73eb" hidden="false">
-                  <description>Add 2&quot; to the Move characteristic of models in Adeptus Custodes Walker units from your army and add 1 to  Advance and Charge rolls made for such units.</description>
+                  <description>Add 2&quot; to the Move characteristic of models in ^^**Adeptus Custodes Walker^^** units from your army and add 1 to  Advance and Charge rolls made for such units.</description>
                 </rule>
               </rules>
+              <modifiers>
+                <modifier type="increment" value="2" field="e703-ecb6-5ce7-aec1" scope="force" affects="self.entries.5085-b471-39f3-1aa1.profiles.Unit"/>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Lions of the Emperor" hidden="false" id="3b75-a700-050c-06f5" sortIndex="2">
               <rules>
                 <rule name="Against All Odds" id="ddd9-c874-560d-1edf" hidden="false">
-                  <description>Each time an Adeptus Custodes unit from your army (excluding Vehicles) makes an attack, if there are no other friendly units within 6&quot; of that unit, add 1 to the Hit roll and add 1 to the Wound roll.</description>
+                  <description>Each time an ^^**Adeptus Custodes^^** unit from your army (excluding ^^**Vehicles^^**) makes an attack, if there are no other friendly units within 6&quot; of that unit, add 1 to the Hit roll and add 1 to the Wound roll.</description>
                 </rule>
               </rules>
             </selectionEntry>
@@ -5223,7 +5233,7 @@ Aircraft or it is Battle‑shocked, add 2 to the Objective Control characterist
             </profile>
           </profiles>
           <constraints>
-            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="f80b-89fc-c464-5c81" includeChildSelections="true"/>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="3155-69f4-e08b-4a8c" includeChildSelections="true"/>
           </constraints>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -5511,6 +5521,9 @@ Aircraft or it is Battle‑shocked, add 2 to the Objective Control characterist
               </conditionGroups>
             </modifier>
           </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="db33-030c-c294-566f" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Augury Uplink" hidden="false" id="47c5-027c-0c6f-7d1d">
           <costs>
@@ -5539,6 +5552,9 @@ Aircraft or it is Battle‑shocked, add 2 to the Objective Control characterist
               </conditionGroups>
             </modifier>
           </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="fde0-0aeb-9e31-cdbd" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Adamantine Talisman" hidden="false" id="13ca-9a7a-47da-acc1">
           <costs>
@@ -5567,9 +5583,12 @@ Aircraft or it is Battle‑shocked, add 2 to the Objective Control characterist
               </conditionGroups>
             </modifier>
             <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" affects="self.entries.recursive.profiles.Melee Weapons" scope="root-entry"/>
-            <modifier type="increment" value="1" field="3254-9fe6-d824-513e" affects="self.entries.recursive.profiles.Melee Weapons" scope="root-entry"/>
+            <modifier type="increment" value="1" field="3254-9fe6-d824-513e" affects="self.entries.recursive.profiles.Melee Weapons" scope="root-entry" position="-1"/>
             <modifier type="increment" value="1" field="2337-daa1-6682-b110" affects="self.entries.recursive.profiles.Melee Weapons" scope="root-entry"/>
           </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="fdb1-ffcc-0bf5-3088" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Veteran of the Kataphraktoi" hidden="false" id="6f4d-144b-698b-55ad">
           <costs>
@@ -5606,6 +5625,9 @@ Aircraft or it is Battle‑shocked, add 2 to the Objective Control characterist
               </conditionGroups>
             </modifier>
           </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="8d9f-9837-3c5d-7c13" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Superior Creation" hidden="false" id="2ede-aacf-f98d-83d5">
           <profiles>
@@ -5635,6 +5657,9 @@ Aircraft or it is Battle‑shocked, add 2 to the Objective Control characterist
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="123e-8e9a-52bd-e77a" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Praesidius" hidden="false" id="1672-069e-577d-5d7f">
           <profiles>
@@ -5667,6 +5692,9 @@ Aircraft or it is Battle‑shocked, add 2 to the Objective Control characterist
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="21f4-575b-d1e9-48db" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Fierce Conqueror" hidden="false" id="678c-b63b-438c-37f6">
           <profiles>
@@ -5695,6 +5723,9 @@ Aircraft or it is Battle‑shocked, add 2 to the Objective Control characterist
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="eb17-b96d-89a4-487a" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Admonimortis" hidden="false" id="83f4-94db-c9b3-e128">
           <profiles>
@@ -5726,6 +5757,9 @@ Aircraft or it is Battle‑shocked, add 2 to the Objective Control characterist
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="ed5f-58fd-dfbe-e62d" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
@@ -5797,7 +5831,7 @@ Melee weapons equipped by models in this unit have the [LETHAL HITS] ability.</d
       <profiles>
         <profile name="Null Aegis (Aura)" hidden="false" id="2048-15a2-ecb8-1709" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" id="3186-b7d-b1dd-4b0b" hidden="false" typeId="9b8f-694b-e5e-b573">While an ADEPTUS CUSTODES unit is within 6&quot; of this unit, models in that unit have the Feel No Pain 5+ ability against Psychic Attacks and mortal wounds.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While an ^^**Adeptus Custodes^^** unit is within 6&quot; of this unit, models in that unit have the Feel No Pain 5+ ability against Psychic Attacks and mortal wounds.</characteristic>
           </characteristics>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -5809,7 +5843,7 @@ Melee weapons equipped by models in this unit have the [LETHAL HITS] ability.</d
         </profile>
         <profile name="Deadly Unity (Aura)" hidden="false" id="5678-aeb6-f682-8a75" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" id="92ef-d800-40ef-23e1" hidden="false" typeId="9b8f-694b-e5e-b573">While an ANATHEMA PSYKANA unit is within 6&quot; of this unit, each time a model in that ANATHEMA PSYKANA unit makes an attack, add 1 to the Hit roll.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While an **^Anathema Psykana^^** unit is within 6&quot; of this unit, each time a model in that ^^**Anathema Psykana^^** unit makes an attack, add 1 to the Hit roll.</characteristic>
           </characteristics>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
