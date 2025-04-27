@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="50c4-3e83-fe54-97c4" name="Imperium - Grey Knights" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="51" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="50c4-3e83-fe54-97c4" name="Imperium - Grey Knights" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="54" battleScribeVersion="2.03" type="catalogue">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights - Library" id="f3e4-7fc3-8f57-6303" importRootEntries="true" targetId="1b6d-dc06-5db9-c7d1"/>
     <catalogueLink type="catalogue" name="Imperium - Agents of the Imperium" id="575c-d0f9-7fdc-2ddb" targetId="b00-cd86-4b4c-97ba" importRootEntries="true"/>
@@ -583,7 +583,7 @@
             </selectionEntry>
           </selectionEntries>
           <entryLinks>
-            <entryLink import="true" name="Storm bolter" hidden="false" id="e9e7-e166-cd16-3070" type="selectionEntry" targetId="18c1-d4b5-0ff0-4808">
+            <entryLink import="true" name="Storm bolter" hidden="false" id="e9e7-e166-cd16-3070" type="selectionEntry" targetId="be2a-878d-7003-2f51">
               <constraints>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="55d8-9589-4015-7f57"/>
                 <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="b03d-31c8-d397-cd85"/>
@@ -5199,12 +5199,12 @@
         </profile>
         <profile name="Mindlock" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="685-c0a5-139e-a916">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a BROTHERHOOD TECHMARINE model is leading this unit, improve the Ballistic Skill and Weapon Skill characteristics of ranged and melee weapons equipped by Servitor models in this unit by 1</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a **^^Brotherhood Techmarine^^** model is leading this unit, improve the Ballistic Skill and Weapon Skill characteristics of ranged and melee weapons equipped by **^^Servitor^^** models in this unit by 1</characteristic>
           </characteristics>
         </profile>
-        <profile name="Retinue" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ae16-1ed-ea16-9713">
+        <profile name="Servitor Retinue" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="fd84-6d4e-4e0c-af7a">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a BROTHERHOOD TECHMARINE model is leading this unit, models in this unit have the Deep Strike and Teleport Assault abilities</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the Declare Battle Formations step, this unit can join one other unit from your army that is being led by a **^^Brotherhood Techmarine^^** (a unit cannot have more than one **^^Servitors^^** unit joined to it). If it does, until the end of the battle, every model in this unit counts as being part of that Bodyguard unit, and that Bodyguard unit’s Starting Strength is increased accordingly.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -5467,6 +5467,20 @@
           <comment>Crusade modifiers</comment>
         </modifierGroup>
       </modifierGroups>
+      <infoGroups>
+        <infoGroup name="Retinue" id="0a7f-6881-d460-ea26" hidden="false">
+          <profiles>
+            <profile name="Retinue" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ae16-1ed-ea16-9713">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a **^^Brotherhood Techmarine^^** model is leading this unit, models in this unit have the Deep Strike and Teleport Assault abilities</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Deep Strike" id="3561-38b7-dd05-5e1d" hidden="false" type="rule" targetId="7cb5-dd6b-dd87-ad3b"/>
+          </infoLinks>
+        </infoGroup>
+      </infoGroups>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Strike Squad" hidden="false" id="d81f-c9ac-e338-ba37">
       <modifiers>
@@ -7580,7 +7594,7 @@
               <profiles>
                 <profile name="Mandulian Reliquary" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="22b8-9100-e8eb-2987">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">GREY KNIGHTS model only. While the bearer’s unit is not Battle‑shocked, add 3 to the bearer’s Objective Control characteristic.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Grey Knights^^** model only. While the bearer’s unit is not Battle‑shocked, add 3 to the bearer’s Objective Control characteristic.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -7596,9 +7610,6 @@
                   </conditionGroups>
                 </modifier>
               </modifiers>
-              <categoryLinks>
-                <categoryLink name="Grenades" hidden="false" id="554b-6694-a7e6-5e3c" targetId="5a61-81ac-eb7c-a87e" primary="false"/>
-              </categoryLinks>
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
               </costs>
@@ -7934,7 +7945,7 @@ Each time a model in a **^^Grey Knights^^** unit from your army makes an attack 
   </sharedProfiles>
   <rules>
     <rule name="Teleport Assault" id="6a5e-1316-2d87-93c5" hidden="false">
-      <description>If your Army Faction is GREY KNIGHTS, at the end of your opponent’s turn, you can select a number of GREY KNIGHTS units from your army with this ability (excluding units that are within Engagement Range of one or more enemy units). The maximum number of units you can select depends on the battle size, as follows:
+      <description>If your Army Faction is **^^Grey Knights^^**, at the end of your opponent’s turn, you can select a number of **^^Grey Knights^^** units from your army with this ability (excluding units that are within Engagement Range of one or more enemy units). The maximum number of units you can select depends on the battle size, as follows:
 
 Combat Patrol - Up to 1 unit
 Incursion - Up to 2 units
