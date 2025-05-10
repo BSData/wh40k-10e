@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="5108-f98-63c2-53cb" name="Chaos - Death Guard" revision="47" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="5108-f98-63c2-53cb" name="Chaos - Death Guard" revision="48" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <catalogueLinks>
     <catalogueLink id="9fec-b3ad-9626-6706" name="Chaos - Chaos Knights Library" targetId="8106-aad2-918a-9ac" type="catalogue" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Library - Astartes Heresy Legends" id="ff65-1828-b2a0-477" targetId="ac3b-689c-4ad4-70cb" importRootEntries="true"/>
@@ -3542,7 +3542,12 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
             <selectionEntry type="model" import="true" name="Blightlord Terminator w/ combi-weapon" hidden="false" id="12d9-8cc6-7403-f8e0">
               <entryLinks>
                 <entryLink import="true" name="Bubotic blade" hidden="false" type="selectionEntry" id="f2cb-cc73-e1cb-69b4" targetId="254c-9031-c4df-2d87"/>
-                <entryLink import="true" name="Combi-weapon" hidden="false" id="290c-41af-0895-983a" type="selectionEntry" targetId="53bf-7a8c-8895-f39f"/>
+                <entryLink import="true" name="Combi-weapon" hidden="false" id="290c-41af-0895-983a" type="selectionEntry" targetId="53bf-7a8c-8895-f39f">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f09c-0461-7cac-f284-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f09c-0461-7cac-f284-max" includeChildSelections="false"/>
+                  </constraints>
+                </entryLink>
               </entryLinks>
               <constraints>
                 <constraint type="max" value="6" field="selections" scope="parent" shared="true" id="59f7-a579-90fb-b52d"/>
@@ -3560,7 +3565,7 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
                 </modifier>
               </modifiers>
             </selectionEntry>
-            <selectionEntry type="model" import="true" name="Blightlord Terminator w/ plague spewer" hidden="false" id="a622-6e27-a82e-6eeb">
+            <selectionEntry type="model" import="true" name="Blightlord Terminator w/ plague spewer and CCW" hidden="false" id="a622-6e27-a82e-6eeb">
               <constraints>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="59f7-a579-90fb-b52d"/>
               </constraints>
@@ -3577,9 +3582,29 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
                 </modifier>
               </modifiers>
               <entryLinks>
-                <entryLink import="true" name="Bubotic blade" hidden="false" type="selectionEntry" id="80c0-5b00-bcb4-8556" targetId="254c-9031-c4df-2d87"/>
                 <entryLink import="true" name="Plague spewer" hidden="false" type="selectionEntry" id="b205-89bd-6a06-a617" targetId="11ee-cdcb-eee3-4db9"/>
               </entryLinks>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="143e-34b8-38d6-2153">
+                  <profiles>
+                    <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="c9a7-2ead-7eaa-8233">
+                      <characteristics>
+                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="961d-d220-a765-f84d-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="961d-d220-a765-f84d-max" includeChildSelections="false"/>
+                  </constraints>
+                </selectionEntry>
+              </selectionEntries>
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Blightlord Terminator w/ flail" hidden="false" id="2890-7679-559b-64b2">
               <selectionEntries>
@@ -3633,17 +3658,10 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
               <modifiers>
                 <modifier type="add" value="Max 1 blight launcher per 5 models" field="error">
                   <conditionGroups>
-                    <conditionGroup type="or">
-                      <conditionGroups>
-                        <conditionGroup type="and">
-                          <conditions>
-                            <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="71e1-f4eb-22c1-daa3" includeChildSelections="true"/>
-                            <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="aa7e-4b31-713a-6732" shared="true" id="546d-7cd9-e528-ba59" includeChildSelections="true"/>
-                          </conditions>
-                        </conditionGroup>
-                      </conditionGroups>
+                    <conditionGroup type="and">
                       <conditions>
-                        <condition type="greaterThan" value="2" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="aa7e-4b31-713a-6732" shared="true" id="f14a-89c7-80bc-d095" includeChildSelections="true"/>
+                        <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="71e1-f4eb-22c1-daa3" includeChildSelections="true"/>
+                        <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="3109-d5c0-8404-40fd" shared="true" id="546d-7cd9-e528-ba59" includeChildSelections="true"/>
                       </conditions>
                     </conditionGroup>
                   </conditionGroups>
@@ -3688,17 +3706,10 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
               <modifiers>
                 <modifier type="add" value="Max 1 autocannon per 5 models" field="error">
                   <conditionGroups>
-                    <conditionGroup type="or">
-                      <conditionGroups>
-                        <conditionGroup type="and">
-                          <conditions>
-                            <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="1bf8-f7fa-6357-212a" includeChildSelections="true"/>
-                            <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="aa7e-4b31-713a-6732" shared="true" id="855e-4252-0129-acc0" includeChildSelections="true"/>
-                          </conditions>
-                        </conditionGroup>
-                      </conditionGroups>
+                    <conditionGroup type="and">
                       <conditions>
-                        <condition type="greaterThan" value="2" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="aa7e-4b31-713a-6732" shared="true" id="7a64-7628-265a-65d7" includeChildSelections="true"/>
+                        <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="1bf8-f7fa-6357-212a" includeChildSelections="true"/>
+                        <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="3520-73d6-afc2-35c2" shared="true" id="855e-4252-0129-acc0" includeChildSelections="true"/>
                       </conditions>
                     </conditionGroup>
                   </conditionGroups>
@@ -3707,6 +3718,27 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
               <categoryLinks>
                 <categoryLink name="Blightlord heavy weapon" hidden="false" id="0013-917a-8edd-89f9" targetId="aa7e-4b31-713a-6732" primary="false"/>
               </categoryLinks>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Blightlord Terminator w/ plague spewer and bubotic blade" hidden="false" id="f71f-aa26-3dfa-1e8f">
+              <constraints>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="82ac-843a-581a-616a"/>
+              </constraints>
+              <modifiers>
+                <modifier type="add" value="Max 1 {this} per 5 models" field="error">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="c603-d34b-f574-665e" includeChildSelections="true"/>
+                        <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="f71f-aa26-3dfa-1e8f" shared="true" id="6012-bf5d-5a96-ac7a" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <entryLinks>
+                <entryLink import="true" name="Bubotic blade" hidden="false" id="2fb8-9cf1-d648-cd53" type="selectionEntry" targetId="254c-9031-c4df-2d87"/>
+                <entryLink import="true" name="Plague spewer" hidden="false" id="de4f-7458-2651-d172" type="selectionEntry" targetId="11ee-cdcb-eee3-4db9"/>
+              </entryLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
