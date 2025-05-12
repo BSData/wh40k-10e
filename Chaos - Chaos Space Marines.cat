@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="95" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="96" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <profileTypes>
     <profileType id="3084-68b8-1d20-2f26" name="Marks of Chaos">
       <characteristicTypes>
@@ -10115,7 +10115,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
             </selectionEntryGroup>
           </selectionEntryGroups>
           <entryLinks>
-            <entryLink id="cdf-a737-a563-5e52" name="Berserker chainblade" hidden="false" collective="false" import="true" targetId="6368-a3ed-9f23-af2e" type="selectionEntry"/>
+            <entryLink id="cdf-a737-a563-5e52" name="Chainblade" hidden="false" collective="false" import="true" targetId="6368-a3ed-9f23-af2e" type="selectionEntry"/>
           </entryLinks>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
@@ -10135,7 +10135,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 <constraint type="min" value="5" field="selections" scope="parent" shared="true" id="0b92-c848-1a08-6c31" includeChildSelections="false"/>
               </constraints>
               <entryLinks>
-                <entryLink id="bfb-2f17-be09-d559" name="Berserker chainblade" hidden="false" collective="false" import="true" targetId="6368-a3ed-9f23-af2e" type="selectionEntry"/>
+                <entryLink id="bfb-2f17-be09-d559" name="Chainblade" hidden="false" collective="false" import="true" targetId="6368-a3ed-9f23-af2e" type="selectionEntry"/>
                 <entryLink id="9baa-c552-870e-d471" name="Bolt pistol" hidden="false" collective="false" import="true" targetId="5541-daf-9f4a-ce3d" type="selectionEntry">
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="e905-042a-8d87-2916" type="min"/>
@@ -18172,11 +18172,15 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 </conditionGroup>
               </conditionGroups>
             </modifier>
+            <modifier type="append" value="Precision" field="893f-9000-ccf7-648e" scope="parent" affects="self.entries.profiles.Melee Weapons" join=", "/>
           </modifiers>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="force" shared="true" id="c406-4594-bc4c-427e" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
           </constraints>
           <comment>Creations</comment>
+          <infoLinks>
+            <infoLink name="Precision" id="98ab-e99d-305f-40f2" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
+          </infoLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Living Carapace" hidden="false" id="45a6-15f1-c0ef-8c2d">
           <costs>
@@ -18204,11 +18208,19 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 </conditionGroup>
               </conditionGroups>
             </modifier>
+            <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" scope="parent" affects="profiles.Unit"/>
           </modifiers>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="force" shared="true" id="aad1-4e10-cb39-9120" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
           </constraints>
           <comment>Creations</comment>
+          <infoLinks>
+            <infoLink name="Feel No Pain" id="11ac-9c5f-9aae-fd04" hidden="false" type="rule" targetId="9bf4-280f-bbe2-6fbb">
+              <modifiers>
+                <modifier type="append" value="5+" field="name"/>
+              </modifiers>
+            </infoLink>
+          </infoLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Helm of All-Seeing" hidden="false" id="3586-b998-3970-f81d">
           <costs>
@@ -18270,6 +18282,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 </conditionGroup>
               </conditionGroups>
             </modifier>
+            <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="parent" affects="self.entries.profiles.Melee Weapons" position="-1"/>
           </modifiers>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="force" shared="true" id="f429-4484-d800-2114" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
@@ -18284,21 +18297,6 @@ You can attach this model to one of the above units even if one other CHARACTER 
         <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="84a9-b121-4012-6ffc" type="max"/>
       </constraints>
       <selectionEntries>
-        <selectionEntry id="73dd-db89-2682-6b77" name="Chaos Undivided" hidden="false" collective="false" import="true" type="upgrade" sortIndex="1">
-          <categoryLinks>
-            <categoryLink id="ad79-afaf-cc3c-5acb" name="Chaos Undivided" hidden="false" targetId="2c5c-6ca6-777-c633" primary="false"/>
-          </categoryLinks>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-          </costs>
-          <modifiers>
-            <modifier type="set" value="Mark of Chaos Undivided" field="name">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="parent" childId="73dd-db89-2682-6b77" shared="true" id="500f-fb46-f2b2-72f1" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
-          </modifiers>
-        </selectionEntry>
         <selectionEntry id="3bb3-78e-db85-353b" name="Khorne" hidden="false" collective="false" import="true" type="upgrade" sortIndex="2">
           <modifiers>
             <modifier type="set" field="hidden" value="true">
@@ -18323,6 +18321,13 @@ You can attach this model to one of the above units even if one other CHARACTER 
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
           </costs>
+          <profiles>
+            <profile name="Khorne" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6d94-9f73-4d47-2c68">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 2 to the Strength characteristic of this model&apos;s hellforged weapons.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
         </selectionEntry>
         <selectionEntry id="cb13-6792-cb2e-4702" name="Nurgle" hidden="false" collective="false" import="true" type="upgrade" sortIndex="3">
           <categoryLinks>
@@ -18338,6 +18343,13 @@ You can attach this model to one of the above units even if one other CHARACTER 
               </conditions>
             </modifier>
           </modifiers>
+          <profiles>
+            <profile name="Nurgle" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="412a-3113-8882-89e8">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 1 to this model&apos;s Toughness characteristic.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
         </selectionEntry>
         <selectionEntry id="a689-a7b8-9b47-1362" name="Slaanesh" hidden="false" collective="false" import="true" type="upgrade" sortIndex="4">
           <categoryLinks>
@@ -18356,6 +18368,13 @@ You can attach this model to one of the above units even if one other CHARACTER 
           <constraints>
             <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="f036-6543-e395-d84e"/>
           </constraints>
+          <profiles>
+            <profile name="Slaanesh" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c422-052c-3669-3963">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 2&quot; to this model&apos;s Move characteristic.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
         </selectionEntry>
         <selectionEntry id="f764-31bd-419d-576c" name="Tzeentch" hidden="false" collective="false" import="true" type="upgrade" sortIndex="5">
           <categoryLinks>
@@ -18371,6 +18390,13 @@ You can attach this model to one of the above units even if one other CHARACTER 
               </conditions>
             </modifier>
           </modifiers>
+          <profiles>
+            <profile name="Tzeentch" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5a52-39cf-a782-aafc">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 3 to the Attacks characteristic of this model&apos;s infernal cannon.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
         </selectionEntry>
       </selectionEntries>
       <modifiers>
