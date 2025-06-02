@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="5108-f98-63c2-53cb" name="Chaos - Death Guard" revision="60" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="5108-f98-63c2-53cb" name="Chaos - Death Guard" revision="61" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <catalogueLinks>
     <catalogueLink id="9fec-b3ad-9626-6706" name="Chaos - Chaos Knights Library" targetId="8106-aad2-918a-9ac" type="catalogue" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Library - Astartes Heresy Legends" id="ff65-1828-b2a0-477" targetId="ac3b-689c-4ad4-70cb" importRootEntries="true"/>
@@ -2526,7 +2526,7 @@ While a ^^**Death Guard^^** unit from your army is within 7&quot; of one or more
         </profile>
         <profile name="Curse of the Walking Pox" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ad92-6478-18b8-6222">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ^^**Poxwalker^^** model in this unit makes an attack that destroys an enemy model (excluding ^^**Monster^^** and ^^**Vehicle^^** models), you can return one destroyed ^^**Poxwalker^^** model to this unit.
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ^^**Poxwalker^^** model in this unit makes an attack that destroys an enemy model (excluding ^^**Monster^^** and ^^**Vehicle^^** models), after this unit has resolved its attacks, you can return one destroyed ^^**Poxwalker^^** model to this unit.
 
 While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of ^^**Typhus^^**’ Eater Plague ability count as enemy models destroyed by an attack made by a ^^**Poxwalker^^** model in this unit for the purposes of this ability.</characteristic>
           </characteristics>
@@ -3544,7 +3544,7 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
                 </selectionEntry>
               </selectionEntries>
               <constraints>
-                <constraint type="max" value="10" field="selections" scope="parent" shared="true" id="bad6-4664-75f2-8861"/>
+                <constraint type="max" value="6" field="selections" scope="parent" shared="true" id="bad6-4664-75f2-8861"/>
               </constraints>
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Blightlord Terminator w/ combi-weapon" hidden="false" id="12d9-8cc6-7403-f8e0">
@@ -3563,11 +3563,21 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
               <modifiers>
                 <modifier type="add" value="Max 3 {this} per 5 models" field="error">
                   <conditionGroups>
-                    <conditionGroup type="and">
-                      <conditions>
-                        <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="ce08-9881-e037-3df6" includeChildSelections="true"/>
-                        <condition type="greaterThan" value="3" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="12d9-8cc6-7403-f8e0" shared="true" id="2d8e-bfc9-6f6d-e05b" includeChildSelections="true"/>
-                      </conditions>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="ce08-9881-e037-3df6" includeChildSelections="true"/>
+                            <condition type="greaterThan" value="3" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="12d9-8cc6-7403-f8e0" shared="true" id="2d8e-bfc9-6f6d-e05b" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="5" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="97a0-8ddf-c636-1b97" includeChildSelections="true"/>
+                            <condition type="greaterThan" value="0" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="12d9-8cc6-7403-f8e0" shared="true" id="19ad-d32a-bd75-9708" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
                     </conditionGroup>
                   </conditionGroups>
                 </modifier>
@@ -3645,11 +3655,21 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
               <modifiers>
                 <modifier type="add" value="Max 1 {this} per 5 models" field="error">
                   <conditionGroups>
-                    <conditionGroup type="and">
-                      <conditions>
-                        <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="388d-87d5-4c71-ac4e" includeChildSelections="true"/>
-                        <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="2890-7679-559b-64b2" shared="true" id="f02e-906a-bd30-6f1f" includeChildSelections="true"/>
-                      </conditions>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="388d-87d5-4c71-ac4e" includeChildSelections="true"/>
+                            <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="2890-7679-559b-64b2" shared="true" id="f02e-906a-bd30-6f1f" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="5" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="c1a5-f37f-7e8d-a5c9" includeChildSelections="true"/>
+                            <condition type="greaterThan" value="0" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="2890-7679-559b-64b2" shared="true" id="be7c-b019-f5b0-ac1f" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
                     </conditionGroup>
                   </conditionGroups>
                 </modifier>
@@ -3666,11 +3686,21 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
               <modifiers>
                 <modifier type="add" value="Max 1 blight launcher per 5 models" field="error">
                   <conditionGroups>
-                    <conditionGroup type="and">
-                      <conditions>
-                        <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="71e1-f4eb-22c1-daa3" includeChildSelections="true"/>
-                        <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="3109-d5c0-8404-40fd" shared="true" id="546d-7cd9-e528-ba59" includeChildSelections="true"/>
-                      </conditions>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="71e1-f4eb-22c1-daa3" includeChildSelections="true"/>
+                            <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="3109-d5c0-8404-40fd" shared="true" id="546d-7cd9-e528-ba59" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="5" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="8526-0444-33ad-3466" includeChildSelections="true"/>
+                            <condition type="greaterThan" value="0" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="3109-d5c0-8404-40fd" shared="true" id="9c96-4f99-3462-505a" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
                     </conditionGroup>
                   </conditionGroups>
                 </modifier>
@@ -3714,11 +3744,21 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
               <modifiers>
                 <modifier type="add" value="Max 1 autocannon per 5 models" field="error">
                   <conditionGroups>
-                    <conditionGroup type="and">
-                      <conditions>
-                        <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="1bf8-f7fa-6357-212a" includeChildSelections="true"/>
-                        <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="3520-73d6-afc2-35c2" shared="true" id="855e-4252-0129-acc0" includeChildSelections="true"/>
-                      </conditions>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="1bf8-f7fa-6357-212a" includeChildSelections="true"/>
+                            <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="3520-73d6-afc2-35c2" shared="true" id="855e-4252-0129-acc0" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="5" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="eb60-a270-effc-3555" includeChildSelections="true"/>
+                            <condition type="greaterThan" value="0" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="3520-73d6-afc2-35c2" shared="true" id="c70a-df24-c640-095f" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
                     </conditionGroup>
                   </conditionGroups>
                 </modifier>
@@ -3734,11 +3774,21 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
               <modifiers>
                 <modifier type="add" value="Max 1 {this} per 5 models" field="error">
                   <conditionGroups>
-                    <conditionGroup type="and">
-                      <conditions>
-                        <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="c603-d34b-f574-665e" includeChildSelections="true"/>
-                        <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="f71f-aa26-3dfa-1e8f" shared="true" id="6012-bf5d-5a96-ac7a" includeChildSelections="true"/>
-                      </conditions>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="10" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="c603-d34b-f574-665e" includeChildSelections="true"/>
+                            <condition type="greaterThan" value="1" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="f71f-aa26-3dfa-1e8f" shared="true" id="6012-bf5d-5a96-ac7a" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="5" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="model" shared="true" id="0d20-fbee-86e8-438b" includeChildSelections="true"/>
+                            <condition type="greaterThan" value="0" field="selections" scope="5b4e-dcf1-5c6f-4d35" childId="f71f-aa26-3dfa-1e8f" shared="true" id="5818-8dd8-d1c0-6021" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
                     </conditionGroup>
                   </conditionGroups>
                 </modifier>
