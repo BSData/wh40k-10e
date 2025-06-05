@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue library="false" id="03fe-a162-4c02-f07b" name="Chaos - Emperor&apos;s Children" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="31" revision="4" authorContact="Mad_Spy" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
+<catalogue library="false" id="03fe-a162-4c02-f07b" name="Chaos - Emperor&apos;s Children" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="31" revision="9" authorContact="Mad_Spy" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Lucius the Eternal" hidden="false" id="e390-b58b-db9-816" collective="false">
       <profiles>
@@ -332,7 +332,7 @@
         </profile>
         <profile name="Euphoric Strikes" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="828a-cdf4-e64a-cf75">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, at the start of the Fight phase, this model can use this ability. If it does so, add 3 to the Attacks characteristic of melee weapons equipped by this model and improve the Armour Penetration characteristic of those weapons by 1.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, at the start of the Fight phase, this model can use this ability. If it does so, until the end of the phase, add 3 to the Attacks characteristic of melee weapons equipped by this model and improve the Armour Penetration characteristic of those weapons by 1.</characteristic>
           </characteristics>
         </profile>
         <profile name="Lord of the Host" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3cf5-ff3c-e78d-51c8">
@@ -484,7 +484,17 @@
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="722d-ca12-6d6f-6341" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
       </constraints>
       <infoLinks>
-        <infoLink name="Plasma pistol" id="3917-f8a7-fcde-c954" hidden="false" targetId="0cbe-31f4-e833-9ef4" type="infoGroup"/>
+        <infoLink name="Hazardous" id="7c4a-1224-29a9-dd20" hidden="false" targetId="8367-374c-f87-c627" type="rule"/>
+        <infoLink name="Pistol" id="3b26-8ceb-37be-87d2" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
+        <infoLink name="Precision" id="8278-f28f-c009-dbe2" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b950-835c-0fb7-9b47" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </infoLink>
       </infoLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
@@ -495,7 +505,36 @@
             <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="6264-8211-3a47-31d6" shared="true"/>
           </conditions>
         </modifier>
+        <modifier type="append" value="Precision" field="7f1b-8591-2fcf-d01c" affects="profiles.Ranged Weapons" join=", ">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="b950-835c-0fb7-9b47" shared="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
+      <profiles>
+        <profile name="➤ Plasma pistol - standard" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="65d3-9d25-d59b-cfa9">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="➤ Plasma pistol - supercharge" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="f4b9-1aa7-21d4-4736">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Hazardous, Pistol</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Power fist" hidden="false" id="aab5-3545-6d30-9e87" collective="true">
       <comment>4 Attacks</comment>
@@ -545,6 +584,15 @@
       <comment>Collective</comment>
       <infoLinks>
         <infoLink name="Pistol" id="7675-08b8-947b-9188" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
+        <infoLink name="Precision" id="928b-f6f1-ec25-d248" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b950-835c-0fb7-9b47" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </infoLink>
       </infoLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
@@ -560,6 +608,13 @@
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="set" value="Pistol, Precision" field="7f1b-8591-2fcf-d01c">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="b950-835c-0fb7-9b47" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
       </profiles>
       <modifiers>
@@ -1328,7 +1383,7 @@
             <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
             <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
             <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
-            <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+            <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
             <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
             <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
             <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
@@ -1634,7 +1689,7 @@
           <selectionEntries>
             <selectionEntry type="model" import="true" name="Accursed weapon and combi-bolter" hidden="false" id="4a52-6694-b18b-54aa" collective="false">
               <constraints>
-                <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="3dfd-adf8-7979-840f" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="3dfd-adf8-7979-840f" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
               </constraints>
               <entryLinks>
                 <entryLink import="true" name="Combi-bolter" hidden="false" id="6e74-6bfd-720b-0193" collective="false" targetId="02c9-ea19-b105-af58" type="selectionEntry">
@@ -1655,7 +1710,7 @@
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Accursed weapon and combi-weapon" hidden="false" id="dcc8-aa7a-d2d8-3439" collective="false">
               <constraints>
-                <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="2f2f-f691-a190-b87f" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="2f2f-f691-a190-b87f" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
               </constraints>
               <entryLinks>
                 <entryLink import="true" name="Accursed weapon" hidden="false" id="10b2-bf3c-b41e-d1cb" collective="false" targetId="37f9-08dc-948b-7a0b" type="selectionEntry">
@@ -2628,7 +2683,7 @@
           <characteristics>
             <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">20&quot;+</characteristic>
             <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">10</characteristic>
-            <characteristic name="SV" typeId="450-a17e-9d5e-29da">2+</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">14</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
             <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
@@ -3072,7 +3127,7 @@ While a unit from your army is Empowered, weapons equipped by models in that uni
           <characteristics>
             <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">14&quot;</characteristic>
             <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">10</characteristic>
-            <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">20</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
             <characteristic name="OC" typeId="bef7-942a-1a23-59f8">5</characteristic>
@@ -4090,36 +4145,7 @@ No **^^Legions of Excess**^^ models from your army can be your **^^Warlord**^^.<
     <entryLink import="true" name="Seekers" hidden="false" id="2610-a708-7a64-1129" type="selectionEntry" targetId="c9df-2c38-25e5-ffc7"/>
   </entryLinks>
   <sharedInfoGroups>
-    <infoGroup name="Plasma pistol" id="0cbe-31f4-e833-9ef4" hidden="false">
-      <profiles>
-        <profile name="➤ Plasma pistol - standard" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="65d3-9d25-d59b-cfa9">
-          <characteristics>
-            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
-            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
-          </characteristics>
-        </profile>
-        <profile name="➤ Plasma pistol - supercharge" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="f4b9-1aa7-21d4-4736">
-          <characteristics>
-            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
-            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Hazardous, Pistol</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
-      <infoLinks>
-        <infoLink name="Hazardous" id="7c4a-1224-29a9-dd20" hidden="false" targetId="8367-374c-f87-c627" type="rule"/>
-        <infoLink name="Pistol" id="3b26-8ceb-37be-87d2" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
-      </infoLinks>
-    </infoGroup>
+    <infoGroup name="Plasma pistol" id="0cbe-31f4-e833-9ef4" hidden="false"/>
   </sharedInfoGroups>
   <sharedProfiles>
     <profile name="Accursed weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="bec5-9e9c-b187-c1c0">
@@ -4149,6 +4175,7 @@ No **^^Legions of Excess**^^ models from your army can be your **^^Warlord**^^.<
     <catalogueLink type="catalogue" name="Library - Astartes Heresy Legends" id="1a94-f115-b6aa-cdee" targetId="ac3b-689c-4ad4-70cb" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Chaos - Chaos Knights Library" id="379a-6b61-9b41-26a4" targetId="8106-aad2-918a-9ac" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Library - Titans" id="4fb5-2490-7b48-0545" targetId="7481-280e-b55e-7867" importRootEntries="true"/>
+    <catalogueLink type="catalogue" name="Unaligned Forces" id="2e24-f4aa-ba49-d22a" targetId="581a-46b9-5b86-44b7" importRootEntries="true"/>
   </catalogueLinks>
   <sharedSelectionEntryGroups>
     <selectionEntryGroup name="Enhancements" id="ce10-1f30-82b7-fc7a" hidden="false">
@@ -4363,6 +4390,11 @@ No **^^Legions of Excess**^^ models from your army can be your **^^Warlord**^^.<
             <modifier type="set" value="true" field="hidden">
               <conditions>
                 <condition type="equalTo" value="0" field="selections" scope="force" childId="faf3-053d-d290-a3d9" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="0" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true" includeChildSelections="true"/>
               </conditions>
             </modifier>
           </modifiers>

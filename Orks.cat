@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="a55f-b7b3-6c65-a05f" name="Xenos - Orks" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="95" battleScribeVersion="2.03" type="catalogue" authorName="BSData Developers" authorContact="Dunamis55 &amp; AbonShell">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="a55f-b7b3-6c65-a05f" name="Xenos - Orks" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="99" battleScribeVersion="2.03" type="catalogue" authorName="BSData Developers" authorContact="Dunamis55 &amp; AbonShell">
   <sharedSelectionEntries>
     <selectionEntry type="upgrade" import="true" name="Warlord" id="8b5-898c-f79b-5a9c">
       <categoryLinks>
@@ -4065,13 +4065,6 @@ Designer’s Note: Place a Grot Helper token next to the bearer, removing it onc
               <constraints>
                 <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="4db5-2535-1397-3045"/>
               </constraints>
-              <modifiers>
-                <modifier type="decrement" value="1" field="4db5-2535-1397-3045">
-                  <conditions>
-                    <condition type="lessThan" value="6" field="selections" scope="2d6e-aa3b-c28c-5ef0" childId="model" shared="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
               <entryLinks>
                 <entryLink import="true" name="Slugga" hidden="false" id="6c86-a81f-2fda-5fb5" type="selectionEntry" targetId="752e-cd9b-4721-f0b0" collective="true">
                   <entryLinks>
@@ -4089,7 +4082,15 @@ Designer’s Note: Place a Grot Helper token next to the bearer, removing it onc
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="ad49-c07c-f665-0989"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2394-3dd9-f71d-cd31"/>
+                    <constraint type="max" value="2" field="selections" scope="unit" shared="true" id="31f2-f42d-a13e-987f" includeChildSelections="true"/>
                   </constraints>
+                  <modifiers>
+                    <modifier type="set" value="1" field="31f2-f42d-a13e-987f">
+                      <conditions>
+                        <condition type="lessThan" value="6" field="selections" scope="unit" childId="model" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </entryLink>
                 <entryLink import="true" name="Spinnin’ blades" hidden="false" id="e5ea-ca0c-5d0d-95f4" type="selectionEntry" targetId="16ab-3dbd-57ed-34bb">
                   <entryLinks>
@@ -10270,7 +10271,7 @@ Designer’s Note: Place a Squig Mine token next to the model, removing it once 
         </profile>
         <profile name="Bomb Squigs" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7cdb-a985-3692-ff79">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Twice per battle, after this unit ends a Normal move, you can use one Bomb Squig. If you do, select one enemy unit within 12&quot; and visible to this unit and roll one D6: on a 2+, that enemy unit suffers D3 mortal wounds.
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Twice per battle, after this unit ends a Normal move, you can use one Bomb Squig. If you do, select one enemy unit within 12&quot; and visible to this unit and roll one D6: on a 3+, that enemy unit suffers D3 mortal wounds.
 
 **Designer’s Note:** *Place two Bomb Squig tokens next to the unit, removing one each time this unit uses this ability.*</characteristic>
           </characteristics>
@@ -16151,10 +16152,6 @@ Designer’s Note: Place a Squig Mine token next to the model, removing it once 
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="5c2e-6d7b-dec6-7078" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3ce3-2e34-1997-33a3"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9046-d3c4-9136-e3c2"/>
-                  </constraints>
                 </entryLink>
               </entryLinks>
             </selectionEntryGroup>
@@ -21340,10 +21337,13 @@ Designer’s Note: Place two Bomb Squig tokens next to the unit, removing one e
                             <condition type="lessThan" value="1" field="selections" scope="parent" childId="2381-390e-5e7d-0426" shared="true" includeChildForces="true" includeChildSelections="true"/>
                           </conditions>
                         </conditionGroup>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="47cc-4071-6fda-688e" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="cf47-a0d7-7207-29dc" shared="true"/>
+                          </conditions>
+                        </conditionGroup>
                       </conditionGroups>
-                      <conditions>
-                        <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="47cc-4071-6fda-688e" shared="true"/>
-                      </conditions>
                     </conditionGroup>
                   </conditionGroups>
                 </modifier>
@@ -21363,7 +21363,7 @@ Designer’s Note: Place two Bomb Squig tokens next to the unit, removing one e
                   <profiles>
                     <profile name="Skwad Leader" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="becb-7197-d769-6f8c">
                       <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Warboss^^** model only. During the Declare Battle Formations step, the bearer can be attached to a **^^Kommandos^^** unit. While leading a **^^Kommandos^^** unit, it has the Infiltrators and Stealth abilities.</characteristic>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Warboss Infantry^^** model only. During the Declare Battle Formations step, the bearer can be attached to a **^^Kommandos^^** unit. While leading a **^^Kommandos^^** unit, it has the Infiltrators and Stealth abilities.</characteristic>
                       </characteristics>
                     </profile>
                   </profiles>
