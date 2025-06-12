@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="b984-7317-81cc-20f" name="Xenos - Tyranids" revision="89" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Dunamis55">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="b984-7317-81cc-20f" name="Xenos - Tyranids" revision="90" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Dunamis55">
   <categoryEntries>
     <categoryEntry name="Synapse" hidden="false" id="4129-a453-686a-d38a"/>
     <categoryEntry id="4f10-fe01-4b80-8d6b" name="Winged Hive Tyrant" hidden="false"/>
@@ -11277,7 +11277,7 @@
                 <constraint type="max" value="3" field="selections" scope="parent" shared="true" id="5913-d0ee-185c-10c2" includeChildSelections="false"/>
               </constraints>
               <entryLinks>
-                <entryLink import="true" name="Ravener claws and talons" hidden="false" id="52ef-fc8f-4670-82aa" type="selectionEntry" targetId="9be2-c3dc-90ac-a3ac">
+                <entryLink import="true" name="Ravener heavy claws and talons" hidden="false" id="52ef-fc8f-4670-82aa" type="selectionEntry" targetId="9be2-c3dc-90ac-a3ac">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f87f-e375-ff93-e691" includeChildSelections="false"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="261f-1497-5042-471f" includeChildSelections="false"/>
@@ -11332,7 +11332,7 @@
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4a02-1fa6-79c4-3455" includeChildSelections="false"/>
               </constraints>
               <entryLinks>
-                <entryLink import="true" name="Ravener claws and talons" hidden="false" id="4df4-6afc-328d-2d12" type="selectionEntry" targetId="9be2-c3dc-90ac-a3ac">
+                <entryLink import="true" name="Ravener heavy claws and talons" hidden="false" id="4df4-6afc-328d-2d12" type="selectionEntry" targetId="9be2-c3dc-90ac-a3ac">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c085-9e3a-f76f-e04d" includeChildSelections="false"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e67b-864b-1375-3e18" includeChildSelections="false"/>
@@ -12396,9 +12396,24 @@ In the Muster Armies step, you can select up to 2 **^^Trygon^^** models from y
             <selectionEntry id="f4a3-f457-328f-582b" name="Vanguard Intellect" hidden="false" collective="false" import="true" type="upgrade">
               <modifiers>
                 <modifier type="set" field="hidden" value="true">
-                  <conditions>
-                    <condition field="selections" scope="ancestor" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="true" childId="d1d8-6ae0-1be7-e9e" type="notInstanceOf"/>
-                  </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="d1d8-6ae0-1be7-e9e" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="true"/>
+                      </conditions>
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="54a9-c42f-3578-c683" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="6646-3625-4f52-f47c" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="c3a7-fdae-a434-6eff" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="4f10-fe01-4b80-8d6b" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="d5b9-2986-70fe-f755" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
               </modifiers>
               <constraints>
