@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="1069-10ff-3ba9-873b" name="Chaos - Thousand Sons" revision="59" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="1069-10ff-3ba9-873b" name="Chaos - Thousand Sons" revision="60" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <publications>
     <publication id="015a-6212-d737-9044" name="Index - Thousand Sons"/>
   </publications>
@@ -395,11 +395,9 @@ Psychic weapons equipped by ^^**Thousand Sons^^** models in your army have the [
             <selectionEntry type="upgrade" import="true" name="Warpmeld Pact" hidden="false" id="5be7-3aa8-5d64-cbaf">
               <rules>
                 <rule name="Warpmeld Sacrifice" id="051d-bef5-f9ed-7178" hidden="false">
-                  <description>Each time an enemy unit is selected to shoot or fight and one or more ^^**Tzeentch Mutant^^** units from your army are selected as a target of one or more of those attacks, each of those ^^**Tzeentch Mutant^^** units can make a Warpmeld Sacrifice. If it does, that ^^**Tzeentch Mutant^^** unit suffers D3 mortal wounds and until the end of the phase, each time an attack targets that unit, subtract 1 from the Wound roll.
+                  <description>Each time an enemy unit is selected to shoot or fight and one or more ^^**Tzeentch Mutant Infantry^^** or ^^**Tzeentch Mutant Mounted^^** units from your army are selected as a target of one or more of those attacks, each of those ^^**Tzeentch Mutant^^** units can make a Warpmeld Sacrifice. If it does, until the end of the phase, each time an attack targets that unit, subtract 1 from the Wound roll. At the end of the phase, that ^^**Tzeentch Mutant^^** unit suffers D3 mortal wounds.
 
-
-Each time a ^^**Tzeentch Mutant^^** unit from your army is selected to shoot or fight, before selecting its targets, that unit can make a Warpmeld Sacrifice. If it does, that unit suffers D3 mortal wounds and until the end of the phase, each time a model in that unit makes an attack, add 1 to the Wound roll.
-
+Each time a ^^**Tzeentch Mutant Infantry^^** or ^^**Tzeentch Mutant Mounted^^*** unit from your army is selected to shoot or fight, before selecting its targets, that unit can make a Warpmeld Sacrifice. If it does, until the end of the phase, each time a model in that unit makes an attack, add 1 to the Wound roll. At the end of the phase, that ^^**Tzeentch Mutant^^** unit suffers D3 mortal wounds.
 
 ^^**Tzaangors^^** units from your army have the Battleline keyword, and while such a unit is not Battle-shocked, add 1 to the Objective Control characteristic of models in that unit.</description>
                 </rule>
@@ -1700,6 +1698,13 @@ Each time a ^^**Thousand Sons Vehicle^^** model from your army with the Deadly D
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="set" value="3+" field="94d-8a98-cf90-183e">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="3789-4546-1d0a-f02b" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
       </profiles>
       <infoLinks>
@@ -3028,7 +3033,7 @@ Each time a ^^**Thousand Sons Vehicle^^** model from your army with the Deadly D
         </profile>
         <profile id="4b6d-e4b8-2cfa-42a6" name="Immaterial Flare (Aura)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly ^^**Thousand Sons Psyker^^** unit is within 6&quot; of this model, each time that unit Channels the Warp, add 1 to the Psychic test result.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly ^^**Thousand Sons Psyker^^** unit is within 6&quot; of this model, each time that unit Channels the Warp, add 1 to the Psychic test result. This is not cumulative with any other modifiers to the Psychic test result.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -7907,9 +7912,8 @@ _Designer’s Note: While this unit contains one or more ^^Pink Horrors^^ models
       <description>If your army Faction is ^^**Thousand Sons^^**, at the start of your Shooting phase, one or more models from your army with this ability can attempt Rituals. To do so, select one model from your army with this ability that has not yet attempted a Ritual this turn and select one Ritual no model from your army has manifested this turn, then take a Psychic test by following the sequence below:
 
 1. Roll 2D6
-2. Channel the Warp (optionally, roll one additional D6)
-3. Then, if one or more doubles or triples were rolled during this test, that model&apos;s unit suffers D3 mortal wounds.
-4. If that model is not destroyed, the combined total of all the dice rolled during this test is the Psychic test result. If this equals or exceeds the Warp Charge value of the Ritual being attempted, that model manifests that Ritual and you resolve its effects.</description>
+2. Optionally, roll one additional D6 (Channel the Warp). Then, if one or more doubles or triples were rolled during this test, that model&apos;s unit suffers D3 mortal wounds.
+3. If that model is not destroyed, the combined total of all the dice rolled during this test is the Psychic test result. If this equals or exceeds the Warp Charge value of the Ritual being attempted, that model manifests that Ritual and you resolve its effects.</description>
     </rule>
   </sharedRules>
 </catalogue>
