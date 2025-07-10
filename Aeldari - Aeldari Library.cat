@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="83" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="84" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <publications>
     <publication id="442c-a37c-3908-d701" name="Codex: Aeldari" shortName="C:Aeldari" publisher="Codex: Aeldari" publicationDate="08/02/2025"/>
     <publication id="1427-7c5c-863f-ac94" name="Index: Drukhari" shortName="I:Drukhari" publisher="Index: Drukhari" publicationDate="6/15/2023"/>
@@ -178,7 +178,7 @@
         </modifier>
       </modifiers>
     </categoryEntry>
-    <categoryEntry name="Corsairs and Travelling Players" id="e554-d095-bb9d-c930" hidden="false">
+    <categoryEntry name="Corsairs and Travelling Players" id="e554-d095-bb9d-c930" hidden="true">
       <constraints>
         <constraint type="max" value="-1" field="51b2-306e-1021-d207" scope="force" shared="true" id="f327-7590-64db-0d1b" includeChildSelections="true" includeChildForces="true"/>
       </constraints>
@@ -1570,7 +1570,7 @@ While this model is leading a Striking Scorpions unit, it has the Infiltrators, 
             <constraint field="selections" scope="parent" value="10" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="a497-2fe4-dc0d-2e7" type="max"/>
           </constraints>
           <selectionEntries>
-            <selectionEntry id="3c2b-1b75-e19-9267" name="Voidreaver Felarch" hidden="false" collective="false" import="true" type="model">
+            <selectionEntry id="3c2b-1b75-e19-9267" name="Voidreaver Felarch" hidden="false" collective="false" import="true" type="model" sortIndex="1">
               <constraints>
                 <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="4193-5214-a0ac-ad96" type="min"/>
                 <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="9e7a-e712-2d-8529" type="max"/>
@@ -1701,14 +1701,14 @@ While this model is leading a Striking Scorpions unit, it has the Infiltrators, 
                 <entryLink import="true" name="Close Combat Weapon" hidden="false" id="4123-95d2-9c11-996a" type="selectionEntry" targetId="6f5b-87a7-49f0-9721"/>
               </entryLinks>
             </selectionEntry>
-            <selectionEntry id="6184-261f-65bd-1cd1" name="Voidreaver with Heavy weapon" hidden="false" collective="false" import="true" type="model">
+            <selectionEntry id="6184-261f-65bd-1cd1" name="Voidreaver with Heavy weapon" hidden="false" collective="false" import="true" type="model" sortIndex="4">
               <modifiers>
-                <modifier type="set" field="ae46-b4a6-cb1d-5339" value="1">
+                <modifier type="add" field="error" value="Can only be taken if there are 10 models in the squad">
                   <conditionGroups>
                     <conditionGroup type="and">
                       <conditions>
-                        <condition type="atLeast" value="10" field="selections" scope="cc68-ad19-7285-7a11" childId="b3ab-c0f4-3253-859c" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
-                        <condition type="equalTo" value="0" field="selections" scope="cc68-ad19-7285-7a11" childId="a9af-280-501f-a5fe" shared="true" includeChildForces="false" includeChildSelections="true"/>
+                        <condition type="lessThan" value="10" field="selections" scope="cc68-ad19-7285-7a11" childId="b3ab-c0f4-3253-859c" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="6184-261f-65bd-1cd1" shared="true" includeChildSelections="true"/>
                       </conditions>
                     </conditionGroup>
                   </conditionGroups>
@@ -1725,10 +1725,10 @@ While this model is leading a Striking Scorpions unit, it has the Infiltrators, 
                 </modifier>
               </modifiers>
               <constraints>
-                <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="ae46-b4a6-cb1d-5339" type="max"/>
+                <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="ae46-b4a6-cb1d-5339" type="max"/>
               </constraints>
               <selectionEntryGroups>
-                <selectionEntryGroup id="7e91-8292-39d5-705b" name="Weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="3554-3b1d-63cc-7c6b">
+                <selectionEntryGroup id="7e91-8292-39d5-705b" name="Weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="none">
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="5f12-e700-7157-de84" type="min"/>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="a41c-d63c-b4e4-5d8f" type="max"/>
@@ -1786,136 +1786,10 @@ While this model is leading a Striking Scorpions unit, it has the Infiltrators, 
                 <entryLink import="true" name="Close Combat Weapon" hidden="false" id="6e09-79ea-1248-057d" type="selectionEntry" targetId="6f5b-87a7-49f0-9721"/>
               </entryLinks>
             </selectionEntry>
-            <selectionEntry id="97da-7e61-2efb-cdcb" name="Voidreaver with Blaster" hidden="false" collective="false" import="true" type="model">
-              <modifiers>
-                <modifier type="set" field="acb6-e5d8-bbdf-f375" value="2">
-                  <conditions>
-                    <condition field="selections" scope="cc68-ad19-7285-7a11" value="10" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="b3ab-c0f4-3253-859c" type="atLeast"/>
-                  </conditions>
-                </modifier>
-                <modifier type="decrement" field="acb6-e5d8-bbdf-f375" value="1">
-                  <repeats>
-                    <repeat field="selections" scope="cc68-ad19-7285-7a11" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="060b-f996-dcf6-24f3" repeats="1" roundUp="false"/>
-                  </repeats>
-                </modifier>
-              </modifiers>
-              <constraints>
-                <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="acb6-e5d8-bbdf-f375" type="max"/>
-              </constraints>
-              <selectionEntries>
-                <selectionEntry id="abb9-ea1a-aeb7-6798" name="Blaster" hidden="false" collective="true" import="true" type="upgrade">
-                  <profiles>
-                    <profile id="147b-c104-ef93-7111" name="Blaster" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6+1</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink id="5e49-012d-aa2b-4a63" name="Assault" hidden="false" targetId="fc8a-8c24-bae9-cc1c" type="rule"/>
-                  </infoLinks>
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                  </costs>
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="840d-86eb-bfce-7aa0"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cf61-3dab-50dd-37c3"/>
-                  </constraints>
-                </selectionEntry>
-              </selectionEntries>
-              <costs>
-                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-              </costs>
-              <infoLinks>
-                <infoLink name="Corsair Voidreaver" id="b6ed-adf2-697d-44de" hidden="false" type="profile" targetId="57e2-27b5-2c68-cb6e"/>
-              </infoLinks>
-              <entryLinks>
-                <entryLink import="true" name="Close Combat Weapon" hidden="false" id="bc98-a050-1e98-8f4e" type="selectionEntry" targetId="6f5b-87a7-49f0-9721"/>
-                <entryLink import="true" name="Shuriken Pistol" hidden="false" id="b7f4-0a69-6834-5e46" type="selectionEntry" targetId="6783-a483-98bc-4f87"/>
-              </entryLinks>
-            </selectionEntry>
-            <selectionEntry id="fcf9-7d09-a246-b925" name="Voidreaver" hidden="false" collective="false" import="true" type="model">
+            <selectionEntry id="fcf9-7d09-a246-b925" name="Voidreaver with Shuriken rifle" hidden="false" collective="false" import="true" type="model" sortIndex="2">
               <constraints>
                 <constraint field="selections" scope="parent" value="9" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="7315-f370-e7fe-385b" type="max"/>
-                <constraint field="selections" scope="parent" value="3" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="bf38-b8c9-911d-c600" type="min"/>
               </constraints>
-              <selectionEntryGroups>
-                <selectionEntryGroup id="409e-c2a0-4aa-373a" name="Weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="a9af-280-501f-a5fe">
-                  <constraints>
-                    <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="bbb0-ffd7-3d89-f5e9" type="min"/>
-                    <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="862b-d462-751-d701" type="max"/>
-                  </constraints>
-                  <selectionEntries>
-                    <selectionEntry id="a9af-280-501f-a5fe" name="Shuriken pistol Power sword" hidden="false" collective="false" import="true" type="upgrade">
-                      <constraints>
-                        <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="307c-b0d6-e266-161a" type="max"/>
-                      </constraints>
-                      <profiles>
-                        <profile id="6b7-807e-e8b4-69cc" name="Shuriken pistol" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Pistol</characteristic>
-                          </characteristics>
-                        </profile>
-                        <profile id="29a6-f7d3-dddc-c8c3" name="Power sword" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
-                          <characteristics>
-                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                            <characteristic name="A" typeId="2337-daa1-6682-b110">2</characteristic>
-                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
-                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
-                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
-                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
-                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <infoLinks>
-                        <infoLink id="a43e-3e97-1a36-f17c" name="Assault" hidden="false" targetId="fc8a-8c24-bae9-cc1c" type="rule"/>
-                        <infoLink id="df4b-1398-8ed6-249c" name="Pistol" hidden="false" targetId="8bf7-8812-923d-29e4" type="rule"/>
-                      </infoLinks>
-                      <costs>
-                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                      </costs>
-                    </selectionEntry>
-                    <selectionEntry id="b89e-3e79-8a04-731" name="Shuriken rifle" hidden="false" collective="false" import="true" type="upgrade">
-                      <constraints>
-                        <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="37ab-6a5e-71a-64c1" type="max"/>
-                      </constraints>
-                      <profiles>
-                        <profile id="efc9-b21c-3ce-515" name="Shuriken rifle" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Rapid Fire 1</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <infoLinks>
-                        <infoLink id="c361-a79d-83a4-1c12" name="Assault" hidden="false" targetId="fc8a-8c24-bae9-cc1c" type="rule"/>
-                        <infoLink id="bdd4-294f-892b-8ced" name="Rapid Fire" hidden="false" targetId="c5c8-8b58-b8b6-7786" type="rule"/>
-                      </infoLinks>
-                      <costs>
-                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                      </costs>
-                    </selectionEntry>
-                  </selectionEntries>
-                </selectionEntryGroup>
-              </selectionEntryGroups>
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
@@ -1925,63 +1799,158 @@ While this model is leading a Striking Scorpions unit, it has the Infiltrators, 
               <infoLinks>
                 <infoLink name="Corsair Voidreaver" id="3b40-d3ca-cd2a-57c6" hidden="false" type="profile" targetId="57e2-27b5-2c68-cb6e"/>
               </infoLinks>
-            </selectionEntry>
-            <selectionEntry id="060b-f996-dcf6-24f3" name="Voidreaver with Shredder" hidden="false" collective="false" import="true" type="model">
-              <modifiers>
-                <modifier type="set" field="83b7-85d3-09af-9e6a" value="2">
-                  <conditions>
-                    <condition field="selections" scope="cc68-ad19-7285-7a11" value="10" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" childId="b3ab-c0f4-3253-859c" type="atLeast"/>
-                  </conditions>
-                </modifier>
-                <modifier type="decrement" field="83b7-85d3-09af-9e6a" value="1">
-                  <repeats>
-                    <repeat field="selections" scope="cc68-ad19-7285-7a11" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="97da-7e61-2efb-cdcb" repeats="1" roundUp="false"/>
-                  </repeats>
-                </modifier>
-              </modifiers>
-              <constraints>
-                <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="83b7-85d3-09af-9e6a" type="max"/>
-              </constraints>
               <selectionEntries>
-                <selectionEntry id="b6d4-2512-8595-d60a" name="Shredder" hidden="false" collective="true" import="true" type="upgrade">
+                <selectionEntry type="upgrade" import="true" name="Shuriken rifle" hidden="false" id="b89e-3e79-8a04-731" collective="false">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="ed33-5fd5-bfcc-3af0-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ed33-5fd5-bfcc-3af0-max" includeChildSelections="false"/>
+                  </constraints>
                   <profiles>
-                    <profile id="d3c9-151e-99c0-8adc" name="Corsair shredder" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
+                    <profile name="Shuriken rifle" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="efc9-b21c-3ce-515">
                       <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
                         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Torrent</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Rapid Fire 1</characteristic>
                       </characteristics>
                     </profile>
                   </profiles>
                   <infoLinks>
-                    <infoLink id="25c1-38dd-990f-6da8" name="Assault" hidden="false" targetId="fc8a-8c24-bae9-cc1c" type="rule"/>
-                    <infoLink id="ff1b-2b2b-ea19-74d8" name="Torrent" hidden="false" targetId="5edf-d619-23e0-9b56" type="rule"/>
+                    <infoLink name="Assault" id="c361-a79d-83a4-1c12" hidden="false" targetId="fc8a-8c24-bae9-cc1c" type="rule"/>
+                    <infoLink name="Rapid Fire" id="bdd4-294f-892b-8ced" hidden="false" targetId="c5c8-8b58-b8b6-7786" type="rule"/>
                   </infoLinks>
                   <costs>
                     <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
                   </costs>
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3763-efb9-a9f0-3af6"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="648-4642-270a-fb62"/>
-                  </constraints>
                 </selectionEntry>
               </selectionEntries>
+            </selectionEntry>
+            <selectionEntry type="model" import="true" name="Voidreaver with sword and pistol" hidden="false" id="184e-6116-54ec-5804" collective="false" sortIndex="3">
+              <constraints>
+                <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="0cea-4ec1-b214-c6ce" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+              </constraints>
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
-              <infoLinks>
-                <infoLink name="Corsair Voidreaver" id="6bd8-926d-f279-8fc9" hidden="false" type="profile" targetId="57e2-27b5-2c68-cb6e"/>
-              </infoLinks>
               <entryLinks>
-                <entryLink import="true" name="Close Combat Weapon" hidden="false" id="7352-100a-c621-aaf8" type="selectionEntry" targetId="6f5b-87a7-49f0-9721"/>
-                <entryLink import="true" name="Shuriken Pistol" hidden="false" id="2e72-4304-54e0-de85" type="selectionEntry" targetId="6783-a483-98bc-4f87"/>
+                <entryLink import="true" name="Close Combat Weapon" hidden="false" id="6740-03eb-70fe-5622" type="selectionEntry" targetId="6f5b-87a7-49f0-9721"/>
+                <entryLink import="true" name="Shuriken Pistol" hidden="false" id="c09b-4bbb-a901-980e" type="selectionEntry" targetId="6783-a483-98bc-4f87"/>
+                <entryLink import="true" name="Power sword" hidden="false" id="5db8-79c8-8255-d500" type="selectionEntry" targetId="0e77-2630-6f58-75ce"/>
               </entryLinks>
+              <infoLinks>
+                <infoLink name="Corsair Voidreaver" id="f65e-0e9a-1012-1eb5" hidden="false" type="profile" targetId="57e2-27b5-2c68-cb6e"/>
+              </infoLinks>
             </selectionEntry>
           </selectionEntries>
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Voidreaver with special weapon" id="6233-f7e5-3337-389f" hidden="false" sortIndex="5">
+              <constraints>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="2e8a-fbcf-a50a-dc43" includeChildSelections="false"/>
+              </constraints>
+              <selectionEntries>
+                <selectionEntry type="model" import="true" name="Voidreaver with Blaster" hidden="false" id="97da-7e61-2efb-cdcb" collective="false">
+                  <constraints>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="47fe-0240-ad9e-28ae" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Blaster" hidden="false" id="abb9-ea1a-aeb7-6798" collective="true">
+                      <profiles>
+                        <profile name="Blaster" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="147b-c104-ef93-7111">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6+1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Assault" id="5e49-012d-aa2b-4a63" hidden="false" targetId="fc8a-8c24-bae9-cc1c" type="rule"/>
+                      </infoLinks>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                      </costs>
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="840d-86eb-bfce-7aa0"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cf61-3dab-50dd-37c3"/>
+                      </constraints>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                  </costs>
+                  <infoLinks>
+                    <infoLink name="Corsair Voidreaver" id="b6ed-adf2-697d-44de" hidden="false" type="profile" targetId="57e2-27b5-2c68-cb6e"/>
+                  </infoLinks>
+                  <entryLinks>
+                    <entryLink import="true" name="Close Combat Weapon" hidden="false" id="bc98-a050-1e98-8f4e" type="selectionEntry" targetId="6f5b-87a7-49f0-9721"/>
+                    <entryLink import="true" name="Shuriken Pistol" hidden="false" id="b7f4-0a69-6834-5e46" type="selectionEntry" targetId="6783-a483-98bc-4f87"/>
+                  </entryLinks>
+                </selectionEntry>
+                <selectionEntry type="model" import="true" name="Voidreaver with Shredder" hidden="false" id="060b-f996-dcf6-24f3" collective="false">
+                  <constraints>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="83b7-85d3-09af-9e6a" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                  </constraints>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Shredder" hidden="false" id="b6d4-2512-8595-d60a" collective="true">
+                      <profiles>
+                        <profile name="Corsair shredder" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="d3c9-151e-99c0-8adc">
+                          <characteristics>
+                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
+                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Torrent</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Assault" id="25c1-38dd-990f-6da8" hidden="false" targetId="fc8a-8c24-bae9-cc1c" type="rule"/>
+                        <infoLink name="Torrent" id="ff1b-2b2b-ea19-74d8" hidden="false" targetId="5edf-d619-23e0-9b56" type="rule"/>
+                      </infoLinks>
+                      <costs>
+                        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                      </costs>
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3763-efb9-a9f0-3af6"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="648-4642-270a-fb62"/>
+                      </constraints>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                  </costs>
+                  <infoLinks>
+                    <infoLink name="Corsair Voidreaver" id="6bd8-926d-f279-8fc9" hidden="false" type="profile" targetId="57e2-27b5-2c68-cb6e"/>
+                  </infoLinks>
+                  <entryLinks>
+                    <entryLink import="true" name="Close Combat Weapon" hidden="false" id="7352-100a-c621-aaf8" type="selectionEntry" targetId="6f5b-87a7-49f0-9721"/>
+                    <entryLink import="true" name="Shuriken Pistol" hidden="false" id="2e72-4304-54e0-de85" type="selectionEntry" targetId="6783-a483-98bc-4f87"/>
+                  </entryLinks>
+                </selectionEntry>
+              </selectionEntries>
+              <modifiers>
+                <modifier type="add" value="Max 1 Special weapon per 5 models" field="error">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="2" field="selections" scope="cc68-ad19-7285-7a11" childId="6233-f7e5-3337-389f" shared="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="10" field="selections" scope="cc68-ad19-7285-7a11" childId="b3ab-c0f4-3253-859c" shared="true" percentValue="false" includeChildSelections="false" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <costs>
@@ -25708,7 +25677,7 @@ For every 5 models in this unit, it can have 1 Aspect Shrine token.</characteris
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
-      <comment>Storm Guardians</comment>
+      <comment>WS 3+</comment>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Fusion Gun" hidden="false" id="05aa-a5ee-9c87-d323" collective="true">
       <profiles>
