@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="40" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="41" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -1083,8 +1083,23 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
           </conditionGroups>
         </modifier>
         <modifier type="set" value="2" field="2a14-db5e-c5ad-5ae9">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="equalTo" value="1" field="selections" scope="self" childId="any" shared="true"/>
+                <condition type="equalTo" value="0" field="selections" scope="self" childId="d327-a8ea-20de-37f4" shared="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="1" field="2a14-db5e-c5ad-5ae9">
           <conditions>
-            <condition type="equalTo" value="1" field="selections" scope="self" childId="any" shared="true"/>
+            <condition type="equalTo" value="1" field="selections" scope="self" childId="d327-a8ea-20de-37f4" shared="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="set" value="1" field="b96f-03f7-d8a1-92ce">
+          <conditions>
+            <condition type="equalTo" value="1" field="selections" scope="self" childId="d327-a8ea-20de-37f4" shared="true"/>
           </conditions>
         </modifier>
       </modifiers>
@@ -1334,6 +1349,56 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="1"/>
           </costs>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Seeping Poisons" hidden="false" id="d327-a8ea-20de-37f4">
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="2"/>
+          </costs>
+          <infoLinks>
+            <infoLink name="Lethal Hits" id="ea3c-d126-6581-9c0d" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
+          </infoLinks>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="045e-f0f0-0c25-9a3c" includeChildSelections="false"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="5108-f98-63c2-53cb" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <comment>Master-worked</comment>
+              <modifiers>
+                <modifier type="append" value="Seeping Poisons" field="annotation" join=", " scope="upgrade" affects="profiles.Ranged Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="d327-a8ea-20de-37f4" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="append" value="Lethal Hits" field="7f1b-8591-2fcf-d01c" scope="upgrade" affects="profiles.Ranged Weapons" position="-1" join=", ">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="d327-a8ea-20de-37f4" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="append" value="Seeping Poisons" field="annotation" join=", " scope="upgrade" affects="profiles.Melee Weapons">
+                  <conditions>
+                    <condition type="greaterThan" value="0" field="selections" scope="upgrade" childId="d327-a8ea-20de-37f4" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="append" value="Lethal Hits" field="893f-9000-ccf7-648e" scope="upgrade" affects="profiles.Melee Weapons" position="-1" join=", ">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="d327-a8ea-20de-37f4" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+          <comment>Death Guard specific Weapon Modification</comment>
         </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
