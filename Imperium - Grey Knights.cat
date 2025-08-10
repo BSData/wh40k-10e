@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="50c4-3e83-fe54-97c4" name="Imperium - Grey Knights" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="61" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="50c4-3e83-fe54-97c4" name="Imperium - Grey Knights" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="62" battleScribeVersion="2.03" type="catalogue">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights - Library" id="f3e4-7fc3-8f57-6303" importRootEntries="true" targetId="1b6d-dc06-5db9-c7d1"/>
     <catalogueLink type="catalogue" name="Imperium - Agents of the Imperium" id="575c-d0f9-7fdc-2ddb" targetId="b00-cd86-4b4c-97ba" importRootEntries="true"/>
@@ -3708,10 +3708,11 @@
         <categoryLink targetId="33d4-b50a-18e8-16e8" id="f8e1-2fa-e2ea-9a72" primary="false" name="Grey Knights Venerable Dreadnought"/>
         <categoryLink targetId="d564-3284-bf44-b873" id="931c-efa7-3e1b-1d47" primary="false" name="Faction: Grey Knights"/>
         <categoryLink targetId="6dda-e157-334d-e93a" id="5958-2051-3d89-60b5" primary="false" name="Walker"/>
-        <categoryLink targetId="dbd4-63-af05-998" id="a760-8dc9-c644-85ba" primary="true" name="Vehicle"/>
+        <categoryLink targetId="dbd4-63-af05-998" id="a760-8dc9-c644-85ba" primary="false" name="Vehicle"/>
         <categoryLink targetId="13bf-2bee-3ae0-b414" id="7c53-87fa-8704-af57" primary="false" name="Psyker"/>
         <categoryLink targetId="6df-937-16bc-8c1a" id="7b61-da3b-bf9d-37f7" primary="false" name="Smoke"/>
         <categoryLink targetId="aff3-d6a3-2a95-9dc" id="c871-7041-f747-162c" primary="false" name="Imperium"/>
+        <categoryLink name="Character" hidden="false" id="faab-7bf0-0313-faa7" targetId="9cfd-1c32-585f-7d5c" primary="true"/>
       </categoryLinks>
       <profiles>
         <profile name="Venerable Dreadnought" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="51d0-128-5b9c-c280">
@@ -3739,7 +3740,7 @@
         <infoLink name="Deep Strike" id="3add-130a-8f15-edba" hidden="false" type="rule" targetId="7cb5-dd6b-dd87-ad3b"/>
       </infoLinks>
       <selectionEntryGroups>
-        <selectionEntryGroup name="Wargear Options" id="eaf9-fb96-791b-593a" hidden="false" defaultSelectionEntryId="b8bb-18b4-6b7f-9796" sortIndex="2">
+        <selectionEntryGroup name="Wargear" id="eaf9-fb96-791b-593a" hidden="false" defaultSelectionEntryId="b8bb-18b4-6b7f-9796" sortIndex="4">
           <selectionEntryGroups>
             <selectionEntryGroup name="Assault Cannon" id="d9d1-01e7-b30e-bcaf" hidden="false" defaultSelectionEntryId="8bc6-723c-4785-d65f">
               <constraints>
@@ -3821,12 +3822,14 @@
       </selectionEntryGroups>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="0e37-6a9c-0d00-9329" includeChildSelections="true"/>
-        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="e878-c072-2b27-bae3" includeChildSelections="false"/>
-        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="18f9-f88c-60ae-ce5d" includeChildSelections="true"/>
-        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="103e-7e67-61fe-15d0" includeChildSelections="true"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="c458-be5a-a373-6cb4" includeChildSelections="false"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="d015-e842-a3e4-18ff" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="9692-ddc6-9aeb-4847" includeChildSelections="true"/>
       </constraints>
       <entryLinks>
-        <entryLink import="true" name="Crusade" hidden="false" id="651e-589f-b87f-1ffa" type="selectionEntryGroup" targetId="1f2e-4c6b-19f2-30e0" sortIndex="1"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="8455-442b-48d6-ed72" type="selectionEntryGroup" targetId="1f2e-4c6b-19f2-30e0" sortIndex="1"/>
+        <entryLink import="true" name="Warlord" hidden="false" id="1e04-20dd-5083-1247" type="selectionEntry" targetId="beae-4593-3686-1672" sortIndex="2"/>
+        <entryLink import="true" name="Enhancements" hidden="false" id="9efb-316d-e7de-7533" type="selectionEntryGroup" targetId="c440-b056-f09a-c88a" sortIndex="3"/>
       </entryLinks>
       <modifierGroups>
         <modifierGroup type="and">
@@ -3880,17 +3883,12 @@
                 </conditionGroup>
               </conditionGroups>
             </modifier>
-            <modifier type="set" value="6" field="e878-c072-2b27-bae3">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
-            <modifier type="increment" value="2" field="18f9-f88c-60ae-ce5d">
+            <modifier type="increment" value="2" field="d015-e842-a3e4-18ff">
               <repeats>
                 <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
               </repeats>
             </modifier>
-            <modifier type="increment" value="2" field="103e-7e67-61fe-15d0">
+            <modifier type="increment" value="2" field="9692-ddc6-9aeb-4847">
               <repeats>
                 <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
               </repeats>
