@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="3bdf-a114-5035-c6ac" name="Xenos - Genestealer Cults" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="83" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="3bdf-a114-5035-c6ac" name="Xenos - Genestealer Cults" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="84" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="upgrade" import="false" name="Detachment" hidden="false" id="b96c-3fb6-1ee9-15ae">
       <constraints>
@@ -7222,7 +7222,7 @@ You can attach this model to an ACOLYTE HYBRIDS or NEOPHYTE HYBRID unit, even if
       <selectionEntryGroups>
         <selectionEntryGroup name="4-9 Acolyte Hybrids" id="bb7b-ebb5-a64c-3f34" hidden="false" defaultSelectionEntryId="20b2-d42e-cd67-2e1b" sortIndex="3">
           <selectionEntries>
-            <selectionEntry type="model" import="true" name="Acolyte Hybrid w/ Auto Pistol" hidden="false" id="20b2-d42e-cd67-2e1b">
+            <selectionEntry type="model" import="true" name="Acolyte Hybrid w/ Auto Pistol" hidden="false" id="20b2-d42e-cd67-2e1b" defaultAmount="4">
               <entryLinks>
                 <entryLink import="true" name="Autopistol" hidden="false" id="e437-4b0f-8b6d-1ff9" type="selectionEntry" targetId="c213-e6c4-7183-4041">
                   <constraints>
@@ -7240,6 +7240,9 @@ You can attach this model to an ACOLYTE HYBRIDS or NEOPHYTE HYBRID unit, even if
               <infoLinks>
                 <infoLink name="Acolyte Hybrid" id="1169-aa74-30fd-36e7" hidden="false" targetId="346a-8364-5e27-ffbd" type="profile"/>
               </infoLinks>
+              <constraints>
+                <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="01a7-e5c1-1595-c9d1" includeChildSelections="false"/>
+              </constraints>
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Acolyte Hybrid w/ Cult Icon" hidden="false" id="cd55-1eb7-1302-fb96">
               <constraints>
@@ -7269,6 +7272,7 @@ You can attach this model to an ACOLYTE HYBRIDS or NEOPHYTE HYBRID unit, even if
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="616a-743e-47b2-30d1" includeChildSelections="true"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cfd8-1b74-77c8-2984" includeChildSelections="true"/>
+                    <constraint type="max" value="3" field="selections" scope="unit" shared="true" id="b414-a512-9e1e-57f1" includeChildSelections="true"/>
                   </constraints>
                   <profiles>
                     <profile name="Heavy Mining Tool" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="174b-b4c0-d61d-dfb9">
@@ -7290,21 +7294,31 @@ You can attach this model to an ACOLYTE HYBRIDS or NEOPHYTE HYBRID unit, even if
                       </modifiers>
                     </infoLink>
                   </infoLinks>
+                  <modifiers>
+                    <modifier type="set" value="6" field="b414-a512-9e1e-57f1">
+                      <conditions>
+                        <condition type="atLeast" value="10" field="selections" scope="unit" childId="model" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="add" value="Can only take 3 heavy mining tools with less than 10 models in unit" field="error">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="4" field="selections" scope="unit" childId="75e3-460c-9cbb-6e4c" shared="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="10" field="selections" scope="unit" childId="model" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </modifier>
+                  </modifiers>
                 </selectionEntry>
               </selectionEntries>
               <infoLinks>
                 <infoLink name="Acolyte Hybrid" id="61e0-0034-6d43-864b" hidden="false" targetId="346a-8364-5e27-ffbd" type="profile"/>
               </infoLinks>
               <constraints>
-                <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="44ff-b250-f0bf-13fa" includeChildSelections="true"/>
+                <constraint type="max" value="6" field="selections" scope="parent" shared="true" id="44ff-b250-f0bf-13fa" includeChildSelections="true"/>
               </constraints>
-              <modifiers>
-                <modifier type="increment" value="3" field="44ff-b250-f0bf-13fa">
-                  <repeats>
-                    <repeat value="5" repeats="1" field="selections" scope="04cc-6196-1755-ad58" childId="model" shared="true" roundUp="false" id="d9be-8cf2-8dd2-5d1f" includeChildSelections="true"/>
-                  </repeats>
-                </modifier>
-              </modifiers>
             </selectionEntry>
           </selectionEntries>
           <constraints>
