@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="b45c-af22-788a-dfd6" name="Chaos - Daemons Library" revision="59" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="b45c-af22-788a-dfd6" name="Chaos - Daemons Library" revision="60" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <publications>
     <publication id="e3ec-7a32-ae62-8727" name="Index - Chaos Daemons"/>
   </publications>
@@ -14665,7 +14665,7 @@ _Designer’s Note: While this unit contains one or more ^^Pink Horrors^^ models
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
-    <selectionEntryGroup id="621d-b661-7461-4620" name="Enhancements" hidden="false" collective="false" import="true">
+    <selectionEntryGroup id="621d-b661-7461-4620" name="Enhancements" hidden="false" collective="false" import="true" collapsible="true">
       <constraints>
         <constraint field="selections" scope="self" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="a3d6-d68e-bad4-87c4" type="max"/>
         <constraint field="selections" scope="force" value="3" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="beb0-b746-d96b-b611" type="max"/>
@@ -15749,6 +15749,13 @@ _Designer’s Note: While this unit contains one or more ^^Pink Horrors^^ models
           </constraints>
         </selectionEntry>
       </selectionEntries>
+      <modifiers>
+        <modifier type="set" value="-1" field="beb0-b746-d96b-b611">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup id="46db-d986-248b-bd2b" name="Melee weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="b289-f2a3-2509-8439">
       <constraints>
@@ -15988,20 +15995,9 @@ _Designer’s Note: While this unit contains one or more ^^Pink Horrors^^ models
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="82a2-545c-7f11-ed88" hidden="false" collapsible="true">
       <entryLinks>
-        <entryLink import="true" name="Experience Points" hidden="false" id="7430-74ec-28b3-003a" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9"/>
-        <entryLink import="true" name="Legendary Veterans" hidden="false" id="2853-14b5-66ff-0bde" type="selectionEntry" targetId="1511-18fe-f51e-7b9d"/>
-        <entryLink import="true" name="Weapon Modifications" hidden="false" id="1294-e689-854c-35fb" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
-        <entryLink import="true" name="Battle Scars" hidden="false" id="f31c-5c97-210c-77d2" type="selectionEntryGroup" targetId="1576-e816-033f-828d"/>
-        <entryLink import="true" name="Battle Traits" hidden="false" id="7ce8-1d77-049b-cd1e" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
-          <entryLinks>
-            <entryLink import="true" name="Codex Battle Traits" hidden="false" id="6d2b-2aa8-047f-354a" type="selectionEntryGroup" targetId="1eb2-da9b-af89-ea45"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Crusade Relics" hidden="false" id="c74a-be9a-8176-4c3b" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
-          <entryLinks>
-            <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="110b-6b7b-8c0c-38e6" type="selectionEntryGroup" targetId="01b9-39a4-d19a-28d8"/>
-          </entryLinks>
-        </entryLink>
+        <entryLink import="true" name="Experience Points" hidden="false" id="7430-74ec-28b3-003a" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="2853-14b5-66ff-0bde" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="f31c-5c97-210c-77d2" type="selectionEntryGroup" targetId="1576-e816-033f-828d" sortIndex="5" collapsible="true"/>
       </entryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -16011,6 +16007,36 @@ _Designer’s Note: While this unit contains one or more ^^Pink Horrors^^ models
         </modifier>
       </modifiers>
       <comment>Crusade content</comment>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Battle Honours" id="acc1-d1b6-4036-9bf0" hidden="false" sortIndex="4" collapsible="true">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Weapon Modifications" id="0933-7045-49e1-e6f0" hidden="false">
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="1294-e689-854c-35fb" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
+              </entryLinks>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <entryLinks>
+            <entryLink import="true" name="Battle Traits" hidden="false" id="7ce8-1d77-049b-cd1e" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
+              <entryLinks>
+                <entryLink import="true" name="Codex Battle Traits" hidden="false" id="6d2b-2aa8-047f-354a" type="selectionEntryGroup" targetId="1eb2-da9b-af89-ea45"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Crusade Relics" hidden="false" id="c74a-be9a-8176-4c3b" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
+              <entryLinks>
+                <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="110b-6b7b-8c0c-38e6" type="selectionEntryGroup" targetId="01b9-39a4-d19a-28d8"/>
+              </entryLinks>
+            </entryLink>
+          </entryLinks>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Battle Tallies" id="c773-ddf5-267c-5d47" hidden="false" sortIndex="3">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="71d0-beb7-412f-f869"/>
+            <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="3a55-c2b5-eb46-2da7"/>
+            <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="d5f7-02da-2095-2de7"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <sharedRules>

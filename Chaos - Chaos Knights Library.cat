@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="8106-aad2-918a-9ac" name="Chaos - Chaos Knights Library" revision="36" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="8106-aad2-918a-9ac" name="Chaos - Chaos Knights Library" revision="37" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <categoryEntries>
     <categoryEntry id="99dc-0f47-85e2-75da" name="War Dog" hidden="false">
       <modifiers>
@@ -6930,6 +6930,11 @@ While using the Houndpack Lance Detachment, the following rules apply:
             <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true"/>
           </conditions>
         </modifier>
+        <modifier type="set" value="-1" field="852b-8a29-1fc7-ebc9">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup name="Codex Battle Traits" id="e288-3e85-3b28-8dd5" hidden="true" collapsible="true">
@@ -7107,20 +7112,9 @@ While using the Houndpack Lance Detachment, the following rules apply:
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="e91b-3100-3431-e2f8" hidden="false" collapsible="true">
       <entryLinks>
-        <entryLink import="true" name="Experience Points" hidden="false" id="e22e-e055-262b-879c" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9"/>
-        <entryLink import="true" name="Legendary Veterans" hidden="false" id="54f1-02b6-893e-e346" type="selectionEntry" targetId="1511-18fe-f51e-7b9d"/>
-        <entryLink import="true" name="Weapon Modifications" hidden="false" id="31f3-28d3-f231-c233" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
-        <entryLink import="true" name="Battle Scars" hidden="false" id="7526-4f3d-a463-57ca" type="selectionEntryGroup" targetId="1576-e816-033f-828d"/>
-        <entryLink import="true" name="Battle Traits" hidden="false" id="01ae-241d-341f-339a" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
-          <entryLinks>
-            <entryLink import="true" name="Codex Battle Traits" hidden="false" id="375d-b6f1-4569-92f1" type="selectionEntryGroup" targetId="e288-3e85-3b28-8dd5"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Crusade Relics" hidden="false" id="0681-0598-8aac-c653" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
-          <entryLinks>
-            <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="1abd-2bba-a219-6435" type="selectionEntryGroup" targetId="2d68-936c-92cc-20fc"/>
-          </entryLinks>
-        </entryLink>
+        <entryLink import="true" name="Experience Points" hidden="false" id="e22e-e055-262b-879c" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="54f1-02b6-893e-e346" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="7526-4f3d-a463-57ca" type="selectionEntryGroup" targetId="1576-e816-033f-828d" sortIndex="5" collapsible="true"/>
       </entryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -7130,6 +7124,36 @@ While using the Houndpack Lance Detachment, the following rules apply:
         </modifier>
       </modifiers>
       <comment>Crusade content</comment>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Battle Tallies" id="79ae-4809-1529-d627" hidden="false" sortIndex="3">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="6e1a-211d-f38d-442a"/>
+            <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="664c-346d-2f47-775f"/>
+            <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="acbf-47da-3445-cae8"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Battle Honours" id="d334-8fe1-1587-d5eb" hidden="false" sortIndex="4" collapsible="true">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Weapon Modifications" id="15df-84d0-6747-83c6" hidden="false">
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="31f3-28d3-f231-c233" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
+              </entryLinks>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <entryLinks>
+            <entryLink import="true" name="Battle Traits" hidden="false" id="01ae-241d-341f-339a" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
+              <entryLinks>
+                <entryLink import="true" name="Codex Battle Traits" hidden="false" id="375d-b6f1-4569-92f1" type="selectionEntryGroup" targetId="e288-3e85-3b28-8dd5"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Crusade Relics" hidden="false" id="0681-0598-8aac-c653" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
+              <entryLinks>
+                <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="1abd-2bba-a219-6435" type="selectionEntryGroup" targetId="2d68-936c-92cc-20fc"/>
+              </entryLinks>
+            </entryLink>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <sharedRules>
