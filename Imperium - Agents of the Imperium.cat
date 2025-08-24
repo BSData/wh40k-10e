@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="77" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="78" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Vindicare Assassin" hidden="false" id="efa3-2cf5-dcfb-b976">
       <categoryLinks>
@@ -17522,6 +17522,13 @@ For the purposes of interacting with terrain features, all models in units with 
           </costs>
         </selectionEntry>
       </selectionEntries>
+      <modifiers>
+        <modifier type="set" value="-1" field="c581-329f-b3b2-169c">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup name="Terminator Heavy Weapons" id="3fc1-d76f-66f4-931b" hidden="false" defaultSelectionEntryId="8259-a28d-949-b4fa">
       <constraints>
@@ -18818,21 +18825,9 @@ For the purposes of interacting with terrain features, all models in units with 
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="ab49-9567-bfbd-7b0c" hidden="false" collapsible="true">
       <entryLinks>
-        <entryLink import="true" name="Experience Points" hidden="false" id="6926-e50c-ff01-03fa" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9"/>
-        <entryLink import="true" name="Legendary Veterans" hidden="false" id="a7e1-aa37-8a4f-1baa" type="selectionEntry" targetId="1511-18fe-f51e-7b9d"/>
-        <entryLink import="true" name="Weapon Modifications" hidden="false" id="84f7-19f2-755e-2522" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
-        <entryLink import="true" name="Battle Scars" hidden="false" id="b3da-9d96-46e3-6784" type="selectionEntryGroup" targetId="1576-e816-033f-828d"/>
-        <entryLink import="true" name="Battle Traits" hidden="false" id="c7fd-46ea-71ac-423f" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
-          <entryLinks>
-            <entryLink import="true" name="Codex Battle Traits" hidden="false" id="2008-0656-5ee2-0e31" type="selectionEntryGroup" targetId="90b6-659b-9dfc-c972"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Crusade Relics" hidden="false" id="4045-74ae-8431-261f" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
-          <entryLinks>
-            <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="3c52-e0b4-d533-3f2d" type="selectionEntryGroup" targetId="79ca-bc79-91d7-f964"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Vermilion-level Assets" hidden="false" id="e001-f060-a658-c756" type="selectionEntryGroup" targetId="731a-6069-5afb-247f"/>
+        <entryLink import="true" name="Experience Points" hidden="false" id="6926-e50c-ff01-03fa" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="a7e1-aa37-8a4f-1baa" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="b3da-9d96-46e3-6784" type="selectionEntryGroup" targetId="1576-e816-033f-828d" collapsible="true" sortIndex="5"/>
       </entryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -18842,6 +18837,37 @@ For the purposes of interacting with terrain features, all models in units with 
         </modifier>
       </modifiers>
       <comment>Crusade content</comment>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Battle Tallies" id="6fd9-47fd-934d-4058" hidden="false" sortIndex="3">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="b4d0-9e11-f7f2-ac1b"/>
+            <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="04b7-4691-df2d-755e"/>
+            <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="a538-a9b1-560f-9eb0"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Battle Honours" id="5fcd-0edb-9654-b7b4" hidden="false" collapsible="true" sortIndex="4">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Weapon Modifications" id="d7ac-f3bc-c7de-9ce8" hidden="false">
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="84f7-19f2-755e-2522" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
+              </entryLinks>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <entryLinks>
+            <entryLink import="true" name="Battle Traits" hidden="false" id="c7fd-46ea-71ac-423f" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
+              <entryLinks>
+                <entryLink import="true" name="Codex Battle Traits" hidden="false" id="2008-0656-5ee2-0e31" type="selectionEntryGroup" targetId="90b6-659b-9dfc-c972"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Crusade Relics" hidden="false" id="4045-74ae-8431-261f" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
+              <entryLinks>
+                <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="3c52-e0b4-d533-3f2d" type="selectionEntryGroup" targetId="79ca-bc79-91d7-f964"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Vermilion-level Assets" hidden="false" id="e001-f060-a658-c756" type="selectionEntryGroup" targetId="731a-6069-5afb-247f"/>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntryGroup>
     <selectionEntryGroup name="Shadow Operations" id="68a2-ada5-3cd4-c5a3" hidden="false" collapsible="true">
       <comment>Crusade content</comment>

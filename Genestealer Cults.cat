@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="3bdf-a114-5035-c6ac" name="Xenos - Genestealer Cults" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="84" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="3bdf-a114-5035-c6ac" name="Xenos - Genestealer Cults" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="85" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="upgrade" import="false" name="Detachment" hidden="false" id="b96c-3fb6-1ee9-15ae">
       <constraints>
@@ -9901,6 +9901,13 @@ You can attach this model to an ACOLYTE HYBRIDS or NEOPHYTE HYBRID unit, even if
           </modifiers>
         </selectionEntryGroup>
       </selectionEntryGroups>
+      <modifiers>
+        <modifier type="set" value="-1" field="f9c6-4231-f90a-17c8">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup name="Detachment" hidden="false" id="7170-c243-d89f-6644" defaultSelectionEntryId="none">
       <selectionEntries>
@@ -10664,22 +10671,11 @@ Add 3&quot; to the bearer&apos;s Move characteristic, and the bearer gains the f
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="2ab0-cb64-b4df-98cc" hidden="false" collapsible="true">
       <entryLinks>
-        <entryLink import="true" name="Experience Points" hidden="false" id="5121-9cff-7266-9abf" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9"/>
-        <entryLink import="true" name="Legendary Veterans" hidden="false" id="010a-9007-cb0e-d7ad" type="selectionEntry" targetId="1511-18fe-f51e-7b9d"/>
-        <entryLink import="true" name="Weapon Modifications" hidden="false" id="154a-6403-5e22-51dd" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
-        <entryLink import="true" name="Battle Scars" hidden="false" id="f3e5-6885-976f-3bef" type="selectionEntryGroup" targetId="1576-e816-033f-828d">
+        <entryLink import="true" name="Experience Points" hidden="false" id="5121-9cff-7266-9abf" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="010a-9007-cb0e-d7ad" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="f3e5-6885-976f-3bef" type="selectionEntryGroup" targetId="1576-e816-033f-828d" collapsible="true" sortIndex="6">
           <entryLinks>
             <entryLink import="true" name="Codex Battle Scars" hidden="false" id="7d44-3621-c7d2-d402" type="selectionEntryGroup" targetId="cd21-1051-8def-3c7b"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Battle Traits" hidden="false" id="9fe2-9d78-ace5-24f8" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
-          <entryLinks>
-            <entryLink import="true" name="Codex Battle Traits" hidden="false" id="0e78-57ad-25dc-72f9" type="selectionEntryGroup" targetId="6a27-400b-76ef-25d1"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Crusade Relics" hidden="false" id="f6da-9ead-ded4-c03d" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
-          <entryLinks>
-            <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="c80a-7af4-48de-7519" type="selectionEntryGroup" targetId="1ae5-b92f-1997-cd8b"/>
           </entryLinks>
         </entryLink>
       </entryLinks>
@@ -10692,7 +10688,7 @@ Add 3&quot; to the bearer&apos;s Move characteristic, and the bearer gains the f
       </modifiers>
       <comment>Crusade content</comment>
       <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Beloved of the Cult" hidden="false" id="8b6c-58ec-2889-b68f">
+        <selectionEntry type="upgrade" import="true" name="Beloved of the Cult" hidden="false" id="8b6c-58ec-2889-b68f" sortIndex="4">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3f6a-3ab2-d698-3c4a" includeChildSelections="false"/>
             <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="627a-a49f-ec50-2b1c" includeChildSelections="true"/>
@@ -10718,8 +10714,45 @@ Add 3&quot; to the bearer&apos;s Move characteristic, and the bearer gains the f
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="0"/>
           </costs>
+          <profiles>
+            <profile name="Beloved of the Cult" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="89a2-511c-5af4-b168">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a unit that is beloved of the cult gains 1 or more XP in a Crusade battle and survives that battle, after that battle, roll one D6 for each other unit from your Crusade army that survived that battle: on a 6, the unit you rolled for gains 1XP.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
         </selectionEntry>
       </selectionEntries>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Battle Tallies" id="7263-6b93-66fd-ce13" hidden="false" sortIndex="3">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="e006-b01b-35ce-75b0"/>
+            <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="fa36-17b7-6775-2d70"/>
+            <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="677a-3b08-6b19-7b53"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Battle Honours" id="df41-82d1-67b2-3429" hidden="false" collapsible="true" sortIndex="5">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Weapon Modifications" id="5ce0-0eb0-df3f-6109" hidden="false">
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="154a-6403-5e22-51dd" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
+              </entryLinks>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <entryLinks>
+            <entryLink import="true" name="Battle Traits" hidden="false" id="9fe2-9d78-ace5-24f8" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
+              <entryLinks>
+                <entryLink import="true" name="Codex Battle Traits" hidden="false" id="0e78-57ad-25dc-72f9" type="selectionEntryGroup" targetId="6a27-400b-76ef-25d1"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Crusade Relics" hidden="false" id="f6da-9ead-ded4-c03d" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
+              <entryLinks>
+                <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="c80a-7af4-48de-7519" type="selectionEntryGroup" targetId="1ae5-b92f-1997-cd8b"/>
+              </entryLinks>
+            </entryLink>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntryGroup>
     <selectionEntryGroup name="Codex Battle Scars" id="cd21-1051-8def-3c7b" hidden="false" collapsible="true">
       <comment>Crusade content</comment>
