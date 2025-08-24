@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="f616-3f08-ee8e-3349" name="Xenos - Leagues of Votann" revision="37" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="f616-3f08-ee8e-3349" name="Xenos - Leagues of Votann" revision="38" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <categoryEntries>
     <categoryEntry id="5a53-ae58-e0d9-0616" name="Hearthkyn Warriors" hidden="false"/>
     <categoryEntry id="a360-cb11-e139-55df" name="Ûthar the Destined" hidden="false"/>
@@ -7852,6 +7852,13 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
           <comment>Brandfast Oathband</comment>
         </selectionEntry>
       </selectionEntries>
+      <modifiers>
+        <modifier type="set" value="-1" field="7161-ad42-57a5-8b41">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup name="Codex Battle Traits" id="14af-ad12-c4fa-794c" hidden="true" collapsible="true">
       <comment>Crusade content - HIDDEN UNTIL CODEX RELEASE</comment>
@@ -8020,20 +8027,9 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="a7b4-50c2-e2e3-6bfa" hidden="false" collapsible="true">
       <entryLinks>
-        <entryLink import="true" name="Experience Points" hidden="false" id="5d5c-e813-8067-3332" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9"/>
-        <entryLink import="true" name="Legendary Veterans" hidden="false" id="984b-238d-9e77-1f8b" type="selectionEntry" targetId="1511-18fe-f51e-7b9d"/>
-        <entryLink import="true" name="Weapon Modifications" hidden="false" id="cb61-7d15-6b29-e70c" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
-        <entryLink import="true" name="Battle Scars" hidden="false" id="ec14-6f7b-14b6-fd25" type="selectionEntryGroup" targetId="1576-e816-033f-828d"/>
-        <entryLink import="true" name="Battle Traits" hidden="false" id="9d18-8103-01e7-c7d5" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
-          <entryLinks>
-            <entryLink import="true" name="Codex Battle Traits" hidden="false" id="bde2-e31b-a90c-ed39" type="selectionEntryGroup" targetId="14af-ad12-c4fa-794c"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Crusade Relics" hidden="false" id="d6cf-31d9-4b75-879c" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
-          <entryLinks>
-            <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="816a-0c8e-24df-0434" type="selectionEntryGroup" targetId="3142-26f4-64e2-0126"/>
-          </entryLinks>
-        </entryLink>
+        <entryLink import="true" name="Experience Points" hidden="false" id="5d5c-e813-8067-3332" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="984b-238d-9e77-1f8b" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="ec14-6f7b-14b6-fd25" type="selectionEntryGroup" targetId="1576-e816-033f-828d" sortIndex="5" collapsible="true"/>
       </entryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -8043,6 +8039,36 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
         </modifier>
       </modifiers>
       <comment>Crusade content</comment>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Battle Tallies" id="3531-add7-56ff-b687" hidden="false" sortIndex="3">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="15f5-9002-92fc-6d76"/>
+            <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="37d4-6138-f98f-3af7"/>
+            <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="5f88-b0d1-2e5b-0c87"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Battle Honours" id="f639-36c0-e9c6-5670" hidden="false" sortIndex="4" collapsible="true">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Weapon Modifications" id="4031-cf37-9cbc-0f62" hidden="false">
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="cb61-7d15-6b29-e70c" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
+              </entryLinks>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <entryLinks>
+            <entryLink import="true" name="Battle Traits" hidden="false" id="9d18-8103-01e7-c7d5" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
+              <entryLinks>
+                <entryLink import="true" name="Codex Battle Traits" hidden="false" id="bde2-e31b-a90c-ed39" type="selectionEntryGroup" targetId="14af-ad12-c4fa-794c"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Crusade Relics" hidden="false" id="d6cf-31d9-4b75-879c" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
+              <entryLinks>
+                <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="816a-0c8e-24df-0434" type="selectionEntryGroup" targetId="3142-26f4-64e2-0126"/>
+              </entryLinks>
+            </entryLink>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <sharedRules>
