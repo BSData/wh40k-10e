@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue library="false" id="03fe-a162-4c02-f07b" name="Chaos - Emperor&apos;s Children" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="31" revision="13" authorContact="Mad_Spy" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
+<catalogue library="false" id="03fe-a162-4c02-f07b" name="Chaos - Emperor&apos;s Children" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="31" revision="14" authorContact="Mad_Spy" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Lucius the Eternal" hidden="false" id="e390-b58b-db9-816" collective="false">
       <profiles>
@@ -6031,7 +6031,7 @@ No **^^Legions of Excess**^^ models from your army can be your **^^Warlord**^^.<
         <entryLink import="true" name="Combat Elixirs" hidden="false" id="0fc1-2eaa-b4c7-260b" type="selectionEntryGroup" targetId="b887-1659-99eb-e823"/>
       </entryLinks>
     </entryLink>
-    <entryLink import="true" name="Combat Elixirs Equipped In Current Battle" hidden="false" id="b3eb-11b1-26f7-0369" type="selectionEntry" targetId="5955-90eb-2f66-c483">
+    <entryLink import="true" name="Combat Elixirs equipped in Current Battle" hidden="false" id="b3eb-11b1-26f7-0369" type="selectionEntry" targetId="5955-90eb-2f66-c483">
       <constraints>
         <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="44da-c306-7afc-bd5c" includeChildSelections="true"/>
       </constraints>
@@ -6894,6 +6894,13 @@ No **^^Legions of Excess**^^ models from your army can be your **^^Warlord**^^.<
           </costs>
         </selectionEntry>
       </selectionEntries>
+      <modifiers>
+        <modifier type="set" value="-1" field="2fe2-824a-bb3e-3c41">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup name="Codex Battle Traits" id="5380-1637-28ba-231f" hidden="false" collapsible="true">
       <comment>Crusade content</comment>
@@ -7667,21 +7674,9 @@ At the end of the battle, if one or more enemy units failed a Battle-shock test 
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="3ead-f21c-66ef-1a02" hidden="false" collapsible="true">
       <entryLinks>
-        <entryLink import="true" name="Experience Points" hidden="false" id="6941-8b0d-805c-e8ae" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9"/>
-        <entryLink import="true" name="Legendary Veterans" hidden="false" id="dc6e-0ec0-e31c-f9d8" type="selectionEntry" targetId="1511-18fe-f51e-7b9d"/>
-        <entryLink import="true" name="Weapon Modifications" hidden="false" id="f712-37d8-b4cf-9b3b" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
-        <entryLink import="true" name="Battle Scars" hidden="false" id="3133-4574-d2b2-f820" type="selectionEntryGroup" targetId="1576-e816-033f-828d"/>
-        <entryLink import="true" name="Battle Traits" hidden="false" id="03e3-a80a-0f71-c0be" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
-          <entryLinks>
-            <entryLink import="true" name="Codex Battle Traits" hidden="false" id="57d2-aab1-455e-82ed" type="selectionEntryGroup" targetId="5380-1637-28ba-231f"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Crusade Relics" hidden="false" id="67f6-258c-64b1-3b9d" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
-          <entryLinks>
-            <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="18a2-09d3-e60b-1b2e" type="selectionEntryGroup" targetId="c450-6856-2bab-5c4a"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Boons of Slaanesh" hidden="false" id="b466-e8dc-d210-012a" type="selectionEntryGroup" targetId="89fb-400b-e7e0-65e7"/>
+        <entryLink import="true" name="Experience Points" hidden="false" id="6941-8b0d-805c-e8ae" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="dc6e-0ec0-e31c-f9d8" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="3133-4574-d2b2-f820" type="selectionEntryGroup" targetId="1576-e816-033f-828d" sortIndex="5" collapsible="true"/>
       </entryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -7691,32 +7686,63 @@ At the end of the battle, if one or more enemy units failed a Battle-shock test 
         </modifier>
       </modifiers>
       <comment>Crusade content</comment>
-      <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Perfection Personified" hidden="false" id="3975-5b0b-2bf1-afcf">
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2f9d-1355-18cd-6a07" includeChildSelections="false"/>
-          </constraints>
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-          </costs>
-          <modifiers>
-            <modifier type="set" value="true" field="hidden">
-              <conditionGroups>
-                <conditionGroup type="or">
-                  <conditions>
-                    <condition type="lessThan" value="71" field="selections" scope="parent" childId="6941-8b0d-805c-e8ae" shared="true" includeChildSelections="true"/>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-        </selectionEntry>
-      </selectionEntries>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Battle Tallies" id="2b51-6b2b-cf57-8d39" hidden="false" sortIndex="3">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="7632-55d2-0aa3-cd7a"/>
+            <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="cb8e-329e-86eb-504d"/>
+            <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="78d9-2179-9a78-5720"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Battle Honours" id="12cc-7866-2c38-64d9" hidden="false" sortIndex="4" collapsible="true">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Weapon Modifications" id="a774-5e3b-510c-e290" hidden="false">
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="f712-37d8-b4cf-9b3b" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
+              </entryLinks>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <entryLinks>
+            <entryLink import="true" name="Crusade Relics" hidden="false" id="67f6-258c-64b1-3b9d" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
+              <entryLinks>
+                <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="18a2-09d3-e60b-1b2e" type="selectionEntryGroup" targetId="c450-6856-2bab-5c4a"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Boons of Slaanesh" hidden="false" id="b466-e8dc-d210-012a" type="selectionEntryGroup" targetId="89fb-400b-e7e0-65e7"/>
+            <entryLink import="true" name="Battle Traits" hidden="false" id="03e3-a80a-0f71-c0be" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
+              <entryLinks>
+                <entryLink import="true" name="Codex Battle Traits" hidden="false" id="57d2-aab1-455e-82ed" type="selectionEntryGroup" targetId="5380-1637-28ba-231f"/>
+              </entryLinks>
+            </entryLink>
+          </entryLinks>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Perfection Personified" hidden="false" id="3975-5b0b-2bf1-afcf">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2f9d-1355-18cd-6a07" includeChildSelections="false"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditions>
+                        <condition type="lessThan" value="71" field="selections" scope="parent" childId="6941-8b0d-805c-e8ae" shared="true" includeChildSelections="true"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntryGroup>
     <selectionEntryGroup name="Combat Elixirs" id="b887-1659-99eb-e823" hidden="false">
       <selectionEntryGroups>

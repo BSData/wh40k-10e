@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b39e-4401-8f3e-fdf7" name="Imperium - Adepta Sororitas" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="73" battleScribeVersion="2.03" authorName="CrusherJoe" type="catalogue" authorContact="@CrusherJoe on Discord" authorUrl="Sometimes GitHub blows">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b39e-4401-8f3e-fdf7" name="Imperium - Adepta Sororitas" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="74" battleScribeVersion="2.03" authorName="CrusherJoe" type="catalogue" authorContact="@CrusherJoe on Discord" authorUrl="Sometimes GitHub blows">
   <categoryEntries>
     <categoryEntry name="Aestred Thurga and Agathae Dolan" hidden="false" id="c8ba-2b2d-e47f-d7a6"/>
     <categoryEntry name="Arco-flagellants" hidden="false" id="63f8-3a5d-ef9c-d86e"/>
@@ -10292,6 +10292,13 @@ Death Before Disgrace: Each time a PENITENT model from your army is destroyed by
         <constraint type="max" value="1" field="selections" scope="self" shared="true" id="9d03-a6a6-b0f0-94ab" includeChildSelections="true"/>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="e94f-8e7d-7211-fe84" includeChildSelections="true"/>
       </constraints>
+      <modifiers>
+        <modifier type="set" value="-1" field="e94f-8e7d-7211-fe84">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup name="Codex Battle Traits" id="de9c-0fc7-5b8d-b3da" hidden="false" collapsible="true">
       <comment>Crusade content</comment>
@@ -11171,21 +11178,10 @@ Death Before Disgrace: Each time a PENITENT model from your army is destroyed by
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="b0df-6a60-8561-efde" hidden="false" collapsible="true">
       <entryLinks>
-        <entryLink import="true" name="Experience Points" hidden="false" id="d04e-b64a-19b1-6142" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9"/>
-        <entryLink import="true" name="Legendary Veterans" hidden="false" id="31f3-9d76-5a8f-173b" type="selectionEntry" targetId="1511-18fe-f51e-7b9d"/>
-        <entryLink import="true" name="Weapon Modifications" hidden="false" id="64e4-f151-ac96-ba40" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
-        <entryLink import="true" name="Battle Scars" hidden="false" id="5761-3aa3-7ae2-caa2" type="selectionEntryGroup" targetId="1576-e816-033f-828d"/>
-        <entryLink import="true" name="Battle Traits" hidden="false" id="9662-2de2-5f72-52c9" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
-          <entryLinks>
-            <entryLink import="true" name="Codex Battle Traits" hidden="false" id="3a06-b647-627c-5236" type="selectionEntryGroup" targetId="de9c-0fc7-5b8d-b3da"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Crusade Relics" hidden="false" id="ec72-ef66-9577-f09c" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
-          <entryLinks>
-            <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="20cb-6334-e49d-a78f" type="selectionEntryGroup" targetId="aa40-ace7-beb9-4435"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Trials of a Living Saint" hidden="false" id="10b1-20a4-7419-4dd4" type="selectionEntryGroup" targetId="4118-1b13-e630-7a9a"/>
+        <entryLink import="true" name="Experience Points" hidden="false" id="d04e-b64a-19b1-6142" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="31f3-9d76-5a8f-173b" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="5761-3aa3-7ae2-caa2" type="selectionEntryGroup" targetId="1576-e816-033f-828d" collapsible="true" sortIndex="5"/>
+        <entryLink import="true" name="Trials of a Living Saint" hidden="false" id="10b1-20a4-7419-4dd4" type="selectionEntryGroup" targetId="4118-1b13-e630-7a9a" sortIndex="6"/>
       </entryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -11195,6 +11191,36 @@ Death Before Disgrace: Each time a PENITENT model from your army is destroyed by
         </modifier>
       </modifiers>
       <comment>Crusade content</comment>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Battle Tallies" id="d461-3ba9-dad8-a414" hidden="false" sortIndex="3">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="7da4-98a1-a050-1202"/>
+            <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="67d1-cade-3737-f07d"/>
+            <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="9f94-a68f-3c3c-4efa"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Battle Honours" id="56cc-3f22-1135-3c4a" hidden="false" collapsible="true" sortIndex="4">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Weapon Modifications" id="35e6-d0ce-aa7b-c2f9" hidden="false">
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="64e4-f151-ac96-ba40" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
+              </entryLinks>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <entryLinks>
+            <entryLink import="true" name="Battle Traits" hidden="false" id="9662-2de2-5f72-52c9" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
+              <entryLinks>
+                <entryLink import="true" name="Codex Battle Traits" hidden="false" id="3a06-b647-627c-5236" type="selectionEntryGroup" targetId="de9c-0fc7-5b8d-b3da"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Crusade Relics" hidden="false" id="ec72-ef66-9577-f09c" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
+              <entryLinks>
+                <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="20cb-6334-e49d-a78f" type="selectionEntryGroup" targetId="aa40-ace7-beb9-4435"/>
+              </entryLinks>
+            </entryLink>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntryGroup>
     <selectionEntryGroup name="Trials of a Living Saint" id="4118-1b13-e630-7a9a" hidden="false" collapsible="true">
       <comment>Crusade content</comment>

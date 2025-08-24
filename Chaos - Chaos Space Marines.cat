@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="115" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="116" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <profileTypes>
     <profileType id="3084-68b8-1d20-2f26" name="Marks of Chaos">
       <characteristicTypes>
@@ -28404,6 +28404,13 @@ You can attach this model to one of the above units even if one other CHARACTER 
           </constraints>
         </selectionEntry>
       </selectionEntries>
+      <modifiers>
+        <modifier type="set" value="-1" field="8de4-2e34-c378-2697">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup id="5581-5d38-90b8-f8cd" name="Mark of Chaos" hidden="false" collective="false" import="true" defaultSelectionEntryId="none">
       <constraints>
@@ -29476,23 +29483,10 @@ You can attach this model to one of the above units even if one other CHARACTER 
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="16e2-c30d-b136-1a67" hidden="false" collapsible="true">
       <entryLinks>
-        <entryLink import="true" name="Experience Points" hidden="false" id="47db-a671-861b-ddb1" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9"/>
-        <entryLink import="true" name="Legendary Veterans" hidden="false" id="6ec3-b04d-116d-048a" type="selectionEntry" targetId="1511-18fe-f51e-7b9d"/>
-        <entryLink import="true" name="Weapon Modifications" hidden="false" id="b278-831f-8fdb-bc89" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
-        <entryLink import="true" name="Battle Scars" hidden="false" id="3082-e2d8-0565-9380" type="selectionEntryGroup" targetId="1576-e816-033f-828d"/>
-        <entryLink import="true" name="Battle Traits" hidden="false" id="1c72-a59d-75c5-bcde" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
-          <entryLinks>
-            <entryLink import="true" name="Codex Battle Traits" hidden="false" id="3401-a9d6-8e36-1582" type="selectionEntryGroup" targetId="d249-373c-218c-9648"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Crusade Relics" hidden="false" id="5d9a-bd73-50a5-eb5f" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
-          <entryLinks>
-            <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="f312-0d20-bb4b-e7b9" type="selectionEntryGroup" targetId="6e4f-6ee8-2b34-0fb5"/>
-            <entryLink import="true" name="Daemon Weapons" hidden="false" id="92f4-3e54-8672-9901" type="selectionEntryGroup" targetId="f209-de79-bb04-5cc5"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Chaos Boons" hidden="false" id="fd6d-3be0-b54f-d139" type="selectionEntryGroup" targetId="aea5-51c4-142c-460d"/>
-        <entryLink import="true" name="Warband Champion" hidden="false" id="a784-b7d9-44cd-8f44" type="selectionEntryGroup" targetId="f870-d7df-6cd5-845a"/>
+        <entryLink import="true" name="Experience Points" hidden="false" id="47db-a671-861b-ddb1" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="6ec3-b04d-116d-048a" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="3082-e2d8-0565-9380" type="selectionEntryGroup" targetId="1576-e816-033f-828d" sortIndex="5" collapsible="true"/>
+        <entryLink import="true" name="Warband Champion" hidden="false" id="a784-b7d9-44cd-8f44" type="selectionEntryGroup" targetId="f870-d7df-6cd5-845a" sortIndex="6" collapsible="true"/>
       </entryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -29502,6 +29496,38 @@ You can attach this model to one of the above units even if one other CHARACTER 
         </modifier>
       </modifiers>
       <comment>Crusade content</comment>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Battle Tallies" id="d46c-7073-2974-4f7b" hidden="false" sortIndex="3">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="fd2e-1266-f3bc-a6b9"/>
+            <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="03d5-9109-45c1-49dd"/>
+            <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="d8f5-6bbc-d67c-358c"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Battle Honours" id="3ad6-2aa6-918c-2c49" hidden="false" sortIndex="4" collapsible="true">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Weapon Modifications" id="690a-ab22-146d-a0ad" hidden="false">
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="b278-831f-8fdb-bc89" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
+              </entryLinks>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <entryLinks>
+            <entryLink import="true" name="Battle Traits" hidden="false" id="1c72-a59d-75c5-bcde" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
+              <entryLinks>
+                <entryLink import="true" name="Codex Battle Traits" hidden="false" id="3401-a9d6-8e36-1582" type="selectionEntryGroup" targetId="d249-373c-218c-9648"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Crusade Relics" hidden="false" id="5d9a-bd73-50a5-eb5f" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
+              <entryLinks>
+                <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="f312-0d20-bb4b-e7b9" type="selectionEntryGroup" targetId="6e4f-6ee8-2b34-0fb5"/>
+                <entryLink import="true" name="Daemon Weapons" hidden="false" id="92f4-3e54-8672-9901" type="selectionEntryGroup" targetId="f209-de79-bb04-5cc5"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Chaos Boons" hidden="false" id="fd6d-3be0-b54f-d139" type="selectionEntryGroup" targetId="aea5-51c4-142c-460d"/>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntryGroup>
     <selectionEntryGroup name="Chaos Boons" id="aea5-51c4-142c-460d" hidden="false">
       <comment>Crusade content</comment>

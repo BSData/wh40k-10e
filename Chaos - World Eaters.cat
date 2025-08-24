@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="df9a-59b2-f464-59ad" name="Chaos - World Eaters" revision="72" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="df9a-59b2-f464-59ad" name="Chaos - World Eaters" revision="73" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <profileTypes>
     <profileType id="02a0-fa96-6f9b-354f" name="Wrathful Presence">
       <characteristicTypes>
@@ -11492,6 +11492,13 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
           <comment>Goretrack Onslaught</comment>
         </selectionEntry>
       </selectionEntries>
+      <modifiers>
+        <modifier type="set" value="-1" field="e02a-ceaa-d20f-a3fb">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup name="Codex Battle Traits" id="4f45-7cb8-a7ea-cf18" hidden="false" collapsible="true">
       <comment>Crusade content</comment>
@@ -12385,23 +12392,10 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="8bbb-e890-a169-863e" hidden="false" collapsible="true">
       <entryLinks>
-        <entryLink import="true" name="Experience Points" hidden="false" id="f1f1-c334-8ff1-12e5" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9"/>
-        <entryLink import="true" name="Legendary Veterans" hidden="false" id="0651-be78-17ac-f9a7" type="selectionEntry" targetId="1511-18fe-f51e-7b9d"/>
-        <entryLink import="true" name="Weapon Modifications" hidden="false" id="28d1-5d06-1836-601a" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
-        <entryLink import="true" name="Battle Scars" hidden="false" id="fdcc-c97f-4a94-a782" type="selectionEntryGroup" targetId="1576-e816-033f-828d"/>
-        <entryLink import="true" name="Battle Traits" hidden="false" id="3567-b8cf-a37a-690c" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
-          <entryLinks>
-            <entryLink import="true" name="Codex Battle Traits" hidden="false" id="101c-efad-9632-5ec8" type="selectionEntryGroup" targetId="4f45-7cb8-a7ea-cf18"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Crusade Relics" hidden="false" id="a87f-ad03-c8bb-4958" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
-          <entryLinks>
-            <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="310e-9bb5-156f-ccec" type="selectionEntryGroup" targetId="9f3b-f9e1-e89b-234b"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Skull Points" hidden="false" id="bcca-d48f-ec25-be3b" type="selectionEntryGroup" targetId="3c29-4602-a256-41a2"/>
-        <entryLink import="true" name="Greater Rewards of Khorne" hidden="false" id="c340-35e0-2908-6c6c" type="selectionEntryGroup" targetId="296b-203a-26b7-0c62"/>
-        <entryLink import="true" name="Boons of Khorne" hidden="false" id="20b0-491a-8706-6e12" type="selectionEntryGroup" targetId="ea9f-534c-7de9-8214"/>
+        <entryLink import="true" name="Experience Points" hidden="false" id="f1f1-c334-8ff1-12e5" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="0651-be78-17ac-f9a7" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="fdcc-c97f-4a94-a782" type="selectionEntryGroup" targetId="1576-e816-033f-828d" sortIndex="6" collapsible="true"/>
+        <entryLink import="true" name="Skull Points" hidden="false" id="bcca-d48f-ec25-be3b" type="selectionEntryGroup" targetId="3c29-4602-a256-41a2" sortIndex="4"/>
       </entryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -12411,6 +12405,38 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
         </modifier>
       </modifiers>
       <comment>Crusade content</comment>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Battle Tallies" id="7b34-9562-4c6d-7d5c" hidden="false" sortIndex="3">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="b7f3-27a3-e813-3fe3"/>
+            <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="1899-93d7-677f-c738"/>
+            <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="1e2e-5b2f-5f0c-982d"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Battle Honours" id="7bd3-6750-1518-eda6" hidden="false" sortIndex="5" collapsible="true">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Weapon Modifications" id="9bc0-190e-195a-5dfb" hidden="false">
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="28d1-5d06-1836-601a" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
+              </entryLinks>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <entryLinks>
+            <entryLink import="true" name="Battle Traits" hidden="false" id="3567-b8cf-a37a-690c" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
+              <entryLinks>
+                <entryLink import="true" name="Codex Battle Traits" hidden="false" id="101c-efad-9632-5ec8" type="selectionEntryGroup" targetId="4f45-7cb8-a7ea-cf18"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Boons of Khorne" hidden="false" id="20b0-491a-8706-6e12" type="selectionEntryGroup" targetId="ea9f-534c-7de9-8214"/>
+            <entryLink import="true" name="Crusade Relics" hidden="false" id="a87f-ad03-c8bb-4958" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
+              <entryLinks>
+                <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="310e-9bb5-156f-ccec" type="selectionEntryGroup" targetId="9f3b-f9e1-e89b-234b"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Greater Rewards of Khorne" hidden="false" id="c340-35e0-2908-6c6c" type="selectionEntryGroup" targetId="296b-203a-26b7-0c62"/>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntryGroup>
     <selectionEntryGroup name="Boons of Khorne" id="ea9f-534c-7de9-8214" hidden="false" collapsible="true">
       <constraints>
@@ -12727,7 +12753,7 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
       </modifiers>
       <comment>Crusade content</comment>
     </selectionEntryGroup>
-    <selectionEntryGroup name="Skull Points" id="3c29-4602-a256-41a2" hidden="false">
+    <selectionEntryGroup name="The Skull Harvest" id="3c29-4602-a256-41a2" hidden="false">
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Skull Points" hidden="false" id="f04f-0065-2a08-9972" sortIndex="1"/>
         <selectionEntry type="upgrade" import="true" name="Legendary Skull Points" hidden="false" id="b076-566b-7987-cf53" sortIndex="2"/>
