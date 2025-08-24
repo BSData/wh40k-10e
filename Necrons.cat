@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b654-a18a-ea1-3bf2" name="Xenos - Necrons" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="63" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b654-a18a-ea1-3bf2" name="Xenos - Necrons" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="64" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntryGroups>
     <selectionEntryGroup name="Enhancements" hidden="false" id="9574-b5d1-8b0a-d95d">
       <constraints>
@@ -802,6 +802,13 @@
           <comment>Starshatter Arsenal</comment>
         </selectionEntry>
       </selectionEntries>
+      <modifiers>
+        <modifier type="set" value="-1" field="946-bfa0-af93-2909">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup name="Codex Battle Traits" id="47a6-8aa3-c9ad-4095" hidden="false" collapsible="true">
       <comment>Crusade content</comment>
@@ -1393,10 +1400,9 @@
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="34da-c1ba-b0f2-1ba6" hidden="false" collapsible="true">
       <entryLinks>
-        <entryLink import="true" name="Experience Points" hidden="false" id="bafc-04b0-98bf-7ef3" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9"/>
-        <entryLink import="true" name="Legendary Veterans" hidden="false" id="4046-1070-1eb2-9eca" type="selectionEntry" targetId="1511-18fe-f51e-7b9d"/>
-        <entryLink import="true" name="Weapon Modifications" hidden="false" id="f8af-3470-ff56-4fb5" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
-        <entryLink import="true" name="Battle Scars" hidden="false" id="5989-582f-2fde-3393" type="selectionEntryGroup" targetId="1576-e816-033f-828d">
+        <entryLink import="true" name="Experience Points" hidden="false" id="bafc-04b0-98bf-7ef3" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="4046-1070-1eb2-9eca" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="5989-582f-2fde-3393" type="selectionEntryGroup" targetId="1576-e816-033f-828d" collapsible="true" sortIndex="5">
           <entryLinks>
             <entryLink import="true" name="Codex Battle Scars" hidden="false" id="8d8b-48a1-beae-9f58" type="selectionEntryGroup" targetId="b84d-f383-b2ab-aff7"/>
           </entryLinks>
@@ -1428,16 +1434,6 @@
             </selectionEntry>
           </selectionEntries>
         </entryLink>
-        <entryLink import="true" name="Battle Traits" hidden="false" id="56a9-0783-42d3-db64" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
-          <entryLinks>
-            <entryLink import="true" name="Codex Battle Traits" hidden="false" id="fee7-d270-a4a3-f7c9" type="selectionEntryGroup" targetId="47a6-8aa3-c9ad-4095"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Crusade Relics" hidden="false" id="be2b-b814-4dbd-b24d" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
-          <entryLinks>
-            <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="e262-5a89-63dc-3ac8" type="selectionEntryGroup" targetId="3161-81d4-ac48-d8a3"/>
-          </entryLinks>
-        </entryLink>
       </entryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -1447,6 +1443,36 @@
         </modifier>
       </modifiers>
       <comment>Crusade content</comment>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Battle Tallies" id="840b-1610-be3b-e8c4" hidden="false" sortIndex="3">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="9ee0-792b-d874-7f05"/>
+            <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="9849-502d-ef43-1b4b"/>
+            <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="0005-a971-c75c-c452"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Battle Honours" id="6fef-7191-55a1-7e39" hidden="false" collapsible="true" sortIndex="4">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Weapon Modifications" id="9d4c-97b7-706d-d6fe" hidden="false">
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="f8af-3470-ff56-4fb5" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
+              </entryLinks>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <entryLinks>
+            <entryLink import="true" name="Battle Traits" hidden="false" id="56a9-0783-42d3-db64" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
+              <entryLinks>
+                <entryLink import="true" name="Codex Battle Traits" hidden="false" id="fee7-d270-a4a3-f7c9" type="selectionEntryGroup" targetId="47a6-8aa3-c9ad-4095"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Crusade Relics" hidden="false" id="be2b-b814-4dbd-b24d" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
+              <entryLinks>
+                <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="e262-5a89-63dc-3ac8" type="selectionEntryGroup" targetId="3161-81d4-ac48-d8a3"/>
+              </entryLinks>
+            </entryLink>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntryGroup>
     <selectionEntryGroup name="Codex Battle Scars" id="b84d-f383-b2ab-aff7" hidden="false" collapsible="true">
       <comment>Crusade content</comment>

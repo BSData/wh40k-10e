@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="b984-7317-81cc-20f" name="Xenos - Tyranids" revision="92" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Dunamis55">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="b984-7317-81cc-20f" name="Xenos - Tyranids" revision="93" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Dunamis55">
   <categoryEntries>
     <categoryEntry name="Synapse" hidden="false" id="4129-a453-686a-d38a"/>
     <categoryEntry id="4f10-fe01-4b80-8d6b" name="Winged Hive Tyrant" hidden="false"/>
@@ -12576,6 +12576,11 @@ In the Muster Armies step, you can select up to 2 **^^Trygon^^** models from y
             <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="b984-7317-81cc-20f" shared="true"/>
           </conditions>
         </modifier>
+        <modifier type="set" value="-1" field="4856-7562-fc89-349b">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup name="Codex Battle Traits" id="b0c3-a5d5-36e4-6f0d" hidden="false" collapsible="true">
@@ -13388,22 +13393,11 @@ In the Muster Armies step, you can select up to 2 **^^Trygon^^** models from y
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="2fa5-0a8d-013e-fc12" hidden="false" collapsible="true">
       <entryLinks>
-        <entryLink import="true" name="Experience Points" hidden="false" id="566d-4abe-f15d-70c5" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9"/>
-        <entryLink import="true" name="Legendary Veterans" hidden="false" id="db3b-3a47-de40-0c7a" type="selectionEntry" targetId="1511-18fe-f51e-7b9d"/>
-        <entryLink import="true" name="Weapon Modifications" hidden="false" id="cb64-1168-cd9e-8ced" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
-        <entryLink import="true" name="Battle Scars" hidden="false" id="3e9a-f22c-6fbd-797d" type="selectionEntryGroup" targetId="1576-e816-033f-828d">
+        <entryLink import="true" name="Experience Points" hidden="false" id="566d-4abe-f15d-70c5" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="db3b-3a47-de40-0c7a" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="3e9a-f22c-6fbd-797d" type="selectionEntryGroup" targetId="1576-e816-033f-828d" sortIndex="5">
           <entryLinks>
             <entryLink import="true" name="Codex Battle Scars" hidden="false" id="0337-087f-daca-eb40" type="selectionEntryGroup" targetId="205f-d2cc-3221-78e5"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Battle Traits" hidden="false" id="c632-8f0c-747f-a805" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
-          <entryLinks>
-            <entryLink import="true" name="Codex Battle Traits" hidden="false" id="4a21-3df4-5e15-68a9" type="selectionEntryGroup" targetId="b0c3-a5d5-36e4-6f0d"/>
-          </entryLinks>
-        </entryLink>
-        <entryLink import="true" name="Crusade Relics" hidden="false" id="f909-a7b6-9d9d-e01a" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
-          <entryLinks>
-            <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="76f6-2ee1-e70f-2edc" type="selectionEntryGroup" targetId="35d6-9354-05fd-3a9e"/>
           </entryLinks>
         </entryLink>
       </entryLinks>
@@ -13420,6 +13414,36 @@ In the Muster Armies step, you can select up to 2 **^^Trygon^^** models from y
         </modifier>
       </modifiers>
       <comment>Crusade content</comment>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Battle Tallies" id="d5b3-de97-91fe-feb6" hidden="false" sortIndex="3">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="82bf-611e-c842-62e4"/>
+            <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="0628-aa98-ac33-5aea"/>
+            <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="6bc2-9e58-853d-693e"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Battle Honours" id="d275-ff2f-bdb0-44af" hidden="false" sortIndex="4">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Weapon Modifications" id="fe84-cb94-7c91-7a0d" hidden="false">
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="cb64-1168-cd9e-8ced" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
+              </entryLinks>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <entryLinks>
+            <entryLink import="true" name="Battle Traits" hidden="false" id="c632-8f0c-747f-a805" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
+              <entryLinks>
+                <entryLink import="true" name="Codex Battle Traits" hidden="false" id="4a21-3df4-5e15-68a9" type="selectionEntryGroup" targetId="b0c3-a5d5-36e4-6f0d"/>
+              </entryLinks>
+            </entryLink>
+            <entryLink import="true" name="Crusade Relics" hidden="false" id="f909-a7b6-9d9d-e01a" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
+              <entryLinks>
+                <entryLink import="true" name="Codex Crusade Relics" hidden="false" id="76f6-2ee1-e70f-2edc" type="selectionEntryGroup" targetId="35d6-9354-05fd-3a9e"/>
+              </entryLinks>
+            </entryLink>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
     </selectionEntryGroup>
     <selectionEntryGroup name="Devouring Worlds" id="247c-f03c-f6c4-99dd" hidden="false">
       <selectionEntries>
