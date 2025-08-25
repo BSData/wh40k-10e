@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="91" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="92" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <publications>
     <publication id="442c-a37c-3908-d701" name="Codex: Aeldari" shortName="C:Aeldari" publisher="Codex: Aeldari" publicationDate="08/02/2025"/>
     <publication id="1427-7c5c-863f-ac94" name="Index: Drukhari" shortName="I:Drukhari" publisher="Index: Drukhari" publicationDate="6/15/2023"/>
@@ -36705,7 +36705,7 @@ Each time you use one of the detachment Stratagems, if your Fate dice pool conta
               <profiles>
                 <profile name="Aspect of Murder" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="0d1f-6c43-cca7-6d34">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Autarch or Autarch Wayleaper model only. Add 1 to the Damage characteristics of melee weapons equipped by the bearer, and those weapons have the [Precision] ability.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Autarch^^** or **^^Autarch Wayleaper^^** model only. Add 1 to the Damage characteristics of melee weapons equipped by the bearer, and those weapons have the **[PRECISION]** ability.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -36728,6 +36728,30 @@ Each time you use one of the detachment Stratagems, if your Fate dice pool conta
                   </conditionGroups>
                 </modifier>
               </modifiers>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Aspect of Murder" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="c8de-3531-4ac1-a88b" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
+                      <conditions>
+                        <condition type="equalTo" value="1" field="selections" scope="model-or-unit" childId="c8de-3531-4ac1-a88b" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="append" value="Precision" field="893f-9000-ccf7-648e" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons" join=", ">
+                      <conditions>
+                        <condition type="equalTo" value="1" field="selections" scope="model-or-unit" childId="c8de-3531-4ac1-a88b" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
+              <infoLinks>
+                <infoLink name="Precision" id="8c5b-2ffa-9d42-5e12" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
+              </infoLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Mantle of Wisdom" hidden="false" id="0a0b-4e89-3576-1d96">
               <constraints>
