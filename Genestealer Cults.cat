@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="3bdf-a114-5035-c6ac" name="Xenos - Genestealer Cults" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="91" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="3bdf-a114-5035-c6ac" name="Xenos - Genestealer Cults" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="92" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="upgrade" import="false" name="Detachment" hidden="false" id="b96c-3fb6-1ee9-15ae">
       <constraints>
@@ -591,120 +591,67 @@
                 </profile>
               </profiles>
               <selectionEntryGroups>
-                <selectionEntryGroup name="Flare Launcher" id="a7f4-4c5-4b37-e659" hidden="false" defaultSelectionEntryId="b81c-a70-cf05-d8f1">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5bbf-ccca-561e-44c7"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3258-b4a4-1003-cfcc"/>
-                  </constraints>
+                <selectionEntryGroup name="Wargear" id="0ad0-c4f8-a31a-5d1b" hidden="false" sortIndex="2">
                   <selectionEntries>
-                    <selectionEntry type="upgrade" import="true" name="Flare launcher" hidden="false" id="b81c-a70-cf05-d8f1">
+                    <selectionEntry type="upgrade" import="true" name="Armoured hull" hidden="false" id="75c9-67d6-fa86-7854">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3340-aedf-8f5f-3f6a"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c76-9f5d-d0ce-ac12"/>
+                      </constraints>
                       <profiles>
-                        <profile name="Flare Launcher" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c727-a3d8-fceb-6ebd">
+                        <profile name="Armoured hull" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="178-e832-5837-5f5">
                           <characteristics>
-                            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer’s unit has the SMOKE keyword and you can target it with the Smokescreen Stratagem for 0CP.</characteristic>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
                           </characteristics>
                         </profile>
                       </profiles>
-                      <categoryLinks>
-                        <categoryLink name="Smoke" hidden="false" id="a440-ca14-172a-a933" targetId="6df-937-16bc-8c1a" primary="false"/>
-                      </categoryLinks>
-                    </selectionEntry>
-                    <selectionEntry type="upgrade" import="true" name="Spotter" hidden="false" id="b0bc-98a3-dc3b-7c1b">
-                      <profiles>
-                        <profile name="Spotter" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8fb4-84bc-9a15-e4f4">
-                          <characteristics>
-                            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer’s ranged weapons have a Ballistic Skill characteristic of 3+.</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <modifierGroups>
-                        <modifierGroup type="and">
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="9589-5a61-0803-825d" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9">
                           <modifiers>
-                            <modifier type="append" value="Spotter" field="annotation" join=", " scope="model-or-unit" affects="self.entries.profiles.Ranged Weapons">
+                            <modifier type="increment" value="1" field="2a14-db5e-c5ad-5ae9">
                               <conditions>
-                                <condition type="greaterThan" value="0" field="selections" scope="model-or-unit" childId="b0bc-98a3-dc3b-7c1b" shared="true" includeChildSelections="true"/>
+                                <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
                               </conditions>
                             </modifier>
-                            <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" scope="model-or-unit" affects="self.entries.profiles.Ranged Weapons">
+                            <modifier type="increment" value="1" field="b96f-03f7-d8a1-92ce">
                               <conditions>
-                                <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="b0bc-98a3-dc3b-7c1b" shared="true" includeChildSelections="true"/>
+                                <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
                               </conditions>
                             </modifier>
                           </modifiers>
-                        </modifierGroup>
-                      </modifierGroups>
+                        </entryLink>
+                      </entryLinks>
                     </selectionEntry>
-                    <selectionEntry type="upgrade" import="true" name="Survey augur" hidden="false" id="c76b-a566-ab06-bfc8">
+                    <selectionEntry type="upgrade" import="true" name="Twin heavy stubber" hidden="false" id="1d2a-dcb9-d666-68ec">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7163-9f9d-a634-18ed" includeChildSelections="true"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="408a-4fbe-5237-346b" includeChildSelections="true"/>
+                      </constraints>
                       <profiles>
-                        <profile name="Survey Augur" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2e08-718b-1740-8ca4">
-                          <characteristics>
-                            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the bearer’s unit has shot, select one enemy unit that was hit by one or more attacks made by the bearer this phase. Until the end of the phase, each time a friendly GENESTEALER CULTS model makes an attack against that unit, that attack has the [IGNORES COVER] ability.</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <infoLinks>
-                        <infoLink name="Ignores Cover" id="dcd4-bf62-f65c-1ce0" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
-                      </infoLinks>
-                    </selectionEntry>
-                  </selectionEntries>
-                </selectionEntryGroup>
-                <selectionEntryGroup name="Heavy Mining Laser" id="8263-4c12-faea-3210" hidden="false" defaultSelectionEntryId="1a72-a226-6838-a4c5">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f9a6-38e1-163b-e217"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ee29-ee42-43db-3bf0"/>
-                  </constraints>
-                  <selectionEntries>
-                    <selectionEntry type="upgrade" import="true" name="Achilles missile launcher" hidden="false" id="4dfd-1554-a484-439d">
-                      <profiles>
-                        <profile name="Achilles missile launcher" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="445c-216b-baa5-214">
+                        <profile name="Twin heavy stubber" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="de2a-3439-ed47-c77c">
                           <characteristics>
                             <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
                             <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
                             <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <entryLinks>
-                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="ea56-46e6-510c-53f7" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9">
-                          <modifiers>
-                            <modifier type="increment" value="1" field="2a14-db5e-c5ad-5ae9">
-                              <conditions>
-                                <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                              </conditions>
-                            </modifier>
-                            <modifier type="increment" value="1" field="b96f-03f7-d8a1-92ce">
-                              <conditions>
-                                <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                              </conditions>
-                            </modifier>
-                          </modifiers>
-                        </entryLink>
-                      </entryLinks>
-                    </selectionEntry>
-                    <selectionEntry type="upgrade" import="true" name="Heavy mortar" hidden="false" id="1f1a-1975-8221-4f33">
-                      <profiles>
-                        <profile name="Heavy mortar" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="ea6f-9f30-3a62-379">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
+                            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
                             <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
                             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Indirect Fire</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Twin-linked, Rapid Fire 3</characteristic>
                           </characteristics>
                         </profile>
                       </profiles>
                       <infoLinks>
-                        <infoLink name="Blast" id="5b66-19ee-d5da-6f95" hidden="false" type="rule" targetId="6c1f-1cf7-ff25-c99e"/>
-                        <infoLink name="Indirect Fire" id="7e6a-af28-166c-d408" hidden="false" type="rule" targetId="4ddd-4e29-acdd-5e6d"/>
+                        <infoLink name="Twin-linked" id="5e73-4ab8-f2bf-9b53" hidden="false" type="rule" targetId="cf93-ad4d-2f08-a79d"/>
+                        <infoLink name="Rapid Fire" id="44be-ed9-9505-2395" hidden="false" type="rule" targetId="c5c8-8b58-b8b6-7786"/>
                       </infoLinks>
                       <entryLinks>
-                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="0874-76c8-5aba-5245" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9">
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="ac07-296d-d0b6-df39" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9">
                           <modifiers>
                             <modifier type="increment" value="1" field="2a14-db5e-c5ad-5ae9">
                               <conditions>
@@ -721,104 +668,164 @@
                       </entryLinks>
                     </selectionEntry>
                   </selectionEntries>
-                  <entryLinks>
-                    <entryLink import="true" name="Heavy mining laser" hidden="false" id="1a72-a226-6838-a4c5" type="selectionEntry" targetId="fef0-fb67-5285-7552">
+                  <selectionEntryGroups>
+                    <selectionEntryGroup name="Flare Launcher" id="a7f4-4c5-4b37-e659" hidden="false" defaultSelectionEntryId="b81c-a70-cf05-d8f1">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5bbf-ccca-561e-44c7"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3258-b4a4-1003-cfcc"/>
+                      </constraints>
+                      <selectionEntries>
+                        <selectionEntry type="upgrade" import="true" name="Flare launcher" hidden="false" id="b81c-a70-cf05-d8f1">
+                          <profiles>
+                            <profile name="Flare Launcher" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c727-a3d8-fceb-6ebd">
+                              <characteristics>
+                                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer’s unit has the SMOKE keyword and you can target it with the Smokescreen Stratagem for 0CP.</characteristic>
+                              </characteristics>
+                            </profile>
+                          </profiles>
+                          <categoryLinks>
+                            <categoryLink name="Smoke" hidden="false" id="a440-ca14-172a-a933" targetId="6df-937-16bc-8c1a" primary="false"/>
+                          </categoryLinks>
+                        </selectionEntry>
+                        <selectionEntry type="upgrade" import="true" name="Spotter" hidden="false" id="b0bc-98a3-dc3b-7c1b">
+                          <profiles>
+                            <profile name="Spotter" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8fb4-84bc-9a15-e4f4">
+                              <characteristics>
+                                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer’s ranged weapons have a Ballistic Skill characteristic of 3+.</characteristic>
+                              </characteristics>
+                            </profile>
+                          </profiles>
+                          <modifierGroups>
+                            <modifierGroup type="and">
+                              <modifiers>
+                                <modifier type="append" value="Spotter" field="annotation" join=", " scope="model-or-unit" affects="self.entries.profiles.Ranged Weapons">
+                                  <conditions>
+                                    <condition type="greaterThan" value="0" field="selections" scope="model-or-unit" childId="b0bc-98a3-dc3b-7c1b" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" scope="model-or-unit" affects="self.entries.profiles.Ranged Weapons">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="b0bc-98a3-dc3b-7c1b" shared="true" includeChildSelections="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </modifierGroup>
+                          </modifierGroups>
+                        </selectionEntry>
+                        <selectionEntry type="upgrade" import="true" name="Survey augur" hidden="false" id="c76b-a566-ab06-bfc8">
+                          <profiles>
+                            <profile name="Survey Augur" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2e08-718b-1740-8ca4">
+                              <characteristics>
+                                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the bearer’s unit has shot, select one enemy unit that was hit by one or more attacks made by the bearer this phase. Until the end of the phase, each time a friendly GENESTEALER CULTS model makes an attack against that unit, that attack has the [IGNORES COVER] ability.</characteristic>
+                              </characteristics>
+                            </profile>
+                          </profiles>
+                          <infoLinks>
+                            <infoLink name="Ignores Cover" id="dcd4-bf62-f65c-1ce0" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
+                          </infoLinks>
+                        </selectionEntry>
+                      </selectionEntries>
+                    </selectionEntryGroup>
+                    <selectionEntryGroup name="Heavy Mining Laser" id="8263-4c12-faea-3210" hidden="false" defaultSelectionEntryId="1a72-a226-6838-a4c5">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f9a6-38e1-163b-e217"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ee29-ee42-43db-3bf0"/>
+                      </constraints>
+                      <selectionEntries>
+                        <selectionEntry type="upgrade" import="true" name="Achilles missile launcher" hidden="false" id="4dfd-1554-a484-439d">
+                          <profiles>
+                            <profile name="Achilles missile launcher" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="445c-216b-baa5-214">
+                              <characteristics>
+                                <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                                <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                                <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                                <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
+                              </characteristics>
+                            </profile>
+                          </profiles>
+                          <entryLinks>
+                            <entryLink import="true" name="Weapon Modifications" hidden="false" id="ea56-46e6-510c-53f7" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9">
+                              <modifiers>
+                                <modifier type="increment" value="1" field="2a14-db5e-c5ad-5ae9">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="b96f-03f7-d8a1-92ce">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </entryLink>
+                          </entryLinks>
+                        </selectionEntry>
+                        <selectionEntry type="upgrade" import="true" name="Heavy mortar" hidden="false" id="1f1a-1975-8221-4f33">
+                          <profiles>
+                            <profile name="Heavy mortar" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="ea6f-9f30-3a62-379">
+                              <characteristics>
+                                <characteristic name="Range" typeId="9896-9419-16a1-92fc">48&quot;</characteristic>
+                                <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
+                                <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+                                <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
+                                <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Indirect Fire</characteristic>
+                              </characteristics>
+                            </profile>
+                          </profiles>
+                          <infoLinks>
+                            <infoLink name="Blast" id="5b66-19ee-d5da-6f95" hidden="false" type="rule" targetId="6c1f-1cf7-ff25-c99e"/>
+                            <infoLink name="Indirect Fire" id="7e6a-af28-166c-d408" hidden="false" type="rule" targetId="4ddd-4e29-acdd-5e6d"/>
+                          </infoLinks>
+                          <entryLinks>
+                            <entryLink import="true" name="Weapon Modifications" hidden="false" id="0874-76c8-5aba-5245" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9">
+                              <modifiers>
+                                <modifier type="increment" value="1" field="2a14-db5e-c5ad-5ae9">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="b96f-03f7-d8a1-92ce">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </entryLink>
+                          </entryLinks>
+                        </selectionEntry>
+                      </selectionEntries>
                       <entryLinks>
-                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="d4fc-db6e-d1b7-af66" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9">
-                          <modifiers>
-                            <modifier type="increment" value="1" field="2a14-db5e-c5ad-5ae9">
-                              <conditions>
-                                <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                              </conditions>
-                            </modifier>
-                            <modifier type="increment" value="1" field="b96f-03f7-d8a1-92ce">
-                              <conditions>
-                                <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                              </conditions>
-                            </modifier>
-                          </modifiers>
+                        <entryLink import="true" name="Heavy mining laser" hidden="false" id="1a72-a226-6838-a4c5" type="selectionEntry" targetId="fef0-fb67-5285-7552">
+                          <entryLinks>
+                            <entryLink import="true" name="Weapon Modifications" hidden="false" id="d4fc-db6e-d1b7-af66" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9">
+                              <modifiers>
+                                <modifier type="increment" value="1" field="2a14-db5e-c5ad-5ae9">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                                  </conditions>
+                                </modifier>
+                                <modifier type="increment" value="1" field="b96f-03f7-d8a1-92ce">
+                                  <conditions>
+                                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                                  </conditions>
+                                </modifier>
+                              </modifiers>
+                            </entryLink>
+                          </entryLinks>
                         </entryLink>
                       </entryLinks>
-                    </entryLink>
-                  </entryLinks>
+                    </selectionEntryGroup>
+                  </selectionEntryGroups>
                 </selectionEntryGroup>
               </selectionEntryGroups>
-              <selectionEntries>
-                <selectionEntry type="upgrade" import="true" name="Twin heavy stubber" hidden="false" id="1d2a-dcb9-d666-68ec">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7163-9f9d-a634-18ed" includeChildSelections="true"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="408a-4fbe-5237-346b" includeChildSelections="true"/>
-                  </constraints>
-                  <profiles>
-                    <profile name="Twin heavy stubber" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="de2a-3439-ed47-c77c">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Twin-linked, Rapid Fire 3</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Twin-linked" id="5e73-4ab8-f2bf-9b53" hidden="false" type="rule" targetId="cf93-ad4d-2f08-a79d"/>
-                    <infoLink name="Rapid Fire" id="44be-ed9-9505-2395" hidden="false" type="rule" targetId="c5c8-8b58-b8b6-7786"/>
-                  </infoLinks>
-                  <entryLinks>
-                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="ac07-296d-d0b6-df39" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9">
-                      <modifiers>
-                        <modifier type="increment" value="1" field="2a14-db5e-c5ad-5ae9">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="increment" value="1" field="b96f-03f7-d8a1-92ce">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
-                    </entryLink>
-                  </entryLinks>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Armoured hull" hidden="false" id="75c9-67d6-fa86-7854">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3340-aedf-8f5f-3f6a"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c76-9f5d-d0ce-ac12"/>
-                  </constraints>
-                  <profiles>
-                    <profile name="Armoured hull" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="178-e832-5837-5f5">
-                      <characteristics>
-                        <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                        <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
-                        <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
-                        <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
-                        <characteristic name="AP" typeId="41a0-1301-112a-e2f2">0</characteristic>
-                        <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
-                        <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <entryLinks>
-                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="9589-5a61-0803-825d" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9">
-                      <modifiers>
-                        <modifier type="increment" value="1" field="2a14-db5e-c5ad-5ae9">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="increment" value="1" field="b96f-03f7-d8a1-92ce">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="36d7-0c2c-3ab1-4240" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
-                    </entryLink>
-                  </entryLinks>
-                </selectionEntry>
-              </selectionEntries>
+              <entryLinks>
+                <entryLink import="true" name="Totemic Presence upgrade" hidden="false" id="0837-82fa-b590-3de0" type="selectionEntry" targetId="6220-fe17-7c2a-8268" sortIndex="1"/>
+              </entryLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>

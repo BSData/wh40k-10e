@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="46" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="47" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -873,6 +873,39 @@
         <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
       </costs>
       <comment>Crusade content</comment>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Totemic Presence upgrade" hidden="false" id="6220-fe17-7c2a-8268">
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="unit" shared="true" id="8199-2676-9f51-f430" includeChildSelections="false"/>
+      </constraints>
+      <comment>Crusade content</comment>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="append" value="Totemic Presence" field="annotation" join=", " scope="model" affects="self.entries.profiles.Unit"/>
+            <modifier type="increment" value="2" field="bef7-942a-1a23-59f8" scope="model" affects="self.entries.profiles.Unit" join=", "/>
+          </modifiers>
+        </modifierGroup>
+      </modifierGroups>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="unit" childId="986e-4f03-db70-9bd3" shared="true" includeChildSelections="true"/>
+              </conditions>
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="unit" childId="6220-fe17-7c2a-8268" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="model" childId="6220-fe17-7c2a-8268" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedRules>
@@ -2718,7 +2751,7 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                   <conditionGroups>
                     <conditionGroup type="or">
                       <conditions>
-                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="true" includeChildForces="false"/>
                         <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="9693-cf84-fe69-37a9" shared="true" includeChildSelections="false" includeChildForces="false"/>
                         <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="dbd4-63-af05-998" shared="true" includeChildSelections="false" includeChildForces="false"/>
                       </conditions>
@@ -2741,8 +2774,8 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
               <modifierGroups>
                 <modifierGroup type="and">
                   <modifiers>
-                    <modifier type="append" value="Arch Acquisitor" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Unit"/>
-                    <modifier type="increment" value="3" field="bef7-942a-1a23-59f8" scope="model" affects="self.entries.recursive.profiles.Unit" join=", "/>
+                    <modifier type="append" value="Arch Acquisitor" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit"/>
+                    <modifier type="increment" value="3" field="bef7-942a-1a23-59f8" scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit" join=", "/>
                   </modifiers>
                 </modifierGroup>
               </modifierGroups>
@@ -2828,8 +2861,8 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
               <modifierGroups>
                 <modifierGroup type="and">
                   <modifiers>
-                    <modifier type="append" value="Heroic Constitution" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Unit"/>
-                    <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" scope="model" affects="self.entries.recursive.profiles.Unit" join=", "/>
+                    <modifier type="append" value="Heroic Constitution" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit"/>
+                    <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit" join=", "/>
                   </modifiers>
                 </modifierGroup>
               </modifierGroups>
@@ -2955,8 +2988,8 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
               <modifierGroups>
                 <modifierGroup type="and">
                   <modifiers>
-                    <modifier type="append" value="Totemic Presence" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Unit"/>
-                    <modifier type="increment" value="2" field="bef7-942a-1a23-59f8" scope="model" affects="self.entries.recursive.profiles.Unit" join=", "/>
+                    <modifier type="append" value="Totemic Presence" field="annotation" join=", " scope="model" affects="self.entries.profiles.Unit"/>
+                    <modifier type="increment" value="2" field="bef7-942a-1a23-59f8" scope="model" affects="self.entries.profiles.Unit" join=", "/>
                   </modifiers>
                 </modifierGroup>
               </modifierGroups>
@@ -4703,9 +4736,9 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                     <modifierGroup type="and">
                       <modifiers>
                         <modifier type="append" value="Blade of the Dynast" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
-                        <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " position=""/>
+                        <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
                         <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " position="-1"/>
-                        <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " position=""/>
+                        <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
                       </modifiers>
                     </modifierGroup>
                   </modifierGroups>
@@ -4756,8 +4789,8 @@ If a model is in Hover mode,  then until the end of the battle, its Move charact
                     <modifierGroup type="and">
                       <modifiers>
                         <modifier type="append" value="Noctic Shield" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Unit"/>
-                        <modifier type="increment" value="1" field="d29d-cf75-fc2d-34a4" scope="model" affects="self.entries.recursive.profiles.Unit" join=", " position=""/>
-                        <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" scope="model" affects="self.entries.recursive.profiles.Unit" join=", " position=""/>
+                        <modifier type="increment" value="1" field="d29d-cf75-fc2d-34a4" scope="model" affects="self.entries.recursive.profiles.Unit" join=", "/>
+                        <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" scope="model" affects="self.entries.recursive.profiles.Unit" join=", "/>
                       </modifiers>
                     </modifierGroup>
                   </modifierGroups>
