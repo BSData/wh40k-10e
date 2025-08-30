@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="86" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="87" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Vindicare Assassin" hidden="false" id="efa3-2cf5-dcfb-b976">
       <categoryLinks>
@@ -7703,6 +7703,14 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                   </characteristics>
                 </profile>
               </profiles>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Simulacrum Imperialis" field="annotation" join=", " scope="unit" affects="self.entries.recursive.profiles.Unit"/>
+                    <modifier type="decrement" value="1" field="58d2-b879-49c7-43bc" scope="unit" affects="self.entries.recursive.profiles.Unit"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Battle Sister w/ Special or Heavy Weapon" hidden="false" id="45e3-1e76-454a-978a">
               <entryLinks>
@@ -15305,9 +15313,14 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                   </characteristics>
                 </profile>
               </profiles>
-              <modifiers>
-                <modifier type="decrement" value="1" field="58d2-b879-49c7-43bc" scope="4e74-3710-7a66-9d6c" affects="self.entries.profiles.Unit"/>
-              </modifiers>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Simulacrum Imperialis" field="annotation" join=", " scope="unit" affects="self.entries.recursive.profiles.Unit"/>
+                    <modifier type="decrement" value="1" field="58d2-b879-49c7-43bc" scope="unit" affects="self.entries.recursive.profiles.Unit"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
           </selectionEntries>
           <entryLinks>
@@ -17317,6 +17330,15 @@ For the purposes of interacting with terrain features, all models in units with 
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="5"/>
           </costs>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Formidable Resolve" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit"/>
+                <modifier type="decrement" value="1" field="58d2-b879-49c7-43bc" scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit"/>
+                <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit"/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Daemon Slayer" hidden="false" id="57c9-449c-c11c-6611">
           <constraints>
@@ -19453,21 +19475,9 @@ For the purposes of interacting with terrain features, all models in units with 
           <modifierGroups>
             <modifierGroup type="and">
               <modifiers>
-                <modifier type="append" value="Upholder of the Creed" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Unit">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="model-or-unit" childId="be38-3cf6-d5f3-b3de" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="increment" value="1" field="58d2-b879-49c7-43bc" scope="model-or-unit" affects="self.entries.recursive.profiles.Unit">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="be38-3cf6-d5f3-b3de" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" scope="model-or-unit" affects="self.entries.recursive.profiles.Unit">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="be38-3cf6-d5f3-b3de" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
+                <modifier type="append" value="Upholder of the Creed" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Unit"/>
+                <modifier type="decrement" value="1" field="58d2-b879-49c7-43bc" scope="model-or-unit" affects="self.entries.recursive.profiles.Unit"/>
+                <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" scope="model-or-unit" affects="self.entries.recursive.profiles.Unit"/>
               </modifiers>
             </modifierGroup>
           </modifierGroups>
