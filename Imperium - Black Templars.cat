@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="36d3-36bc-68dd-40ac" name="Imperium - Adeptus Astartes - Black Templars" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="40" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="36d3-36bc-68dd-40ac" name="Imperium - Adeptus Astartes - Black Templars" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="41" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Space Marines" id="2137-605d-109a-d3b2" targetId="e0af-67df-9d63-8fb7" importRootEntries="true"/>
   </catalogueLinks>
@@ -1280,7 +1280,7 @@ Water from the Stoup of Elucidation: Improve the Armour Penetration characterist
         </profile>
         <profile name="Chosen of the Emperor" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="4c58-d25d-01ac-87e2">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You cannot include more than one EMPEROR&apos;S CHAMPION model in your army.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You cannot include more than one **^^Emperor&apos;s Champion^^** model in your army.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -1314,7 +1314,6 @@ Water from the Stoup of Elucidation: Improve the Armour Penetration characterist
           </constraints>
         </entryLink>
         <entryLink import="true" name="Enhancements" hidden="false" id="6719-652b-321a-7211" type="selectionEntryGroup" targetId="9e5d-de4c-c5d1-1d3e" sortIndex="3"/>
-        <entryLink import="true" name="Crusade" hidden="false" id="303d-46fd-9a6d-b67c" type="selectionEntryGroup" targetId="9a99-f13c-a667-e698" sortIndex="1"/>
       </entryLinks>
       <modifierGroups>
         <modifierGroup type="and">
@@ -1431,7 +1430,35 @@ Water from the Stoup of Elucidation: Improve the Armour Penetration characterist
             </entryLink>
           </entryLinks>
         </selectionEntryGroup>
+        <selectionEntryGroup name="Crusade" id="4f24-5d44-4bab-df99" hidden="false" sortIndex="1" collapsible="true">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Battle Tallies" id="7022-413f-4bd4-8bda" hidden="false" sortIndex="1">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="d2e7-4cb6-c6c5-03d2"/>
+                <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="d3f2-e93d-287c-f02b"/>
+                <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="3038-fc2e-1096-1d7e"/>
+              </selectionEntries>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <entryLinks>
+            <entryLink import="true" name="Champion&apos;s Virtue Battle Honours" hidden="false" id="82fe-bcff-8b81-67bb" type="selectionEntryGroup" targetId="0933-1b16-828c-d6e8" sortIndex="2"/>
+          </entryLinks>
+        </selectionEntryGroup>
       </selectionEntryGroups>
+      <modifiers>
+        <modifier type="set" value="0" field="51b2-306e-1021-d207">
+          <conditions>
+            <condition type="instanceOf" value="1" field="forces" scope="force" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Crusader Squad [Legends]" hidden="true" id="2da2-ad08-6057-5a1c">
       <categoryLinks>
@@ -5389,7 +5416,6 @@ You can attach this model to one of the above units even if one Captain, Chapter
     <categoryEntry name="Primaris Crusader Squad" hidden="false" id="fd20-61a5-ca24-e3ee"/>
     <categoryEntry name="Primaris Sword Brethren" hidden="false" id="698d-99fc-408b-91ec"/>
     <categoryEntry name="Emperor&apos;s Champion" hidden="false" id="1ba5-20a1-4dd6-9a4f"/>
-    <categoryEntry name="Crusader Squad" hidden="false" id="9e2c-48af-8c2b-ea68"/>
     <categoryEntry name="Castellan" hidden="false" id="c9ce-476b-65bd-4e81"/>
     <categoryEntry name="Marshal" hidden="false" id="2f85-11ec-263f-b1dc"/>
     <categoryEntry name="Execrator" id="746a-82bd-5c0a-634e" hidden="false"/>
