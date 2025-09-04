@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="f616-3f08-ee8e-3349" name="Xenos - Leagues of Votann" revision="55" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="f616-3f08-ee8e-3349" name="Xenos - Leagues of Votann" revision="56" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <categoryEntries>
     <categoryEntry id="5a53-ae58-e0d9-0616" name="Hearthkyn Warriors" hidden="false"/>
     <categoryEntry id="a360-cb11-e139-55df" name="Ûthar the Destined" hidden="false"/>
@@ -46,7 +46,12 @@
     <entryLink id="91d8-e4b4-36db-2a90" name="Hekaton Land Fortress" hidden="false" collective="false" import="true" targetId="a110-e538-4e85-159b" type="selectionEntry"/>
     <entryLink import="true" name="Show/Hide Options" hidden="false" type="selectionEntry" id="d10f-df25-9eb8-59cb" targetId="e8ef-836a-a9d1-901d"/>
     <entryLink import="true" name="Hernkyn Yaegirs" hidden="false" id="0cd5-244a-7f7c-54d2" type="selectionEntry" targetId="5b0b-c18d-1470-44bb"/>
-    <entryLink import="true" name="Order of Battle" hidden="false" id="8d46-ac16-26c2-5070" type="selectionEntry" targetId="eda7-8b4b-3719-af36"/>
+    <entryLink import="true" name="Order of Battle" hidden="false" id="8d46-ac16-26c2-5070" type="selectionEntry" targetId="eda7-8b4b-3719-af36">
+      <entryLinks>
+        <entryLink import="true" name="Kindred Acquisitions" hidden="false" id="5233-e8c7-8a51-3353" type="selectionEntryGroup" targetId="e176-073c-ad07-3f9f" sortIndex="90"/>
+        <entryLink import="true" name="Expeditions" hidden="false" id="e584-e369-b57f-6b29" type="selectionEntryGroup" targetId="bb09-674b-c3d7-2801" sortIndex="91"/>
+      </entryLinks>
+    </entryLink>
     <entryLink import="true" name="Buri Aegnirssen" hidden="false" id="aa33-6170-7f3a-e9a4" type="selectionEntry" targetId="b7e1-55fd-9aae-b690"/>
     <entryLink import="true" name="Memnyr Strategist" hidden="false" id="0488-7b45-6b67-5d97" type="selectionEntry" targetId="7932-6aac-cd01-3181"/>
     <entryLink import="true" name="Arcanyst Evaluator" hidden="false" id="51fd-73c3-d503-6045" type="selectionEntry" targetId="e5c2-d1a0-b54d-65df"/>
@@ -6928,7 +6933,7 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
-    <selectionEntryGroup id="06ba-6740-bf71-0eea" name="Enhancements" hidden="false" collective="false" import="true">
+    <selectionEntryGroup id="06ba-6740-bf71-0eea" name="Enhancements" hidden="false" collective="false" import="true" collapsible="true">
       <constraints>
         <constraint field="selections" scope="self" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="0c91-7a29-79f7-7a20" type="max"/>
         <constraint field="selections" scope="force" value="3" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="7161-ad42-57a5-8b41" type="max"/>
@@ -7779,10 +7784,10 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
         </modifier>
       </modifiers>
     </selectionEntryGroup>
-    <selectionEntryGroup name="Codex Battle Traits" id="14af-ad12-c4fa-794c" hidden="true" collapsible="true">
-      <comment>Crusade content - HIDDEN UNTIL CODEX RELEASE</comment>
+    <selectionEntryGroup name="Codex Battle Traits" id="14af-ad12-c4fa-794c" hidden="false" collapsible="true">
+      <comment>Crusade content</comment>
       <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="PLACEHOLDER" hidden="false" id="99a3-cefd-b43a-4e80">
+        <selectionEntry type="upgrade" import="true" name="Warrior Pride" hidden="false" id="99a3-cefd-b43a-4e80">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7283-5c66-1266-2b62" includeChildSelections="false"/>
           </constraints>
@@ -7795,9 +7800,9 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
             <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
           </costs>
           <profiles>
-            <profile name="Electrochaff Backups" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="dbbc-7f30-4080-686b">
+            <profile name="Warrior Pride" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="dbbc-7f30-4080-686b">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ranged attack targets this unit, unless the attacking model is within 18&quot;, subtract 1 from the Hit roll.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this unit is select to shoot or fight, you can re-roll one Hit roll and you can re-roll one Wound roll.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -7807,19 +7812,423 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
                 <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
               </conditions>
             </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Grim Demeanour" hidden="false" id="c3aa-7457-adb0-3c21">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c156-973b-0337-93a2" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Grim Demeanour" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a44b-778a-c3d1-2603">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Improve the Objective Control and Leadership characteristics of models in this unit by 1.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Grim Demeanour" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Unit"/>
+                <modifier type="increment" value="1" field="bef7-942a-1a23-59f8" scope="root-entry" affects="self.entries.recursive.profiles.Unit"/>
+                <modifier type="decrement" value="1" field="58d2-b879-49c7-43bc" scope="root-entry" affects="self.entries.recursive.profiles.Unit"/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Dour Survivalist" hidden="false" id="0127-6e65-e44e-22ce">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="773a-2039-82ac-604d" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Dour Survivalist" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b1cf-fb69-d781-b181">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Character^^** models in this unit have the Feel No Pain 5+ ability and you can re-roll Out of Action tests taken for this unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <infoLinks>
+            <infoLink name="Feel No Pain" id="0e42-12f9-e7b0-ef80" hidden="false" type="rule" targetId="9bf4-280f-bbe2-6fbb">
+              <modifiers>
+                <modifier type="append" value="5+" field="name" join=" "/>
+              </modifiers>
+            </infoLink>
+          </infoLinks>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Personal Grudge" hidden="false" id="1b5c-29a1-2184-0fd4">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9450-3d70-ec2b-5dca" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Personal Grudge" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="63bd-684f-de32-06e7">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select one unit from your opponent&apos;s Crusade army. Each time a model in this unit makes an attack that targets that unit, that attack has the **[LETHAL HITS]** and **[PRECISION]** abilities.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <infoLinks>
+            <infoLink name="Precision" id="176e-7b9a-c3ba-cf26" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
+            <infoLink name="Lethal Hits" id="e0a1-5fea-86b4-a0e7" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
+          </infoLinks>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Refined Power Cores" hidden="false" id="599d-24df-9bed-ba07">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="edb4-42d7-ee5a-dac1" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Refined Power Cores" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3aab-0207-a989-5386">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 2&quot; to the Move characteristic of models in this unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="14a0-40c9-2748-ae6e" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Refined Power Cores" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Unit"/>
+                <modifier type="increment" value="2" field="e703-ecb6-5ce7-aec1" scope="root-entry" affects="self.entries.recursive.profiles.Unit"/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="KV-Ceramide Undersuits" hidden="false" id="9a4a-029d-c714-1451">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7999-b5a1-08e2-14de" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="KV-Ceramide Undersuits" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9246-d8d2-86cf-3a3d">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Models in this unit have a 5+ invulnerable save.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="14a0-40c9-2748-ae6e" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Frontier Weaponsmiths" hidden="false" id="95cf-d61c-5ef0-137e">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ab2a-46eb-beed-0f31" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Frontier Weaponsmiths" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="21b2-da80-fa52-9e06">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 6&quot; to the Range characteristic of ranged weapons equipped by models in this unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="14a0-40c9-2748-ae6e" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Frontier Weaponsmiths" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Ranged Weapons"/>
+                <modifier type="increment" value="6" field="9896-9419-16a1-92fc" scope="root-entry" affects="self.entries.recursive.profiles.Ranged Weapons"/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Ruthless Efficiency" hidden="false" id="3c74-6f37-fe4d-b48d">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="101b-3a65-ef63-c157" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Ruthless Efficiency" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="4f21-5832-9bac-5e47">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This unit always has Hostile Acquisition, even while units from your Crusade army have Fortify Takeover.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Vengeful" hidden="false" id="2dfc-9379-fc6b-0448">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="bb6c-5451-4647-41de" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Vengeful" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="840f-8b1c-b15b-0bdf">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength. In addition, add 1 to the Wound roll if this unit is Below Half-strength.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Ancestral Fury" hidden="false" id="b392-8eb9-9aff-c286">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="40ab-854e-e42d-a215" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Ancestral Fury" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="86f1-5ce7-4ff3-a2c0">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Melee weapons equipped by models in this unit have the **[SUSTAINED HITS 1]** ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Ancestral Fury" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                <modifier type="append" value="Sustained Hits 1" field="893f-9000-ccf7-648e" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+          <infoLinks>
+            <infoLink name="Sustained Hits" id="478b-45b0-e956-c40f" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
+          </infoLinks>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Guardians of Need" hidden="false" id="0109-29e5-15b9-4d85">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a932-351c-2f21-0780" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Guardians of Need" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5af3-de8f-c773-a695">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, you can select one objective marker on the battlefield. While this unit is within range of that objective marker, it has Fortify Takeover, even while units from your Crusade army have Hostile Acquisition.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="War-wrought" hidden="false" id="bca8-48d2-7493-9ebb">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="043a-7a6e-69e0-111f" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="War-wrought" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b8cd-fab9-ade8-208b">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While units from your Crusade army have Fortify Takeover, each time an attack with an unmodified Damage characteristic of 1 is allocated to a model in this unit, add 1 to any armour saving throw made against that attack.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true"/>
+              </conditions>
+            </modifier>
           </modifiers>
         </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
-    <selectionEntryGroup name="Codex Crusade Relics" id="3142-26f4-64e2-0126" hidden="true" collapsible="true">
+    <selectionEntryGroup name="Codex Crusade Relics" id="3142-26f4-64e2-0126" hidden="false" collapsible="true">
       <selectionEntryGroups>
         <selectionEntryGroup name="Antiquity Relics" id="7439-add1-773b-382f" hidden="false" sortIndex="2">
           <selectionEntries>
-            <selectionEntry type="upgrade" import="true" name="PLACEHOLDER" hidden="false" id="ad72-14bf-b73a-fc61">
+            <selectionEntry type="upgrade" import="true" name="Wayfarer&apos;s Grace" hidden="false" id="ad72-14bf-b73a-fc61">
               <profiles>
-                <profile name="PLACEHOLDER" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b464-a2a2-caad-e194">
+                <profile name="Wayfarer&apos;s Grace" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b464-a2a2-caad-e194">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">PLACEHOLDER</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The first time the bearer is destroyed, roll one D6 at the end of the phase: on a 2+, set the bearer back up on the battlefield as close as possible to where it was destroyed and not within Engagement Range of one or more enemy units, with 3 wounds remaining.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -7858,15 +8267,58 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
                 <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
               </costs>
             </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Thyrikite Plate" hidden="false" id="5fd0-1940-0aa2-53d4">
+              <profiles>
+                <profile name="Thyrikite Plate" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ec65-c821-90e9-f515">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While units from your Crusade army have Hostile Acquisition, each time an attack is allocated to the bearer, subtract 1 from the Damage characteristic of that attack. While units from your Crusade army have Fortify Takeover, each time an attack is allocated to the bearer, change the Damage characteristic of that attack to 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="7d34-a4df-2360-78ea" includeChildForces="true" includeChildSelections="true"/>
+              </constraints>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="5fd0-1940-0aa2-53d4" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="parent" childId="5fd0-1940-0aa2-53d4" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                      <conditions>
+                        <condition type="lessThan" value="31" field="a623-fe74-1d33-cddf" scope="root-entry" childId="any" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+                <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="2"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+                <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+              </costs>
+            </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
         <selectionEntryGroup name="Legendary Relics" id="363f-5c60-750a-6ee9" hidden="false" sortIndex="3">
           <selectionEntries>
-            <selectionEntry type="upgrade" import="true" name="PLACEHOLDER" hidden="false" id="6a03-05cd-784f-c19b">
+            <selectionEntry type="upgrade" import="true" name="First Knife" hidden="false" id="6a03-05cd-784f-c19b">
               <profiles>
-                <profile name="PLACEHOLDER" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b5e7-392a-7d2d-670b">
+                <profile name="First Knife" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b5e7-392a-7d2d-670b">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">PLACEHOLDER</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the bearer makes a melee attack, you can re-roll the Hit roll and you can re-roll the Wound roll. At the end of the Fight phase, you can select one enemy unit within Engagement Range of the bearer and spend up to 4 Yield points. Roll one D6 for each point spent: for each 2+, that enemy unit suffers 1 mortal wound.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -7909,11 +8361,11 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
         </selectionEntryGroup>
         <selectionEntryGroup name="Artificer Relics" id="6680-a285-c23d-a497" hidden="false" sortIndex="1">
           <selectionEntries>
-            <selectionEntry type="upgrade" import="true" name="PLACEHOLDER" hidden="false" id="8ac2-38f9-d4b8-b9d6">
+            <selectionEntry type="upgrade" import="true" name="Murmuring Stave" hidden="false" id="8ac2-38f9-d4b8-b9d6">
               <profiles>
-                <profile name="PLACEHOLDER" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9c11-c6ce-b6c1-d184">
+                <profile name="Murmuring Stave" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9c11-c6ce-b6c1-d184">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">PLACEHOLDER</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Grimnyr^^** only. When selecting Agendas for a battle, you can select one additional **^^Leagues of Votann^^** Agenda for that battle.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -7923,10 +8375,92 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
               <modifiers>
                 <modifier type="set" value="true" field="hidden">
                   <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="8ac2-38f9-d4b8-b9d6" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="parent" childId="8ac2-38f9-d4b8-b9d6" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="73a4-b8d3-ec74-8604" shared="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+                <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+                <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Grey Crest" hidden="false" id="fe8a-a705-6588-4f6c">
+              <profiles>
+                <profile name="Grey Crest" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e9ae-3c9a-5031-a4d5">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Models in the bearer&apos;s unit have the Stealth ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="ad08-650c-e4f5-498f" includeChildForces="true" includeChildSelections="true"/>
+              </constraints>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
                     <conditionGroup type="and">
                       <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="8ac2-38f9-d4b8-b9d6" shared="true" includeChildForces="true" includeChildSelections="true"/>
-                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="8ac2-38f9-d4b8-b9d6" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="fe8a-a705-6588-4f6c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="fe8a-a705-6588-4f6c" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+                <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+                <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+              </costs>
+              <infoLinks>
+                <infoLink name="Stealth" id="1399-58e8-09de-98e5" hidden="false" type="rule" targetId="bec5-4288-34a6-ccfa"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Flâyre" hidden="false" id="8c51-c217-a09e-6f50">
+              <profiles>
+                <profile name="Flâyre" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3e8e-6329-8bcc-a625">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While units from your Crusade army have Hostile Acquisition, add 2 to the Attacks characteristic of the bearer&apos;s melee weapons. While units from your Crusade army have Fortify Takeover, add 1 to the Attacks characteristic of the bearer&apos;s melee weapons.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="c1ae-330d-c67d-e1dc" includeChildForces="true" includeChildSelections="true"/>
+              </constraints>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="8c51-c217-a09e-6f50" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="8c51-c217-a09e-6f50" shared="true" includeChildForces="true" includeChildSelections="true"/>
                       </conditions>
                     </conditionGroup>
                   </conditionGroups>
@@ -7948,7 +8482,7 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
           </selectionEntries>
         </selectionEntryGroup>
       </selectionEntryGroups>
-      <comment>Crusade content - HIDDEN UNTIL CODEX RELEASE</comment>
+      <comment>Crusade content</comment>
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="a7b4-50c2-e2e3-6bfa" hidden="false" collapsible="true">
       <entryLinks>
@@ -7996,6 +8530,456 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
           </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Kindred Acquisitions" id="e176-073c-ad07-3f9f" hidden="false" collapsible="true">
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Fundamental Resources" id="49d0-d7ae-f0ac-dbcb" hidden="false" collapsible="true" sortIndex="1">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Raw Minerals" id="b051-8063-a6e3-bf27" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Raw Minerals - Resources" hidden="false" id="8fc6-2845-2f48-8a27" sortIndex="1"/>
+                <selectionEntry type="upgrade" import="true" name="Raw Minerals - Rare Resources" hidden="false" id="190d-cbe8-d613-09d2" sortIndex="2"/>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Biomatter" id="cbff-abe9-2e72-8103" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Biomatter - Resources" hidden="false" id="ccf3-3cbb-58ca-d040" sortIndex="1"/>
+                <selectionEntry type="upgrade" import="true" name="Biomatter - Rare Resources" hidden="false" id="cd1e-2eee-42dd-8e45" sortIndex="2"/>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Energy Sources" id="fd17-b2d3-0a08-a483" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Energy Sources - Resources" hidden="false" id="9082-fc2c-78fd-1580" sortIndex="1"/>
+                <selectionEntry type="upgrade" import="true" name="Energy Sources - Rare Resources" hidden="false" id="9e71-e61c-ea48-e805" sortIndex="2"/>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Galactic Intel" id="160b-e924-2c27-fcd1" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Galactic Intel - Resources" hidden="false" id="16d5-25a6-56b3-433b" sortIndex="1"/>
+                <selectionEntry type="upgrade" import="true" name="Galactic Intel - Rare Resources" hidden="false" id="e8f2-73aa-c55c-e6c0" sortIndex="2"/>
+              </selectionEntries>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Kindred Assets" id="bb27-2490-c046-4e0f" hidden="false" sortIndex="2" collapsible="true">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Biorecyc Fabricator" id="0a99-bea1-4b1b-695a" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Upgraded Biorecyc Fabricator" hidden="false" id="225e-1122-2707-b6e2">
+                  <constraints>
+                    <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="e575-7df3-8815-545f" includeChildSelections="false"/>
+                  </constraints>
+                  <modifiers>
+                    <modifier type="increment" value="1" field="e575-7df3-8815-545f">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="dc94-16fa-dcdd-bbf9" shared="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="set" value="true" field="hidden">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="dc94-16fa-dcdd-bbf9" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                  <profiles>
+                    <profile name="Upgraded Biorecyc Fabricator" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7d77-e269-3493-cfb4">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of each battle, each **^^League of Votann^^** unit from your Crusade army that is on the battlefield (excluding **^^Vehicles^^**) gains 1XP.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Biorecyc Fabricator" hidden="false" id="dc94-16fa-dcdd-bbf9">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="fd52-0227-2172-d710" includeChildSelections="false"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Biorecyc Fabricator" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d819-acd1-2b7e-0819">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">After each battle, when your determine which fundamental resource you gain, if it is not biomatter, gain 20 biomatter.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Mining Outpost" id="92bb-09b2-1f43-1ff3" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Upgraded Mining Outpost" hidden="false" id="99cb-0cb6-a745-1bf3">
+                  <constraints>
+                    <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="ad9f-f722-c7f9-3894" includeChildSelections="false"/>
+                  </constraints>
+                  <modifiers>
+                    <modifier type="increment" value="1" field="ad9f-f722-c7f9-3894">
+                      <repeats>
+                        <repeat value="1" repeats="1" field="selections" scope="parent" childId="ecaf-6871-d1b9-200d" shared="true" roundUp="false"/>
+                      </repeats>
+                    </modifier>
+                    <modifier type="set" value="true" field="hidden">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="ecaf-6871-d1b9-200d" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                  <profiles>
+                    <profile name="Upgraded Mining Outpost" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f0ec-b23d-baed-029d">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time you gain any amount of raw minerals, add an additional 10 to the amount you gain (for a total of +30 from this mining outpost).</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Mining Outpost" hidden="false" id="ecaf-6871-d1b9-200d">
+                  <constraints>
+                    <constraint type="max" value="3" field="selections" scope="parent" shared="true" id="87aa-0ad4-6250-9614" includeChildSelections="false"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Mining Outpost" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f88d-1f4b-ec50-d378">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time you gain any amount of raw minerals, add 20 to the amount you gain for each mining outpost you have.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Trading Hub" id="3cea-3c18-5bf9-9803" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Upgraded Trading Hub" hidden="false" id="3ab1-16f6-fc7b-20c8">
+                  <constraints>
+                    <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="77f3-d678-da33-f077" includeChildSelections="false"/>
+                  </constraints>
+                  <modifiers>
+                    <modifier type="increment" value="1" field="77f3-d678-da33-f077">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="b4be-d9ca-864f-8206" shared="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="set" value="true" field="hidden">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="b4be-d9ca-864f-8206" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                  <profiles>
+                    <profile name="Upgraded Trading Hub" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ffd6-3481-fa7c-e92d">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">After each battle, you can use the Guild Patronage Requisition twice.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Trading Hub" hidden="false" id="b4be-d9ca-864f-8206">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="184a-766d-c3ef-a771" includeChildSelections="false"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Trading Hub" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="34da-39b5-72e4-5542">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">After each battle, you can use the Guild Patronage Requisition once.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Fane Augmentation" id="ead5-710f-5c54-1181" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Upgraded Fane Augmentation" hidden="false" id="67b2-4298-4b72-881a">
+                  <constraints>
+                    <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="0768-dff5-0cc5-7b01" includeChildSelections="false"/>
+                  </constraints>
+                  <modifiers>
+                    <modifier type="increment" value="1" field="0768-dff5-0cc5-7b01">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="ba1b-9e74-d7f2-19f1" shared="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="set" value="true" field="hidden">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="ba1b-9e74-d7f2-19f1" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                  <profiles>
+                    <profile name="Upgraded Fane Augmentation" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5d6a-e2cd-1dd7-221b">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">After each battle, select one additional **^^Leagues of Votann^^** unit from your Crusade army to be Marked for Greatness.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Fane Augmentation" hidden="false" id="ba1b-9e74-d7f2-19f1">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2f39-5945-f582-078f" includeChildSelections="false"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Fane Augmentation" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="83ba-a74b-4295-edb9">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a **^^Leagues of Votann^^** unit from your Crusade army is Marked for Greatness, that unit gains an additional 1XP.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Scout Vessel" id="2ebd-cb12-0d39-de59" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Upgraded Scout Vessel" hidden="false" id="e00c-bb27-e899-8e3c">
+                  <constraints>
+                    <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="96c6-682f-5581-1f20" includeChildSelections="false"/>
+                  </constraints>
+                  <modifiers>
+                    <modifier type="increment" value="1" field="96c6-682f-5581-1f20">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="7c06-cbc8-ff55-f799" shared="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="set" value="true" field="hidden">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="7c06-cbc8-ff55-f799" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                  <profiles>
+                    <profile name="Upgraded Scout Vessel" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="731e-b169-d639-464c">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">After each battle, if your Crusade force is on an expedition, you can choose to remove 1 rare resource from your Acquisition tracker. If you do, increase the maximum length of the expedition by 1 battle.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Scout Vessel" hidden="false" id="7c06-cbc8-ff55-f799">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cdb1-cb9a-1b8c-fa9f" includeChildSelections="false"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Scout Vessel" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="0861-5a59-346e-f80a">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time you roll to randomly determine a type of resource, you can re-roll the dice.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Implant Refinery" id="d038-a878-88a7-925b" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Upgraded Implant Refinery" hidden="false" id="8364-d5e5-12f2-d75f">
+                  <constraints>
+                    <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="865f-a509-7e61-a48b" includeChildSelections="false"/>
+                  </constraints>
+                  <modifiers>
+                    <modifier type="increment" value="1" field="865f-a509-7e61-a48b">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="52c7-111d-bba4-95f4" shared="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="set" value="true" field="hidden">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="52c7-111d-bba4-95f4" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                  <profiles>
+                    <profile name="Upgraded Implant Refinery" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="aa2c-d8fc-26a0-dddd">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time you roll a D6 to see if your Crusade force has gained a rare resource, you can re-roll the dice.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Implant Refinery" hidden="false" id="52c7-111d-bba4-95f4">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="863e-6c6a-79e8-bb75" includeChildSelections="false"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Implant Refinery" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="4947-9522-3b3f-937d">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">After each battle, you can re-roll failed Out of Action tests for **^^Leagues of Votann^^** units (excluding **^^Vehicles^^**) from your Crusade army.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Pioneer Fleet" id="f4b1-3ecf-5697-e1fb" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Upgraded Pioneer Fleet" hidden="false" id="5a40-7efa-f824-a494">
+                  <constraints>
+                    <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="b103-e1fb-c4ec-35ef" includeChildSelections="false"/>
+                  </constraints>
+                  <modifiers>
+                    <modifier type="increment" value="1" field="b103-e1fb-c4ec-35ef">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="d990-688f-1872-c3f1" shared="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="set" value="true" field="hidden">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="d990-688f-1872-c3f1" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                  <profiles>
+                    <profile name="Upgraded Pioneer Fleet" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="4abf-cbc9-8cb4-71b7">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the first battle round, you can spend 20 of any fundamental resource. If you do, gain 2 Yield points. These do not count towards the total Yield points you have.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Pioneer Fleet" hidden="false" id="d990-688f-1872-c3f1">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="96b8-ac98-fe42-a23c" includeChildSelections="false"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Pioneer Fleet" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2fc1-ac16-a1b3-a781">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">After each battle, randomly determine on fundamental resource. For each Yield point you had at the end of the battle, gain 10 of that resource.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Evaluation Vault" id="4b91-4c59-5fb5-f9cf" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Upgraded Evaluation Vault" hidden="false" id="8efe-dff3-363f-cfbe">
+                  <constraints>
+                    <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="21fd-6f2f-27b8-d07c" includeChildSelections="false"/>
+                  </constraints>
+                  <modifiers>
+                    <modifier type="increment" value="1" field="21fd-6f2f-27b8-d07c">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="ac0d-7cf0-aff3-458c" shared="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="set" value="true" field="hidden">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="ac0d-7cf0-aff3-458c" shared="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                  <profiles>
+                    <profile name="Upgraded Evaluation Vault" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="cb1f-2b74-7e5f-605b">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Before each battle, you can use the Field Testing Requisition twice for 1RP instead of 2RP.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Evaluation Vault" hidden="false" id="ac0d-7cf0-aff3-458c">
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0d45-1174-4040-3a36" includeChildSelections="false"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Evaluation Vault" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="136c-4268-1ae8-af3d">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Before each battle, you can use the Field Testing Requisition once for 1RP instead of 2RP.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <comment>Crusade content</comment>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Expeditions" id="bb09-674b-c3d7-2801" hidden="false" collapsible="true">
+      <comment>Crusade content</comment>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Backing" id="810c-29c4-f76e-7b38" hidden="false" sortIndex="2">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="889f-4194-ece9-8259" includeChildSelections="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Balance Stake" hidden="false" id="d512-b99b-4eb6-aa15" sortIndex="2"/>
+            <selectionEntry type="upgrade" import="true" name="High Investment" hidden="false" id="e83b-7e97-1992-b4f4" sortIndex="3"/>
+            <selectionEntry type="upgrade" import="true" name="Lean Operation" hidden="false" id="4391-1fe1-e13c-48c3" sortIndex="1"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Goals" id="5e6c-90af-9c88-7dd3" hidden="false" sortIndex="3">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="bd5a-e182-3a8b-b4e2" includeChildSelections="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Resource Reallocation" hidden="false" id="fd3f-77c0-bd9c-bdf0" sortIndex="2"/>
+            <selectionEntry type="upgrade" import="true" name="Monopolise Site" hidden="false" id="a51a-e0ce-6f28-219c" sortIndex="3"/>
+            <selectionEntry type="upgrade" import="true" name="Farstryd Exploration" hidden="false" id="ced3-eb2f-f103-1814" sortIndex="1"/>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Guild Contracts" id="3548-8a3e-37ce-ed30" hidden="false" sortIndex="4" collapsible="true">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a92c-b27a-3c8a-20b2" includeChildSelections="true"/>
+          </constraints>
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Mining" id="3750-b56f-b7e6-f4de" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Extraction - Energy" hidden="false" id="6da0-57d6-1dfa-dc7e"/>
+                <selectionEntry type="upgrade" import="true" name="Extraction - Minerals" hidden="false" id="6512-e5de-f583-c71b"/>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Science" id="70ba-326d-1c6e-92c7" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Research - Biology" hidden="false" id="5071-3d71-1589-6d36"/>
+                <selectionEntry type="upgrade" import="true" name="Research - Emergent Field" hidden="false" id="2bf1-aa16-bff5-45e7"/>
+              </selectionEntries>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Mapping" id="cbd6-009a-435b-01bd" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Exploration - Intelligence" hidden="false" id="a584-3ca4-d748-b32f"/>
+                <selectionEntry type="upgrade" import="true" name="Exploration - New Horizons" hidden="false" id="bc5d-cad6-8c60-ae2c"/>
+              </selectionEntries>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Condition" id="8aa5-49d9-e1f0-b9c8" hidden="false" sortIndex="5">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Mining Penalty" hidden="false" id="5b0c-548a-d7cc-7120">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="64e1-e150-8885-21ef" includeChildSelections="false"/>
+              </constraints>
+              <profiles>
+                <profile name="Mining Penalty" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="0328-e476-46b9-2ad3">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Until your Crusade force next completes an expedition, you cannot use the Guild Patronage Requisition, even if you have a trading hub.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Science Penalty" hidden="false" id="da87-ece9-815b-1f54">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2ec8-25e5-8d2b-e0cf" includeChildSelections="false"/>
+              </constraints>
+              <profiles>
+                <profile name="Science Penalty" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b091-9865-c503-137b">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Until your Crusade force next completes an expedition, you cannot purchase, upgrade or reactivate kindred assets.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Mapping Penalty" hidden="false" id="9522-a430-aa21-ee40">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6ea7-c426-b2e2-dbb0" includeChildSelections="false"/>
+              </constraints>
+              <profiles>
+                <profile name="Mapping Penalty" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="da8e-3d7a-be0d-8c52">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Until your Crusade force next completes an expedition, each time you roll to determine the fundamental resource gained or the amount of resources gained, subtract 1 from the roll, to a minimum of 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Battles Fought" hidden="false" id="3a25-ffca-b333-fcbc" sortIndex="1"/>
+      </selectionEntries>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <sharedRules>
