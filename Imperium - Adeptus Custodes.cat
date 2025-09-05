@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="1f19-6509-d906-ca10" name="Imperium - Adeptus Custodes" revision="73" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="1f19-6509-d906-ca10" name="Imperium - Adeptus Custodes" revision="74" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <categoryEntries>
     <categoryEntry id="a43a-4cf6-6443-f48e" name="Aleya" hidden="false"/>
     <categoryEntry id="5386-42fc-f4d0-7d64" name="Allarus Custodians" hidden="false"/>
@@ -882,9 +882,17 @@
                 <infoLink name="Sustained Hits" id="117a-963e-7b07-7581" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
                 <infoLink name="Devastating Wounds" id="9c30-8c0e-ef9e-7ff4" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
               </infoLinks>
-              <entryLinks>
-                <entryLink import="true" name="Weapon Modifications" hidden="false" id="8726-698c-9490-c623" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-              </entryLinks>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="e7ef-341c-5ee7-a3df" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="40b0-decc-f966-5faa" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="bc25-94cc-bfde-3ae9" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <categoryLinks>
+                <categoryLink name="Melee Weapon" hidden="false" id="4993-4d96-16f3-ed37" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -1632,93 +1640,159 @@
                 <infoLink name="Anti-" hidden="false" type="rule" id="e4ad-e955-c661-9c57" targetId="4111-82e3-9444-e942"/>
                 <infoLink name="Devastating Wounds" hidden="false" type="rule" id="9ef0-780c-9da1-a041" targetId="be1e-ac8e-1e2c-3528"/>
               </infoLinks>
-              <entryLinks>
-                <entryLink import="true" name="Weapon Modifications" hidden="false" id="f4a7-6368-d70c-6fb8" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-              </entryLinks>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="d664-4ea5-b08b-2fbe" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="7154-b661-f8ae-67ee" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="b2ed-cbd6-30b0-c796" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <categoryLinks>
+                <categoryLink name="Melee Weapon" hidden="false" id="4076-bcc8-73a6-4c76" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
             <selectionEntry id="93a9-93c6-8eaa-ada4" name="Witchseeker Flamer and CCW" hidden="false" collective="false" import="true" type="upgrade">
               <constraints>
                 <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="3971-2cdc-56e1-957b" type="max"/>
               </constraints>
-              <profiles>
-                <profile id="8af8-0a21-893a-e1c0" name="Witchseeker Flamer" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
-                  <characteristics>
-                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
-                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
-                    <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
-                  </characteristics>
-                  <modifiers>
-                    <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
-                </profile>
-                <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="23ec-462b-72e5-4993">
-                  <characteristics>
-                    <characteristic name="Range" id="95e-8d2a-d2b6-ce04" hidden="false" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                    <characteristic name="A" id="37bf-c707-6f20-b0a4" hidden="false" typeId="2337-daa1-6682-b110">3</characteristic>
-                    <characteristic name="WS" id="7443-828a-6af8-be5b" hidden="false" typeId="95d1-95f-45b4-11d6">2+</characteristic>
-                    <characteristic name="S" id="aa92-aa56-6de7-2b77" hidden="false" typeId="ab33-d393-96ce-ccba">3</characteristic>
-                    <characteristic name="AP" id="f793-8a63-90ea-56b8" hidden="false" typeId="41a0-1301-112a-e2f2">0</characteristic>
-                    <characteristic name="D" id="3717-2906-af77-faef" hidden="false" typeId="3254-9fe6-d824-513e">1</characteristic>
-                    <characteristic name="Keywords" id="4379-e65b-8165-5114" hidden="false" typeId="893f-9000-ccf7-648e">-</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
-              <infoLinks>
-                <infoLink name="Ignores Cover" hidden="false" type="rule" id="d60-90da-21b0-f640" targetId="4640-43e7-30b-215a"/>
-                <infoLink name="Torrent" hidden="false" type="rule" id="d27-577f-1d4f-cf56" targetId="5edf-d619-23e0-9b56"/>
-              </infoLinks>
-              <entryLinks>
-                <entryLink import="true" name="Weapon Modifications" hidden="false" id="8e25-c363-13ce-52bd" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-              </entryLinks>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="4bd4-f476-12d5-f77e">
+                  <profiles>
+                    <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="eb29-937c-2a54-0378">
+                      <characteristics>
+                        <characteristic name="Range" id="76b5-d522-af14-dddb" hidden="false" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" id="bb9e-4d5e-a773-705d" hidden="false" typeId="2337-daa1-6682-b110">3</characteristic>
+                        <characteristic name="WS" id="8fe3-aa91-22b2-1eb6" hidden="false" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                        <characteristic name="S" id="db09-5128-4a23-3785" hidden="false" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                        <characteristic name="AP" id="6157-791d-b032-07f8" hidden="false" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" id="e2df-17cc-b7f6-b764" hidden="false" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" id="8567-b34f-d18e-bb63" hidden="false" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e299-a651-04f3-e03e" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="62c3-3870-36f6-80a1" includeChildSelections="false"/>
+                  </constraints>
+                  <selectionEntryGroups>
+                    <selectionEntryGroup name="Weapon Upgrades" id="8896-6fb0-ce26-fcdc" hidden="false" flatten="true">
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="0e8a-cb2f-9ddb-6b56" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                        <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="355c-e836-9304-0029" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                      </entryLinks>
+                    </selectionEntryGroup>
+                  </selectionEntryGroups>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Witchseeker Flamer" hidden="false" id="fd88-5b69-c80a-72a5">
+                  <profiles>
+                    <profile name="Witchseeker Flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="8af8-0a21-893a-e1c0">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
+                      </characteristics>
+                      <modifiers>
+                        <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </profile>
+                  </profiles>
+                  <infoLinks>
+                    <infoLink name="Ignores Cover" id="d60-90da-21b0-f640" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
+                    <infoLink name="Torrent" id="d27-577f-1d4f-cf56" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
+                  </infoLinks>
+                  <selectionEntryGroups>
+                    <selectionEntryGroup name="Weapon Upgrades" id="41c2-f9a7-6637-93ce" hidden="false" flatten="true">
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="6060-f0cb-f080-d18f" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                        <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="867d-971b-71fd-5c1c" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                      </entryLinks>
+                    </selectionEntryGroup>
+                  </selectionEntryGroups>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="18c3-46b4-6df0-e964" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2bd2-5da3-f3cd-e4e9" includeChildSelections="false"/>
+                  </constraints>
+                </selectionEntry>
+              </selectionEntries>
             </selectionEntry>
             <selectionEntry id="94e9-239c-e46b-34c2" name="Master-crafted boltgun and CCW" hidden="false" collective="false" import="true" type="upgrade">
               <constraints>
                 <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="9022-a1cf-d80f-6afe" type="max"/>
               </constraints>
-              <profiles>
-                <profile id="6a76-ad7d-8c55-0d9e" name="Master-crafted boltgun" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
-                  <characteristics>
-                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
-                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
-                    <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
-                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire 1</characteristic>
-                  </characteristics>
-                </profile>
-                <profile name="Close combat weapon" hidden="false" id="84a5-17af-2af4-f77e" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
-                  <characteristics>
-                    <characteristic name="Range" id="95e-8d2a-d2b6-ce04" hidden="false" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                    <characteristic name="A" id="37bf-c707-6f20-b0a4" hidden="false" typeId="2337-daa1-6682-b110">3</characteristic>
-                    <characteristic name="WS" id="7443-828a-6af8-be5b" hidden="false" typeId="95d1-95f-45b4-11d6">2+</characteristic>
-                    <characteristic name="S" id="aa92-aa56-6de7-2b77" hidden="false" typeId="ab33-d393-96ce-ccba">3</characteristic>
-                    <characteristic name="AP" id="f793-8a63-90ea-56b8" hidden="false" typeId="41a0-1301-112a-e2f2">0</characteristic>
-                    <characteristic name="D" id="3717-2906-af77-faef" hidden="false" typeId="3254-9fe6-d824-513e">1</characteristic>
-                    <characteristic name="Keywords" id="4379-e65b-8165-5114" hidden="false" typeId="893f-9000-ccf7-648e">-</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
-              <infoLinks>
-                <infoLink name="Rapid Fire" hidden="false" type="rule" id="72b3-bc40-aa7c-97ef" targetId="c5c8-8b58-b8b6-7786"/>
-              </infoLinks>
-              <entryLinks>
-                <entryLink import="true" name="Weapon Modifications" hidden="false" id="030b-2351-b322-3050" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-              </entryLinks>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="77b6-41ee-7952-e94d">
+                  <profiles>
+                    <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="84a5-17af-2af4-f77e">
+                      <characteristics>
+                        <characteristic name="Range" id="95e-8d2a-d2b6-ce04" hidden="false" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                        <characteristic name="A" id="37bf-c707-6f20-b0a4" hidden="false" typeId="2337-daa1-6682-b110">3</characteristic>
+                        <characteristic name="WS" id="7443-828a-6af8-be5b" hidden="false" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                        <characteristic name="S" id="aa92-aa56-6de7-2b77" hidden="false" typeId="ab33-d393-96ce-ccba">3</characteristic>
+                        <characteristic name="AP" id="f793-8a63-90ea-56b8" hidden="false" typeId="41a0-1301-112a-e2f2">0</characteristic>
+                        <characteristic name="D" id="3717-2906-af77-faef" hidden="false" typeId="3254-9fe6-d824-513e">1</characteristic>
+                        <characteristic name="Keywords" id="4379-e65b-8165-5114" hidden="false" typeId="893f-9000-ccf7-648e">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8b67-60bf-df17-7fb7" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c92a-b6e5-e1b5-700f" includeChildSelections="false"/>
+                  </constraints>
+                  <selectionEntryGroups>
+                    <selectionEntryGroup name="Weapon Upgrades" id="7588-daa9-cd4c-72a1" hidden="false" flatten="true">
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="f9d4-8497-1c86-e8fa" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                        <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="4c01-c129-52c7-e71a" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                      </entryLinks>
+                    </selectionEntryGroup>
+                  </selectionEntryGroups>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Master-crafted boltgun" hidden="false" id="ed18-ec64-550a-1e1f">
+                  <selectionEntryGroups>
+                    <selectionEntryGroup name="Weapon Upgrades" id="db4f-5e38-9457-8d08" hidden="false" flatten="true">
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="2465-66c0-1796-3cb1" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                        <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="aaac-d5a5-5de7-066d" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                      </entryLinks>
+                    </selectionEntryGroup>
+                  </selectionEntryGroups>
+                  <profiles>
+                    <profile name="Master-crafted boltgun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="6a76-ad7d-8c55-0d9e">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Rapid Fire 1</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <infoLinks>
+                    <infoLink name="Rapid Fire" id="72b3-bc40-aa7c-97ef" hidden="false" type="rule" targetId="c5c8-8b58-b8b6-7786"/>
+                  </infoLinks>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="6e14-1794-762b-aa47" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1416-805b-80c1-6879" includeChildSelections="false"/>
+                  </constraints>
+                </selectionEntry>
+              </selectionEntries>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -2154,9 +2228,18 @@
               <infoLinks>
                 <infoLink name="Assault" hidden="false" type="rule" id="2af2-4d6d-c1b4-468f" targetId="fc8a-8c24-bae9-cc1c"/>
               </infoLinks>
-              <entryLinks>
-                <entryLink import="true" name="Weapon Modifications" hidden="false" id="0be0-de66-3c06-8ae3" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-              </entryLinks>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="e071-e745-ad3a-7570" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="c3a4-0f2c-b927-ccdc" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="4ffe-0474-1543-921c" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <categoryLinks>
+                <categoryLink name="Melee Weapon" hidden="false" id="5529-7b90-b7fd-6bcb" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+                <categoryLink name="Ranged Weapon" hidden="false" id="b8c0-9b21-22f1-9ffd" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
             <selectionEntry id="540a-65ba-1752-f217" name="Castellan Axe" hidden="false" collective="false" import="true" type="upgrade">
               <profiles>
@@ -2189,9 +2272,18 @@
               <infoLinks>
                 <infoLink name="Assault" hidden="false" type="rule" id="e217-3a9c-efb2-198a" targetId="fc8a-8c24-bae9-cc1c"/>
               </infoLinks>
-              <entryLinks>
-                <entryLink import="true" name="Weapon Modifications" hidden="false" id="7296-e25a-d178-c235" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-              </entryLinks>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="77ea-d2b7-c53d-889a" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="cf47-e0dd-0df9-2dda" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="bfe7-064c-1df9-de62" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <categoryLinks>
+                <categoryLink name="Melee Weapon" hidden="false" id="a43d-7269-8fba-c6dd" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+                <categoryLink name="Ranged Weapon" hidden="false" id="d906-0156-27ae-a852" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
             <selectionEntry id="5267-88a7-c874-ba99" name="Sentinel Blade &amp; Praesidium Shield" hidden="false" collective="false" import="true" type="upgrade">
               <profiles>
@@ -2229,9 +2321,18 @@
               <modifiers>
                 <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" affects="self.entries.profiles.Unit" scope="b61c-b815-65c0-b1cc"/>
               </modifiers>
-              <entryLinks>
-                <entryLink import="true" name="Weapon Modifications" hidden="false" id="3e4d-0edb-8cfd-89ca" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-              </entryLinks>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="26b9-2de8-1eba-4dd6" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="934c-94de-f7cd-ba40" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="5fd8-5b26-c8be-b58c" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <categoryLinks>
+                <categoryLink name="Melee Weapon" hidden="false" id="12a5-800e-9e0a-f84a" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+                <categoryLink name="Ranged Weapon" hidden="false" id="bd2f-044a-421f-926d" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
             <selectionEntry id="9480-c9d0-bef6-c3a4" name="Sentinel Blade" hidden="false" collective="false" import="true" type="upgrade">
               <profiles>
@@ -2265,9 +2366,18 @@
                 <infoLink name="Assault" hidden="false" type="rule" id="e2c1-bddf-8f8c-56b1" targetId="fc8a-8c24-bae9-cc1c"/>
                 <infoLink name="Pistol" hidden="false" type="rule" id="14fe-2183-dce8-760b" targetId="8bf7-8812-923d-29e4"/>
               </infoLinks>
-              <entryLinks>
-                <entryLink import="true" name="Weapon Modifications" hidden="false" id="faf5-ed34-350f-5c5a" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-              </entryLinks>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="0343-4a68-5e09-5c3e" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="f6d3-3638-351d-a4b3" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="d5b6-316f-ab13-9a06" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <categoryLinks>
+                <categoryLink name="Melee Weapon" hidden="false" id="2203-a751-3e5e-66b3" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+                <categoryLink name="Ranged Weapon" hidden="false" id="4f0e-1899-c24b-63ac" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Pyrithite Spear &amp; Praesidium shield" hidden="false" id="661f-4fd-3300-5e9b" collective="false">
               <profiles>
@@ -2311,9 +2421,18 @@
               <modifiers>
                 <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" affects="self.entries.profiles.Unit" scope="b61c-b815-65c0-b1cc"/>
               </modifiers>
-              <entryLinks>
-                <entryLink import="true" name="Weapon Modifications" hidden="false" id="c7f2-0ad4-d5ac-7b41" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-              </entryLinks>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="2702-2689-c340-2b22" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="d2c5-c86d-eec6-3c1e" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="8896-bbba-989f-c513" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <categoryLinks>
+                <categoryLink name="Melee Weapon" hidden="false" id="48e2-ac7a-b164-aab0" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+                <categoryLink name="Ranged Weapon" hidden="false" id="34bd-c821-5a11-6ab5" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -2470,9 +2589,17 @@
               <infoLinks>
                 <infoLink name="Blast" id="5f4e-e9d2-512-9ecf" hidden="false" type="rule" targetId="6c1f-1cf7-ff25-c99e"/>
               </infoLinks>
-              <entryLinks>
-                <entryLink import="true" name="Weapon Modifications" hidden="false" id="361b-964b-2d1c-0004" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-              </entryLinks>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="1636-6e8d-5707-bfaa" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="8911-a899-952b-0ed7" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="05ee-02cc-e53b-943c" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <categoryLinks>
+                <categoryLink name="Ranged Weapon" hidden="false" id="e959-2335-9e11-cbe8" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
           </selectionEntries>
           <selectionEntryGroups>
@@ -2513,9 +2640,18 @@
                   <infoLinks>
                     <infoLink name="Assault" id="1660-4289-24dd-35e1" hidden="false" type="rule" targetId="fc8a-8c24-bae9-cc1c"/>
                   </infoLinks>
-                  <entryLinks>
-                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="2e6f-41dd-a210-5129" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-                  </entryLinks>
+                  <selectionEntryGroups>
+                    <selectionEntryGroup name="Weapon Upgrades" id="8b71-58a6-f04e-9bec" hidden="false" flatten="true">
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="c0d3-fe83-e20d-be8d" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                        <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="791d-e3ad-98c5-bf50" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                      </entryLinks>
+                    </selectionEntryGroup>
+                  </selectionEntryGroups>
+                  <categoryLinks>
+                    <categoryLink name="Melee Weapon" hidden="false" id="96d9-14da-1dbf-a6c9" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+                    <categoryLink name="Ranged Weapon" hidden="false" id="7af5-938f-98ba-58b1" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="Castellan Axe" hidden="false" id="a576-b3a0-7198-2094" collective="false">
                   <profiles>
@@ -2548,9 +2684,18 @@
                   <infoLinks>
                     <infoLink name="Assault" id="3a45-5239-ae54-cc15" hidden="false" type="rule" targetId="fc8a-8c24-bae9-cc1c"/>
                   </infoLinks>
-                  <entryLinks>
-                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="d961-b93d-ec03-c130" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-                  </entryLinks>
+                  <selectionEntryGroups>
+                    <selectionEntryGroup name="Weapon Upgrades" id="05ce-71a5-1f72-ace4" hidden="false" flatten="true">
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="03a1-3693-6d0e-edae" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                        <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="68fc-3ee3-8957-5b64" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                      </entryLinks>
+                    </selectionEntryGroup>
+                  </selectionEntryGroups>
+                  <categoryLinks>
+                    <categoryLink name="Melee Weapon" hidden="false" id="a935-f786-67cd-ed79" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+                    <categoryLink name="Ranged Weapon" hidden="false" id="fc3d-c3f1-4004-7f4e" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntryGroup>
@@ -2702,9 +2847,17 @@
               <infoLinks>
                 <infoLink name="Lance" id="db92-ad05-64af-bdcb" hidden="false" type="rule" targetId="2ebc-abdf-8129-6c57"/>
               </infoLinks>
-              <entryLinks>
-                <entryLink import="true" name="Weapon Modifications" hidden="false" id="233c-5469-a1e3-e7b8" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-              </entryLinks>
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="06f4-4869-7132-8d31" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="722f-1ee7-caaf-eed6" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="21d8-d0d9-81c2-1255" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <categoryLinks>
+                <categoryLink name="Melee Weapon" hidden="false" id="e9c7-f6a6-389b-d280" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
           </selectionEntries>
           <selectionEntryGroups>
@@ -2735,9 +2888,17 @@
                     <infoLink name="Rapid Fire" id="fcb1-1cca-f94-e465" hidden="false" type="rule" targetId="c5c8-8b58-b8b6-7786"/>
                     <infoLink name="Twin-linked" id="c4b0-f816-9aa-4520" hidden="false" type="rule" targetId="cf93-ad4d-2f08-a79d"/>
                   </infoLinks>
-                  <entryLinks>
-                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="1a7b-ca66-90b7-61bf" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-                  </entryLinks>
+                  <selectionEntryGroups>
+                    <selectionEntryGroup name="Weapon Upgrades" id="9c3a-b7e2-a186-ce16" hidden="false" flatten="true">
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="13af-1a7c-4a69-25a9" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                        <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="1c7f-eb05-c8c6-f971" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                      </entryLinks>
+                    </selectionEntryGroup>
+                  </selectionEntryGroups>
+                  <categoryLinks>
+                    <categoryLink name="Ranged Weapon" hidden="false" id="b504-caba-3e14-4d2b" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="Salvo launcher" hidden="false" id="1576-174e-e5d6-82ea" collective="false">
                   <profiles>
@@ -2759,9 +2920,17 @@
                   <infoLinks>
                     <infoLink name="Twin-linked" id="5ce2-8fb2-ed91-09bf" hidden="false" type="rule" targetId="cf93-ad4d-2f08-a79d"/>
                   </infoLinks>
-                  <entryLinks>
-                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="8a30-310c-d72a-6393" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9" flatten="false"/>
-                  </entryLinks>
+                  <selectionEntryGroups>
+                    <selectionEntryGroup name="Weapon Upgrades" id="bcf9-5fdd-8ae4-6032" hidden="false" flatten="true">
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="3d4a-e1cf-e792-007f" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                        <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="a0c7-d629-857f-2ee3" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                      </entryLinks>
+                    </selectionEntryGroup>
+                  </selectionEntryGroups>
+                  <categoryLinks>
+                    <categoryLink name="Ranged Weapon" hidden="false" id="b839-e32c-a362-85a7" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntryGroup>
