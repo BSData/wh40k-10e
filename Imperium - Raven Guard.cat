@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="6e59-e1ee-47ad-6ce5" name="Imperium - Adeptus Astartes - Raven Guard" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="9" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="6e59-e1ee-47ad-6ce5" name="Imperium - Adeptus Astartes - Raven Guard" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="10" battleScribeVersion="2.03" type="catalogue">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Space Marines" id="4142-7347-ddc2-705a" targetId="e0af-67df-9d63-8fb7" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights - Library" id="9a99-a0ad-519f-4619" targetId="1b6d-dc06-5db9-c7d1" importRootEntries="true"/>
@@ -30,7 +30,15 @@
         <infoLink name="Invulnerable Save" hidden="false" type="profile" id="aa3d-f0-6775-59a9" targetId="db19-dee7-9530-ef0e"/>
         <infoLink name="Leader" hidden="false" type="rule" id="df41-a640-25b9-fa28" targetId="b4dd-3e1f-41cb-218f"/>
         <infoLink name="Oath of Moment" hidden="false" type="rule" id="8269-c8d-6c08-b8e4" targetId="3b76-4053-ece9-6e7d"/>
-        <infoLink name="Lone Operative" hidden="false" type="rule" id="7588-d43a-da8e-84ee" targetId="a8a0-8fe7-898-e0f3"/>
+        <infoLink name="Lone Operative" hidden="false" type="rule" id="7588-d43a-da8e-84ee" targetId="a8a0-8fe7-898-e0f3">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cbb9-15e9-16ae-6597" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </infoLink>
         <infoLink name="Deep Strike" hidden="false" type="rule" id="7c9-77f1-dd05-3fc1" targetId="7cb5-dd6b-dd87-ad3b"/>
         <infoLink name="Stealth" hidden="false" type="rule" id="f773-9042-cdb0-5c49" targetId="bec5-4288-34a6-ccfa"/>
       </infoLinks>
@@ -128,12 +136,116 @@ Intercessors with Jump Packs units from your army have an Objective Control cha
           </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
+      <modifiers>
+        <modifier type="remove" value="5bd8-882d-302b-48f3" field="category">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cbb9-15e9-16ae-6597" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="add" value="2d7f-1892-2fd0-e29c" field="category">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cbb9-15e9-16ae-6597" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Aethon Shaan" hidden="false" id="cbb9-15e9-16ae-6597">
+      <profiles>
+        <profile name="Aethon Shaan" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="8df6-281c-884c-7c5c">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">14&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">5</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Chapter Master of the Raven Guard" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f9e2-1180-e33c-e82c">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the Declare Battle Formations step, if your army includes Aethon Shaan and Kayvaan
+Shrike, until the end of the battle, your Kayvaan Shrike unit loses its Lone Operative ability and it
+replaces its Chapter Master keyword with Captain.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Master of Shadows" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5dbe-abfc-6ac6-2061">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Command phase, select one unit from your opponent’s army. Until the start of your next
+Command phase, each time an Adeptus Astartes unit from your army declares a charge while it is within 12&quot; of that enemy unit, you can re-roll the Charge roll, but it must declare that enemy unit as a target of that charge (if possible).</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Blackwing Mantle" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1384-de6c-2c62-4f26">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You can target this model’s unit with the Rapid Ingress and Heroic Intervention Stratagems for 0CP,
+even if you have already used that Stratagem on a different unit this phase.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Invulnerable Save" id="9445-06e6-a01f-8998" hidden="false" type="profile" targetId="db19-dee7-9530-ef0e"/>
+        <infoLink name="Deep Strike" id="b628-a463-3a3a-822c" hidden="false" type="rule" targetId="7cb5-dd6b-dd87-ad3b"/>
+        <infoLink name="Oath of Moment" id="0665-b752-c071-f547" hidden="false" type="rule" targetId="3b76-4053-ece9-6e7d"/>
+        <infoLink name="Stealth" id="f6cc-d9d4-a37a-0a0e" hidden="false" type="rule" targetId="bec5-4288-34a6-ccfa"/>
+      </infoLinks>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="8a9f-725f-268e-0d5e"/>
+      </constraints>
+      <entryLinks>
+        <entryLink import="true" name="Heavy Bolt Pistol" hidden="false" id="2326-3d93-b612-6235" type="selectionEntry" targetId="eca4-d5d2-18a1-01a8">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="422e-8efb-d3e5-d931-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="422e-8efb-d3e5-d931-max" includeChildSelections="false"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Claws of Severax" hidden="false" id="13de-b9ab-2901-38e2">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="67c9-75e2-4632-2059-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="67c9-75e2-4632-2059-max" includeChildSelections="false"/>
+          </constraints>
+          <profiles>
+            <profile name="Claws of Severax" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="ab3f-9aac-cca1-cbe6">
+              <characteristics>
+                <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                <characteristic name="A" typeId="2337-daa1-6682-b110">7</characteristic>
+                <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
+                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Sustained Hits 2, Twin-linked</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Sustained Hits" id="78fc-f0be-3cbf-283d" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
+            <infoLink name="Twin-linked" id="5ea5-a021-befb-5958" hidden="false" type="rule" targetId="cf93-ad4d-2f08-a79d"/>
+          </infoLinks>
+        </selectionEntry>
+      </selectionEntries>
+      <categoryLinks>
+        <categoryLink targetId="9cfd-1c32-585f-7d5c" id="8786-fb4d-3f45-01d4" primary="false" name="Character"/>
+        <categoryLink targetId="4f3a-f0f7-6647-348d" id="283d-4785-e1e7-1003" primary="true" name="Epic Hero"/>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="f5f8-5ed2-fc47-d023" primary="false" name="Infantry"/>
+        <categoryLink targetId="c619-2086-bbcf-69c9" id="5a19-2125-bd8e-9e39" primary="false" name="Fly"/>
+        <categoryLink targetId="dda2-bb0a-215e-ad9c" id="86da-61c9-3a04-a65f" primary="false" name="Jump Pack"/>
+        <categoryLink targetId="aff3-d6a3-2a95-9dc" id="8422-edda-9aab-5ba9" primary="false" name="Imperium"/>
+        <categoryLink targetId="6e7-40c-58d9-e402" id="5712-84fe-f31e-f520" primary="false" name="Faction: Adeptus Astartes"/>
+        <categoryLink targetId="84b7-7194-3b84-1b0c" id="10b4-bdf4-c9c6-0461" primary="false" name="Faction: Raven Guard"/>
+        <categoryLink targetId="5179-8ede-45e3-49a2" id="39d5-d24f-dc94-6c95" primary="false" name="Tacticus"/>
+        <categoryLink targetId="5bd8-882d-302b-48f3" id="decf-5df1-41d6-f7fd" primary="false" name="Chapter Master"/>
+        <categoryLink targetId="137d-c790-9826-095d" id="99b0-46a3-a073-5b8c" primary="false" name="Aethon Shaan"/>
+      </categoryLinks>
     </selectionEntry>
   </sharedSelectionEntries>
   <categoryEntries>
     <categoryEntry name="Kayvaan Shrike" hidden="false" id="a4c3-fdb-4d12-e303"/>
+    <categoryEntry name="Aethon Shaan" id="137d-c790-9826-095d" hidden="false"/>
   </categoryEntries>
   <entryLinks>
     <entryLink import="true" name="Kayvaan Shrike" hidden="false" type="selectionEntry" id="8ec7-1c8b-5540-5f14" targetId="339f-9776-243d-69a6"/>
   </entryLinks>
+  <infoLinks>
+    <infoLink name="Lone Operative" id="cf46-1303-160c-bc8d" hidden="false" type="rule" targetId="a8a0-8fe7-898-e0f3"/>
+  </infoLinks>
 </catalogue>
