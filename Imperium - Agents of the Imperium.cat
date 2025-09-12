@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="90" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="91" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Vindicare Assassin" hidden="false" id="efa3-2cf5-dcfb-b976">
       <categoryLinks>
@@ -18088,17 +18088,17 @@ For the purposes of interacting with terrain features, all models in units with 
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="false" includeChildForces="false"/>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="34d8-ef3d-2c30-1671" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="34d8-ef3d-2c30-1671" shared="true" includeChildSelections="true" includeChildForces="false"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
-            <modifier type="add" value="34d8-ef3d-2c30-1671" field="category">
+            <modifier type="add" value="22a1-b48a-b3d4-dc02" field="category">
               <conditions>
-                <condition type="instanceOf" value="1" field="selections" scope="parent" childId="22a1-b48a-b3d4-dc02" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                <condition type="instanceOf" value="1" field="selections" scope="parent" childId="92d3-447e-a71e-6739" shared="true" includeChildSelections="false" includeChildForces="false"/>
               </conditions>
             </modifier>
             <modifier type="set" value="2" field="b03b-c239-15a5-da55">
@@ -18143,9 +18143,6 @@ For the purposes of interacting with terrain features, all models in units with 
               </modifiers>
             </modifierGroup>
           </modifierGroups>
-          <categoryLinks>
-            <categoryLink name="Radical" hidden="false" id="9c8f-3b76-2fa2-3997" targetId="22a1-b48a-b3d4-dc02" primary="false"/>
-          </categoryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Brotherhood of Veterans" hidden="false" id="aabe-5861-adee-720e">
           <constraints>
@@ -18773,10 +18770,10 @@ For the purposes of interacting with terrain features, all models in units with 
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="false" includeChildForces="false"/>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="22a1-b48a-b3d4-dc02" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="22a1-b48a-b3d4-dc02" shared="true" includeChildSelections="true" includeChildForces="false"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -19415,15 +19412,13 @@ For the purposes of interacting with terrain features, all models in units with 
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="438f-a6c1-c6ac-d70b" includeChildSelections="false"/>
       </constraints>
     </selectionEntryGroup>
-    <selectionEntryGroup name="Vermilion-level Assets" id="731a-6069-5afb-247f" hidden="false" collapsible="true">
+    <selectionEntryGroup name="Vermillion-level Assets" id="731a-6069-5afb-247f" hidden="false" collapsible="true">
       <comment>Crusade content</comment>
-      <constraints>
-        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5d5e-0717-21b4-f6cd" includeChildSelections="false"/>
-      </constraints>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Void Trader" hidden="false" id="c560-7e1d-562e-e7ae">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="0fab-d7c6-74e1-4c17" includeChildSelections="true"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8c72-ef7a-9b60-5902" includeChildSelections="false"/>
           </constraints>
           <profiles>
             <profile name="Void Trader" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f024-4677-5080-8ed2">
@@ -19450,6 +19445,7 @@ For the purposes of interacting with terrain features, all models in units with 
         <selectionEntry type="upgrade" import="true" name="Highly Placed Ally" hidden="false" id="4c1c-8715-14aa-3084">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="a747-5cf0-a995-3695" includeChildSelections="true"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="513f-1839-c4d9-6609" includeChildSelections="false"/>
           </constraints>
           <profiles>
             <profile name="Highly Placed Ally" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="87dc-af0a-3ddc-43ca">
@@ -19476,6 +19472,7 @@ For the purposes of interacting with terrain features, all models in units with 
         <selectionEntry type="upgrade" import="true" name="Secret Forces" hidden="false" id="f111-b1b8-a9f2-a5b1">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="c9da-b768-cd3f-20c3" includeChildSelections="true"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="fa05-96e2-dc8a-f1f2" includeChildSelections="false"/>
           </constraints>
           <profiles>
             <profile name="Secret Forces" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="20db-823e-5af3-068d">
@@ -19502,6 +19499,7 @@ For the purposes of interacting with terrain features, all models in units with 
         <selectionEntry type="upgrade" import="true" name="Trained By A Legend" hidden="false" id="e562-b05a-f574-2390">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="a82d-2c0b-e295-794c" includeChildSelections="true"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6f3d-43cb-4302-4494" includeChildSelections="false"/>
           </constraints>
           <profiles>
             <profile name="Trained By A Legend" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="613b-d25e-0103-2ef5">
@@ -19533,6 +19531,7 @@ For the purposes of interacting with terrain features, all models in units with 
         <selectionEntry type="upgrade" import="true" name="Master of Spies" hidden="false" id="3a6c-946d-ae2f-65dc">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="121c-ec25-e3e8-2c90" includeChildSelections="true"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="fc0d-b1b7-2ae4-e6af" includeChildSelections="false"/>
           </constraints>
           <profiles>
             <profile name="Master of Spies" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1d41-3852-555d-d6d5">
@@ -19559,6 +19558,7 @@ For the purposes of interacting with terrain features, all models in units with 
         <selectionEntry type="upgrade" import="true" name="Bound Entity" hidden="false" id="9c0c-d3e3-89ed-5587">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="eb6e-8a1d-a99c-829e" includeChildSelections="true"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e532-9fe8-801f-9c93" includeChildSelections="false"/>
           </constraints>
           <profiles>
             <profile name="Bound Entity" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="472d-27e6-f4e5-d593">
@@ -19579,8 +19579,8 @@ For the purposes of interacting with terrain features, all models in units with 
               <conditionGroups>
                 <conditionGroup type="or">
                   <conditions>
-                    <condition type="instanceOf" value="1" field="selections" scope="parent" childId="34d8-ef3d-2c30-1671" shared="true"/>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="22a1-b48a-b3d4-dc02" shared="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="34d8-ef3d-2c30-1671" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="22a1-b48a-b3d4-dc02" shared="true" includeChildSelections="true"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -19598,6 +19598,7 @@ For the purposes of interacting with terrain features, all models in units with 
         <selectionEntry type="upgrade" import="true" name="Upholder of the Creed" hidden="false" id="be38-3cf6-d5f3-b3de">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="a34e-f89a-08c6-59f1" includeChildSelections="true"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="af65-e1a5-4652-d4a9" includeChildSelections="false"/>
           </constraints>
           <profiles>
             <profile name="Upholder of the Creed" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ee6e-d2cb-4b88-5a03">
