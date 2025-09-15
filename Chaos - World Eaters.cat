@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="df9a-59b2-f464-59ad" name="Chaos - World Eaters" revision="84" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="df9a-59b2-f464-59ad" name="Chaos - World Eaters" revision="85" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <profileTypes>
     <profileType id="02a0-fa96-6f9b-354f" name="Wrathful Presence">
       <characteristicTypes>
@@ -2778,7 +2778,11 @@
       <entryLinks>
         <entryLink id="e761-56b7-0133-cb24" name="Warlord" hidden="false" collective="false" import="true" targetId="9754-481c-c292-a1f9" type="selectionEntry" sortIndex="2"/>
         <entryLink id="5d2a-3072-b1d3-7563" name="Enhancements" hidden="false" collective="false" import="true" targetId="7b6d-6d90-0ffe-b45b" type="selectionEntryGroup" sortIndex="3"/>
-        <entryLink import="true" name="Crusade" hidden="false" id="3ba3-1855-23af-6931" type="selectionEntryGroup" targetId="8bbb-e890-a169-863e" sortIndex="1"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="3ba3-1855-23af-6931" type="selectionEntryGroup" targetId="8bbb-e890-a169-863e" sortIndex="1">
+          <entryLinks>
+            <entryLink import="true" name="Bloodsoaked Ascension" hidden="false" id="b8c7-9e56-2b95-a0c5" type="selectionEntry" targetId="6cab-9a1e-23ed-5934"/>
+          </entryLinks>
+        </entryLink>
       </entryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="200"/>
@@ -2993,7 +2997,11 @@
       <entryLinks>
         <entryLink id="c28b-ad55-0eb6-731d" name="Warlord" hidden="false" collective="false" import="true" targetId="9754-481c-c292-a1f9" type="selectionEntry" sortIndex="2"/>
         <entryLink id="341d-3145-c33d-f32e" name="Enhancements" hidden="false" collective="false" import="true" targetId="7b6d-6d90-0ffe-b45b" type="selectionEntryGroup" sortIndex="3"/>
-        <entryLink import="true" name="Crusade" hidden="false" id="8eab-ab0f-fe2b-3f59" type="selectionEntryGroup" targetId="8bbb-e890-a169-863e" sortIndex="1"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="8eab-ab0f-fe2b-3f59" type="selectionEntryGroup" targetId="8bbb-e890-a169-863e" sortIndex="1">
+          <entryLinks>
+            <entryLink import="true" name="Bloodsoaked Ascension" hidden="false" id="c425-b672-3915-9089" type="selectionEntry" targetId="6cab-9a1e-23ed-5934"/>
+          </entryLinks>
+        </entryLink>
       </entryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="180"/>
@@ -10555,6 +10563,11 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
         <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
       </costs>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Bloodsoaked Ascension" hidden="false" id="6cab-9a1e-23ed-5934">
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="bb26-ea62-69b4-71ba" includeChildSelections="false"/>
+      </constraints>
+    </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
     <selectionEntryGroup id="7b6d-6d90-0ffe-b45b" name="Enhancements" hidden="false" collective="false" import="true" collapsible="true">
@@ -12803,9 +12816,14 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
       </selectionEntries>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4f09-0141-6c70-6c5a" shared="true" includeChildSelections="false" includeChildForces="false"/>
-          </conditions>
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4f09-0141-6c70-6c5a" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="6cab-9a1e-23ed-5934" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
         </modifier>
       </modifiers>
       <comment>Crusade content</comment>
