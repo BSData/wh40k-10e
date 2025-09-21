@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="36d3-36bc-68dd-40ac" name="Imperium - Adeptus Astartes - Black Templars" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="46" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="36d3-36bc-68dd-40ac" name="Imperium - Adeptus Astartes - Black Templars" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="47" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Space Marines" id="2137-605d-109a-d3b2" targetId="e0af-67df-9d63-8fb7" importRootEntries="true"/>
   </catalogueLinks>
@@ -1469,7 +1469,7 @@ Water from the Stoup of Elucidation: Improve the Armour Penetration characterist
         </selectionEntryGroup>
         <selectionEntryGroup name="Crusade" id="4f24-5d44-4bab-df99" hidden="false" sortIndex="1" collapsible="true">
           <selectionEntryGroups>
-            <selectionEntryGroup name="Battle Tallies" id="7022-413f-4bd4-8bda" hidden="false" sortIndex="1">
+            <selectionEntryGroup name="Battle Tallies" id="7022-413f-4bd4-8bda" hidden="false" sortIndex="2">
               <selectionEntries>
                 <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="d2e7-4cb6-c6c5-03d2"/>
                 <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="d3f2-e93d-287c-f02b"/>
@@ -1485,20 +1485,37 @@ Water from the Stoup of Elucidation: Improve the Armour Penetration characterist
             </modifier>
           </modifiers>
           <entryLinks>
-            <entryLink import="true" name="Champion&apos;s Virtue Battle Honours" hidden="false" id="82fe-bcff-8b81-67bb" type="selectionEntryGroup" targetId="0933-1b16-828c-d6e8" sortIndex="2"/>
+            <entryLink import="true" name="Champion&apos;s Virtue Battle Honours" hidden="false" id="82fe-bcff-8b81-67bb" type="selectionEntryGroup" targetId="0933-1b16-828c-d6e8" sortIndex="3"/>
           </entryLinks>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Anoint a Champion" hidden="false" id="a99a-2859-9841-4540" sortIndex="1">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3fe7-789f-c182-1844" includeChildSelections="false"/>
+              </constraints>
+            </selectionEntry>
+          </selectionEntries>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <modifiers>
         <modifier type="set" value="0" field="51b2-306e-1021-d207">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="self" childId="a99a-2859-9841-4540" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
         </modifier>
-        <modifier type="add" value="Reminder: Emperor&apos;s Champion does not count towards Supply Limit while inactive in Crusade Force" field="info">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
+        <modifier type="add" value="Reminder: An Anointed Emperor&apos;s Champion does not count towards Supply Limit while inactive in Crusade Force" field="info">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="self" childId="a99a-2859-9841-4540" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
         </modifier>
       </modifiers>
     </selectionEntry>
