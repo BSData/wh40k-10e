@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue library="false" id="03fe-a162-4c02-f07b" name="Chaos - Emperor&apos;s Children" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="31" revision="28" authorContact="Mad_Spy" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
+<catalogue library="false" id="03fe-a162-4c02-f07b" name="Chaos - Emperor&apos;s Children" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="31" revision="29" authorContact="Mad_Spy" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Lucius the Eternal" hidden="false" id="e390-b58b-db9-816" collective="false">
       <profiles>
@@ -6061,6 +6061,30 @@ While a unit from your army is Empowered, weapons equipped by models in that uni
         </modifier>
       </modifiers>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Perfect Ascension" hidden="false" id="32bc-07c5-6da4-c94e">
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="52ed-6493-d6ea-fe17" includeChildSelections="false"/>
+      </constraints>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="bb9d-299a-ed60-2d8a" shared="true" includeChildSelections="true"/>
+              </conditions>
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="4f09-0141-6c70-6c5a" shared="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="227d-98ab-930c-3e7f" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
   </sharedSelectionEntries>
   <categoryEntries>
     <categoryEntry name="Faction: Emperor&apos;s Children" id="31bb-7d77-943e-94bd" hidden="false"/>
@@ -7904,8 +7928,9 @@ At the end of the battle, if one or more enemy units failed a Battle-shock test 
     <selectionEntryGroup name="Crusade" id="3ead-f21c-66ef-1a02" hidden="false" collapsible="true">
       <entryLinks>
         <entryLink import="true" name="Experience Points" hidden="false" id="6941-8b0d-805c-e8ae" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
-        <entryLink import="true" name="Legendary Veterans" hidden="false" id="dc6e-0ec0-e31c-f9d8" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
-        <entryLink import="true" name="Battle Scars" hidden="false" id="3133-4574-d2b2-f820" type="selectionEntryGroup" targetId="1576-e816-033f-828d" sortIndex="5" collapsible="true"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="dc6e-0ec0-e31c-f9d8" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="3"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="3133-4574-d2b2-f820" type="selectionEntryGroup" targetId="1576-e816-033f-828d" sortIndex="6" collapsible="true"/>
+        <entryLink import="true" name="Perfect Ascension" hidden="false" id="6c1f-39cd-fc54-fa88" type="selectionEntry" targetId="32bc-07c5-6da4-c94e" sortIndex="2"/>
       </entryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -7916,14 +7941,14 @@ At the end of the battle, if one or more enemy units failed a Battle-shock test 
       </modifiers>
       <comment>Crusade content</comment>
       <selectionEntryGroups>
-        <selectionEntryGroup name="Battle Tallies" id="2b51-6b2b-cf57-8d39" hidden="false" sortIndex="3">
+        <selectionEntryGroup name="Battle Tallies" id="2b51-6b2b-cf57-8d39" hidden="false" sortIndex="4">
           <selectionEntries>
             <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="7632-55d2-0aa3-cd7a"/>
             <selectionEntry type="upgrade" import="true" name="Battles Survived" hidden="false" id="cb8e-329e-86eb-504d"/>
             <selectionEntry type="upgrade" import="true" name="Enemy Units Destroyed" hidden="false" id="78d9-2179-9a78-5720"/>
           </selectionEntries>
         </selectionEntryGroup>
-        <selectionEntryGroup name="Battle Honours" id="12cc-7866-2c38-64d9" hidden="false" sortIndex="4" collapsible="true">
+        <selectionEntryGroup name="Battle Honours" id="12cc-7866-2c38-64d9" hidden="false" sortIndex="5" collapsible="true">
           <selectionEntryGroups>
             <selectionEntryGroup name="Weapon Modifications" id="a774-5e3b-510c-e290" hidden="false">
               <entryLinks>
@@ -8450,7 +8475,7 @@ At the end of the battle, if one or more enemy units failed a Battle-shock test 
                 <conditionGroup type="and">
                   <conditions>
                     <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="9c0e-7e25-4580-e439" shared="true" includeChildSelections="false" includeChildForces="false"/>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="4f09-0141-6c70-6c5a" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="parent" childId="32bc-07c5-6da4-c94e" shared="true" includeChildSelections="true"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
