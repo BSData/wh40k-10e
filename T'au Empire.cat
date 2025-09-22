@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="116" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="117" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
   <rules>
     <rule name="For The Greater Good" hidden="false" id="eeb6-c42-48f7-cc21">
       <description>If your Army Faction is **^^T’au Empire^^**, at the start of your Shooting phase you can select units from your army with this ability to become Observer units.
@@ -15659,6 +15659,9 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
         <infoLink name="Indirect Fire" id="7cb2-35fe-51c5-baf8" hidden="false" type="rule" targetId="4ddd-4e29-acdd-5e6d"/>
         <infoLink name="Twin-linked" id="3d07-916b-b594-9983" hidden="false" type="rule" targetId="cf93-ad4d-2f08-a79d"/>
       </infoLinks>
+      <categoryLinks>
+        <categoryLink name="Support Turret Weapon" hidden="false" id="3272-09b8-d1f6-7168" targetId="6e38-21cc-73fd-70d4" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Crushing bulk" hidden="false" id="659c-0926-9ea4-8983">
       <profiles>
@@ -17624,6 +17627,16 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
           <infoLinks>
             <infoLink name="Lethal Hits" id="cbf0-4d84-3bba-6a83" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
           </infoLinks>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Merciless Marksmen" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Ranged Weapons"/>
+                <modifier type="append" value="Lethal Hits" field="7f1b-8591-2fcf-d01c" scope="root-entry" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+                <modifier type="replace" value="" field="7f1b-8591-2fcf-d01c" scope="root-entry" affects="self.entries.recursive.6e38-21cc-73fd-70d4.profiles.Ranged Weapons" join=", " arg="Lethal Hits"/>
+                <modifier type="replace" value="" field="annotation" scope="root-entry" affects="self.entries.recursive.6e38-21cc-73fd-70d4.profiles.Ranged Weapons" join=", " arg="Merciless Marksmen"/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Practised Aim" hidden="false" id="e31f-8dc8-a9e8-5ed6">
           <constraints>
@@ -17665,16 +17678,8 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
           <modifierGroups>
             <modifierGroup type="and">
               <modifiers>
-                <modifier type="append" value="Practised Aim" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Ranged Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="e31f-8dc8-a9e8-5ed6" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" scope="model-or-unit" affects="self.entries.recursive.profiles.Ranged Weapons">
-                  <conditions>
-                    <condition type="equalTo" value="1" field="selections" scope="model-or-unit" childId="e31f-8dc8-a9e8-5ed6" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
+                <modifier type="append" value="Practised Aim" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Ranged Weapons"/>
+                <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" scope="root-entry" affects="self.entries.recursive.profiles.Ranged Weapons"/>
               </modifiers>
             </modifierGroup>
           </modifierGroups>
@@ -19224,6 +19229,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
     <categoryEntry name="Flesh Shaper" hidden="false" id="2c5e-7638-d746-1d27"/>
     <categoryEntry name="Lone-spear" hidden="false" id="1ac3-694c-fae8-afad"/>
     <categoryEntry name="Krootox Rampagers" hidden="false" id="6098-c74b-f3a1-f33"/>
+    <categoryEntry name="Support Turret Weapon" id="6e38-21cc-73fd-70d4" hidden="true"/>
   </categoryEntries>
   <sharedProfiles>
     <profile name="Invulnerable Save (5+)" hidden="false" id="27f4-7449-a636-ae8c" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
