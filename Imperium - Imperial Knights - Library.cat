@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="1b6d-dc06-5db9-c7d1" name="Imperium - Imperial Knights - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="55" battleScribeVersion="2.03" authorName="BSData Developers" type="catalogue" authorContact="Dunamis55 &amp; AbonShell">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="1b6d-dc06-5db9-c7d1" name="Imperium - Imperial Knights - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="56" battleScribeVersion="2.03" authorName="BSData Developers" type="catalogue" authorContact="Dunamis55 &amp; AbonShell">
   <rules>
     <rule name="Code Chivalric" id="cbd-943-bc7b-20ec">
-      <description>If your Army Faction is IMPERIAL KNIGHTS, at the end of the Read Mission Objectives step, you must select one of the Oaths below to be active for your army. Models from your army with this ability gain the associated Oath ability, and you gain the associated Deed to complete.
-If, at the start of any of your Command phases, your selected Oath&apos;s Deed is completed, your army becomes Honoured for the rest of the battle and your gain 3CP (you can only gain CP in this way once per battle, and CP gained in this way are an exemption to the Core Rules that limit the maximum number of CP you can gain per battle round to 1).
+      <description>If your Army Faction is **^^Imperial Knights^^**, at the end of the Read Mission Objectives step, you must determine your army&apos;s Oath for the coming battle. An Oath consists of two parts - one Deed and one Quality. There are three options for each part, shown below.
 
-Lay Low The Tyrant
-- Oath Ability: Each time this model is selected to shoot or fight, you can re-roll one Hit roll and you can re-roll one Wound roll.
-- Deed: This deed is completed if the enemy WARLORD is destroyed.
+To determine your army&apos;s Deed, you can either select one Deed or you can randomly select one Deed by rolling a D6 and consulting the relevant table below. The selected Deed will describe what needs to be achieved in order to complete that Deed.
 
-Reclaim the Realm
-- Oath Ability: Add 1&quot; to this model&apos;s Move characteristic and add 1 to Advance and Charge rolls made for this model.
-- Deed: This deed is completed if you control one or more objective markers in your opponent&apos;s deployment zone.</description>
+To determine your army&apos;s Quality, you can either select one Quality or you can randomly select one Quality by rolling a D6 and consulting the relevant table below. Until the end of the battle, the ability described in the Quality selected applies to all models in your army with this ability.
+
+The first time your selected Deed is completed your Oath is fulfilled and, until the end of the battle, your army becomes Honoured and you gain 2CP, or 3CP if you randomly selected your Deed and/or Quality (CP gained in this way are an exemption to the Core Rules that limit the maximum number of CP you can gain per battle round to 1).</description>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
           <conditions>
@@ -43,6 +40,7 @@ Reclaim the Realm
     <categoryEntry name="Knight Magaera" hidden="false" id="3222-2af3-6a7e-5258"/>
     <categoryEntry name="Knight Styrix" hidden="false" id="19ac-e6bb-1dd9-490f"/>
     <categoryEntry name="Moirax" hidden="false" id="f9af-3a72-6e97-1a32"/>
+    <categoryEntry name="Knight Defender" id="c470-0313-4748-4002" hidden="false"/>
   </categoryEntries>
   <entryLinks>
     <entryLink import="true" name="Canis Rex" type="selectionEntry" id="ef2c-2932-39f4-7228" targetId="55fb-9c91-1a4f-3037">
@@ -225,6 +223,16 @@ Reclaim the Realm
         </modifier>
       </modifiers>
     </entryLink>
+    <entryLink import="true" name="Code Chivalric - Deed" hidden="false" id="3a0d-e5af-8b23-bf11" type="selectionEntry" targetId="9508-a2b1-713f-cf7b"/>
+    <entryLink import="true" name="Knight Defender" type="selectionEntry" id="91e0-4a0d-e473-991d" targetId="f12b-ca2a-9c87-79bb">
+      <modifiers>
+        <modifier type="set-primary" value="887b-ab87-92a2-20f5" field="category">
+          <conditions>
+            <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </entryLink>
   </entryLinks>
   <sharedSelectionEntries>
     <selectionEntry type="unit" import="true" name="Canis Rex" id="55fb-9c91-1a4f-3037">
@@ -257,12 +265,12 @@ Reclaim the Realm
                 <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
                 <characteristic name="W" typeId="750a-a2ec-90d3-21fe">26</characteristic>
                 <characteristic name="LD" typeId="58d2-b879-49c7-43bc">5+</characteristic>
-                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">10</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">8</characteristic>
               </characteristics>
             </profile>
             <profile name="Chainbreaker" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="7f8-ef35-95d5-6fc7">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes an attack, an unmodified successful Hit roll of 5+ scores a Critical Hit.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, at the start of any phase, you can select one friendly **^^Imperium^^** unit that is Battle-shocked and within 12&quot; of this model. That unit is no longer Battle-shocked.</characteristic>
               </characteristics>
             </profile>
             <profile name="Legendary Freeblade" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="b927-9dc2-5b23-19dd">
@@ -289,9 +297,9 @@ Reclaim the Realm
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b00e-ba0-3085-bd8"/>
           </constraints>
           <selectionEntries>
-            <selectionEntry type="upgrade" import="true" name="Chainbreaker las-impulsor" id="f1aa-b2e0-2fa8-4c39">
+            <selectionEntry type="upgrade" import="true" name="Las-impulsor" id="f1aa-b2e0-2fa8-4c39">
               <profiles>
-                <profile name="➤ Chainbreaker las-impulsor - high intensity" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" id="822a-223f-fbd-21e0">
+                <profile name="➤ Las-impulsor - high intensity" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" id="822a-223f-fbd-21e0">
                   <characteristics>
                     <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
                     <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
@@ -302,7 +310,7 @@ Reclaim the Realm
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Sustained Hits 1</characteristic>
                   </characteristics>
                 </profile>
-                <profile name="➤ Chainbreaker las-impulsor - low intensity" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" id="433f-6684-ff4f-23b7">
+                <profile name="➤ Las-impulsor - low intensity" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" id="433f-6684-ff4f-23b7">
                   <characteristics>
                     <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
                     <characteristic name="A" typeId="3bb-c35f-f54-fb08">2D6</characteristic>
@@ -370,7 +378,7 @@ Reclaim the Realm
             </selectionEntry>
           </selectionEntries>
         </selectionEntry>
-        <selectionEntry type="model" import="true" name="Sir Hekhtur" id="a41b-81a0-ca89-75c1" subType="crew">
+        <selectionEntry type="model" import="true" name="Sir Hekhtur" id="a41b-81a0-ca89-75c1">
           <categoryLinks>
             <categoryLink targetId="cf47-a0d7-7207-29dc" id="c6b8-e08d-c64-4d76" primary="false" name="Infantry"/>
             <categoryLink targetId="dd27-74f3-9b5b-7908" id="2874-44bd-2013-e490" primary="false" name="Sir Hekhtur"/>
@@ -394,7 +402,7 @@ Reclaim the Realm
             </profile>
             <profile name="Using Sir Hekhtur" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="15a9-48ef-5f10-106">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">When your Canis Rex model is destroyed, Sir Hekhtur is treated as a model disembarking from a destroyed TRANSPORT – set him up within 3&quot; of your Canis Rex model before it is removed. Sir Hekhtur then uses the profile, wargear, abilities and keywords shown on this side of the card, but cannot be selected as the target of any of your Stratagems other than Core Stratagems. Your Canis Rex unit is not considered to be destroyed until Sir Hekhtur is also destroyed.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If your Canis Rex model is destroyed, this model is treated as a model disembarking from a destroyed **^^Transport^^** and must perform an Emergency Disembarkation. Sir Hekhtur cannot be selected as the target of any of your Stratagems other than Core Stratagems. Your Canis Rex unit is not considered to be destroyed until Sir Hekhtur is also destroyed.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -475,9 +483,8 @@ Reclaim the Realm
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Armiger Warglaive" id="5bbd-c5d3-58d7-e391">
       <categoryLinks>
-        <categoryLink targetId="dbd4-63-af05-998" id="e395-3277-43cf-64b6" primary="false" name="Vehicle"/>
+        <categoryLink targetId="dbd4-63-af05-998" id="e395-3277-43cf-64b6" primary="true" name="Vehicle"/>
         <categoryLink targetId="6dda-e157-334d-e93a" id="7d4a-82d6-7ceb-784c" primary="false" name="Walker"/>
-        <categoryLink targetId="e338-111e-d0c6-b687" id="8971-15a6-ebf0-1f57" primary="true" name="Battleline"/>
         <categoryLink targetId="aff3-d6a3-2a95-9dc" id="9790-8b6d-ab36-1c21" primary="false" name="Imperium"/>
         <categoryLink targetId="b5e4-3253-c157-54fd" id="45fe-cae9-c763-7d92" primary="false" name="Faction: Imperial Knights"/>
         <categoryLink targetId="72cd-6281-73a-e0fc" id="ea09-3a59-cdb1-e928" primary="false" name="Warglaive"/>
@@ -506,15 +513,16 @@ Reclaim the Realm
         </profile>
         <profile name="Impetuous Glory" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="4bac-5c2a-5e23-d586">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a Charge move, until the end of the turn, melee weapons equipped by this model have the [SUSTAINED HITS 1] ability.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a charge move, until the end of the turn, add 1 to the Attacks characteristic of this model&apos;s reaper chain-cleaver - strike profile, and add 2 to the Attacks characteristic of this model&apos;s reaper chain-cleaver - sweep profile.</characteristic>
           </characteristics>
         </profile>
       </profiles>
       <constraints>
-        <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="9a4f-64e1-6ace-8796"/>
+        <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="9a4f-64e1-6ace-8796" includeChildForces="true" includeChildSelections="true"/>
         <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="9d2c-a39e-5385-df91" includeChildSelections="false"/>
         <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="3181-52ac-af2f-0056" includeChildSelections="true"/>
         <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="fdb6-ce0c-5028-f0e1" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="selections" scope="force" shared="true" id="afc3-6c64-3810-2ce7" includeChildSelections="true"/>
       </constraints>
       <entryLinks>
         <entryLink import="true" name="Crusade" hidden="false" id="5aa5-bf18-53ce-a773" type="selectionEntryGroup" targetId="4c8f-eb91-e2f2-42e5" sortIndex="1"/>
@@ -604,6 +612,41 @@ Reclaim the Realm
           </modifiers>
           <comment>Crusade modifiers</comment>
         </modifierGroup>
+        <modifierGroup type="and">
+          <comment>Spearhead-at-Arms Battleline</comment>
+          <modifiers>
+            <modifier type="set" value="6" field="afc3-6c64-3810-2ce7">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="3" field="9a4f-64e1-6ace-8796">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="unset-primary" value="dbd4-63-af05-998" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set-primary" value="e338-111e-d0c6-b687" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
       </modifierGroups>
       <selectionEntryGroups>
         <selectionEntryGroup name="Wargear" id="f385-ed99-7337-140a" hidden="false" sortIndex="2">
@@ -682,9 +725,8 @@ Reclaim the Realm
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Armiger Helverin" id="7314-3c4a-36ab-a594">
       <categoryLinks>
-        <categoryLink targetId="dbd4-63-af05-998" id="8e5-50e1-634a-4aa7" primary="false" name="Vehicle"/>
+        <categoryLink targetId="dbd4-63-af05-998" id="8e5-50e1-634a-4aa7" primary="true" name="Vehicle"/>
         <categoryLink targetId="6dda-e157-334d-e93a" id="b014-7796-fde5-59fc" primary="false" name="Walker"/>
-        <categoryLink targetId="e338-111e-d0c6-b687" id="49ac-23b-89e7-a7bf" primary="true" name="Battleline"/>
         <categoryLink targetId="aff3-d6a3-2a95-9dc" id="7caf-7ee7-4e4-cbb3" primary="false" name="Imperium"/>
         <categoryLink targetId="b5e4-3253-c157-54fd" id="c08c-61c7-25d6-2d7c" primary="false" name="Faction: Imperial Knights"/>
         <categoryLink targetId="df5-4bc-4d9b-dfa5" id="850f-5594-24aa-2621" primary="false" name="Helverin"/>
@@ -711,17 +753,18 @@ Reclaim the Realm
             <characteristic name="OC" typeId="bef7-942a-1a23-59f8">6</characteristic>
           </characteristics>
         </profile>
-        <profile name="Skyfire Protocols" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="1d28-343b-c471-4427">
+        <profile name="Suppression Protocols" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="1d28-343b-c471-4427">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model is either wholly within your deployment zone or within range of an objective marker you control, its Armiger autocannons have the [ANTI-FLY 2+] ability.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Shooting phase, after this model has shot, select one enemy unit (excluding **^^Monsters^^** and **^^Vehicles^^**) hit by one or more of those attacks made with an Armiger autocannon. Until the start of your next turn, that enemy unit is suppressed. While that unit is suppressed, each time a model in that unit makes an attack, subtract from the Hit roll.</characteristic>
           </characteristics>
         </profile>
       </profiles>
       <constraints>
-        <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="9a4f-64e1-6ace-8796"/>
+        <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="9a4f-64e1-6ace-8796" includeChildSelections="true" includeChildForces="true"/>
         <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="87d7-6c04-bfa0-c58c" includeChildSelections="false"/>
         <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="310a-0268-bdd8-e5bb" includeChildSelections="true"/>
         <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="600d-f347-2651-f0ab" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="selections" scope="force" shared="true" id="343f-6550-4c70-e1f8" includeChildSelections="true" includeChildForces="false"/>
       </constraints>
       <entryLinks>
         <entryLink import="true" name="Crusade" hidden="false" id="4529-9105-8b09-76f1" type="selectionEntryGroup" targetId="4c8f-eb91-e2f2-42e5" sortIndex="1"/>
@@ -811,6 +854,41 @@ Reclaim the Realm
           </modifiers>
           <comment>Crusade modifiers</comment>
         </modifierGroup>
+        <modifierGroup type="and">
+          <comment>Spearhead-at-Arms Battleline</comment>
+          <modifiers>
+            <modifier type="set" value="6" field="343f-6550-4c70-e1f8">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="3" field="9a4f-64e1-6ace-8796">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="unset-primary" value="dbd4-63-af05-998" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set-primary" value="e338-111e-d0c6-b687" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
       </modifierGroups>
       <selectionEntryGroups>
         <selectionEntryGroup name="Wargear" id="d481-1806-2a6e-bbcb" hidden="false" sortIndex="2">
@@ -873,12 +951,12 @@ Reclaim the Realm
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">26</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
-            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">10</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">8</characteristic>
           </characteristics>
         </profile>
         <profile name="Seasoned Noble" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="c8eb-db13-de01-b988">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per phase, you can re-roll one Hit roll, one Wound roll or one saving throw made for this model.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a ranged attack that targets the closest eligible target, improve the Armour Penetration characteristic of that attack by 1.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -909,7 +987,7 @@ Reclaim the Realm
           <profiles>
             <profile name="Paladin’s Duty (Bondsman)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="813e-e1e-3766-c3f8">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a model is affected by this ability, its weapons have the [LETHAL HITS] and [LANCE] abilities.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a model is affected by this ability, weapons equipped by that model have the **[LETHAL HITS]** ability, and melee weapons equipped by that model have the **[LANCE]** ability.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -1081,12 +1159,12 @@ Reclaim the Realm
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">26</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
-            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">10</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">8</characteristic>
           </characteristics>
         </profile>
         <profile name="Aggressive Assault" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="be43-2d11-65f8-aedb">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a ranged attack against the closest eligible target, add 1 to the Hit roll.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a ranged attack that targets the closest eligible target, add 1 to the Hit roll.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -1117,7 +1195,7 @@ Reclaim the Realm
           <profiles>
             <profile name="Errant&apos;s Duty (Bondsman)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="23cf-33c7-9f58-d57a">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a model is affected by this ability, you can re-roll Advance rolls made for that model and its ranged weapons have the [ASSAULT] ability.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a model is affected by this ability, you can re-roll Advance rolls made for that model and ranged weapons equipped by that model have the **[ASSAULT]** ability.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -1252,12 +1330,12 @@ Reclaim the Realm
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">26</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
-            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">10</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">8</characteristic>
           </characteristics>
         </profile>
         <profile name="Martial Pride" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="aa56-4384-8f12-cc31">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a melee attack targets this model, subtract 1 from the Hit roll.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this unit Consolidates, models in it can move an additional 3&quot; provided your unit can end that move within Engagement Range of one or more enemy units.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -1395,7 +1473,7 @@ Reclaim the Realm
                     <characteristic name="S" typeId="ab33-d393-96ce-ccba">9</characteristic>
                     <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-3</characteristic>
                     <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
-                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Lethal Hits</characteristic>
                   </characteristics>
                 </profile>
                 <profile name="➤ Reaper chainsword - strike" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="17bb-6ba0-56b1-3d3">
@@ -1406,7 +1484,7 @@ Reclaim the Realm
                     <characteristic name="S" typeId="ab33-d393-96ce-ccba">14</characteristic>
                     <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-4</characteristic>
                     <characteristic name="D" typeId="3254-9fe6-d824-513e">6</characteristic>
-                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Devastating Wounds</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -1422,6 +1500,10 @@ Reclaim the Realm
               <categoryLinks>
                 <categoryLink name="Melee Weapon" hidden="false" id="8908-af5f-a4ce-cb44" targetId="ccdd-3987-11ed-90cd" primary="false"/>
               </categoryLinks>
+              <infoLinks>
+                <infoLink name="Lethal Hits" id="9a7f-5c50-8487-9f22" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
+                <infoLink name="Devastating Wounds" id="aab7-64f2-f01c-52c5" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
+              </infoLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Thunderstrike gauntlet" hidden="false" id="78c6-6f21-6c74-ebc6">
               <constraints>
@@ -1437,7 +1519,7 @@ Reclaim the Realm
                     <characteristic name="S" typeId="ab33-d393-96ce-ccba">20</characteristic>
                     <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-3</characteristic>
                     <characteristic name="D" typeId="3254-9fe6-d824-513e">8</characteristic>
-                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Devastating Wounds</characteristic>
                   </characteristics>
                 </profile>
                 <profile name="➤ Thunderstrike gauntlet - sweep" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="f123-9d4-e554-1559">
@@ -1448,7 +1530,7 @@ Reclaim the Realm
                     <characteristic name="S" typeId="ab33-d393-96ce-ccba">10</characteristic>
                     <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
                     <characteristic name="D" typeId="3254-9fe6-d824-513e">3</characteristic>
-                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Lethal Hits</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -1464,6 +1546,10 @@ Reclaim the Realm
               <categoryLinks>
                 <categoryLink name="Melee Weapon" hidden="false" id="ba04-c878-0fb6-2085" targetId="ccdd-3987-11ed-90cd" primary="false"/>
               </categoryLinks>
+              <infoLinks>
+                <infoLink name="Lethal Hits" id="7c74-71e1-c4ef-c658" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
+                <infoLink name="Devastating Wounds" id="797a-4316-5565-e45b" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
+              </infoLinks>
             </selectionEntry>
           </selectionEntries>
           <entryLinks>
@@ -1493,7 +1579,12 @@ Reclaim the Realm
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">26</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
-            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">10</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">8</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Thin Their Ranks" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="51ae-c850-5c2a-761f">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a ranged attack that targets an enemy unit (excluding **^^Monsters^^** and **^^Vehicles^^**), that attack has the **[DEVASTATING WOUNDS]** ability.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -1513,6 +1604,7 @@ Reclaim the Realm
         <infoLink name="Invulnerable Save (5+*)" type="profile" id="31d9-5aeb-d57d-c662" targetId="8552-862d-6a49-4879"/>
         <infoLink name="Damaged: 1-9 Wounds Remaining" type="profile" id="baef-114b-1ab4-a49b" targetId="a274-b647-186a-54ee"/>
         <infoLink name="Code Chivalric" id="30f9-5696-4676-4b7e" hidden="false" type="rule" targetId="cbd-943-bc7b-20ec"/>
+        <infoLink name="Devastating Wounds" id="fedd-26da-c24d-107d" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
       </infoLinks>
       <entryLinks>
         <entryLink import="true" name="Warlord" type="selectionEntry" id="c837-d47d-916-f209" targetId="ad65-d3cb-c677-7cb3" sortIndex="2"/>
@@ -1520,28 +1612,18 @@ Reclaim the Realm
         <entryLink import="true" name="Crusade" hidden="false" id="1471-bb5e-825c-19ae" type="selectionEntryGroup" targetId="4c8f-eb91-e2f2-42e5" sortIndex="1"/>
       </entryLinks>
       <infoGroups>
-        <infoGroup name="Thin Their Ranks" id="c848-a377-71de-e3d6">
-          <infoLinks>
-            <infoLink name="Devastating Wounds" type="rule" id="4b8-2eb9-c000-c2de" targetId="be1e-ac8e-1e2c-3528"/>
-          </infoLinks>
-          <profiles>
-            <profile name="Thin Their Ranks" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="51ae-c850-5c2a-761f">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a ranged attack that targets an enemy unit (excluding MONSTERS and VEHICLES), that attack has the [DEVASTATING WOUNDS] ability.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-        </infoGroup>
         <infoGroup name="Warden&apos;s Duty (Bondsman)" id="a8ac-acfc-34a7-a0cd">
           <profiles>
             <profile name="Warden&apos;s Duty (Bondsman)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="61b5-1d00-e20d-2e1d">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a model is affected by this ability, each time an attack is allocated to that model, subtract 1 from the Damage characteristic of that attack.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a model is affected by this ability, weapons equipped by that model have the **[SUSTAINED HITS 1]** ability, and ranged weapons equipped by that model have the **[IGNORES COVER]** ability.</characteristic>
               </characteristics>
             </profile>
           </profiles>
           <infoLinks>
             <infoLink name="Bondsman Abilities" type="rule" id="4b54-ea54-11c9-b4c0" targetId="f5a5-d4cf-3b72-ed02"/>
+            <infoLink name="Ignores Cover" id="49c7-3b05-f453-e0d4" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
+            <infoLink name="Sustained Hits" id="4b8-2eb9-c000-c2de" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
           </infoLinks>
         </infoGroup>
       </infoGroups>
@@ -1684,7 +1766,12 @@ Reclaim the Realm
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">26</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
-            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">10</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">8</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Punishing Salvoes" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f3ec-bea-7d9f-df98">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Movement phase, if this model Remains Stationary, until the end of the turn, ranged weapons equipped by this model have the **[SUSTAINED HITS 1]** ability.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -1704,6 +1791,7 @@ Reclaim the Realm
         <infoLink name="Invulnerable Save (5+*)" type="profile" id="322-42a1-6346-c907" targetId="8552-862d-6a49-4879"/>
         <infoLink name="Damaged: 1-9 Wounds Remaining" type="profile" id="3cc4-331d-9703-33c0" targetId="a274-b647-186a-54ee"/>
         <infoLink name="Code Chivalric" id="2a48-ba19-0430-2732" hidden="false" type="rule" targetId="cbd-943-bc7b-20ec"/>
+        <infoLink name="Sustained Hits" id="367b-610-daae-ceef" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
       </infoLinks>
       <entryLinks>
         <entryLink import="true" name="Enhancements" type="selectionEntryGroup" id="14bf-3959-f4e6-3085" targetId="f77c-b744-c82a-a3cd" sortIndex="3"/>
@@ -1711,18 +1799,6 @@ Reclaim the Realm
         <entryLink import="true" name="Crusade" hidden="false" id="4fef-2fb3-57ee-3922" type="selectionEntryGroup" targetId="4c8f-eb91-e2f2-42e5" sortIndex="1"/>
       </entryLinks>
       <infoGroups>
-        <infoGroup name="Punishing Salvoes" id="e644-c05f-b8e0-376e">
-          <profiles>
-            <profile name="Punishing Salvoes" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="f3ec-bea-7d9f-df98">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Movement phase, if this model Remains Stationary, until the start of your next Movement phase, this model’s ranged weapons have the [SUSTAINED HITS 1] ability.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-          <infoLinks>
-            <infoLink name="Sustained Hits" type="rule" id="367b-610-daae-ceef" targetId="1897-c22c-9597-12b1"/>
-          </infoLinks>
-        </infoGroup>
         <infoGroup name="Crusader&apos;s Duty (Bondsman)" id="6ee6-7432-b7f5-c039">
           <profiles>
             <profile name="Crusader&apos;s Duty (Bondsman)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="11c1-4782-61b6-4b98">
@@ -1769,26 +1845,7 @@ Reclaim the Realm
             </entryLink>
             <entryLink import="true" name="Carapace-mounted Weapon" hidden="false" id="87fe-91dc-b0e3-14cf" type="selectionEntryGroup" targetId="5fda-853d-c4f6-3f92"/>
             <entryLink import="true" name="Meltagun" hidden="false" id="7a26-edb1-e1de-4cc4" type="selectionEntryGroup" targetId="247e-c70a-2713-8c96"/>
-          </entryLinks>
-          <selectionEntries>
-            <selectionEntry type="upgrade" import="true" name="Titanic feet" hidden="false" id="313a-c82b-6271-d85d">
-              <constraints>
-                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="257d-7fde-6557-766e"/>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4f6c-e12a-3e06-13dd"/>
-              </constraints>
-              <profiles>
-                <profile name="Titanic feet" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="6fcb-f784-14c1-7f92">
-                  <characteristics>
-                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                    <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
-                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
-                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
-                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
-                    <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
-                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
+            <entryLink import="true" name="Titanic feet" hidden="false" id="4ea0-a462-d2cd-023d" type="selectionEntry" targetId="288c-1cbc-8340-9c0a">
               <selectionEntryGroups>
                 <selectionEntryGroup name="Weapon Upgrades" id="b9a3-4f09-9cbd-b12b" hidden="false" flatten="true">
                   <entryLinks>
@@ -1797,11 +1854,12 @@ Reclaim the Realm
                   </entryLinks>
                 </selectionEntryGroup>
               </selectionEntryGroups>
-              <categoryLinks>
-                <categoryLink name="Melee Weapon" hidden="false" id="faaf-5193-b6c8-b5c3" targetId="ccdd-3987-11ed-90cd" primary="false"/>
-              </categoryLinks>
-            </selectionEntry>
-          </selectionEntries>
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="257d-7fde-6557-766e"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4f6c-e12a-3e06-13dd"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
           <selectionEntryGroups>
             <selectionEntryGroup name="Thermal Cannon" id="2cc0-66f6-9d7a-65b" hidden="false" defaultSelectionEntryId="ef24-c94e-d430-2af">
               <selectionEntries>
@@ -1960,12 +2018,12 @@ Reclaim the Realm
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">26</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
-            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">10</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">8</characteristic>
           </characteristics>
         </profile>
         <profile name="Exemplar of the Code" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="e11c-1932-dd04-c55f">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select one unit from your opponent’s army. Each time this model makes an attack that targets that unit, you can re-roll the Hit roll.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select one unit from your opponent’s army to be this model&apos;s quarry. Each time this model makes an attack that targets its quarry, you can re-roll the Wound roll. Each time this model&apos;s quarry is destroyed, you can select a new unit from your opponent&apos;s army to be its quarry.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -2122,7 +2180,7 @@ Reclaim the Realm
           <profiles>
             <profile name="Mentor (Bondsman)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="36a7-a0c0-ff14-14a7">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a model is affected by this ability, improve that model’s Leadership characteristic by 1 and improve that model’s Objective Control characteristic by 2.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model affected by this ability makes an attack that targets this model&apos;s quarry, you can re-roll the Wound roll.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -2233,17 +2291,12 @@ Reclaim the Realm
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">28</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
-            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">10</characteristic>
-          </characteristics>
-        </profile>
-        <profile name="Ion Aegis (Aura)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="3b9-a66e-f6ac-8aeb">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly ARMIGER model is within 6&quot; of this model, that ARMIGER models has the Benefits of Cover.</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">8</characteristic>
           </characteristics>
         </profile>
         <profile name="Titan Hunter" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="1b2e-aac4-ebfe-3c7">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ranged attack made by this model is allocated to a MONSTER or VEHICLE model, re-roll a Damage roll of 1.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ranged attack made by this model is allocated to a **^^Monster^^** or **^^Vehicle^^** model, you can re-roll the Damage roll.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -2261,8 +2314,9 @@ Reclaim the Realm
         </infoLink>
         <infoLink name="Super-Heavy Walker" type="rule" id="a27e-e57a-72d-f1cb" targetId="5e13-1624-d280-418d"/>
         <infoLink name="Invulnerable Save (5+*)" type="profile" id="208e-37cd-517b-80e1" targetId="8552-862d-6a49-4879"/>
-        <infoLink name="Damaged: 1-10 Wounds Remaining" type="profile" id="3a46-4765-60ee-4a29" targetId="1934-9c67-78e2-4fd9"/>
+        <infoLink name="Damaged: 1-10 Wounds Remaining" type="profile" id="3a46-4765-60ee-4a29" targetId="79dc-ea0c-c3b8-21d8"/>
         <infoLink name="Code Chivalric" id="31ae-dda1-0e86-6291" hidden="false" type="rule" targetId="cbd-943-bc7b-20ec"/>
+        <infoLink name="Ion Aegis (Aura)" id="6e34-9212-5567-3842" hidden="false" type="profile" targetId="0cc9-e726-c0fa-c4f3"/>
       </infoLinks>
       <entryLinks>
         <entryLink import="true" name="Warlord" type="selectionEntry" id="a961-cf47-5abb-e0c8" targetId="ad65-d3cb-c677-7cb3" sortIndex="2"/>
@@ -2361,7 +2415,7 @@ Reclaim the Realm
                     <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
                     <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
                     <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
-                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
                   </characteristics>
@@ -2372,7 +2426,7 @@ Reclaim the Realm
                     <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
                     <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
                     <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Hazardous</characteristic>
                   </characteristics>
@@ -2499,17 +2553,12 @@ Reclaim the Realm
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">28</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
-            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">10</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">8</characteristic>
           </characteristics>
         </profile>
-        <profile name="Ion Aegis (Aura)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="527e-c53f-32af-f316">
+        <profile name="Thundershock" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="c930-deaf-6267-1e1e">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly ARMIGER model is within 6&quot; of this model, that ARMIGER models has the Benefits of Cover.</characteristic>
-          </characteristics>
-        </profile>
-        <profile name="Overwhelming Firestorm" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="c930-deaf-6267-1e1e">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Shooting phase, after this model has shot, select one enemy unit hit by this model this phase. That unit must take a Battle-shock test.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Shooting phase, each time you select a target for this model&apos;s thundercoil harpoon, roll one D6 for the target unit and one D6 for each other enemy unit within 6&quot; of the target unit. On a 4+, the unit being rolled for is struck by arcing energies; after resolving all of this model&apos;s attacks against the target unit, each unit struck by arcing energies suffers D3 mortal wounds.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -2527,8 +2576,9 @@ Reclaim the Realm
         </infoLink>
         <infoLink name="Super-Heavy Walker" type="rule" id="45eb-bf5f-be2e-e1cb" targetId="5e13-1624-d280-418d"/>
         <infoLink name="Invulnerable Save (5+*)" type="profile" id="efea-ee0c-d65c-b49" targetId="8552-862d-6a49-4879"/>
-        <infoLink name="Damaged: 1-10 Wounds Remaining" type="profile" id="a880-3073-f96d-57c0" targetId="1934-9c67-78e2-4fd9"/>
+        <infoLink name="Damaged: 1-10 Wounds Remaining" type="profile" id="a880-3073-f96d-57c0" targetId="79dc-ea0c-c3b8-21d8"/>
         <infoLink name="Code Chivalric" id="b337-35a2-eb0b-dce1" hidden="false" type="rule" targetId="cbd-943-bc7b-20ec"/>
+        <infoLink name="Ion Aegis (Aura)" id="1393-12f9-2f40-1b53" hidden="false" type="profile" targetId="0cc9-e726-c0fa-c4f3"/>
       </infoLinks>
       <entryLinks>
         <entryLink import="true" name="Warlord" type="selectionEntry" id="1e14-c6e7-a82a-aede" targetId="ad65-d3cb-c677-7cb3" sortIndex="2"/>
@@ -2664,14 +2714,21 @@ Reclaim the Realm
               <profiles>
                 <profile name="Thundercoil harpoon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="2fc1-856c-bd08-2f05">
                   <characteristics>
-                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
-                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">2+</characteristic>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
                     <characteristic name="S" typeId="2229-f494-25db-c5d3">24</characteristic>
                     <characteristic name="AP" typeId="9ead-8a10-520-de15">-6</characteristic>
-                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">12</characteristic>
-                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-Monster 4+, Anti-Vehicle 4+, Devastating Wounds</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">10</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Devastating Wounds</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
               </profiles>
               <constraints>
@@ -2679,7 +2736,7 @@ Reclaim the Realm
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7701-8e14-e10b-af2a"/>
               </constraints>
               <infoLinks>
-                <infoLink name="Anti-" id="4781-e054-4f92-d310" hidden="false" type="rule" targetId="4111-82e3-9444-e942"/>
+                <infoLink name="Blast" id="4781-e054-4f92-d310" hidden="false" type="rule" targetId="6c1f-1cf7-ff25-c99e"/>
                 <infoLink name="Devastating Wounds" id="797b-1de7-c38-a970" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
               </infoLinks>
               <selectionEntryGroups>
@@ -2836,7 +2893,7 @@ Reclaim the Realm
           </characteristics>
         </profile>
       </profiles>
-      <comment>Dominus</comment>
+      <comment>S8</comment>
       <categoryLinks>
         <categoryLink name="Melee Weapon" hidden="false" id="a572-0f66-08a8-c757" targetId="ccdd-3987-11ed-90cd" primary="false"/>
       </categoryLinks>
@@ -4674,7 +4731,7 @@ Reclaim the Realm
         </infoLink>
         <infoLink name="Super-Heavy Walker" hidden="false" type="rule" id="6970-3ccd-4775-7249" targetId="5e13-1624-d280-418d"/>
         <infoLink name="Code Chivalric" hidden="false" type="rule" id="cf6a-9ee8-57e7-6a2c" targetId="cbd-943-bc7b-20ec"/>
-        <infoLink name="Damaged: 1-9 Wounds Remaining" type="profile" id="9789-fe34-e915-2548" targetId="a274-b647-186a-54ee"/>
+        <infoLink name="Damaged: 1-9 Wounds Remaining" type="profile" id="9789-fe34-e915-2548" targetId="75b7-f99a-8812-a55f"/>
       </infoLinks>
       <categoryLinks>
         <categoryLink targetId="9cfd-1c32-585f-7d5c" id="e712-7bf0-ec80-394e" primary="true" name="Character"/>
@@ -4968,7 +5025,7 @@ Reclaim the Realm
         </infoLink>
         <infoLink name="Code Chivalric" hidden="false" type="rule" id="e6a6-f6c5-d56a-a02b" targetId="cbd-943-bc7b-20ec"/>
         <infoLink name="Super-Heavy Walker" hidden="false" type="rule" id="ffdc-a560-b3e1-cb3" targetId="5e13-1624-d280-418d"/>
-        <infoLink name="Damaged: 1-9 Wounds Remaining" type="profile" id="4956-c695-a318-9c82" targetId="a274-b647-186a-54ee"/>
+        <infoLink name="Damaged: 1-9 Wounds Remaining" type="profile" id="4956-c695-a318-9c82" targetId="75b7-f99a-8812-a55f"/>
       </infoLinks>
       <infoGroups>
         <infoGroup name="Styrix’s Duty (Bondsman)" id="3e3e-cdb2-b95-6e6a">
@@ -5256,10 +5313,11 @@ Reclaim the Realm
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Armiger Moirax" hidden="false" id="e3dd-7e90-140a-b3ab">
       <constraints>
-        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="542e-97b1-e173-f5b4"/>
+        <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="542e-97b1-e173-f5b4" includeChildForces="true" includeChildSelections="true"/>
         <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="c949-64c8-8e6f-ecbb" includeChildSelections="false"/>
         <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="3515-c7cd-0341-ba5b" includeChildSelections="true"/>
         <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="1ee9-2726-fc53-d237" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="selections" scope="force" shared="true" id="035a-c610-aacd-5a7f" includeChildForces="false" includeChildSelections="true"/>
       </constraints>
       <categoryLinks>
         <categoryLink targetId="dbd4-63-af05-998" id="cfec-9b33-fca7-7d2d" primary="true" name="Vehicle"/>
@@ -5583,6 +5641,41 @@ Reclaim the Realm
           </modifiers>
           <comment>Crusade modifiers</comment>
         </modifierGroup>
+        <modifierGroup type="and">
+          <comment>Spearhead-at-Arms Battleline</comment>
+          <modifiers>
+            <modifier type="set" value="6" field="035a-c610-aacd-5a7f">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="3" field="542e-97b1-e173-f5b4">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="unset-primary" value="dbd4-63-af05-998" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set-primary" value="e338-111e-d0c6-b687" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
       </modifierGroups>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Show Imperial Knights" hidden="false" id="e82c-6f8c-2b97-a287">
@@ -5617,7 +5710,7 @@ Reclaim the Realm
           </characteristics>
         </profile>
       </profiles>
-      <comment>Acastus</comment>
+      <comment>S10</comment>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Armoured feet" hidden="false" id="541e-cd89-cb31-4ee6">
       <profiles>
@@ -5634,10 +5727,453 @@ Reclaim the Realm
         </profile>
       </profiles>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Code Chivalric" hidden="false" id="9508-a2b1-713f-cf7b">
+      <categoryLinks>
+        <categoryLink name="Configuration" hidden="false" id="0fc8-fbf6-2056-29a1" targetId="4ac9-fd30-1e3d-b249" primary="true"/>
+      </categoryLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Deed" id="9d2e-8009-7163-1e6d" hidden="false" defaultSelectionEntryId="none">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="We vow to lay low the tyrant..." hidden="false" id="debd-979f-02da-62f7" sortIndex="1">
+              <profiles>
+                <profile name="We vow to lay low the tyrant..." typeId="83f0-0039-f52e-a3b4" typeName="Deed" hidden="false" id="90b3-6f39-b179-ba18">
+                  <characteristics>
+                    <characteristic name="Description" typeId="90fb-29ef-31df-1720">At the start of the battle, select one **^^Character^^** model in your opponent&apos;s army. This Deed is completed at the end of a turn if that **^^Character^^** is destroyed.</characteristic>
+                    <characteristic name="D6" typeId="2b47-80ec-51a5-3002">1 or 2</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="We pledge to reap a great tally..." hidden="false" id="5849-fc54-299e-544f" sortIndex="3">
+              <profiles>
+                <profile name="We pledge to reap a great tally..." typeId="83f0-0039-f52e-a3b4" typeName="Deed" hidden="false" id="a1dc-8b19-46a1-a1cd">
+                  <characteristics>
+                    <characteristic name="Description" typeId="90fb-29ef-31df-1720">This deed is completed at the end of a turn if the number of destroyed enemy units is greater than the battle round number even if those units subsequently returned to the battlefield (for example, two destroyed enemy units in the first battle round).</characteristic>
+                    <characteristic name="D6" typeId="2b47-80ec-51a5-3002">5 or 6</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="We swear to reclaim the realm..." hidden="false" id="a072-bdbb-15e6-161f" sortIndex="2">
+              <profiles>
+                <profile name="We swear to reclaim the realm..." typeId="83f0-0039-f52e-a3b4" typeName="Deed" hidden="false" id="6358-9ff9-fa0e-2e68">
+                  <characteristics>
+                    <characteristic name="Description" typeId="90fb-29ef-31df-1720">This deed is completed at the end of your opponent&apos;s turn if you control more objective markers than your opponent.</characteristic>
+                    <characteristic name="D6" typeId="2b47-80ec-51a5-3002">3 or 4</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0cfb-0528-eafe-6d0e" includeChildSelections="false"/>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d44e-33a2-259f-31a3" includeChildSelections="false"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="-1" field="0cfb-0528-eafe-6d0e">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="a692-b024-09d9-b79f" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Quality" id="6974-1b57-b545-50ee" hidden="false" defaultSelectionEntryId="none">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="...with our martial valour risen over all." hidden="false" id="4f29-30bc-3fea-0ddb" sortIndex="1">
+              <profiles>
+                <profile name="...with our martial valour risen over all." typeId="3dbd-8296-99ea-d555" typeName="Quality" hidden="false" id="1098-c61e-9c92-0714">
+                  <characteristics>
+                    <characteristic name="Description" typeId="f262-34f4-0217-8bdd">Each time this model is selected to shoot or fight, you can re-roll one Hit roll and you can re-roll one Wound roll.</characteristic>
+                    <characteristic name="D6" typeId="abc7-ec7f-1f21-d074">1 or 2</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="...yet shall our legacy be unsullied." hidden="false" id="0cda-47bd-5446-4b48" sortIndex="3">
+              <profiles>
+                <profile name="...yet shall our legacy be unsullied." typeId="83f0-0039-f52e-a3b4" typeName="Deed" hidden="false" id="85f4-ab86-07ca-3af0">
+                  <characteristics>
+                    <characteristic name="Description" typeId="90fb-29ef-31df-1720">Improve this model&apos;s Objective Control characteristic by 2 and its Leadership characteristic by 1.</characteristic>
+                    <characteristic name="D6" typeId="2b47-80ec-51a5-3002">5 or 6</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Code Chivalric" field="annotation" join=", " scope="roster" affects="self.entries.forces.recursive.b5e4-3253-c157-54fd.profiles.Unit"/>
+                    <modifier type="increment" value="2" field="bef7-942a-1a23-59f8" scope="roster" affects="self.entries.forces.recursive.b5e4-3253-c157-54fd.profiles.Unit" join=", "/>
+                    <modifier type="decrement" value="1" field="58d2-b879-49c7-43bc" scope="roster" affects="self.entries.forces.recursive.b5e4-3253-c157-54fd.profiles.Unit" join=", "/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="...and we are eager for the challenge." hidden="false" id="a251-f271-35b4-55ff" sortIndex="2">
+              <profiles>
+                <profile name="...and we are eager for the challenge." typeId="83f0-0039-f52e-a3b4" typeName="Deed" hidden="false" id="352c-1be3-2f8b-19be">
+                  <characteristics>
+                    <characteristic name="Description" typeId="90fb-29ef-31df-1720">Add 2&quot; to this model&apos;s Move characteristic and add 1 to Advance and Charge rolls made for this model.</characteristic>
+                    <characteristic name="D6" typeId="2b47-80ec-51a5-3002">3 or 4</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Code Chivalric" field="annotation" join=", " scope="roster" affects="self.entries.forces.recursive.b5e4-3253-c157-54fd.profiles.Unit"/>
+                    <modifier type="increment" value="2" field="e703-ecb6-5ce7-aec1" scope="roster" affects="self.entries.forces.recursive.b5e4-3253-c157-54fd.profiles.Unit" join=", "/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="30e9-a513-f1c5-afc1" includeChildSelections="false"/>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7545-2870-5075-2a7e" includeChildSelections="false"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="-1" field="30e9-a513-f1c5-afc1">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="a692-b024-09d9-b79f" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Knight Defender" id="f12b-ca2a-9c87-79bb">
+      <categoryLinks>
+        <categoryLink targetId="dbd4-63-af05-998" id="e747-98f6-5780-a6ca" primary="false" name="Vehicle"/>
+        <categoryLink targetId="6dda-e157-334d-e93a" id="1c04-e0ea-03c5-a4c9" primary="false" name="Walker"/>
+        <categoryLink targetId="5929-ad51-d006-e008" id="34ff-a706-6040-4008" primary="false" name="Titanic"/>
+        <categoryLink targetId="d666-e2c9-b6cc-5716" id="b7a2-f7aa-f05a-ed49" primary="false" name="Towering"/>
+        <categoryLink targetId="9cfd-1c32-585f-7d5c" id="07bf-c807-869a-4773" primary="true" name="Character"/>
+        <categoryLink targetId="aff3-d6a3-2a95-9dc" id="d11f-e0eb-e85f-7c49" primary="false" name="Imperium"/>
+        <categoryLink targetId="b5e4-3253-c157-54fd" id="7058-b8b2-3559-02d1" primary="false" name="Faction: Imperial Knights"/>
+        <categoryLink targetId="e4d6-1a77-132b-f39d" id="1395-2bf2-7d30-515a" primary="false" name="Questoris"/>
+        <categoryLink name="Knight Defender" hidden="false" id="4449-7212-cd99-55c2" targetId="c470-0313-4748-4002" primary="false"/>
+      </categoryLinks>
+      <profiles>
+        <profile name="Knight Defender" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit" id="a3c3-c356-432c-71fe">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">11</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">26</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">8</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Selfless Protector" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="af51-9630-82a3-172d">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ranged attack is allocated to an **^^Imperial Knights^^** model from your army, if that model is not fully visible to every model in the attacking unit because of this Knight Defender model, that model has the Benefit of Cover and a 4+ invulnerable save against that attack.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Invulnerable Save (4+*)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5a7a-57fa-9801-4e25">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model has a 4+ invulnerable save against ranged attacks.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="2e4a-a8c6-e1b0-b15d"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="961a-0eef-a88d-3928" includeChildSelections="false"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="dee5-a2df-d991-8c2d" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="5c37-3931-b971-b2af" includeChildSelections="true"/>
+      </constraints>
+      <infoLinks>
+        <infoLink name="Deadly Demise" type="rule" id="a3db-c594-f43a-d698" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D6" field="name"/>
+          </modifiers>
+        </infoLink>
+        <infoLink name="Super-Heavy Walker" type="rule" id="af7a-4850-1b72-da18" targetId="5e13-1624-d280-418d"/>
+        <infoLink name="Damaged: 1-9 Wounds Remaining" type="profile" id="96cf-ab5c-79cb-d771" targetId="a274-b647-186a-54ee"/>
+        <infoLink name="Code Chivalric" id="21bf-1b57-e287-b231" hidden="false" type="rule" targetId="cbd-943-bc7b-20ec"/>
+      </infoLinks>
+      <entryLinks>
+        <entryLink import="true" name="Warlord" type="selectionEntry" id="6e1f-7f6c-420e-78be" targetId="ad65-d3cb-c677-7cb3" sortIndex="2"/>
+        <entryLink import="true" name="Enhancements" type="selectionEntryGroup" id="b783-ecc7-c922-3187" targetId="f77c-b744-c82a-a3cd" sortIndex="3"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="01c7-3319-9f72-2c95" type="selectionEntryGroup" targetId="4c8f-eb91-e2f2-42e5" sortIndex="1"/>
+      </entryLinks>
+      <infoGroups>
+        <infoGroup name="Defender&apos;s Duty (Bondsman)" id="a41c-15ee-109f-685b">
+          <profiles>
+            <profile name="Warden&apos;s Duty (Bondsman)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="de60-7982-8376-9db9">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a model is affected by this ability, each time an attack is allocated to that model, subtract 1 from the Damage characteristic of that attack.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Bondsman" type="rule" id="2791-dc16-1e1a-0e17" targetId="f5a5-d4cf-3b72-ed02"/>
+          </infoLinks>
+        </infoGroup>
+      </infoGroups>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="425"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+        <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+      </costs>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="e82c-6f8c-2b97-a287" shared="true" includeChildForces="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="increment" value="2" field="dee5-a2df-d991-8c2d">
+              <repeats>
+                <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+              </repeats>
+            </modifier>
+            <modifier type="increment" value="2" field="5c37-3931-b971-b2af">
+              <repeats>
+                <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+              </repeats>
+            </modifier>
+            <modifier type="append" value="(Battle-ready)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Blooded)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Battle-hardened)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Heroic)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Legendary)" field="name">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Crusade modifiers</comment>
+        </modifierGroup>
+      </modifierGroups>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Wargear" id="7d46-5eec-4351-3f41" hidden="false" sortIndex="4">
+          <entryLinks>
+            <entryLink import="true" name="Titanic feet" hidden="false" id="48df-2ba4-7346-8414" type="selectionEntry" targetId="288c-1cbc-8340-9c0a">
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="8829-6ae7-d8ee-c49d" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="206e-7b98-3bab-e4c6" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="d987-bf11-e7a3-fe94" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="0415-88ed-79b4-a877"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d8b2-c72e-d639-fea0"/>
+              </constraints>
+            </entryLink>
+          </entryLinks>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Twin incendine combustor" hidden="false" id="dbc9-8e4f-edf0-f9d6">
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="09e3-8bf8-4576-1803" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="d465-026e-cb04-97eb" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="7308-a097-0a23-40ee" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c8fa-785e-8ae9-0c66"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d85a-aff2-0b9d-9e4e"/>
+              </constraints>
+              <profiles>
+                <profile name="Twin incendine combustor" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="bf32-7feb-1881-ec92">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent, Twin-linked</characteristic>
+                  </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Twin-linked" id="9db2-228c-796e-5d58" hidden="false" type="rule" targetId="cf93-ad4d-2f08-a79d"/>
+                <infoLink name="Ignores Cover" id="e028-5329-43d7-deeb" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
+                <infoLink name="Torrent" id="ec5f-96b4-ba86-2398" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Conversion beam obliterator" hidden="false" id="d956-a7af-5c96-2577">
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="5ac7-c65c-e6b2-6d22" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="0737-76d3-7a21-d025" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="74f6-5481-7552-3bfd" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="65df-5ddb-0378-da04"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="156a-f24b-660a-19d4"/>
+              </constraints>
+              <profiles>
+                <profile name="Conversion beam obliterator" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="d516-61f1-783f-7eb1">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">12</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">4</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Conversion, Sustained Hits D3</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Sustained Hits" id="3013-e186-65a9-fa56" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
+              </infoLinks>
+              <rules>
+                <rule name="Conversion" id="b6f4-e06f-b85d-c3f2" hidden="false">
+                  <description>Each time an attack is made with this weapon, if the target is more than 18&quot; from the bearer, an unmodified successful Hit roll of 4+ scores a Critical Hit.</description>
+                  <comment>18&quot; variant</comment>
+                </rule>
+              </rules>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Plasma executor" hidden="false" id="615e-5655-130f-d14a">
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="b981-0a5b-4869-dc96" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="6ef7-86b1-a737-2a55" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="b829-b548-4dd8-2d4c" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="72ec-90c2-986c-f6f5"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b431-820e-f357-8301"/>
+              </constraints>
+              <profiles>
+                <profile name="➤ Plasma executor - standard" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="aa70-82ac-0297-c44e">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">8</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
+                  </characteristics>
+                </profile>
+                <profile name="➤ Plasma executor - supercharge" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="9941-34e9-fae8-30b3">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-3</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Hazardous</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Hazardous" id="2180-b62b-7fd0-dbc3" hidden="false" type="rule" targetId="8367-374c-f87-c627"/>
+                <infoLink name="Blast" id="af57-7e4f-254b-f93a" hidden="false" type="rule" targetId="6c1f-1cf7-ff25-c99e"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Phosphor blaster" hidden="false" id="6bdb-2665-95ec-fcde">
+              <selectionEntryGroups>
+                <selectionEntryGroup name="Weapon Upgrades" id="4867-fc1e-0ebb-0bf7" hidden="false" flatten="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="ace7-c02a-2b7b-eb1c" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                    <entryLink import="true" name="Crusade Relic Upgrades" hidden="false" id="1a3b-5867-8401-8d6f" type="selectionEntryGroup" targetId="b678-4a99-210e-931f"/>
+                  </entryLinks>
+                </selectionEntryGroup>
+              </selectionEntryGroups>
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="9095-aa62-08d3-bffb"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3636-af79-877d-cb64"/>
+              </constraints>
+              <profiles>
+                <profile name="Phosphor blaster" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="4728-2b21-01ba-5f2a">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Rapid Fire 1</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Rapid Fire" id="05fa-87e1-23c3-60c2" hidden="false" type="rule" targetId="c5c8-8b58-b8b6-7786"/>
+                <infoLink name="Ignores Cover" id="a1d9-4431-1e47-3ef3" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
+              </infoLinks>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+    </selectionEntry>
   </sharedSelectionEntries>
   <sharedRules>
-    <rule name="Bondsman Abilities" id="f5a5-d4cf-3b72-ed02">
-      <description>Some QUESTORIS models have a Bondsman ability, tagged with the word ‘Bondsman’. In your Command phase, one or more models from your army with a Bondsman ability can use that ability. For each one that does, select one friendly ARMIGER model within 12&quot; of that model (you cannot select an ARMIGER model that is already being affected by a Bondsman ability). Until the start of your next Command phase, the ARMIGER model you selected is affected by that Bondsman ability.</description>
+    <rule name="Bondsman" id="f5a5-d4cf-3b72-ed02">
+      <description>Some **^^Imperial Knights^^** models have a Bondsman ability, tagged with the word ‘Bondsman’. In your Command phase, one or more models from your army with a Bondsman ability can use that ability. For each one that does, select one friendly **^^Armiger^^** model within 12&quot; of that model (you cannot select an **^^Armiger^^** model that is already being affected by a Bondsman ability). Until the start of your next Command phase, that **^^Armiger^^** model is affected by that Bondsman ability.</description>
     </rule>
   </sharedRules>
   <sharedSelectionEntryGroups>
@@ -5717,7 +6253,7 @@ Reclaim the Realm
     </selectionEntryGroup>
     <selectionEntryGroup name="Carapace-mounted Weapon" id="5fda-853d-c4f6-3f92">
       <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Icarus autocannons" id="73fa-8625-9c1a-6652">
+        <selectionEntry type="upgrade" import="true" name="Twin Icarus autocannon" id="73fa-8625-9c1a-6652">
           <profiles>
             <profile name="Icarus autocannons" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" id="ee46-9279-756e-de84">
               <characteristics>
@@ -5891,81 +6427,109 @@ Reclaim the Realm
     </selectionEntryGroup>
     <selectionEntryGroup name="Enhancements" id="f77c-b744-c82a-a3cd" collapsible="true">
       <selectionEntryGroups>
-        <selectionEntryGroup name="Noble Lance Enhancements" id="1223-782e-cce2-bdfd" hidden="false" collapsible="true">
+        <selectionEntryGroup name="Valourstrike Lance Enhancements" id="1223-782e-cce2-bdfd" hidden="false" collapsible="true">
           <selectionEntries>
-            <selectionEntry type="upgrade" import="true" name="Unyielding Paragon" hidden="false" id="42bd-f84f-46e2-c246">
+            <selectionEntry type="upgrade" import="true" name="Bearer of the Iron Chalice" hidden="false" id="56fc-6e31-3aec-9b74">
               <profiles>
-                <profile name="Unyielding Paragon" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a643-e955-2a58-24c">
+                <profile name="Bearer of the Iron Chalice" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2cd4-5280-47cb-9eda">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">QUESTORIS model only. Each time an attack is allocated to the bearer, worsen the Armour Penetration characteristic of that attack by 1.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. At the end of your Movement phase, select one other **^^Imperial Knights^^** model from your army that is within 12&quot; of and visible to the bearer. That selected model regains up to D3 lost wounds, or up to 3 lost wounds if your army is Honoured.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
               <modifiers>
                 <modifier type="set" value="true" field="hidden">
                   <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="e4d6-1a77-132b-f39d" shared="true"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
                   </conditions>
                 </modifier>
               </modifiers>
-              <costs>
-                <cost name="pts" typeId="51b2-306e-1021-d207" value="40"/>
-              </costs>
             </selectionEntry>
-            <selectionEntry type="upgrade" import="true" name="Banner of Macharius Triumphant" hidden="false" id="56fc-6e31-3aec-9b74">
+            <selectionEntry type="upgrade" import="true" name="Bearer of the Evanescent Ion" hidden="false" id="85e3-f8df-1f17-8c19">
               <profiles>
-                <profile name="Banner of Macharius Triumphant" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2cd4-5280-47cb-9eda">
+                <profile name="Bearer of the Evanescent Ion" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a3a8-3e6-b7c5-66e6">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">IMPERIAL KNIGHTS model only. If you control an objective marker at the end of your Command phase and the bearer is within range of that objective marker, that objective marker remains under your control even if you have no models within range of it, until your opponent controls it at the start or end of any turn.</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <costs>
-                <cost name="pts" typeId="51b2-306e-1021-d207" value="30"/>
-              </costs>
-            </selectionEntry>
-            <selectionEntry type="upgrade" import="true" name="Mysterious Guardian" hidden="false" id="85e3-f8df-1f17-8c19">
-              <profiles>
-                <profile name="Mysterious Guardian" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a3a8-3e6-b7c5-66e6">
-                  <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">IMPERIAL KNIGHTS model only. The bearer has the Deep Strike ability. Once per battle, at the end of your opponent’s turn, if the bearer is not within Engagement Range of any enemy units, it can fade away. If it does, remove it from the battlefield then, in the Reinforcements step of your subsequent Movement phase, set it up anywhere on the battlefield that is more than 9&quot; horizontally away from all enemy models. If the battle ends and the bearer is not on the battlefield, it is destroyed.</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <costs>
-                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
-              </costs>
-            </selectionEntry>
-            <selectionEntry type="upgrade" import="true" name="Mythic Hero" hidden="false" id="fbf6-98bd-fbdb-ea84">
-              <profiles>
-                <profile name="Mythic Hero" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="83da-5183-e99-e251">
-                  <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">QUESTORIS model with a Bondsman ability only. Each time the bearer uses its Bondsman ability, you can select one additional friendly Armiger model within 12&quot; of the bearer that is not already being affected by a Bondsman ability. Until the start of your next Command phase, that model is also affected by that Bondsman ability.</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <modifiers>
-                <modifier type="set" value="true" field="hidden">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="e4d6-1a77-132b-f39d" shared="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
-              <costs>
-                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
-              </costs>
-            </selectionEntry>
-            <selectionEntry type="upgrade" import="true" name="Revered Knight (Aura)" hidden="false" id="f896-b511-a8f-9664">
-              <profiles>
-                <profile name="Revered Knight (Aura)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="34cd-b28e-192e-4e9b">
-                  <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">IMPERIAL KNIGHTS model only. While a friendly IMPERIAL KNIGHTS model is within 6&quot; of the bearer, improve that model’s Leadership characteristic by 1. If your army is Honoured, increase the range of this Aura ability to 12&quot;.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. At the end of your Movement phase, select one other **^^Imperial Knights^^** model from your army that is within 12&quot; of and visible to the bearer. Until the start of your next Movement phase, that selected model has the Stealth ability.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
               </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <infoLinks>
+                <infoLink name="Stealth" id="65e0-3b01-6733-2d9e" hidden="false" type="rule" targetId="bec5-4288-34a6-ccfa"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Bearer of the Judicant&apos;s Helm" hidden="false" id="fbf6-98bd-fbdb-ea84">
+              <profiles>
+                <profile name="Bearer of the Judicant&apos;s Helm" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="83da-5183-e99-e251">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. At the start of your Shooting phase, select one other **^^Imperial Knights^^** model from your army that is within 12&quot; of and visible to the bearer. Until the end of the phase, ranged weapons equipped by that selected model have the **[IGNORES COVER]** ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <infoLinks>
+                <infoLink name="Ignores Cover" id="5f68-3cfe-a3b2-d993" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Bearer of the Lancer&apos;s Sigil" hidden="false" id="f896-b511-a8f-9664">
+              <profiles>
+                <profile name="Bearer of the Lancer&apos;s Sigil" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="34cd-b28e-192e-4e9b">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. At the start of your Charge phase, select one other **^^Imperial Knights^^** model from your army that is within 12&quot; of and visible to the bearer. Until the end of the phase, you can re-roll Charge rolls made for that selected model.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
           </selectionEntries>
           <constraints>
@@ -6098,6 +6662,360 @@ Reclaim the Realm
             </modifier>
           </modifiers>
         </selectionEntryGroup>
+        <selectionEntryGroup name="Gate Warden Lance Enhancements" id="5a97-88a5-44ed-46e9" hidden="false" collapsible="true">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Vengeful Tread" hidden="false" id="3af2-8a70-176e-7a21">
+              <profiles>
+                <profile name="Vengeful Tread" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ab00-7011-2f99-62c3">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. Once per turn, you can target the bearer with the Tank Shock Stratagem for 0CP.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Acquisitor-at-Arms" hidden="false" id="68eb-3ce1-7a5d-008f">
+              <profiles>
+                <profile name="Acquisitor-at-Arms" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e1e6-7f04-4cc4-1303">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. While the bearer is on your defensive line and there are no enemy units on your defensive line, add the bearer&apos;s Objective Control characteristic to that of each model affected by the bearer&apos;s Bondsman ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Purgation&apos;s Hand" hidden="false" id="dfd9-4dac-a3ec-eb24">
+              <profiles>
+                <profile name="Purgation&apos;s Hand" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="81f0-f974-8bce-048c">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. Each time the bearer makes a melee attack, if the bearer is on your defensive line, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Augury Halo" hidden="false" id="dd28-68de-d553-65dc">
+              <profiles>
+                <profile name="Augury Halo" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5fb6-8e08-f1f4-9d65">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. Each time the bearer makes a ranged attack, while the bearer is on your defensive line, weapons equipped by the bearer have the **[IGNORES COVER]** ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <infoLinks>
+                <infoLink name="Ignores Cover" id="1802-1982-d55a-468c" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
+              </infoLinks>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="dd13-bfab-bf77-faae" includeChildSelections="false" includeChildForces="false"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="884c-fbb7-9f22-1297" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Questoris Companions Enhancements" id="6d4d-f498-365e-35e7" hidden="false" collapsible="true">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Crushing Condemnation" hidden="false" id="8dbe-ae93-0e32-a88e">
+              <profiles>
+                <profile name="Crushing Condemnation" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6167-1383-0e96-b3a0">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. When the bearer is selected to fight, after resolving its attacks, if one or more enemy units were destroyed by those attacks, the bearer can use this Enhancement. If it does, this Enhancement is expended, then select one enemy unit that is not within Engagement Range of any units from your army and is within 12&quot; of and visible to the bearer. Roll six D6: for each 4+, that enemy unit suffers 1 mortal wound.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="10"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Herald of Triumph" hidden="false" id="e2df-198c-65de-8ea2">
+              <profiles>
+                <profile name="Herald of Triumph" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="24ac-3999-6dd2-8c70">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. When the bearer ends a Charge move, it can use this Enhancement. If it does, this Enhancement is expended, the each enemy unit within Engagement Range of the bearer must take a Battle-shock test, subtracting 1 from the result.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Wyrmslayer Divination" hidden="false" id="9ec7-8ac0-7ed3-0daf">
+              <profiles>
+                <profile name="Wyrmslayer Divination" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8c16-ad39-4fb9-7730">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. In your Shooting phase, when the bearer is selected to shoot, it can use this Enhancement. If it does, this Enhancement is expended, then until the end of the phase, each time it makes an attack that targets a unit that can **^^Fly^^**, you can re-roll the Hit roll.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="10"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Pennant of Silvered Fury" hidden="false" id="e32b-dd13-2971-d571">
+              <profiles>
+                <profile name="Pennant of Silvered Fury" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6616-4095-388c-d5cc">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. When the bearer is selected to fight, it can use this Enhancement. If it does, this Enhancement is expended, then until the end of the phase, melee equipped by the bearer have the **[SUSTAINED HITS 2]** ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <infoLinks>
+                <infoLink name="Sustained Hits" id="be16-5047-1554-2482" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
+              </infoLinks>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a612-5d5c-b1a7-b89f" includeChildSelections="false" includeChildForces="false"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="a692-b024-09d9-b79f" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Spearhead-at-Arms Enhancements" id="3494-40e6-e1f5-18d6" hidden="false" collapsible="true">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Martial Tuition" hidden="false" id="ca5f-beba-df87-6775">
+              <profiles>
+                <profile name="Martial Tuition" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="0043-6f3c-e17e-7082">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. While two or more **^^Armiger^^** models are under the effects of the bearer&apos;s Bondsman ability, once per turn, you can target one of those **^^Armiger^^** models with the Counter-offensive Stratagem for 0CP.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Mentor&apos;s Pride" hidden="false" id="9c04-1f2e-f1af-e30e">
+              <profiles>
+                <profile name="Mentor&apos;s Pride" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ba9b-cf12-e565-f084">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. While two or more **^^Armiger^^** models are under the effects of the bearer&apos;s Bondsman ability, each time each of those **^^Armiger^^** models makes an attack, you can re-roll a Hit roll of 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Fables of Nightmare" hidden="false" id="cb31-4f07-bc8b-e2d1">
+              <profiles>
+                <profile name="Fables of Nightmare" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3a98-1cea-5115-60b5">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. While two or more **^^Armiger^^** models are under the effects of the bearer&apos;s Bondsman ability, melee weapons equipped by those **^^Armiger^^** models have the **[PRECISION]** ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="10"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <infoLinks>
+                <infoLink name="Precision" id="2f45-2067-fa53-b838" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Tales of Heroism" hidden="false" id="12b4-b735-b6ee-debe">
+              <profiles>
+                <profile name="Tales of Heroism" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="524c-2860-9d11-a042">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Imperial Knights^^** model only. While two or more **^^Armiger^^** models are under the effects of the bearer&apos;s Bondsman ability, each time one of those **^^Armiger^^** models makes a melee attack, you can ignore any or all modifiers to the Hit roll and/or the Wound roll.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="10"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+              </costs>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="b5e4-3253-c157-54fd" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4f49-e328-4cad-47a9" includeChildSelections="false" includeChildForces="false"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="d469-239c-7e4c-4210" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </selectionEntryGroup>
       </selectionEntryGroups>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -6118,14 +7036,14 @@ Reclaim the Realm
     </selectionEntryGroup>
     <selectionEntryGroup name="Detachment" id="d793-8964-e815-3bb8" defaultSelectionEntryId="none">
       <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Noble Lance" id="e424-58f3-8e79-19a6">
+        <selectionEntry type="upgrade" import="true" name="Valourstrike Lance" id="e424-58f3-8e79-19a6">
           <rules>
-            <rule name="Indomitable Heroes" id="92f9-bfbb-ce23-f12a" hidden="false">
-              <description>All IMPERIAL KNIGHTS models from your army have the Feel No Pain 6+ ability. If your army is Honoured, those models have the Feel No Pain 5+ ability.</description>
+            <rule name="Bold Gallantry" id="92f9-bfbb-ce23-f12a" hidden="false">
+              <description>Each time an **^^Imperial Knights^^** unit from your army Advances, you can re-roll the Advance roll, and each time an **^^Imperial Knights^^** unit from your army Advances, until the end of the turn, ranged weapons equipped by **^^Imperial Knights^^** models from your army have the **[ASSAULT]** ability.</description>
             </rule>
           </rules>
           <infoLinks>
-            <infoLink name="Feel No Pain" hidden="false" type="rule" id="28e7-aca3-4df7-2d32" targetId="9bf4-280f-bbe2-6fbb"/>
+            <infoLink name="Assault" id="0b9b-7084-d257-0fd8" hidden="false" type="rule" targetId="fc8a-8c24-bae9-cc1c"/>
           </infoLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Questor Forgepact" id="9a4a-a4c8-a16a-c969">
@@ -6147,6 +7065,49 @@ Divine Inspiration: Each time a model in this unit makes a ranged attack, re‑r
 ■ Onslaught: Up to 750 pts
 
 No ADEPTUS MECHANICUS models from your army can be your WARLORD.</description>
+            </rule>
+          </rules>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Gate Warden Lance" id="884c-fbb7-9f22-1297">
+          <rules>
+            <rule name="Dauntless Defenders" id="f5bc-534b-8e6d-53fb" hidden="false">
+              <description>At the start of the first battle round, select two objective markers on the battlefield to be your foundations. When you draw a line from any part of one of your foundations to the other, if any part of a model&apos;s base (or any part of a models hull, for a model without a base) crosses that line, that model&apos;s unit is said to be on your defensive line.
+
+While an **^^Imperial Knights^^** unit from your army is on your defensive line, that unit has the Against the Horde ability.
+
+Each time one of your foundations is removed from the battlefield (e.g. by a Primary Mission rule), just after is is removed, select a new objective marker on the battlefield to be one of your foundations.</description>
+            </rule>
+          </rules>
+          <infoLinks>
+            <infoLink name="Sustained Hits" id="d2b3-c07d-f06d-955b" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
+          </infoLinks>
+          <profiles>
+            <profile name="Against the Horde" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b1b8-585c-e5c8-3f5b">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an attack that targets a visible enemy unit, you can ignore any or all modifiers to the Hit roll, and weapons equipped by models in this unit have the **[SUSTAINED HITS 1]** ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Questoris Companions" id="a692-b024-09d9-b79f">
+          <rules>
+            <rule name="Heroes of Legend" id="310a-eb31-9066-259b" hidden="false">
+              <description>At the start of your turn, if your current Oath is fulfilled, determine an additional Oath, with the exception that you cannot select a Deed or Quality you have already selected (if you are randomly selecting the Deed and/or Quality and roll any result that you have already selected, select a Deed or Quality you have not already selected instead). If you cannot determine an additional Oath because you have already selected each Deed and each Quality, do not determine an additional Oath.
+
+The Qualities from Oaths you have fulfilled continue to apply to all models in your army with the Code Chivalric ability. When the Deed for an additional Oath is completed, you instead gain 1CP, regardless of how you selected the Deed or Quality.</description>
+            </rule>
+            <rule name="Valour&apos;s Reward" id="84b5-0b13-f5e8-9202" hidden="false">
+              <description>The Enhancements for this detachment can become expended. You cannot use such Enhancements while they are expended. Each time you fulfil your Oath, each expended Enhancement is no longer expended.</description>
+            </rule>
+          </rules>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Spearhead-at-Arms" id="d469-239c-7e4c-4210">
+          <rules>
+            <rule name="Knightly Teachings" id="cbdf-f7c7-5729-419a" hidden="false">
+              <description>Each time a model from your army uses its Bondsman ability, if no other model from your army has used that Bondsman ability that turn, you can select up to three friendly **^^Armiger^^** models (instead of one) within 12&quot; of that model, or within 15&quot; of that model while your army is Honoured (you still cannot select a model that is already being affected by a Bondsman ability). Until the start of your next Command phase, those models are affected by that Bondsman ability.</description>
+            </rule>
+            <rule name="Keywords" id="d8d5-e534-0f94-32df" hidden="false">
+              <description>**^^Armiger^^** models from your army gain the **^^Battleline^^** keyword.</description>
             </rule>
           </rules>
         </selectionEntry>
@@ -6233,8 +7194,9 @@ No ADEPTUS MECHANICUS models from your army can be your WARLORD.</description>
     </profile>
     <profile name="Damaged: 1-9 Wounds Remaining" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="a274-b647-186a-54ee">
       <characteristics>
-        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model has 1-9 wounds remaining, subtract 5 from this models Objective Control characteristic and each time this model makes an attack, subtract 1 from the Hit roll.</characteristic>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model has 1-9 wounds remaining, subtract 4 from this models Objective Control characteristic and each time this model makes an attack, subtract 1 from the Hit roll.</characteristic>
       </characteristics>
+      <comment>-4OC</comment>
     </profile>
     <profile name="Damaged: 1-5 Wounds Remaining" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="b9a3-9db8-fd2f-7e43">
       <characteristics>
@@ -6245,6 +7207,38 @@ No ADEPTUS MECHANICUS models from your army can be your WARLORD.</description>
       <characteristics>
         <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model has 1-10 wounds remaining, subtract 5 from this model&apos;s Objective Control characteristic and each time this model makes an attack, subtract 1 from the Hit roll.</characteristic>
       </characteristics>
+      <comment>-5OC</comment>
+    </profile>
+    <profile name="Damaged: 1-10 Wounds Remaining" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="79dc-ea0c-c3b8-21d8">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model has 1-10 wounds remaining, subtract 4 from this model&apos;s Objective Control characteristic and each time this model makes an attack, subtract 1 from the Hit roll.</characteristic>
+      </characteristics>
+      <comment>-4OC</comment>
+    </profile>
+    <profile name="Ion Aegis (Aura)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="0cc9-e726-c0fa-c4f3">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly **^^Armiger^^** model is within 6&quot; of this model, each time a ranged attack targets that model, it has the Benefit of Cover against that attack.</characteristic>
+      </characteristics>
+    </profile>
+    <profile name="Damaged: 1-9 Wounds Remaining" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="75b7-f99a-8812-a55f">
+      <characteristics>
+        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model has 1-9 wounds remaining, subtract 5 from this models Objective Control characteristic and each time this model makes an attack, subtract 1 from the Hit roll.</characteristic>
+      </characteristics>
+      <comment>-5OC</comment>
     </profile>
   </sharedProfiles>
+  <profileTypes>
+    <profileType name="Deed" id="83f0-0039-f52e-a3b4" hidden="false">
+      <characteristicTypes>
+        <characteristicType name="Description" id="90fb-29ef-31df-1720"/>
+        <characteristicType name="D6" id="2b47-80ec-51a5-3002"/>
+      </characteristicTypes>
+    </profileType>
+    <profileType name="Quality" id="3dbd-8296-99ea-d555" hidden="false">
+      <characteristicTypes>
+        <characteristicType name="Description" id="f262-34f4-0217-8bdd"/>
+        <characteristicType name="D6" id="abc7-ec7f-1f21-d074"/>
+      </characteristicTypes>
+    </profileType>
+  </profileTypes>
 </catalogue>
