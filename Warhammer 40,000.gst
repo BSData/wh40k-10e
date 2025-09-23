@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="60" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="61" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -492,6 +492,7 @@
       <comment>Category to be used to ignore characteristic changes by other upgrades</comment>
     </categoryEntry>
     <categoryEntry name="Pistol Weapon" id="1db0-c6b5-19db-8d0c" hidden="true"/>
+    <categoryEntry name="Death Company" id="7278-781b-ce6c-d23c" hidden="false"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
@@ -974,7 +975,7 @@
       <constraints>
         <constraint type="max" value="1" field="selections" scope="unit" shared="true" id="8199-2676-9f51-f430" includeChildSelections="false"/>
       </constraints>
-      <comment>Crusade content</comment>
+      <comment>Pariah Nexus Crusade content</comment>
       <modifierGroups>
         <modifierGroup type="and">
           <modifiers>
@@ -1002,6 +1003,24 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Damned Souls" hidden="false" id="e66d-3831-dd6d-5f88">
+      <comment>Blood Angels Crusade content</comment>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="4ef9-15ce-e3e6-36de" shared="true"/>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="7278-781b-ce6c-d23c" shared="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="977c-2d1e-aa65-6364" includeChildSelections="false"/>
+      </constraints>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedRules>
@@ -1612,6 +1631,19 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
               </costs>
             </selectionEntry>
           </selectionEntries>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="e66d-3831-dd6d-5f88" shared="true" includeChildSelections="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="7278-781b-ce6c-d23c" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <comment>Crusade content</comment>
         </selectionEntryGroup>
       </selectionEntryGroups>
     </selectionEntryGroup>
