@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="96" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="97" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Vindicare Assassin" hidden="false" id="efa3-2cf5-dcfb-b976">
       <categoryLinks>
@@ -855,6 +855,9 @@
                 <infoLink name="Anti-" hidden="false" type="rule" id="9ecb-8429-8853-50b2" targetId="4111-82e3-9444-e942"/>
                 <infoLink name="Precision" hidden="false" type="rule" id="26a0-9bb7-7ee3-6f5" targetId="9143-31ae-e0a6-6007"/>
               </infoLinks>
+              <categoryLinks>
+                <categoryLink name="Damage Dx Weapon" hidden="false" id="8cd7-e90f-3c2f-c7ec" targetId="4986-bf86-beb4-13ac" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Death Cult power blade" hidden="false" id="8782-4837-c336-c95e">
               <constraints>
@@ -1629,6 +1632,9 @@
           <associations>
             <association min="1" max="1" scope="24d5-9987-4d2-b42b" childId="1962-3d66-fa86-e36f" name="Demo charge" id="756e-aff2-b0d2-52d8"/>
           </associations>
+          <categoryLinks>
+            <categoryLink name="Attacks Dx Weapon" hidden="false" id="4e1b-0ca0-679e-a799" targetId="e993-e086-6de1-12af" primary="false"/>
+          </categoryLinks>
         </selectionEntry>
       </selectionEntries>
       <selectionEntryGroups>
@@ -1715,24 +1721,6 @@
                         </profile>
                       </profiles>
                     </selectionEntry>
-                    <selectionEntry type="upgrade" import="true" name="Meltagun" hidden="false" id="e614-dfda-7b16-4887">
-                      <profiles>
-                        <profile name="Meltagun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="f74-f91a-5aa9-267e">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Melta 2</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <infoLinks>
-                        <infoLink name="Melta" hidden="false" type="rule" id="6922-4a15-4075-f2a9" targetId="7cdb-fb99-44a9-8849"/>
-                      </infoLinks>
-                    </selectionEntry>
                     <selectionEntry type="upgrade" import="true" name="Plasma gun" hidden="false" id="6282-71c5-92d0-7b86">
                       <profiles>
                         <profile name="➤ Plasma gun - standard" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="9851-48d8-fcf6-2314">
@@ -1764,6 +1752,9 @@
                       </infoLinks>
                     </selectionEntry>
                   </selectionEntries>
+                  <entryLinks>
+                    <entryLink import="true" name="Meltagun" hidden="false" id="7f1b-e0e9-a0d3-f367" type="selectionEntry" targetId="f1ff-e2f6-852a-ec0b"/>
+                  </entryLinks>
                 </selectionEntryGroup>
               </selectionEntryGroups>
               <entryLinks>
@@ -2414,6 +2405,13 @@
                             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
                           </characteristics>
+                          <modifiers>
+                            <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
                         </profile>
                         <profile name="➤ Arbites grenade launcher - krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="75fb-7762-f260-b2ce">
                           <characteristics>
@@ -2425,6 +2423,13 @@
                             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D3</characteristic>
                             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
                           </characteristics>
+                          <modifiers>
+                            <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
                         </profile>
                       </profiles>
                       <infoLinks>
@@ -2532,6 +2537,9 @@
                         <infoLink name="Devastating Wounds" hidden="false" type="rule" id="9fec-32cc-fcaf-c429" targetId="be1e-ac8e-1e2c-3528"/>
                         <infoLink name="Torrent" hidden="false" type="rule" id="bb9b-2bc-78f1-a3c8" targetId="5edf-d619-23e0-9b56"/>
                       </infoLinks>
+                      <categoryLinks>
+                        <categoryLink name="Attacks Dx Weapon" hidden="false" id="e7a1-8210-904f-21cc" targetId="e993-e086-6de1-12af" primary="false"/>
+                      </categoryLinks>
                     </selectionEntry>
                   </selectionEntries>
                 </selectionEntry>
@@ -2796,6 +2804,13 @@
                             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
                           </characteristics>
+                          <modifiers>
+                            <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
                         </profile>
                         <profile name="➤ Arbites grenade launcher - krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="99ca-5c40-b771-b323">
                           <characteristics>
@@ -2807,6 +2822,13 @@
                             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D3</characteristic>
                             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
                           </characteristics>
+                          <modifiers>
+                            <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
+                              <conditions>
+                                <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                              </conditions>
+                            </modifier>
+                          </modifiers>
                         </profile>
                       </profiles>
                       <infoLinks>
@@ -2914,6 +2936,9 @@
                         <infoLink name="Devastating Wounds" hidden="false" type="rule" id="a418-e294-34cc-650a" targetId="be1e-ac8e-1e2c-3528"/>
                         <infoLink name="Torrent" hidden="false" type="rule" id="40c3-c103-d6a1-aade" targetId="5edf-d619-23e0-9b56"/>
                       </infoLinks>
+                      <categoryLinks>
+                        <categoryLink name="Attacks Dx Weapon" hidden="false" id="f19e-3c1f-e174-99cb" targetId="e993-e086-6de1-12af" primary="false"/>
+                      </categoryLinks>
                     </selectionEntry>
                   </selectionEntries>
                 </selectionEntry>
@@ -3726,6 +3751,7 @@
                   <categoryLinks>
                     <categoryLink name="Psychic Weapon" hidden="false" id="f0ea-7c6c-1497-8ce3" targetId="4546-4a0c-b3be-e84c" primary="false"/>
                     <categoryLink name="Melee Weapon" hidden="false" id="c6fc-0183-13e9-953b" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+                    <categoryLink name="Damage Dx Weapon" hidden="false" id="0108-be26-0117-040e" targetId="4986-bf86-beb4-13ac" primary="false"/>
                   </categoryLinks>
                   <selectionEntryGroups>
                     <selectionEntryGroup name="Weapon Upgrades" id="5216-45ac-ec18-9987" hidden="false" flatten="true">
@@ -3838,19 +3864,13 @@
                         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                         <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Devastating Wounds, Psychic, Torrent</characteristic>
                       </characteristics>
-                      <modifiers>
-                        <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
                     </profile>
                   </profiles>
                   <categoryLinks>
                     <categoryLink name="Psyker" hidden="false" id="d58c-f820-140-551a" targetId="13bf-2bee-3ae0-b414" primary="false"/>
                     <categoryLink name="Psychic Weapon" hidden="false" id="d632-d384-163c-18dc" targetId="4546-4a0c-b3be-e84c" primary="false"/>
                     <categoryLink name="Ranged Weapon" hidden="false" id="f61d-9ab0-9d80-cc37" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+                    <categoryLink name="Attacks Dx Weapon" hidden="false" id="aa5d-436a-d16c-215c" targetId="e993-e086-6de1-12af" primary="false"/>
                   </categoryLinks>
                   <infoLinks>
                     <infoLink name="Psychic" id="c314-d4e5-a597-fdd4" hidden="false" type="rule" targetId="e9c4-2bb8-12ee-cd1b"/>
@@ -4598,46 +4618,10 @@
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="b479-9b1e-bc05-f89d"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e236-49af-d1c4-c44f"/>
                   </constraints>
-                  <selectionEntries>
-                    <selectionEntry type="upgrade" import="true" name="Heavy flamer" hidden="false" id="d8aa-4f1f-6c6e-e2e3">
-                      <profiles>
-                        <profile name="Heavy flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="df2e-a368-8251-10eb">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <infoLinks>
-                        <infoLink name="Ignores Cover" hidden="false" type="rule" id="ef8e-3eab-30a0-22f1" targetId="4640-43e7-30b-215a"/>
-                        <infoLink name="Torrent" hidden="false" type="rule" id="eda9-6345-b2be-715b" targetId="5edf-d619-23e0-9b56"/>
-                      </infoLinks>
-                    </selectionEntry>
-                    <selectionEntry type="upgrade" import="true" name="Multi-melta" hidden="false" id="7691-3e81-4346-952a">
-                      <infoLinks>
-                        <infoLink name="Melta" hidden="false" type="rule" id="bf55-47d1-fbe0-7d06" targetId="7cdb-fb99-44a9-8849"/>
-                        <infoLink name="Heavy" hidden="false" type="rule" id="95ef-1cc-a6e4-3ad5" targetId="1202-10a8-78e9-4c67"/>
-                      </infoLinks>
-                      <profiles>
-                        <profile name="Multi-melta" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="c6a5-811d-df57-8a3">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Melta 2</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                    </selectionEntry>
-                  </selectionEntries>
+                  <entryLinks>
+                    <entryLink import="true" name="Multi-melta" hidden="false" id="0325-ea4d-6f67-d7e0" type="selectionEntry" targetId="ed36-2443-653e-d0c6"/>
+                    <entryLink import="true" name="Heavy flamer" hidden="false" id="9dc7-4a25-5da9-02fc" type="selectionEntry" targetId="a7b5-94dc-187c-8350"/>
+                  </entryLinks>
                 </selectionEntryGroup>
               </selectionEntryGroups>
             </selectionEntry>
@@ -4689,24 +4673,6 @@
                         </infoGroup>
                       </infoGroups>
                     </selectionEntry>
-                    <selectionEntry type="upgrade" import="true" name="Meltagun" hidden="false" id="2dde-f6b7-1a7-df60">
-                      <infoLinks>
-                        <infoLink name="Melta" hidden="false" type="rule" id="4345-cc34-5ec5-8f45" targetId="7cdb-fb99-44a9-8849"/>
-                      </infoLinks>
-                      <profiles>
-                        <profile name="Meltagun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="f5fd-61e7-6c49-33bd">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Melta 2</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                    </selectionEntry>
                     <selectionEntry type="upgrade" import="true" name="Flamer" hidden="false" id="cfa1-e18a-98f3-40e8">
                       <profiles>
                         <profile name="Flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="2b35-3adb-4b99-8e58">
@@ -4725,8 +4691,14 @@
                         <infoLink name="Ignores Cover" hidden="false" type="rule" id="29b9-b9de-97f2-4d04" targetId="4640-43e7-30b-215a"/>
                         <infoLink name="Torrent" hidden="false" type="rule" id="def2-fc9a-8c7c-2b56" targetId="5edf-d619-23e0-9b56"/>
                       </infoLinks>
+                      <categoryLinks>
+                        <categoryLink name="Attacks Dx Weapon" hidden="false" id="0c6d-cd90-bc52-ce0a" targetId="e993-e086-6de1-12af" primary="false"/>
+                      </categoryLinks>
                     </selectionEntry>
                   </selectionEntries>
+                  <entryLinks>
+                    <entryLink import="true" name="Meltagun" hidden="false" id="33b5-fc90-f3e7-25fc" type="selectionEntry" targetId="0442-5237-54d9-69d0"/>
+                  </entryLinks>
                 </selectionEntryGroup>
               </selectionEntryGroups>
             </selectionEntry>
@@ -5186,6 +5158,7 @@
                   <categoryLinks>
                     <categoryLink name="Psychic Weapon" hidden="false" id="5c94-d8e5-3140-9ecb" targetId="4546-4a0c-b3be-e84c" primary="false"/>
                     <categoryLink name="Melee Weapon" hidden="false" id="60ea-2a22-6e23-d999" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+                    <categoryLink name="Damage Dx Weapon" hidden="false" id="c406-e2e2-57c5-14ba" targetId="4986-bf86-beb4-13ac" primary="false"/>
                   </categoryLinks>
                   <selectionEntryGroups>
                     <selectionEntryGroup name="Weapon Upgrades" id="d8cf-7b5f-a837-292f" hidden="false" flatten="true">
@@ -5344,7 +5317,7 @@
             </selectionEntryGroup>
           </selectionEntryGroups>
           <selectionEntries>
-            <selectionEntry type="upgrade" import="true" name="Psychic shockwave" hidden="false" id="78fe-f692-d983-b86d">
+            <selectionEntry type="upgrade" import="true" name="Psychic shock wave" hidden="false" id="78fe-f692-d983-b86d">
               <constraints>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="842b-c8d6-2d6f-a259"/>
               </constraints>
@@ -5356,7 +5329,7 @@
                 </modifier>
               </modifiers>
               <profiles>
-                <profile name="Psychic shockwave" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="dc21-910d-8b12-c95d">
+                <profile name="Psychic shock wave" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="dc21-910d-8b12-c95d">
                   <characteristics>
                     <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
                     <characteristic name="A" typeId="3bb-c35f-f54-fb08">2D6</characteristic>
@@ -5366,13 +5339,6 @@
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Devastating Wounds, Psychic, Torrent</characteristic>
                   </characteristics>
-                  <modifiers>
-                    <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
                 </profile>
               </profiles>
               <infoLinks>
@@ -5383,6 +5349,7 @@
               <categoryLinks>
                 <categoryLink name="Psychic Weapon" hidden="false" id="65a7-b9c3-ded9-dea8" targetId="4546-4a0c-b3be-e84c" primary="false"/>
                 <categoryLink name="Ranged Weapon" hidden="false" id="466a-b559-4d87-d4cd" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+                <categoryLink name="Attacks Dx Weapon" hidden="false" id="bfdf-dfe5-6937-dfac" targetId="e993-e086-6de1-12af" primary="false"/>
               </categoryLinks>
               <selectionEntryGroups>
                 <selectionEntryGroup name="Weapon Upgrades" id="40c5-894b-c7ea-ee08" hidden="false" flatten="true">
@@ -5643,13 +5610,6 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                     <characteristic name="D" typeId="3254-9fe6-d824-513e">D3</characteristic>
                     <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Psychic</characteristic>
                   </characteristics>
-                  <modifiers>
-                    <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
                 </profile>
               </profiles>
               <infoLinks>
@@ -5658,6 +5618,7 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
               <categoryLinks>
                 <categoryLink name="Psychic Weapon" hidden="false" id="f61c-0c31-d424-2d2c" targetId="4546-4a0c-b3be-e84c" primary="false"/>
                 <categoryLink name="Melee Weapon" hidden="false" id="b552-0ec9-8e54-d6de" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+                <categoryLink name="Damage Dx Weapon" hidden="false" id="aca2-ee6d-d47b-3316" targetId="4986-bf86-beb4-13ac" primary="false"/>
               </categoryLinks>
               <selectionEntryGroups>
                 <selectionEntryGroup name="Weapon Upgrades" id="67ad-64a8-3de8-0247" hidden="false" flatten="true">
@@ -6210,13 +6171,6 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                         <characteristic name="D" typeId="3254-9fe6-d824-513e">D3</characteristic>
                         <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Anti-INFANTRY 4+, Psychic</characteristic>
                       </characteristics>
-                      <modifiers>
-                        <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
                     </profile>
                   </profiles>
                   <infoLinks>
@@ -6228,6 +6182,7 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                   </entryLinks>
                   <categoryLinks>
                     <categoryLink name="Psychic Weapon" hidden="false" id="ae09-f343-4917-10e0" targetId="4546-4a0c-b3be-e84c" primary="false"/>
+                    <categoryLink name="Damage Dx Weapon" hidden="false" id="4091-6785-0085-00a6" targetId="4986-bf86-beb4-13ac" primary="false"/>
                   </categoryLinks>
                 </selectionEntry>
               </selectionEntries>
@@ -6308,46 +6263,20 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
               <constraints>
                 <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="6ff9-6445-1c0d-f48d"/>
               </constraints>
-              <selectionEntries>
-                <selectionEntry type="upgrade" import="true" name="Multi-melta" hidden="false" id="7130-35e0-6c59-d47c" collective="true">
-                  <constraints>
-                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="56ca-203a-bdfb-0990"/>
-                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8125-515a-f56a-b1be"/>
-                  </constraints>
-                  <profiles>
-                    <profile name="Multi-melta" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="4873-3df9-eb2d-415d">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Melta 2</characteristic>
-                      </characteristics>
-                      <modifiers>
-                        <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Melta" id="56c4-22ba-3faa-3fa5" hidden="false" type="rule" targetId="7cdb-fb99-44a9-8849"/>
-                    <infoLink name="Heavy" id="058d-4e66-d51b-f195" hidden="false" type="rule" targetId="1202-10a8-78e9-4c67"/>
-                  </infoLinks>
-                  <entryLinks>
-                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="ba08-6ad8-f055-db1b" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
-                  </entryLinks>
-                </selectionEntry>
-              </selectionEntries>
               <entryLinks>
                 <entryLink import="true" name="Agent melee weapon" hidden="false" id="cf53-4b75-3b63-cfa3" type="selectionEntry" targetId="deb9-31fc-d62b-a1dd">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="9316-031e-5479-96fc" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                </entryLink>
+                <entryLink import="true" name="Multi-melta" hidden="false" id="a7d9-b39c-4a9d-cf66" type="selectionEntry" targetId="ed36-2443-653e-d0c6" collective="true">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="ba08-6ad8-f055-db1b" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="56ca-203a-bdfb-0990"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8125-515a-f56a-b1be"/>
+                  </constraints>
                 </entryLink>
               </entryLinks>
             </selectionEntry>
@@ -6372,13 +6301,6 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                         <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Heavy</characteristic>
                       </characteristics>
-                      <modifiers>
-                        <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
                     </profile>
                     <profile name="➤ Plasma cannon - supercharge" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="7c27-49b7-94d2-7469">
                       <characteristics>
@@ -6390,13 +6312,6 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
                         <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Hazardous, Heavy</characteristic>
                       </characteristics>
-                      <modifiers>
-                        <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
                     </profile>
                   </profiles>
                   <infoLinks>
@@ -6407,6 +6322,9 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="a067-9c4e-15da-2af1" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <categoryLinks>
+                    <categoryLink name="Attacks Dx Weapon" hidden="false" id="2606-daae-2bb4-51dd" targetId="e993-e086-6de1-12af" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
               </selectionEntries>
               <entryLinks>
@@ -6736,6 +6654,9 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                         <infoLink name="Ignores Cover" id="b56d-b73a-7334-daaf" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
                         <infoLink name="Torrent" id="79d9-839d-59a5-5539" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
                       </infoLinks>
+                      <categoryLinks>
+                        <categoryLink name="Attacks Dx Weapon" hidden="false" id="15e8-73b0-fba1-b775" targetId="e993-e086-6de1-12af" primary="false"/>
+                      </categoryLinks>
                     </selectionEntry>
                     <selectionEntry type="upgrade" import="true" name="Psilencer" hidden="false" id="5013-de55-3569-469c">
                       <profiles>
@@ -7081,6 +7002,9 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="b69e-eda9-f5ec-bf42" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="false" id="fc9d-2744-6ed9-27ac" includeChildSelections="false"/>
+                  </constraints>
                 </entryLink>
               </entryLinks>
             </selectionEntryGroup>
@@ -7165,6 +7089,9 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="23dd-bb25-6338-0719" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <constraints>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="false" id="02db-c8f2-dff8-3a48" includeChildSelections="false"/>
+                  </constraints>
                 </entryLink>
               </entryLinks>
             </selectionEntryGroup>
@@ -7284,9 +7211,6 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
       </infoLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Heavy flamer" hidden="false" id="a7b5-94dc-187c-8350">
-      <constraints>
-        <constraint type="max" value="1" field="selections" scope="parent" shared="false" id="fc9d-2744-6ed9-27ac" includeChildSelections="false"/>
-      </constraints>
       <profiles>
         <profile name="Heavy flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="37b4-6204-0f11-f5f0">
           <characteristics>
@@ -7298,19 +7222,15 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
           </characteristics>
-          <modifiers>
-            <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
-          </modifiers>
         </profile>
       </profiles>
       <infoLinks>
         <infoLink name="Ignores Cover" id="7e2e-e32f-b100-42f3" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
         <infoLink name="Torrent" id="4dad-58a8-a0e0-6641" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
       </infoLinks>
+      <categoryLinks>
+        <categoryLink name="Attacks Dx Weapon" hidden="false" id="5cbd-b202-c124-e5e2" targetId="e993-e086-6de1-12af" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Armoured tracks" hidden="false" id="4d82-568a-e3fe-59f3">
       <constraints>
@@ -7662,18 +7582,14 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                         <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Pistol, Torrent</characteristic>
                       </characteristics>
-                      <modifiers>
-                        <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
                     </profile>
                   </profiles>
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="bd5c-3b25-4dd5-88f8" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <categoryLinks>
+                    <categoryLink name="Attacks Dx Weapon" hidden="false" id="8718-c027-0a37-cac7" targetId="e993-e086-6de1-12af" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="Inferno pistol" hidden="false" id="57c2-825c-43a4-639c">
                   <profiles>
@@ -7687,13 +7603,6 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D3</characteristic>
                         <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Melta 2, Pistol</characteristic>
                       </characteristics>
-                      <modifiers>
-                        <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
                     </profile>
                   </profiles>
                   <infoLinks>
@@ -7703,6 +7612,9 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="9a0c-f917-7d56-2474" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <categoryLinks>
+                    <categoryLink name="Damage Dx Weapon" hidden="false" id="1dd3-9f36-3970-3f8b" targetId="4986-bf86-beb4-13ac" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="Plasma pistol" hidden="false" id="51d5-4da4-dc3a-a312">
                   <profiles>
@@ -7870,6 +7782,7 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="82f4-311b-da20-f85e"/>
                       </constraints>
                     </entryLink>
+                    <entryLink import="true" name="Multi-melta" hidden="false" id="c300-0bb4-46f9-7844" type="selectionEntry" targetId="ed36-2443-653e-d0c6"/>
                   </entryLinks>
                   <constraints>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3353-16f0-9aa7-708b" includeChildSelections="false" includeChildForces="false"/>
@@ -7894,25 +7807,9 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
                           </characteristics>
                         </profile>
                       </profiles>
-                    </selectionEntry>
-                    <selectionEntry type="upgrade" import="true" name="Multi-melta" hidden="false" id="c0f4-0b95-e41e-3b63">
-                      <infoLinks>
-                        <infoLink name="Heavy" id="08fa-86c1-1ec2-78d1" hidden="false" type="rule" targetId="1202-10a8-78e9-4c67"/>
-                        <infoLink name="Melta" id="086d-73c6-65e4-6650" hidden="false" type="rule" targetId="7cdb-fb99-44a9-8849"/>
-                      </infoLinks>
-                      <profiles>
-                        <profile name="Multi-melta" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="9811-9876-9345-cfe0">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Melta 2</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
+                      <categoryLinks>
+                        <categoryLink name="Attacks Dx Weapon" hidden="false" id="1f61-9428-74bd-5798" targetId="e993-e086-6de1-12af" primary="false"/>
+                      </categoryLinks>
                     </selectionEntry>
                     <selectionEntry type="upgrade" import="true" name="Heavy bolter" hidden="false" id="1f3b-46f4-5972-1e57">
                       <profiles>
@@ -8159,6 +8056,9 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
           </characteristics>
         </profile>
       </profiles>
+      <categoryLinks>
+        <categoryLink name="Attacks Dx Weapon" hidden="false" id="a975-024c-85c6-d8b3" targetId="e993-e086-6de1-12af" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Artificer-crafted storm bolter" hidden="false" id="3e87-7694-4199-d1bc">
       <infoLinks>
@@ -8195,6 +8095,10 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
           </characteristics>
         </profile>
       </profiles>
+      <comment>BS3+</comment>
+      <categoryLinks>
+        <categoryLink name="Damage Dx Weapon" hidden="false" id="9a57-fe72-2c7f-9f25" targetId="4986-bf86-beb4-13ac" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Sisters of Battle Immolator" hidden="false" id="a5c9-2cb7-d874-8169" publicationId="7d85-6d0f-57e0-5dea">
       <costs>
@@ -8294,13 +8198,6 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                         <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
                       </characteristics>
-                      <modifiers>
-                        <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
                     </profile>
                   </profiles>
                   <infoLinks>
@@ -8310,6 +8207,9 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="7ce0-0bdd-cecf-1747" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <categoryLinks>
+                    <categoryLink name="Attacks Dx Weapon" hidden="false" id="a325-3c71-c286-a957" targetId="e993-e086-6de1-12af" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="Twin heavy bolter" hidden="false" id="a252-b2e5-1d52-2da1">
                   <constraints>
@@ -8351,13 +8251,6 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                         <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
                         <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Melta 2, Twin-Linked</characteristic>
                       </characteristics>
-                      <modifiers>
-                        <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
                     </profile>
                   </profiles>
                   <infoLinks>
@@ -8367,6 +8260,9 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="d06b-27e4-4fe7-b5d6" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <categoryLinks>
+                    <categoryLink name="Damage Dx Weapon" hidden="false" id="e61d-c691-ef81-6ba1" targetId="4986-bf86-beb4-13ac" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntryGroup>
@@ -8486,17 +8382,15 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                 <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="3769-650b-539f-dc11" shared="true" includeChildSelections="false"/>
               </conditions>
             </modifier>
-            <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
           </modifiers>
         </profile>
       </profiles>
       <infoLinks>
         <infoLink name="One Shot" id="5244-6cca-e6c6-6a3d" hidden="false" type="rule" targetId="cd26-1611-860a-91e4"/>
       </infoLinks>
+      <categoryLinks>
+        <categoryLink name="Damage Dx Weapon" hidden="false" id="7854-e772-9648-8b5c" targetId="4986-bf86-beb4-13ac" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Daemonhost [Legends]" hidden="false" id="fac5-a242-951a-e1b2">
       <categoryLinks>
@@ -8544,6 +8438,7 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
               </entryLinks>
               <categoryLinks>
                 <categoryLink name="Psychic Weapon" hidden="false" id="1597-6d05-2eb9-f789" targetId="4546-4a0c-b3be-e84c" primary="false"/>
+                <categoryLink name="Damage Dx Weapon" hidden="false" id="5065-88a8-dc1b-c83f" targetId="4986-bf86-beb4-13ac" primary="false"/>
               </categoryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Warp grasp" hidden="false" id="1f2c-53ea-3c46-39c9">
@@ -10415,6 +10310,9 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                           <entryLinks>
                             <entryLink import="true" name="Weapon Modifications" hidden="false" id="2c5c-4230-37b0-1624" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                           </entryLinks>
+                          <categoryLinks>
+                            <categoryLink name="Attacks Dx Weapon" hidden="false" id="1661-04f6-3c05-bb40" targetId="e993-e086-6de1-12af" primary="false"/>
+                          </categoryLinks>
                         </selectionEntry>
                         <selectionEntry type="upgrade" import="true" name="Bolt Rifle" hidden="false" id="34ea-cb1f-0694-1bce" collective="true">
                           <constraints>
@@ -11314,6 +11212,9 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                       <entryLinks>
                         <entryLink import="true" name="Weapon Modifications" hidden="false" id="599e-89e5-7229-823a" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                       </entryLinks>
+                      <categoryLinks>
+                        <categoryLink name="Attacks Dx Weapon" hidden="false" id="3c7c-8b6f-07e7-0eb1" targetId="e993-e086-6de1-12af" primary="false"/>
+                      </categoryLinks>
                     </selectionEntry>
                   </selectionEntries>
                   <modifiers>
@@ -11369,6 +11270,9 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                       <entryLinks>
                         <entryLink import="true" name="Weapon Modifications" hidden="false" id="4edc-63c5-e4c0-ae00" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                       </entryLinks>
+                      <categoryLinks>
+                        <categoryLink name="Damage Dx Weapon" hidden="false" id="c997-d57f-b179-19b2" targetId="4986-bf86-beb4-13ac" primary="false"/>
+                      </categoryLinks>
                     </selectionEntry>
                   </selectionEntries>
                   <entryLinks>
@@ -11415,34 +11319,6 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                       </characteristics>
                     </profile>
                   </profiles>
-                  <selectionEntries>
-                    <selectionEntry type="upgrade" import="true" name="Multi-melta" hidden="false" id="9ef2-9344-e173-e0cb" publicationId="4115-3627-e608-39f6" page="25">
-                      <constraints>
-                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="ebe0-e995-ad56-6150"/>
-                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5063-6431-6fc4-0c33"/>
-                      </constraints>
-                      <profiles>
-                        <profile name="Multi-melta" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="2e42-ba98-6eb8-e63a">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Melta 2</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <infoLinks>
-                        <infoLink name="Heavy" id="f8c0-f61e-be24-0e0e" hidden="false" type="rule" targetId="1202-10a8-78e9-4c67"/>
-                        <infoLink name="Melta" id="594f-850a-3911-fe7e" hidden="false" type="rule" targetId="7cdb-fb99-44a9-8849"/>
-                      </infoLinks>
-                      <entryLinks>
-                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="d39d-9732-0ef4-e681" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
-                      </entryLinks>
-                    </selectionEntry>
-                  </selectionEntries>
                   <entryLinks>
                     <entryLink import="true" name="Bolt pistol" hidden="false" id="d256-108b-941e-591a" type="selectionEntry" targetId="52c0-a218-fd31-667d">
                       <constraints>
@@ -11461,6 +11337,15 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                       <entryLinks>
                         <entryLink import="true" name="Weapon Modifications" hidden="false" id="9e93-5de4-f9fd-b040" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                       </entryLinks>
+                    </entryLink>
+                    <entryLink import="true" name="Multi-melta" hidden="false" id="ce5b-1975-4d3a-bc89" type="selectionEntry" targetId="ed36-2443-653e-d0c6" collective="true">
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="8f92-c912-6821-41c7" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                      </entryLinks>
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d6d9-e046-d698-a09c"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e6e9-a98d-30c7-b345"/>
+                      </constraints>
                     </entryLink>
                   </entryLinks>
                   <modifiers>
@@ -12113,6 +11998,9 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
               <infoLinks>
                 <infoLink name="Psychic" id="cf55-bd06-f729-66a0" hidden="false" type="rule" targetId="e9c4-2bb8-12ee-cd1b"/>
               </infoLinks>
+              <categoryLinks>
+                <categoryLink name="Damage Dx Weapon" hidden="false" id="779b-97ed-c3f0-1f83" targetId="4986-bf86-beb4-13ac" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
           </selectionEntries>
           <entryLinks>
@@ -12162,29 +12050,6 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b3a2-bb39-9e51-b3e6"/>
           </constraints>
           <selectionEntries>
-            <selectionEntry type="upgrade" import="true" name="Heavy Flamer" hidden="false" id="e1d3-68d1-4e62-2882" publicationId="4115-3627-e608-39f6" page="11">
-              <constraints>
-                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3100-01d2-f02e-56ce"/>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f05f-9258-abb2-4f22"/>
-              </constraints>
-              <profiles>
-                <profile name="Heavy Flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="10a7-0ea5-7db4-492b" publicationId="4115-3627-e608-39f6" page="11">
-                  <characteristics>
-                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
-                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
-                    <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
-                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
-              <infoLinks>
-                <infoLink name="Ignores Cover" id="6130-c68d-ad4d-eaae" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
-                <infoLink name="Torrent" id="27a6-e50e-810e-7911" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
-              </infoLinks>
-            </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Power fist" hidden="false" id="a2b3-dbc3-7f77-f891" publicationId="4115-3627-e608-39f6" page="11">
               <constraints>
                 <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="ecb3-bb62-20e0-59f6"/>
@@ -12210,6 +12075,12 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
               <constraints>
                 <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="c1f9-82c9-1ae4-6df3"/>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ddca-1242-ac0f-c068"/>
+              </constraints>
+            </entryLink>
+            <entryLink import="true" name="Heavy flamer" hidden="false" id="f3a0-f375-78f2-2975" type="selectionEntry" targetId="a7b5-94dc-187c-8350">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f05f-9258-abb2-4f22"/>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3100-01d2-f02e-56ce"/>
               </constraints>
             </entryLink>
           </entryLinks>
@@ -13925,6 +13796,9 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                       <entryLinks>
                         <entryLink import="true" name="Weapon Modifications" hidden="false" id="99fd-42d6-58ec-effa" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                       </entryLinks>
+                      <categoryLinks>
+                        <categoryLink name="Damage Dx Weapon" hidden="false" id="7e9d-0439-dffd-2031" targetId="4986-bf86-beb4-13ac" primary="false"/>
+                      </categoryLinks>
                     </selectionEntry>
                     <selectionEntry type="upgrade" import="true" name="Bolt carbine" hidden="false" id="e8fc-68dc-c256-c381" publicationId="4115-3627-e608-39f6" page="27">
                       <constraints>
@@ -14810,6 +14684,13 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores cover, Torrent</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
       </profiles>
       <infoLinks>
@@ -15109,6 +14990,9 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
         <infoLink name="Heavy" id="a1e0-e395-c469-2167" hidden="false" type="rule" targetId="1202-10a8-78e9-4c67"/>
         <infoLink name="Hazardous" id="3253-f20d-d2f3-40bf" hidden="false" type="rule" targetId="8367-374c-f87-c627"/>
       </infoLinks>
+      <categoryLinks>
+        <categoryLink name="Attacks Dx Weapon" hidden="false" id="b7e7-1d48-c98f-265e" targetId="e993-e086-6de1-12af" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Sanctifiers" hidden="false" id="4e74-3710-7a66-9d6c">
       <costs>
@@ -15300,28 +15184,14 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="17d8-99b8-3360-7a60" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
                 </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Meltagun" hidden="false" id="4df0-6ab2-6750-e5a4">
-                  <profiles>
-                    <profile name="Meltagun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="16ee-8ca6-93a8-ace9">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Melta 2</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Melta" id="ee12-3053-7e27-9a24" hidden="false" type="rule" targetId="7cdb-fb99-44a9-8849"/>
-                  </infoLinks>
+              </selectionEntries>
+              <entryLinks>
+                <entryLink import="true" name="Meltagun" hidden="false" id="abf2-e2c6-0000-4634" type="selectionEntry" targetId="f1ff-e2f6-852a-ec0b">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="176f-283f-7050-d47c" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
-                </selectionEntry>
-              </selectionEntries>
+                </entryLink>
+              </entryLinks>
             </selectionEntryGroup>
           </selectionEntryGroups>
           <entryLinks>
@@ -15369,7 +15239,7 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
           <modifiers>
             <modifier type="set" value="Missionary w/ meltagun" field="name">
               <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="parent" childId="4df0-6ab2-6750-e5a4" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="parent" childId="f1ff-e2f6-852a-ec0b" shared="true" includeChildSelections="true"/>
               </conditions>
             </modifier>
           </modifiers>
@@ -15708,6 +15578,9 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
         <infoLink name="Ignores Cover" id="f040-c3b7-9ceb-a513" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
         <infoLink name="Torrent" id="33d3-6597-163e-4b8d" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
       </infoLinks>
+      <categoryLinks>
+        <categoryLink name="Attacks Dx Weapon" hidden="false" id="b7f1-d27c-d7ba-cf92" targetId="e993-e086-6de1-12af" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Black Shield blades" hidden="false" id="1fe3-6ce2-0b55-838b">
       <constraints>
@@ -15815,6 +15688,9 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
           </conditions>
         </modifier>
       </modifiers>
+      <categoryLinks>
+        <categoryLink name="Attacks Dx Weapon" hidden="false" id="568a-223d-b737-fb14" targetId="e993-e086-6de1-12af" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Stalker-pattern boltgun" hidden="false" id="c5b3-535d-4e49-4c05" collective="true">
       <constraints>
@@ -15844,6 +15720,50 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
           </conditions>
         </modifier>
       </modifiers>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Meltagun" hidden="false" id="f1ff-e2f6-852a-ec0b">
+      <infoLinks>
+        <infoLink name="Melta" id="8c58-d857-1040-51c5" hidden="false" type="rule" targetId="7cdb-fb99-44a9-8849"/>
+      </infoLinks>
+      <profiles>
+        <profile name="Meltagun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="1b09-b5f4-4fa1-f6b1">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Melta 2</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <comment>BS4+</comment>
+      <categoryLinks>
+        <categoryLink name="Damage Dx Weapon" hidden="false" id="a6dc-944a-9f31-30a9" targetId="4986-bf86-beb4-13ac" primary="false"/>
+      </categoryLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Multi-melta" hidden="false" id="ed36-2443-653e-d0c6">
+      <infoLinks>
+        <infoLink name="Heavy" id="a79f-2a5b-8c46-ac70" hidden="false" type="rule" targetId="1202-10a8-78e9-4c67"/>
+        <infoLink name="Melta" id="9b98-3642-3dab-2003" hidden="false" type="rule" targetId="7cdb-fb99-44a9-8849"/>
+      </infoLinks>
+      <profiles>
+        <profile name="Multi-melta" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="b489-a443-39a9-e6c1">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">4+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-4</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Melta 2</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <categoryLinks>
+        <categoryLink name="Damage Dx Weapon" hidden="false" id="e893-8387-a964-9ba1" targetId="4986-bf86-beb4-13ac" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
   </sharedSelectionEntries>
   <categoryEntries>
