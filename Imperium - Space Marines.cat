@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Adeptus Astartes - Space Marines" revision="157" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Adeptus Astartes - Space Marines" revision="158" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
     <categoryEntry id="930d-2875-125b-a65e" name="Bladeguard Veteran Squad" hidden="false"/>
@@ -6342,6 +6342,9 @@ this unit, add 1 to any armour saving throw made against that attack.</character
       <infoLinks>
         <infoLink name="Melta" hidden="false" type="rule" id="54b3-7db2-e777-150f" targetId="7cdb-fb99-44a9-8849"/>
       </infoLinks>
+      <categoryLinks>
+        <categoryLink name="Damage Dx Weapon" hidden="false" id="cf3c-d75a-7d27-81e2" targetId="4986-bf86-beb4-13ac" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Plasma Gun" hidden="false" id="4f0e-770d-bae4-bfc3">
       <profiles>
@@ -6502,6 +6505,13 @@ this unit, add 1 to any armour saving throw made against that attack.</character
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Heavy</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
         <profile name="➤ Missile Launcher - Krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="aaae-ac24-a298-a515">
           <characteristics>
@@ -6513,6 +6523,13 @@ this unit, add 1 to any armour saving throw made against that attack.</character
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
       </profiles>
       <infoLinks>
@@ -6572,6 +6589,9 @@ this unit, add 1 to any armour saving throw made against that attack.</character
         <infoLink name="Blast" hidden="false" type="rule" id="beb6-8c62-8e4-8383" targetId="6c1f-1cf7-ff25-c99e"/>
       </infoLinks>
       <comment>BS4+ Heavy</comment>
+      <categoryLinks>
+        <categoryLink name="Attacks Dx Weapon" hidden="false" id="00af-d8eb-01a2-eb8a" targetId="e993-e086-6de1-12af" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Detachment" hidden="false" id="82cb-ba1-1aae-3b1d">
       <entryLinks>
@@ -10727,30 +10747,12 @@ by 1.</characteristic>
                         <entryLink import="true" name="Weapon Modifications" hidden="false" id="b48d-7d68-033c-5f20" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                       </entryLinks>
                     </entryLink>
-                  </entryLinks>
-                  <selectionEntries>
-                    <selectionEntry type="upgrade" import="true" name="Centurion Missile Launcher" hidden="false" id="50ee-6228-1022-2c9e">
-                      <profiles>
-                        <profile name="Centurion Missile Launcher" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="0f67-7b59-218d-b37c">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D3</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <infoLinks>
-                        <infoLink name="Blast" id="4162-eae8-7d5e-d32b" hidden="false" type="rule" targetId="6c1f-1cf7-ff25-c99e"/>
-                      </infoLinks>
+                    <entryLink import="true" name="Centurion missile launcher" hidden="false" id="a8ab-fda9-c24d-fe14" type="selectionEntry" targetId="3a62-4b8b-b60b-2ee6">
                       <entryLinks>
                         <entryLink import="true" name="Weapon Modifications" hidden="false" id="b72d-d5c7-d25f-94db" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                       </entryLinks>
-                    </selectionEntry>
-                  </selectionEntries>
+                    </entryLink>
+                  </entryLinks>
                 </selectionEntryGroup>
                 <selectionEntryGroup name="Weapon Option" id="a0fb-ccdc-9b2c-31d3" hidden="false" defaultSelectionEntryId="f6a1-a037-fa1c-4cb5">
                   <entryLinks>
@@ -10830,27 +10832,8 @@ by 1.</characteristic>
                   </constraints>
                   <entryLinks>
                     <entryLink import="true" name="Centurion Bolters" hidden="false" type="selectionEntry" id="8866-3f9-fc9b-80bd" targetId="953c-b525-10be-f7cd"/>
+                    <entryLink import="true" name="Centurion missile launcher" hidden="false" id="5fb5-d9b8-7877-813c" type="selectionEntry" targetId="3a62-4b8b-b60b-2ee6"/>
                   </entryLinks>
-                  <selectionEntries>
-                    <selectionEntry type="upgrade" import="true" name="Centurion Missile Launcher" hidden="false" id="4c77-da48-37f6-9c52">
-                      <profiles>
-                        <profile name="Centurion Missile Launcher" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="aca6-1388-3c53-36e8">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D3</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <infoLinks>
-                        <infoLink name="Blast" hidden="false" type="rule" id="709c-f77f-295e-c265" targetId="6c1f-1cf7-ff25-c99e"/>
-                      </infoLinks>
-                    </selectionEntry>
-                  </selectionEntries>
                 </selectionEntryGroup>
                 <selectionEntryGroup name="Weapon Option" hidden="false" id="a461-656d-b18-a31f" defaultSelectionEntryId="f6a1-a037-fa1c-4cb5">
                   <entryLinks>
@@ -11638,6 +11621,13 @@ by 1.</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
         <profile name="➤ Missile Launcher - Krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="7b97-b20a-da08-263">
           <characteristics>
@@ -11649,6 +11639,13 @@ by 1.</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
       </profiles>
       <infoLinks>
@@ -12531,6 +12528,13 @@ by 1.</characteristic>
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
                 <profile name="➤ Ballistus Missile Launcher - Krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="da5f-e066-8aba-9ad3">
                   <characteristics>
@@ -12542,6 +12546,13 @@ by 1.</characteristic>
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
               </profiles>
               <infoLinks>
@@ -14743,45 +14754,16 @@ by 1.</characteristic>
               <entryLinks>
                 <entryLink import="true" name="Combat Knife" hidden="false" type="selectionEntry" id="4dfd-929-4b70-ea15" targetId="8c75-384d-a10-a451" collective="false"/>
                 <entryLink import="true" name="Astartes Shotgun" hidden="false" type="selectionEntry" id="c8b1-40a7-ed4-6ad2" targetId="de02-10d8-697a-6b2c"/>
-              </entryLinks>
-              <constraints>
-                <constraint type="max" value="5" field="selections" scope="parent" shared="true" id="af5c-c4c4-7b4-e7f2"/>
-              </constraints>
-              <selectionEntries>
-                <selectionEntry type="upgrade" import="true" name="Astartes Grenade Launcher" hidden="false" id="bda8-d98b-6a31-c98f" collective="true">
-                  <profiles>
-                    <profile name="➤ Astartes Grenade Launcher - Frag" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="97c9-373d-c4ee-ccf1">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
-                      </characteristics>
-                    </profile>
-                    <profile name="➤ Astartes Grenade Launcher - Krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="378e-7525-cc06-68a1">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D3</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Blast" hidden="false" type="rule" id="14e3-f7dc-d3cc-4d45" targetId="6c1f-1cf7-ff25-c99e"/>
-                  </infoLinks>
+                <entryLink import="true" name="Astartes Grenade Launcher" hidden="false" id="d0cd-2b59-6119-0674" type="selectionEntry" targetId="ca2b-3d9a-e739-cb21">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a3da-4947-7e88-7d00"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2323-fbb8-f184-3e6c"/>
                   </constraints>
-                </selectionEntry>
-              </selectionEntries>
+                </entryLink>
+              </entryLinks>
+              <constraints>
+                <constraint type="max" value="5" field="selections" scope="parent" shared="true" id="af5c-c4c4-7b4-e7f2"/>
+              </constraints>
               <profiles>
                 <profile name="Scout Bike Squad" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="e26f-9315-8e9b-cee0">
                   <characteristics>
@@ -14872,41 +14854,12 @@ by 1.</characteristic>
                         <entryLink import="true" name="Weapon Modifications" hidden="false" id="5e9e-c176-901e-ff28" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                       </entryLinks>
                     </entryLink>
-                  </entryLinks>
-                  <selectionEntries>
-                    <selectionEntry type="upgrade" import="true" name="Astartes Grenade Launcher" hidden="false" id="f19e-6260-bd42-aee8">
-                      <profiles>
-                        <profile name="➤ Astartes Grenade Launcher - Frag" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="95dd-7b5d-a396-386c">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
-                          </characteristics>
-                        </profile>
-                        <profile name="➤ Astartes Grenade Launcher - Krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="572b-f322-586a-1670">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D3</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <infoLinks>
-                        <infoLink name="Blast" hidden="false" type="rule" id="b01e-5e86-26a3-5a81" targetId="6c1f-1cf7-ff25-c99e"/>
-                      </infoLinks>
+                    <entryLink import="true" name="Astartes Grenade Launcher" hidden="false" id="816a-d974-0b96-c178" type="selectionEntry" targetId="ca2b-3d9a-e739-cb21">
                       <entryLinks>
                         <entryLink import="true" name="Weapon Modifications" hidden="false" id="e71d-378b-fd96-cac6" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                       </entryLinks>
-                    </selectionEntry>
-                  </selectionEntries>
+                    </entryLink>
+                  </entryLinks>
                 </selectionEntryGroup>
                 <selectionEntryGroup name="Weapon Option" hidden="false" id="d880-f154-6f34-4dd3" defaultSelectionEntryId="4ba2-32e0-91f-30a4">
                   <constraints>
@@ -16012,6 +15965,9 @@ by 1.</characteristic>
               <entryLinks>
                 <entryLink import="true" name="Weapon Modifications" hidden="false" id="430c-9929-bedf-1037" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
               </entryLinks>
+              <categoryLinks>
+                <categoryLink name="Attacks Dx Weapon" hidden="false" id="6b27-7722-035b-4c7f" targetId="e993-e086-6de1-12af" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -16177,6 +16133,9 @@ by 1.</characteristic>
               <entryLinks>
                 <entryLink import="true" name="Weapon Modifications" hidden="false" id="321f-f3ce-da41-7e43" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
               </entryLinks>
+              <categoryLinks>
+                <categoryLink name="Damage Dx Weapon" hidden="false" id="c3d4-d821-8bb5-079b" targetId="4986-bf86-beb4-13ac" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Krakstorm Grenade Launcher" hidden="false" id="d2e1-db01-99c3-c643">
               <constraints>
@@ -16199,6 +16158,9 @@ by 1.</characteristic>
               <entryLinks>
                 <entryLink import="true" name="Weapon Modifications" hidden="false" id="e1f5-f163-675e-0d62" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
               </entryLinks>
+              <categoryLinks>
+                <categoryLink name="Damage Dx Weapon" hidden="false" id="d72a-b44d-8023-6409" targetId="4986-bf86-beb4-13ac" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Melta Destroyer" hidden="false" id="d1a1-1462-dde3-6c02">
               <profiles>
@@ -16221,6 +16183,9 @@ by 1.</characteristic>
               <entryLinks>
                 <entryLink import="true" name="Weapon Modifications" hidden="false" id="2b50-bedd-63df-f98b" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
               </entryLinks>
+              <categoryLinks>
+                <categoryLink name="Damage Dx Weapon" hidden="false" id="a6e1-590d-c73d-8f3f" targetId="4986-bf86-beb4-13ac" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -16234,8 +16199,8 @@ by 1.</characteristic>
         <categoryLink targetId="dbd4-63-af05-998" id="6746-1c48-d19-9fdb" primary="true" name="Vehicle"/>
         <categoryLink targetId="c619-2086-bbcf-69c9" id="27b4-f24e-4e36-c996" primary="false" name="Fly"/>
         <categoryLink targetId="aff3-d6a3-2a95-9dc" id="6b93-2666-5af5-87ac" primary="false" name="Imperium"/>
-        <categoryLink targetId="5c48-a3fd-54b6-25d0" id="bb2d-f400-3932-6f78" primary="false" name="Land Speeder"/>
         <categoryLink targetId="6e7-40c-58d9-e402" id="bab-9516-2506-8e95" primary="false" name="Faction: Adeptus Astartes"/>
+        <categoryLink name="Land Speeder Typhoon" hidden="false" id="62ea-f2e4-4f0d-90e1" targetId="33b7-902a-35da-a981" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Land Speeder Typhoon" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="c5d0-121c-b43b-10ad">
@@ -16752,6 +16717,13 @@ by 1.</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
         <profile name="➤ Typhoon Missile Launcher - Krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="a218-d637-231e-c466">
           <characteristics>
@@ -16763,6 +16735,13 @@ by 1.</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
       </profiles>
       <infoLinks>
@@ -20483,6 +20462,9 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
               <entryLinks>
                 <entryLink import="true" name="Weapon Modifications" hidden="false" id="d6bb-e56e-d4fa-7701" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
               </entryLinks>
+              <categoryLinks>
+                <categoryLink name="Damage Dx Weapon" hidden="false" id="99b3-ca18-233e-3b49" targetId="4986-bf86-beb4-13ac" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -22725,6 +22707,9 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
       <infoLinks>
         <infoLink name="Anti-" hidden="false" type="rule" id="3231-ab58-6ddb-3548" targetId="4111-82e3-9444-e942"/>
       </infoLinks>
+      <categoryLinks>
+        <categoryLink name="Damage Dx Weapon" hidden="false" id="d0ac-c8eb-9a8c-01a2" targetId="4986-bf86-beb4-13ac" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Stormtalon Gunship" hidden="false" id="1bb6-878e-7af1-5bdb">
       <costs>
@@ -23088,6 +23073,9 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="952b-f473-207c-0af2" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <categoryLinks>
+                    <categoryLink name="Attacks Dx Weapon" hidden="false" id="b777-0aaf-c19a-d944" targetId="e993-e086-6de1-12af" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntryGroup>
@@ -24577,11 +24565,6 @@ You can attach this model to a unit it can lead units even if one Captain or Ch
                 <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="4ff4-4a4a-ec01-c18d" shared="true" includeChildSelections="true"/>
               </conditions>
             </modifier>
-            <modifier type="append" value="+0" field="3254-9fe6-d824-513e">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="parent" childId="90fe-a335-4f97-252e" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
           </modifiers>
         </profile>
       </profiles>
@@ -24591,6 +24574,7 @@ You can attach this model to a unit it can lead units even if one Captain or Ch
       <categoryLinks>
         <categoryLink name="Psychic Weapon" hidden="false" id="a9af-e391-1420-bfe2" targetId="4546-4a0c-b3be-e84c" primary="false"/>
         <categoryLink name="Melee Weapon" hidden="false" id="eb57-76a8-4d35-078e" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+        <categoryLink name="Damage Dx Weapon" hidden="false" id="9790-45cc-0219-0a88" targetId="4986-bf86-beb4-13ac" primary="false"/>
       </categoryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Smite" hidden="false" id="4aaa-f353-5fa5-fd92">
@@ -24650,6 +24634,8 @@ You can attach this model to a unit it can lead units even if one Captain or Ch
       <categoryLinks>
         <categoryLink name="Psychic Weapon" hidden="false" id="225f-dee5-89df-fd39" targetId="4546-4a0c-b3be-e84c" primary="false"/>
         <categoryLink name="Ranged Weapon" hidden="false" id="837f-653f-5892-a7b0" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+        <categoryLink name="Attacks Dx Weapon" hidden="false" id="dfbe-0b7f-dd92-e530" targetId="e993-e086-6de1-12af" primary="false"/>
+        <categoryLink name="Damage Dx Weapon" hidden="false" id="80bb-1c4d-93e2-f049" targetId="4986-bf86-beb4-13ac" primary="false"/>
       </categoryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Librarian in Phobos Armour" hidden="false" id="137c-2add-1a51-ee96">
@@ -29778,33 +29764,17 @@ You can attach this model to one of the above units even if one Captain, Chapte
                   </entryLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="2 Dreadnought Inferno Cannons" hidden="false" id="8401-1490-e6aa-7044">
-                  <selectionEntries>
-                    <selectionEntry type="upgrade" import="true" name="Dreadnought Inferno Cannon" hidden="false" id="6d5-2515-d6fa-3fe0">
-                      <profiles>
-                        <profile name="Dreadnought Inferno Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="c228-942b-dbd3-9104">
-                          <characteristics>
-                            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2D6</characteristic>
-                            <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
-                            <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
-                            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-                            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <infoLinks>
-                        <infoLink name="Ignores Cover" id="c8c7-674e-93b7-93d1" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
-                      </infoLinks>
+                  <entryLinks>
+                    <entryLink import="true" name="Dreadnought Inferno Cannon" hidden="false" id="186b-80ff-d2e9-a3d6" type="selectionEntry" targetId="57e6-cc22-1cd7-a64c">
+                      <entryLinks>
+                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="1405-ed4e-9aa5-070e" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                      </entryLinks>
                       <constraints>
                         <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="7354-54e-a72-d17"/>
                         <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="e950-b1a0-a1cc-7229"/>
                       </constraints>
-                      <entryLinks>
-                        <entryLink import="true" name="Weapon Modifications" hidden="false" id="d13c-496c-a11c-abab" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
-                      </entryLinks>
-                    </selectionEntry>
-                  </selectionEntries>
+                    </entryLink>
+                  </entryLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="2 Heavy Plasma Cannons" hidden="false" id="344b-ff81-9a33-a760">
                   <entryLinks>
@@ -30005,6 +29975,9 @@ You can attach this model to one of the above units even if one Captain, Chapte
         <infoLink name="Hazardous" hidden="false" type="rule" id="9f7d-102d-d452-a3d9" targetId="8367-374c-f87-c627"/>
         <infoLink name="Blast" hidden="false" type="rule" id="92b5-a64f-5473-75d6" targetId="6c1f-1cf7-ff25-c99e"/>
       </infoLinks>
+      <categoryLinks>
+        <categoryLink name="Attacks Dx Weapon" hidden="false" id="dab8-4ba0-4738-1d82" targetId="e993-e086-6de1-12af" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Deimos Predator [Legends]" hidden="false" id="534d-4e94-5a8a-75ae">
       <costs>
@@ -30150,6 +30123,9 @@ You can attach this model to one of the above units even if one Captain, Chapte
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="c3c7-7a32-debd-5a52" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <categoryLinks>
+                    <categoryLink name="Attacks Dx Weapon" hidden="false" id="64ac-20d1-04d5-e925" targetId="e993-e086-6de1-12af" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="Infernus Cannon" hidden="false" id="a5b5-66ef-d85e-2e7">
                   <profiles>
@@ -30172,6 +30148,9 @@ You can attach this model to one of the above units even if one Captain, Chapte
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="1ba1-cf9b-b354-a97d" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <categoryLinks>
+                    <categoryLink name="Attacks Dx Weapon" hidden="false" id="2bb5-a1bd-d4d0-cdd6" targetId="e993-e086-6de1-12af" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="Conversion Beam Cannon" hidden="false" id="9e4-58a3-4c93-fb7">
                   <infoLinks>
@@ -30214,15 +30193,14 @@ You can attach this model to one of the above units even if one Captain, Chapte
                     </profile>
                   </profiles>
                   <infoLinks>
-                    <infoLink name="Melta" id="aa03-8247-de23-d375" hidden="false" type="rule" targetId="7cdb-fb99-44a9-8849">
-                      <modifiers>
-                        <modifier type="append" value="4" field="name"/>
-                      </modifiers>
-                    </infoLink>
+                    <infoLink name="Melta" id="aa03-8247-de23-d375" hidden="false" type="rule" targetId="7cdb-fb99-44a9-8849"/>
                   </infoLinks>
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="3ef0-8e6f-7a38-0d08" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <categoryLinks>
+                    <categoryLink name="Damage Dx Weapon" hidden="false" id="993e-1013-6bb6-5f8a" targetId="4986-bf86-beb4-13ac" primary="false"/>
+                  </categoryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntryGroup>
@@ -30393,28 +30371,6 @@ You can attach this model to one of the above units even if one Captain, Chapte
                     </entryLink>
                   </entryLinks>
                 </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Dreadnought Inferno Cannon" hidden="false" id="5d4d-4a88-393a-75c8">
-                  <profiles>
-                    <profile name="Dreadnought Inferno Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="8d3a-cb6f-3178-c550">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2D6</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Ignores Cover" id="b4c0-b2-98bd-1811" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
-                    <infoLink name="Torrent" id="d67-e834-d4e9-50bd" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
-                  </infoLinks>
-                  <entryLinks>
-                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="7d64-8ec5-a8c2-5441" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
-                  </entryLinks>
-                </selectionEntry>
               </selectionEntries>
               <constraints>
                 <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="83fa-333-e2b1-9248"/>
@@ -30439,6 +30395,11 @@ You can attach this model to one of the above units even if one Captain, Chapte
                 <entryLink import="true" name="Twin Lascannon" hidden="false" id="128a-ac36-efe-d482" type="selectionEntry" targetId="e008-470a-83cb-c5e6">
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="c637-85d0-fed5-d824" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
+                </entryLink>
+                <entryLink import="true" name="Dreadnought Inferno Cannon" hidden="false" id="36e0-50c0-5474-53d2" type="selectionEntry" targetId="57e6-cc22-1cd7-a64c">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="7d64-8ec5-a8c2-5441" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
                 </entryLink>
               </entryLinks>
@@ -30786,6 +30747,13 @@ You can attach this model to one of the above units even if one Captain, Chapte
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="2801-9f1c-645d-cb3d" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
                 <profile name="➤ Tempest Salvo Launcher - Krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="d4f1-c7d9-9a94-bf54">
                   <characteristics>
@@ -30797,6 +30765,13 @@ You can attach this model to one of the above units even if one Captain, Chapte
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D6</characteristic>
                     <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
                   </characteristics>
+                  <modifiers>
+                    <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                  </modifiers>
                 </profile>
               </profiles>
               <infoLinks>
@@ -31125,6 +31100,9 @@ You can attach this model to one of the above units even if one Captain, Chapte
               <entryLinks>
                 <entryLink import="true" name="Weapon Modifications" hidden="false" id="43b8-3801-0edb-cfd5" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
               </entryLinks>
+              <categoryLinks>
+                <categoryLink name="Attacks Dx Weapon" hidden="false" id="425f-e5c7-a0ce-d452" targetId="e993-e086-6de1-12af" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Twin Magna-Melta" hidden="false" id="7991-6a40-95ec-8c58">
               <constraints>
@@ -31145,16 +31123,15 @@ You can attach this model to one of the above units even if one Captain, Chapte
                 </profile>
               </profiles>
               <infoLinks>
-                <infoLink name="Melta" id="932e-ffca-de4-e992" hidden="false" type="rule" targetId="7cdb-fb99-44a9-8849">
-                  <modifiers>
-                    <modifier type="append" value="4" field="name"/>
-                  </modifiers>
-                </infoLink>
+                <infoLink name="Melta" id="932e-ffca-de4-e992" hidden="false" type="rule" targetId="7cdb-fb99-44a9-8849"/>
                 <infoLink name="Twin-linked" id="1362-7034-90bd-bfee" hidden="false" type="rule" targetId="cf93-ad4d-2f08-a79d"/>
               </infoLinks>
               <entryLinks>
                 <entryLink import="true" name="Weapon Modifications" hidden="false" id="33f4-bb86-fbaa-7dbe" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
               </entryLinks>
+              <categoryLinks>
+                <categoryLink name="Damage Dx Weapon" hidden="false" id="311d-f514-5c50-3bc5" targetId="4986-bf86-beb4-13ac" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -31506,35 +31483,16 @@ You can attach this model to one of the above units even if one Captain, Chapte
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="6579-de22-0dfb-cba6" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
                 </entryLink>
+                <entryLink import="true" name="Dreadnought Inferno Cannon" hidden="false" id="2a1e-cf9c-b6c2-3da7" type="selectionEntry" targetId="57e6-cc22-1cd7-a64c">
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="a73e-065d-dd72-4214" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
+                </entryLink>
               </entryLinks>
               <constraints>
                 <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7a3e-59b9-bcf4-757e"/>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="bced-515d-6b05-cc9d"/>
               </constraints>
-              <selectionEntries>
-                <selectionEntry type="upgrade" import="true" name="Dreadnought Inferno Cannon" hidden="false" id="b4c2-c28-5a18-f3fc">
-                  <profiles>
-                    <profile name="Dreadnought Inferno Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="4472-896e-dc5f-6694">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2D6</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Ignores Cover" id="492f-a99f-8837-6067" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
-                    <infoLink name="Torrent" id="db8f-d1b6-923f-4853" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
-                  </infoLinks>
-                  <entryLinks>
-                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="e654-6667-d24e-036e" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
-                  </entryLinks>
-                </selectionEntry>
-              </selectionEntries>
             </selectionEntryGroup>
           </selectionEntryGroups>
         </selectionEntryGroup>
@@ -34566,6 +34524,9 @@ per turn.</characteristic>
               <entryLinks>
                 <entryLink import="true" name="Weapon Modifications" hidden="false" id="fd0d-ba28-d986-8706" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
               </entryLinks>
+              <categoryLinks>
+                <categoryLink name="Attacks Dx Weapon" hidden="false" id="4518-5738-8262-3c84" targetId="e993-e086-6de1-12af" primary="false"/>
+              </categoryLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -35928,6 +35889,9 @@ per turn.</characteristic>
         <infoLink name="Ignores Cover" id="1c58-e1f1-39b8-dd90" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
         <infoLink name="Twin-linked" id="90c3-906d-9165-d3e3" hidden="false" type="rule" targetId="cf93-ad4d-2f08-a79d"/>
       </infoLinks>
+      <categoryLinks>
+        <categoryLink name="Attacks Dx Weapon" hidden="false" id="1cff-640e-86b3-6e21" targetId="e993-e086-6de1-12af" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Twin Meltagun" hidden="false" id="4f80-b9b6-5209-2f99">
       <profiles>
@@ -35947,6 +35911,9 @@ per turn.</characteristic>
         <infoLink name="Melta" id="6ff6-eaf1-fce0-9d91" hidden="false" type="rule" targetId="7cdb-fb99-44a9-8849"/>
         <infoLink name="Twin-linked" id="3e74-fcd5-1f9b-d9d3" hidden="false" type="rule" targetId="cf93-ad4d-2f08-a79d"/>
       </infoLinks>
+      <categoryLinks>
+        <categoryLink name="Damage Dx Weapon" hidden="false" id="ac81-7b56-2377-fb75" targetId="4986-bf86-beb4-13ac" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Sternguard Heavy Bolter" hidden="false" id="a418-befd-3e1b-87be">
       <profiles>
@@ -36448,6 +36415,50 @@ per turn.</characteristic>
       </infoLinks>
       <categoryLinks>
         <categoryLink name="Attacks Dx Weapon" hidden="false" id="0296-ef13-2d16-5e7b" targetId="e993-e086-6de1-12af" primary="false"/>
+      </categoryLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Centurion missile launcher" hidden="false" id="3a62-4b8b-b60b-2ee6">
+      <profiles>
+        <profile name="Centurion missile launcher" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="0dae-897e-2b7a-3fc4">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">36&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D3</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Blast" id="dcd4-4dc4-8a02-5a78" hidden="false" type="rule" targetId="6c1f-1cf7-ff25-c99e"/>
+      </infoLinks>
+      <categoryLinks>
+        <categoryLink name="Attacks Dx Weapon" hidden="false" id="ee4e-ac26-7da4-8075" targetId="e993-e086-6de1-12af" primary="false"/>
+        <categoryLink name="Damage Dx Weapon" hidden="false" id="6037-d7d2-c667-3825" targetId="4986-bf86-beb4-13ac" primary="false"/>
+      </categoryLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Dreadnought Inferno Cannon" hidden="false" id="57e6-cc22-1cd7-a64c">
+      <profiles>
+        <profile name="Dreadnought Inferno Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="7e87-c57a-20bb-84f7">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2D6</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Ignores Cover" id="a4af-f602-a971-8859" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
+        <infoLink name="Torrent" id="2289-90a4-987c-414b" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
+      </infoLinks>
+      <categoryLinks>
+        <categoryLink name="Attacks Dx Weapon" hidden="false" id="68e9-437c-b3e7-d32a" targetId="e993-e086-6de1-12af" primary="false"/>
       </categoryLinks>
     </selectionEntry>
   </sharedSelectionEntries>
