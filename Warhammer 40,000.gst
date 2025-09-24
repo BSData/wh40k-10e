@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="65" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="66" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -493,8 +493,8 @@
     </categoryEntry>
     <categoryEntry name="Pistol Weapon" id="1db0-c6b5-19db-8d0c" hidden="true"/>
     <categoryEntry name="Death Company" id="7278-781b-ce6c-d23c" hidden="false"/>
-    <categoryEntry name="Attacks Dx Weapon" id="e993-e086-6de1-12af" hidden="false"/>
-    <categoryEntry name="Damage Dx Weapon" id="4986-bf86-beb4-13ac" hidden="false"/>
+    <categoryEntry name="Attacks Dx Weapon" id="e993-e086-6de1-12af" hidden="true"/>
+    <categoryEntry name="Damage Dx Weapon" id="4986-bf86-beb4-13ac" hidden="true"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
