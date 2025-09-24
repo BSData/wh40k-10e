@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="106" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="107" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <publications>
     <publication id="442c-a37c-3908-d701" name="Codex: Aeldari" shortName="C:Aeldari" publisher="Codex: Aeldari" publicationDate="08/02/2025"/>
     <publication id="1427-7c5c-863f-ac94" name="Index: Drukhari" shortName="I:Drukhari" publisher="Index: Drukhari" publicationDate="6/15/2023"/>
@@ -38208,7 +38208,7 @@ Each time you use one of the detachment Stratagems, if your Fate dice pool conta
               <profiles>
                 <profile name="Borrowed Vigour" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b32a-7c31-93f5-e663">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Archon model only. Add 2 to the Attacks characteristic of the bearer&apos;s melee weapons.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Archon^^** model only. Add 2 to the Attacks characteristic of the bearer&apos;s melee weapons.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -38226,6 +38226,15 @@ Each time you use one of the detachment Stratagems, if your Fate dice pool conta
                 <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
                 <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
               </costs>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Borrowed Vigour" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="increment" value="2" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="decrement" value="2" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.84c4-6d1e-e724-bd6e.profiles.Melee Weapons"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Morbid Might" hidden="false" id="6617-8f5a-b98a-e897">
               <constraints>
@@ -38580,10 +38589,20 @@ Each time you use one of the detachment Stratagems, if your Fate dice pool conta
               <profiles>
                 <profile name="Blood Dancer" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="36e-245-5b61-c7a9">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Succubus model only. Improve the Attacks and Armour Penetration characteristics of the bearer’s melee weapons by 1. While the bearer is Empowered, Improve the Attacks and Armour Penetration characteristics of the bearer’s melee weapons by 2 instead.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Succubus^^** model only. Improve the Attacks and Armour Penetration characteristics of the bearer’s melee weapons by 1. While the bearer is Empowered, improve the Attacks and Armour Penetration characteristics of the bearer’s melee weapons by 2 instead.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Blood Dancer" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="decrement" value="1" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.84c4-6d1e-e724-bd6e.profiles.Melee Weapons"/>
+                    <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Labyrinthine Cunning" hidden="false" id="3779-7a56-8add-3c27" collective="false">
               <costs>

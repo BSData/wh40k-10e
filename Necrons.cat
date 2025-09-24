@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b654-a18a-ea1-3bf2" name="Xenos - Necrons" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="77" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b654-a18a-ea1-3bf2" name="Xenos - Necrons" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="78" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntryGroups>
     <selectionEntryGroup name="Enhancements" hidden="false" id="9574-b5d1-8b0a-d95d" collapsible="true">
       <constraints>
@@ -1549,21 +1549,10 @@
           <modifierGroups>
             <modifierGroup type="and">
               <modifiers>
-                <modifier type="append" value="Creeping Madness" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="model-or-unit" childId="0183-9dc7-816f-fe8c" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="0183-9dc7-816f-fe8c" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="0183-9dc7-816f-fe8c" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
+                <modifier type="append" value="Creeping Madness" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                <modifier type="decrement" value="1" field="2337-daa1-6682-b110" scope="root-entry" affects="self.entries.recursive.84c4-6d1e-e724-bd6e.profiles.Melee Weapons"/>
               </modifiers>
             </modifierGroup>
           </modifierGroups>
@@ -1678,16 +1667,9 @@
           <modifierGroups>
             <modifierGroup type="and">
               <modifiers>
-                <modifier type="append" value="Depleted Transmaterial Reserves" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="model-or-unit" childId="fcb9-1822-fc74-2127" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="fcb9-1822-fc74-2127" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
+                <modifier type="append" value="Depleted Transmaterial Reserves" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                <modifier type="decrement" value="1" field="2337-daa1-6682-b110" scope="root-entry" affects="self.entries.recursive.84c4-6d1e-e724-bd6e.profiles.Melee Weapons"/>
               </modifiers>
             </modifierGroup>
           </modifierGroups>
@@ -12950,6 +12932,11 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
               </conditions>
             </modifier>
             <modifier type="append" value="Lethal Hits" field="893f-9000-ccf7-648e" affects="self.entries.profiles.Melee Weapons" scope="upgrade" join=", ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="7aa9-979f-928a-7c99" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="decrement" value="2" field="2337-daa1-6682-b110" affects="self.entries.84c4-6d1e-e724-bd6e.profiles.Melee Weapons" scope="upgrade">
               <conditions>
                 <condition type="atLeast" value="1" field="selections" scope="upgrade" childId="7aa9-979f-928a-7c99" shared="true" includeChildSelections="true"/>
               </conditions>
