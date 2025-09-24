@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue library="false" id="03fe-a162-4c02-f07b" name="Chaos - Emperor&apos;s Children" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="31" revision="32" authorContact="Mad_Spy" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
+<catalogue library="false" id="03fe-a162-4c02-f07b" name="Chaos - Emperor&apos;s Children" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="31" revision="33" authorContact="Mad_Spy" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Lucius the Eternal" hidden="false" id="e390-b58b-db9-816" collective="false">
       <profiles>
@@ -6487,7 +6487,8 @@ No **^^Legions of Excess**^^ models from your army can be your **^^Warlord**^^.<
             <modifierGroup type="and">
               <modifiers>
                 <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="model-or-unit" affects="self.entries.profiles.Melee Weapons" position="-1"/>
-                <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model-or-unit" affects="self.entries.profiles.Melee Weapons"/>
+                <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model-or-unit" affects="self.entries.profiles.Melee Weapons" position="-1"/>
+                <modifier type="decrement" value="1" field="2337-daa1-6682-b110" scope="model-or-unit" affects="self.entries.84c4-6d1e-e724-bd6e.profiles.Melee Weapons" position="-1"/>
               </modifiers>
             </modifierGroup>
           </modifierGroups>
@@ -7759,9 +7760,7 @@ At the end of the battle, if one or more models from your Crusade army with this
                   <characteristics>
                     <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Melee weapons equipped by the bearer have the **[PRECISION]** and **[DEVASTATING WOUNDS]** abilities, and improves the Attacks, Armour Penetration and Damage characteristics of those weapons by 1.
 
-
 At the end of the Fight phase, each enemy **^^Character^^** model that had one or more attacks made by the bearer allocated to it this phase but is not destroyed must take a Leadership test; if that test is failed, that **^^Character^^** model&apos;s unit suffers 3 mortal wounds, and when allocating those mortal wounds, they must be allocated to that **^^Character^^** model.
-
 
 At the end of the battle, if during the battle the bearer&apos;s unit destroyed one or more **^^Imperium^^** Leader units or **^^Imperium Character^^** units without the Leader ability with a melee attack or with mortal wounds inflicted by this Crusade Relic (see above), you gain 1 Dilution of False Hope.</characteristic>
                   </characteristics>
@@ -7804,31 +7803,12 @@ At the end of the battle, if during the battle the bearer&apos;s unit destroyed 
               <modifierGroups>
                 <modifierGroup type="and">
                   <modifiers>
-                    <modifier type="append" value="Blissgiver" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                      <conditions>
-                        <condition type="greaterThan" value="0" field="selections" scope="model-or-unit" childId="c378-a5fa-1528-f558" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
-                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="c378-a5fa-1528-f558" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
-                    <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="c378-a5fa-1528-f558" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
-                    <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="c378-a5fa-1528-f558" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
-                    <modifier type="append" value="Devastating Wounds, Precision" field="893f-9000-ccf7-648e" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                      <conditions>
-                        <condition type="greaterThan" value="0" field="selections" scope="model-or-unit" childId="c378-a5fa-1528-f558" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
+                    <modifier type="append" value="Blissgiver" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
+                    <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
+                    <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="append" value="Devastating Wounds, Precision" field="893f-9000-ccf7-648e" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="decrement" value="1" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.84c4-6d1e-e724-bd6e.profiles.Melee Weapons" position="-1"/>
                   </modifiers>
                 </modifierGroup>
               </modifierGroups>
@@ -8751,16 +8731,9 @@ At the end of the battle, if one or more enemy units failed a Battle-shock test 
           <modifierGroups>
             <modifierGroup type="and">
               <modifiers>
-                <modifier type="append" value="Betentacled Limbs" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="greaterThan" value="0" field="selections" scope="model-or-unit" childId="8cbd-68ec-3853-d215" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
-                <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="8cbd-68ec-3853-d215" shared="true" includeChildSelections="true"/>
-                  </conditions>
-                </modifier>
+                <modifier type="append" value="Betentacled Limbs" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
+                <modifier type="decrement" value="1" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.84c4-6d1e-e724-bd6e.profiles.Melee Weapons" position="-1"/>
               </modifiers>
             </modifierGroup>
           </modifierGroups>
