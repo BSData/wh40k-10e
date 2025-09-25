@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="70" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="71" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -9285,10 +9285,14 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
             <modifierGroup type="and">
               <modifiers>
                 <modifier type="append" value="Warp-touched Weapon" field="annotation" join=", " scope="upgrade" affects="profiles.Melee Weapons"/>
-                <modifier type="increment" value="1" field="2337-daa1-6682-b110" join=", " scope="upgrade" affects="profiles.Melee Weapons"/>
                 <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" join=", " scope="upgrade" affects="profiles.Melee Weapons"/>
                 <modifier type="increment" value="1" field="3254-9fe6-d824-513e" join=", " scope="upgrade" affects="profiles.Melee Weapons" position="-1"/>
-                <modifier type="decrement" value="1" field="2337-daa1-6682-b110" join=", " scope="upgrade" affects="84c4-6d1e-e724-bd6e.profiles.Melee Weapons"/>
+                <modifier type="append" value="+0" field="2337-daa1-6682-b110" scope="upgrade" affects="e993-e086-6de1-12af.profiles.Melee Weapons" arg="+0" join=""/>
+                <modifier type="replace" value="" field="2337-daa1-6682-b110" scope="upgrade" affects="6337-b83b-0d1e-5770.profiles.Melee Weapons" arg="+0"/>
+                <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="upgrade" affects="profiles.Melee Weapons" position="-1"/>
+                <modifier type="decrement" value="1" field="2337-daa1-6682-b110" scope="upgrade" affects="84c4-6d1e-e724-bd6e.profiles.Melee Weapons" position="-1"/>
+                <modifier type="replace" value="" field="2337-daa1-6682-b110" scope="upgrade" affects="profiles.Melee Weapons" arg="+0"/>
+                <modifier type="add" value="6337-b83b-0d1e-5770" field="category" scope="upgrade" arg="+0" affects="e993-e086-6de1-12af"/>
               </modifiers>
             </modifierGroup>
           </modifierGroups>
