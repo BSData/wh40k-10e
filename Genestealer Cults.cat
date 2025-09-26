@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="3bdf-a114-5035-c6ac" name="Xenos - Genestealer Cults" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="98" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="3bdf-a114-5035-c6ac" name="Xenos - Genestealer Cults" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="99" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="upgrade" import="false" name="Detachment" hidden="false" id="b96c-3fb6-1ee9-15ae">
       <constraints>
@@ -9256,7 +9256,7 @@ You can attach this model to an ACOLYTE HYBRIDS or NEOPHYTE HYBRID unit, even if
               <profiles>
                 <profile name="Biomorph Adaption" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b629-d896-a9a8-0c82">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">ABOMINANT or PATRIARCH model only. Improve the Armour Penetration and Damage characteristics of melee weapon equipped by the bearer by 1.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Abominant ^^** or **^^Patriarch^^** model only. Improve the Armour Penetration and Damage characteristics of melee weapons equipped by the bearer by 1.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -9278,6 +9278,19 @@ You can attach this model to an ACOLYTE HYBRIDS or NEOPHYTE HYBRID unit, even if
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
               </costs>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Biomorph Adaption" field="annotation" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
+                    <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
+                    <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="model" join="" arg="+0" affects="self.entries.recursive.4986-bf86-beb4-13ac"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Mutagenic Regeneration" hidden="false" id="f560-221b-afe7-5d77">
               <profiles>
@@ -9725,7 +9738,7 @@ You can attach this model to an ACOLYTE HYBRIDS or NEOPHYTE HYBRID unit, even if
         <selectionEntry type="upgrade" import="true" name="Biosanctic Broodsurge" hidden="false" id="ff11-0fa4-2950-380e">
           <rules>
             <rule name="Hypermorphic Fury" id="0a4d-88d1-161e-213b" hidden="false">
-              <description>Add 1 to Charge rolls made for ABERRANTS, BIOPHAGUS and PURESTRAIN GENESTEALERS units from your army. In addition, each time such a unit is selected to fight, if it made a Charge move this turn, until the end of the phase, add 1 to the Attacks characteristic of melee weapons equipped by the models in that unit.</description>
+              <description>Add 1 to Charge rolls made for **^^Aberrants^^**, **^^Biophagus^^** and **^^Purestrain Genestealers^^** units from your army. In addition, each time such a unit is selected to fight, if it made a Charge move this turn, until the end of the phase, add 1 to the Attacks characteristic of melee weapons equipped by the models in that unit.</description>
             </rule>
           </rules>
         </selectionEntry>
@@ -10460,21 +10473,13 @@ Catalyst (Aura): While an enemy unit is within 6&quot; of this unit, each time a
               <modifierGroups>
                 <modifierGroup type="and">
                   <modifiers>
-                    <modifier type="append" value="Vector Talon" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                      <conditions>
-                        <condition type="greaterThan" value="0" field="selections" scope="model-or-unit" childId="a931-03f9-fe26-b62c" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
-                    <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="a931-03f9-fe26-b62c" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
-                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="a931-03f9-fe26-b62c" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
+                    <modifier type="append" value="Vector Talon" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="model" join="" arg="+0" affects="self.entries.recursive.4986-bf86-beb4-13ac"/>
                   </modifiers>
                 </modifierGroup>
               </modifierGroups>
