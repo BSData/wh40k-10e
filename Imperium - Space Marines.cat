@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Adeptus Astartes - Space Marines" revision="161" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Adeptus Astartes - Space Marines" revision="162" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
     <categoryEntry id="930d-2875-125b-a65e" name="Bladeguard Veteran Squad" hidden="false"/>
@@ -36981,16 +36981,13 @@ Onslaught - 4</characteristic>
           <profiles>
             <profile name="Heroes All" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="355b-36bf-d7a5-f688">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time an ADEPTUS ASTARTES unit from your army is selected to shoot or fight, apply one of the following when resolving those attacks
-
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time an **^^Adeptus Astartes^^** unit from your army is selected to shoot or fight, apply one of the following when resolving those attacks
 
 ■ If you Saga is completed (see below), you can re-roll one Hit roll, one Wound roll, and one Damage roll. 
-■ Otherwise, if that unit is a SPACE WOLVES CHARACTER unit, you can re-roll one Hit roll, one Wound roll, or one Damage roll. 
-
+■ Otherwise, if that unit is a **^^Space Wolves Character^^** unit, you can re-roll one Hit roll, one Wound roll, or one Damage roll. 
 
 Saga of the Bold
-Each time a SPACE WOLVES CHARACTER unit from your army does one of the following, that unit achieves a Boast. Once three or more different Boasts have been achieved by units from your army, your saga is completed
-
+Each time a **^^Space Wolves Character^^** unit from your army does one of the following, that unit achieves a Boast. Once three or more different Boasts have been achieved by units from your army, your saga is completed
 
 ■ Your Hide as a Trophy: That unit destroys your Oath of Moment target
 ■ Slay Them All: That unit destroys your Oath of Moment target, and that is the second Oath of Moment target destroyed by that unit in this battle. 
@@ -37371,7 +37368,7 @@ Each time a model in a DARNATH LYSANDER unit from your army makes an attack that
               <profiles>
                 <profile name="Thief of Secrets" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ef5c-295b-6117-663c">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">ADEPTUS ASTARTES model only. Improve the Strength, Damage and Armour Penetration characteristics of the bearer’s melee weapons by 1. At the end of the Fight phase, if one or more enemy models were destroyed as a result of a melee attack made by the bearer this phase, until the end of the battle, improve the Strength, Damage and Armour Penetration characteristics of the bearer’s melee weapons by 2 instead.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Adeptus Astartes^^** model only. Improve the Strength, Damage and Armour Penetration characteristics of the bearer’s melee weapons by 1. At the end of the Fight phase, if one or more enemy models were destroyed as a result of a melee attack made by the bearer this phase, until the end of the battle, improve the Strength, Damage and Armour Penetration characteristics of the bearer’s melee weapons by 2 instead.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -37386,6 +37383,20 @@ Each time a model in a DARNATH LYSANDER unit from your army makes an attack that
                 <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
                 <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
               </costs>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Thief of Secrets" field="annotation" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
+                    <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
+                    <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
+                    <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="model" join="" arg="+0" affects="self.entries.recursive.4986-bf86-beb4-13ac"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Beacon Angelis" hidden="false" id="cd83-ab05-5a76-b92b" publicationId="4115-3627-e608-39f6">
               <profiles>
@@ -37545,13 +37556,17 @@ Each time a model in a DARNATH LYSANDER unit from your army makes an attack that
                   <modifiers>
                     <modifier type="append" value="Weapons of the First Legion" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
                     <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
-                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
                     <modifier type="append" value="+0" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.e993-e086-6de1-12af.profiles.Melee Weapons" arg="+0" join=""/>
                     <modifier type="replace" value="" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.6337-b83b-0d1e-5770.profiles.Melee Weapons" arg="+0"/>
                     <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
                     <modifier type="decrement" value="1" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.84c4-6d1e-e724-bd6e.profiles.Melee Weapons" position="-1"/>
                     <modifier type="replace" value="" field="2337-daa1-6682-b110" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" arg="+0"/>
                     <modifier type="add" value="6337-b83b-0d1e-5770" field="category" scope="model" arg="+0" affects="self.entries.recursive.e993-e086-6de1-12af"/>
+                    <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="model" join="" arg="+0" affects="self.entries.recursive.4986-bf86-beb4-13ac"/>
                   </modifiers>
                 </modifierGroup>
               </modifierGroups>
@@ -37807,7 +37822,7 @@ is Battle-shocked, models in that unit have the Feel No Pain 4+ ability instead.
               <profiles>
                 <profile name="Adept of the Omnissiah" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="da2b-64e5-18c8-1f99">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Techmarine model only. Once per battle round, when a saving throw is failed for a friendly Adeptus Astartes Vehicle model within 6&quot; of the bearer, you can change the Damage characteristic of that attack to 0</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Techmarine^^** model only. Once per battle round, when a saving throw is failed for a friendly **^^Adeptus Astartes Vehicle^^** model within 6&quot; of the bearer, you can change the Damage characteristic of that attack to 0.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -37897,7 +37912,7 @@ is Battle-shocked, models in that unit have the Feel No Pain 4+ ability instead.
               <profiles>
                 <profile name="Adamantine Mantle" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6608-2761-ea78-452f">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. Each time an attack is allocated the bearer, subtract 1 from the Damage characteristic of that attack. If that attack was made with a Melta or Torrent weapon, change the Damage characteristic of that attack to 1 instead.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Adeptus Astartes^^** model only. Each time an attack is allocated the bearer, subtract 1 from the Damage characteristic of that attack. If that attack was made with a **[MELTA]** or **[TORRENT]** weapon, change the Damage characteristic of that attack to 1 instead.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -38687,7 +38702,7 @@ is Battle-shocked, models in that unit have the Feel No Pain 4+ ability instead.
               <profiles>
                 <profile name="Calibanite Armaments" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6ace-f82a-4e97-2bc1">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. Add 1 to the Damage characteristic of the bearer’s melee weapons.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Adeptus Astartes^^** model only. Add 1 to the Damage characteristic of the bearer’s melee weapons.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -38695,6 +38710,18 @@ is Battle-shocked, models in that unit have the Feel No Pain 4+ ability instead.
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="fb23-b7ed-dd80-157f" includeChildSelections="false"/>
                 <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="f4b6-3872-36b0-fb0c" includeChildSelections="true"/>
               </constraints>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Calibanite Armaments" field="annotation" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
+                    <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="model" join="" arg="+0" affects="self.entries.recursive.4986-bf86-beb4-13ac"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Lord of the Hunt" hidden="false" id="03e6-ccef-792b-25b3">
               <costs>
@@ -39392,11 +39419,20 @@ Enhancement. When it does, until the start of your next Command phase, all Ange
                 <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
                 <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
               </costs>
-              <modifiers>
-                <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
-                <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
-                <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
-              </modifiers>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="append" value="Ancient Weapons" field="annotation" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+                    <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="model" join="" arg="+0" affects="self.entries.recursive.4986-bf86-beb4-13ac"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
           </selectionEntries>
           <constraints>
@@ -39560,10 +39596,18 @@ Enhancement. When it does, until the start of your next Command phase, all Ange
               <profiles>
                 <profile name="Braggart&apos;s Steel" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="4fff-b0d0-f915-bf40">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">SPACE WOLVES MODEL only. Add 2 to the Strength characteristic of melee weapons equipped by the bearer. If the bearer&apos;s unit has achieved one or more Boasts, add 1 to the Damage characteristic as well.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Space Wolves^^** model only. Add 2 to the Strength characteristic of melee weapons equipped by the bearer. If the bearer&apos;s unit has achieved one or more Boasts, add 1 to the Damage characteristic as well.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Braggart&apos;s Steel" field="annotation" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
+                    <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Hordeslayer" hidden="false" id="db7b-45d7-94ed-c628">
               <costs>
@@ -40059,13 +40103,21 @@ Enhancement. When it does, until the start of your next Command phase, all Ange
               <profiles>
                 <profile name="Paragon of Fury" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6e90-84e0-8dff-91c8">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">ADEPTUS ASTARTES model only. Add 2 the Strength characteristic of melee weapons equipped by the bearer. Each time a melee attack made by the bearer is allocated to an enemy model, if the bearer disembarked from a TRANSPORT this turn, add 1 to the Damage characteristic of that attack.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Adeptus Astartes^^** model only. Add 2 the Strength characteristic of melee weapons equipped by the bearer. Each time a melee attack made by the bearer is allocated to an enemy model, if the bearer disembarked from a **^^Transport^^** this turn, add 1 to the Damage characteristic of that attack.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
               <constraints>
                 <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="c852-86e4-16ab-d08f" includeChildSelections="true" includeChildForces="true"/>
               </constraints>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Paragon of Fury" field="annotation" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
+                    <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Battle-Psalm Precentor" hidden="false" id="b73d-fb98-cc88-34d7">
               <costs>
@@ -40157,7 +40209,7 @@ Enhancement. When it does, until the start of your next Command phase, all Ange
               <profiles>
                 <profile name="Adamantine Mantle" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b37b-b2c2-99ee-dbb9">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. Each time an attack is allocated the bearer, subtract 1 from the Damage characteristic of that attack. If that attack was made with a Melta or Torrent weapon, change the Damage characteristic of that attack to 1 instead.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Adeptus Astartes^^** model only. Each time an attack is allocated the bearer, subtract 1 from the Damage characteristic of that attack. If that attack was made with a **[MELTA]** or **[TORRENT]** weapon, change the Damage characteristic of that attack to 1 instead.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -46449,8 +46501,12 @@ Until the end of the phase, this model&apos;s melee weapons have that ability.</
               <modifiers>
                 <modifier type="append" value="Penitent&apos;s Roar" field="annotation" join=", " scope="upgrade" affects="profiles.Ranged Weapons"/>
                 <modifier type="append" value="Precision, Ignores Cover" field="7f1b-8591-2fcf-d01c" join=", " scope="upgrade" affects="profiles.Ranged Weapons"/>
-                <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3" join=", " scope="upgrade" affects="profiles.Ranged Weapons" position="-1"/>
                 <modifier type="decrement" value="1" field="9ead-8a10-520-de15" join=", " scope="upgrade" affects="profiles.Ranged Weapons"/>
+                <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" scope="upgrade" affects="4986-bf86-beb4-13ac.profiles.Ranged Weapons" join="" arg="+0"/>
+                <modifier type="replace" value="" field="a354-c1c8-a745-f9e3" scope="upgrade" affects="982b-de77-dd2d-d9bd.profiles.Ranged Weapons" join="" arg="+0"/>
+                <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3" scope="upgrade" affects="profiles.Ranged Weapons" position="-1"/>
+                <modifier type="replace" value="" field="a354-c1c8-a745-f9e3" scope="upgrade" affects="profiles.Ranged Weapons" join="" arg="+0"/>
+                <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="upgrade" join="" arg="+0" affects="4986-bf86-beb4-13ac"/>
               </modifiers>
             </modifierGroup>
           </modifierGroups>
@@ -46688,7 +46744,11 @@ Until the end of the phase, this model&apos;s melee weapons have that ability.</
                 <modifier type="append" value="Devastating Wounds" field="893f-9000-ccf7-648e" join=", " scope="upgrade" affects="profiles.Melee Weapons"/>
                 <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" join=", " scope="upgrade" affects="profiles.Melee Weapons"/>
                 <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" join=", " scope="upgrade" affects="profiles.Melee Weapons"/>
-                <modifier type="increment" value="1" field="3254-9fe6-d824-513e" join=", " scope="upgrade" affects="profiles.Melee Weapons" position="-1"/>
+                <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="upgrade" affects="4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
+                <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="upgrade" affects="982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="upgrade" affects="profiles.Melee Weapons" position="-1"/>
+                <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="upgrade" affects="profiles.Melee Weapons" join="" arg="+0"/>
+                <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="upgrade" join="" arg="+0" affects="4986-bf86-beb4-13ac"/>
               </modifiers>
             </modifierGroup>
           </modifierGroups>
