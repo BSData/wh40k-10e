@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="137" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="138" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <profileTypes>
     <profileType id="3084-68b8-1d20-2f26" name="Marks of Chaos">
       <characteristicTypes>
@@ -14044,7 +14044,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
         </profile>
         <profile id="4c0f-1b93-e310-b2a8" name="Annihilator" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ranged attack made by this model is allocated to a MONSTER or VEHICLE model, you can re-roll the Damage roll.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ranged attack made by this model is allocated to a **^^Monster^^** or **^^Vehicle^^** model, you can re-roll the Damage roll.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -29207,7 +29207,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
           <profiles>
             <profile name="Prime Test Subject" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1a78-f1c2-6a28-b557">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">HERETIC ASTARTES INFANTRY model (excluding DAMNED models) only. Add 1 to the Damage characteristic of melee weapons equipped by the bearer. Each time the bearer makes a melee attack, you can re‑roll the Hit roll.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Heretic Astartes Infantry^^** model (excluding **^^Damned^^** models) only. Add 1 to the Damage characteristic of melee weapons equipped by the bearer. Each time the bearer makes a melee attack, you can re‑roll the Hit roll.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -29230,12 +29230,23 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 </conditionGroup>
               </conditionGroups>
             </modifier>
-            <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="parent" affects="self.entries.profiles.Melee Weapons" position="-1"/>
           </modifiers>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="force" shared="true" id="f429-4484-d800-2114" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
           </constraints>
           <comment>Creations</comment>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Prime Test Subject" field="annotation" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
+                <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
+                <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
+                <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
+                <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="model" join="" arg="+0" affects="self.entries.recursive.4986-bf86-beb4-13ac"/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Touched by the Warp" hidden="false" id="db1e-9b35-bbf5-e5e0" sortIndex="4">
           <comment>Cabal of Chaos</comment>
@@ -30329,6 +30340,25 @@ You can attach this model to one of the above units even if one other CHARACTER 
                 <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
                 <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
               </costs>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Book of Fate" field="annotation" scope="model" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Melee Weapons" join=", " arg="+0"/>
+                    <modifier type="append" value="Book of Fate" field="annotation" scope="model" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Ranged Weapons" join=", " arg="+0"/>
+                    <modifier type="increment" value="1" field="41a0-1301-112a-e2f2" scope="model" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Melee Weapons" join=", " arg="+0"/>
+                    <modifier type="increment" value="1" field="9ead-8a10-520-de15" scope="model" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Ranged Weapons" join=", " arg="+0"/>
+                    <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Ranged Weapons" join="" arg="+0"/>
+                    <modifier type="replace" value="" field="a354-c1c8-a745-f9e3" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Ranged Weapons" join="" arg="+0"/>
+                    <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3" scope="model" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Ranged Weapons" position="-1"/>
+                    <modifier type="replace" value="" field="a354-c1c8-a745-f9e3" scope="model" affects="self.entries.recursive.profiles.Ranged Weapons" join="" arg="+0"/>
+                    <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Melee Weapons" position="-1"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="model" join="" arg="+0" affects="self.entries.recursive.4986-bf86-beb4-13ac"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Gurgling Doom" hidden="false" id="8c7a-0bc2-3939-b4af">
               <profiles>
