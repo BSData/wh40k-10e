@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="a55f-b7b3-6c65-a05f" name="Xenos - Orks" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="120" battleScribeVersion="2.03" type="catalogue" authorName="BSData Developers" authorContact="Dunamis55 &amp; AbonShell">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="a55f-b7b3-6c65-a05f" name="Xenos - Orks" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="121" battleScribeVersion="2.03" type="catalogue" authorName="BSData Developers" authorContact="Dunamis55 &amp; AbonShell">
   <sharedSelectionEntries>
     <selectionEntry type="upgrade" import="true" name="Warlord" id="8b5-898c-f79b-5a9c">
       <categoryLinks>
@@ -13558,9 +13558,15 @@ Designer’s Note: Place a Squig Mine token next to the model, removing it once 
                   </characteristics>
                   <modifiers>
                     <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
-                      </conditions>
+                      <conditionGroups>
+                        <conditionGroup type="or">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                            <condition type="atLeast" value="1" field="selections" scope="model" childId="3000-401c-cb1c-b4dd" shared="true" includeChildSelections="true"/>
+                            <condition type="atLeast" value="1" field="selections" scope="model" childId="84a7-ad58-2a81-91b0" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
                     </modifier>
                   </modifiers>
                 </profile>
@@ -21168,9 +21174,9 @@ Designer’s Note: Place a Squig Mine token next to the model, removing it once 
                   <modifiers>
                     <modifier type="append" value="Proper Killy" field="annotation" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
                     <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
-                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
                     <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
-                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
                     <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="model" join="" arg="+0" affects="self.entries.recursive.4986-bf86-beb4-13ac"/>
                   </modifiers>
                 </modifierGroup>

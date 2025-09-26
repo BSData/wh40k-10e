@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="156" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="157" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Aegis Defence Line" hidden="false" id="cb99-456-f100-40ed">
       <categoryLinks>
@@ -15095,9 +15095,14 @@ While this unit is joined to a unit, it can embark within any **^^Transport^^** 
           </characteristics>
           <modifiers>
             <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" join="">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
-              </conditions>
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="model" childId="84a7-ad58-2a81-91b0" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="self" childId="584b-5fa7-a3c3-942e" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </modifier>
           </modifiers>
         </profile>
@@ -34686,10 +34691,10 @@ Onslaught - 4</characteristic>
                   <modifiers>
                     <modifier type="append" value="Legacy Sidearm" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
                     <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" scope="model" affects="self.entries.recursive.e993-e086-6de1-12af.profiles.Ranged Weapons" arg="+0" join=""/>
-                    <modifier type="replace" value="" field="3bb-c35f-f54-fb08" scope="model" affects="self.entries.recursive.6337-b83b-0d1e-5770.profiles.Ranged Weapons" arg="+0"/>
+                    <modifier type="replace" field="3bb-c35f-f54-fb08" scope="model" affects="self.entries.recursive.6337-b83b-0d1e-5770.profiles.Ranged Weapons" arg="+0"/>
                     <modifier type="increment" value="2" field="3bb-c35f-f54-fb08" scope="model" affects="self.entries.recursive.1db0-c6b5-19db-8d0c.profiles.Ranged Weapons" position="-1"/>
                     <modifier type="decrement" value="1" field="3bb-c35f-f54-fb08" join=", " scope="model" affects="self.entries.recursive.84c4-6d1e-e724-bd6e.profiles.Ranged Weapons" position="-1"/>
-                    <modifier type="replace" value="" field="3bb-c35f-f54-fb08" scope="model" affects="self.entries.recursive.profiles.Ranged Weapons" arg="+0"/>
+                    <modifier type="replace" field="3bb-c35f-f54-fb08" scope="model" affects="self.entries.recursive.profiles.Ranged Weapons" arg="+0"/>
                     <modifier type="add" value="6337-b83b-0d1e-5770" field="category" scope="model" arg="+0" affects="self.entries.e993-e086-6de1-12af"/>
                   </modifiers>
                 </modifierGroup>
