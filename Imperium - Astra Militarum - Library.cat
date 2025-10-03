@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="159" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="160" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Aegis Defence Line" hidden="false" id="cb99-456-f100-40ed">
       <categoryLinks>
@@ -35505,7 +35505,6 @@ Onslaught - 4</characteristic>
         <entryLink import="true" name="Experience Points" hidden="false" id="0631-5cf6-40a6-5603" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
         <entryLink import="true" name="Legendary Veterans" hidden="false" id="0a0b-7a59-2199-5511" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
         <entryLink import="true" name="Battle Scars" hidden="false" id="d74f-9a93-4579-7930" type="selectionEntryGroup" targetId="1576-e816-033f-828d" sortIndex="5" collapsible="true"/>
-        <entryLink import="true" name="Personal Commendations" hidden="false" id="3c46-3c55-7eb7-aedc" type="selectionEntryGroup" targetId="4e94-8963-9a76-7514" sortIndex="6" collapsible="true"/>
       </entryLinks>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -35559,6 +35558,7 @@ Onslaught - 4</characteristic>
             </entryLink>
             <entryLink import="true" name="Tyrannic War Battle Honours" hidden="false" id="dd5f-cb11-c8e4-6d2a" type="selectionEntryGroup" targetId="1927-d905-041e-b914"/>
             <entryLink import="true" name="Pariah Nexus Blackstone Upgrades" hidden="false" id="23cc-f892-9846-c0ac" type="selectionEntryGroup" targetId="66c2-2a46-e7ed-a935"/>
+            <entryLink import="true" name="Personal Commendations" hidden="false" id="3c46-3c55-7eb7-aedc" type="selectionEntryGroup" targetId="4e94-8963-9a76-7514" collapsible="true"/>
           </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
@@ -36623,7 +36623,7 @@ Onslaught - 4</characteristic>
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="fae1-ac00-6e4f-7ee5" includeChildSelections="false"/>
       </constraints>
       <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Sacrificus Tempestus" hidden="false" id="5a5e-9756-0265-a06e" sortIndex="16">
+        <selectionEntry type="upgrade" import="true" name="Sacrificus Tempestus" hidden="false" id="5a5e-9756-0265-a06e">
           <profiles>
             <profile name="Sacrificus Tempestus" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d2bc-747c-327c-b6f9">
               <characteristics>
@@ -36637,22 +36637,28 @@ Onslaught - 4</characteristic>
                 <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9b26-c4c5-8af0-8ea4" shared="true"/>
               </conditions>
             </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
           </modifiers>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cb13-ca7e-00bf-a146" includeChildSelections="false"/>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="1"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Steel Armorial" hidden="false" id="09ef-a9e4-baf1-37c3" sortIndex="18">
+        <selectionEntry type="upgrade" import="true" name="Steel Armorial" hidden="false" id="09ef-a9e4-baf1-37c3">
           <profiles>
             <profile name="Steel Armorial" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f988-24c1-3b94-b7e0">
               <characteristics>
@@ -36678,22 +36684,28 @@ Onslaught - 4</characteristic>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
           </modifiers>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e134-9358-cadd-43cf" includeChildSelections="false"/>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="1"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Bastion Honour" hidden="false" id="e72c-2c1b-60c2-c3e2" sortIndex="3">
+        <selectionEntry type="upgrade" import="true" name="Bastion Honour" hidden="false" id="e72c-2c1b-60c2-c3e2">
           <profiles>
             <profile name="Bastion Honour" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="66f4-5ece-e381-69c0">
               <characteristics>
@@ -36707,6 +36719,11 @@ Onslaught - 4</characteristic>
                 <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="c8a1-fef-5569-61c9" shared="true"/>
               </conditions>
             </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
           </modifiers>
           <infoLinks>
             <infoLink name="Fights First" id="8907-5354-0480-ada7" hidden="false" type="rule" targetId="24-c886-e8ba-5a89"/>
@@ -36716,16 +36733,17 @@ Onslaught - 4</characteristic>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="1"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Honourifica Imperialis" hidden="false" id="8eb5-5886-5dc1-bbfb" sortIndex="8">
+        <selectionEntry type="upgrade" import="true" name="Honourifica Imperialis" hidden="false" id="8eb5-5886-5dc1-bbfb">
           <profiles>
             <profile name="Honourifica Imperialis" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9fd1-7022-3053-08e4">
               <characteristics>
@@ -36738,16 +36756,24 @@ Onslaught - 4</characteristic>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="2"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Celeris Heart" hidden="false" id="0471-9f3f-6aac-7f67" sortIndex="4">
+        <selectionEntry type="upgrade" import="true" name="Celeris Heart" hidden="false" id="0471-9f3f-6aac-7f67">
           <profiles>
             <profile name="Celeris Heart" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="03c2-df1d-a65e-73f5">
               <characteristics>
@@ -36761,22 +36787,28 @@ Onslaught - 4</characteristic>
                 <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="c8a1-fef-5569-61c9" shared="true"/>
               </conditions>
             </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
           </modifiers>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2abb-7038-3b8a-175a" includeChildSelections="false"/>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="2"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Order of the Adamantine Chain" hidden="false" id="cad2-c231-5844-cc3f" sortIndex="15">
+        <selectionEntry type="upgrade" import="true" name="Order of the Adamantine Chain" hidden="false" id="cad2-c231-5844-cc3f">
           <profiles>
             <profile name="Order of the Adamantine Chain" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="4762-d01c-f835-5755">
               <characteristics>
@@ -36789,16 +36821,24 @@ Onslaught - 4</characteristic>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="2"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Merit of the Strategium" hidden="false" id="3d51-a315-6444-0432" sortIndex="13">
+        <selectionEntry type="upgrade" import="true" name="Merit of the Strategium" hidden="false" id="3d51-a315-6444-0432">
           <profiles>
             <profile name="Merit of the Strategium" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7498-5d8d-c660-f1b4">
               <characteristics>
@@ -36811,16 +36851,24 @@ Onslaught - 4</characteristic>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="2"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Diamantine Star" hidden="false" id="a60d-6647-0966-044d" sortIndex="7">
+        <selectionEntry type="upgrade" import="true" name="Diamantine Star" hidden="false" id="a60d-6647-0966-044d">
           <profiles>
             <profile name="Diamantine Star" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8d3e-5d07-dc8c-913e">
               <characteristics>
@@ -36834,22 +36882,28 @@ Onslaught - 4</characteristic>
                 <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="c8a1-fef-5569-61c9" shared="true"/>
               </conditions>
             </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
           </modifiers>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f459-4cbf-2f7d-979a" includeChildSelections="false"/>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="1"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Star of Fidelity" hidden="false" id="31e9-6d52-c5eb-3d43" sortIndex="17">
+        <selectionEntry type="upgrade" import="true" name="Star of Fidelity" hidden="false" id="31e9-6d52-c5eb-3d43">
           <profiles>
             <profile name="Star of Fidelity" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e347-afe9-b39f-2764">
               <characteristics>
@@ -36862,16 +36916,24 @@ Onslaught - 4</characteristic>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="2"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Decree of Dispensation" hidden="false" id="aac4-6b18-7c86-3d45" sortIndex="5">
+        <selectionEntry type="upgrade" import="true" name="Decree of Dispensation" hidden="false" id="aac4-6b18-7c86-3d45">
           <profiles>
             <profile name="Decree of Dispensation" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="743e-e942-998a-f5ab">
               <characteristics>
@@ -36881,8 +36943,18 @@ Onslaught - 4</characteristic>
           </profiles>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="e4d8-c6a1-7c23-ae25" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
               <conditions>
-                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
               </conditions>
             </modifier>
           </modifiers>
@@ -36891,16 +36963,17 @@ Onslaught - 4</characteristic>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="3"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Auxila Golden Star" hidden="false" id="04f9-dcd7-2130-64bc" sortIndex="2">
+        <selectionEntry type="upgrade" import="true" name="Auxila Golden Star" hidden="false" id="04f9-dcd7-2130-64bc">
           <profiles>
             <profile name="Auxila Golden Star" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6f84-cd28-3d6d-b9bc">
               <characteristics>
@@ -36919,22 +36992,28 @@ Onslaught - 4</characteristic>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
           </modifiers>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="75fb-e634-4ad0-d33d" includeChildSelections="false"/>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="3"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Departmento Salvage Award" hidden="false" id="5cc4-f574-7fa1-8f9f" sortIndex="6">
+        <selectionEntry type="upgrade" import="true" name="Departmento Salvage Award" hidden="false" id="5cc4-f574-7fa1-8f9f">
           <profiles>
             <profile name="Departmento Salvage Award" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="df1a-01cf-69c2-a34b">
               <characteristics>
@@ -36953,22 +37032,28 @@ Onslaught - 4</characteristic>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
           </modifiers>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6bce-5375-6604-dc2f" includeChildSelections="false"/>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="3"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Laurels of Purity" hidden="false" id="019c-8e7d-5412-0716" sortIndex="9">
+        <selectionEntry type="upgrade" import="true" name="Laurels of Purity" hidden="false" id="019c-8e7d-5412-0716">
           <profiles>
             <profile name="Laurels of Purity" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ebf4-1fd9-00b7-7369">
               <characteristics>
@@ -36983,9 +37068,16 @@ Onslaught - 4</characteristic>
                   <conditions>
                     <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
                     <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="2be4-e270-fa7f-6d44" shared="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="e4d8-c6a1-7c23-ae25" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="2be4-e270-fa7f-6d44" shared="true" includeChildSelections="true"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
             </modifier>
           </modifiers>
           <infoLinks>
@@ -36996,16 +37088,17 @@ Onslaught - 4</characteristic>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="3"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Auramite Aquila" hidden="false" id="d0de-45ce-e737-b6be" sortIndex="1">
+        <selectionEntry type="upgrade" import="true" name="Auramite Aquila" hidden="false" id="d0de-45ce-e737-b6be">
           <profiles>
             <profile name="Auramite Aquila" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ca2f-4c94-d80e-2693">
               <characteristics>
@@ -37024,13 +37117,19 @@ Onslaught - 4</characteristic>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
           </modifiers>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="5"/>
             <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
@@ -37039,7 +37138,7 @@ Onslaught - 4</characteristic>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="94e1-e823-6dac-2ad3" includeChildSelections="false"/>
           </constraints>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Lord Commander&apos;s Sigilum" hidden="false" id="29eb-06fd-59b7-3814" sortIndex="10">
+        <selectionEntry type="upgrade" import="true" name="Lord Commander&apos;s Sigilum" hidden="false" id="29eb-06fd-59b7-3814">
           <profiles>
             <profile name="Lord Commander&apos;s Sigilum" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f5bd-b8c5-a2cb-fd90">
               <characteristics>
@@ -37052,16 +37151,24 @@ Onslaught - 4</characteristic>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="3"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Medal of Laudable Service" hidden="false" id="c252-fd00-a30b-892d" sortIndex="11">
+        <selectionEntry type="upgrade" import="true" name="Medal of Laudable Service" hidden="false" id="c252-fd00-a30b-892d">
           <profiles>
             <profile name="Medal of Laudable Service" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d569-18f8-d148-3244">
               <characteristics>
@@ -37074,16 +37181,24 @@ Onslaught - 4</characteristic>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="3"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Oculus Laureate" hidden="false" id="f0c6-6a23-c9da-f5e0" sortIndex="14">
+        <selectionEntry type="upgrade" import="true" name="Oculus Laureate" hidden="false" id="f0c6-6a23-c9da-f5e0">
           <profiles>
             <profile name="Oculus Laureate" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9200-089d-a5eb-a046">
               <characteristics>
@@ -37093,8 +37208,18 @@ Onslaught - 4</characteristic>
           </profiles>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="e4d8-c6a1-7c23-ae25" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
               <conditions>
-                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
               </conditions>
             </modifier>
           </modifiers>
@@ -37103,16 +37228,17 @@ Onslaught - 4</characteristic>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="4"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Medallion Resolute" hidden="false" id="7242-9b69-7c87-09eb" sortIndex="12">
+        <selectionEntry type="upgrade" import="true" name="Medallion Resolute" hidden="false" id="7242-9b69-7c87-09eb">
           <profiles>
             <profile name="Medallion Resolute" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5517-52c6-1f29-8ffd">
               <characteristics>
@@ -37125,14 +37251,22 @@ Onslaught - 4</characteristic>
           </constraints>
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
             <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+            <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
             <cost name="Logistics Points" typeId="04b1-67f7-48cb-4f1f" value="0"/>
-            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
             <cost name="Commendation Points" typeId="e969-59de-fdb7-7c4e" value="3"/>
+            <cost name="Commendation Points" typeId="46a1-6b58-ecdd-8087" value="0"/>
           </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
       </selectionEntries>
       <modifiers>
