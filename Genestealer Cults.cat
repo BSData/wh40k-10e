@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="3bdf-a114-5035-c6ac" name="Xenos - Genestealer Cults" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="99" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="3bdf-a114-5035-c6ac" name="Xenos - Genestealer Cults" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="100" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="upgrade" import="false" name="Detachment" hidden="false" id="b96c-3fb6-1ee9-15ae">
       <constraints>
@@ -932,6 +932,7 @@
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="af9a-b2ba-617e-f65e"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6c19-85de-e959-b33d"/>
+                    <constraint type="max" value="0" field="selections" scope="unit" shared="true" id="23dd-e5cb-2f9c-c62b" includeChildSelections="true"/>
                   </constraints>
                   <profiles>
                     <profile name="Demolition charge" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="8429-4679-97cf-4b05">
@@ -959,6 +960,23 @@
                   <categoryLinks>
                     <categoryLink name="Attacks Dx Weapon" hidden="false" id="70a7-501f-b6f0-7148" targetId="e993-e086-6de1-12af" primary="false"/>
                   </categoryLinks>
+                  <modifiers>
+                    <modifier type="increment" value="2" field="23dd-e5cb-2f9c-c62b">
+                      <repeats>
+                        <repeat value="5" repeats="1" field="selections" scope="unit" childId="model" shared="true" roundUp="false" id="2a72-f72c-cd19-2c37" includeChildSelections="true"/>
+                      </repeats>
+                    </modifier>
+                    <modifier type="add" value="Can only take 2 Demolition charges per 5 models" field="error">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="3" field="selections" scope="unit" childId="36a8-d8a9-c4a1-4d3e" shared="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="10" field="selections" scope="unit" childId="model" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </modifier>
+                  </modifiers>
                 </selectionEntry>
               </selectionEntries>
               <infoLinks>
@@ -973,15 +991,8 @@
                 </entryLink>
               </entryLinks>
               <constraints>
-                <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="d156-22fa-ee8-4cb0" includeChildSelections="true"/>
+                <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="d156-22fa-ee8-4cb0" includeChildSelections="true"/>
               </constraints>
-              <modifiers>
-                <modifier type="increment" value="2" field="d156-22fa-ee8-4cb0">
-                  <repeats>
-                    <repeat value="5" repeats="1" field="selections" scope="a197-f6c3-5d4a-5326" childId="model" shared="true" roundUp="false" id="2a72-f72c-cd19-2c37" includeChildSelections="true"/>
-                  </repeats>
-                </modifier>
-              </modifiers>
             </selectionEntry>
           </selectionEntries>
           <constraints>
@@ -9284,9 +9295,9 @@ You can attach this model to an ACOLYTE HYBRIDS or NEOPHYTE HYBRID unit, even if
                     <modifier type="append" value="Biomorph Adaption" field="annotation" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
                     <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="+0"/>
                     <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
-                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
                     <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
-                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
                     <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="model" join="" arg="+0" affects="self.entries.recursive.4986-bf86-beb4-13ac"/>
                   </modifiers>
                 </modifierGroup>
@@ -10476,9 +10487,9 @@ Catalyst (Aura): While an enemy unit is within 6&quot; of this unit, each time a
                     <modifier type="append" value="Vector Talon" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
                     <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
                     <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
-                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
                     <modifier type="increment" value="1" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" position="-1"/>
-                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
                     <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="model" join="" arg="+0" affects="self.entries.recursive.4986-bf86-beb4-13ac"/>
                   </modifiers>
                 </modifierGroup>
