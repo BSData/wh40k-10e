@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="f89b-84e0-6e3b-f1e2" name="Imperium - Adeptus Astartes - Deathwatch" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="58" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="f89b-84e0-6e3b-f1e2" name="Imperium - Adeptus Astartes - Deathwatch" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="59" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntryGroups>
     <selectionEntryGroup name="Terminator Heavy Weapons" hidden="false" id="77ef-f5b6-e6bc-7618" defaultSelectionEntryId="8259-a28d-949-b4fa">
       <constraints>
@@ -544,6 +544,7 @@
       </constraints>
     </categoryEntry>
     <categoryEntry name="Talonstrike Kill Team" id="4082-03bb-1ab3-a93b" hidden="false"/>
+    <categoryEntry name="Decimus Kill Team" id="3448-bcbe-089a-0373" hidden="false"/>
   </categoryEntries>
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Watch Master" hidden="false" id="f7c3-45d2-a7ac-d8bc">
@@ -918,6 +919,13 @@
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Sustained Hits 1</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="set" value="Sustained Hits 1" field="7f1b-8591-2fcf-d01c">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="3448-bcbe-089a-0373" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
         <profile name="➤ Infernus heavy bolter - heavy flamer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="dde2-d05e-7d2e-f4c6" publicationId="4115-3627-e608-39f6" page="29">
           <characteristics>
@@ -927,7 +935,7 @@
             <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
             <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores cover, Torrent</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
           </characteristics>
           <modifiers>
             <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" join="">
@@ -939,7 +947,15 @@
         </profile>
       </profiles>
       <infoLinks>
-        <infoLink name="Heavy" hidden="false" type="rule" id="d711-a238-437a-f905" targetId="1202-10a8-78e9-4c67"/>
+        <infoLink name="Heavy" hidden="false" type="rule" id="d711-a238-437a-f905" targetId="1202-10a8-78e9-4c67">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="3448-bcbe-089a-0373" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </infoLink>
         <infoLink name="Sustained Hits" hidden="false" type="rule" id="2943-4127-78e0-cdeb" targetId="1897-c22c-9597-12b1"/>
         <infoLink name="Torrent" hidden="false" type="rule" id="8181-3e87-2cc4-51d9" targetId="5edf-d619-23e0-9b56"/>
         <infoLink name="Ignores Cover" hidden="false" type="rule" id="5c63-5f25-6fbe-122b" targetId="4640-43e7-30b-215a"/>
@@ -1977,28 +1993,6 @@
         </selectionEntryGroup>
       </selectionEntryGroups>
     </selectionEntry>
-    <selectionEntry type="upgrade" import="true" name="Twin boltgun" hidden="false" id="4a54-6fbc-9767-f009">
-      <profiles>
-        <profile name="Twin boltgun" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="f8c6-3793-73e4-d378" publicationId="4115-3627-e608-39f6" page="17">
-          <characteristics>
-            <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
-            <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
-            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-            <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Twin-Linked</characteristic>
-          </characteristics>
-        </profile>
-      </profiles>
-      <infoLinks>
-        <infoLink name="Twin-linked" hidden="false" type="rule" id="3352-b3ee-3ac1-ed85" targetId="cf93-ad4d-2f08-a79d"/>
-      </infoLinks>
-      <constraints>
-        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d615-2d3c-7c64-4629"/>
-        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="119f-3ae2-e941-2da6"/>
-      </constraints>
-    </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Close combat weapon" hidden="false" id="2078-20a8-181f-a708" collective="true">
       <profiles>
         <profile name="Close combat weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="c869-6a2e-6dcc-7780">
@@ -2660,7 +2654,12 @@
                         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="edca-86c9-8730-e690" includeChildSelections="false"/>
                       </constraints>
                     </entryLink>
-                    <entryLink import="true" name="Plasma incinerator" hidden="false" id="e6aa-739c-e716-e6c3" type="selectionEntry" targetId="386c-b933-68ce-5e31"/>
+                    <entryLink import="true" name="Plasma incinerator" hidden="false" id="e6aa-739c-e716-e6c3" type="selectionEntry" targetId="386c-b933-68ce-5e31">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e256-2dcc-c20f-cde8-min" includeChildSelections="false"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e256-2dcc-c20f-cde8-max" includeChildSelections="false"/>
+                      </constraints>
+                    </entryLink>
                   </entryLinks>
                   <infoLinks>
                     <infoLink name="Kill Team Intercessor" id="f1d7-d7de-c11d-3c70" hidden="false" type="profile" targetId="c06b-bca8-50c3-b63e"/>
@@ -2683,7 +2682,12 @@
                         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="402d-221b-4cf4-cc95" includeChildSelections="false"/>
                       </constraints>
                     </entryLink>
-                    <entryLink import="true" name="Plasma incinerator" hidden="false" id="12ec-227f-02cb-91df" type="selectionEntry" targetId="386c-b933-68ce-5e31"/>
+                    <entryLink import="true" name="Plasma incinerator" hidden="false" id="12ec-227f-02cb-91df" type="selectionEntry" targetId="386c-b933-68ce-5e31">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7f64-d2fa-af2b-1839-min" includeChildSelections="false"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7f64-d2fa-af2b-1839-max" includeChildSelections="false"/>
+                      </constraints>
+                    </entryLink>
                   </entryLinks>
                   <infoLinks>
                     <infoLink name="Kill Team Intercessor" id="46c7-2080-180a-0bc2" hidden="false" type="profile" targetId="c06b-bca8-50c3-b63e"/>
@@ -4527,10 +4531,6 @@ If this unit has a Leader unit attached to it during the Declare Battle Formatio
       </infoLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Plasma incinerator" hidden="false" id="386c-b933-68ce-5e31" collective="true">
-      <constraints>
-        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="175e-85ee-edd3-6969"/>
-        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="db46-97bc-da6d-4176"/>
-      </constraints>
       <profiles>
         <profile name="➤ Plasma incinerator - Standard" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="2333-a3fe-e6af-747">
           <characteristics>
@@ -5672,6 +5672,571 @@ If this unit has a Leader unit attached to it during the Declare Battle Formatio
         <infoLink name="Heavy" id="05af-4409-603d-cbd6" hidden="false" type="rule" targetId="1202-10a8-78e9-4c67"/>
       </infoLinks>
     </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Decimus Kill Team" hidden="false" id="b169-ff89-b05e-3884">
+      <categoryLinks>
+        <categoryLink name="Faction: Adeptus Astartes" hidden="false" id="3ec0-0bc1-7f15-9f6d" targetId="6e7-40c-58d9-e402" primary="false"/>
+        <categoryLink name="Faction: Deathwatch" hidden="false" id="db2f-6f6d-8dc9-c5c2" targetId="d39c-9989-db7f-d815" primary="false"/>
+        <categoryLink name="Infantry" hidden="false" id="f709-0377-58cd-6d33" targetId="cf47-a0d7-7207-29dc" primary="false"/>
+        <categoryLink name="Battleline" hidden="false" id="c04e-7686-1abf-2616" targetId="e338-111e-d0c6-b687" primary="true"/>
+        <categoryLink name="Grenades" hidden="false" id="4840-b1f7-9838-9daf" targetId="5a61-81ac-eb7c-a87e" primary="false"/>
+        <categoryLink name="Imperium" hidden="false" id="cadb-8e53-8f5f-87ab" targetId="aff3-d6a3-2a95-9dc" primary="false"/>
+        <categoryLink name="Kill Team" hidden="false" id="9743-44c4-b0a0-8525" targetId="81b0-a893-4fb7-c298" primary="false"/>
+        <categoryLink name="Tacticus" hidden="false" id="06e4-3862-2fc4-b176" targetId="5179-8ede-45e3-49a2" primary="false"/>
+        <categoryLink name="Decimus Kill Team" hidden="false" id="bf6a-9ed2-6fdb-612d" targetId="3448-bcbe-089a-0373" primary="false"/>
+      </categoryLinks>
+      <infoLinks>
+        <infoLink name="Mission Tactics" id="a437-b1f1-cf97-a5a5" hidden="false" type="rule" targetId="2a5c-3c55-d113-3a53"/>
+        <infoLink name="Oath of Moment" id="53c9-8868-0fac-d7f4" hidden="false" type="rule" targetId="3b76-4053-ece9-6e7d"/>
+      </infoLinks>
+      <profiles>
+        <profile name="Death to the Alien" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="978a-4e34-0590-c7f8">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an attack, re-roll a Hit roll of 1. If the target of that attack does not have the ^^**Imperium^^** or ^^**Chaos^^** keywords, you can re-roll the Hit roll instead.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Attached Unit" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="012d-8fb3-77cd-d660">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If a ^^**Character^^** unit from your army can be attached to a ^^**Fortis Kill Team^^** unit, it can be attached to this unit instead.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Unit composition" id="27aa-0757-7a11-2050" hidden="false" defaultSelectionEntryId="dc49-0e3b-208b-c2ad">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="5 models" hidden="false" id="dc49-0e3b-208b-c2ad">
+              <entryLinks>
+                <entryLink import="true" name="Kill Team Sergeant" hidden="false" id="f2f8-f603-f340-0b4d" type="selectionEntry" targetId="ab41-fdc1-8d0f-bb74" sortIndex="1"/>
+                <entryLink import="true" name="Deathwatch Veteran w/ stalker bolt rifle" hidden="false" id="f253-3812-3f51-926c" type="selectionEntry" targetId="9ae9-4f7e-a148-cbfa" sortIndex="3">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8718-8047-b14c-0272-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8718-8047-b14c-0272-max" includeChildSelections="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Deathwatch Veteran w/ heavy thunder hammer" hidden="false" id="a535-f3f8-3ca3-c97b" type="selectionEntry" targetId="2537-956c-98c0-bffb" sortIndex="4">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="56ef-3e90-0448-bd51-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="56ef-3e90-0448-bd51-max" includeChildSelections="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Deathwatch Veteran w/ carbine" hidden="false" id="c89b-62a3-682a-c7dc" type="selectionEntry" targetId="8778-e3cb-2c6f-b23d" sortIndex="5">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="77a3-dea4-9a43-ec6d-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="77a3-dea4-9a43-ec6d-max" includeChildSelections="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Gravis Veteran" hidden="false" id="49b8-f2b6-a45c-be63" type="selectionEntry" targetId="550a-f5c4-d6a9-a09e" sortIndex="2">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7645-e10f-f7f7-ee6a-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7645-e10f-f7f7-ee6a-max" includeChildSelections="false"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="10 models" hidden="false" id="7065-df9c-4dff-aa9a">
+              <entryLinks>
+                <entryLink import="true" name="Kill Team Sergeant" hidden="false" id="4d2d-a64b-71d4-c791" type="selectionEntry" targetId="ab41-fdc1-8d0f-bb74" sortIndex="1"/>
+                <entryLink import="true" name="Deathwatch Veteran w/ stalker bolt rifle" hidden="false" id="7d75-fc7c-85a5-6c4d" type="selectionEntry" targetId="9ae9-4f7e-a148-cbfa" sortIndex="3">
+                  <constraints>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="beb7-49a5-b1b1-0685-min" includeChildSelections="false"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="beb7-49a5-b1b1-0685-max" includeChildSelections="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Deathwatch Veteran w/ heavy thunder hammer" hidden="false" id="b53a-6c65-04c8-e6be" type="selectionEntry" targetId="2537-956c-98c0-bffb" sortIndex="4">
+                  <constraints>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="7fca-4681-4628-115b-min" includeChildSelections="false"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="7fca-4681-4628-115b-max" includeChildSelections="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Deathwatch Veteran w/ carbine" hidden="false" id="4246-dbc5-0c51-5cea" type="selectionEntry" targetId="8778-e3cb-2c6f-b23d" sortIndex="5">
+                  <constraints>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="34e4-0a97-a211-58c0-min" includeChildSelections="false"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="34e4-0a97-a211-58c0-max" includeChildSelections="false"/>
+                  </constraints>
+                </entryLink>
+                <entryLink import="true" name="Gravis Veteran" hidden="false" id="738d-ec99-12e9-5c38" type="selectionEntry" targetId="550a-f5c4-d6a9-a09e" sortIndex="2">
+                  <constraints>
+                    <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="75fa-b6fc-234e-0707-min" includeChildSelections="false"/>
+                    <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="75fa-b6fc-234e-0707-max" includeChildSelections="false"/>
+                  </constraints>
+                </entryLink>
+              </entryLinks>
+              <selectionEntries>
+                <selectionEntry type="model" import="true" name="Deathwatch Veteran w/ xenophase blade" hidden="false" id="407d-7aa3-78a1-0d7e" sortIndex="6">
+                  <comment>Decimus Kill Team</comment>
+                  <entryLinks>
+                    <entryLink import="true" name="Special-issue bolt pistol" hidden="false" id="0171-67ff-8b71-cbc2" type="selectionEntry" targetId="bd52-0d98-f3a0-e291"/>
+                  </entryLinks>
+                  <selectionEntries>
+                    <selectionEntry type="upgrade" import="true" name="Xenophase blade" hidden="false" id="44ce-4256-035e-bf2a">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="951a-75c0-4b25-f813-min" includeChildSelections="false"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="951a-75c0-4b25-f813-max" includeChildSelections="false"/>
+                      </constraints>
+                      <profiles>
+                        <profile name="Xenophase blade" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="6764-6471-512f-0f4c">
+                          <characteristics>
+                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                            <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
+                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
+                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                            <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Devastating Wounds</characteristic>
+                          </characteristics>
+                        </profile>
+                      </profiles>
+                      <infoLinks>
+                        <infoLink name="Devastating Wounds" id="6380-cb63-216c-9f43" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
+                      </infoLinks>
+                    </selectionEntry>
+                  </selectionEntries>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="cf01-74dd-97f7-0964-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cf01-74dd-97f7-0964-max" includeChildSelections="false"/>
+                  </constraints>
+                </selectionEntry>
+              </selectionEntries>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="07d4-8f31-6fe2-c816-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="07d4-8f31-6fe2-c816-max" includeChildSelections="false"/>
+          </constraints>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <entryLinks>
+        <entryLink import="true" name="Crusade" hidden="false" id="9e7d-58bc-71d9-9d85" type="selectionEntryGroup" targetId="9a99-f13c-a667-e698"/>
+      </entryLinks>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="100"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+        <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+        <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+        <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+      </costs>
+      <modifiers>
+        <modifier type="set" value="200" field="51b2-306e-1021-d207">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="b169-ff89-b05e-3884" childId="7065-df9c-4dff-aa9a" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="c047-e9da-89b6-914c" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Kill Team Sergeant" hidden="false" id="ab41-fdc1-8d0f-bb74">
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="1fd7-373e-70f3-723d-min" includeChildSelections="false"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1fd7-373e-70f3-723d-max" includeChildSelections="false"/>
+      </constraints>
+      <entryLinks>
+        <entryLink import="true" name="Plasma pistol" hidden="false" id="bfe7-5537-a3b3-a516" type="selectionEntry" targetId="2902-b665-48b6-bb09">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f459-2d3c-d34c-6c53-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f459-2d3c-d34c-6c53-max" includeChildSelections="false"/>
+          </constraints>
+        </entryLink>
+        <entryLink import="true" name="Power weapon" hidden="false" id="114c-0978-d222-d346" type="selectionEntry" targetId="2174-53aa-f028-b509"/>
+      </entryLinks>
+      <profiles>
+        <profile name="Kill Team Sergeant" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="44a3-4b4f-adbd-383e">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">2</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <comment>Decimus Kill Team</comment>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Deathwatch Veteran w/ stalker bolt rifle" hidden="false" id="9ae9-4f7e-a148-cbfa">
+      <comment>Decimus Kill Team</comment>
+      <entryLinks>
+        <entryLink import="true" name="Bolt pistol" hidden="false" id="48a1-fc8d-05b2-106f" type="selectionEntry" targetId="67eb-7f8c-353b-442e">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d4d1-684d-5d7d-ddb7-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d4d1-684d-5d7d-ddb7-max" includeChildSelections="false"/>
+          </constraints>
+        </entryLink>
+        <entryLink import="true" name="Close combat weapon" hidden="false" id="1db9-23dc-3f81-9059" type="selectionEntry" targetId="2078-20a8-181f-a708">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="6059-2d8d-908d-be3b-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6059-2d8d-908d-be3b-max" includeChildSelections="false"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Exchange rifle" id="b439-6122-b494-52d7" hidden="false" defaultSelectionEntryId="4b89-bd85-ed45-0ce4">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f20c-da27-bb0d-6bfa-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f20c-da27-bb0d-6bfa-max" includeChildSelections="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Stalker bolt rifle" hidden="false" id="4b89-bd85-ed45-0ce4">
+              <profiles>
+                <profile name="Stalker bolt rifle" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="3af1-cf3a-2bff-56d0">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">30&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Lethal Hits, Precision</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Heavy" id="6c7c-fdde-ebba-1b7d" hidden="false" type="rule" targetId="1202-10a8-78e9-4c67"/>
+                <infoLink name="Lethal Hits" id="8333-4127-ef5d-b7c0" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
+                <infoLink name="Precision" id="138c-dd65-ea07-688e" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
+              </infoLinks>
+            </selectionEntry>
+          </selectionEntries>
+          <entryLinks>
+            <entryLink import="true" name="Plasma incinerator" hidden="false" id="90d2-e9fa-5d17-cf52" type="selectionEntry" targetId="386c-b933-68ce-5e31"/>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <modifiers>
+        <modifier type="set" value="Deathwatch Veteran w/ plasma incinerator" field="name">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="9ae9-4f7e-a148-cbfa" childId="386c-b933-68ce-5e31" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Deathwatch Veteran w/ heavy thunder hammer" hidden="false" id="2537-956c-98c0-bffb">
+      <comment>Decimus Kill Team</comment>
+      <entryLinks>
+        <entryLink import="true" name="Bolt pistol" hidden="false" id="48cf-b425-da09-cdb5" type="selectionEntry" targetId="67eb-7f8c-353b-442e">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d092-b2eb-3982-22d4-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d092-b2eb-3982-22d4-max" includeChildSelections="false"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Exchange hammer" id="d23a-cc50-b438-ff2b" hidden="false" defaultSelectionEntryId="f1d9-6336-7a0c-64cf">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="25a2-68c3-5666-a3bb-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="25a2-68c3-5666-a3bb-max" includeChildSelections="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Power weapon and Astartes shield" hidden="false" id="d289-4aa1-775c-f349">
+              <entryLinks>
+                <entryLink import="true" name="Power weapon" hidden="false" id="1ded-f2c1-8fa4-03ec" type="selectionEntry" targetId="2174-53aa-f028-b509"/>
+              </entryLinks>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Astartes shield" hidden="false" id="bd9d-77fe-bb7a-5432">
+                  <profiles>
+                    <profile name="Astartes shield" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="bd58-e1dc-7a65-ac86">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer has a 4+ invulnerable save.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2609-ee8d-2547-7dbb-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2609-ee8d-2547-7dbb-max" includeChildSelections="false"/>
+                  </constraints>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Heavy thunder hammer" hidden="false" id="f1d9-6336-7a0c-64cf">
+              <profiles>
+                <profile name="Heavy thunder hammer" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="b97e-2834-009d-d0b7">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">10</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">3</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Devastating Wounds</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Devastating Wounds" id="bd64-dd0e-b976-0626" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
+              </infoLinks>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <modifiers>
+        <modifier type="set" value="Deathwatch Veteran w/ power weapon and shield" field="name">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="2537-956c-98c0-bffb" childId="d289-4aa1-775c-f349" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Power weapon" hidden="false" id="2174-53aa-f028-b509">
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2beb-ec01-1483-e53a-min" includeChildSelections="false"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2beb-ec01-1483-e53a-max" includeChildSelections="false"/>
+      </constraints>
+      <profiles>
+        <profile name="Power weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="016d-a1e1-a89a-c461">
+          <characteristics>
+            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+            <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
+            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+            <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
+            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+            <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Sustained Hits 1</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Sustained Hits" id="131c-a522-34d1-a89e" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
+      </infoLinks>
+      <comment>Decimus Kill Team only</comment>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Deathwatch Veteran w/ carbine" hidden="false" id="8778-e3cb-2c6f-b23d">
+      <comment>Decimus Kill Team</comment>
+      <entryLinks>
+        <entryLink import="true" name="Close combat weapon" hidden="false" id="48a9-a3aa-45bf-b454" type="selectionEntry" targetId="2078-20a8-181f-a708">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5428-2fae-eca4-d780" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="33c7-a838-39f8-8ecc" includeChildSelections="false"/>
+          </constraints>
+        </entryLink>
+        <entryLink import="true" name="Special-issue bolt pistol" hidden="false" id="e58d-035c-fd4e-5b50" type="selectionEntry" targetId="bd52-0d98-f3a0-e291"/>
+      </entryLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Exchange carbine" id="8667-6300-4cc0-671a" hidden="false" defaultSelectionEntryId="2fde-1e35-34a9-0b37">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="be8b-451f-3fb5-1986" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4874-86ef-723c-20fc" includeChildSelections="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Deathwatch marksman bolt carbine" hidden="false" id="2fde-1e35-34a9-0b37">
+              <profiles>
+                <profile name="Deathwatch marksman bolt carbine" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="a87d-8d8f-1f70-fe13">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Lethal Hits</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Heavy" id="3643-b552-d38d-1631" hidden="false" type="rule" targetId="1202-10a8-78e9-4c67"/>
+                <infoLink name="Lethal Hits" id="7d35-e674-06e7-0276" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Combat knife" hidden="false" id="812d-8e13-8148-1db6">
+              <infoLinks>
+                <infoLink name="Precision" id="7e56-07ee-125e-84a6" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
+              </infoLinks>
+              <profiles>
+                <profile name="Combat knife" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="cea1-dabe-7fee-1563">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Precision</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <modifiers>
+        <modifier type="set" value="Deathwatch Veteran w/ combat knife" field="name">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="8778-e3cb-2c6f-b23d" childId="812d-8e13-8148-1db6" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Special-issue bolt pistol" hidden="false" id="bd52-0d98-f3a0-e291">
+      <comment>Decimus Kill Team</comment>
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="654e-38c2-489d-3ffe-min" includeChildSelections="false"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="654e-38c2-489d-3ffe-max" includeChildSelections="false"/>
+      </constraints>
+      <profiles>
+        <profile name="Special-issue bolt pistol" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="22e9-d6ae-0929-7455">
+          <characteristics>
+            <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+            <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+            <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+            <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+            <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+            <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol, Precision, Lethal Hits</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Pistol" id="4405-cec2-b6f4-c2c4" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
+        <infoLink name="Precision" id="1caf-5667-0cba-b274" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
+        <infoLink name="Lethal Hits" id="ae51-09c8-d4bd-435c" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
+      </infoLinks>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Gravis Veteran w/ infernus heavy bolter" hidden="false" id="550a-f5c4-d6a9-a09e">
+      <comment>Decimus Kill Team</comment>
+      <entryLinks>
+        <entryLink import="true" name="Bolt pistol" hidden="false" id="627f-c831-6ef3-6dfa" type="selectionEntry" targetId="67eb-7f8c-353b-442e">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="0c3a-301c-3521-bfab" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0a30-10ad-a35a-14a6" includeChildSelections="false"/>
+          </constraints>
+        </entryLink>
+        <entryLink import="true" name="Close combat weapon" hidden="false" id="428f-db58-3ed8-693a" type="selectionEntry" targetId="2078-20a8-181f-a708">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f647-4566-fff7-b5df" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c933-aca1-5b88-3f50" includeChildSelections="false"/>
+          </constraints>
+        </entryLink>
+      </entryLinks>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Weapon" id="3899-8463-5291-674b" hidden="false" defaultSelectionEntryId="6ed5-ee8e-aa73-3c44">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="97cc-8f6a-129e-7000-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="97cc-8f6a-129e-7000-max" includeChildSelections="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Frag cannon" hidden="false" id="efbd-2915-b637-83f8">
+              <profiles>
+                <profile name="Frag cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="67b7-65e7-6a7a-d4d8">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Heavy, Lethal Hits, Rapid Fire D3</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Lethal Hits" id="24bb-cc1d-7753-3b29" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
+                <infoLink name="Blast" id="8adc-9fd3-c21b-3444" hidden="false" type="rule" targetId="6c1f-1cf7-ff25-c99e"/>
+                <infoLink name="Heavy" id="a0c1-6f76-d26c-b759" hidden="false" type="rule" targetId="1202-10a8-78e9-4c67"/>
+                <infoLink name="Rapid Fire" id="47e3-7975-4849-a5c5" hidden="false" type="rule" targetId="c5c8-8b58-b8b6-7786"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Hellstorm bolt rifle and grenade launcher" hidden="false" id="e2b3-c14f-5a6a-b660">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Hellstorm bolt rifle" hidden="false" id="7c66-f2f6-a3fc-0867">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a442-a69c-5536-3260-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a442-a69c-5536-3260-max" includeChildSelections="false"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="Hellstorm bolt rifle" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="cfc4-f2e1-4f31-d0a2">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">30&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Heavy, Lethal Hits</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <infoLinks>
+                    <infoLink name="Lethal Hits" id="ae68-01c1-9627-0511" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
+                    <infoLink name="Heavy" id="c944-a359-ffd2-08e8" hidden="false" type="rule" targetId="1202-10a8-78e9-4c67"/>
+                    <infoLink name="Assault" id="f5f9-85ed-5822-bf2a" hidden="false" type="rule" targetId="fc8a-8c24-bae9-cc1c"/>
+                  </infoLinks>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Astartes grenade launcher" hidden="false" id="703f-ed39-cb24-5686">
+                  <constraints>
+                    <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7078-160c-ac4b-dc54-min" includeChildSelections="false"/>
+                    <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7078-160c-ac4b-dc54-max" includeChildSelections="false"/>
+                  </constraints>
+                  <profiles>
+                    <profile name="➤ Astartes grenade launcher - frag" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="10a4-502b-1982-6f28">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
+                      </characteristics>
+                    </profile>
+                    <profile name="➤ Astartes grenade launcher - krak" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="9425-908b-ebed-31b6">
+                      <characteristics>
+                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">1</characteristic>
+                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                        <characteristic name="S" typeId="2229-f494-25db-c5d3">9</characteristic>
+                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">D3</characteristic>
+                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                  <infoLinks>
+                    <infoLink name="Blast" id="ff08-eaf6-7e7f-dbf6" hidden="false" type="rule" targetId="6c1f-1cf7-ff25-c99e"/>
+                  </infoLinks>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntry>
+          </selectionEntries>
+          <entryLinks>
+            <entryLink import="true" name="Infernus heavy bolter" hidden="false" id="6ed5-ee8e-aa73-3c44" type="selectionEntry" targetId="ef13-323d-7627-dc7"/>
+          </entryLinks>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <modifiers>
+        <modifier type="set" value="Gravis Veteran w/ frag cannon" field="name">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="550a-f5c4-d6a9-a09e" childId="efbd-2915-b637-83f8" shared="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="set" value="Gravis Veteran w/ hellstorm bolt rifle" field="name">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="550a-f5c4-d6a9-a09e" childId="e2b3-c14f-5a6a-b660" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
   </sharedSelectionEntries>
   <entryLinks>
     <entryLink import="false" name="Watch Master" hidden="false" type="selectionEntry" id="d7e1-13bb-2177-b6bc" targetId="f7c3-45d2-a7ac-d8bc"/>
@@ -5684,6 +6249,7 @@ If this unit has a Leader unit attached to it during the Declare Battle Formatio
     <entryLink import="false" name="Spectrus Kill Team" hidden="false" type="selectionEntry" id="6482-591d-fe98-7961" targetId="2544-5189-7806-30f3"/>
     <entryLink import="false" name="Deathwatch Veterans" hidden="false" id="e17b-05e3-61c0-2ad9" type="selectionEntry" targetId="66ab-476a-134e-ec7b"/>
     <entryLink import="true" name="Talonstrike Kill Team" hidden="false" id="3fda-b554-1ac7-a635" type="selectionEntry" targetId="c679-f252-32b1-ebcc"/>
+    <entryLink import="true" name="Decimus Kill Team" hidden="false" id="8b60-d2f3-62a3-e41f" type="selectionEntry" targetId="b169-ff89-b05e-3884"/>
   </entryLinks>
   <sharedProfiles>
     <profile name="Power Fist" hidden="false" id="27b9-ba9e-95a5-a6" typeName="Melee Weapons" publicationId="4115-3627-e608-39f6" page="16" typeId="8a40-4aaa-c780-9046">
