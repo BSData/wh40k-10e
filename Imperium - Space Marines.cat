@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Adeptus Astartes - Space Marines" revision="167" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Adeptus Astartes - Space Marines" revision="168" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
     <categoryEntry id="930d-2875-125b-a65e" name="Bladeguard Veteran Squad" hidden="false"/>
@@ -20743,6 +20743,7 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
         <categoryLink targetId="aff3-d6a3-2a95-9dc" id="a2cb-6ba1-1347-a509" primary="false" name="Imperium"/>
         <categoryLink targetId="75e8-57c4-40e3-1817" id="b5a8-3b24-71e6-6997" primary="false" name="Transport"/>
         <categoryLink targetId="5a61-81ac-eb7c-a87e" id="4218-7e81-6754-fe89" primary="false" name="Grenades"/>
+        <categoryLink targetId="8c5e-74f4-e3cf-56ed" id="a74d-04b5-5460-2849" primary="false" name="Land Raider"/>
       </categoryLinks>
       <modifiers>
         <modifier type="add" value="e21f-8e64-c5d-7df0" field="category">
@@ -20900,6 +20901,7 @@ Normal move. If it does so, until the end of the turn, this unit is not eligible
         <categoryLink targetId="551d-174d-e214-52d6" id="46cc-57bf-9527-7334" primary="false" name="Land Raider Redeemer"/>
         <categoryLink targetId="6e7-40c-58d9-e402" id="4e71-ae1a-4cef-8e53" primary="false" name="Faction: Adeptus Astartes"/>
         <categoryLink targetId="75e8-57c4-40e3-1817" id="d04a-ff56-a19a-da98" primary="false" name="Transport"/>
+        <categoryLink targetId="8c5e-74f4-e3cf-56ed" id="c86d-739d-7c2b-b902" primary="false" name="Land Raider"/>
       </categoryLinks>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="c865-28b2-ed07-7341"/>
@@ -27580,6 +27582,13 @@ You can attach this model to the above unit even if one Captain, Chapter Master
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
             <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
           </characteristics>
+          <modifiers>
+            <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="parent" childId="5ad9-2fe2-f5ad-3bcf" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </profile>
         <profile name="Keep the Banner High" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="15d8-f178-3876-42f5">
           <characteristics>
@@ -31180,7 +31189,14 @@ You can attach this model to one of the above units even if one Captain, Chapte
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Land Raider Prometheus [Legends]" hidden="false" id="bbc6-900e-c5f2-d634">
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="275"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="250"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+        <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+        <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+        <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
       </costs>
       <entryLinks>
         <entryLink import="true" name="Crusade" hidden="false" id="eb1c-3c02-f996-17e1" type="selectionEntryGroup" targetId="9a99-f13c-a667-e698" sortIndex="1"/>
@@ -37168,6 +37184,49 @@ Each time a model in a DARNATH LYSANDER unit from your army makes an attack that
             </modifier>
           </modifiers>
         </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Hammer of Avernii" hidden="false" id="2496-d271-a92f-d1c0">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="f27e-18c0-b73e-748e" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Calculated Annihilation" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f966-0da0-04f3-b26f">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model from your army with the Oath of Moment ability makes an attack that targets your Oath of Moment target, you can re‑roll a Wound roll of 1.</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="Recalculating" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f66e-cb0c-fb45-8120">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle round, after your Oath of Moment target is destroyed, if a Caanok Var model from your army is on the battlefield, select one enemy unit visible to that model. That enemy unit becomes
+your Oath of Moment target until you select a new one</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Spearpoint Task Force" hidden="false" id="0256-e74f-0e54-3e45">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="67c1-fc13-f9a1-cbbf" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Storm-Swift Onslaught" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="69ae-77b5-332b-f84c">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes units from your army are eligible to declare a charge in a turn in which they Advanced or Fell Back. </characteristic>
+              </characteristics>
+            </profile>
+            <profile name="Wrath of the First Khan" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2f3b-c99a-6a60-2c19">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of the Fight phase, if a Suboden Khan unit from your army destroyed one or more enemy units this phase and is not within Engagement Range of one or more enemy units, that unit can make a Normal move of up to 6&quot;</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
     <selectionEntryGroup name="Enhancements" hidden="false" id="9e5d-de4c-c5d1-1d3e" collapsible="true">
@@ -40513,6 +40572,237 @@ unit is within 12&quot; of this model, increase the cost of that usage of that 
             </modifier>
           </modifiers>
         </selectionEntryGroup>
+        <selectionEntryGroup name="Hammer of Avernii Enhancements" id="0e16-11ab-87cc-ac75" hidden="false">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="2496-d271-a92f-d1c0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Spiritus Ferrum" hidden="false" id="372a-5b3c-34b1-334a">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="bdab-b2a0-96b7-da7a" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Spiritus Ferrum" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="0145-f961-8567-e85e">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. Add 1 to the Attacks characteristic of the bearer’s melee weapons. Once per battle, at the start of any phase, the bearer can use this Enhancement. If it does, until the end of the phase, add 1 to the Attacks characteristic of melee weapons equipped by all other models in the bearer’s unit as well.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Medusan Roar [Aura]" hidden="false" id="15db-a2e3-6106-f99e">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="a763-1ba1-482a-a14c" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Medusan Roar [Aura]" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3791-0f9a-6682-bbd9">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. While an enemy unit (excluding Monsters and Vehicles) is within 6&quot; of
+the bearer, each time that unit fails a Battle‑shock test, one model in that unit is destroyed (chosen by
+its controlling player). Once per battle, when such an enemy unit fails a Battle‑shock test, you can choose for D3 models in that unit to be destroyed in this way instead.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="30"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Iron Laurel" hidden="false" id="3fdf-50d4-5f80-d2ae">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="1b72-7f4e-efcf-f42d" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Iron Laurel" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="4350-ba3f-7c33-2718">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. Improve the Objective Control characteristic of the bearer by 1. Once per battle, at the start of any phase, the bearer can use this Enhancement. If it does, until the end of the phase, add 1 to the Objective Control characteristic of all other models in the bearer’s unit as well.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="10"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Steel Font" hidden="false" id="4bb9-4e90-f12b-12d0">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="6c65-372a-62cc-b21c" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Steel Font" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7177-1131-05c4-6d10">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes Terminator model only. While the bearer is leading a unit, in your Command phase, you can return 1 destroyed Bodyguard model to that unit.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="740a-892c-8958-defa" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="19dd-86cd-aa24-43d2" includeChildSelections="false"/>
+          </constraints>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Spearpoint Task Force Enhancements" id="7e70-7802-8b9c-8bc6" hidden="false">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="0256-e74f-0e54-3e45" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Spearpoint Paragon" hidden="false" id="943e-6ac8-df09-16e8">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="2516-dda4-dc78-d92e" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Spearpoint Paragon" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="cfb4-3a43-2b29-1aae">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. Improve the Strength and Armour Penetration characteristics of the bearer’s melee weapons by 1. Each time the bearer ends a Charge move, until the end of the turn, improve the Strength and Armour Penetration characteristics of the bearer’s melee weapons by 2 instead.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Stormseer&apos;s Wisdom" hidden="false" id="45fb-0afc-f558-c3c5">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="2407-8e99-ddcb-f165" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Stormseer&apos;s Wisdom" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="af9e-e90d-1365-2492">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. While the bearer is leading a unit, you can re‑roll Advance rolls made for that unit.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Hunter&apos;s Eye" hidden="false" id="7546-3996-6dcc-4248">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="4556-d5ff-7548-6995" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Hunter&apos;s Eye" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="be3e-6c87-63e2-fed7">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. Ranged weapons equipped by models in the bearer’s unit have the
+[SUSTAINED HITS 1] and [IGNORES COVER] abilities.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Chogorian Huntmaster" hidden="false" id="b21a-b914-964c-d984">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="1d7f-c2ea-d8af-1bf6" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Chogorian Huntmaster" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ecd6-15d0-bdcd-a03b">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes Mounted model only. If the bearer’s unit is in Strategic Reserves, for the purposes of setting up that unit on the battlefield, treat the current battle round number as being one higher than it actually is.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="14a0-40c9-2748-ae6e" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="52e9-c28f-49fd-f891" includeChildSelections="false"/>
+          </constraints>
+        </selectionEntryGroup>
       </selectionEntryGroups>
       <constraints>
         <constraint type="max" value="1" field="selections" scope="self" shared="true" id="aa38-635d-91e5-c589" includeChildSelections="true"/>
@@ -42224,7 +42514,7 @@ unit is within 12&quot; of this model, increase the cost of that usage of that 
               <profiles>
                 <profile name="Ardent Protectors" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="683a-644e-9cbb-06c4">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a **^^Character^^** model is leading this unit, add 1 to the Toughness characteristic of models in that unit. </characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a **^^Character^^** model is leading this unit, add 1 to the Toughness characteristic of models in that unit.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
