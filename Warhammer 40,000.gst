@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="79" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="80" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -8569,7 +8569,7 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
               <profiles>
                 <profile name="Inspirational Champions" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c358-6a5e-8ae9-f95e">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While an **^^Epic Hero^^** model with this Crusade ability is leading a unit, you can ignore and and/or all Battle Scars that Bodyguard unit has. In addition, if your Crusade army includes one or more **^^Epic Hero^^** models with this Crusade Ability, at the end of the battle you can select one additional unit from your Crusade army to be Marked for Greatness.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While an **^^Epic Hero^^** model with this Crusade ability is leading a unit, you can ignore any and/or all Battle Scars that Bodyguard unit has. In addition, if your Crusade army includes one or more **^^Epic Hero^^** models with this Crusade Ability, at the end of the battle you can select one additional unit from your Crusade army to be Marked for Greatness.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -8699,7 +8699,7 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
               <profiles>
                 <profile name="Inspirational Champions" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7255-2c06-ecb5-7913">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While an **^^Epic Hero^^** model with this Crusade ability is leading a unit, you can ignore and and/or all Battle Scars that Bodyguard unit has. If your Crusade army includes one or more **^^Epic Hero^^** models with this Crusade Ability, at the end of the battle, you can select one additional unit from your Crusade army to be Marked for Greatness.</characteristic>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While an **^^Epic Hero^^** model with this Crusade ability is leading a unit, you can ignore any and/or all Battle Scars that Bodyguard unit has. If your Crusade army includes one or more **^^Epic Hero^^** models with this Crusade Ability, at the end of the battle, you can select one additional unit from your Crusade army to be Marked for Greatness.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
