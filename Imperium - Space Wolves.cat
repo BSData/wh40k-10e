@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="94bb-3284-ee14-57a1" name="Imperium - Adeptus Astartes - Space Wolves" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="66" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur/Mad Spy">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="94bb-3284-ee14-57a1" name="Imperium - Adeptus Astartes - Space Wolves" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="67" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur/Mad Spy">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Space Marines" id="cb5b-3605-7522-c561" targetId="e0af-67df-9d63-8fb7" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights - Library" id="2e06-13ae-6789-b591" targetId="1b6d-dc06-5db9-c7d1" importRootEntries="true"/>
@@ -10669,17 +10669,17 @@ a Transport</characteristic>
       <modifierGroups>
         <modifierGroup type="and">
           <modifiers>
-            <modifier type="set" value="6" field="c031-ab23-ccbf-9c5e">
+            <modifier type="set" value="6" field="75bb-ded1-c86d-bdf0">
               <conditions>
                 <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
               </conditions>
             </modifier>
-            <modifier type="increment" value="2" field="60ff-ecae-c4a3-b28d">
+            <modifier type="set" value="2" field="716d-91b7-d55a-1022">
               <repeats>
                 <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
               </repeats>
             </modifier>
-            <modifier type="increment" value="2" field="db6c-5f16-63ae-0d09">
+            <modifier type="set" value="2" field="716d-91b7-d55a-1022">
               <repeats>
                 <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
               </repeats>
@@ -10756,6 +10756,14 @@ a Transport</characteristic>
 models), if this unit is not Battle-shocked, Hunting Wolves models in this unit have an Objective Control characteristic of 1</characteristic>
           </characteristics>
         </profile>
+        <profile name="Deadly Stalkers" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6352-6f0c-617d-2c1c">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an
+attack that targets an enemy unit, if there are no other units
+from your opponent’s army within 6&quot; of that target, add 1 to the
+Wound roll.</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
       <selectionEntryGroups>
         <selectionEntryGroup name="Wolf Scouts" id="e969-2f08-ee27-fe1c" hidden="false">
@@ -10767,6 +10775,22 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="ab40-0a24-4b31-0e27" includeChildSelections="false"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="a423-1abf-9c07-e20c" includeChildSelections="false"/>
                   </constraints>
+                  <entryLinks>
+                    <entryLink import="true" name="Plasma Pistol" hidden="false" id="d75a-9591-c11a-c99f" type="selectionEntry" targetId="25c2-104f-fa0c-809e">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8b08-3c3a-2b97-3a08" includeChildSelections="false"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="af95-a9ea-40a9-cd7a" includeChildSelections="false"/>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="1106-f2da-307b-0fa7-min" includeChildSelections="false"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1106-f2da-307b-0fa7-max" includeChildSelections="false"/>
+                      </constraints>
+                    </entryLink>
+                    <entryLink import="true" name="Power Weapon" hidden="false" id="28b4-8f6a-73c7-0406" type="selectionEntry" targetId="c4b5-68e-2266-f459">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f895-7a68-4614-fb89-min" includeChildSelections="false"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f895-7a68-4614-fb89-max" includeChildSelections="false"/>
+                      </constraints>
+                    </entryLink>
+                  </entryLinks>
                 </selectionEntry>
                 <selectionEntry type="model" import="true" name="Hunting Wolf" hidden="false" id="a20d-2456-65bc-a70b">
                   <constraints>
@@ -10782,12 +10806,6 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
                         <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
                         <characteristic name="LD" typeId="58d2-b879-49c7-43bc">8+</characteristic>
                         <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
-                      </characteristics>
-                    </profile>
-                    <profile name="Hunting Hounds" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f812-4b77-af78-ae36">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this unit is within 6&quot; of one or more friendly Space Wolves Character models (excluding Wulfen
-models), if this unit is not Battle-shocked, Hunting Wolves models in this unit have an Objective Control characteristic of 1.</characteristic>
                       </characteristics>
                     </profile>
                   </profiles>
@@ -10815,16 +10833,11 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
                 </selectionEntry>
                 <selectionEntry type="model" import="true" name="Wolf Scout" hidden="false" id="bf0b-5c7c-904e-e361">
                   <selectionEntryGroups>
-                    <selectionEntryGroup name="Weapon Options" id="8038-55e4-1b58-0590" hidden="false" defaultSelectionEntryId="c93e-6f8b-e5b1-145a">
+                    <selectionEntryGroup name="Weapon Options" id="8038-55e4-1b58-0590" hidden="false" defaultSelectionEntryId="f0cc-72ed-78f1-59b0">
                       <selectionEntries>
-                        <selectionEntry type="upgrade" import="true" name="Bolt Pistol, Thunderclap and Runic Stave" hidden="false" id="8ebb-a5f1-3ee8-a313">
-                          <constraints>
-                            <constraint type="max" value="1" field="selections" scope="ee6b-3815-3a1a-6458" shared="true" id="c67e-b10c-adb3-e3ce" includeChildSelections="false"/>
-                          </constraints>
-                        </selectionEntry>
                         <selectionEntry type="upgrade" import="true" name="Instigator Carbine and Combat Blade" hidden="false" id="0c7c-310e-5187-67b7">
                           <constraints>
-                            <constraint type="max" value="1" field="selections" scope="ee6b-3815-3a1a-6458" shared="true" id="12a2-90d9-b1ac-9a92" includeChildSelections="false"/>
+                            <constraint type="max" value="1" field="selections" scope="e969-2f08-ee27-fe1c" shared="true" id="12a2-90d9-b1ac-9a92" includeChildSelections="true"/>
                           </constraints>
                           <entryLinks>
                             <entryLink import="true" name="Combat Blade" hidden="false" id="b2fa-ca72-afb8-411f" type="selectionEntry" targetId="ec23-682e-c760-407e">
@@ -10852,6 +10865,10 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
                               <infoLinks>
                                 <infoLink name="Precision" id="d94d-376c-aaaa-b9fb" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
                               </infoLinks>
+                              <constraints>
+                                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="265f-50e5-a4a1-f8ce-min" includeChildSelections="false"/>
+                                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="265f-50e5-a4a1-f8ce-max" includeChildSelections="false"/>
+                              </constraints>
                             </selectionEntry>
                           </selectionEntries>
                         </selectionEntry>
@@ -10873,7 +10890,7 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
                         </selectionEntry>
                         <selectionEntry type="upgrade" import="true" name="Plasma Pistol, Combat Blade and Haywire" hidden="false" id="b9d5-ac72-dd21-dd7a">
                           <constraints>
-                            <constraint type="max" value="1" field="selections" scope="ee6b-3815-3a1a-6458" shared="true" id="7e34-8714-92dd-c54f" includeChildSelections="false"/>
+                            <constraint type="max" value="1" field="selections" scope="e969-2f08-ee27-fe1c" shared="true" id="7e34-8714-92dd-c54f" includeChildSelections="true"/>
                           </constraints>
                           <entryLinks>
                             <entryLink import="true" name="Plasma Pistol" hidden="false" id="955e-c2af-a27e-385b" type="selectionEntry" targetId="25c2-104f-fa0c-809e">
@@ -10905,6 +10922,66 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
                             </selectionEntry>
                           </selectionEntries>
                         </selectionEntry>
+                        <selectionEntry type="upgrade" import="true" name="Bolt Pistol, Thunderclap and Runic Stave" hidden="false" id="5e73-cf39-dba7-8227">
+                          <constraints>
+                            <constraint type="max" value="1" field="selections" scope="ee6b-3815-3a1a-6458" shared="true" id="86e4-dedd-8e2b-8e76" includeChildSelections="false"/>
+                          </constraints>
+                          <entryLinks>
+                            <entryLink import="true" name="Bolt pistol" hidden="false" id="98d7-ae32-e1c0-4f6d" type="selectionEntry" targetId="18b0-8c2-173f-5">
+                              <constraints>
+                                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="53ea-8415-3a52-4c78" includeChildSelections="false"/>
+                                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="28c1-4428-0869-aac4" includeChildSelections="false"/>
+                              </constraints>
+                            </entryLink>
+                          </entryLinks>
+                          <selectionEntries>
+                            <selectionEntry type="upgrade" import="true" name="Thunderclap" hidden="false" id="8740-315b-3546-6741">
+                              <profiles>
+                                <profile name="Thunderclap" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="5d1a-bd9b-aace-833f">
+                                  <characteristics>
+                                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D3</characteristic>
+                                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                                    <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast, Psychic</characteristic>
+                                  </characteristics>
+                                </profile>
+                              </profiles>
+                              <constraints>
+                                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5e4e-7f52-465b-b32d" includeChildSelections="false"/>
+                                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8c8c-3798-f767-51bc" includeChildSelections="false"/>
+                              </constraints>
+                              <infoLinks>
+                                <infoLink name="Blast" id="552a-ba7c-3873-4638" hidden="false" type="rule" targetId="6c1f-1cf7-ff25-c99e"/>
+                                <infoLink name="Psychic" id="358d-bf23-969c-4003" hidden="false" type="rule" targetId="e9c4-2bb8-12ee-cd1b"/>
+                              </infoLinks>
+                            </selectionEntry>
+                            <selectionEntry type="upgrade" import="true" name="Runic Stave" hidden="false" id="d4e6-03ae-61c3-1c24">
+                              <profiles>
+                                <profile name="Runic Stave" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="a151-1648-f8ec-93cd">
+                                  <characteristics>
+                                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                                    <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                                    <characteristic name="D" typeId="3254-9fe6-d824-513e">D3</characteristic>
+                                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">Psychic</characteristic>
+                                  </characteristics>
+                                </profile>
+                              </profiles>
+                              <infoLinks>
+                                <infoLink name="Psychic" id="dfe5-4d1b-fa07-163a" hidden="false" type="rule" targetId="e9c4-2bb8-12ee-cd1b"/>
+                              </infoLinks>
+                              <constraints>
+                                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="d5f0-f042-f315-d3e9" includeChildSelections="false"/>
+                                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="709f-6f81-1add-f21d" includeChildSelections="false"/>
+                              </constraints>
+                            </selectionEntry>
+                          </selectionEntries>
+                        </selectionEntry>
                       </selectionEntries>
                       <constraints>
                         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ae74-e4d2-659d-977f" includeChildSelections="false"/>
@@ -10913,7 +10990,7 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
                       <entryLinks>
                         <entryLink import="true" name="Plasma Gun" hidden="false" id="4594-05d3-f924-88f8" type="selectionEntry" targetId="4f0e-770d-bae4-bfc3">
                           <constraints>
-                            <constraint type="max" value="1" field="selections" scope="ee6b-3815-3a1a-6458" shared="true" id="9e02-ab49-a1e4-97cb" includeChildSelections="false"/>
+                            <constraint type="max" value="1" field="selections" scope="e969-2f08-ee27-fe1c" shared="true" id="9e02-ab49-a1e4-97cb" includeChildSelections="true"/>
                           </constraints>
                         </entryLink>
                       </entryLinks>
@@ -10933,6 +11010,22 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5f7a-3dc6-af12-564c" includeChildSelections="false"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="dcc2-1b98-29da-c425" includeChildSelections="false"/>
                   </constraints>
+                  <entryLinks>
+                    <entryLink import="true" name="Plasma Pistol" hidden="false" id="2720-c59f-7dc1-0cc7" type="selectionEntry" targetId="25c2-104f-fa0c-809e">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e451-7db1-de38-67d2" includeChildSelections="false"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="eb9b-1389-480e-a63f" includeChildSelections="false"/>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="8002-0504-a4f6-ee15-min" includeChildSelections="false"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8002-0504-a4f6-ee15-max" includeChildSelections="false"/>
+                      </constraints>
+                    </entryLink>
+                    <entryLink import="true" name="Power Weapon" hidden="false" id="2d7b-09a4-5d9c-fd1f" type="selectionEntry" targetId="c4b5-68e-2266-f459">
+                      <constraints>
+                        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="0c92-5856-19df-0d97-min" includeChildSelections="false"/>
+                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0c92-5856-19df-0d97-max" includeChildSelections="false"/>
+                      </constraints>
+                    </entryLink>
+                  </entryLinks>
                 </selectionEntry>
                 <selectionEntry type="model" import="true" name="Wolf Scout" hidden="false" id="c374-ad8b-3d27-eb75">
                   <selectionEntryGroups>
@@ -10956,7 +11049,7 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
                         </selectionEntry>
                         <selectionEntry type="upgrade" import="true" name="Plasma Pistol, Combat Blade and Haywire" hidden="false" id="8ed1-6b24-04f5-f5d7">
                           <constraints>
-                            <constraint type="max" value="1" field="selections" scope="ee6b-3815-3a1a-6458" shared="true" id="081a-7ce5-7695-00ae" includeChildSelections="false"/>
+                            <constraint type="max" value="1" field="selections" scope="e969-2f08-ee27-fe1c" shared="true" id="081a-7ce5-7695-00ae" includeChildSelections="true"/>
                           </constraints>
                           <entryLinks>
                             <entryLink import="true" name="Plasma Pistol" hidden="false" id="c662-4417-7558-fc02" type="selectionEntry" targetId="25c2-104f-fa0c-809e">
@@ -10990,7 +11083,7 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
                         </selectionEntry>
                         <selectionEntry type="upgrade" import="true" name="Bolt Pistol, Thunderclap and Runic Stave" hidden="false" id="9a8c-792f-2f52-c937">
                           <constraints>
-                            <constraint type="max" value="1" field="selections" scope="ee6b-3815-3a1a-6458" shared="true" id="340e-c659-aedf-ee8c" includeChildSelections="false"/>
+                            <constraint type="max" value="1" field="selections" scope="e969-2f08-ee27-fe1c" shared="true" id="340e-c659-aedf-ee8c" includeChildSelections="true"/>
                           </constraints>
                           <entryLinks>
                             <entryLink import="true" name="Bolt pistol" hidden="false" id="1e16-b1d9-f75e-59c9" type="selectionEntry" targetId="18b0-8c2-173f-5">
@@ -11056,7 +11149,7 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
                       <entryLinks>
                         <entryLink import="true" name="Plasma Gun" hidden="false" id="bf16-5b64-9f9d-7d2c" type="selectionEntry" targetId="4f0e-770d-bae4-bfc3">
                           <constraints>
-                            <constraint type="max" value="1" field="selections" scope="ee6b-3815-3a1a-6458" shared="true" id="be00-4878-1d26-2000" includeChildSelections="false"/>
+                            <constraint type="max" value="1" field="selections" scope="e969-2f08-ee27-fe1c" shared="true" id="be00-4878-1d26-2000" includeChildSelections="true"/>
                           </constraints>
                         </entryLink>
                       </entryLinks>
@@ -11081,12 +11174,6 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
                         <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
                         <characteristic name="LD" typeId="58d2-b879-49c7-43bc">8+</characteristic>
                         <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
-                      </characteristics>
-                    </profile>
-                    <profile name="Hunting Hounds" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="90d4-6e52-caa4-a781">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this unit is within 6&quot; of one or more friendly Space Wolves Character models (excluding Wulfen
-models), if this unit is not Battle-shocked, Hunting Wolves models in this unit have an Objective Control characteristic of 1.</characteristic>
                       </characteristics>
                     </profile>
                   </profiles>
@@ -11119,20 +11206,10 @@ models), if this unit is not Battle-shocked, Hunting Wolves models in this unit
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="baa8-5ae9-dfe4-15b3-min" includeChildSelections="false"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="baa8-5ae9-dfe4-15b3-max" includeChildSelections="false"/>
           </constraints>
-          <profiles>
-            <profile name="Deadly Stalkers" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6352-6f0c-617d-2c1c">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an
-attack that targets an enemy unit, if there are no other units
-from your opponent’s army within 6&quot; of that target, add 1 to the
-Wound roll.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <categoryLinks>
-        <categoryLink targetId="cf47-a0d7-7207-29dc" id="33ae-f560-7e6f-1568" primary="false" name="Infantry"/>
+        <categoryLink targetId="cf47-a0d7-7207-29dc" id="33ae-f560-7e6f-1568" primary="true" name="Infantry"/>
         <categoryLink targetId="5a61-81ac-eb7c-a87e" id="ca65-ddcf-2ab7-d56c" primary="false" name="Grenades"/>
         <categoryLink targetId="6df-937-16bc-8c1a" id="f82d-785f-5be0-25cb" primary="false" name="Smoke"/>
         <categoryLink targetId="aff3-d6a3-2a95-9dc" id="9cc7-ae5a-8bc6-5245" primary="false" name="Imperium"/>
