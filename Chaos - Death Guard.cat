@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="5108-f98-63c2-53cb" name="Chaos - Death Guard" revision="98" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="5108-f98-63c2-53cb" name="Chaos - Death Guard" revision="99" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <catalogueLinks>
     <catalogueLink id="9fec-b3ad-9626-6706" name="Chaos - Chaos Knights Library" targetId="8106-aad2-918a-9ac" type="catalogue" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Library - Astartes Heresy Legends" id="ff65-1828-b2a0-477" targetId="ac3b-689c-4ad4-70cb" importRootEntries="true"/>
@@ -2417,7 +2417,11 @@ While a ^^**Death Guard^^** unit from your army is within 7&quot; of one or more
       <entryLinks>
         <entryLink import="true" name="Enhancements" hidden="false" type="selectionEntryGroup" id="9233-6098-aa0d-6b8b" targetId="c93c-acdd-5ab4-afb8" sortIndex="3"/>
         <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="d44d-9f5a-bd16-489b" targetId="b526-972f-7394-632a" sortIndex="2"/>
-        <entryLink import="true" name="Crusade" hidden="false" id="434d-84e1-74cf-fe83" type="selectionEntryGroup" targetId="919f-cbc6-374b-3d02" sortIndex="1"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="434d-84e1-74cf-fe83" type="selectionEntryGroup" targetId="919f-cbc6-374b-3d02" sortIndex="1">
+          <entryLinks>
+            <entryLink import="true" name="Putrid Ascension" hidden="false" id="7c94-1294-7b60-1522" type="selectionEntry" targetId="b971-011e-f837-5cec"/>
+          </entryLinks>
+        </entryLink>
       </entryLinks>
       <selectionEntryGroups>
         <selectionEntryGroup name="Wargear" id="02fb-4d3a-9981-2fdf" hidden="false" sortIndex="4">
@@ -2572,7 +2576,11 @@ While a ^^**Death Guard^^** unit from your army is within 7&quot; of one or more
       <entryLinks>
         <entryLink import="true" name="Enhancements" hidden="false" type="selectionEntryGroup" id="203e-ea60-85d7-2206" targetId="c93c-acdd-5ab4-afb8" sortIndex="3"/>
         <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="ebac-7456-a1aa-c84b" targetId="b526-972f-7394-632a" sortIndex="2"/>
-        <entryLink import="true" name="Crusade" hidden="false" id="2653-0ca3-6f3b-fbe1" type="selectionEntryGroup" targetId="919f-cbc6-374b-3d02" sortIndex="1"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="2653-0ca3-6f3b-fbe1" type="selectionEntryGroup" targetId="919f-cbc6-374b-3d02" sortIndex="1">
+          <entryLinks>
+            <entryLink import="true" name="Putrid Ascension" hidden="false" id="96f0-2603-1a0f-f570" type="selectionEntry" targetId="b971-011e-f837-5cec"/>
+          </entryLinks>
+        </entryLink>
       </entryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="195"/>
@@ -14223,6 +14231,31 @@ While ^^**Typhus^^** is leading this unit, enemy models destroyed as a result of
         </modifierGroup>
       </modifierGroups>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Putrid Ascension" hidden="false" id="b971-011e-f837-5cec">
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c2b3-6d39-6492-f2bc" includeChildSelections="false"/>
+        <constraint type="min" value="-1" field="selections" scope="parent" shared="true" id="49e3-d96e-99b1-0021" includeChildSelections="false"/>
+      </constraints>
+      <modifiers>
+        <modifier type="set" value="1" field="49e3-d96e-99b1-0021">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="b971-011e-f837-5cec" shared="true" includeChildSelections="true"/>
+              </conditions>
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4f09-0141-6c70-6c5a" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5b9e-935a-4ad6-5524" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
   </sharedSelectionEntries>
   <sharedRules>
     <rule name="Nurgle&apos;s Gift (Aura)" hidden="false" id="ea42-7d15-fd81-73d6" publicationId="6bb4-8611-986f-58fa" page="1">
@@ -16111,9 +16144,16 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
               <conditionGroups>
                 <conditionGroup type="and">
                   <conditions>
-                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="9c0e-7e25-4580-e439" shared="true" includeChildSelections="false" includeChildForces="false"/>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="4f09-0141-6c70-6c5a" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="b971-011e-f837-5cec" shared="true" includeChildSelections="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditions>
+                        <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4f09-0141-6c70-6c5a" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                        <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5b9e-935a-4ad6-5524" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </conditionGroup>
