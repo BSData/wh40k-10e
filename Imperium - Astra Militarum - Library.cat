@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="165" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="166" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Aegis Defence Line" hidden="false" id="cb99-456-f100-40ed">
       <categoryLinks>
@@ -34404,6 +34404,17 @@ Onslaught - 4</characteristic>
             </profile>
           </profiles>
         </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Grizzled Company" hidden="false" id="cc4e-a30b-f987-c984">
+          <profiles>
+            <profile name="Ruthless Discipline" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2609-5b25-8959-60c2">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 1 to the number of Orders each **^^Astra Militarum Officer^^** model from your army can issue, as stated on their datasheet.
+
+While an **^^Astra Militarum^^** unit from your army is affected by an Order, each time a model in that unit makes an attack, re‑roll a Hit roll of 1. If the target of that attack is within range of an objective marker, re‑roll a Wound roll of 1 as well.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
     <selectionEntryGroup name="Enhancements" hidden="false" id="33fd-bb93-1bf4-f1c" collapsible="true">
@@ -35281,6 +35292,158 @@ Onslaught - 4</characteristic>
           </selectionEntries>
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e946-0630-3cff-30b4"/>
+          </constraints>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Grizzled Company Enhancements" hidden="false" id="6c5d-71eb-dbef-4b2c">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="87b5-6072-b2c5-0cdc" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Abhuman Detail" hidden="false" id="4d65-dad2-8df9-10fa">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf38-2338-aa71-ed56" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <profiles>
+                <profile name="Abhuman Detail" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5cf9-4483-4579-1c7b">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Commissar^^** model only. Add the **^^Ogryn^^** keyword to the list of units this model can issue Orders too (as stated on its datasheet).
+
+In the Declare Battle Formations step, the bearer can be attached to an **^^Ogryn Squad^^** or **^^Bullgryn squad^^** unit.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6cae-7c67-343a-d537"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="829a-8b84-1780-542d" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="2" hidden="false" id="2dbd-2e75-155c-936f">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <profiles>
+                <profile name="Flash Grenades" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="898e-b8e5-c1c1-93b2">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Infantry Officer^^** model only. Enemy units cannot use the Fire Overwatch Stratagem to shoot at the bearer&apos;s unit.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7292-715d-d0fd-7fca"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="344f-f1af-541e-e23b" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Stalwart&apos;s Honours" hidden="false" id="1712-afc7-0611-0189">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="fe32-7fee-de57-f858"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="bf84-c112-1394-64d4" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Stalwart&apos;s Honours" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="31c3-e3c7-fb9d-00fb">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Officer^^** model only. While the bearer is leading a unit, when that unit is issued an Order, it is also affected by the Take Cover! Order.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Legacy Sidearm" hidden="false" id="0b3e-6398-9ca6-7aeb">
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <profiles>
+                <profile name="Legacy Sidearm" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b921-67ff-8a51-1e9c">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Infantry Officer^^** model only. Add 2 to the Attacks characteristics of the bearer&apos;s Pistols.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6a85-4fe6-f3b5-5abf"/>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="2573-8c9c-2670-c858" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="10"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Legacy Sidearm" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="append" value="+0" field="3bb-c35f-f54-fb08" scope="model" affects="self.entries.recursive.e993-e086-6de1-12af.profiles.Ranged Weapons" arg="+0" join=""/>
+                    <modifier type="replace" field="3bb-c35f-f54-fb08" scope="model" affects="self.entries.recursive.6337-b83b-0d1e-5770.profiles.Ranged Weapons" arg="+0"/>
+                    <modifier type="increment" value="2" field="3bb-c35f-f54-fb08" scope="model" affects="self.entries.recursive.1db0-c6b5-19db-8d0c.profiles.Ranged Weapons" position="-1"/>
+                    <modifier type="decrement" value="1" field="3bb-c35f-f54-fb08" join=", " scope="model" affects="self.entries.recursive.84c4-6d1e-e724-bd6e.profiles.Ranged Weapons" position="-1"/>
+                    <modifier type="replace" field="3bb-c35f-f54-fb08" scope="model" affects="self.entries.recursive.profiles.Ranged Weapons" arg="+0"/>
+                    <modifier type="add" value="6337-b83b-0d1e-5770" field="category" scope="model" arg="+0" affects="self.entries.e993-e086-6de1-12af"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
+            </selectionEntry>
+          </selectionEntries>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ff6e-0f0c-f6ac-12b2"/>
           </constraints>
         </selectionEntryGroup>
       </selectionEntryGroups>
