@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Adeptus Astartes - Space Marines" revision="171" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Adeptus Astartes - Space Marines" revision="172" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
     <categoryEntry id="930d-2875-125b-a65e" name="Bladeguard Veteran Squad" hidden="false"/>
@@ -42119,6 +42119,7 @@ can use this Enhancement. If it does, until the start of your next Command phas
                 <entryLink import="true" name="Blood Angels Battle Traits" hidden="false" id="9590-66bb-b3be-2167" type="selectionEntryGroup" targetId="fa80-1c72-0a91-84b0"/>
                 <entryLink import="true" name="Space Wolves Battle Traits" hidden="false" id="67cf-d4c1-167f-0510" type="selectionEntryGroup" targetId="64d4-716e-9c84-6c02"/>
                 <entryLink import="true" name="Black Templars Battle Traits" hidden="false" id="3dba-dcec-a0f5-b68c" type="selectionEntryGroup" targetId="989d-a375-a44e-388e"/>
+                <entryLink import="true" name="Tome Keepers Battle Traits" hidden="false" id="0516-542b-1824-7350" type="selectionEntryGroup" targetId="e5f8-a013-bbc6-5cdf"/>
               </entryLinks>
               <constraints>
                 <constraint type="min" value="0" field="selections" scope="self" shared="true" id="c0ea-cb32-d755-f167" includeChildSelections="true"/>
@@ -42138,6 +42139,7 @@ can use this Enhancement. If it does, until the start of your next Command phas
                 <entryLink import="true" name="Blood Angels Crusade Relics" hidden="false" id="d79a-81e7-458b-5fec" type="selectionEntryGroup" targetId="8a0f-2717-af3f-5001"/>
                 <entryLink import="true" name="Space Wolves Crusade Relics" hidden="false" id="4334-95e6-4a28-758a" type="selectionEntryGroup" targetId="5dc2-bc3c-d9b2-2013"/>
                 <entryLink import="true" name="Black Templars Crusade Relics" hidden="false" id="264a-2ed4-7485-4a2e" type="selectionEntryGroup" targetId="8db9-8209-82d0-e4c8"/>
+                <entryLink import="true" name="Tome Keepers Crusade Relics" hidden="false" id="00e8-9863-9a40-50ca" type="selectionEntryGroup" targetId="1cfb-a7f9-4846-f3db"/>
               </entryLinks>
             </entryLink>
             <entryLink import="true" name="Inner Circle Advancement" hidden="false" id="f4c9-67f2-802f-583c" type="selectionEntryGroup" targetId="5675-d5d5-87d8-6117"/>
@@ -47305,6 +47307,464 @@ Until the end of the phase, this model&apos;s melee weapons have that ability.</
         </modifier>
       </modifiers>
       <comment>Blood Angels Crusade content</comment>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Tome Keepers Battle Traits" id="e5f8-a013-bbc6-5cdf" hidden="false" collapsible="true">
+      <comment>Crusade content - White Dwarf</comment>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="e0af-67df-9d63-8fb7" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="c00c-b9d6-e0f7-4c37" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Precognisance (Psychic)" hidden="false" id="ba04-8440-e1e4-a269">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4cad-bf43-4621-7ab3" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="13bf-2bee-3ae0-b414" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Precognisance (Psychic)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6f63-9b2c-e75a-0a9a">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per turn, you can re-roll one Hit roll, one Wound roll, or one saving throw made for this model.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Istrouman Cognisance" hidden="false" id="7f41-723b-b3f3-7712">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f150-ee6e-b521-9e9b" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Istrouman Cognisance" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="023b-0ea8-08dc-9b6c">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">- Each time you lose a battle while this model is part of your Crusade Army, make a note of your opponent&apos;s Faction keyword on this model&apos;s Crusade Card. That keyword is one of this model&apos;s Learned Foes.
+- At the start of the first battle round, if this model is your **^^Warlord^^** and your opponent&apos;s Faction keyword matches one of this model&apos;s Learned Foes, roll one D6: on a 2+, you gain 1CP.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="In Preparation, Victory" hidden="false" id="bc8a-0be1-691b-6224">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="e1af-ec5a-6e30-5e14" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="In Preparation, Victory" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="0c2f-6a30-47f8-ac13">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You can target this unit with the Heroic Intervention Stratagem for 0CP, and you can do so even if you have already used that Stratagem on a different unit this phase.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Acquirers of Knowledge" hidden="false" id="e1cc-31f0-1760-9806">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c18c-2aa0-ccfd-cf6f" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e338-111e-d0c6-b687" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Acquirers of Knowledge" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="fc4a-5f80-e06c-d8db">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an attack, if this unit is within range of an objective marker, re-roll a Hit roll of 1.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Empyric Tutelage" hidden="false" id="b5c5-9677-9c0f-c992">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f7dc-5af0-da31-d174" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e338-111e-d0c6-b687" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Empyric Tutelage" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="69af-adfa-f28e-ae0d">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Models in this unit have a 4+ invulnerable save against Psychic attacks.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Perceptive Tacticians" hidden="false" id="ead3-9244-a7fc-6c12">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7c9a-86d3-b4e4-15c0" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e338-111e-d0c6-b687" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Perceptive Tacticians" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e987-8010-8f3a-ae79">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time you select this unit as the target of a Stratagem, roll one D6: on a 5+, you gain 1CP.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Amplification (Psychic)" hidden="false" id="d597-ed11-e16b-ddcf">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b460-1baf-ce7b-7a76" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="13bf-2bee-3ae0-b414" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Amplification (Psychic)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="beb1-e33b-cc9b-b034">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Command phase, you can select one friendly **^^Adeptus Astartes^^** unit within 18&quot; of this **^^Psyker^^** and roll one D6: on a 1, this **^^Psyker^^**&apos;s unit suffers D3 mortal wounds; on a 2+, until the start of your next Command phase, add 1 to the Objective Control characteristic of models in that friendly unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Mentor" hidden="false" id="3381-24c2-b66a-721c">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="fd5f-0e0d-e76b-6567" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="13bf-2bee-3ae0-b414" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Mentor" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="34ef-6501-c670-5f1e">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If this model is alive at the end of the battle and was part of an Attached unit at the start of the battle, its Bodyguard unit gains D3+1 XP.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+      </selectionEntries>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Tome Keepers Crusade Relics" id="1cfb-a7f9-4846-f3db" hidden="false" collapsible="true">
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Antiquity Relics" id="5857-392e-6fc2-c790" hidden="false" sortIndex="2">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="The Armour Memoriam" hidden="false" id="73a9-70e1-91f2-a495">
+              <profiles>
+                <profile name="The Armour Memoriam" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8533-7950-54bf-5bba">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The bearer has the Feel No Pain 5+ ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="9c4f-26f6-f6ef-1ce5" includeChildForces="true" includeChildSelections="true"/>
+              </constraints>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="73a9-70e1-91f2-a495" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="parent" childId="73a9-70e1-91f2-a495" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                      <conditions>
+                        <condition type="lessThan" value="31" field="a623-fe74-1d33-cddf" scope="root-entry" childId="any" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+                <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="2"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+                <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+              </costs>
+              <infoLinks>
+                <infoLink name="Feel No Pain" id="9530-7b3e-d6a1-3799" hidden="false" type="rule" targetId="9bf4-280f-bbe2-6fbb">
+                  <modifiers>
+                    <modifier type="append" value="5+" field="name" join=" "/>
+                  </modifiers>
+                </infoLink>
+              </infoLinks>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Legendary Relics" id="9d8a-68f6-2811-ffae" hidden="false" sortIndex="3">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="The Chronicle of Istrouma" hidden="false" id="a4ef-5eb4-5507-e2bd">
+              <profiles>
+                <profile name="The Chronicle of Istrouma" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8403-9812-2fc7-eb9d">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, in your Command phase, if your Crusade force is embarked on an Oathsworn Campaign, you can change your Bonus Oathsworn Agenda for a different one from the table associated with your Oathsworn Campaign. When doing so, you do not lose any Honour points you have already gained from your current Bonus Agenda.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="e771-d193-6c33-4423" includeChildForces="true" includeChildSelections="true"/>
+              </constraints>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="a4ef-5eb4-5507-e2bd" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="parent" childId="a4ef-5eb4-5507-e2bd" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                      <conditions>
+                        <condition type="lessThan" value="51" field="a623-fe74-1d33-cddf" scope="root-entry" childId="any" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+                <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="3"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+                <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+              </costs>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Artificer Relics" id="c717-ffe3-4e4e-37e9" hidden="false" sortIndex="1">
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="The Journal of Artax" hidden="false" id="65cc-9be3-e923-04bf">
+              <profiles>
+                <profile name="The Journal of Artax" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="0dc9-e4c5-a971-8931">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Psyker^^** model only. Add 1 to the Strength and Damage characteristics of **[PSYCHIC]** weapons the bearer is equipped with.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="8e18-f91f-9425-585e" includeChildForces="true" includeChildSelections="true"/>
+              </constraints>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="or">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="atLeast" value="1" field="selections" scope="roster" childId="65cc-9be3-e923-04bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                            <condition type="lessThan" value="1" field="selections" scope="parent" childId="65cc-9be3-e923-04bf" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                      <conditions>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="13bf-2bee-3ae0-b414" shared="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+                <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+                <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+              </costs>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="The Journal of Artax" field="annotation" join=", " affects="self.entries.recursive.profiles.Ranged Weapons" scope="model"/>
+                    <modifier type="increment" value="1" field="2229-f494-25db-c5d3" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Ranged Weapons" scope="model"/>
+                    <modifier type="append" value="+0" field="a354-c1c8-a745-f9e3" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Ranged Weapons" join="" arg="+0"/>
+                    <modifier type="replace" value="" field="a354-c1c8-a745-f9e3" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Ranged Weapons" join="" arg="+0"/>
+                    <modifier type="increment" value="1" field="a354-c1c8-a745-f9e3" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Ranged Weapons" scope="model" position="-1"/>
+                    <modifier type="replace" value="" field="a354-c1c8-a745-f9e3" scope="model" affects="self.entries.recursive.profiles.Ranged Weapons" join="" arg="+0"/>
+                    <modifier type="append" value="The Journal of Artax" field="annotation" join=", " affects="self.entries.recursive.profiles.Melee Weapons" scope="model"/>
+                    <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Melee Weapons" scope="model"/>
+                    <modifier type="append" value="+0" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.4986-bf86-beb4-13ac.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.982b-de77-dd2d-d9bd.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="increment" value="1" field="3254-9fe6-d824-513e" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Melee Weapons" scope="model" position="-1"/>
+                    <modifier type="replace" value="" field="3254-9fe6-d824-513e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join="" arg="+0"/>
+                    <modifier type="add" value="982b-de77-dd2d-d9bd" field="category" scope="model" join="" arg="+0" affects="self.entries.recursive.4546-4a0c-b3be-e84c"/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <comment>Crusade content - White Dwarf</comment>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="e0af-67df-9d63-8fb7" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="c00c-b9d6-e0f7-4c37" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <catalogueLinks>
