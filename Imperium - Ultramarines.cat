@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4029-9237-e8db-af55" name="Imperium - Adeptus Astartes - Ultramarines" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="38" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4029-9237-e8db-af55" name="Imperium - Adeptus Astartes - Ultramarines" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="39" battleScribeVersion="2.03" type="catalogue">
   <entryLinks>
     <entryLink import="true" name="Captain Sicarius" hidden="false" type="selectionEntry" id="7740-af66-ac4f-68b6" targetId="2ae8-40ec-ba34-dfe5"/>
     <entryLink import="true" name="Chaplain Cassius [Legends]" hidden="false" type="selectionEntry" id="e1e-1c6b-bb62-f9c8" targetId="b180-3cac-9124-b818"/>
@@ -1982,9 +1982,12 @@ units, with their original Starting Strengths</characteristic>
     <selectionEntry type="unit" import="true" name="Victrix Honour Guard" hidden="false" id="9b89-f132-4fef-8e51">
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="8132-b701-b8b1-0daf" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="de33-d60f-9c2c-022b" includeChildSelections="false"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="1728-cb0f-7c8b-427c" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="80b2-81ad-b96b-eb19" includeChildSelections="true"/>
       </constraints>
       <selectionEntryGroups>
-        <selectionEntryGroup name="Victrix Honour Guard" id="85dd-78b4-efce-5768" hidden="false" defaultSelectionEntryId="ad41-e903-1a8b-83a3">
+        <selectionEntryGroup name="Victrix Honour Guard" id="85dd-78b4-efce-5768" hidden="false" defaultSelectionEntryId="ad41-e903-1a8b-83a3" sortIndex="3">
           <selectionEntries>
             <selectionEntry type="model" import="true" name="Victrix Honour Guard" hidden="false" id="ad41-e903-1a8b-83a3">
               <selectionEntries>
@@ -2113,6 +2116,24 @@ be attached to this unit instead.</characteristic>
             </profile>
           </profiles>
         </selectionEntryGroup>
+        <selectionEntryGroup name="Crusade" id="76af-0b45-ca97-a72e" hidden="false" sortIndex="2" collapsible="true">
+          <entryLinks>
+            <entryLink import="true" name="Mighty Champions" hidden="false" id="7820-1f7c-d51c-cc0f" type="selectionEntryGroup" targetId="f842-6e90-bc5a-80f1"/>
+          </entryLinks>
+          <comment>Epic Hero variant</comment>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="d1a6-0766-1549-28fa" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="886e-13d0-2945-290c" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </selectionEntryGroup>
       </selectionEntryGroups>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="120"/>
@@ -2155,6 +2176,90 @@ moved within Engagement Range of that enemy unit. This unit cannot make a Surge
           </characteristics>
         </profile>
       </profiles>
+      <entryLinks>
+        <entryLink import="true" name="Crusade" hidden="false" id="bb91-4a66-b8e8-dff0" type="selectionEntryGroup" targetId="9a99-f13c-a667-e698" sortIndex="1">
+          <comment>Standard variant</comment>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="d1a6-0766-1549-28fa" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="886e-13d0-2945-290c" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </entryLink>
+      </entryLinks>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="6" field="de33-d60f-9c2c-022b">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="2" field="1728-cb0f-7c8b-427c">
+              <repeats>
+                <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+              </repeats>
+            </modifier>
+            <modifier type="increment" value="2" field="80b2-81ad-b96b-eb19">
+              <repeats>
+                <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+              </repeats>
+            </modifier>
+            <modifier type="append" value="(Battle-ready)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Blooded)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Battle-hardened)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Heroic)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Legendary)" field="name">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Crusade modifiers</comment>
+        </modifierGroup>
+      </modifierGroups>
     </selectionEntry>
   </sharedSelectionEntries>
   <categoryEntries>
