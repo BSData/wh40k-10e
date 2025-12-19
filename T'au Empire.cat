@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="133" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="134" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
   <rules>
     <rule name="For The Greater Good" hidden="false" id="eeb6-c42-48f7-cc21">
       <description>If your Army Faction is **^^T’au Empire^^**, at the start of your Shooting phase you can select units from your army with this ability to become Observer units.
@@ -19,6 +19,18 @@ Until the end of the phase, each time a model from your army in a Guided unit m
       <constraints>
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7ca5-48b6-5801-c3ef"/>
       </constraints>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="79c5-9fc4-7b97-7c3f" shared="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="6ef3-61ac-4974-0b11" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Guardian Drone" hidden="false" id="1549-5b7-b34e-e156">
       <profiles>
@@ -85,6 +97,7 @@ Until the end of the phase, each time a model from your army in a Guided unit m
         <categoryLink targetId="7288-48b3-c4df-66c6" id="8865-43bc-7e5f-617c" primary="false" name="Battlesuit"/>
         <categoryLink targetId="c01-280c-2446-228c" id="ec37-f862-4ba1-9eda" primary="false" name="Commander Shadowsun"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="f391-5e95-f644-8543" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="2b89-c466-d31d-c35d" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <entryLinks>
         <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="4ec8-5fd4-e440-2a5e" targetId="179c-d88a-d49b-48b9" sortIndex="2">
@@ -266,6 +279,7 @@ Until the end of the phase, each time a model from your army in a Guided unit m
         <categoryLink targetId="7288-48b3-c4df-66c6" id="c157-15fb-ef8f-1dcf" primary="false" name="Battlesuit"/>
         <categoryLink targetId="a1ff-64a0-bc3d-177a" id="7823-9071-a441-f8a5" primary="false" name="Commander Farsight"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="9458-6067-5eac-2709" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="362d-c48e-1adb-dc9b" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <modifiers>
         <modifier type="add" value="Cannot take COMMANDER FARSIGHT and an ETHEREAL in the same army." field="error">
@@ -431,6 +445,7 @@ Until the end of the phase, each time a model from your army in a Guided unit m
         <categoryLink targetId="7288-48b3-c4df-66c6" id="b8d5-7a12-3fbc-8ba2" primary="false" name="Battlesuit"/>
         <categoryLink targetId="8a84-2e6d-d906-9e66" id="e651-ee8c-83f8-6f06" primary="false" name="Commander in Crisis Battlesuit"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="a8c8-7d26-6e82-3c77" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="f29a-3548-ecc7-eb72" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Deep Strike" hidden="false" type="rule" id="74d6-eb5-b546-9571" targetId="7cb5-dd6b-dd87-ad3b"/>
@@ -762,6 +777,7 @@ Until the end of the phase, each time a model from your army in a Guided unit m
         <categoryLink targetId="7288-48b3-c4df-66c6" id="a605-c3e-1546-d8fc" primary="false" name="Battlesuit"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="cad3-7d94-ecb2-ab98" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="c043-d7fe-d0b2-6951" id="a5c1-96c3-1b38-128f" primary="false" name="Commander in Enforcer Battlesuit"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="1fd4-d494-3822-435f" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Deep Strike" hidden="false" type="rule" id="1bfe-9987-6e7c-2056" targetId="7cb5-dd6b-dd87-ad3b"/>
@@ -1066,6 +1082,7 @@ Until the end of the phase, each time a model from your army in a Guided unit m
         <categoryLink targetId="7288-48b3-c4df-66c6" id="93fb-728e-1485-f382" primary="false" name="Battlesuit"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="787b-6af8-b672-90bb" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink name="Commander in Coldstar Battlesuit" hidden="false" id="5079-4e87-34c1-20ac" targetId="56c8-e8e0-6ef6-f050" primary="false"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="f7a8-466f-c6f3-4dfd" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Deep Strike" hidden="false" type="rule" id="f2a1-5438-f96f-f7e2" targetId="7cb5-dd6b-dd87-ad3b"/>
@@ -1417,6 +1434,7 @@ Until the end of the phase, each time a model from your army in a Guided unit m
         <categoryLink targetId="5a61-81ac-eb7c-a87e" id="110e-2c9f-cf-7f84" primary="false" name="Grenades"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="1465-1097-98fc-5e80" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="5035-d8d0-822b-e2c" id="d878-51e4-e42c-dc03" primary="false" name="Cadre Fireblade"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="82d2-7d17-ded6-03cd" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoGroups>
         <infoGroup name="Leader" hidden="false" id="25ae-b1b2-69c-d031">
@@ -1616,6 +1634,7 @@ Until the end of the phase, each time a model from your army in a Guided unit m
         <categoryLink targetId="cf47-a0d7-7207-29dc" id="fc08-b767-7db5-2bc8" primary="false" name="Infantry"/>
         <categoryLink targetId="e6e-aad6-ee91-7c3c" id="4b91-31f8-9a09-7aba" primary="false" name="Ethereal"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="5afa-8691-8230-d288" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="c2c3-87ad-69eb-b49d" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Ethereal" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="eb0c-e2d4-1b25-e480">
@@ -1839,6 +1858,7 @@ Until the end of the phase, each time a model from your army in a Guided unit m
       <categoryLinks>
         <categoryLink targetId="3d58-2655-391e-ecc" id="8f6d-d9cc-6f66-94fb" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="4f3a-f0f7-6647-348d" id="36b-c35c-5048-ef00" primary="true" name="Epic Hero"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="1747-77e3-d128-ab44" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Duality Shield" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d75c-8807-c2d9-2fcc">
@@ -2003,6 +2023,7 @@ Until the end of the phase, each time a model from your army in a Guided unit m
         <categoryLink targetId="3d58-2655-391e-ecc" id="9e3c-4265-1935-c88f" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="4ad0-2296-e36d-9032" id="4f7e-f65-d9e8-3402" primary="false" name="Aun&apos;shi"/>
         <categoryLink targetId="4f3a-f0f7-6647-348d" id="e7e-1a16-63e1-7235" primary="true" name="Epic Hero"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="3b34-1771-dc9f-aa2a" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Aun&apos;shi" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="ff1e-921a-177f-8869">
@@ -2104,6 +2125,7 @@ Until the end of the phase, each time a model from your army in a Guided unit m
         <categoryLink targetId="3d58-2655-391e-ecc" id="aefb-903f-5770-8377" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="1685-dd28-8e90-e10d" id="7112-1cb3-bebe-80a2" primary="false" name="Markerlight"/>
         <categoryLink targetId="cf47-a0d7-7207-29dc" id="6b10-9998-7e32-b888" primary="false" name="Infantry"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="af3e-d8d0-1605-de44" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Darkstrider" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="815c-4d84-672e-8f6e">
@@ -2209,6 +2231,7 @@ Until the end of the phase, each time a model from your army in a Guided unit m
         <categoryLink targetId="dbd4-63-af05-998" id="998e-f24e-ddc4-7897" primary="false" name="Vehicle"/>
         <categoryLink targetId="efe-61d1-a00d-d080" id="f2c-8664-4085-f7c3" primary="false" name="Longstrike"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="9b05-3ee2-7eac-b735" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="64e6-124f-9dea-1ac6" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <entryLinks>
         <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="d4c8-6980-7d18-1a84" targetId="179c-d88a-d49b-48b9" sortIndex="2"/>
@@ -2434,6 +2457,7 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
         <categoryLink targetId="327b-5317-ea54-ae90" id="250d-2ac0-62a-6849" primary="false" name="Fire Warrior"/>
         <categoryLink targetId="e3bc-69df-88a0-e5de" id="103c-3d2c-7040-708e" primary="false" name="Strike Team"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="2009-58fd-146c-d218" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="5309-df9e-6390-1fa8" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <selectionEntryGroups>
         <selectionEntryGroup name="Fire Warriors" hidden="false" id="acda-c68b-e687-90d6" defaultSelectionEntryId="1c19-f20d-8e7b-db5d" collective="false" sortIndex="3">
@@ -2740,6 +2764,7 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
         <categoryLink targetId="327b-5317-ea54-ae90" id="c858-dc0d-f91e-c104" primary="false" name="Fire Warrior"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="40c5-28c8-ef71-65e3" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="8fa3-ee6b-447e-3cff" id="bd32-f9d4-352a-19e5" primary="false" name="Breacher Team"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="c435-deb4-9a14-e77b" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <selectionEntries>
         <selectionEntry type="model" import="true" name="Breacher Fire Warriors" hidden="false" id="91e6-a9de-d33f-d0ab" sortIndex="3">
@@ -3567,6 +3592,7 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
         <categoryLink targetId="7288-48b3-c4df-66c6" id="3407-3323-3f8-a078" primary="false" name="Battlesuit"/>
         <categoryLink targetId="5409-827f-b23f-5ac" id="922c-d83f-b2bd-e69d" primary="false" name="Crisis"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="2bab-d6b1-acc8-5af1" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="2558-323f-ea31-b371" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Turbo-jets" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="48d4-b938-de65-cd2">
@@ -4002,6 +4028,7 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
         <categoryLink targetId="3d58-2655-391e-ecc" id="e439-38ac-fd0-1d24" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink name="Grenades" hidden="false" id="8fee-4d53-4a2e-ccfa" targetId="5a61-81ac-eb7c-a87e" primary="false"/>
         <categoryLink name="Markerlight" hidden="false" id="7cbd-f73d-d2c0-4f80" targetId="1685-dd28-8e90-e10d" primary="false"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="411e-41fb-d8df-728e" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Forward Observers" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c5b0-2214-2987-d0de">
@@ -4317,6 +4344,7 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
         <categoryLink targetId="7288-48b3-c4df-66c6" id="8403-8c1b-1533-294d" primary="false" name="Battlesuit"/>
         <categoryLink targetId="ca95-5f2a-e510-7dbb" id="4a98-57a-d14c-6f5a" primary="false" name="Ghostkeel"/>
         <categoryLink name="Faction: T&apos;au Empire" hidden="false" id="f2f2-1bcb-283d-0313" targetId="3d58-2655-391e-ecc" primary="false"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="16ec-b108-8ac7-cdc8" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="a80a-623d-10a-155c"/>
@@ -4576,6 +4604,7 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
         <categoryLink targetId="1685-dd28-8e90-e10d" id="6c0a-e306-f210-9b10" primary="false" name="Markerlight"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="bea7-ee03-5f32-a45f" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="ee69-67d3-6851-d7f2" id="a67f-4f5f-9271-ad62" primary="false" name="Firesight Team"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="b97e-0e0e-b0b9-b087" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="f19c-b315-3b94-a4b9"/>
@@ -4780,6 +4809,7 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
         <categoryLink targetId="1685-dd28-8e90-e10d" id="24ba-af0c-f9b6-cda7" primary="false" name="Markerlight"/>
         <categoryLink targetId="c3af-6e36-252c-1006" id="f4a0-3777-fb6a-aaf5" primary="false" name="Pathfinder Team"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="a3c5-e9f0-6643-5053" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="c163-2dfd-00c4-ae7b" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Target Uploaded" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="85b7-6da7-e356-82e5">
@@ -5386,6 +5416,7 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
         <categoryLink targetId="c619-2086-bbcf-69c9" id="a9fd-2150-2c53-c390" primary="false" name="Fly"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="1106-8db0-bac3-adb4" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="69ad-9250-6e74-46ff" id="4115-1bf6-c083-c701" primary="false" name="Piranha"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="b280-f476-a7dc-b875" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Deadly Demise" hidden="false" type="rule" id="7a88-f34a-e77b-4945" targetId="b68a-5ded-65ac-98c">
@@ -5629,6 +5660,7 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
         <categoryLink targetId="c619-2086-bbcf-69c9" id="5689-5914-ca56-f63" primary="false" name="Fly"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="1377-b903-4470-40db" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="b0eb-efa7-735c-4174" id="5f4d-2556-8cc7-9a81" primary="false" name="Vespid Stingwings"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="4ce2-b332-9fc4-ceb2" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Deep Strike" hidden="false" type="rule" id="3faa-c494-3f57-38e5" targetId="7cb5-dd6b-dd87-ad3b"/>
@@ -6095,6 +6127,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="7288-48b3-c4df-66c6" id="cef8-f4b5-4b89-a1c9" primary="false" name="Battlesuit"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="74e7-a48f-1bd1-4358" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="cc7e-612b-ac7d-c162" id="2b65-7086-6833-c96b" primary="false" name="Broadside"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="e72c-4f17-0018-1f81" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="df4f-5932-5e60-50d0"/>
@@ -6413,6 +6446,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="7288-48b3-c4df-66c6" id="d353-a886-302c-7c27" primary="false" name="Battlesuit"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="9be6-afe-ef49-d153" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="5a55-f02e-d30c-85e" id="803-721a-43cd-72e5" primary="false" name="Riptide"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="d6c4-43a5-f0b1-df1f" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Deadly Demise" hidden="false" type="rule" id="9742-41cb-2ef2-e301" targetId="b68a-5ded-65ac-98c">
@@ -6702,6 +6736,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="c619-2086-bbcf-69c9" id="5630-81cf-f850-7b" primary="false" name="Fly"/>
         <categoryLink targetId="7b0b-ad0-8397-2937" id="729e-880c-e7b7-a078" primary="false" name="Hammerhead Gunship"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="99da-9954-dd59-13cb" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="bb3e-b87a-2fba-b9ec" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Deadly Demise" hidden="false" type="rule" id="5a1f-5697-f094-3969" targetId="b68a-5ded-65ac-98c">
@@ -6953,6 +6988,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="1685-dd28-8e90-e10d" id="29c9-45f3-c57f-dc2c" primary="false" name="Markerlight"/>
         <categoryLink targetId="8ecd-70d4-ce52-f480" id="7aa1-b8b8-6264-34f2" primary="false" name="Sky Ray Gunship"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="5b5c-4ede-7307-2519" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="408a-ba87-0db1-c617" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Sky Ray Gunship" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="dd04-efd8-8f8f-750f">
@@ -7195,6 +7231,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="ba07-411c-2832-1f79" id="f9d-b44f-2b7d-b9ff" primary="true" name="Dedicated Transport"/>
         <categoryLink targetId="9b0-3c53-1484-3843" id="3b36-c860-a82e-ac12" primary="false" name="Devilfish"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="b447-953f-7fec-62bf" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="b0ef-754e-cc54-4d0b" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Deadly Demise" hidden="false" type="rule" id="11f6-21f7-a6d1-b192" targetId="b68a-5ded-65ac-98c">
@@ -7366,6 +7403,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="c619-2086-bbcf-69c9" id="d71e-32e1-73d6-2859" primary="false" name="Fly"/>
         <categoryLink targetId="e8f5-87d8-7e02-89fd" id="5f34-836b-8e11-4f4" primary="false" name="Razorshark Strike Fighter"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="95ba-5ab-81a-90cd" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="3f1b-9beb-1e24-4fcc" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Razorshark Strike Fighter" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="42ad-8287-bd00-5989">
@@ -7705,6 +7743,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="c619-2086-bbcf-69c9" id="654f-f89d-572e-6154" primary="false" name="Fly"/>
         <categoryLink targetId="cdb3-2eb9-88c7-56a7" id="365a-ce19-d951-c93c" primary="false" name="Sun Shark Bomber"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="18d-ec1b-cef5-4bb2" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="db25-b49f-2b53-9059" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="160"/>
@@ -7785,6 +7824,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="c619-2086-bbcf-69c9" id="dfa-c39e-8284-cdb9" primary="false" name="Fly"/>
         <categoryLink targetId="88d1-d0ab-d5a7-48f2" id="43ce-9c06-75bc-a3c6" primary="false" name="Tidewall Shieldline"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="d60e-19d8-bb8-7eb" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="8d06-3eb6-4b0c-b08d" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="156-cb5a-c060-4570"/>
@@ -7892,6 +7932,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="c619-2086-bbcf-69c9" id="54da-8c35-d861-486d" primary="false" name="Fly"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="c8e2-c38e-e0a9-6466" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="b7a-b0ee-a2ae-e54" id="b9db-97ba-fb5-ff75" primary="false" name="Tidewall Droneport"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="a6a1-e32d-5083-92a7" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Deadly Demise" hidden="false" type="rule" id="1721-c492-644-2915" targetId="b68a-5ded-65ac-98c">
@@ -7947,6 +7988,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="c619-2086-bbcf-69c9" id="cf2-b909-63af-9a30" primary="false" name="Fly"/>
         <categoryLink targetId="5151-516e-3ecc-8b51" id="f49b-7753-ba48-8f8e" primary="false" name="Tidewall Gunrig"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="2f0-5c6-a45d-2759" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="eee8-fb8e-679a-165a" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Tidewall Gunrig" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="99db-d097-be48-6768">
@@ -8070,6 +8112,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="d666-e2c9-b6cc-5716" id="4ed5-c671-5973-8e9b" primary="false" name="Towering"/>
         <categoryLink targetId="1ad9-8254-80e7-5425" id="4d93-53bc-ff5-752f" primary="false" name="Stormsurge"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="c9bc-2325-665e-76de" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="cded-c677-9bca-0848" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <selectionEntryGroups>
         <selectionEntryGroup name="Wargear" id="e4fa-b389-4cdd-f860" hidden="false" sortIndex="2">
@@ -8450,6 +8493,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="c619-2086-bbcf-69c9" id="b254-3797-89c4-d962" primary="false" name="Fly"/>
         <categoryLink targetId="a36e-3fe6-19a8-80f0" id="433-55ca-89cc-5dd5" primary="false" name="Tactical Drones"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="7d80-8357-5d5a-d16a" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="0fdb-f141-66ee-fb40" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="70"/>
@@ -9106,6 +9150,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="61e8-a40b-df38-3ae6" id="84dc-9583-166-ca58" primary="false" name="R&apos;varna"/>
         <categoryLink targetId="7288-48b3-c4df-66c6" id="99c7-9472-d999-cb13" primary="false" name="Battlesuit"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="7665-178e-71a6-6eb4" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="f3af-cbcc-4acf-c925" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Invulnerable Save (5+)" hidden="false" type="profile" id="66c1-9cb8-72a7-ff4a" targetId="27f4-7449-a636-ae8c"/>
@@ -9290,6 +9335,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="7288-48b3-c4df-66c6" id="f76e-9673-b674-6df9" primary="false" name="Battlesuit"/>
         <categoryLink targetId="fb2c-38ee-6ea4-79d0" id="7941-cd79-4217-1825" primary="false" name="Y&apos;vahra"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="a8a8-28dd-894b-c0c0" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="c2d3-5868-27d7-92eb" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Invulnerable Save (5+)" hidden="false" type="profile" id="7f5-69d2-89f1-9696" targetId="27f4-7449-a636-ae8c"/>
@@ -9513,6 +9559,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="1685-dd28-8e90-e10d" id="ec4e-fe99-f1d2-1e78" primary="false" name="Markerlight"/>
         <categoryLink targetId="2560-a167-c5a1-d002" id="41cd-dc31-7476-4812" primary="false" name="Tetras"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="3f34-1539-f183-fb77" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="7ad1-632c-d07e-2c0c" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="High-intensity Markerlights" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b7b7-8ee8-ef19-eefd">
@@ -9818,6 +9865,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="1685-dd28-8e90-e10d" id="1861-6891-d70f-d2fe" primary="false" name="Markerlight"/>
         <categoryLink targetId="bd3c-503b-ea7d-105d" id="f49b-6e85-370d-18e4" primary="false" name="Remora Stealth Drones"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="a929-9596-b168-f5b" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="c3b2-ae44-c03c-1c5a" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="160"/>
@@ -9939,6 +9987,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="d666-e2c9-b6cc-5716" id="285d-cb0c-8da0-f3b2" primary="false" name="Towering"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="fe19-56a6-be78-66b3" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="a464-ec26-8197-aa96" id="9c74-d8f2-28a7-b2c6" primary="false" name="Ta&apos;unar Supremacy Armour"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="7075-6b50-cddd-acb8" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Invulnerable Save (5+)" hidden="false" type="profile" id="b602-951a-418d-a34f" targetId="27f4-7449-a636-ae8c"/>
@@ -10296,6 +10345,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="c619-2086-bbcf-69c9" id="9556-41be-655c-71b7" primary="false" name="Fly"/>
         <categoryLink targetId="8035-bf10-9973-ebac" id="21e0-3e05-49e-8e95" primary="false" name="Barracuda"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="4482-c1b9-eca7-f6ff" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="8b7b-c671-b6fc-3129" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Invulnerable Save (5+)" hidden="false" type="profile" id="97fb-80e0-cef6-dd7c" targetId="27f4-7449-a636-ae8c"/>
@@ -10556,6 +10606,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="c619-2086-bbcf-69c9" id="e1e9-69ca-b77d-427a" primary="false" name="Fly"/>
         <categoryLink targetId="35c6-6866-e393-a011" id="9b58-4fe9-493e-b631" primary="false" name="Tiger Shark"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="d68d-bedd-3a42-2bea" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="0416-e292-aa04-e2d4" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Tiger Shark" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="13f0-77ab-e9b4-2a14">
@@ -10893,6 +10944,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="c619-2086-bbcf-69c9" id="755d-277b-3681-fc2c" primary="false" name="Fly"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="e358-5b31-e9d6-76f0" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="b258-865a-15d7-27dd" id="3670-fa1e-be3c-b61e" primary="false" name="AX-1-0 Tiger Shark"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="d29c-a7f9-6341-9469" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Tiger Shark" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="cbbf-c0d1-60a3-67a8">
@@ -11174,6 +11226,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="1685-dd28-8e90-e10d" id="4d80-c88c-540e-f41e" primary="false" name="Markerlight"/>
         <categoryLink targetId="ed95-87aa-7704-e8c6" id="720d-a17a-84a7-d6e1" primary="false" name="Manta"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="4933-3045-37ef-e311" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="64ee-8caf-8078-500d" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <entryLinks>
         <entryLink import="true" name="Crusade" hidden="false" id="f439-c677-4605-e990" type="selectionEntryGroup" targetId="bc88-2f42-15bd-1714" sortIndex="1"/>
@@ -11427,6 +11480,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="75e8-57c4-40e3-1817" id="87a5-d6a6-802f-1b08" primary="false" name="Transport"/>
         <categoryLink targetId="1b23-b921-2038-28d3" id="5930-9bd2-a1aa-87d9" primary="false" name="Orca Dropship"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="4086-54d7-b35c-a02c" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="bee0-0be9-6754-f47c" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Deadly Demise" hidden="false" type="rule" id="5e1e-f1f-fd7a-290e" targetId="b68a-5ded-65ac-98c">
@@ -11707,6 +11761,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="c619-2086-bbcf-69c9" id="d82d-a9b5-77a7-9a00" primary="false" name="Fly"/>
         <categoryLink targetId="504-c09-bd52-62ae" id="74f2-294f-d9e4-361e" primary="false" name="Heavy Gun Drones"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="d96a-171a-5ef7-8713" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="2526-9bf2-f224-4794" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="45"/>
@@ -12049,6 +12104,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="c619-2086-bbcf-69c9" id="ddfd-9deb-52b6-4d95" primary="false" name="Fly"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="cff4-74b4-e3da-2c10" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="bbd7-9213-72c2-28fd" id="ebb0-dfc3-4e1e-883a" primary="false" name="TX42 Piranha"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="b108-513f-c1b3-6eed" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="TX42 Piranha" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="8395-da5c-8f37-7a1d">
@@ -12476,6 +12532,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink targetId="6972-f443-743b-fbc6" id="af42-3572-71ac-ebae" primary="false" name="Shas&apos;o R&apos;alai"/>
         <categoryLink targetId="7288-48b3-c4df-66c6" id="bcc8-3379-7759-2a8" primary="false" name="Battlesuit"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="1b65-2402-2c3e-7f89" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="a7b5-4a96-8a65-a9cf" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <entryLinks>
         <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="bd31-c44c-9af5-f8f5" targetId="179c-d88a-d49b-48b9" sortIndex="2"/>
@@ -12627,6 +12684,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
         <categoryLink targetId="6b0d-940a-f0f6-843" id="d634-96c-f73b-8025" primary="false" name="XV9 Hazard"/>
         <categoryLink targetId="7288-48b3-c4df-66c6" id="49c0-a677-b68a-aaff" primary="false" name="Battlesuit"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="7151-5840-6613-d506" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="a31b-fdfb-824e-bfff" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Photon Casters" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7747-2828-a402-1b7d">
@@ -12887,6 +12945,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
         <categoryLink targetId="19d7-9c74-2140-5851" id="c242-49e1-7592-224c" primary="true" name="Fortification"/>
         <categoryLink targetId="3fd4-81f1-2049-35" id="25b4-f67d-415-eed1" primary="false" name="Remote Sensor Tower"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="23b3-54f0-28df-d8d9" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="5c22-8115-f854-62b6" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="50"/>
@@ -12936,6 +12995,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
         <categoryLink targetId="dbd4-63-af05-998" id="1daf-860a-706c-4d92" primary="false" name="Vehicle"/>
         <categoryLink targetId="dd52-7f43-ecb1-252e" id="e73f-229c-db3-6dba" primary="false" name="Drone Sentry Turret"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="d9bb-c9d1-de81-a4ce" primary="false" name="Faction: T&apos;au Empire"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="7fd9-74f0-e540-0a79" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <selectionEntryGroups>
         <selectionEntryGroup name="Twin Plasma Rifle" hidden="false" id="aba1-60b5-5638-213f" defaultSelectionEntryId="af01-9e8a-2fb8-d05d">
@@ -13045,6 +13105,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
         <categoryLink targetId="5409-827f-b23f-5ac" id="8fab-c07f-bfc6-2fb4" primary="false" name="Crisis"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="2d94-6def-9a80-4497" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="205d-dcad-4d0-ccae" id="ba40-7585-9328-5e46" primary="false" name="Sunforge"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="c7cc-d71d-69e5-f5e0" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Sunforge" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="883e-96af-3014-6550">
@@ -13255,6 +13316,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
         <categoryLink targetId="5409-827f-b23f-5ac" id="5ee5-4535-217e-6423" primary="false" name="Crisis"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="fc8b-b78b-aaa6-ee4a" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="d372-6d2c-2df2-8e91" id="e62a-b590-b74b-3532" primary="false" name="Fireknife"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="7d3d-f8ca-6518-92cd" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Fireknife" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f3d6-87dc-9a02-a9eb">
@@ -13497,6 +13559,7 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
         <categoryLink targetId="5409-827f-b23f-5ac" id="e408-ef89-b30b-e447" primary="false" name="Crisis"/>
         <categoryLink targetId="3d58-2655-391e-ecc" id="384-b2b8-b4a7-7a1" primary="false" name="Faction: T&apos;au Empire"/>
         <categoryLink targetId="cd97-19b6-3957-4c78" id="1776-2586-abb5-4ede" primary="false" name="Starscythe"/>
+        <categoryLink name="Non-Kroot" hidden="false" id="0c9b-c5bf-3429-293c" targetId="4814-7b6d-aea6-4228" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Starscythe" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="36a5-3ecd-bc4d-79f">
@@ -15771,7 +15834,9 @@ Designer’s Note: Place two Blacklight Marker Drone tokens next to this model, 
     <entryLink import="true" name="Krootox Rampagers" hidden="false" id="75b2-b57e-309b-cc4" type="selectionEntry" targetId="7f73-6728-df6f-1446"/>
     <entryLink import="true" name="Order of Battle" hidden="false" id="f140-6c89-9947-da69" type="selectionEntry" targetId="eda7-8b4b-3719-af36">
       <entryLinks>
-        <entryLink import="true" name="Expanding the Empire" hidden="false" id="d65b-a8be-b71e-6040" type="selectionEntryGroup" targetId="bf95-179f-6414-9db1"/>
+        <entryLink import="true" name="Expanding the Empire" hidden="false" id="d65b-a8be-b71e-6040" type="selectionEntryGroup" targetId="bf95-179f-6414-9db1" collapsible="true"/>
+        <entryLink import="true" name="Crusade Faction" hidden="false" id="4945-ea29-076b-9e9b" type="selectionEntryGroup" targetId="94e0-2110-9dd1-0ab5" sortIndex="-1" collapsible="true"/>
+        <entryLink import="true" name="Shapers of Pacts" hidden="false" id="e878-650c-c77a-a044" type="selectionEntryGroup" targetId="8ac6-e791-ef85-16c1" collapsible="true"/>
       </entryLinks>
     </entryLink>
   </entryLinks>
@@ -18457,6 +18522,13 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
         <selectionEntry type="upgrade" import="true" name="Military Points" hidden="false" id="8c0b-2e56-e642-97a9"/>
       </selectionEntries>
       <comment>Crusade content</comment>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="5aa7-e44a-c29c-7f96" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntryGroup>
     <selectionEntryGroup name="Codex Crusade Relics" id="afc3-5c30-aa33-7b07" hidden="false" collapsible="true">
       <selectionEntryGroups>
@@ -18889,6 +18961,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
             <entryLink import="true" name="Battle Traits" hidden="false" id="f9d9-450d-ec22-370e" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
               <entryLinks>
                 <entryLink import="true" name="Codex Battle Traits" hidden="false" id="cc38-c672-98bf-8acb" type="selectionEntryGroup" targetId="3743-d313-0fa1-54f4"/>
+                <entryLink import="true" name="White Dwarf Battle Traits" hidden="false" id="4342-150b-3eaf-2703" type="selectionEntryGroup" targetId="eaae-eb11-d649-af64"/>
               </entryLinks>
             </entryLink>
             <entryLink import="true" name="Crusade Relics" hidden="false" id="cae5-f8b5-336b-5478" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
@@ -18898,6 +18971,7 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
             </entryLink>
             <entryLink import="true" name="Tyrannic War Battle Honours" hidden="false" id="0bd1-fa12-1b7a-f67f" type="selectionEntryGroup" targetId="1927-d905-041e-b914"/>
             <entryLink import="true" name="Pariah Nexus Blackstone Upgrades" hidden="false" id="d519-ecd6-61d2-a64e" type="selectionEntryGroup" targetId="66c2-2a46-e7ed-a935"/>
+            <entryLink import="true" name="Strains" hidden="false" id="4a8b-efe9-1d55-5873" type="selectionEntryGroup" targetId="a8ce-b68f-c8e9-7001" collapsible="true"/>
           </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
@@ -19111,6 +19185,793 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
         </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
+    <selectionEntryGroup name="Crusade Faction" id="94e0-2110-9dd1-0ab5" hidden="false" defaultSelectionEntryId="5aa7-e44a-c29c-7f96">
+      <comment>Crusade content</comment>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="T&apos;au Empire" hidden="false" id="5aa7-e44a-c29c-7f96"/>
+        <selectionEntry type="upgrade" import="true" name="Kroot" hidden="false" id="6ef3-61ac-4974-0b11">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="c00c-b9d6-e0f7-4c37" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+      </selectionEntries>
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="9daa-b133-2b38-9c2c" includeChildSelections="false"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="47d1-9703-2078-0811" includeChildSelections="false"/>
+      </constraints>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Shapers of Pacts" id="8ac6-e791-ef85-16c1" hidden="false">
+      <comment>Crusade content - Kroot</comment>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Points Target" hidden="false" id="2731-3eb0-8b73-a623" sortIndex="2">
+          <constraints>
+            <constraint type="min" value="3" field="selections" scope="parent" shared="true" id="24aa-40f7-6349-b4aa" includeChildSelections="false" automatic="false"/>
+            <constraint type="max" value="18" field="selections" scope="parent" shared="true" id="d5a6-9cc7-da02-e910" includeChildSelections="false"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="0" field="24aa-40f7-6349-b4aa">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="6ef3-61ac-4974-0b11" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Points" hidden="false" id="c422-3754-9a08-b7de" sortIndex="1"/>
+      </selectionEntries>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="6ef3-61ac-4974-0b11" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Pact Shaping" id="cefb-85b7-a2cb-393f" hidden="false" collapsible="true" sortIndex="3">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Employer" id="00fa-1b45-88e6-c4f6" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="3 - Neutral Party" hidden="false" id="c11f-81bc-4cb2-a125"/>
+                <selectionEntry type="upgrade" import="true" name="1 - Trusted Ally" hidden="false" id="6da7-30be-69db-3630">
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                    <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                    <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                    <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+                  </costs>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="5 - Scheming Lieutenant" hidden="false" id="6203-0f82-eed6-9c81"/>
+                <selectionEntry type="upgrade" import="true" name="4 - Shady Go-between" hidden="false" id="325b-60a5-fc5f-7ef4"/>
+                <selectionEntry type="upgrade" import="true" name="2 - Reliable Contact" hidden="false" id="56cc-778f-8ce6-f30e"/>
+                <selectionEntry type="upgrade" import="true" name="6 - Terrifying Warlord" hidden="false" id="3013-d779-ff2a-e8b5"/>
+              </selectionEntries>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7c91-19ed-59e6-0f21" includeChildSelections="false"/>
+              </constraints>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Task" id="1b89-2101-29ca-e5db" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="3 - Escort" hidden="false" id="331c-1253-cd73-2d46"/>
+                <selectionEntry type="upgrade" import="true" name="1 - Scouting" hidden="false" id="d952-5983-88fd-f39a">
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                    <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                    <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                    <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+                  </costs>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="5 - Assassination" hidden="false" id="d0ad-afd9-da28-5a5c"/>
+                <selectionEntry type="upgrade" import="true" name="4 - Hunting" hidden="false" id="7e25-be35-a818-116a"/>
+                <selectionEntry type="upgrade" import="true" name="2 - Treasure Hunting" hidden="false" id="3d0b-d238-66a2-c589"/>
+                <selectionEntry type="upgrade" import="true" name="6 - Terror Raid" hidden="false" id="309c-6ad4-eab7-c12d"/>
+              </selectionEntries>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d258-97b2-53a7-b9a2" includeChildSelections="false"/>
+              </constraints>
+            </selectionEntryGroup>
+            <selectionEntryGroup name="Difficulty" id="8279-f957-4e86-bd39" hidden="false">
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="3 - Challenging" hidden="false" id="2398-a863-0ead-1733"/>
+                <selectionEntry type="upgrade" import="true" name="1 - Simple and Safe" hidden="false" id="b0c5-4d04-1924-b08e">
+                  <costs>
+                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                    <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                    <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                    <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+                  </costs>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="5 - Daunting" hidden="false" id="32d8-72b2-876f-84a8"/>
+                <selectionEntry type="upgrade" import="true" name="4 - Risky" hidden="false" id="f4f3-e2ea-2c6b-eb3a"/>
+                <selectionEntry type="upgrade" import="true" name="2 - Low Risk" hidden="false" id="9c90-e732-2104-82a0"/>
+                <selectionEntry type="upgrade" import="true" name="6 - Dangerous" hidden="false" id="4ae1-5e92-7bab-de51"/>
+              </selectionEntries>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="dbf4-2553-baa8-134a" includeChildSelections="false"/>
+              </constraints>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+          <constraints>
+            <constraint type="min" value="3" field="selections" scope="parent" shared="true" id="c452-2e38-4cb3-63a5" includeChildSelections="false"/>
+          </constraints>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Bound To A Pact" id="ce89-e897-dab1-6c72" hidden="false" sortIndex="4">
+          <selectionEntryGroups>
+            <selectionEntryGroup name="Setback" id="55c7-5487-e3c6-51bb" hidden="false">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c2e0-eb5d-9df5-2867" includeChildSelections="false"/>
+              </constraints>
+              <selectionEntries>
+                <selectionEntry type="upgrade" import="true" name="Ambushed" hidden="false" id="2079-c340-d31e-64a5">
+                  <profiles>
+                    <profile name="Ambushed" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c439-255b-1470-91d2">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the first turn, your **^^Warlord^^** suffers D3 mortal wounds.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Betrayed" hidden="false" id="afad-4819-0eb8-b946">
+                  <profiles>
+                    <profile name="Betrayed" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1e48-7041-6bd0-5f14">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of this battle, each time a unit from your army takes an Out of Action test, subtract 1 from that test.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Waylaid" hidden="false" id="60e7-9d2e-3f41-b9db">
+                  <profiles>
+                    <profile name="Waylaid" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e1e9-2785-8f17-4a09">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the Declare Battle Formations step, randomly select one unit from your Crusade army that is not in Reserves. You must place that unit into Strategic Reserves, regardless of how many units are already in Strategic Reserves.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Doubting the Pact" hidden="false" id="1ec4-be82-6943-47a7">
+                  <profiles>
+                    <profile name="Doubting the Pact" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c032-b583-acdd-e695">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Your opponent can have the following rule:
+**Having Doubts:** Once per battle, at the start of the Command phase, you can use this rule. If you do, select one enemy unit and roll one D6. On a 2+, that unit is Battle-shocked.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Isolated" hidden="false" id="9cdd-383c-601a-a68f">
+                  <profiles>
+                    <profile name="Isolated" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="83a9-4f31-c691-c760">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You cannot set up units from Reserves in the first or second battle round.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+                <selectionEntry type="upgrade" import="true" name="Outmatched" hidden="false" id="e7b7-de22-11ed-f685">
+                  <profiles>
+                    <profile name="Outmatched" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="2ca7-839c-faef-f73d">
+                      <characteristics>
+                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Your opponent starts the battle with 1CP.</characteristic>
+                      </characteristics>
+                    </profile>
+                  </profiles>
+                </selectionEntry>
+              </selectionEntries>
+            </selectionEntryGroup>
+          </selectionEntryGroups>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Strains" id="a8ce-b68f-c8e9-7001" hidden="false">
+      <comment>Crusade content - Kroot</comment>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Blade-sharp Senses" hidden="false" id="39d1-f138-0cb6-7233">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6d4e-b49e-7cf7-f8e1" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Blade-sharp Senses" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1373-7072-5276-9505">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If this unit is in Strategic Reserves, for the purposes of setting up that unit on the battlefield, treat the current battle round number as being one higher than it actually is.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Great Endurance" hidden="false" id="145c-16cb-43d5-7878">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ba22-1c9b-ce81-4871" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Great Endurance" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d0b1-ea72-95b9-316a">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 2&quot; to the Move characteristic of models in this unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Great Endurance" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Unit"/>
+                <modifier type="increment" value="2" field="e703-ecb6-5ce7-aec1" scope="root-entry" affects="self.entries.recursive.profiles.Unit" join=", "/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Predatory Swiftness" hidden="false" id="3ff0-8960-1340-1ebf">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3e59-17f8-b459-9747" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Predatory Swiftness" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="7f64-dccc-9ec8-f5de">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You can re-roll Advance and Charge rolls made for this unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Leathery Resilience" hidden="false" id="6e19-41e0-b87f-91d8">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="506b-a3f2-4fe8-3ff2" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Leathery Resilience" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9ed5-a346-e361-66b3">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 1 to the Toughness characteristic of models in this unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Leathery Resilience" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                <modifier type="increment" value="1" field="d29d-cf75-fc2d-34a4" scope="root-entry" affects="self.entries.recursive.profiles.Unit" join=", " position=""/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Lethal Instincts" hidden="false" id="4146-5d51-ddc3-25e0">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7c4b-889f-4ac4-27be" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Lethal Instincts" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c521-157b-8c79-8921">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes an attack that targets a unit below Starting Strength, you can re-roll the Hit roll.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Corded Muscle" hidden="false" id="ff15-bf29-d9d3-e964">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b8de-4785-5aa6-808e" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Corded Muscle" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c94e-e4b9-2e65-de1f">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 1 to the Attacks and Strength characteristics of melee weapons equipped by models in this unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Corded Muscle" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                <modifier type="increment" value="1" field="2337-daa1-6682-b110" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons" join=", " position="-1"/>
+                <modifier type="increment" value="1" field="ab33-d393-96ce-ccba" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons" join=", " position=""/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+      </selectionEntries>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="or">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="6ef3-61ac-4974-0b11" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="79c5-9fc4-7b97-7c3f" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="White Dwarf Battle Traits" id="eaae-eb11-d649-af64" hidden="false" collapsible="true">
+      <comment>Crusade content</comment>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Steedbond" hidden="false" id="4d20-f332-a6a1-b2d8">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cce7-66d4-4da4-6c24" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="79c5-9fc4-7b97-7c3f" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="14a0-40c9-2748-ae6e" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Steedbond" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="606d-9f4c-cec0-1e00">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this unit makes a Normal, Advance or Fall Back mode, models in this unit can move through models (excluding **^^Titanic^^** models) and through terrain features that are 4&quot; or less in height. When doing so, they can move within Engagement Range of enemy models, but they cannot end their move within Engagement Range of them.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Predator&apos;s Pounce" hidden="false" id="f986-b533-4671-a295">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c7d2-4a8d-705c-d084" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="79c5-9fc4-7b97-7c3f" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="cf47-a0d7-7207-29dc" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Predator&apos;s Pounce" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="19ba-2f4a-89f8-f4d3">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Vicious Instinct" hidden="false" id="e77c-5cb5-4287-1cdf">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8bd6-d9dd-b990-146a" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="79c5-9fc4-7b97-7c3f" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="cf47-a0d7-7207-29dc" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Vicious Instinct" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="eabc-6ec1-cf79-e744">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Melee weapons equipped by models in this unit have the **[LETHAL HITS]** ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Lethal Hits" id="9d33-9d79-49c4-01a3" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
+          </infoLinks>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Vicious Instinct" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                <modifier type="append" value="Lethal Hits" field="893f-9000-ccf7-648e" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Shiverquills" hidden="false" id="ef65-5004-7f00-13cb">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0840-8993-e0bb-a061" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="79c5-9fc4-7b97-7c3f" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="cf47-a0d7-7207-29dc" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Shiverquills" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="0676-2fc4-37c0-4cc9">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Ranged weapons equipped by models in this unit have the **[IGNORES COVER]** ability.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Ignores Cover" id="9ce7-e721-8301-9925" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
+          </infoLinks>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Shiverquills" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Ranged Weapons"/>
+                <modifier type="append" value="Ignores Cover" field="7f1b-8591-2fcf-d01c" scope="root-entry" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Honed Instincts" hidden="false" id="2ecc-1c38-225d-15c0">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7e40-d54e-2a17-fbac" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="79c5-9fc4-7b97-7c3f" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="18e9-bb22-6283-f077" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Honed Instincts" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c375-8491-e95d-8762">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This unit is eligible to declare a charge in a turn in which it Fell Back.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Canny Hunters" hidden="false" id="828c-ae1f-ef2c-c7ae">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0b00-6605-c77d-2f9b" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="79c5-9fc4-7b97-7c3f" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="18e9-bb22-6283-f077" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Canny Hunters" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3f84-ce7d-f9a5-024e">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Improve the Armour Penetration characteristic of melee weapons equipped by models in this unit by 1.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Canny Hunters" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                <modifier type="decrement" value="1" field="41a0-1301-112a-e2f2" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Sharpminded" hidden="false" id="dc24-2479-1ea5-5b39">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4510-f080-e5a7-811a" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="79c5-9fc4-7b97-7c3f" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="18e9-bb22-6283-f077" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Sharpminded" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="adeb-4ac5-b44f-f5f9">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 1 to the Objective Control characteristic of models in this unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Sharpminded" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Unit"/>
+                <modifier type="increment" value="1" field="bef7-942a-1a23-59f8" scope="root-entry" affects="self.entries.recursive.profiles.Unit" join=", "/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Brute Instinct" hidden="false" id="8aec-d4bb-663a-e5c9">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1b8c-a355-88ea-1560" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="79c5-9fc4-7b97-7c3f" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="14a0-40c9-2748-ae6e" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Brute Instinct" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1198-4ec5-cd18-1825">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 2 to the Strength characteristic of Extra Attacks melee weapons equipped by models in this unit.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Brute Instinct" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.84c4-6d1e-e724-bd6e.profiles.Melee Weapons"/>
+                <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" scope="root-entry" affects="self.entries.recursive.84c4-6d1e-e724-bd6e.profiles.Melee Weapons" join=", "/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Predatory Roar (Aura)" hidden="false" id="6816-2d83-1523-d7ac">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="db2a-549a-caf8-b31d" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="1"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+            <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+          </costs>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="79c5-9fc4-7b97-7c3f" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="14a0-40c9-2748-ae6e" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="2" field="b03b-c239-15a5-da55">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <profiles>
+            <profile name="Predatory Roar (Aura)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8f96-7726-eebc-0752">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While an enemy unit is within 6&quot; of this model, worsen the Leadership characteristic of models in that unit by 1.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+      </selectionEntries>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="c00c-b9d6-e0f7-4c37" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <categoryEntries>
     <categoryEntry name="Shaper" hidden="false" id="39f9-dcd3-1e80-fa1f"/>
@@ -19185,6 +20046,44 @@ Localised Stealth Projectors (Aura): While a friendly KROOT or VESPID STINGWINGS
     <categoryEntry name="Plasma Rifle Weapon" id="630e-f998-7bab-7116" hidden="true"/>
     <categoryEntry name="Airbursting Fragmentation Projector Weapon" id="784e-8685-51f5-cac4" hidden="true"/>
     <categoryEntry name="Tau Flamer Weapon" id="41b7-324d-21d3-af5e" hidden="true"/>
+    <categoryEntry name="Non-Kroot" id="4814-7b6d-aea6-4228" hidden="true">
+      <comment>Kroot Crusade content</comment>
+      <modifiers>
+        <modifier type="set" value="500" field="639d-c32e-5ecb-6083" id="6a51-0523-5115-a8df">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="d62d-db22-4893-4bc0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="ff7b-8f73-1756-650a" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="1000" field="639d-c32e-5ecb-6083" id="4462-7f67-b1d1-70d7">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="baf8-997f-e323-a090" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="ff7b-8f73-1756-650a" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="1500" field="639d-c32e-5ecb-6083" id="6493-5b0c-d5e2-3803">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="0" field="selections" scope="force" childId="4204-82d0-908c-a62a" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="ff7b-8f73-1756-650a" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="max" value="-1" field="51b2-306e-1021-d207" scope="force" shared="true" id="639d-c32e-5ecb-6083" includeChildSelections="true" includeChildForces="true" negative="false"/>
+      </constraints>
+    </categoryEntry>
   </categoryEntries>
   <sharedProfiles>
     <profile name="Invulnerable Save (5+)" hidden="false" id="27f4-7449-a636-ae8c" typeName="Abilities" typeId="9cc3-6d83-4dd3-9b64">
