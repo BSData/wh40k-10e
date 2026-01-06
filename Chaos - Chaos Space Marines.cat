@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="157" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="158" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <profileTypes>
     <profileType id="3084-68b8-1d20-2f26" name="Marks of Chaos">
       <characteristicTypes>
@@ -124,6 +124,7 @@
     <categoryEntry name="Warband Champion" id="9121-8f12-b83b-ce9d" hidden="false">
       <comment>Crusade content</comment>
     </categoryEntry>
+    <categoryEntry name="Unit Champion" id="176e-3014-9548-d326" hidden="true"/>
   </categoryEntries>
   <entryLinks>
     <entryLink id="bb73-b206-9ef3-6644" name="Detachment" hidden="false" collective="false" import="true" targetId="e296-4a38-d9a5-289c" type="selectionEntry"/>
@@ -2789,18 +2790,6 @@
           <selectionEntries>
             <selectionEntry id="53dd-68f7-7c1f-3e5d" name="Pactbound Zealots" hidden="false" collective="false" import="true" type="upgrade">
               <profiles>
-                <profile id="ebae-28c1-8652-7e1b" name="- Marks of Chaos" hidden="false" typeId="3084-68b8-1d20-2f26" typeName="Marks of Chaos">
-                  <characteristics>
-                    <characteristic name="Ability" typeId="26ae-f701-feee-96e9">When mustering your army, when you select a ^^Heretic Astartes^^ unit to include in your army, if that unit is not an ^^Epic Hero^^ and does not already have one of the following keywords, you must select one for that unit to gain and note it on your Army Roster: ^^Khorne, Tzeentch, Nurgle, Slaanesh, Chaos Undivided^^.
-
-Each time a unit with one of these keywords gains a weapon ability as the result of a Dark Pact and does not fail the resulting Leadership test, until the end of the phase, that unit gains the associated ability below.
-
-RESTRICTIONS
-- You cannot select the ^^Khorne^^ keyword for a ^^Psyker^^ unit.
-- A ^^Character^^ unit can only be attached to a unit if both units share the same keyword from the list below.
-- A unit can only embark within (or start the battle embarked within) a ^^Transport^^ if both of those units share the same keyword from the list above.’</characteristic>
-                  </characteristics>
-                </profile>
                 <profile id="f5e9-d620-78a2-c552" name="KHORNE" hidden="false" typeId="3084-68b8-1d20-2f26" typeName="Marks of Chaos">
                   <characteristics>
                     <characteristic name="Ability" typeId="26ae-f701-feee-96e9">[LETHAL HITS]: Each time a model in this unit makes a melee attack, an unmodified Hit roll of 5+ scores a Critical Hit.</characteristic>
@@ -2831,97 +2820,98 @@ RESTRICTIONS
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
               </costs>
+              <rules>
+                <rule name="Marks of Chaos" id="009d-9d09-08c7-82e5" hidden="false">
+                  <description>When mustering your army, when you select a ^^Heretic Astartes^^ unit to include in your army, if that unit is not an ^^Epic Hero^^ and does not already have one of the following keywords, you must select one for that unit to gain and note it on your Army Roster: ^^Khorne, Tzeentch, Nurgle, Slaanesh, Chaos Undivided^^.
+
+
+Each time a unit with one of these keywords gains a weapon ability as the result of a Dark Pact and does not fail the resulting Leadership test, until the end of the phase, that unit gains the associated ability below.
+
+
+RESTRICTIONS
+- You cannot select the ^^Khorne^^ keyword for a ^^Psyker^^ unit.
+- A ^^Character^^ unit can only be attached to a unit if both units share the same keyword from the list below.
+- A unit can only embark within (or start the battle embarked within) a ^^Transport^^ if both of those units share the same keyword from the list above.’</description>
+                </rule>
+              </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Veterans of the Long War" hidden="false" id="a5ea-d708-db75-226c">
-              <profiles>
-                <profile name="Focus of Hatred" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="4589-66cc-1121-2113">
-                  <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of your Command phase, select one unit from your opponent&apos;s army to be your focus of hatred. Until the start of your next Command phase, each time a ^^Heretic Astartes^^ model from your army (excluding ^^Damned^^ models) makes an attack that targets your focus of hatred, you can re-roll the Hit roll.</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
+              <rules>
+                <rule name="Focus of Hatred" id="6f2f-8cf6-20e7-4c4c" hidden="false">
+                  <description>At the start of your Command phase, select one unit from your opponent&apos;s army to be your focus of hatred. Until the start of your next Command phase, each time a ^^**Heretic Astartes**^^ model from your army (excluding ^^**Damned**^^ models) makes an attack that targets your focus of hatred, you can re-roll the Hit roll.</description>
+                </rule>
+              </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Deceptors" hidden="false" id="4972-a08d-9d88-5f7a">
-              <profiles>
-                <profile name="Masters of Misdirection" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5e61-f570-a397-c05b">
-                  <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In the Declare Battle Formations step, you can select a number of ^^Legionaries^^ and ^^Cultist Mob^^ units from your army; until the end of the battle, those units, and any ^^Character^^ units attached to them (excluding ^^Epic Heroes^^), have the Infiltrator ability. The maximum number of units you can select in this way depends on the battle size, as shown below.
+              <rules>
+                <rule name="Masters of Misdirection" id="ea79-5d28-1dc3-b123" hidden="false">
+                  <description>In the Declare Battle Formations step, you can select a number of ^^**Legionaries**^^ and ^^**Cultist Mob**^^ units from your army; until the end of the battle, those units, and any ^^**Character**^^ units attached to them (excluding ^^**Epic Heroes**^^), have the Infiltrator ability. The maximum number of units you can select in this way depends on the battle size, as shown below.
+
 
 **Battle Size | Legionaries | Cultist Mobs**
 Incursion | Up to 2 units | Up to 2 units
 Strike Force | Up to 3 units | Up to 3 units
-Onslaught | Up to 4 units | Up to 4 units</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
+Onslaught | Up to 4 units | Up to 4 units</description>
+                </rule>
+              </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Renegade Raiders" hidden="false" id="b906-aa42-9cd9-c6f2">
-              <profiles>
-                <profile name="Raiders and Reavers" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9c5c-fdf9-fc16-c184">
-                  <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Ranged weapons equipped by ^^Heretic Astartes^^ models from your army have the [ASSAULT] ability, and each time a ^^Heretic Astartes^^ model from your army makes an attack that targets a unit within range of an objective marker, improve the Armour Penetration characteristic of that attack by 1.</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
+              <rules>
+                <rule name="Raiders and Reavers" id="4fef-0ab4-2b60-48c4" hidden="false">
+                  <description>Ranged weapons equipped by ^^**Heretic Astartes**^^ models from your army have the [ASSAULT] ability, and each time a ^^**Heretic Astartes**^^ model from your army makes an attack that targets a unit within range of an objective marker, improve the Armour Penetration characteristic of that attack by 1.</description>
+                </rule>
+              </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Dread Talons" hidden="false" id="d11c-e4a9-32c7-b761">
-              <profiles>
-                <profile name="Terror Descends (Aura)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="31e9-6670-7f6f-b345">
-                  <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In the Battle-shock step of your opponent&apos;s Command phase, if an enemy unit that is below its Starting Strength is within 12&quot; of one or more ^^Heretic Astartes^^ units from your army, that enemy unit must take a Battle-shock test.
-Each time an enemy unit within 12&quot; of one or more ^^Heretic Astartes^^ units from your army takes a Battle-shock test, subtract 1 from the result.
-Enemy units affected by this Detachment rule do not need to take any other Battle-shock tests in the same phase.</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
+              <rules>
+                <rule name="Terror Descends (Aura)" id="2731-f494-9e83-4c7c" hidden="false">
+                  <description>In the Battle-shock step of your opponent&apos;s Command phase, if an enemy unit that is below its Starting Strength is within 12&quot; of one or more ^^**Heretic Astartes**^^ units from your army, that enemy unit must take a Battle-shock test.
+Each time an enemy unit within 12&quot; of one or more ^^**Heretic Astartes**^^ units from your army takes a Battle-shock test, subtract 1 from the result.
+Enemy units affected by this Detachment rule do not need to take any other Battle-shock tests in the same phase.</description>
+                </rule>
+              </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Fellhammer Siege-host" hidden="false" id="89a5-170b-1bf3-7016">
-              <profiles>
-                <profile name="Iron Fortitude" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f790-5f78-595a-e9f3">
-                  <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ranged attack targets a ^^Heretic Astartes^^ unit from your army (excluding ^^Damned^^ units), if the Strength characteristic of that attack is greater than the Toughness characteristic of that unit, subtract 1 from the Wound roll.</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
+              <rules>
+                <rule name="Iron Fortitude" id="eb25-bc78-6c52-aaad" hidden="false">
+                  <description>Each time a ranged attack targets a ^^**Heretic Astartes**^^ unit from your army (excluding ^^**Damned**^^ units), if the Strength characteristic of that attack is greater than the Toughness characteristic of that unit, subtract 1 from the Wound roll.</description>
+                </rule>
+              </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Chaos Cult" hidden="false" id="6cec-4da4-a89d-fb98">
-              <profiles>
-                <profile name="Desperate Devotion" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5350-e746-7413-9e84">
-                  <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ^^Damned^^ unit from your army with the Dark Pacts ability is selected to make a Normal or Advance move or declare a charge (excluding units that arrived from Reserves this turn) it can make a Desperate Pact. If it does, until the end of the phase, add 2&quot; to the Move characteristic of models in that unit and add 2 to Charge rolls made for that unit.
+              <rules>
+                <rule name="Desperate Devotion" id="bb86-b97c-b67c-a1b9" hidden="false">
+                  <description>Each time a ^^**Damned**^^ unit from your army with the Dark Pacts ability is selected to make a Normal or Advance move or declare a charge (excluding units that arrived from Reserves this turn) it can make a Desperate Pact. If it does, until the end of the phase, add 2&quot; to the Move characteristic of models in that unit and add 2 to Charge rolls made for that unit.
+
 
 Desperate Pacts
-Each time a unit makes a Desperate Pact, it must first take a Leadership test; if that test is failed, the unit suffers D3 mortal wounds before any effects of the Desperate Pact are resolved.</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
+Each time a unit makes a Desperate Pact, it must first take a Leadership test; if that test is failed, the unit suffers D3 mortal wounds before any effects of the Desperate Pact are resolved.</description>
+                </rule>
+              </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Soulforged Warpack" hidden="false" id="a523-e0fe-4e1c-bc70">
-              <profiles>
-                <profile name="Debt to the Soulforge" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8e00-1e2a-c36a-c96c">
-                  <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a ^^Heretic Astartes Daemon Vehicle^^ model from your army makes a Dark Pact, it can invoke its contract. If it does, subtract 1 from the resulting Leadership test when making that Dark Pact and, until the end of the phase:
+              <rules>
+                <rule name="Debt to the Soulforge" id="2f24-2a2c-c245-fc6a" hidden="false">
+                  <description>Each time a ^^**Heretic Astartes Daemon Vehicle**^^ model from your army makes a Dark Pact, it can invoke its contract. If it does, subtract 1 from the resulting Leadership test when making that Dark Pact and, until the end of the phase:
 - Each time a model in that unit makes a ranged attack, add 1 to the Wound roll.
-- Add 2 to the Attacks characteristic of melee weapons equipped by models in that unit.</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
+- Add 2 to the Attacks characteristic of melee weapons equipped by models in that unit.</description>
+                </rule>
+              </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Creations of Bile" hidden="false" id="1c30-e099-1aca-8708">
-              <profiles>
-                <profile name="Creations of Bile" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e9ae-b921-5895-6ace">
-                  <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select which augmentations are active for ^^Heretic Astartes Infantry^^ models (excluding ^^Damned^^ models) from your army until the end of the battle. To do so, either select one from the list below, or randomly determine two by rolling two D6. If ^^Fabius Bile^^ is your ^^Warlord^^, when randomly determining your augmentations, you can re‑roll one or both of the dice. Duplicated augmentations have no additional effect.
+              <rules>
+                <rule name="Creations of Bile" id="baec-58bb-7156-3bde" hidden="false">
+                  <description>At the start of the battle, select which augmentations are active for ^^**Heretic Astartes Infantry**^^ models (excluding ^^**Damned**^^ models) from your army until the end of the battle. To do so, either select one from the list below, or randomly determine two by rolling two D6. If ^^**Fabius Bile**^^ is your ^^**Warlord**^^, when randomly determining your augmentations, you can re‑roll one or both of the dice. Duplicated augmentations have no additional effect.
+
 
 1 - **Cholinergic Accelerants:** Add 1 to the Attacks characteristic of melee weapons equipped by this model.
 2 - **Hyperadrenal Infusion:** Add 2&quot; to the Move characteristic of this model.
 3 - **Paraneural Reactions:** Improve the Weapon Skill characteristic of melee weapons equipped by this model by 1.
 4 - **Supracutaneous Chitination:** Improve the Toughness characteristic of this model by 1.
 5 - **Macrotensile Sinews:** Add 1 to the Strength characteristic of melee weapons equipped by this model.
-6 - **Ophthalmic Enhancement:** Improve the Ballistic Skill characteristic of ranged weapons equipped by this model by 1</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
+6 - **Ophthalmic Enhancement:** Improve the Ballistic Skill characteristic of ranged weapons equipped by this model by 1.</description>
+                </rule>
+              </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Cabal of Chaos" hidden="false" id="9e8b-efe2-7ff2-6b36">
               <rules>
@@ -2939,16 +2929,14 @@ While this unit is within 9&quot; of one or more friendly ^^**Heretic Astartes D
               </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Nightmare Hunt" hidden="false" id="f96f-5896-93c2-fc05">
-              <profiles>
-                <profile name="Terror Made Manifest" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="bc65-0a8c-233c-5b02">
-                  <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In the Battle‑shock step of your opponent’s Command phase, if an enemy unit that is below its Starting Strength is within 12&quot; of one or more ^^**Heretic Astartes^^** units from your army, that enemy unit must take a Battle‑shock test, subtracting 1 from the result. Enemy units affected by this Detachment rule do not need to take any other Battle‑shock tests in the same phase. 
+              <rules>
+                <rule name="Terror Made Manifest" id="0185-23fb-27a7-56d4" hidden="false">
+                  <description>In the Battle‑shock step of your opponent’s Command phase, if an enemy unit that is below its Starting Strength is within 12&quot; of one or more ^^**Heretic Astartes^^** units from your army, that enemy unit must take a Battle‑shock test, subtracting 1 from the result. Enemy units affected by this Detachment rule do not need to take any other Battle‑shock tests in the same phase. 
 Each time a ^^**Heretic Astartes^^** model from your army makes an attack that targets a unit that is Below Half‑strength, add 1 to the Hit roll. 
 Each time an attack targets a ^^**Heretic Astartes^^** unit from your army, if the attacking model is Battle‐shocked, subtract 1 from the Hit roll. 
-Each time a ^^**Heretic Astartes^^** model from your army makes an attack that targets a Battle‐shocked unit, add 1 to the Wound roll.</characteristic>
-                  </characteristics>
-                </profile>
-              </profiles>
+Each time a ^^**Heretic Astartes^^** model from your army makes an attack that targets a Battle‐shocked unit, add 1 to the Wound roll.</description>
+                </rule>
+              </rules>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -8215,6 +8203,24 @@ You can attach this model to one of the above units even if one other CHARACTER 
               </entryLinks>
             </selectionEntry>
           </selectionEntries>
+          <categoryLinks>
+            <categoryLink name="Unit Champion" hidden="false" id="0e0b-c2fe-a3e4-c0f1" targetId="176e-3014-9548-d326" primary="false"/>
+          </categoryLinks>
+          <entryLinks>
+            <entryLink import="true" name="Chaos Boons" hidden="false" id="5124-d95a-ee4d-31cd" type="selectionEntryGroup" targetId="aea5-51c4-142c-460d"/>
+          </entryLinks>
+          <profiles>
+            <profile name="Cultist Champion" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="7843-1eb8-dfef-b68c">
+              <characteristics>
+                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">3</characteristic>
+                <characteristic name="SV" typeId="450-a17e-9d5e-29da">6+</characteristic>
+                <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
+                <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
         </selectionEntry>
         <selectionEntry type="model" import="true" name="Cultist w/ autopistol and brutal assault weapon" hidden="false" id="8331-d762-2987-76a" collective="false" sortIndex="3">
           <constraints>
@@ -8264,6 +8270,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
         <entryLink import="true" name="Crusade" hidden="false" id="97c6-6c51-4157-addc" type="selectionEntryGroup" targetId="16e2-c30d-b136-1a67" sortIndex="1">
           <entryLinks>
             <entryLink import="true" name="Mortal Empowerment" hidden="false" id="bba3-ed95-d7f2-4dbb" type="selectionEntry" targetId="c50c-9e1a-6492-67a3"/>
+            <entryLink import="true" name="Favoured for Dark God Glory" hidden="false" id="9ac6-1008-1647-309a" type="selectionEntry" targetId="9ec1-2e21-d8dd-ea56"/>
           </entryLinks>
         </entryLink>
       </entryLinks>
@@ -8994,6 +9001,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
               </constraints>
               <entryLinks>
                 <entryLink import="true" name="Unholy Patronage upgrade" hidden="false" id="c6f3-f3cb-d8bc-27ce" type="selectionEntry" targetId="070c-664e-3e05-b8e9"/>
+                <entryLink import="true" name="Chaos Boons" hidden="false" id="dbe0-8149-879c-918a" type="selectionEntryGroup" targetId="aea5-51c4-142c-460d"/>
               </entryLinks>
               <profiles>
                 <profile name="Terminator Champion" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="2be6-9097-0821-41d7">
@@ -9009,11 +9017,18 @@ You can attach this model to one of the above units even if one other CHARACTER 
               </profiles>
             </selectionEntry>
           </selectionEntries>
+          <categoryLinks>
+            <categoryLink name="Unit Champion" hidden="false" id="67f2-7b54-2264-44b1" targetId="176e-3014-9548-d326" primary="false"/>
+          </categoryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <entryLinks>
         <entryLink id="19b1-1a0f-3909-33b7" name="Mark of Chaos" hidden="false" collective="false" import="true" targetId="5581-5d38-90b8-f8cd" type="selectionEntryGroup" sortIndex="4"/>
-        <entryLink import="true" name="Crusade" hidden="false" id="34b7-28b9-6d1d-b201" type="selectionEntryGroup" targetId="16e2-c30d-b136-1a67" sortIndex="1"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="34b7-28b9-6d1d-b201" type="selectionEntryGroup" targetId="16e2-c30d-b136-1a67" sortIndex="1">
+          <entryLinks>
+            <entryLink import="true" name="Favoured for Dark God Glory" hidden="false" id="ee97-9782-75dc-e965" type="selectionEntry" targetId="9ec1-2e21-d8dd-ea56"/>
+          </entryLinks>
+        </entryLink>
       </entryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="180"/>
@@ -10029,6 +10044,7 @@ You can attach this model to one of the above units even if one other CHARACTER 
               </selectionEntryGroups>
               <entryLinks>
                 <entryLink import="true" name="Unholy Patronage upgrade" hidden="false" id="d331-874e-b9e0-1e37" type="selectionEntry" targetId="070c-664e-3e05-b8e9"/>
+                <entryLink import="true" name="Chaos Boons" hidden="false" id="4563-213a-f82a-6925" type="selectionEntryGroup" targetId="aea5-51c4-142c-460d"/>
               </entryLinks>
               <profiles>
                 <profile name="Chosen Champion" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="be15-dce4-7744-161b">
@@ -10044,6 +10060,9 @@ You can attach this model to one of the above units even if one other CHARACTER 
               </profiles>
             </selectionEntry>
           </selectionEntries>
+          <categoryLinks>
+            <categoryLink name="Unit Champion" hidden="false" id="639c-e11b-61eb-3bf9" targetId="176e-3014-9548-d326" primary="false"/>
+          </categoryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <entryLinks>
@@ -10053,7 +10072,11 @@ You can attach this model to one of the above units even if one other CHARACTER 
             <association min="1" max="1" scope="4e85-615b-5d49-dfa4" childId="model" name="Chaos Icon" id="d67b-d1df-5299-48c8"/>
           </associations>
         </entryLink>
-        <entryLink import="true" name="Crusade" hidden="false" id="f206-5e5a-6abb-7950" type="selectionEntryGroup" targetId="16e2-c30d-b136-1a67" sortIndex="1"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="f206-5e5a-6abb-7950" type="selectionEntryGroup" targetId="16e2-c30d-b136-1a67" sortIndex="1">
+          <entryLinks>
+            <entryLink import="true" name="Favoured for Dark God Glory" hidden="false" id="bcb2-6743-7b51-663c" type="selectionEntry" targetId="9ec1-2e21-d8dd-ea56"/>
+          </entryLinks>
+        </entryLink>
       </entryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="125"/>
@@ -10522,6 +10545,24 @@ You can attach this model to one of the above units even if one other CHARACTER 
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
           </costs>
+          <entryLinks>
+            <entryLink import="true" name="Chaos Boons" hidden="false" id="3305-3ece-ce39-7ec4" type="selectionEntryGroup" targetId="aea5-51c4-142c-460d"/>
+          </entryLinks>
+          <categoryLinks>
+            <categoryLink name="Unit Champion" hidden="false" id="4ab3-5526-bb90-79b3" targetId="176e-3014-9548-d326" primary="false"/>
+          </categoryLinks>
+          <profiles>
+            <profile name="Biker Champion" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="cad1-0236-369c-8eac">
+              <characteristics>
+                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">12&quot;</characteristic>
+                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
+                <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
+                <characteristic name="W" typeId="750a-a2ec-90d3-21fe">3</characteristic>
+                <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
         </selectionEntry>
       </selectionEntries>
       <selectionEntryGroups>
@@ -10841,7 +10882,11 @@ You can attach this model to one of the above units even if one other CHARACTER 
             <association min="1" max="1" scope="parent" childId="model" name="Chaos Icon" id="f26-8ab7-a246-93ba"/>
           </associations>
         </entryLink>
-        <entryLink import="true" name="Crusade" hidden="false" id="e7fc-e7bc-2516-f248" type="selectionEntryGroup" targetId="16e2-c30d-b136-1a67" sortIndex="1"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="e7fc-e7bc-2516-f248" type="selectionEntryGroup" targetId="16e2-c30d-b136-1a67" sortIndex="1">
+          <entryLinks>
+            <entryLink import="true" name="Favoured for Dark God Glory" hidden="false" id="1b08-3a95-8c98-86dc" type="selectionEntry" targetId="9ec1-2e21-d8dd-ea56"/>
+          </entryLinks>
+        </entryLink>
       </entryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="70"/>
@@ -27903,6 +27948,11 @@ You can attach this model to one of the above units even if one other CHARACTER 
         </modifier>
       </modifiers>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Favoured for Dark God Glory" hidden="false" id="9ec1-2e21-d8dd-ea56">
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b505-a774-ea3a-ce31" includeChildSelections="false"/>
+      </constraints>
+    </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
     <selectionEntryGroup id="f4dd-5662-f7ca-a614" name="Enhancements" hidden="false" collective="false" import="true" collapsible="true">
@@ -31134,12 +31184,19 @@ In the Declare Battle Formations step, the bearer can be attached to a Warp Talo
                   <conditions>
                     <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="false" includeChildForces="false"/>
                     <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="4026-8a3e-9922-eec" shared="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="176e-3014-9548-d326" shared="true" includeChildSelections="true"/>
                   </conditions>
                 </conditionGroup>
                 <conditionGroup type="and">
                   <conditions>
                     <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4026-8a3e-9922-eec" shared="true"/>
                     <condition type="lessThan" value="1" field="selections" scope="parent" childId="c50c-9e1a-6492-67a3" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="9ec1-2e21-d8dd-ea56" shared="true" includeChildSelections="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="parent" childId="176e-3014-9548-d326" shared="true"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -31157,9 +31214,14 @@ In the Declare Battle Formations step, the bearer can be attached to a Warp Talo
           </conditionGroups>
         </modifier>
         <modifier type="set" value="1" field="0c7c-7877-d13c-f26c">
-          <conditions>
-            <condition type="atLeast" value="1" field="selections" scope="parent" childId="c50c-9e1a-6492-67a3" shared="true" includeChildSelections="true"/>
-          </conditions>
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="parent" childId="c50c-9e1a-6492-67a3" shared="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="parent" childId="9ec1-2e21-d8dd-ea56" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
         </modifier>
       </modifiers>
       <constraints>
