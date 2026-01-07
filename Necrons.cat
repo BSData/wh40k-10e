@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b654-a18a-ea1-3bf2" name="Xenos - Necrons" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="89" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b654-a18a-ea1-3bf2" name="Xenos - Necrons" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="90" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntryGroups>
     <selectionEntryGroup name="Enhancements" hidden="false" id="9574-b5d1-8b0a-d95d" collapsible="true">
       <constraints>
@@ -3656,17 +3656,8 @@ in its place, with all of its wounds remaining (if the selected model was leadi
             <condition type="atLeast" value="1" field="selections" scope="force" childId="c4ee-83c7-812c-5ff0" shared="true" includeChildSelections="true"/>
           </conditions>
           <modifiers>
-            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" scope="root-entry" affects="self.entries.profiles.Ranged Weapons"/>
-            <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" scope="root-entry" affects="self.entries.profiles.Melee Weapons"/>
-          </modifiers>
-        </modifierGroup>
-        <modifierGroup type="and">
-          <conditions>
-            <condition type="atLeast" value="1" field="selections" scope="force" childId="c4ee-83c7-812c-5ff0" shared="true" includeChildSelections="true"/>
-          </conditions>
-          <modifiers>
-            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" scope="root-entry" affects="self.entries.profiles.Ranged Weapons"/>
-            <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" scope="root-entry" affects="self.entries.profiles.Melee Weapons"/>
+            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" affects="self.entries.recursive.profiles.Ranged Weapons"/>
+            <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" affects="self.entries.recursive.profiles.Melee Weapons"/>
           </modifiers>
         </modifierGroup>
       </modifierGroups>
@@ -6969,11 +6960,11 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
         </modifierGroup>
         <modifierGroup type="and">
           <conditions>
-            <condition type="atLeast" value="1" field="selections" scope="force" childId="c4ee-83c7-812c-5ff0" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="force" childId="c4ee-83c7-812c-5ff0" shared="true" includeChildSelections="true" includeChildForces="true"/>
           </conditions>
           <modifiers>
-            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" scope="root-entry" affects="self.entries.profiles.Ranged Weapons"/>
-            <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" scope="root-entry" affects="self.entries.profiles.Melee Weapons"/>
+            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" affects="self.entries.recursive.profiles.Ranged Weapons"/>
+            <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" affects="self.entries.recursive.profiles.Melee Weapons"/>
           </modifiers>
         </modifierGroup>
       </modifierGroups>
@@ -7256,9 +7247,9 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
             <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">8&quot;</characteristic>
             <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">11</characteristic>
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
-            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">12</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">16</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
-            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">6</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">4</characteristic>
           </characteristics>
         </profile>
         <profile name="Invulnerable Save (4+)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c14c-12b1-1df9-d9f">
@@ -7335,10 +7326,10 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
             </profile>
           </profiles>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Singularity Matrix" hidden="false" id="e402-fe4a-b246-540e">
+        <selectionEntry type="upgrade" import="true" name="Singularity Matrix" hidden="true" id="e402-fe4a-b246-540e">
           <constraints>
-            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="955d-e8db-0071-a49c-min" includeChildSelections="false" automatic="true"/>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="955d-e8db-0071-a49c-max" includeChildSelections="false" automatic="true"/>
+            <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="955d-e8db-0071-a49c-min" includeChildSelections="false" automatic="true"/>
+            <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="955d-e8db-0071-a49c-max" includeChildSelections="false" automatic="true"/>
           </constraints>
           <profiles>
             <profile name="Lord of Deceit (Aura)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="be97-c23f-c4e7-fd26">
@@ -7350,12 +7341,12 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
           <modifierGroups>
             <modifierGroup type="and">
               <modifiers>
-                <modifier type="set" value="true" field="hidden"/>
-                <modifier type="set" value="0" field="955d-e8db-0071-a49c-min"/>
-                <modifier type="set" value="0" field="955d-e8db-0071-a49c-max"/>
+                <modifier type="set" value="false" field="hidden"/>
+                <modifier type="set" value="1" field="955d-e8db-0071-a49c-min"/>
+                <modifier type="set" value="1" field="955d-e8db-0071-a49c-max"/>
               </modifiers>
               <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="force" childId="1707-57c5-676e-90d9" shared="true" id="943d-497e-4b88-e5ff" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="1707-57c5-676e-90d9" shared="true" id="943d-497e-4b88-e5ff" includeChildSelections="true"/>
               </conditions>
             </modifierGroup>
           </modifierGroups>
@@ -7484,10 +7475,10 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
             </profile>
           </profiles>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Quantum Goad" hidden="false" id="8389-2298-cdf5-548f">
+        <selectionEntry type="upgrade" import="true" name="Quantum Goad" hidden="true" id="8389-2298-cdf5-548f">
           <constraints>
-            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="70d0-17b9-f6a3-2f3d-min" includeChildSelections="false" automatic="true"/>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="70d0-17b9-f6a3-2f3d-max" includeChildSelections="false" automatic="true"/>
+            <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="70d0-17b9-f6a3-2f3d-min" includeChildSelections="false" automatic="true"/>
+            <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="70d0-17b9-f6a3-2f3d-max" includeChildSelections="false" automatic="true"/>
           </constraints>
           <profiles>
             <profile name="Quantum Goad" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e249-d4ac-31c8-9dee">
@@ -7499,12 +7490,12 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
           <modifierGroups>
             <modifierGroup type="and">
               <modifiers>
-                <modifier type="set" value="true" field="hidden"/>
-                <modifier type="set" value="0" field="70d0-17b9-f6a3-2f3d-min"/>
-                <modifier type="set" value="0" field="70d0-17b9-f6a3-2f3d-max"/>
+                <modifier type="set" value="false" field="hidden"/>
+                <modifier type="set" value="1" field="70d0-17b9-f6a3-2f3d-min"/>
+                <modifier type="set" value="1" field="70d0-17b9-f6a3-2f3d-max"/>
               </modifiers>
               <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="force" childId="1707-57c5-676e-90d9" shared="true" id="2498-6ae6-4764-5922" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="1707-57c5-676e-90d9" shared="true" id="2498-6ae6-4764-5922" includeChildSelections="true"/>
               </conditions>
             </modifierGroup>
           </modifierGroups>
@@ -7676,10 +7667,10 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
             <categoryLink name="Extra Attacks Weapon" hidden="false" id="a47c-a21e-a4f7-b8d3" targetId="84c4-6d1e-e724-bd6e" primary="false"/>
           </categoryLinks>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Animus Damper" hidden="false" id="f5b0-0570-d832-eb0b">
+        <selectionEntry type="upgrade" import="true" name="Animus Damper" hidden="true" id="f5b0-0570-d832-eb0b">
           <constraints>
-            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="1c71-e933-8c48-de5a-min" includeChildSelections="false" automatic="true"/>
-            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1c71-e933-8c48-de5a-max" includeChildSelections="false" automatic="true"/>
+            <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="1c71-e933-8c48-de5a-min" includeChildSelections="false" automatic="true"/>
+            <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="1c71-e933-8c48-de5a-max" includeChildSelections="false" automatic="true"/>
           </constraints>
           <profiles>
             <profile name="Animus Damper" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8b66-9566-b3ef-5f11">
@@ -7691,12 +7682,12 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
           <modifierGroups>
             <modifierGroup type="and">
               <modifiers>
-                <modifier type="set" value="true" field="hidden"/>
-                <modifier type="set" value="0" field="1c71-e933-8c48-de5a-min"/>
-                <modifier type="set" value="0" field="1c71-e933-8c48-de5a-max"/>
+                <modifier type="set" value="false" field="hidden"/>
+                <modifier type="set" value="1" field="1c71-e933-8c48-de5a-min"/>
+                <modifier type="set" value="1" field="1c71-e933-8c48-de5a-max"/>
               </modifiers>
               <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="force" childId="1707-57c5-676e-90d9" shared="true" id="382f-b7bb-7461-fe2f" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="1707-57c5-676e-90d9" shared="true" id="382f-b7bb-7461-fe2f" includeChildSelections="true"/>
               </conditions>
             </modifierGroup>
           </modifierGroups>
@@ -7854,10 +7845,10 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
                 <categoryLink name="Damage Dx Weapon" hidden="false" id="7c10-e59f-40df-1136" targetId="4986-bf86-beb4-13ac" primary="false"/>
               </categoryLinks>
             </selectionEntry>
-            <selectionEntry type="upgrade" import="true" name="Relativistic Tether" hidden="false" id="4b7a-0ee7-9cf0-8434">
+            <selectionEntry type="upgrade" import="true" name="Relativistic Tether" hidden="true" id="4b7a-0ee7-9cf0-8434">
               <constraints>
-                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="6143-e14a-c400-fa58-min" includeChildSelections="false" automatic="true"/>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="6143-e14a-c400-fa58-max" includeChildSelections="false" automatic="true"/>
+                <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="6143-e14a-c400-fa58-min" includeChildSelections="false" automatic="true"/>
+                <constraint type="max" value="0" field="selections" scope="parent" shared="true" id="6143-e14a-c400-fa58-max" includeChildSelections="false" automatic="true"/>
               </constraints>
               <profiles>
                 <profile name="Relativistic Tether" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="de3c-6924-0b09-f175">
@@ -7869,12 +7860,12 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
               <modifierGroups>
                 <modifierGroup type="and">
                   <modifiers>
-                    <modifier type="set" value="true" field="hidden"/>
-                    <modifier type="set" value="0" field="6143-e14a-c400-fa58-min"/>
-                    <modifier type="set" value="0" field="6143-e14a-c400-fa58-max"/>
+                    <modifier type="set" value="false" field="hidden"/>
+                    <modifier type="set" value="1" field="6143-e14a-c400-fa58-min"/>
+                    <modifier type="set" value="1" field="6143-e14a-c400-fa58-max"/>
                   </modifiers>
                   <conditions>
-                    <condition type="lessThan" value="1" field="selections" scope="force" childId="1707-57c5-676e-90d9" shared="true" id="3116-bf19-6750-85a6" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="1707-57c5-676e-90d9" shared="true" id="3116-bf19-6750-85a6" includeChildSelections="true"/>
                   </conditions>
                 </modifierGroup>
               </modifierGroups>
@@ -8501,8 +8492,8 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
             <condition type="atLeast" value="1" field="selections" scope="force" childId="c4ee-83c7-812c-5ff0" shared="true" includeChildSelections="true"/>
           </conditions>
           <modifiers>
-            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" scope="root-entry" affects="self.entries.profiles.Ranged Weapons"/>
-            <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" scope="root-entry" affects="self.entries.profiles.Melee Weapons"/>
+            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" affects="self.entries.recursive.profiles.Ranged Weapons"/>
+            <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" affects="self.entries.recursive.profiles.Melee Weapons"/>
           </modifiers>
         </modifierGroup>
       </modifierGroups>
@@ -9907,8 +9898,8 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
             <condition type="atLeast" value="1" field="selections" scope="force" childId="c4ee-83c7-812c-5ff0" shared="true" includeChildSelections="true"/>
           </conditions>
           <modifiers>
-            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" scope="root-entry" affects="self.entries.profiles.Ranged Weapons"/>
-            <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" scope="root-entry" affects="self.entries.profiles.Melee Weapons"/>
+            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" affects="self.entries.recursive.profiles.Ranged Weapons"/>
+            <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" affects="self.entries.recursive.profiles.Melee Weapons"/>
           </modifiers>
         </modifierGroup>
       </modifierGroups>
@@ -10126,8 +10117,8 @@ You can attach this model to one of the above units even if one ROYAL WARDEN or
             <condition type="atLeast" value="1" field="selections" scope="force" childId="c4ee-83c7-812c-5ff0" shared="true" includeChildSelections="true"/>
           </conditions>
           <modifiers>
-            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" scope="root-entry" affects="self.entries.profiles.Ranged Weapons"/>
-            <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" scope="root-entry" affects="self.entries.profiles.Melee Weapons"/>
+            <modifier type="increment" value="2" field="2229-f494-25db-c5d3" affects="self.entries.recursive.profiles.Ranged Weapons"/>
+            <modifier type="increment" value="2" field="ab33-d393-96ce-ccba" affects="self.entries.recursive.profiles.Melee Weapons"/>
           </modifiers>
         </modifierGroup>
       </modifierGroups>
