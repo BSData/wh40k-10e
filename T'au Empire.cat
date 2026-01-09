@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="137" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="138" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
   <rules>
     <rule name="For The Greater Good" hidden="false" id="eeb6-c42-48f7-cc21">
       <description>If your Army Faction is **^^T’au Empire^^**, at the start of your Shooting phase you can select units from your army with this ability to become Observer units.
@@ -2909,6 +2909,7 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="72c2-5741-3739-64f5" includeChildSelections="false"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8f4b-2fe9-83a3-29d4" includeChildSelections="false"/>
+                    <constraint type="max" value="2" field="selections" scope="unit" shared="true" id="dd23-91a8-36a1-12ea" includeChildSelections="true"/>
                   </constraints>
                   <infoLinks>
                     <infoLink name="Blast" hidden="false" id="e6ef-98dd-c0d7-544a" type="rule" targetId="6c1f-1cf7-ff25-c99e"/>
@@ -2916,15 +2917,25 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                   <categoryLinks>
                     <categoryLink name="Attacks Dx Weapon" hidden="false" id="760c-d5cb-b70a-b10d" targetId="e993-e086-6de1-12af" primary="false"/>
                   </categoryLinks>
+                  <modifiers>
+                    <modifier type="set" value="1" field="dd23-91a8-36a1-12ea">
+                      <conditions>
+                        <condition type="lessThan" value="20" field="selections" scope="unit" childId="model" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="add" value="Requires 20 models in order to take 2 Tanglebomb launchers" field="error">
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="lessThan" value="20" field="selections" scope="unit" childId="model" shared="true" includeChildSelections="true"/>
+                            <condition type="greaterThan" value="1" field="selections" scope="unit" childId="49e7-3666-8d29-6ca" shared="true" includeChildSelections="true"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </modifier>
+                  </modifiers>
                 </selectionEntry>
               </selectionEntries>
-              <modifiers>
-                <modifier type="set" value="1" field="91e5-9162-70cf-b4b1">
-                  <conditions>
-                    <condition type="lessThan" value="20" field="selections" scope="parent" childId="model" shared="true"/>
-                  </conditions>
-                </modifier>
-              </modifiers>
               <entryLinks>
                 <entryLink import="true" name="Close combat weapon" hidden="false" id="8d67-fa13-6a56-8853" type="selectionEntry" targetId="2b7a-8436-43c4-2378">
                   <constraints>
