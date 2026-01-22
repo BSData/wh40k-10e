@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="5108-f98-63c2-53cb" name="Chaos - Death Guard" revision="101" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="5108-f98-63c2-53cb" name="Chaos - Death Guard" revision="102" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <catalogueLinks>
     <catalogueLink id="9fec-b3ad-9626-6706" name="Chaos - Chaos Knights Library" targetId="8106-aad2-918a-9ac" type="catalogue" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Library - Astartes Heresy Legends" id="ff65-1828-b2a0-477" targetId="ac3b-689c-4ad4-70cb" importRootEntries="true"/>
@@ -14317,7 +14317,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
         <constraint type="max" value="3" field="selections" scope="force" shared="true" id="90cf-fe03-9bba-f8d" includeChildSelections="true"/>
       </constraints>
       <selectionEntries>
-        <selectionEntry type="upgrade" import="true" name="Droning Chorus" hidden="false" id="8192-f68c-a482-67fb">
+        <selectionEntry type="upgrade" import="true" name="Droning Chorus" hidden="false" id="8192-f68c-a482-67fb" sortIndex="9">
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
             <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
@@ -14355,7 +14355,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
           </profiles>
           <comment>Flyblown Host</comment>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Insectile Murmuration" hidden="false" id="ec94-9f62-551f-8a7f">
+        <selectionEntry type="upgrade" import="true" name="Insectile Murmuration" hidden="false" id="ec94-9f62-551f-8a7f" sortIndex="10">
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
             <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
@@ -14393,7 +14393,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
           </profiles>
           <comment>Flyblown Host</comment>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Rejuvenating Swarm" hidden="false" id="9dbc-d91b-ac2e-ad5a">
+        <selectionEntry type="upgrade" import="true" name="Rejuvenating Swarm" hidden="false" id="9dbc-d91b-ac2e-ad5a" sortIndex="12">
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="10"/>
             <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
@@ -14431,7 +14431,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
           </profiles>
           <comment>Flyblown Host</comment>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Plagueveil" hidden="false" id="9ff3-da1f-967c-3c98">
+        <selectionEntry type="upgrade" import="true" name="Plagueveil" hidden="false" id="9ff3-da1f-967c-3c98" sortIndex="11">
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
             <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
@@ -14469,16 +14469,23 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
           </profiles>
           <comment>Flyblown Host</comment>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Daemon Weapon of Nurgle" hidden="false" id="1f19-4de0-75b0-c633">
+        <selectionEntry type="upgrade" import="true" name="Daemon Weapon of Nurgle" hidden="false" id="1f19-4de0-75b0-c633" sortIndex="26">
           <comment>Virulent Vectorium</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="e2ff-ece0-6cbb-be05" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9888-ddb2-a141-6037" shared="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="roster" childId="18b0-2d87-798f-ef1c" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
@@ -14501,16 +14508,23 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Furnace of Plagues" hidden="false" id="fc03-ee34-9e65-b5d0">
+        <selectionEntry type="upgrade" import="true" name="Furnace of Plagues" hidden="false" id="fc03-ee34-9e65-b5d0" sortIndex="27">
           <comment>Virulent Vectorium</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="e2ff-ece0-6cbb-be05" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9888-ddb2-a141-6037" shared="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="roster" childId="18b0-2d87-798f-ef1c" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
@@ -14551,16 +14565,23 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Lord of the Walking Pox" hidden="false" id="b061-4cca-0e42-60de">
+        <selectionEntry type="upgrade" import="true" name="Lord of the Walking Pox" hidden="false" id="b061-4cca-0e42-60de" sortIndex="17">
           <comment>Shamblerot Vectorium</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="7a84-2212-be14-a713" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9888-ddb2-a141-6037" shared="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="roster" childId="18b0-2d87-798f-ef1c" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
@@ -14583,16 +14604,23 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Revolting Regeneration" hidden="false" id="0153-5f6f-b47b-f99c">
+        <selectionEntry type="upgrade" import="true" name="Revolting Regeneration" hidden="false" id="0153-5f6f-b47b-f99c" sortIndex="28">
           <comment>Virulent Vectorium</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="e2ff-ece0-6cbb-be05" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9888-ddb2-a141-6037" shared="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="roster" childId="18b0-2d87-798f-ef1c" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
@@ -14622,16 +14650,23 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Eye of Affliction" hidden="false" id="62b6-ec8c-ba2e-7cd8">
+        <selectionEntry type="upgrade" import="true" name="Eye of Affliction" hidden="false" id="62b6-ec8c-ba2e-7cd8" sortIndex="14">
           <comment>Mortarion&apos;s Hammer</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="18b0-2d87-798f-ef1c" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9888-ddb2-a141-6037" shared="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="roster" childId="18b0-2d87-798f-ef1c" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
@@ -14654,16 +14689,23 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Talisman of Burgeoning" hidden="false" id="2a86-fc8d-0b82-f33d">
+        <selectionEntry type="upgrade" import="true" name="Talisman of Burgeoning" hidden="false" id="2a86-fc8d-0b82-f33d" sortIndex="19">
           <comment>Shamblerot Vectorium</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="7a84-2212-be14-a713" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9888-ddb2-a141-6037" shared="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="roster" childId="18b0-2d87-798f-ef1c" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
@@ -14686,7 +14728,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Witherbone Pipes" hidden="false" id="e45e-833b-8c0e-2d83">
+        <selectionEntry type="upgrade" import="true" name="Witherbone Pipes" hidden="false" id="e45e-833b-8c0e-2d83" sortIndex="20">
           <comment>Shamblerot Vectorium</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -14723,7 +14765,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Sorrowsyphon" hidden="false" id="3aa3-3439-ca1f-dcff">
+        <selectionEntry type="upgrade" import="true" name="Sorrowsyphon" hidden="false" id="3aa3-3439-ca1f-dcff" sortIndex="18">
           <comment>Shamblerot Vectorium</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -14760,7 +14802,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Face of Death" hidden="false" id="6867-997b-22d4-fc25">
+        <selectionEntry type="upgrade" import="true" name="Face of Death" hidden="false" id="6867-997b-22d4-fc25" sortIndex="5">
           <comment>Death Lord&apos;s Chosen</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -14797,7 +14839,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Vile Vigour" hidden="false" id="54d1-47d8-6892-8cc8">
+        <selectionEntry type="upgrade" import="true" name="Vile Vigour" hidden="false" id="54d1-47d8-6892-8cc8" sortIndex="7">
           <comment>Death Lord&apos;s Chosen</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -14834,7 +14876,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Warprot Talisman" hidden="false" id="4019-2c5d-86c2-58e7">
+        <selectionEntry type="upgrade" import="true" name="Warprot Talisman" hidden="false" id="4019-2c5d-86c2-58e7" sortIndex="8">
           <comment>Death Lord&apos;s Chosen</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -14871,7 +14913,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Helm of the Fly King " hidden="false" id="ac82-60cd-b8b9-6ef5">
+        <selectionEntry type="upgrade" import="true" name="Helm of the Fly King " hidden="false" id="ac82-60cd-b8b9-6ef5" sortIndex="6">
           <comment>Death Lord&apos;s Chosen</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -14908,16 +14950,23 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Arch Contaminator" hidden="false" id="b677-0676-8dd4-7731">
+        <selectionEntry type="upgrade" import="true" name="Arch Contaminator" hidden="false" id="b677-0676-8dd4-7731" sortIndex="25">
           <comment>Virulent Vectorium</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="e2ff-ece0-6cbb-be05" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9888-ddb2-a141-6037" shared="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="roster" childId="18b0-2d87-798f-ef1c" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
@@ -14940,7 +14989,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Bilemaw Blight" hidden="false" id="c013-427c-9dcf-4672">
+        <selectionEntry type="upgrade" import="true" name="Bilemaw Blight" hidden="false" id="c013-427c-9dcf-4672" sortIndex="13">
           <comment>Mortarion&apos;s Hammer</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -14977,16 +15026,23 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Shriekworm Familiar" hidden="false" id="3d7c-907c-60c0-72fc">
+        <selectionEntry type="upgrade" import="true" name="Shriekworm Familiar" hidden="false" id="3d7c-907c-60c0-72fc" sortIndex="15">
           <comment>Mortarion&apos;s Hammer</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditionGroups>
-                <conditionGroup type="and">
+                <conditionGroup type="or">
                   <conditions>
-                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="18b0-2d87-798f-ef1c" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9888-ddb2-a141-6037" shared="true"/>
                   </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="roster" childId="18b0-2d87-798f-ef1c" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </conditionGroup>
               </conditionGroups>
             </modifier>
@@ -15009,7 +15065,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Tendrilous Emissions" hidden="false" id="8cc9-40cb-cee0-848c">
+        <selectionEntry type="upgrade" import="true" name="Tendrilous Emissions" hidden="false" id="8cc9-40cb-cee0-848c" sortIndex="16">
           <comment>Mortarion&apos;s Hammer</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -15046,7 +15102,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Final Ingredient" hidden="false" id="9f94-ad56-6960-a8a2">
+        <selectionEntry type="upgrade" import="true" name="Final Ingredient" hidden="false" id="9f94-ad56-6960-a8a2" sortIndex="2">
           <comment>Champions of Contagion</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -15083,7 +15139,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Visions of Virulence" hidden="false" id="0127-1cdc-7c04-1be7">
+        <selectionEntry type="upgrade" import="true" name="Visions of Virulence" hidden="false" id="0127-1cdc-7c04-1be7" sortIndex="4">
           <comment>Champions of Contagion</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -15120,7 +15176,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Needle of Nurgle" hidden="false" id="4b2f-fd90-3e08-e55b">
+        <selectionEntry type="upgrade" import="true" name="Needle of Nurgle" hidden="false" id="4b2f-fd90-3e08-e55b" sortIndex="3">
           <comment>Champions of Contagion</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -15157,7 +15213,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Cornucophagus" hidden="false" id="aa99-5dce-1f78-7d30">
+        <selectionEntry type="upgrade" import="true" name="Cornucophagus" hidden="false" id="aa99-5dce-1f78-7d30" sortIndex="1">
           <comment>Champions of Contagion</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -15194,7 +15250,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Beckoning Blight" hidden="false" id="4a94-69d0-2b40-b3c8">
+        <selectionEntry type="upgrade" import="true" name="Beckoning Blight" hidden="false" id="4a94-69d0-2b40-b3c8" sortIndex="21">
           <comment>Tallyband Summoners</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -15231,7 +15287,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Fell Harvester" hidden="false" id="e188-2577-5054-e2c3">
+        <selectionEntry type="upgrade" import="true" name="Fell Harvester" hidden="false" id="e188-2577-5054-e2c3" sortIndex="23">
           <comment>Tallyband Summoners</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -15281,7 +15337,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             </modifierGroup>
           </modifierGroups>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Entropic Knell" hidden="false" id="5123-28f8-2700-645b">
+        <selectionEntry type="upgrade" import="true" name="Entropic Knell" hidden="false" id="5123-28f8-2700-645b" sortIndex="22">
           <comment>Tallyband Summoners</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
@@ -15318,7 +15374,7 @@ Worsen the Move, Leadership and Objective Control characteristics of models in t
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
           </costs>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Tome of Bounteous Blessings" hidden="false" id="f628-5d6a-d557-1516">
+        <selectionEntry type="upgrade" import="true" name="Tome of Bounteous Blessings" hidden="false" id="f628-5d6a-d557-1516" sortIndex="24">
           <comment>Tallyband Summoners</comment>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
