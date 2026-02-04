@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="135" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="dfcf-1214-b57-2205" name="Aeldari - Aeldari Library" revision="136" battleScribeVersion="2.03" library="true" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <publications>
     <publication id="442c-a37c-3908-d701" name="Codex: Aeldari" shortName="C:Aeldari" publisher="Codex: Aeldari" publicationDate="08/02/2025"/>
     <publication id="1427-7c5c-863f-ac94" name="Index: Drukhari" shortName="I:Drukhari" publisher="Index: Drukhari" publicationDate="6/15/2023"/>
@@ -239,6 +239,7 @@
     <categoryEntry name="Blades for Hire" id="de72-7478-144e-d12b" hidden="false"/>
     <categoryEntry name="Scourges with Heavy Weapons" id="b086-9bc1-5aca-2285" hidden="false"/>
     <categoryEntry name="Ascendant Lord" id="cc6f-73aa-4cff-3b5d" hidden="false"/>
+    <categoryEntry name="Phoenix" id="7d6e-ee5b-f803-d9b1" hidden="false"/>
   </categoryEntries>
   <sharedSelectionEntries>
     <selectionEntry id="828d-840a-9a67-9074" name="Asurmen" publicationId="442c-a37c-3908-d701" page="7" hidden="false" collective="false" import="true" type="model">
@@ -18892,10 +18893,8 @@ It can also move through sections of terrain features that are more than 4&quot;
           <profiles>
             <profile name="Incubi Shrine Token" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ed73-45d8-ee76-e06a">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle for each Incubi Shrine token this unit has, you can change the result of one Hit roll or one Wound roll made for a model in this unit to an unmodified 6.
-
-
-For every 5 models in this unit, it can have 1 Incubi Shrine token.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle for each Incubi Shrine token this unit has, you can change the result of one Hit roll or one Wound roll made for a Klaivex or Incubi model in this unit to an unmodified 6.
+</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -30164,6 +30163,9 @@ makes an attack, subtract 1 from the Hit roll</characteristic>
         <categoryLink targetId="dbd4-63-af05-998" id="255f-13a9-cde8-1fa4" primary="true" name="Vehicle"/>
         <categoryLink targetId="4378-1827-4988-be4e" id="9790-91a1-c190-de7d" primary="false" name="Faction: Asuryani"/>
         <categoryLink targetId="e035-51fc-813a-1313" id="ca43-5e22-5ba0-3c2c" primary="false" name="Aeldari"/>
+        <categoryLink name="Aircraft" hidden="false" id="940f-36d9-ff65-1594" targetId="63f1-e6e8-f6f6-a4f0" primary="false"/>
+        <categoryLink name="Fly" hidden="false" id="5881-8b65-35f0-2643" targetId="c619-2086-bbcf-69c9" primary="false"/>
+        <categoryLink name="Phoenix" hidden="false" id="9eed-fec2-2060-d505" targetId="7d6e-ee5b-f803-d9b1" primary="false"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="175"/>
@@ -30236,7 +30238,7 @@ makes an attack, subtract 1 from the Hit roll</characteristic>
                     <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
                     <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
                     <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
-                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Blast</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
@@ -37143,7 +37145,7 @@ For every 5 models in this unit, it can have 1 Aspect Shrine token.</characteris
         <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
       </costs>
       <selectionEntryGroups>
-        <selectionEntryGroup name="4 Scourges" id="20a2-d24f-b741-9b5c" hidden="false" defaultSelectionEntryId="5cb5-c3b8-a2b4-a368" sortIndex="3">
+        <selectionEntryGroup name="Scourge w/ special weapon" id="20a2-d24f-b741-9b5c" hidden="false" defaultSelectionEntryId="6e9b-38a8-e240-7a50" sortIndex="3">
           <selectionEntries>
             <selectionEntry type="model" import="true" name="Scourge with Special Weapon" hidden="false" id="313f-6619-806f-c4c7">
               <selectionEntryGroups>
@@ -37242,7 +37244,8 @@ For every 5 models in this unit, it can have 1 Aspect Shrine token.</characteris
             </selectionEntry>
             <selectionEntry type="model" import="true" name="Scourge" hidden="false" id="6e9b-38a8-e240-7a50" collective="false">
               <constraints>
-                <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="d7c0-225b-c52e-1e3e"/>
+                <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="d7c0-225b-c52e-1e3e" automatic="true"/>
+                <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="8058-b99a-563e-a10b" includeChildSelections="false" automatic="true"/>
               </constraints>
               <selectionEntries>
                 <selectionEntry type="upgrade" import="true" name="Shardcarbine" hidden="false" id="0b74-9fa9-0c22-855f" collective="true">
@@ -37288,11 +37291,22 @@ For every 5 models in this unit, it can have 1 Aspect Shrine token.</characteris
                   </profiles>
                 </selectionEntry>
               </selectionEntries>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="decrement" value="1" field="d7c0-225b-c52e-1e3e"/>
+                    <modifier type="decrement" value="1" field="8058-b99a-563e-a10b"/>
+                  </modifiers>
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="f2d1-4574-223f-998f" childId="313f-6619-806f-c4c7" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
           </selectionEntries>
           <constraints>
             <constraint type="min" value="4" field="selections" scope="parent" shared="true" id="8ad6-e8af-74ce-f678"/>
-            <constraint type="max" value="9" field="selections" scope="parent" shared="true" id="2ff7-cb4b-cbc5-dc5b"/>
+            <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="2ff7-cb4b-cbc5-dc5b"/>
           </constraints>
         </selectionEntryGroup>
         <selectionEntryGroup name="Solarite" id="e605-6597-2fa0-1a5d" hidden="false" sortIndex="2">
