@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="75" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="4ef9-15ce-e3e6-36de" name="Imperium - Adeptus Astartes - Blood Angels" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="76" battleScribeVersion="2.03" type="catalogue" authorName="Acebaur">
   <catalogueLinks>
     <catalogueLink type="catalogue" name="Imperium - Space Marines" id="abd0-8ebd-6fbd-2d94" targetId="e0af-67df-9d63-8fb7" importRootEntries="true"/>
     <catalogueLink type="catalogue" name="Imperium - Imperial Knights - Library" id="9c08-8ffc-d746-7384" targetId="1b6d-dc06-5db9-c7d1" importRootEntries="true"/>
@@ -5229,45 +5229,45 @@ You can attach this model to one of the above units, even if one Captain, Chapt
                   </selectionEntries>
                 </selectionEntryGroup>
                 <selectionEntryGroup name="Replace Chainsword" id="fff9-ea18-368c-d4a1" hidden="false" defaultSelectionEntryId="c7a8-c7ee-1248-ef35">
-                  <selectionEntries>
-                    <selectionEntry type="upgrade" import="true" name="Power Fist" hidden="false" id="2aba-e045-dbd4-adbd">
-                      <profiles>
-                        <profile name="Power Fist" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="b64e-5d06-ef65-5bdf">
-                          <characteristics>
-                            <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
-                            <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
-                            <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
-                            <characteristic name="S" typeId="ab33-d393-96ce-ccba">8</characteristic>
-                            <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
-                            <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
-                            <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                    </selectionEntry>
-                  </selectionEntries>
                   <entryLinks>
-                    <entryLink import="true" name="Thunder Hammer" hidden="false" id="0750-7bd3-6edf-09d2" type="selectionEntry" targetId="3acf-2a72-a5a2-84a2"/>
-                    <entryLink import="true" name="Power Weapon" hidden="false" id="773e-a671-ad57-aa08" type="selectionEntry" targetId="c4b5-68e-2266-f459"/>
+                    <entryLink import="true" name="Thunder Hammer" hidden="false" id="0750-7bd3-6edf-09d2" type="selectionEntry" targetId="3acf-2a72-a5a2-84a2">
+                      <categoryLinks>
+                        <categoryLink name="DCo Weapon Swap" hidden="false" id="1205-d6bd-43e1-bfc6" targetId="78e1-92d6-d2d8-0509" primary="false"/>
+                      </categoryLinks>
+                    </entryLink>
+                    <entryLink import="true" name="Power Weapon" hidden="false" id="773e-a671-ad57-aa08" type="selectionEntry" targetId="c4b5-68e-2266-f459">
+                      <categoryLinks>
+                        <categoryLink name="DCo Weapon Swap" hidden="false" id="d6e8-c4d4-8704-9328" targetId="78e1-92d6-d2d8-0509" primary="false"/>
+                      </categoryLinks>
+                    </entryLink>
                     <entryLink import="true" name="Astartes Chainsword" hidden="false" id="8b85-90a0-8aca-7fbe" type="selectionEntry" targetId="efcd-180-d07-b4d6"/>
+                    <entryLink import="true" name="Power Fist" hidden="false" id="9115-74d2-2830-8f27" type="selectionEntry" targetId="f8d8-7e77-4b71-faac">
+                      <categoryLinks>
+                        <categoryLink name="DCo Weapon Swap" hidden="false" id="70b5-7c55-5fbd-8027" targetId="78e1-92d6-d2d8-0509" primary="false"/>
+                      </categoryLinks>
+                    </entryLink>
                   </entryLinks>
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="4761-c7fa-10ea-e343" includeChildSelections="false"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ce87-a2bb-c305-f66c" includeChildSelections="false"/>
-                    <constraint type="max" value="1" field="selections" scope="edee-48a2-1e8a-2539" shared="true" id="4f47-ceb3-a70f-8e21" includeChildSelections="true"/>
                   </constraints>
-                  <modifiers>
-                    <modifier type="set" value="1" field="4f47-ceb3-a70f-8e21">
-                      <conditions>
-                        <condition type="equalTo" value="0" field="selections" scope="edee-48a2-1e8a-2539" childId="efcd-180-d07-b4d6" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
                 </selectionEntryGroup>
               </selectionEntryGroups>
               <constraints>
                 <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="3536-7f35-9308-1da4"/>
               </constraints>
+              <modifiers>
+                <modifier type="add" value="Max 1 melee weapon swap in squad" field="error">
+                  <conditions>
+                    <condition type="greaterThan" value="1" field="selections" scope="3825-ac3a-75ec-fa0d" childId="78e1-92d6-d2d8-0509" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="add" value="Max 1 pistol replacement in squad" field="error">
+                  <conditions>
+                    <condition type="atLeast" value="2" field="selections" scope="3825-ac3a-75ec-fa0d" childId="f06c-dfec-c720-57f1" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
           </selectionEntries>
           <constraints>
@@ -5339,11 +5339,6 @@ You can attach this model to one of the above units, even if one Captain, Chapt
         <modifier type="set" value="6" field="d4b4-df13-559a-8e76">
           <conditions>
             <condition type="atLeast" value="1" field="selections" scope="roster" childId="9d32-d514-00a8-6423" shared="true" includeChildSelections="true"/>
-          </conditions>
-        </modifier>
-        <modifier type="add" value="Max 1 pistol replacement in squad" field="error">
-          <conditions>
-            <condition type="atLeast" value="2" field="selections" scope="3825-ac3a-75ec-fa0d" childId="f06c-dfec-c720-57f1" shared="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
       </modifiers>
@@ -5908,6 +5903,7 @@ If a Character unit from your army with the Leader ability can be attached to a
     <categoryEntry name="Pistol replacement" id="f06c-dfec-c720-57f1" hidden="true"/>
     <categoryEntry name="Death Company Marines with Boltguns" hidden="false" id="d57c-d980-bdae-2999"/>
     <categoryEntry name="Death Company Marines with Boltguns and Jump Packs" hidden="false" id="f884-eba8-9896-a544"/>
+    <categoryEntry name="DCo Weapon Swap" id="78e1-92d6-d2d8-0509" hidden="false"/>
   </categoryEntries>
   <sharedProfiles>
     <profile name="Black Rage" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3e0a-31f-8be-e293">

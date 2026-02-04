@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Adeptus Astartes - Space Marines" revision="184" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Adeptus Astartes - Space Marines" revision="185" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
     <categoryEntry id="930d-2875-125b-a65e" name="Bladeguard Veteran Squad" hidden="false"/>
@@ -219,7 +219,15 @@
     <entryLink import="true" name="Impulsor" hidden="false" type="selectionEntry" id="3fe5-fdf6-5abc-c60f" targetId="bfb1-7512-e1a3-9fa2"/>
     <entryLink import="true" name="Inceptor Squad" hidden="false" type="selectionEntry" id="28ff-a147-b488-2411" targetId="3e14-2a-d358-6ada"/>
     <entryLink import="true" name="Incursor Squad" hidden="false" type="selectionEntry" id="19ec-f615-a22c-431" targetId="527c-120e-9e4e-9bfe"/>
-    <entryLink import="true" name="Infernus Squad" hidden="false" type="selectionEntry" id="20b3-f504-9c79-bc74" targetId="b007-fc7b-8e4a-b017"/>
+    <entryLink import="true" name="Infernus Squad" hidden="false" type="selectionEntry" id="20b3-f504-9c79-bc74" targetId="b007-fc7b-8e4a-b017">
+      <modifiers>
+        <modifier type="increment" value="1" field="bef7-942a-1a23-59f8" affects="self.entries.recursive.profiles.Unit">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="force" childId="b351-fccc-2121-1e1e" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </entryLink>
     <entryLink import="true" name="Infiltrator Squad" hidden="false" type="selectionEntry" id="5c31-c468-f354-c0a6" targetId="70dc-ed18-2788-b35a"/>
     <entryLink import="true" name="Intercessor Squad" hidden="false" type="selectionEntry" id="85b1-eb9a-17a6-e5be" targetId="8da0-4570-c3c-819f"/>
     <entryLink import="true" name="Invictor Tactical Warsuit" hidden="false" type="selectionEntry" id="868c-850d-ca57-b4b7" targetId="24df-fdd6-4d7b-fc0e"/>
@@ -3770,12 +3778,6 @@
                       <entryLinks>
                         <entryLink import="true" name="Archeotech Armament upgrade" hidden="false" id="8125-1433-f72a-5dc5" type="selectionEntry" targetId="4485-e8e3-43a0-6c02"/>
                         <entryLink import="true" name="Weapon Upgrades" hidden="false" id="5327-0b6d-b389-539f" type="selectionEntryGroup" targetId="8cf2-a48c-58d2-cb4e"/>
-                        <entryLink import="true" name="Heavy Bolt Pistol" hidden="false" id="25de-e5c5-99d9-acf2" type="selectionEntry" targetId="3b8f-1cb7-3c6e-4455">
-                          <entryLinks>
-                            <entryLink import="true" name="Archeotech Armament upgrade" hidden="false" id="9ac1-5716-e024-b9d6" type="selectionEntry" targetId="4485-e8e3-43a0-6c02"/>
-                            <entryLink import="true" name="Weapon Upgrades" hidden="false" id="6f5e-5a5b-b13e-e1ab" type="selectionEntryGroup" targetId="8cf2-a48c-58d2-cb4e"/>
-                          </entryLinks>
-                        </entryLink>
                       </entryLinks>
                     </entryLink>
                     <entryLink import="true" name="Hand Flamer" hidden="false" type="selectionEntry" id="66b0-e7b4-949c-e091" targetId="9dc6-6ad8-818e-db2e">
@@ -10948,12 +10950,11 @@ by 1.</characteristic>
                             <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
                             <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
                             <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
-                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Heavy, Anti-vehicle 2+</characteristic>
+                            <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-Vehicle 2+</characteristic>
                           </characteristics>
                         </profile>
                       </profiles>
                       <infoLinks>
-                        <infoLink name="Heavy" hidden="false" type="rule" id="226a-ed5f-63fe-ef8e" targetId="1202-10a8-78e9-4c67"/>
                         <infoLink name="Anti-" hidden="false" type="rule" id="c789-2784-d46f-f1df" targetId="4111-82e3-9444-e942"/>
                       </infoLinks>
                     </selectionEntry>
@@ -34120,6 +34121,16 @@ Attacks characteristic of 7.</characteristic>
           </constraints>
         </entryLink>
         <entryLink import="true" name="Crusade" hidden="false" id="c4a4-c2c3-8d26-2cb9" type="selectionEntryGroup" targetId="9a99-f13c-a667-e698" sortIndex="1"/>
+        <entryLink import="true" name="Twin Boltgun" hidden="false" id="a497-b897-709b-ffa2" type="selectionEntry" targetId="a578-8e45-2a54-509d">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7665-9628-adc1-b581-min" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7665-9628-adc1-b581-max" includeChildSelections="false"/>
+          </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Upgrades" hidden="false" id="664d-2b93-b1e3-1bcb" type="selectionEntryGroup" targetId="8cf2-a48c-58d2-cb4e"/>
+            <entryLink import="true" name="Archeotech Armament upgrade" hidden="false" id="11d1-e6c8-083b-c745" type="selectionEntry" targetId="4485-e8e3-43a0-6c02"/>
+          </entryLinks>
+        </entryLink>
       </entryLinks>
       <constraints>
         <constraint field="selections" scope="roster" value="3" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="e11e-bfb5-be9f-e22" type="max"/>
@@ -36835,7 +36846,7 @@ the Hit roll.</characteristic>
           </costs>
           <rules>
             <rule name="Combat Doctrines" id="cf8e-b330-be85-11d0" hidden="false">
-              <description>At the start of your Command phase, you can select one of the Combat Doctrines listed below. Until the start of your next Command phase, that Combat Doctrine is active and its effects apply to all ^^**Adeptus Astartes**^^ units from your army with this ability. You can only select each Combat Doctrine once per battle.
+              <description>At the start of your Command phase, you can select one of the Combat Doctrines listed below. Until the start of your next Command phase, that Combat Doctrine is active and its effects apply to all ^^**Adeptus Astartes**^^ units from your army. You can only select each Combat Doctrine once per battle.
 
 
 DEVASTATOR DOCTRINE 
@@ -37026,8 +37037,7 @@ Incursion - Up to 1 unit
 Strike Force - Up to 2 units
 Onslaught - Up to 3 units
 
-Once you have made your selections, remove those units from the battlefield and place them into Strategic Reserves. In the Reinforcements step of your next Movement phase, set each of those units up using their Deep Strike ability.
-</description>
+Once you have made your selections, remove those units from the battlefield and place them into Strategic Reserves. In the Reinforcements step of your next Movement phase, set each of those units up using their Deep Strike ability.</description>
             </rule>
           </rules>
         </selectionEntry>
@@ -37358,8 +37368,7 @@ Each time a model in a ^^**Darnath Lysander**^^ unit from your army makes an att
 
 **Unparalled Tactician**
 
-Once per battle round, if an **^^Aethon^^** Shaan model from your army is on the battlefield, you can use the Into Darkness Stratagem for 0CP.
-</description>
+Once per battle round, if an **^^Aethon^^** Shaan model from your army is on the battlefield, you can use the Into Darkness Stratagem for 0CP.</description>
             </rule>
           </rules>
         </selectionEntry>
@@ -37378,8 +37387,7 @@ Once per battle round, if an **^^Aethon^^** Shaan model from your army is on the
 
 **RECALCULATING**
 
-Once per battle round, after your Oath of Moment target is destroyed, if a ^^**Caanok Var**^^ model from your army is on the battlefield, select one enemy unit visible to that model. That enemy unit becomes your Oath of Moment target until you select a new one.
-</description>
+Once per battle round, after your Oath of Moment target is destroyed, if a ^^**Caanok Var**^^ model from your army is on the battlefield, select one enemy unit visible to that model. That enemy unit becomes your Oath of Moment target until you select a new one.</description>
             </rule>
           </rules>
         </selectionEntry>
@@ -37397,9 +37405,7 @@ Once per battle round, after your Oath of Moment target is destroyed, if a ^^**C
 
 **Wrath of the First Khan**
 
-At the end of the Fight phase, if a **^^Suboden Khan^^** unit from your army destroyed one or more enemy units this phase and is not within Engagement Range of one or more enemy units, that unit can make a Normal move of up to 6&quot;.
-
-</description>
+At the end of the Fight phase, if a **^^Suboden Khan^^** unit from your army destroyed one or more enemy units this phase and is not within Engagement Range of one or more enemy units, that unit can make a Normal move of up to 6&quot;.</description>
             </rule>
           </rules>
         </selectionEntry>
@@ -37490,10 +37496,7 @@ Incursion - 2 Units
 Strike Force - 3 Units
 Onslaught - 4 Units
 
-Each time an ^^**Adeptus Astartes^^** model from your army makes an attack, if it was set up on the battlefield this turn, re‑roll a Wound roll of 1. If it disembarked from a Drop Pod this turn, re‑roll a Hit roll of 1 as well.
-
-
-</description>
+Each time an ^^**Adeptus Astartes^^** model from your army makes an attack, if it was set up on the battlefield this turn, re‑roll a Wound roll of 1. If it disembarked from a Drop Pod this turn, re‑roll a Hit roll of 1 as well.</description>
             </rule>
           </rules>
         </selectionEntry>
@@ -49158,7 +49161,7 @@ Until the end of the phase, this model&apos;s melee weapons have that ability.</
     <rule name="Oath of Moment" id="3b76-4053-ece9-6e7d" hidden="false">
       <description>If your Army Faction is **^^Adeptus Astartes^^**, at the start of your Command phase, select one unit from your opponent’s army. Until the start of your next Command phase, that enemy unit is your Oath of Moment target. Each time a model with this ability makes an attack that targets your Oath of Moment target:
 ■ You can reroll the Hit roll
-■ If you are using a Codex: Space Marines Detachment and your army does not include one or more units with the **^^Black Templars^^**, **^^Blood Angels^^**, **^^Dark Angels^^**, **^^Deathwatch^^** or **^^Space Wolves^^** keywords, add 1 to the Wound roll as well.</description>
+■ If you are using a Codex: Space Marines Detachment and your army does not include one or more units with the **^^Blood Angels^^**, **^^Dark Angels^^**, **^^Deathwatch^^** or **^^Space Wolves^^** keywords, add 1 to the Wound roll as well.</description>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
           <conditions>
