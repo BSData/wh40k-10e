@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="f616-3f08-ee8e-3349" name="Xenos - Leagues of Votann" revision="71" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="f616-3f08-ee8e-3349" name="Xenos - Leagues of Votann" revision="72" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <categoryEntries>
     <categoryEntry id="5a53-ae58-e0d9-0616" name="Hearthkyn Warriors" hidden="false"/>
     <categoryEntry id="a360-cb11-e139-55df" name="Ûthar the Destined" hidden="false"/>
@@ -2628,7 +2628,7 @@ In your Shooting phase, each time a ^^**Brôkhyr, Ironkin Steeljacks^^** or ^^**
             </profile>
           </profiles>
           <selectionEntries>
-            <selectionEntry id="7d63-69eb-f909-ef5c" name="Exo-armour grenade launcher" hidden="false" collective="false" import="true" type="upgrade">
+            <selectionEntry id="7d63-69eb-f909-ef5c" name="Exo-armour grenade launcher" hidden="false" collective="false" import="true" type="upgrade" sortIndex="4">
               <constraints>
                 <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="7106-df87-5f63-2ca0" type="min"/>
                 <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="0a1d-f2b3-30f5-01ba" type="max"/>
@@ -2661,23 +2661,16 @@ In your Shooting phase, each time a ^^**Brôkhyr, Ironkin Steeljacks^^** or ^^**
             </selectionEntry>
           </selectionEntries>
           <selectionEntryGroups>
-            <selectionEntryGroup id="2d48-f92f-50fa-df9f" name="Ranged weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="8619-9766-108e-f579">
+            <selectionEntryGroup id="2d48-f92f-50fa-df9f" name="Ranged weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="8619-9766-108e-f579" sortIndex="2">
               <constraints>
                 <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="3e50-323e-1a98-f6f6" type="min"/>
                 <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="30bf-8866-0b63-669a" type="max"/>
               </constraints>
               <selectionEntries>
-                <selectionEntry id="8619-9766-108e-f579" name="EtaCarn plasma gun" hidden="false" collective="false" import="true" type="upgrade">
-                  <modifiers>
-                    <modifier type="set" field="9d77-b0ff-1d6e-c9bb" value="1">
-                      <conditions>
-                        <condition field="selections" scope="09d3-6357-7888-00d9" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="58c5-35f8-3823-bf60" type="greaterThan"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
+                <selectionEntry id="8619-9766-108e-f579" name="EtaCarn plasma gun" hidden="true" collective="false" import="true" type="upgrade">
                   <constraints>
-                    <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="ef28-00c1-27f2-9d50" type="max"/>
-                    <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="9d77-b0ff-1d6e-c9bb" type="min"/>
+                    <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="9d77-b0ff-1d6e-c9bb-min" type="min" automatic="true"/>
+                    <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="9d77-b0ff-1d6e-c9bb-max" type="max" automatic="true"/>
                   </constraints>
                   <profiles>
                     <profile id="e492-d6ee-0f43-d25c" name="EtaCarn plasma gun" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
@@ -2701,18 +2694,28 @@ In your Shooting phase, each time a ^^**Brôkhyr, Ironkin Steeljacks^^** or ^^**
                   <infoLinks>
                     <infoLink name="Rapid Fire" id="99ef-1607-adb1-26ee" hidden="false" type="rule" targetId="c5c8-8b58-b8b6-7786"/>
                   </infoLinks>
+                  <modifierGroups>
+                    <modifierGroup type="and">
+                      <modifiers>
+                        <modifier type="set" value="false" field="hidden"/>
+                        <modifier type="set" value="1" field="9d77-b0ff-1d6e-c9bb-min">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="09d3-6357-7888-00d9" childId="58c5-35f8-3823-bf60" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                          </conditions>
+                        </modifier>
+                        <modifier type="set" value="1" field="9d77-b0ff-1d6e-c9bb-max">
+                          <conditions>
+                            <condition type="greaterThan" value="0" field="selections" scope="09d3-6357-7888-00d9" childId="58c5-35f8-3823-bf60" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                          </conditions>
+                        </modifier>
+                      </modifiers>
+                    </modifierGroup>
+                  </modifierGroups>
                 </selectionEntry>
-                <selectionEntry id="ee96-471c-ef12-d689" name="Volkanite disintegrator" hidden="false" collective="false" import="true" type="upgrade">
-                  <modifiers>
-                    <modifier type="set" field="3d3c-c645-86f7-67d4" value="1">
-                      <conditions>
-                        <condition field="selections" scope="09d3-6357-7888-00d9" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="0263-c056-d80a-2192" type="greaterThan"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
+                <selectionEntry id="ee96-471c-ef12-d689" name="Volkanite disintegrator" hidden="true" collective="false" import="true" type="upgrade">
                   <constraints>
-                    <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="005b-3a60-d86b-c7b9" type="max"/>
-                    <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="3d3c-c645-86f7-67d4" type="min"/>
+                    <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="3d3c-c645-86f7-67d4-min" type="min" automatic="true"/>
+                    <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="3d3c-c645-86f7-67d4-max" type="max" automatic="true"/>
                   </constraints>
                   <profiles>
                     <profile id="7719-4e90-1159-c873" name="Volkanite disintegrator" hidden="false" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons">
@@ -2736,31 +2739,30 @@ In your Shooting phase, each time a ^^**Brôkhyr, Ironkin Steeljacks^^** or ^^**
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="08a7-4acf-2e75-4974" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <modifierGroups>
+                    <modifierGroup type="and">
+                      <modifiers>
+                        <modifier type="set" value="1" field="3d3c-c645-86f7-67d4-min"/>
+                        <modifier type="set" value="1" field="3d3c-c645-86f7-67d4-max"/>
+                        <modifier type="set" value="false" field="hidden"/>
+                      </modifiers>
+                      <conditions>
+                        <condition type="greaterThan" value="0" field="selections" scope="09d3-6357-7888-00d9" childId="0263-c056-d80a-2192" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </modifierGroup>
+                  </modifierGroups>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntryGroup>
-            <selectionEntryGroup id="6be0-87e2-a6a6-4d89" name="Melee weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="4af9-1fdc-54b3-617a">
+            <selectionEntryGroup id="6be0-87e2-a6a6-4d89" name="Exchange melee weapon for hammer" hidden="false" collective="false" import="true" defaultSelectionEntryId="4af9-1fdc-54b3-617a" sortIndex="1">
               <constraints>
-                <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="b537-5a6c-2286-fdc4" type="min"/>
                 <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="927f-af99-52bf-7e99" type="max"/>
               </constraints>
               <selectionEntries>
-                <selectionEntry id="4af9-1fdc-54b3-617a" name="Concussion gauntlet" hidden="false" collective="false" import="true" type="upgrade">
-                  <modifiers>
-                    <modifier type="set" field="d7eb-fe07-d167-9a06" value="1">
-                      <conditionGroups>
-                        <conditionGroup type="and">
-                          <conditions>
-                            <condition field="selections" scope="09d3-6357-7888-00d9" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="65c7-0826-fdc5-4c70" type="equalTo"/>
-                            <condition field="selections" scope="09d3-6357-7888-00d9" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="62a4-5af9-8d4d-9d0d" type="greaterThan"/>
-                          </conditions>
-                        </conditionGroup>
-                      </conditionGroups>
-                    </modifier>
-                  </modifiers>
+                <selectionEntry id="4af9-1fdc-54b3-617a" name="Concussion gauntlet" hidden="true" collective="false" import="true" type="upgrade">
                   <constraints>
-                    <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="5419-e290-efe9-6f1a" type="max"/>
-                    <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="d7eb-fe07-d167-9a06" type="min"/>
+                    <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="d7eb-fe07-d167-9a06-min" type="min" automatic="true"/>
+                    <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="d7eb-fe07-d167-9a06-max" type="max" automatic="true"/>
                   </constraints>
                   <profiles>
                     <profile id="5976-f4e8-a531-171b" name="Concussion gauntlet" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
@@ -2781,23 +2783,28 @@ In your Shooting phase, each time a ^^**Brôkhyr, Ironkin Steeljacks^^** or ^^**
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="dbed-a8a9-0465-338c" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
-                </selectionEntry>
-                <selectionEntry id="e5aa-490d-0302-1725" name="Plasma blade gauntlet" hidden="false" collective="false" import="true" type="upgrade">
-                  <modifiers>
-                    <modifier type="set" field="602a-f80e-e4b4-e68d" value="1">
+                  <modifierGroups>
+                    <modifierGroup type="and">
+                      <modifiers>
+                        <modifier type="set" value="false" field="hidden"/>
+                        <modifier type="set" value="1" field="d7eb-fe07-d167-9a06-min"/>
+                        <modifier type="set" value="1" field="d7eb-fe07-d167-9a06-max"/>
+                      </modifiers>
                       <conditionGroups>
                         <conditionGroup type="and">
                           <conditions>
-                            <condition field="selections" scope="09d3-6357-7888-00d9" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="65c7-0826-fdc5-4c70" type="equalTo"/>
-                            <condition field="selections" scope="09d3-6357-7888-00d9" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="b37a-91d6-b8b2-f879" type="greaterThan"/>
+                            <condition type="equalTo" value="0" field="selections" scope="09d3-6357-7888-00d9" childId="65c7-0826-fdc5-4c70" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                            <condition type="greaterThan" value="0" field="selections" scope="09d3-6357-7888-00d9" childId="62a4-5af9-8d4d-9d0d" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
                           </conditions>
                         </conditionGroup>
                       </conditionGroups>
-                    </modifier>
-                  </modifiers>
+                    </modifierGroup>
+                  </modifierGroups>
+                </selectionEntry>
+                <selectionEntry id="e5aa-490d-0302-1725" name="Plasma blade gauntlet" hidden="true" collective="false" import="true" type="upgrade">
                   <constraints>
-                    <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="9116-790c-290d-fa6a" type="max"/>
-                    <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="602a-f80e-e4b4-e68d" type="min"/>
+                    <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="602a-f80e-e4b4-e68d-min" type="min" automatic="true"/>
+                    <constraint field="selections" scope="parent" value="0" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="602a-f80e-e4b4-e68d-max" type="max" automatic="true"/>
                   </constraints>
                   <profiles>
                     <profile id="8da5-d8bc-482d-40b8" name="Plasma blade gauntlet" hidden="false" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons">
@@ -2818,6 +2825,23 @@ In your Shooting phase, each time a ^^**Brôkhyr, Ironkin Steeljacks^^** or ^^**
                   <entryLinks>
                     <entryLink import="true" name="Weapon Modifications" hidden="false" id="951b-3530-bac5-e04d" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
                   </entryLinks>
+                  <modifierGroups>
+                    <modifierGroup type="and">
+                      <modifiers>
+                        <modifier type="set" value="false" field="hidden"/>
+                        <modifier type="set" value="1" field="602a-f80e-e4b4-e68d-min"/>
+                        <modifier type="set" value="1" field="602a-f80e-e4b4-e68d-max"/>
+                      </modifiers>
+                      <conditionGroups>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="equalTo" value="0" field="selections" scope="09d3-6357-7888-00d9" childId="65c7-0826-fdc5-4c70" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                            <condition type="greaterThan" value="0" field="selections" scope="09d3-6357-7888-00d9" childId="b37a-91d6-b8b2-f879" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                          </conditions>
+                        </conditionGroup>
+                      </conditionGroups>
+                    </modifierGroup>
+                  </modifierGroups>
                 </selectionEntry>
                 <selectionEntry id="65c7-0826-fdc5-4c70" name="Graviton hammer" hidden="false" collective="false" import="true" type="upgrade">
                   <profiles>
@@ -2845,7 +2869,7 @@ In your Shooting phase, each time a ^^**Brôkhyr, Ironkin Steeljacks^^** or ^^**
                 </selectionEntry>
               </selectionEntries>
             </selectionEntryGroup>
-            <selectionEntryGroup id="2196-580e-e955-7438" name="Crest" hidden="false" collective="false" import="true" defaultSelectionEntryId="c141-40fc-ea1f-8761">
+            <selectionEntryGroup id="2196-580e-e955-7438" name="Crest" hidden="false" collective="false" import="true" defaultSelectionEntryId="c141-40fc-ea1f-8761" sortIndex="3">
               <constraints>
                 <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="aee0-1fe8-9821-e83b" type="min"/>
                 <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="3149-3fb8-86b4-a31f" type="max"/>
@@ -2892,7 +2916,7 @@ In your Shooting phase, each time a ^^**Brôkhyr, Ironkin Steeljacks^^** or ^^**
                 </profile>
               </profiles>
               <selectionEntries>
-                <selectionEntry id="f20b-a6da-5664-311a" name="Exo-armour grenade launcher" hidden="false" collective="true" import="true" type="upgrade">
+                <selectionEntry id="f20b-a6da-5664-311a" name="Exo-armour grenade launcher" hidden="false" collective="true" import="true" type="upgrade" sortIndex="3">
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="5ed0-f767-da6e-32a9" type="min"/>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="81d2-63a0-9bae-1220" type="max"/>
@@ -2922,7 +2946,7 @@ In your Shooting phase, each time a ^^**Brôkhyr, Ironkin Steeljacks^^** or ^^**
                 </selectionEntry>
               </selectionEntries>
               <selectionEntryGroups>
-                <selectionEntryGroup id="ccb3-8ee6-568d-eee9" name="Ranged weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="58c5-35f8-3823-bf60">
+                <selectionEntryGroup id="ccb3-8ee6-568d-eee9" name="Squad ranged weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="58c5-35f8-3823-bf60" sortIndex="2">
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="5c42-136b-b044-d5ca" type="min"/>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="50a9-0db8-3617-8be0" type="max"/>
@@ -2978,7 +3002,7 @@ In your Shooting phase, each time a ^^**Brôkhyr, Ironkin Steeljacks^^** or ^^**
                     </selectionEntry>
                   </selectionEntries>
                 </selectionEntryGroup>
-                <selectionEntryGroup id="d243-2501-7db6-ba08" name="Melee weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="62a4-5af9-8d4d-9d0d">
+                <selectionEntryGroup id="d243-2501-7db6-ba08" name="Squad melee weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="62a4-5af9-8d4d-9d0d" sortIndex="1">
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="4694-f2ba-db6f-cb9f" type="min"/>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="c8f5-ed6e-7b65-c2a4" type="max"/>
@@ -3215,7 +3239,7 @@ In your Shooting phase, each time a ^^**Brôkhyr, Ironkin Steeljacks^^** or ^^**
                 </profile>
               </profiles>
               <selectionEntryGroups>
-                <selectionEntryGroup id="34e2-9d32-58ea-3d85" name="Weapon" hidden="false" collective="false" import="true" defaultSelectionEntryId="0e8e-5168-13f2-1dba">
+                <selectionEntryGroup id="34e2-9d32-58ea-3d85" name="Squad weapon choice" hidden="false" collective="false" import="true" defaultSelectionEntryId="0e8e-5168-13f2-1dba">
                   <constraints>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="ef3c-2705-7e1e-206c" type="min"/>
                     <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="2692-4282-83b2-dda9" type="max"/>
