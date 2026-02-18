@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="77b9-2f66-3f9b-5cf3" name="Imperium - Adeptus Mechanicus" revision="96" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="77b9-2f66-3f9b-5cf3" name="Imperium - Adeptus Mechanicus" revision="97" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <categoryEntries>
     <categoryEntry id="f826-1ad1-a542-2058" name="Archaeopter Fusilave" hidden="false"/>
     <categoryEntry id="37b3-cded-c814-6e63" name="Archaeopter Stratoraptor" hidden="false"/>
@@ -10020,6 +10020,30 @@ Models in this unit have the Stealth ability.</description>
           <categoryLinks>
             <categoryLink name="Tech-Priest" hidden="false" id="1c71-45bc-0727-c304" targetId="59a9-b5cc-7c11-aaad" primary="false"/>
           </categoryLinks>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Conversion Eradicator" field="annotation" join=", " affects="self.entries.recursive.profiles.Ranged Weapons"/>
+                <modifier type="increment" value="1" field="2229-f494-25db-c5d3" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+                <modifier type="decrement" value="1" field="9ead-8a10-520-de15" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+              </modifiers>
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="2d2d-00ea-46cb-e1be" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+              <comment>Archeotech - Conversion Eradicator</comment>
+            </modifierGroup>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Inverse Power Feeds" field="annotation" join=", " affects="self.entries.recursive.profiles.Melee Weapons"/>
+                <modifier type="replace" value="" field="893f-9000-ccf7-648e" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="-"/>
+                <modifier type="append" value="Devastating Wounds" field="893f-9000-ccf7-648e" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+              </modifiers>
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="e0b9-4e65-7e12-dac2" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+              <comment>Archeotech - Inverse Power Feeds</comment>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
         <selectionEntry type="model" import="true" name="Gun Servitor w/ heavy arc rifle" hidden="false" id="5246-588d-c834-5df5" sortIndex="3">
           <constraints>
@@ -11999,6 +12023,7 @@ Models in this unit have the Stealth ability.</description>
     </selectionEntryGroup>
     <selectionEntryGroup name="Crusade" id="631d-2f3a-99a1-2ab0" hidden="false" collapsible="true">
       <entryLinks>
+        <entryLink targetId="e87c-1997-7de4-ba80" id="775b-a63e-711e-9e0e" type="selectionEntryGroup" name="Archeotech" hidden="false" sortIndex="6"/>
         <entryLink import="true" name="Experience Points" hidden="false" id="c4a0-896e-61fe-6ee0" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9" sortIndex="1"/>
         <entryLink import="true" name="Legendary Veterans" hidden="false" id="c4db-389c-7d87-2757" type="selectionEntry" targetId="1511-18fe-f51e-7b9d" sortIndex="2"/>
         <entryLink import="true" name="Battle Scars" hidden="false" id="8a56-e95e-7b67-a39b" type="selectionEntryGroup" targetId="1576-e816-033f-828d" collapsible="true" sortIndex="5"/>
@@ -12012,532 +12037,6 @@ Models in this unit have the Stealth ability.</description>
       </modifiers>
       <comment>Crusade content</comment>
       <selectionEntryGroups>
-        <selectionEntryGroup name="Archeotech" id="e87c-1997-7de4-ba80" hidden="false" collapsible="true" sortIndex="6">
-          <selectionEntryGroups>
-            <selectionEntryGroup name="Archeotech Weapon" id="2766-5bb2-a36e-8754" hidden="false">
-              <constraints>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8e80-00d7-782c-1071" includeChildSelections="false"/>
-              </constraints>
-              <selectionEntries>
-                <selectionEntry type="upgrade" import="true" name="Digital Cannon" hidden="false" id="9c04-8111-7910-1404">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Digital Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="e9a8-9974-991b-7aae">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Electro-fire Implants" hidden="false" id="8fc3-7a73-5dfb-b853">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Electro-fire Implants" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="ddba-ac23-9a58-7cf9">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Anti-Infantry 4+, Torrent</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Anti-" id="a0e1-271d-ec6d-6d96" hidden="false" type="rule" targetId="4111-82e3-9444-e942"/>
-                    <infoLink name="Torrent" id="3cb4-de82-1659-92c6" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
-                    <infoLink name="Assault" id="bfc7-a93f-4810-d583" hidden="false" type="rule" targetId="fc8a-8c24-bae9-cc1c"/>
-                  </infoLinks>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Neural Jammer" hidden="false" id="305e-a5b6-a14d-68a9">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Neural Jammer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="8e27-e96d-dbc0-7b7e">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">4</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Devastating Wounds, Pistol, Precision</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Devastating Wounds" id="4321-8198-93eb-eace" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
-                    <infoLink name="Precision" id="a385-b35c-e822-da5a" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
-                    <infoLink name="Pistol" id="c4c3-b0f5-baff-baa9" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
-                  </infoLinks>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Nanoshard Projector" hidden="false" id="ecf3-253f-f27b-1610">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Nanoshard Projector" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="09c7-9367-38ab-6f59">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Lethal Hits, Pistol</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Lethal Hits" id="b477-5182-e56f-7600" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
-                    <infoLink name="Pistol" id="dc67-71cd-6fac-ce4b" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
-                  </infoLinks>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Arc Annulus" hidden="false" id="c888-59e6-9469-ccf0">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Arc Annulus" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="a31b-219c-3c76-ee0e">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-Vehicle 3+, Pistol</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Anti-" id="86f1-d2a6-1d26-3653" hidden="false" type="rule" targetId="4111-82e3-9444-e942"/>
-                    <infoLink name="Pistol" id="9659-0fcc-15d5-5132" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
-                  </infoLinks>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Electro-fused Vambraces" hidden="false" id="66e9-ebb1-9706-6d3b">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Electro-fused Vambraces" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="5d66-47b3-14a6-1f7d">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">6</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol, Sustained Hits 2</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Sustained Hits" id="d858-e4df-fb05-a9b1" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
-                    <infoLink name="Pistol" id="215c-7697-45a7-d082" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
-                  </infoLinks>
-                </selectionEntry>
-              </selectionEntries>
-            </selectionEntryGroup>
-            <selectionEntryGroup name="Archeotech Force Field" id="def6-0a72-7b6e-5c27" hidden="false">
-              <constraints>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b92a-fb5d-b35f-68ce" includeChildSelections="false"/>
-              </constraints>
-              <selectionEntries>
-                <selectionEntry type="upgrade" import="true" name="Technodermis" hidden="false" id="d387-a26c-cb02-f3a3">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Technodermis" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a23f-f940-c6fc-b8e6">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Improve the Save and Wounds characteristics of this model by 1.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <modifierGroups>
-                    <modifierGroup type="and">
-                      <modifiers>
-                        <modifier type="append" value="Technodermis" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Unit">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="d387-a26c-cb02-f3a3" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="decrement" value="1" field="450-a17e-9d5e-29da" scope="model-or-unit" affects="self.entries.recursive.profiles.Unit" join=", ">
-                          <conditions>
-                            <condition type="equalTo" value="1" field="selections" scope="model-or-unit" childId="d387-a26c-cb02-f3a3" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" scope="model-or-unit" affects="self.entries.recursive.profiles.Unit" join=", ">
-                          <conditions>
-                            <condition type="equalTo" value="1" field="selections" scope="model-or-unit" childId="d387-a26c-cb02-f3a3" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
-                    </modifierGroup>
-                  </modifierGroups>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Void Shell" hidden="false" id="26a9-1841-b51f-bbe7">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Void Shell" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e456-1b0a-0223-d850">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, at the start of any phase, this model can use this ability. If it does, until the end of the phase, this model has a 2+ invulnerable save.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Time Sink" hidden="false" id="7a75-c0e2-ddf9-4c87">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Time Sink" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c78c-3f21-cf24-041b">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the Fight phase, select one enemy unit within Engagement Range of this model and roll one D6: on a 4+, until the end of the turn, reduce the Weapon Skill characteristic of melee weapons equipped by that enemy unit by 1.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Arc Implants" hidden="false" id="9c37-8b7c-0853-7b73">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Arc Implants" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8104-3c75-79fd-ce03">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, in your opponent&apos;s Charge phase, just after this model&apos;s unit has been selected as a target of an enemy unit&apos;s charge, this model can use this ability. If it does, until the end of the phase, subtract 2 from Charge rolls made for that enemy unit.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Conversion Eradicator" hidden="false" id="2d2d-00ea-46cb-e1be">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Conversion Eradicator" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="bc26-17cc-b18f-6a37">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Improve the Strength and Armour Penetration characteristics of ranged weapons equipped by this model by 1.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <modifierGroups>
-                    <modifierGroup type="and">
-                      <modifiers>
-                        <modifier type="append" value="Conversion Eradicator" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Ranged Weapons">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="2d2d-00ea-46cb-e1be" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="increment" value="1" field="2229-f494-25db-c5d3" scope="model-or-unit" affects="self.entries.recursive.profiles.Ranged Weapons" join=", ">
-                          <conditions>
-                            <condition type="equalTo" value="1" field="selections" scope="model-or-unit" childId="2d2d-00ea-46cb-e1be" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="decrement" value="1" field="9ead-8a10-520-de15" scope="model-or-unit" affects="self.entries.recursive.profiles.Ranged Weapons" join=", ">
-                          <conditions>
-                            <condition type="equalTo" value="1" field="selections" scope="model-or-unit" childId="2d2d-00ea-46cb-e1be" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
-                    </modifierGroup>
-                  </modifierGroups>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Inverse Power Feeds" hidden="false" id="e0b9-4e65-7e12-dac2">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Inverse Power Feeds" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="21c3-e79f-94e6-51f3">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Melee weapons equipped by this model have the **[DEVASTATING WOUNDS]** ability.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Devastating Wounds" id="4efb-ee8d-bed3-cd34" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
-                  </infoLinks>
-                  <modifierGroups>
-                    <modifierGroup type="and">
-                      <modifiers>
-                        <modifier type="append" value="Inverse Power Feeds" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="e0b9-4e65-7e12-dac2" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="append" value="Devastating Wounds" field="893f-9000-ccf7-648e" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons" join=", ">
-                          <conditions>
-                            <condition type="equalTo" value="1" field="selections" scope="model-or-unit" childId="e0b9-4e65-7e12-dac2" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
-                    </modifierGroup>
-                  </modifierGroups>
-                </selectionEntry>
-              </selectionEntries>
-            </selectionEntryGroup>
-            <selectionEntryGroup name="Archeotech Techno-arcana" id="3f5d-abab-9199-6a65" hidden="false">
-              <constraints>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cb88-0095-6ab4-4898" includeChildSelections="false"/>
-              </constraints>
-              <selectionEntries>
-                <selectionEntry type="upgrade" import="true" name="Hypercircuit" hidden="false" id="145f-104f-4e27-4e50">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Hypercircuit" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ea86-ca6f-48e1-2064">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select up to two **^^Adeptus Mechanicus^^** units (excluding **^^Vehicles^^**) from your Crusade army. Once per battle per selected unit, you can target that unit with the Heroic Intervention Stratagem for 0CP, and can do so even if you have already targeted a different unit with that Stratagem this phase.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Hagioscope" hidden="false" id="5170-dc14-8305-bb10">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Hagioscope" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c473-5e0b-1e9a-a8ef">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select one enemy unit. Each time an **^^Adeptus Mechanicus^^** unit from your Crusade army makes a ranged attack that targets that enemy unit, you can ignore any or all modifiers to the Hit roll, the Wound roll and the Ballistic Skill characteristic of that attack.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Exo-gauntlet" hidden="false" id="cae6-256e-8c77-ef78">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Exo-gauntlet" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="fd03-784a-c9a1-8351">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select one enemy unit. Each time an **^^Adeptus Mechanicus^^** unit from your Crusade army makes a melee attack that targets that enemy unit, re-roll a Hit roll of 1.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Ferrosanctic Orrery" hidden="false" id="0875-ea20-d01c-55f8">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Ferrosanctic Orrery" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5af8-1aef-8a68-b889">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select up to two **^^Adeptus Mechanicus^^** units from your Crusade army, then select one objective marker that is not in your deployment zone. While a unit you selected for this ability is within range of that objective market, improve the Leadership and Objective Control characteristics of models in that unit by 1.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Obscuroptikon" hidden="false" id="d13d-7d1b-2f87-559c">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Obscuroptikon" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9c28-c7d5-7430-5325">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select up to two **^^Adeptus Mechanicus Infantry^^** units from your Crusade army. Each time an enemy unit makes a ranged attack that targets one of those units, until the end of the phase, models in the targeted unit have a 5+ invulnerable save against ranged attacks.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Tri-dimensional Covenant" hidden="false" id="6888-61e0-e956-a866">
-                  <costs>
-                    <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
-                    <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
-                    <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-                    <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-                    <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-                  </costs>
-                  <profiles>
-                    <profile name="Tri-dimensional Covenant" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e752-8ad2-d948-bcbc">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select up to two **^^Adeptus Mechanicus Infantry^^** units from your Crusade army. Until the end of the battle, add 1 to Advance and Charge rolls made for those units.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                </selectionEntry>
-              </selectionEntries>
-            </selectionEntryGroup>
-            <selectionEntryGroup name="Legendary Archeotech" id="1e37-e496-a75b-6a4c" hidden="false">
-              <constraints>
-                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0499-84af-38a4-85c8" includeChildSelections="false"/>
-              </constraints>
-              <selectionEntries>
-                <selectionEntry type="upgrade" import="true" name="Augur of the First Reclamation" hidden="false" id="f790-7070-bdfd-9652">
-                  <profiles>
-                    <profile name="Augur of the First Reclamation" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="434f-7290-105e-57c9">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 2 to the bearer&apos;s Objective Control characteristic, and at the end of your Command phase, if the bearer is within range of an objective marker that is not in your deployment zone, you gain 1CP. In addition, at the end of the battle, if the bearer was in your Crusade army and you won that battle, roll one D6: on a 4+, your Crusade force acquires one Archeotech Part.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <modifierGroups>
-                    <modifierGroup type="and">
-                      <modifiers>
-                        <modifier type="append" value="Augur of the First Reclamation" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Unit">
-                          <conditions>
-                            <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="f790-7070-bdfd-9652" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="increment" value="2" field="bef7-942a-1a23-59f8" scope="model-or-unit" affects="self.entries.recursive.profiles.Unit" join=", ">
-                          <conditions>
-                            <condition type="equalTo" value="1" field="selections" scope="model-or-unit" childId="f790-7070-bdfd-9652" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
-                    </modifierGroup>
-                  </modifierGroups>
-                  <modifiers>
-                    <modifier type="set" value="true" field="hidden">
-                      <conditions>
-                        <condition type="lessThan" value="1" field="selections" scope="roster" childId="2ec4-5bb9-4000-dbbd" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="Syntaxik Charger" hidden="false" id="6fe8-4ba8-e7fd-b16e">
-                  <profiles>
-                    <profile name="Syntaxik Charger" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="3810-3970-c019-60eb">
-                      <characteristics>
-                        <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
-                        <characteristic name="A" typeId="3bb-c35f-f54-fb08">8</characteristic>
-                        <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
-                        <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
-                        <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
-                        <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
-                        <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-Infantry 2+, Devastating Wounds, One Shot, Sonic Devastation</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <infoLinks>
-                    <infoLink name="Devastating Wounds" id="a538-90c6-98b1-4310" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
-                    <infoLink name="Anti-" id="3a1a-caf2-4bf7-295d" hidden="false" type="rule" targetId="4111-82e3-9444-e942"/>
-                    <infoLink name="One Shot" id="3757-0589-4aa9-8c46" hidden="false" type="rule" targetId="cd26-1611-860a-91e4"/>
-                  </infoLinks>
-                  <rules>
-                    <rule name="Sonic Devastation" id="e9c1-2245-71b1-ca2a" hidden="false">
-                      <description>In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks made with this weapon. Until the start of your next turn, worsen the Weapon Skill characteristic of melee weapons equipped by models in that unit by 1.</description>
-                    </rule>
-                  </rules>
-                  <modifiers>
-                    <modifier type="set" value="true" field="hidden">
-                      <conditions>
-                        <condition type="lessThan" value="1" field="selections" scope="roster" childId="11ab-0495-1c8f-9d17" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
-                </selectionEntry>
-                <selectionEntry type="upgrade" import="true" name="The Doom of Thorantus" hidden="false" id="aaa4-0e8b-0804-15c1">
-                  <profiles>
-                    <profile name="The Doom of Thorantus" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="018f-3ad6-0398-a338">
-                      <characteristics>
-                        <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, at the end of your Movement phase, select one enemy **^^Vehicle^^** unit within 18&quot; of and visible to the bearer. Until the start of your next Movement phase, subtract 2 from the Attacks characteristic of ranged weapons equipped by models in that unit, and each time that unit ends a Normal, Advance, Fall Back or Charge move, it suffers D6 mortal wounds.</characteristic>
-                      </characteristics>
-                    </profile>
-                  </profiles>
-                  <modifiers>
-                    <modifier type="set" value="true" field="hidden">
-                      <conditions>
-                        <condition type="lessThan" value="1" field="selections" scope="roster" childId="dbe3-6eae-3daf-7aae" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                      </conditions>
-                    </modifier>
-                  </modifiers>
-                </selectionEntry>
-              </selectionEntries>
-            </selectionEntryGroup>
-          </selectionEntryGroups>
-          <modifiers>
-            <modifier type="set" value="true" field="hidden">
-              <conditions>
-                <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="59a9-b5cc-7c11-aaad" shared="true" includeChildSelections="false" includeChildForces="false"/>
-              </conditions>
-            </modifier>
-          </modifiers>
-        </selectionEntryGroup>
         <selectionEntryGroup name="Battle Tallies" id="6107-41d0-149e-a4e6" hidden="false" sortIndex="3">
           <selectionEntries>
             <selectionEntry type="upgrade" import="true" name="Battles Played" hidden="false" id="aa34-fbc0-4844-fe60"/>
@@ -12601,6 +12100,506 @@ Models in this unit have the Stealth ability.</description>
           </selectionEntries>
         </selectionEntryGroup>
       </selectionEntryGroups>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Archeotech" id="e87c-1997-7de4-ba80" hidden="false" collapsible="true" sortIndex="">
+      <selectionEntryGroups>
+        <selectionEntryGroup name="Archeotech Weapon" id="2766-5bb2-a36e-8754" hidden="false">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8e80-00d7-782c-1071" includeChildSelections="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Digital Cannon" hidden="false" id="9c04-8111-7910-1404">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Digital Cannon" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="e9a8-9974-991b-7aae">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">6</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">3</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">-</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Electro-fire Implants" hidden="false" id="8fc3-7a73-5dfb-b853">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Electro-fire Implants" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="ddba-ac23-9a58-7cf9">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6+3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Assault, Anti-Infantry 4+, Torrent</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Anti-" id="a0e1-271d-ec6d-6d96" hidden="false" type="rule" targetId="4111-82e3-9444-e942"/>
+                <infoLink name="Torrent" id="3cb4-de82-1659-92c6" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
+                <infoLink name="Assault" id="bfc7-a93f-4810-d583" hidden="false" type="rule" targetId="fc8a-8c24-bae9-cc1c"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Neural Jammer" hidden="false" id="305e-a5b6-a14d-68a9">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Neural Jammer" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="8e27-e96d-dbc0-7b7e">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">18&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">4</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">4</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-2</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Devastating Wounds, Pistol, Precision</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Devastating Wounds" id="4321-8198-93eb-eace" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
+                <infoLink name="Precision" id="a385-b35c-e822-da5a" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
+                <infoLink name="Pistol" id="c4c3-b0f5-baff-baa9" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Nanoshard Projector" hidden="false" id="ecf3-253f-f27b-1610">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Nanoshard Projector" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="09c7-9367-38ab-6f59">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">3</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Lethal Hits, Pistol</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Lethal Hits" id="b477-5182-e56f-7600" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
+                <infoLink name="Pistol" id="dc67-71cd-6fac-ce4b" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Arc Annulus" hidden="false" id="c888-59e6-9469-ccf0">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Arc Annulus" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="a31b-219c-3c76-ee0e">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">2</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">7</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">2</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-Vehicle 3+, Pistol</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Anti-" id="86f1-d2a6-1d26-3653" hidden="false" type="rule" targetId="4111-82e3-9444-e942"/>
+                <infoLink name="Pistol" id="9659-0fcc-15d5-5132" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
+              </infoLinks>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Electro-fused Vambraces" hidden="false" id="66e9-ebb1-9706-6d3b">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Electro-fused Vambraces" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="5d66-47b3-14a6-1f7d">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">6</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Pistol, Sustained Hits 2</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Sustained Hits" id="d858-e4df-fb05-a9b1" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
+                <infoLink name="Pistol" id="215c-7697-45a7-d082" hidden="false" type="rule" targetId="8bf7-8812-923d-29e4"/>
+              </infoLinks>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Archeotech Force Field" id="def6-0a72-7b6e-5c27" hidden="false">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b92a-fb5d-b35f-68ce" includeChildSelections="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Technodermis" hidden="false" id="d387-a26c-cb02-f3a3">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Technodermis" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a23f-f940-c6fc-b8e6">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Improve the Save and Wounds characteristics of this model by 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Technodermis" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.59a9-b5cc-7c11-aaad.profiles.Unit"/>
+                    <modifier type="decrement" value="1" field="450-a17e-9d5e-29da" scope="root-entry" affects="self.entries.recursive.59a9-b5cc-7c11-aaad.profiles.Unit" join=", "/>
+                    <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" scope="root-entry" affects="self.entries.recursive.59a9-b5cc-7c11-aaad.profiles.Unit" join=", "/>
+                    <modifier type="floor" value="2" field="450-a17e-9d5e-29da" scope="root-entry" affects="self.entries.recursive.59a9-b5cc-7c11-aaad.profiles.Unit" join=", "/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Void Shell" hidden="false" id="26a9-1841-b51f-bbe7">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Void Shell" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e456-1b0a-0223-d850">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, at the start of any phase, this model can use this ability. If it does, until the end of the phase, this model has a 2+ invulnerable save.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Time Sink" hidden="false" id="7a75-c0e2-ddf9-4c87">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Time Sink" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c78c-3f21-cf24-041b">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the Fight phase, select one enemy unit within Engagement Range of this model and roll one D6: on a 4+, until the end of the turn, reduce the Weapon Skill characteristic of melee weapons equipped by that enemy unit by 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Arc Implants" hidden="false" id="9c37-8b7c-0853-7b73">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Arc Implants" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8104-3c75-79fd-ce03">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, in your opponent&apos;s Charge phase, just after this model&apos;s unit has been selected as a target of an enemy unit&apos;s charge, this model can use this ability. If it does, until the end of the phase, subtract 2 from Charge rolls made for that enemy unit.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Conversion Eradicator" hidden="false" id="2d2d-00ea-46cb-e1be">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Conversion Eradicator" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="bc26-17cc-b18f-6a37">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Improve the Strength and Armour Penetration characteristics of ranged weapons equipped by this model by 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Conversion Eradicator" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Ranged Weapons"/>
+                    <modifier type="increment" value="1" field="2229-f494-25db-c5d3" scope="root-entry" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+                    <modifier type="decrement" value="1" field="9ead-8a10-520-de15" scope="root-entry" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+                  </modifiers>
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="parent" childId="59a9-b5cc-7c11-aaad" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                  </conditions>
+                </modifierGroup>
+              </modifierGroups>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Inverse Power Feeds" hidden="false" id="e0b9-4e65-7e12-dac2">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Inverse Power Feeds" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="21c3-e79f-94e6-51f3">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Melee weapons equipped by this model have the **[DEVASTATING WOUNDS]** ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Devastating Wounds" id="4efb-ee8d-bed3-cd34" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
+              </infoLinks>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Inverse Power Feeds" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="replace" value="" field="893f-9000-ccf7-648e" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons" join=", " arg="-"/>
+                    <modifier type="append" value="Devastating Wounds" field="893f-9000-ccf7-648e" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+                  </modifiers>
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="parent" childId="59a9-b5cc-7c11-aaad" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                  </conditions>
+                </modifierGroup>
+              </modifierGroups>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Archeotech Techno-arcana" id="3f5d-abab-9199-6a65" hidden="false">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="cb88-0095-6ab4-4898" includeChildSelections="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Hypercircuit" hidden="false" id="145f-104f-4e27-4e50">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Hypercircuit" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ea86-ca6f-48e1-2064">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select up to two **^^Adeptus Mechanicus^^** units (excluding **^^Vehicles^^**) from your Crusade army. Once per battle per selected unit, you can target that unit with the Heroic Intervention Stratagem for 0CP, and can do so even if you have already targeted a different unit with that Stratagem this phase.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Hagioscope" hidden="false" id="5170-dc14-8305-bb10">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Hagioscope" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c473-5e0b-1e9a-a8ef">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select one enemy unit. Each time an **^^Adeptus Mechanicus^^** unit from your Crusade army makes a ranged attack that targets that enemy unit, you can ignore any or all modifiers to the Hit roll, the Wound roll and the Ballistic Skill characteristic of that attack.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Exo-gauntlet" hidden="false" id="cae6-256e-8c77-ef78">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Exo-gauntlet" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="fd03-784a-c9a1-8351">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select one enemy unit. Each time an **^^Adeptus Mechanicus^^** unit from your Crusade army makes a melee attack that targets that enemy unit, re-roll a Hit roll of 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Ferrosanctic Orrery" hidden="false" id="0875-ea20-d01c-55f8">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Ferrosanctic Orrery" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5af8-1aef-8a68-b889">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select up to two **^^Adeptus Mechanicus^^** units from your Crusade army, then select one objective marker that is not in your deployment zone. While a unit you selected for this ability is within range of that objective market, improve the Leadership and Objective Control characteristics of models in that unit by 1.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Obscuroptikon" hidden="false" id="d13d-7d1b-2f87-559c">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Obscuroptikon" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9c28-c7d5-7430-5325">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select up to two **^^Adeptus Mechanicus Infantry^^** units from your Crusade army. Each time an enemy unit makes a ranged attack that targets one of those units, until the end of the phase, models in the targeted unit have a 5+ invulnerable save against ranged attacks.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Tri-dimensional Covenant" hidden="false" id="6888-61e0-e956-a866">
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="1"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+              </costs>
+              <profiles>
+                <profile name="Tri-dimensional Covenant" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="e752-8ad2-d948-bcbc">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the start of the battle, select up to two **^^Adeptus Mechanicus Infantry^^** units from your Crusade army. Until the end of the battle, add 1 to Advance and Charge rolls made for those units.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Legendary Archeotech" id="1e37-e496-a75b-6a4c" hidden="false">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0499-84af-38a4-85c8" includeChildSelections="false"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Augur of the First Reclamation" hidden="false" id="f790-7070-bdfd-9652">
+              <profiles>
+                <profile name="Augur of the First Reclamation" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="434f-7290-105e-57c9">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Add 2 to the bearer&apos;s Objective Control characteristic, and at the end of your Command phase, if the bearer is within range of an objective marker that is not in your deployment zone, you gain 1CP. In addition, at the end of the battle, if the bearer was in your Crusade army and you won that battle, roll one D6: on a 4+, your Crusade force acquires one Archeotech Part.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Augur of the First Reclamation" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.59a9-b5cc-7c11-aaad.profiles.Unit"/>
+                    <modifier type="increment" value="2" field="bef7-942a-1a23-59f8" scope="model-or-unit" affects="self.entries.recursive.59a9-b5cc-7c11-aaad.profiles.Unit" join=", "/>
+                  </modifiers>
+                </modifierGroup>
+              </modifierGroups>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="2ec4-5bb9-4000-dbbd" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Syntaxik Charger" hidden="false" id="6fe8-4ba8-e7fd-b16e">
+              <profiles>
+                <profile name="Syntaxik Charger" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="3810-3970-c019-60eb">
+                  <characteristics>
+                    <characteristic name="Range" typeId="9896-9419-16a1-92fc">24&quot;</characteristic>
+                    <characteristic name="A" typeId="3bb-c35f-f54-fb08">8</characteristic>
+                    <characteristic name="BS" typeId="94d-8a98-cf90-183e">3+</characteristic>
+                    <characteristic name="S" typeId="2229-f494-25db-c5d3">3</characteristic>
+                    <characteristic name="AP" typeId="9ead-8a10-520-de15">0</characteristic>
+                    <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                    <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Anti-Infantry 2+, Devastating Wounds, One Shot, Sonic Devastation</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <infoLinks>
+                <infoLink name="Devastating Wounds" id="a538-90c6-98b1-4310" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
+                <infoLink name="Anti-" id="3a1a-caf2-4bf7-295d" hidden="false" type="rule" targetId="4111-82e3-9444-e942"/>
+                <infoLink name="One Shot" id="3757-0589-4aa9-8c46" hidden="false" type="rule" targetId="cd26-1611-860a-91e4"/>
+              </infoLinks>
+              <rules>
+                <rule name="Sonic Devastation" id="e9c1-2245-71b1-ca2a" hidden="false">
+                  <description>In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks made with this weapon. Until the start of your next turn, worsen the Weapon Skill characteristic of melee weapons equipped by models in that unit by 1.</description>
+                </rule>
+              </rules>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="11ab-0495-1c8f-9d17" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="The Doom of Thorantus" hidden="false" id="aaa4-0e8b-0804-15c1">
+              <profiles>
+                <profile name="The Doom of Thorantus" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="018f-3ad6-0398-a338">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, at the end of your Movement phase, select one enemy **^^Vehicle^^** unit within 18&quot; of and visible to the bearer. Until the start of your next Movement phase, subtract 2 from the Attacks characteristic of ranged weapons equipped by models in that unit, and each time that unit ends a Normal, Advance, Fall Back or Charge move, it suffers D6 mortal wounds.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="dbe3-6eae-3daf-7aae" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+      </selectionEntryGroups>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="59a9-b5cc-7c11-aaad" shared="true" includeChildSelections="false" includeChildForces="false"/>
+                <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="b94e-c390-0c3b-f9cf" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+      </modifiers>
+      <comment>Crusade content</comment>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <sharedRules>

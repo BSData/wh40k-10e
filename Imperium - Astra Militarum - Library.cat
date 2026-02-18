@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="175" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="178" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Aegis Defence Line" hidden="false" id="cb99-456-f100-40ed">
       <categoryLinks>
@@ -2228,6 +2228,26 @@
                   </attributes>
                 </profile>
               </profiles>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " affects="self.entries.recursive.profiles.Ranged Weapons">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="5a93-ac18-0fe8-fce5" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+                    <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+                    <modifier type="floor" value="2" field="95d1-95f-45b4-11d6" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+                    <modifier type="floor" value="2" field="94d-8a98-cf90-183e" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+                  </modifiers>
+                  <comment>Magallian&apos;s Mantle</comment>
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="5a93-ac18-0fe8-fce5" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -8697,6 +8717,26 @@
               <entryLinks>
                 <entryLink import="true" name="Enhancements" hidden="false" id="a80b-920a-d0f7-eac3" type="selectionEntryGroup" targetId="33fd-bb93-1bf4-f1c"/>
               </entryLinks>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " affects="self.entries.recursive.profiles.Ranged Weapons">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="5a93-ac18-0fe8-fce5" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+                    <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+                    <modifier type="floor" value="2" field="95d1-95f-45b4-11d6" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+                    <modifier type="floor" value="2" field="94d-8a98-cf90-183e" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+                  </modifiers>
+                  <comment>Magallian&apos;s Mantle</comment>
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="5a93-ac18-0fe8-fce5" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -13879,18 +13919,23 @@ While this unit is joined to a unit, it can embark within any **^^Transport^^** 
             <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
             <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
           </characteristics>
-          <modifiers>
-            <modifier type="append" value="Sustained Hits 1" field="893f-9000-ccf7-648e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", ">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="unit" childId="26be-2062-a96a-32fa" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
-            <modifier type="append" value="Deadly Combatant" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="unit" childId="26be-2062-a96a-32fa" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
-          </modifiers>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <comment>Deadly Combatant</comment>
+              <modifiers>
+                <modifier type="append" value="Deadly Combatant" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="26be-2062-a96a-32fa" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="append" value="Sustained Hits 1" field="893f-9000-ccf7-648e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", ">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="26be-2062-a96a-32fa" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
         </profile>
       </profiles>
       <comment>A3 WS4+</comment>
@@ -14314,18 +14359,23 @@ While this unit is joined to a unit, it can embark within any **^^Transport^^** 
             <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
             <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
           </characteristics>
-          <modifiers>
-            <modifier type="append" value="Sustained Hits 1" field="893f-9000-ccf7-648e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", ">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="unit" childId="26be-2062-a96a-32fa" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
-            <modifier type="append" value="Deadly Combatant" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="unit" childId="26be-2062-a96a-32fa" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
-          </modifiers>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <comment>Deadly Combatant</comment>
+              <modifiers>
+                <modifier type="append" value="Deadly Combatant" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="26be-2062-a96a-32fa" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="append" value="Sustained Hits 1" field="893f-9000-ccf7-648e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", ">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="26be-2062-a96a-32fa" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
         </profile>
       </profiles>
       <comment>WS4+</comment>
@@ -22249,7 +22299,8 @@ While this unit is joined to a unit, it can embark within any **^^Transport^^** 
           <entryLinks>
             <entryLink import="true" name="Twin heavy stubber" hidden="false" id="ecb3-98e5-eb27-4db2" type="selectionEntry" targetId="ea02-8862-eeb3-afe6">
               <constraints>
-                <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="8153-ab0f-25e4-dbf3" includeChildSelections="true"/>
+                <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="8153-ab0f-25e4-dbf3" includeChildSelections="false"/>
+                <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="c89d-5bef-568a-6140" includeChildSelections="false"/>
               </constraints>
               <entryLinks>
                 <entryLink import="true" name="Weapon Modifications" hidden="false" id="a782-73bd-0131-3653" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
@@ -29573,18 +29624,23 @@ While this unit is joined to a unit, it can embark within any **^^Transport^^** 
             <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
             <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
           </characteristics>
-          <modifiers>
-            <modifier type="append" value="Sustained Hits 1" field="893f-9000-ccf7-648e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", ">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="unit" childId="26be-2062-a96a-32fa" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
-            <modifier type="append" value="Deadly Combatant" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="unit" childId="26be-2062-a96a-32fa" shared="true" includeChildSelections="true"/>
-              </conditions>
-            </modifier>
-          </modifiers>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <comment>Deadly Combatant</comment>
+              <modifiers>
+                <modifier type="append" value="Sustained Hits 1" field="893f-9000-ccf7-648e" scope="model" affects="self.entries.recursive.profiles.Melee Weapons" join=", ">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="26be-2062-a96a-32fa" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+                <modifier type="append" value="Deadly Combatant" field="annotation" join=", " scope="model" affects="self.entries.recursive.profiles.Melee Weapons">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="26be-2062-a96a-32fa" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
         </profile>
       </profiles>
       <comment>A4 WS4+</comment>
@@ -29849,6 +29905,26 @@ While this unit is joined to a unit, it can embark within any **^^Transport^^** 
                   </attributes>
                 </profile>
               </profiles>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " affects="self.entries.recursive.profiles.Ranged Weapons">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="5a93-ac18-0fe8-fce5" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+                    <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+                    <modifier type="floor" value="2" field="95d1-95f-45b4-11d6" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+                    <modifier type="floor" value="2" field="94d-8a98-cf90-183e" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+                  </modifiers>
+                  <comment>Magallian&apos;s Mantle</comment>
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="5a93-ac18-0fe8-fce5" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -30935,6 +31011,26 @@ Designer&apos;s Note: Place a Servo-scribes token next to the unit, removing it 
                   </attributes>
                 </profile>
               </profiles>
+              <modifierGroups>
+                <modifierGroup type="and">
+                  <modifiers>
+                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " affects="self.entries.recursive.profiles.Ranged Weapons">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="5a93-ac18-0fe8-fce5" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+                    <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+                    <modifier type="floor" value="2" field="95d1-95f-45b4-11d6" affects="self.entries.recursive.profiles.Melee Weapons" join=", "/>
+                    <modifier type="floor" value="2" field="94d-8a98-cf90-183e" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+                  </modifiers>
+                  <comment>Magallian&apos;s Mantle</comment>
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="5a93-ac18-0fe8-fce5" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </modifierGroup>
+              </modifierGroups>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -35872,9 +35968,14 @@ In the Declare Battle Formations step, the bearer can be attached to an **^^Ogr
                         </conditionGroup>
                         <conditionGroup type="and">
                           <conditions>
-                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
-                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true"/>
-                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="4100-95dc-a489-ffbc" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4100-95dc-a489-ffbc" shared="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="cf47-a0d7-7207-29dc" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4100-95dc-a489-ffbc" shared="true"/>
                           </conditions>
                         </conditionGroup>
                       </conditionGroups>
@@ -35922,9 +36023,14 @@ In the Declare Battle Formations step, the bearer can be attached to an **^^Ogr
                         </conditionGroup>
                         <conditionGroup type="and">
                           <conditions>
-                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
-                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true"/>
-                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="4100-95dc-a489-ffbc" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4100-95dc-a489-ffbc" shared="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="cf47-a0d7-7207-29dc" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4100-95dc-a489-ffbc" shared="true"/>
                           </conditions>
                         </conditionGroup>
                       </conditionGroups>
@@ -35950,15 +36056,31 @@ In the Declare Battle Formations step, the bearer can be attached to an **^^Ogr
               <modifierGroups>
                 <modifierGroup type="and">
                   <modifiers>
-                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Ranged Weapons"/>
+                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit"/>
                     <modifier type="decrement" value="1" field="450-a17e-9d5e-29da" scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit"/>
                     <modifier type="increment" value="1" field="750a-a2ec-90d3-21fe" scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit"/>
                     <modifier type="decrement" value="1" field="58d2-b879-49c7-43bc" scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit"/>
                     <modifier type="increment" value="1" field="bef7-942a-1a23-59f8" scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit"/>
-                    <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Ranged Weapons"/>
-                    <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6" scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Melee Weapons"/>
-                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Unit"/>
-                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.9cfd-1c32-585f-7d5c.profiles.Melee Weapons"/>
+                    <modifier type="decrement" value="1" field="94d-8a98-cf90-183e" scope="model-or-unit" affects="self.entries.recursive.profiles.Ranged Weapons">
+                      <conditions>
+                        <condition type="instanceOf" value="1" field="selections" scope="model" childId="9cfd-1c32-585f-7d5c" shared="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="decrement" value="1" field="95d1-95f-45b4-11d6" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
+                      <conditions>
+                        <condition type="instanceOf" value="1" field="selections" scope="model" childId="9cfd-1c32-585f-7d5c" shared="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Ranged Weapons">
+                      <conditions>
+                        <condition type="instanceOf" value="1" field="selections" scope="model" childId="9cfd-1c32-585f-7d5c" shared="true"/>
+                      </conditions>
+                    </modifier>
+                    <modifier type="append" value="Magallian&apos;s Mantle" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
+                      <conditions>
+                        <condition type="instanceOf" value="1" field="selections" scope="model" childId="9cfd-1c32-585f-7d5c" shared="true"/>
+                      </conditions>
+                    </modifier>
                   </modifiers>
                 </modifierGroup>
               </modifierGroups>
@@ -35991,9 +36113,14 @@ In the Declare Battle Formations step, the bearer can be attached to an **^^Ogr
                         </conditionGroup>
                         <conditionGroup type="and">
                           <conditions>
-                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
-                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="cf47-a0d7-7207-29dc" shared="true"/>
-                            <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="4100-95dc-a489-ffbc" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="e4d8-c6a1-7c23-ae25" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4100-95dc-a489-ffbc" shared="true"/>
+                          </conditions>
+                        </conditionGroup>
+                        <conditionGroup type="and">
+                          <conditions>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="cf47-a0d7-7207-29dc" shared="true"/>
+                            <condition type="notInstanceOf" value="1" field="selections" scope="parent" childId="4100-95dc-a489-ffbc" shared="true"/>
                           </conditions>
                         </conditionGroup>
                       </conditionGroups>
