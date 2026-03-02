@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="125" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="126" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Vindicare Assassin" hidden="false" id="efa3-2cf5-dcfb-b976">
       <categoryLinks>
@@ -19135,14 +19135,9 @@ For the purposes of interacting with terrain features, all models in units with 
           </costs>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
-              <conditionGroups>
-                <conditionGroup type="or">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="false" includeChildForces="false"/>
-                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="34d8-ef3d-2c30-1671" shared="true" includeChildSelections="true" includeChildForces="false"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
             </modifier>
             <modifier type="add" value="22a1-b48a-b3d4-dc02" field="category" scope="parent">
               <conditions>
@@ -19153,6 +19148,16 @@ For the purposes of interacting with terrain features, all models in units with 
               <conditions>
                 <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
               </conditions>
+            </modifier>
+            <modifier type="add" value="A unit cannot be both Radical and Puritan." field="error">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="22a1-b48a-b3d4-dc02" shared="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="34d8-ef3d-2c30-1671" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </modifier>
           </modifiers>
           <profiles>
@@ -19802,14 +19807,9 @@ For the purposes of interacting with terrain features, all models in units with 
           </costs>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
-              <conditionGroups>
-                <conditionGroup type="or">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="false" includeChildForces="false"/>
-                    <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="22a1-b48a-b3d4-dc02" shared="true" includeChildSelections="true" includeChildForces="false"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="false" includeChildForces="false"/>
+              </conditions>
             </modifier>
             <modifier type="add" value="34d8-ef3d-2c30-1671" field="category" scope="parent">
               <conditions>
@@ -19820,6 +19820,16 @@ For the purposes of interacting with terrain features, all models in units with 
               <conditions>
                 <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="5929-ad51-d006-e008" shared="true"/>
               </conditions>
+            </modifier>
+            <modifier type="add" value="A unit cannot be both Radical and Puritan." field="error">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="22a1-b48a-b3d4-dc02" shared="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="34d8-ef3d-2c30-1671" shared="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </modifier>
           </modifiers>
           <profiles>
@@ -19867,8 +19877,9 @@ For the purposes of interacting with terrain features, all models in units with 
                         </conditionGroup>
                       </conditionGroups>
                       <conditions>
-                        <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="34d8-ef3d-2c30-1671" shared="true" includeChildSelections="true"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="34d8-ef3d-2c30-1671" shared="true" includeChildSelections="true"/>
                         <condition type="lessThan" value="31" field="a623-fe74-1d33-cddf" scope="root-entry" childId="any" shared="true" includeChildSelections="true"/>
+                        <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="22a1-b48a-b3d4-dc02" shared="true"/>
                       </conditions>
                     </conditionGroup>
                   </conditionGroups>
@@ -19911,8 +19922,9 @@ For the purposes of interacting with terrain features, all models in units with 
                         </conditionGroup>
                       </conditionGroups>
                       <conditions>
-                        <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="22a1-b48a-b3d4-dc02" shared="true" includeChildSelections="true"/>
+                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="22a1-b48a-b3d4-dc02" shared="true" includeChildSelections="true"/>
                         <condition type="lessThan" value="31" field="a623-fe74-1d33-cddf" scope="root-entry" childId="any" shared="true" includeChildSelections="true"/>
+                        <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="34d8-ef3d-2c30-1671" shared="true"/>
                       </conditions>
                     </conditionGroup>
                   </conditionGroups>
