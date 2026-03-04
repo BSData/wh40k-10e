@@ -7279,6 +7279,93 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
         <infoLink name="Leader" id="7ee4-d4de-c022-e8e4" hidden="false" type="rule" targetId="b4dd-3e1f-41cb-218f"/>
         <infoLink name="Prioritised Efficiency" id="1436-76f3-9c85-50cd" hidden="false" targetId="351a-a702-9080-7f08" type="rule"/>
       </infoLinks>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="increment" value="2" field="7fe9-2ef3-d1c9-8a01">
+              <repeats>
+                <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+              </repeats>
+            </modifier>
+            <modifier type="increment" value="2" field="4d27-feb0-024a-e5e6">
+              <repeats>
+                <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+              </repeats>
+            </modifier>
+            <modifier type="append" value="(Battle-ready)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Blooded)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Battle-hardened)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Heroic)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Legendary)" field="name">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Crusade modifiers</comment>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="increment" value="5" field="51b2-306e-1021-d207">
+              <conditions>
+                <condition type="atLeast" value="3" field="selections" scope="parent" childId="54e3-d969-11e9-f72a" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="5" field="51b2-306e-1021-d207">
+              <conditions>
+                <condition type="atLeast" value="4" field="selections" scope="parent" childId="54e3-d969-11e9-f72a" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="5" field="51b2-306e-1021-d207">
+              <conditions>
+                <condition type="atLeast" value="5" field="selections" scope="parent" childId="54e3-d969-11e9-f72a" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
+      </modifierGroups>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="force" shared="true" id="1294-7316-551a-fd37" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="4d27-feb0-024a-e5e6" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="7fe9-2ef3-d1c9-8a01" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="cc0d-675a-92d0-3ccc" includeChildSelections="true"/>
+      </constraints>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Kinhost Commander [Crucible]" hidden="false" id="05b6-7622-edbe-7a9a">
       <categoryLinks>
@@ -7341,6 +7428,93 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
         <infoLink name="Leader" id="ef97-e2e3-55e7-5227" hidden="false" type="rule" targetId="b4dd-3e1f-41cb-218f"/>
         <infoLink name="Prioritised Efficiency" id="18df-5058-12c2-2451" hidden="false" targetId="351a-a702-9080-7f08" type="rule"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="3" field="selections" scope="force" shared="true" id="f481-c534-ffb8-9b00" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="c3dd-03f9-9e65-d238" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="ff79-1592-f15d-18e8" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="44c2-3f8a-462d-96ae" includeChildSelections="true"/>
+      </constraints>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="increment" value="2" field="ff79-1592-f15d-18e8">
+              <repeats>
+                <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+              </repeats>
+            </modifier>
+            <modifier type="increment" value="2" field="44c2-3f8a-462d-96ae">
+              <repeats>
+                <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+              </repeats>
+            </modifier>
+            <modifier type="append" value="(Battle-ready)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Blooded)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Battle-hardened)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Heroic)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Legendary)" field="name">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Crusade modifiers</comment>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="increment" value="5" field="51b2-306e-1021-d207">
+              <conditions>
+                <condition type="atLeast" value="3" field="selections" scope="parent" childId="54e3-d969-11e9-f72a" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="5" field="51b2-306e-1021-d207">
+              <conditions>
+                <condition type="atLeast" value="4" field="selections" scope="parent" childId="54e3-d969-11e9-f72a" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="5" field="51b2-306e-1021-d207">
+              <conditions>
+                <condition type="atLeast" value="5" field="selections" scope="parent" childId="54e3-d969-11e9-f72a" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
+      </modifierGroups>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Steeljack Elder [Crucible]" hidden="false" id="4eaf-78d5-9195-0e36">
       <categoryLinks>
@@ -7399,6 +7573,93 @@ At the start of the Declare Battle Formations step, you can select one ^^**Hernk
         <infoLink name="Leader" id="c539-38a6-0a03-2808" hidden="false" type="rule" targetId="b4dd-3e1f-41cb-218f"/>
         <infoLink name="Prioritised Efficiency" id="4413-6ba5-a9ce-393b" hidden="false" targetId="351a-a702-9080-7f08" type="rule"/>
       </infoLinks>
+      <constraints>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="f040-c06d-c2a3-f658" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="selections" scope="force" shared="true" id="26de-2e3f-4e19-db88" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="9f7e-1213-46f1-e8c0" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="0bbb-86ca-ce8b-de76" includeChildSelections="true"/>
+      </constraints>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="increment" value="2" field="f040-c06d-c2a3-f658">
+              <repeats>
+                <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+              </repeats>
+            </modifier>
+            <modifier type="increment" value="2" field="0bbb-86ca-ce8b-de76">
+              <repeats>
+                <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+              </repeats>
+            </modifier>
+            <modifier type="append" value="(Battle-ready)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Blooded)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Battle-hardened)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Heroic)" field="name">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                    <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="append" value="(Legendary)" field="name">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Crusade modifiers</comment>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="increment" value="5" field="51b2-306e-1021-d207">
+              <conditions>
+                <condition type="atLeast" value="3" field="selections" scope="parent" childId="54e3-d969-11e9-f72a" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="5" field="51b2-306e-1021-d207">
+              <conditions>
+                <condition type="atLeast" value="4" field="selections" scope="parent" childId="54e3-d969-11e9-f72a" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="increment" value="5" field="51b2-306e-1021-d207">
+              <conditions>
+                <condition type="atLeast" value="5" field="selections" scope="parent" childId="54e3-d969-11e9-f72a" shared="true" includeChildSelections="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
+      </modifierGroups>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
