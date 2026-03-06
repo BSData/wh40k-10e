@@ -33294,8 +33294,7 @@ Designer&apos;s Note: Place a Servo-scribes token next to the unit, removing it 
           <characteristics>
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model can be attached to the following units:
 - **^^Bullgryn Squad^^**
-- **^^Ogryn Squad^^**
-</characteristic>
+- **^^Ogryn Squad^^**</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -33421,6 +33420,11 @@ Designer&apos;s Note: Place a Servo-scribes token next to the unit, removing it 
         <infoLink name="Scouts" id="91c8-273a-45b4-e8e3" hidden="false" type="rule" targetId="ada6-bac1-ffe0-d6f7">
           <modifiers>
             <modifier type="append" value="9&quot;" field="name"/>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="self" childId="284e-aaa3-c081-18b6" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
           </modifiers>
         </infoLink>
         <infoLink name="Leader" id="d797-3020-265f-151d" hidden="false" type="rule" targetId="b4dd-3e1f-41cb-218f"/>
@@ -37606,6 +37610,7 @@ In addition:
                 <modifier type="set" value="8&quot;" field="e703-ecb6-5ce7-aec1" scope="root-entry" affects="profiles.Unit"/>
                 <modifier type="set" value="8" field="d29d-cf75-fc2d-34a4" scope="root-entry" affects="profiles.Unit"/>
                 <modifier type="set" value="2+" field="450-a17e-9d5e-29da" scope="root-entry" affects="profiles.Unit"/>
+                <modifier type="append" value="Extra Armour" field="annotation" scope="root-entry" affects="profiles.Unit" join=", "/>
               </modifiers>
             </modifierGroup>
           </modifierGroups>
@@ -37633,6 +37638,7 @@ In addition:
                 <modifier type="set" value="4+" field="450-a17e-9d5e-29da" scope="root-entry" affects="profiles.Unit"/>
                 <modifier type="remove" value="cf47-a0d7-7207-29dc" field="category" scope="root-entry"/>
                 <modifier type="add" value="14a0-40c9-2748-ae6e" field="category" scope="root-entry"/>
+                <modifier type="append" value="Noble Steed" field="annotation" scope="root-entry" affects="profiles.Unit" join=", "/>
               </modifiers>
             </modifierGroup>
           </modifierGroups>
@@ -37651,8 +37657,15 @@ In addition:
                 <condition type="notInstanceOf" value="1" field="selections" scope="root-entry" childId="a061-fa9d-e60c-9aef" shared="true"/>
               </conditions>
             </modifier>
-            <modifier type="set" value="7" field="750a-a2ec-90d3-21fe" scope="root-entry" affects="profiles.Unit"/>
           </modifiers>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="append" value="Slabshield" field="annotation" scope="root-entry" affects="profiles.Unit" join=", "/>
+                <modifier type="set" value="7" field="750a-a2ec-90d3-21fe" scope="root-entry" affects="profiles.Unit"/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
       </selectionEntries>
       <constraints>
