@@ -210,6 +210,7 @@
               <conditions>
                 <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true" includeChildForces="false"/>
                 <condition type="equalTo" value="0" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
+                <condition type="notInstanceOf" value="0" field="selections" scope="force" childId="cac3-71d1-ea4b-795d" shared="true"/>
               </conditions>
               <conditionGroups>
                 <conditionGroup type="or">
@@ -230,6 +231,7 @@
               <conditions>
                 <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true" includeChildForces="false"/>
                 <condition type="atLeast" value="1" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
+                <condition type="notInstanceOf" value="0" field="selections" scope="force" childId="cac3-71d1-ea4b-795d" shared="true"/>
               </conditions>
               <conditionGroups>
                 <conditionGroup type="or">
@@ -250,6 +252,7 @@
               <conditions>
                 <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true" includeChildForces="false"/>
                 <condition type="atLeast" value="1" field="selections" scope="force" childId="4c40-ab9-54af-d290" shared="true"/>
+                <condition type="notInstanceOf" value="0" field="selections" scope="force" childId="cac3-71d1-ea4b-795d" shared="true"/>
               </conditions>
               <conditionGroups>
                 <conditionGroup type="or">
