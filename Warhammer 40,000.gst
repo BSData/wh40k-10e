@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="93" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="94" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -1053,10 +1053,10 @@
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Weapon Modifications" hidden="false" id="d1a5-4297-168b-11cd">
       <constraints>
-        <constraint type="max" value="3" field="selections" scope="parent" shared="true" id="4a83-fc07-f67a-f3ab" includeChildSelections="false"/>
+        <constraint type="max" value="3" field="selections" scope="parent" shared="true" id="4a83-fc07-f67a-f3ab" includeChildSelections="false" automatic="true"/>
       </constraints>
       <modifiers>
-        <modifier type="set" value="6" field="4a83-fc07-f67a-f3ab">
+        <modifier type="increment" value="3" field="4a83-fc07-f67a-f3ab">
           <conditionGroups>
             <conditionGroup type="or">
               <conditions>
@@ -1333,8 +1333,7 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
       <characteristics>
         <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Models in this unit have a 5+ invulnerable save.</characteristic>
       </characteristics>
-      <comment>Unit
-</comment>
+      <comment>Unit</comment>
     </profile>
     <profile name="Invulnerable Save (5+*)" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" id="8552-862d-6a49-4879">
       <characteristics>
@@ -1371,7 +1370,7 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
                       <conditionGroups>
                         <conditionGroup type="and">
                           <conditions>
-                            <condition type="equalTo" value="6" field="75bb-ded1-c86d-bdf0" scope="root-entry" childId="any" shared="true" includeChildSelections="true"/>
+                            <condition type="atLeast" value="7" field="75bb-ded1-c86d-bdf0" scope="root-entry" childId="any" shared="true" includeChildSelections="true"/>
                             <condition type="atLeast" value="1" field="selections" scope="root-entry" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
                             <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="true"/>
                             <condition type="lessThan" value="6" field="selections" scope="root-entry" childId="d1a5-4297-168b-11cd" shared="true" includeChildSelections="true"/>
@@ -1379,7 +1378,7 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
                         </conditionGroup>
                         <conditionGroup type="and">
                           <conditions>
-                            <condition type="equalTo" value="3" field="75bb-ded1-c86d-bdf0" scope="root-entry" childId="any" shared="true" includeChildSelections="true"/>
+                            <condition type="atLeast" value="4" field="75bb-ded1-c86d-bdf0" scope="root-entry" childId="any" shared="true" includeChildSelections="true"/>
                             <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
                             <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="true"/>
                             <condition type="lessThan" value="3" field="selections" scope="root-entry" childId="d1a5-4297-168b-11cd" shared="true" includeChildSelections="true"/>
@@ -1388,7 +1387,7 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
                         <conditionGroup type="and">
                           <conditions>
                             <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="true"/>
-                            <condition type="equalTo" value="6" field="75bb-ded1-c86d-bdf0" scope="root-entry" childId="any" shared="true" includeChildSelections="true"/>
+                            <condition type="atLeast" value="7" field="75bb-ded1-c86d-bdf0" scope="root-entry" childId="any" shared="true" includeChildSelections="true"/>
                             <condition type="lessThan" value="6" field="selections" scope="root-entry" childId="d1a5-4297-168b-11cd" shared="true" includeChildSelections="true"/>
                           </conditions>
                         </conditionGroup>
