@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="93" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="94" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -566,7 +566,9 @@
         <categoryLink name="Allied Units" hidden="false" id="8d39-1cfc-6e44-2dae" targetId="887b-ab87-92a2-20f5"/>
       </categoryLinks>
       <readme>Please do not report any issues relating to the new Munitorum Field Manual or Dataslate.
-The data author team are working to get the Maelstrom content finished and will deliver that *and* the other changes soon.</readme>
+The data author team are working to get the Maelstrom content finished and will deliver that *and* the other changes soon.
+
+This means that the points changes (from the aforementioned Munitorum Field Manual) are not yet implemented nor are any changes from the Dataslate and you don&apos;t need to raise any issues to tell us that they&apos;re not updated.</readme>
     </forceEntry>
     <forceEntry name="Boarding Actions" hidden="true" id="1d6e-2579-8e7f-1ed4">
       <categoryLinks>
@@ -669,6 +671,7 @@ The data author team are working to get the Maelstrom content finished and will 
         <modifier type="set" value="Please do not report any issues relating to the new Munitorum Field Manual or Dataslate.
 The data author team are working to get the Maelstrom content finished and will deliver that *and* the other changes soon.
 
+This means that the points changes (from the aforementioned Munitorum Field Manual) are not yet implemented nor are any changes from the Dataslate and you don&apos;t need to raise any issues to tell us that they&apos;re not updated.
 
 **Reminder: Your Crusade Force is every model available to your faction in Crusade Mode. Your Crusade Army is the list of units you intend to use in a game.**" field="readme">
           <conditions>
@@ -679,6 +682,8 @@ The data author team are working to get the Maelstrom content finished and will 
 The data author team are working to get the Maelstrom content finished and will deliver that *and* the other changes soon.
 
 
+This means that the points changes (from the aforementioned Munitorum Field Manual) are not yet implemented nor are any changes from the Dataslate and you don&apos;t need to raise any issues to tell us that they&apos;re not updated.
+
 **Reminder: Your Crusade Force is every model available to your faction in Crusade Mode. Your Crusade Army is the list of units you intend to use in a game. You can add the Crusade Army for your faction from the *Forces* unit section or the *Add Force* menu option.**" field="readme">
           <conditions>
             <condition type="lessThan" value="1" field="forces" scope="roster" childId="ff7b-8f73-1756-650a" shared="true" includeChildSelections="true" includeChildForces="true"/>
@@ -688,8 +693,6 @@ The data author team are working to get the Maelstrom content finished and will 
       <constraints>
         <constraint type="max" value="0" field="51b2-306e-1021-d207" scope="force" shared="true" id="215f-8816-ff04-d1ef" includeChildSelections="true" includeChildForces="true"/>
       </constraints>
-      <readme>
-</readme>
     </forceEntry>
   </forceEntries>
   <entryLinks>
@@ -9497,5 +9500,4 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
       <comment>Boarding Actions content</comment>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
-  <readme/>
 </gameSystem>
