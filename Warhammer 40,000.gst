@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="95" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="96" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -575,7 +575,6 @@
         <categoryLink name="Allied Units" hidden="false" id="8d39-1cfc-6e44-2dae" targetId="887b-ab87-92a2-20f5"/>
         <categoryLink name="Reference" hidden="false" id="3761-5a4e-79e0-3c18" targetId="eef1-be80-500a-edfc"/>
       </categoryLinks>
-      <readme/>
     </forceEntry>
     <forceEntry name="Boarding Actions" hidden="true" id="1d6e-2579-8e7f-1ed4">
       <categoryLinks>
@@ -8149,8 +8148,8 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
               <conditionGroups>
                 <conditionGroup type="and">
                   <conditions>
-                    <condition type="lessThan" value="1" field="selections" scope="model-or-unit" childId="a4cc-8fae-4ffa-828a" shared="true" includeChildSelections="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="model-or-unit" childId="7767-9b46-61a3-c62a" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="a4cc-8fae-4ffa-828a" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="7767-9b46-61a3-c62a" shared="true" includeChildSelections="true"/>
                   </conditions>
                 </conditionGroup>
               </conditionGroups>
@@ -8463,7 +8462,7 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="model-or-unit" childId="fe0b-a773-b244-d6a3" shared="true" includeChildSelections="true"/>
+                <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="fe0b-a773-b244-d6a3" shared="true" includeChildSelections="true"/>
               </conditions>
             </modifier>
           </modifiers>
