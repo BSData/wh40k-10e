@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="127" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="b00-cd86-4b4c-97ba" name="Imperium - Agents of the Imperium" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="128" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Vindicare Assassin" hidden="false" id="efa3-2cf5-dcfb-b976">
       <categoryLinks>
@@ -16828,6 +16828,11 @@ For the purposes of determining which models in this unit can embark within a ^^
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, in the Fight phase, this model can use this ability. If it does, until the end of the phase, improve the Strength and Attacks characteristics of melee weapons equipped by this model by 3.</characteristic>
           </characteristics>
         </profile>
+        <profile name="High-handed Authority" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8574-0af7-a693-a12f">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model is leading a unit, it can embark within any ^^**Transport**^^ that its Bodyguard unit can embark within.</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
       <infoLinks>
         <infoLink name="Leader" id="9f40-00ec-666b-652a" hidden="false" type="rule" targetId="b4dd-3e1f-41cb-218f"/>
@@ -16995,6 +17000,11 @@ For the purposes of determining which models in this unit can embark within a ^^
             </modifier>
           </modifiers>
         </profile>
+        <profile name="High-handed Authority" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="08cb-7d53-57ec-4f2e">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model is leading a unit, it can embark within any ^^**Transport**^^ that its Bodyguard unit can embark within.</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
       <infoLinks>
         <infoLink name="Leader" id="0c3c-344e-db1c-1dd9" hidden="false" type="rule" targetId="b4dd-3e1f-41cb-218f"/>
@@ -17145,6 +17155,11 @@ For the purposes of determining which models in this unit can embark within a ^^
         <profile name="Towering Reputation (Aura)" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="bfdd-ffaa-bc5c-1c6e">
           <characteristics>
             <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While a friendly unit is within 6&quot; of this model, improve the Leadership characteristic of models in that unit by 1. While an enemy unit is within 6&quot; of this model, worsen the Leadership characteristic of models in that unit by 1.</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="High-handed Authority" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="c08f-b2ef-7c26-6bf4">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model is leading a unit, it can embark within any ^^**Transport**^^ that its Bodyguard unit can embark within.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -21388,15 +21403,6 @@ For the purposes of interacting with terrain features, all models in units with 
             </modifier>
           </modifiers>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="High-handed Authority" hidden="false" id="ea8a-9561-0e91-3b46">
-          <profiles>
-            <profile name="High-handed Authority" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="08cb-7d53-57ec-4f2e">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this model is leading a unit, it can embark within any ^^**Transport**^^ that its Bodyguard unit can embark within.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-        </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Holy Hatred" hidden="false" id="3fb2-28e2-e219-501f">
           <infoLinks>
             <infoLink name="Sustained Hits" id="c2ea-2111-8825-81bf" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
@@ -21424,7 +21430,7 @@ For the purposes of interacting with terrain features, all models in units with 
             </profile>
           </profiles>
           <modifiers>
-            <modifier type="append" value="Lethal Hits" field="893f-9000-ccf7-648e" scope="root-entry" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+            <modifier type="append" value="Lethal Hits" field="893f-9000-ccf7-648e" scope="parent" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
           </modifiers>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Oracular Gifts" hidden="false" id="686f-4aca-55f8-363b">
@@ -21496,6 +21502,13 @@ For the purposes of interacting with terrain features, all models in units with 
               <entryLinks>
                 <entryLink import="true" name="Weapon Modifications" hidden="false" id="2fee-b6fb-c862-7add" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
               </entryLinks>
+              <modifiers>
+                <modifier type="increment" value="1" field="c57c-9bf1-8ec1-237c">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Arbites grenade launcher" hidden="false" id="4718-7cc6-0dae-5769">
               <constraints>
@@ -21549,6 +21562,13 @@ For the purposes of interacting with terrain features, all models in units with 
               <entryLinks>
                 <entryLink import="true" name="Weapon Modifications" hidden="false" id="769a-9b6c-6cae-a689" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
               </entryLinks>
+              <modifiers>
+                <modifier type="increment" value="1" field="688b-e17b-4b59-ddd0">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Artificer-crafted storm bolter" hidden="false" id="510f-339b-7fde-1aa8">
               <constraints>
@@ -21573,6 +21593,13 @@ For the purposes of interacting with terrain features, all models in units with 
                   </characteristics>
                 </profile>
               </profiles>
+              <modifiers>
+                <modifier type="increment" value="1" field="8468-7f49-2b82-09d1">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Artificer shotgun" hidden="false" id="332a-e41d-870f-e8a0">
               <entryLinks>
@@ -21597,6 +21624,13 @@ For the purposes of interacting with terrain features, all models in units with 
                   </characteristics>
                 </profile>
               </profiles>
+              <modifiers>
+                <modifier type="increment" value="1" field="8009-c3e0-c67f-1377">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Boltgun" hidden="false" id="d36d-e946-015c-5d3f">
               <constraints>
@@ -21621,6 +21655,13 @@ For the purposes of interacting with terrain features, all models in units with 
                   </characteristics>
                 </profile>
               </profiles>
+              <modifiers>
+                <modifier type="increment" value="1" field="92ee-b8d0-5970-0e5d">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Combi-weapon" hidden="false" id="abf7-870e-c71b-bc64">
               <constraints>
@@ -21647,6 +21688,13 @@ For the purposes of interacting with terrain features, all models in units with 
                 <infoLink name="Devastating Wounds" id="f28c-00f1-a295-4605" hidden="false" type="rule" targetId="be1e-ac8e-1e2c-3528"/>
                 <infoLink name="Rapid Fire" id="e927-601f-7ba0-d256" hidden="false" type="rule" targetId="c5c8-8b58-b8b6-7786"/>
               </infoLinks>
+              <modifiers>
+                <modifier type="increment" value="1" field="1f65-c868-b204-ec80">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Condemnor boltgun" hidden="false" id="5c5f-c109-d0e9-8c54">
               <constraints>
@@ -21674,6 +21722,13 @@ For the purposes of interacting with terrain features, all models in units with 
                   </characteristics>
                 </profile>
               </profiles>
+              <modifiers>
+                <modifier type="increment" value="1" field="c9aa-9922-10d4-ba1e">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Executioner shotgun" hidden="false" id="e77c-53fb-4ead-8ad4">
               <entryLinks>
@@ -21699,6 +21754,13 @@ For the purposes of interacting with terrain features, all models in units with 
                   </characteristics>
                 </profile>
               </profiles>
+              <modifiers>
+                <modifier type="increment" value="1" field="d5b2-a263-d4ce-900e">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Heavy bolter" hidden="false" id="fda8-a3fd-914a-b1b1">
               <constraints>
@@ -21708,6 +21770,11 @@ For the purposes of interacting with terrain features, all models in units with 
                 <modifier type="set" value="true" field="hidden">
                   <conditions>
                     <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="6dda-e157-334d-e93a" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+                <modifier type="increment" value="1" field="28a9-8dbf-7d97-1b54">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
                   </conditions>
                 </modifier>
               </modifiers>
@@ -21787,6 +21854,13 @@ For the purposes of interacting with terrain features, all models in units with 
               <infoLinks>
                 <infoLink name="Rapid Fire" id="9eb4-4182-dc1a-d5c0" hidden="false" type="rule" targetId="c5c8-8b58-b8b6-7786"/>
               </infoLinks>
+              <modifiers>
+                <modifier type="increment" value="1" field="9dec-8108-c3bd-43e1">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Meltagun" hidden="false" id="4017-0dea-9ff4-dbf5">
               <constraints>
@@ -21814,6 +21888,13 @@ For the purposes of interacting with terrain features, all models in units with 
               <categoryLinks>
                 <categoryLink name="Damage Dx Weapon" hidden="false" id="88c1-3b25-6e7b-6728" targetId="4986-bf86-beb4-13ac" primary="false"/>
               </categoryLinks>
+              <modifiers>
+                <modifier type="increment" value="1" field="e90d-a893-2706-39d6">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Ministorum flamer" hidden="false" id="0d62-6e72-250f-0157">
               <constraints>
@@ -21842,6 +21923,13 @@ For the purposes of interacting with terrain features, all models in units with 
                 <infoLink name="Ignores Cover" id="461c-e23f-dd98-fc2b" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
                 <infoLink name="Torrent" id="4262-c072-0f41-eabc" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
               </infoLinks>
+              <modifiers>
+                <modifier type="increment" value="1" field="18e4-7172-938a-3cdf">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Ministorum heavy flamer" hidden="false" id="05c5-c480-1ad2-e6d9">
               <constraints>
@@ -21876,6 +21964,11 @@ For the purposes of interacting with terrain features, all models in units with 
                     <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="6dda-e157-334d-e93a" shared="true" includeChildSelections="false"/>
                   </conditions>
                 </modifier>
+                <modifier type="increment" value="1" field="a425-68ca-d695-7e31">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
               </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Multi-melta" hidden="false" id="b53e-b5ab-c0ba-f62e">
@@ -21889,6 +21982,11 @@ For the purposes of interacting with terrain features, all models in units with 
                 <modifier type="set" value="true" field="hidden">
                   <conditions>
                     <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="6dda-e157-334d-e93a" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+                <modifier type="increment" value="1" field="ad86-9c10-91c8-9bd1">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
                   </conditions>
                 </modifier>
               </modifiers>
@@ -21948,6 +22046,13 @@ For the purposes of interacting with terrain features, all models in units with 
                 <infoLink name="Hazardous" id="a03f-1a40-f8ce-db5f" hidden="false" type="rule" targetId="8367-374c-f87-c627"/>
                 <infoLink name="Rapid Fire" id="d2df-0102-8e5a-af98" hidden="false" type="rule" targetId="c5c8-8b58-b8b6-7786"/>
               </infoLinks>
+              <modifiers>
+                <modifier type="increment" value="1" field="9c77-0b95-7d7b-ea75">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Psychic Shock Wave" hidden="false" id="7b62-69bb-f38c-4893">
               <categoryLinks>
@@ -21984,6 +22089,11 @@ For the purposes of interacting with terrain features, all models in units with 
                     <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="13bf-2bee-3ae0-b414" shared="true" includeChildSelections="false"/>
                   </conditions>
                 </modifier>
+                <modifier type="set" value="1" field="4102-fc97-9b06-0c4b">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
               </modifiers>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Unholy Gaze" hidden="false" id="fa3f-2644-1c9f-b994">
@@ -22017,6 +22127,11 @@ For the purposes of interacting with terrain features, all models in units with 
                 <modifier type="set" value="true" field="hidden">
                   <conditions>
                     <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="13bf-2bee-3ae0-b414" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+                <modifier type="increment" value="1" field="2fcd-51de-ce3c-e386">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
                   </conditions>
                 </modifier>
               </modifiers>
@@ -22077,6 +22192,13 @@ For the purposes of interacting with terrain features, all models in units with 
               <categoryLinks>
                 <categoryLink name="Attacks Dx Weapon" hidden="false" id="517d-c8f8-0e54-f0e0" targetId="e993-e086-6de1-12af" primary="false"/>
               </categoryLinks>
+              <modifiers>
+                <modifier type="increment" value="1" field="9b0a-ee88-c2d6-65b9">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="c7d9-1704-f2c9-7fe7" shared="true" includeChildSelections="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
