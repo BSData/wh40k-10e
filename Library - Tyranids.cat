@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue library="true" id="374d-45f0-5832-001e" name="Library - Tyranids" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="77" revision="7" authorName="Dunamis55" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
+<catalogue library="true" id="374d-45f0-5832-001e" name="Library - Tyranids" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="77" revision="8" authorName="Dunamis55" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
   <sharedSelectionEntries>
     <selectionEntry id="fa68-fcb9-38c-cd0f" name="Winged Hive Tyrant" hidden="false" collective="false" import="true" type="model">
       <constraints>
@@ -225,13 +225,21 @@
             <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
           </characteristics>
         </profile>
+        <profile name="Leader" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="bdac-5b09-9843-5aed">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model can be attached to the following units:
+- **^^Gargoyles^^**
+- **^^Tyranid Warriors With Melee Bio-Weapons^^**
+- **^^Tyranid Warriors With Ranged Bio-Weapons^^**</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
       <infoLinks>
         <infoLink id="8a73-df5e-3dbe-473e" name="Deep Strike" hidden="false" targetId="7cb5-dd6b-dd87-ad3b" type="rule">
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildForces="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildForces="true" includeChildSelections="true"/>
               </conditions>
             </modifier>
           </modifiers>
@@ -247,6 +255,7 @@
             </modifier>
           </modifiers>
         </infoLink>
+        <infoLink name="Leader" id="e101-af93-c493-64ad" hidden="false" type="rule" targetId="b4dd-3e1f-41cb-218f"/>
       </infoLinks>
       <categoryLinks>
         <categoryLink id="8c3d-baaf-703c-b6d3" name="Winged Tyranid Prime" hidden="false" targetId="d5b9-2986-70fe-f755" primary="false"/>
@@ -266,23 +275,6 @@
         <entryLink import="true" name="Enhancements" hidden="false" type="selectionEntryGroup" id="a00-6a4f-539-68e3" targetId="fa5b-f646-b960-a8d3" sortIndex="3"/>
         <entryLink import="true" name="Crusade" hidden="false" id="eeb1-6e4f-6fea-065f" type="selectionEntryGroup" targetId="2fa5-0a8d-013e-fc12" sortIndex="1"/>
       </entryLinks>
-      <infoGroups>
-        <infoGroup name="Leader" hidden="false" id="4057-b638-888f-2474">
-          <profiles>
-            <profile name="Leader" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="bdac-5b09-9843-5aed">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model can be attached to the following units:
-- GARGOYLES
-- TYRANID WARRIORS WITH MELEE BIO-WEAPONS
-- TYRANID WARRIORS WITH RANGED BIO-WEAPONS</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-          <infoLinks>
-            <infoLink name="Leader" hidden="false" type="rule" id="e101-af93-c493-64ad" targetId="b4dd-3e1f-41cb-218f"/>
-          </infoLinks>
-        </infoGroup>
-      </infoGroups>
       <modifierGroups>
         <modifierGroup type="and">
           <modifiers>
@@ -343,6 +335,21 @@
             </modifier>
           </modifiers>
           <comment>Crusade modifiers</comment>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <comment>Boarding Actions modifiers</comment>
+          <modifiers>
+            <modifier type="set" value="2" field="e86d-792-10b7-df58">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="0f40-fb6c-49f7-9541" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
         </modifierGroup>
       </modifierGroups>
       <selectionEntryGroups>
@@ -458,6 +465,18 @@
           </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <comment>Boarding Actions modifiers</comment>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
+      </modifierGroups>
     </selectionEntry>
     <selectionEntry id="9ce8-7a63-15c3-0347" name="Gargoyles" hidden="false" collective="false" import="true" type="unit">
       <constraints>
@@ -825,6 +844,16 @@
           </modifiers>
           <comment>Crusade modifiers</comment>
         </modifierGroup>
+        <modifierGroup type="and">
+          <comment>Boarding Actions modifiers</comment>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
       </modifierGroups>
       <selectionEntryGroups>
         <selectionEntryGroup name="Raveners" id="99d8-7263-6899-fd04" hidden="false" sortIndex="3">
@@ -962,34 +991,6 @@
       <modifierGroups>
         <modifierGroup type="and">
           <modifiers>
-            <modifier type="set" value="1" field="ed75-3ce-a894-9253">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildForces="true"/>
-              </conditions>
-            </modifier>
-            <modifier type="set" value="0" field="ed75-3ce-a894-9253">
-              <conditionGroups>
-                <conditionGroup type="and">
-                  <conditionGroups>
-                    <conditionGroup type="or">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="bc36-92fe-ecc6-58b3" shared="true"/>
-                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="1de2-b57b-aa0a-1f0d" shared="true"/>
-                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="3f5-f7d6-1ce8-e6b9" shared="true"/>
-                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="9bd8-ac8c-2d3b-79f6" shared="true"/>
-                      </conditions>
-                    </conditionGroup>
-                  </conditionGroups>
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildForces="true"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-        </modifierGroup>
-        <modifierGroup type="and">
-          <modifiers>
             <modifier type="set" value="6" field="afc2-db90-7a9c-3874">
               <conditions>
                 <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
@@ -1052,6 +1053,16 @@
             </modifier>
           </modifiers>
           <comment>Crusade modifiers</comment>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <comment>Boarding Actions modifiers</comment>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </modifierGroup>
       </modifierGroups>
       <selectionEntryGroups>
@@ -1690,6 +1701,16 @@
           </modifiers>
           <comment>Crusade modifiers</comment>
         </modifierGroup>
+        <modifierGroup type="and">
+          <comment>Boarding Actions modifiers</comment>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
       </modifierGroups>
       <entryLinks>
         <entryLink import="true" name="Crusade" hidden="false" id="bf61-876d-b1ea-fe7b" type="selectionEntryGroup" targetId="2fa5-0a8d-013e-fc12" sortIndex="1"/>
@@ -2175,34 +2196,6 @@
       <modifierGroups>
         <modifierGroup type="and">
           <modifiers>
-            <modifier type="set" value="1" field="40be-d448-295c-f3f3">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildForces="true"/>
-              </conditions>
-            </modifier>
-            <modifier type="set" value="0" field="40be-d448-295c-f3f3">
-              <conditionGroups>
-                <conditionGroup type="and">
-                  <conditionGroups>
-                    <conditionGroup type="or">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="da44-72c9-7a27-48aa" shared="true"/>
-                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="bc36-92fe-ecc6-58b3" shared="true"/>
-                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="1de2-b57b-aa0a-1f0d" shared="true"/>
-                        <condition type="atLeast" value="1" field="selections" scope="parent" childId="3f5-f7d6-1ce8-e6b9" shared="true"/>
-                      </conditions>
-                    </conditionGroup>
-                  </conditionGroups>
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildForces="true"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-        </modifierGroup>
-        <modifierGroup type="and">
-          <modifiers>
             <modifier type="set" value="6" field="47c1-5db5-99d0-8b0e">
               <conditions>
                 <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
@@ -2265,6 +2258,16 @@
             </modifier>
           </modifiers>
           <comment>Crusade modifiers</comment>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <comment>Boarding Actions modifiers</comment>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </modifierGroup>
       </modifierGroups>
       <entryLinks>
@@ -2465,6 +2468,23 @@
               </constraints>
             </selectionEntryGroup>
           </selectionEntryGroups>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <comment>Boarding Actions modifiers</comment>
+              <modifiers>
+                <modifier type="set" value="3" field="787-2337-ccc2-c523">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+                        <condition type="atLeast" value="1" field="selections" scope="force" childId="0f40-fb6c-49f7-9541" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
       </selectionEntries>
       <constraints>
@@ -2475,7 +2495,7 @@
           <modifiers>
             <modifier type="set" value="true" field="hidden">
               <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="roster" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildForces="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildForces="true" includeChildSelections="true"/>
               </conditions>
             </modifier>
           </modifiers>
@@ -2495,17 +2515,37 @@
             <condition type="equalTo" value="2" field="selections" scope="1de2-b57b-aa0a-1f0d" childId="model" shared="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
-        <modifier type="set" value="25" field="51b2-306e-1021-d207">
-          <conditions>
-            <condition type="equalTo" value="1" field="selections" scope="1de2-b57b-aa0a-1f0d" childId="model" shared="true" includeChildSelections="true"/>
-          </conditions>
-        </modifier>
         <modifier type="set" value="50" field="51b2-306e-1021-d207">
           <conditions>
-            <condition type="equalTo" value="3" field="selections" scope="1de2-b57b-aa0a-1f0d" childId="model" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="3" field="selections" scope="1de2-b57b-aa0a-1f0d" childId="model" shared="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
       </modifiers>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <comment>Boarding Actions modifiers</comment>
+          <modifiers>
+            <modifier type="set" value="1" field="aaa4-ecd6-4d33-9def">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+                    <condition type="atLeast" value="1" field="selections" scope="force" childId="0f40-fb6c-49f7-9541" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
+      </modifierGroups>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+        <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+      </costs>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Ravener heavy claws and talons" hidden="false" id="9be2-c3dc-90ac-a3ac">
       <profiles>
@@ -2852,6 +2892,16 @@
           </modifiers>
           <comment>Crucible modifiers</comment>
         </modifierGroup>
+        <modifierGroup type="and">
+          <comment>Boarding Actions modifiers</comment>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
       </modifierGroups>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Prime Organism [Crucible]" hidden="false" id="6f46-0c77-acd0-3f5d">
@@ -3063,6 +3113,16 @@
           </modifiers>
           <comment>Crucible modifiers</comment>
         </modifierGroup>
+        <modifierGroup type="and">
+          <comment>Boarding Actions modifiers</comment>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </modifierGroup>
       </modifierGroups>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Macro Organism [Crucible]" hidden="false" id="a89f-8ad1-3d79-174f">
@@ -3211,6 +3271,16 @@
             </modifier>
           </modifiers>
           <comment>Crucible modifiers</comment>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <comment>Boarding Actions modifiers</comment>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </modifierGroup>
       </modifierGroups>
     </selectionEntry>
@@ -3555,6 +3625,13 @@
           </conditions>
         </modifier>
       </modifiers>
+    </rule>
+    <rule name="Synaptic Web" id="1ce8-4f31-68c3-7bb0" hidden="false">
+      <description>Units from your army with the Shadow in the Warp ability retain that ability.
+
+Units from your army with the Synapse ability retain that ability and gain this one.
+
+When measuring whether a unit from your army is within Synapse Range of a friendly **^^Synapse^^** model, Walls and closed Hatchways are ignored.</description>
     </rule>
   </sharedRules>
   <sharedSelectionEntryGroups>
@@ -5410,6 +5487,95 @@
           </modifiers>
           <comment>Genestealer Cults</comment>
         </selectionEntryGroup>
+        <selectionEntryGroup name="Tyranid Attack Enhancements" id="4682-fc99-fdf3-efc1" hidden="false">
+          <comment>Boarding Actions content</comment>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="0f40-fb6c-49f7-9541" shared="true" includeChildSelections="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Reinforced Carapace" hidden="false" id="7d8c-eb0a-a42e-3e6b">
+              <profiles>
+                <profile name="Reinforced Carapace" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d414-297a-ae9e-7023">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time an attack is allocated to the bearer, subtract 1 from the Damage characteristic of that attack (note that if given to a Tyranid Prime model, this only affects that model and not other models in its unit).</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="7d8c-eb0a-a42e-3e6b" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="7d8c-eb0a-a42e-3e6b" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <categoryLinks>
+                <categoryLink name="Grenades" hidden="false" id="5f26-df4e-1827-4811" targetId="5a61-81ac-eb7c-a87e" primary="false"/>
+              </categoryLinks>
+              <costs>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+              </costs>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="a5e0-4d9c-0994-4657" includeChildForces="true" includeChildSelections="true"/>
+              </constraints>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Synaptic Goad" hidden="false" id="84f8-855d-96eb-0afa">
+              <profiles>
+                <profile name="Synaptic Goad" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="6f52-fd81-9982-0feb">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your Command phase, select one friendly **^^Tyranid Warriors with Melee Bio-weapons^^** or **^^Tyranid Warriors with Ranged Bio-weapons^^** unit within 6&quot; of the bearer. Until the end of the turn, add 2&quot; to the Move characteristic of models in that unit.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="roster" childId="84f8-855d-96eb-0afa" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="parent" childId="84f8-855d-96eb-0afa" shared="true" includeChildForces="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </modifier>
+              </modifiers>
+              <categoryLinks>
+                <categoryLink name="Grenades" hidden="false" id="86ae-9b25-ffe3-cdfe" targetId="5a61-81ac-eb7c-a87e" primary="false"/>
+              </categoryLinks>
+              <costs>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Diplomatic Power" typeId="4d7c-04b6-8a79-837f" value="0"/>
+                <cost name="Military Power" typeId="1cbe-d9c9-86a8-2d41" value="0"/>
+              </costs>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="7ab4-2721-fd86-4947" includeChildForces="true" includeChildSelections="true"/>
+              </constraints>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
       </selectionEntryGroups>
       <modifiers>
         <modifier type="set" value="-1" field="4856-7562-fc89-349b">
@@ -5418,6 +5584,14 @@
           </conditions>
         </modifier>
       </modifiers>
+      <entryLinks>
+        <entryLink import="true" name="Boarding Actions Enhancements" hidden="false" id="3387-f5ff-d9ec-b8a9" type="selectionEntryGroup" targetId="5a79-2c0b-66e4-2122">
+          <comment>Boarding Actions content</comment>
+        </entryLink>
+        <entryLink import="true" name="Breaching Operation Enhancements" hidden="false" id="f53d-a37c-851d-d22f" type="selectionEntryGroup" targetId="fc3b-5a53-47b1-4b2d">
+          <comment>Boarding Actions content</comment>
+        </entryLink>
+      </entryLinks>
     </selectionEntryGroup>
     <selectionEntryGroup id="7ada-e361-1f7e-af" name="Detachment" hidden="false" collective="false" import="true" defaultSelectionEntryId="none">
       <constraints>
@@ -5448,6 +5622,13 @@ Each time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack th
             <infoLink name="Lethal Hits" id="20ca-b606-4aa3-b402" hidden="false" type="rule" targetId="d1d1-611e-5191-1095"/>
             <infoLink name="Precision" id="1d17-2d61-ae0b-44cf" hidden="false" type="rule" targetId="9143-31ae-e0a6-6007"/>
           </infoLinks>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Assimilation Swarm" hidden="false" id="bba-65f6-a4d1-66ae">
           <rules>
@@ -5458,6 +5639,13 @@ Each time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack th
 - One destroyed **^^Infantry^^** model (excluding **^^Characters^^**) is returned to that unit with its full wounds. If that unit is an **^^Endless Multitude^^** unit, return up to 3 destroyed models are returned instead.</description>
             </rule>
           </rules>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Crusher Stampede" hidden="false" id="850e-bee1-4845-820d">
           <rules>
@@ -5465,6 +5653,13 @@ Each time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack th
               <description>Each time a **^^Tyranids Monster^^** model from your army makes an attack, add 1 to the Hit roll if that model’s unit is below its Starting Strength, and add 1 to the Wound roll as well if that model’s unit is Below Half-strength. In addition, while a **^^Tyranids Monster^^** unit from your army (excluding Battle-shocked units) is at its Starting Strength, add 2 to the Objective Control characteristic of models in that unit.</description>
             </rule>
           </rules>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Synaptic Nexus" hidden="false" id="16ff-a068-4c31-285a">
           <rules>
@@ -5476,6 +5671,13 @@ Each time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack th
 - **Goaded to Slaughter:** While this unit is within Synapse Range of your army, each time a model in this unit makes a melee attack, add 1 to the Hit roll</description>
             </rule>
           </rules>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Unending Swarm" hidden="false" id="4cd9-313f-cd9b-c85a">
           <rules>
@@ -5483,6 +5685,13 @@ Each time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack th
               <description>Each time an enemy unit is selected to shoot, after that unit has finished making its attacks, if one or more models from one or more **^^Endless Multitude^^** units from your army were destroyed as a result of those attacks, each such unit can make a Surge move. To do so, roll one D6: that unit can be moved a distance in inches up to the result, but that unit must end that move as close as possible to the closest enemy unit (excluding **^^Aircraft^^**). When doing so, those models can be moved within Engagement Range of enemy units. A unit cannot make a Surge Move while Battle-shocked</description>
             </rule>
           </rules>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Vanguard Onslaught" hidden="false" id="f773-f91c-2999-c7e1">
           <rules>
@@ -5493,17 +5702,19 @@ Each time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack th
               <description>**^^Tyranids^^** units with this ability are eligible to charge in a turn in which they Fell Back. Vanguard Invader units with this ability are eligible to charge in a turn in which they Advanced.</description>
             </rule>
           </rules>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Warrior Bioform Onslaught" hidden="false" id="7416-b7cc-fdbf-5bf0">
           <modifiers>
-            <modifier type="increment" value="1" field="bef7-942a-1a23-59f8" affects="self.entries.forces.recursive.e3d4-6430-ea62-8d6d.profiles.Unit" scope="roster">
+            <modifier type="set" value="true" field="hidden">
               <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="roster" childId="7416-b7cc-fdbf-5bf0" shared="true" includeChildSelections="true" includeChildForces="true"/>
-              </conditions>
-            </modifier>
-            <modifier type="append" value="Warrior Bioform Onslaught" field="annotation" affects="self.entries.forces.recursive.e3d4-6430-ea62-8d6d.profiles.Unit" scope="roster" join=", ">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="roster" childId="7416-b7cc-fdbf-5bf0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
               </conditions>
             </modifier>
           </modifiers>
@@ -5515,6 +5726,14 @@ Each time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack th
               <description>**^^Tyranid Warriors^^** and **^^Winged Tyranid Prime^^** units from your army have a 5+ invulnerable save.</description>
             </rule>
           </rules>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="increment" value="1" field="bef7-942a-1a23-59f8" affects="self.entries.forces.recursive.e3d4-6430-ea62-8d6d.profiles.Unit" scope="roster"/>
+                <modifier type="append" value="Warrior Bioform Onslaught" field="annotation" affects="self.entries.forces.recursive.e3d4-6430-ea62-8d6d.profiles.Unit" scope="roster" join=", "/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Subterranean Assault" hidden="false" id="731f-1524-da02-945b">
           <rules>
@@ -5535,6 +5754,60 @@ In the Reinforcements step of your Movement phase, when you set up a unit on the
 If an enemy model (excluding **^^Aircraft^^**) ends any kind of move within 3&quot; of one of your Tunnel Markers, that Tunnel Marker is removed from the battlefield.</description>
             </rule>
           </rules>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Tyranid Attack" hidden="false" id="0f40-fb6c-49f7-9541">
+          <comment>Boarding Actions</comment>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <rules>
+            <rule name="Forming Boarding Squads" id="e207-ef0b-4be5-c91d" hidden="false">
+              <description>The following units do not split into separate units in the Form Boarding Squads step:
+- ^^**Hormagaunts**^^
+- ^^**Neurogaunts**^^
+- ^^**Termagants**^^</description>
+            </rule>
+            <rule name="Mustering A Boarding Patrol" id="72d4-2fdb-7150-b325" hidden="false">
+              <description>You can include up to two of the following unit:
+- **^^Winged Tyranid Prime^^**
+
+You can include up to two of the following units:
+- **^^Tyranid Warriors with Melee Bio-weapons^^** (3 models)
+- **^^Tyranid Warriors with Ranged Bio-weapons^^** (3 models)
+
+You can include up to one of each of the following units:
+- **^^Hormagaunts^^** (10 models)
+- **^^Neurogaunts^^** (10 models)
+- **^^Ripper Swarms^^** (3 models)
+- **^^Termagants^^** (10 models)</description>
+            </rule>
+            <rule name="Rules Adaptions" id="7a38-f020-b03b-67d3" hidden="false">
+              <description>- **^^Endless Multitude^^** and **^^Ripper Swarms^^** units from your army are ignored for the purposes of determining visibility for friendly **^^Tyranids^^** models that do not have the **^^Endless Multitude^^** or **^^Ripper Swarms^^** keyword.
+- You can give the Tyranid Prime models in **^^Tyranid Warriors with Melee Bio-weapons^^**  and **^^Tyranid Warriors with Ranged Bio-weapons^^** units Enhancements as if they were **^^Character^^** models.
+- **^^Tyranid Warriors with Melee Bio-weapons^^** and **^^Tyranid Warriors with Ranged Bio-weapons^^** units can perform the Secure Site Tactical Manoeuvre as if they had the **^^Battleline^^** keyword.
+- **^^Endless Multitude^^** units cannot perform the Secure Site Tactical Manoeuvre.
+- The **^^Ripper Swarms^^** unit loses the Deep Strike ability.
+- The **^^Termagant^^** unit loses the Skulking Horrors ability.
+- The **^^Winged Tyranid Prime^^** model loses the Deep Strike ability.</description>
+            </rule>
+            <rule name="Xeno-Terror" id="9603-0af4-20ef-dce8" hidden="false">
+              <description>When you unleash the Shadow in the Warp, subtract 1 from the Battle-shock test each enemy unit on the battlefield must take as a result. For each enemy unit that fails one of those tests, that enemy unit cannot Fire Overwatch this turn.</description>
+            </rule>
+          </rules>
+          <infoLinks>
+            <infoLink targetId="1ce8-4f31-68c3-7bb0" id="11a6-e1aa-1566-3303" type="rule" name="Synaptic Web" hidden="false"/>
+          </infoLinks>
         </selectionEntry>
       </selectionEntries>
       <comment>Tyranids</comment>
