@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="180" battleScribeVersion="2.03" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="5a44-f048-114b-e3ff" name="Imperium - Astra Militarum - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="181" battleScribeVersion="2.03" type="catalogue">
   <sharedSelectionEntries>
     <selectionEntry type="model" import="true" name="Aegis Defence Line" hidden="false" id="cb99-456-f100-40ed">
       <categoryLinks>
@@ -9014,36 +9014,31 @@
             <characteristic name="Orders" typeId="36b-c3c9-245f-e97d">This unit’s **^^Officer^^** can issue 1 Order to a **^^Regiment^^** unit.</characteristic>
           </characteristics>
         </profile>
+        <profile name="Leader" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="69ce-15a1-88b0-ef6c">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This unit can be attached to the following unit:
+- **^^Tempestus Scions^^**</characteristic>
+          </characteristics>
+        </profile>
+        <profile name="Tempestor Prime" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8714-80fe-8740-c08b">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this unit contains a Tempestor Prime, ranged weapons equipped by models in this unit have the **[SUSTAINED HITS 1]** ability.</characteristic>
+          </characteristics>
+        </profile>
       </profiles>
-      <infoGroups>
-        <infoGroup name="Leader" hidden="false" id="95e0-cf11-fd0a-5db2">
-          <infoLinks>
-            <infoLink name="Leader" hidden="false" type="rule" id="2ece-f6aa-71ad-a077" targetId="b4dd-3e1f-41cb-218f"/>
-          </infoLinks>
-          <profiles>
-            <profile name="Leader" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="69ce-15a1-88b0-ef6c">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This unit can be attached to the following unit: **^^Tempestus Scions^^**</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-        </infoGroup>
-        <infoGroup name="Tempestor Prime" id="49f9-fffe-747c-97bf" hidden="false">
-          <profiles>
-            <profile name="Tempestor Prime" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="8714-80fe-8740-c08b">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">While this unit contains a Tempestor Prime, ranged weapons equipped by models in this unit have the **[SUSTAINED HITS 1]** ability.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-          <infoLinks>
-            <infoLink name="Sustained Hits" id="0196-b34c-efea-4a66" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
-          </infoLinks>
-        </infoGroup>
-      </infoGroups>
       <infoLinks>
-        <infoLink name="Deep Strike" id="b5ef-86b9-c108-4f11" hidden="false" type="rule" targetId="7cb5-dd6b-dd87-ad3b"/>
+        <infoLink name="Deep Strike" id="b5ef-86b9-c108-4f11" hidden="false" type="rule" targetId="7cb5-dd6b-dd87-ad3b">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </infoLink>
         <infoLink name="Voice Of Command" id="cf71-0502-5825-3d5f" hidden="false" type="rule" targetId="53c9-34f6-2443-a95e"/>
+        <infoLink name="Leader" id="2ece-f6aa-71ad-a077" hidden="false" type="rule" targetId="b4dd-3e1f-41cb-218f"/>
+        <infoLink name="Sustained Hits" id="0196-b34c-efea-4a66" hidden="false" type="rule" targetId="1897-c22c-9597-12b1"/>
       </infoLinks>
       <entryLinks>
         <entryLink import="true" name="Crusade" hidden="false" id="902c-2db1-0808-20a9" type="selectionEntryGroup" targetId="56e1-e9a8-6946-0518" sortIndex="1"/>
@@ -13371,7 +13366,15 @@ While this unit is joined to a unit, it can embark within any **^^Transport^^** 
       </constraints>
       <infoLinks>
         <infoLink name="Unit Composition" hidden="false" id="5d65-ee-2adb-6ac1" type="profile" targetId="b592-33bc-a25d-b3a9"/>
-        <infoLink name="Deep Strike" id="3c45-4ee7-6932-d169" hidden="false" type="rule" targetId="7cb5-dd6b-dd87-ad3b"/>
+        <infoLink name="Deep Strike" id="3c45-4ee7-6932-d169" hidden="false" type="rule" targetId="7cb5-dd6b-dd87-ad3b">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+        </infoLink>
       </infoLinks>
       <profiles>
         <profile name="Storm Troopers" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ee87-b3c6-eb20-4d7">
