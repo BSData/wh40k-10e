@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue library="true" id="374d-45f0-5832-001e" name="Library - Tyranids" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="77" revision="12" authorName="Dunamis55" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
+<catalogue library="true" id="374d-45f0-5832-001e" name="Library - Tyranids" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="77" revision="13" authorName="Dunamis55" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
   <sharedSelectionEntries>
     <selectionEntry id="fa68-fcb9-38c-cd0f" name="Winged Hive Tyrant" hidden="false" collective="false" import="true" type="model">
       <constraints>
@@ -6942,7 +6942,7 @@ You can include up to three of each of the following units:
               <profiles>
                 <profile name="Mortrexite Implant Attack" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="86c1-cd9d-66fe-7125">
                   <characteristics>
-                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">- Melee weapons equipped by the bearer gain the **[DEVASTATING WOUNDS]]** ability.
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">- Melee weapons equipped by the bearer gain the **[DEVASTATING WOUNDS]** ability.
 - Each time the bearer fights, if one or more enemy models (excluding **^^Vehicle^^** models) are destroyed when resolving those attacks, after that fight is resolved you can select one friendly **^^Ripper Swarms^^** unit within 12&quot; of the bearer. If any of those destroyed enemy models had the **^^Monster^^** keyword, add D3 Ripper Swarm models to that **^^Ripper Swarms^^** unit instead.</characteristic>
                   </characteristics>
                 </profile>
@@ -6987,16 +6987,8 @@ You can include up to three of each of the following units:
               <modifierGroups>
                 <modifierGroup type="and">
                   <modifiers>
-                    <modifier type="append" value="Mortrexite Implant Attack" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="f73f-f45a-8479-effc" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
-                    <modifier type="append" value="Devastating Wounds" field="893f-9000-ccf7-648e" scope="model-or-unit" affects="self.entries.recursive.profiles.Melee Weapons">
-                      <conditions>
-                        <condition type="atLeast" value="1" field="selections" scope="model-or-unit" childId="f73f-f45a-8479-effc" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </modifier>
+                    <modifier type="append" value="Mortrexite Implant Attack" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
+                    <modifier type="append" value="Devastating Wounds" field="893f-9000-ccf7-648e" scope="root-entry" affects="self.entries.recursive.profiles.Melee Weapons"/>
                   </modifiers>
                 </modifierGroup>
               </modifierGroups>
@@ -7123,7 +7115,7 @@ You can include up to three of each of the following units:
                         </conditionGroup>
                       </conditionGroups>
                       <conditions>
-                        <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="2917-4769-ded1-a00c" shared="true"/>
+                        <condition type="lessThan" value="1" field="selections" scope="root-entry" childId="4546-4a0c-b3be-e84c" shared="true"/>
                       </conditions>
                     </conditionGroup>
                   </conditionGroups>
@@ -9423,5 +9415,6 @@ You can include up to one of the following unit:
     <categoryEntry name="Macro Organism" id="bf51-e0ef-737a-6d54" hidden="false"/>
     <categoryEntry name="Abominant" hidden="false" id="7cc8-a037-cc71-6377"/>
     <categoryEntry name="Biophagus" hidden="false" id="b72b-ca20-1fe1-c23b"/>
+    <categoryEntry id="2917-4769-ded1-a00c" name="Neurotyrant" hidden="false"/>
   </categoryEntries>
 </catalogue>
