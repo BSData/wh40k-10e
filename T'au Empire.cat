@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="153" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="154" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
   <rules>
     <rule name="For The Greater Good" hidden="false" id="eeb6-c42-48f7-cc21">
       <description>If your Army Faction is **^^T’au Empire^^**, at the start of your Shooting phase you can select units from your army with this ability to become Observer units.
@@ -307,11 +307,6 @@ Until the end of the phase, each time a model from your army in a Guided unit m
             </conditionGroup>
           </conditionGroups>
         </modifier>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
       </modifiers>
       <profiles>
         <profile name="Way of the Short Blade" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b518-dfb4-ed41-6393">
@@ -419,6 +414,38 @@ Until the end of the phase, each time a model from your army in a Guided unit m
           </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
+      </modifierGroups>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="T&apos;au flamer" hidden="false" id="6e8-cf2e-cedd-9028" collective="false">
       <profiles>
@@ -634,14 +661,9 @@ Until the end of the phase, each time a model from your army in a Guided unit m
       </costs>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="or">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
-                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
+          </conditions>
         </modifier>
       </modifiers>
       <modifierGroups>
@@ -704,6 +726,41 @@ Until the end of the phase, each time a model from your army in a Guided unit m
               </conditions>
             </modifier>
           </modifiers>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="e215-106f-ff0d-ba0e">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
         </modifierGroup>
       </modifierGroups>
     </selectionEntry>
@@ -974,14 +1031,42 @@ Until the end of the phase, each time a model from your army in a Guided unit m
             </modifier>
           </modifiers>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="e215-106f-ff0d-ba0e">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
-      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Commander in Coldstar Battlesuit" hidden="false" id="3a73-7255-c639-e89e">
       <categoryLinks>
@@ -1258,14 +1343,42 @@ Until the end of the phase, each time a model from your army in a Guided unit m
           </modifiers>
           <comment>Crusade modifiers</comment>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="e215-106f-ff0d-ba0e">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
-      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Cadre Fireblade" hidden="false" id="8f32-9697-ed41-6e3">
       <entryLinks>
@@ -2289,16 +2402,43 @@ Until the end of the phase, each time a model from your army in a Guided unit m
       </constraints>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="or">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
-                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
+          </conditions>
         </modifier>
       </modifiers>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
+      </modifierGroups>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Seeker missile" hidden="false" id="3a30-cb51-c88c-255f">
       <profiles>
@@ -4729,16 +4869,51 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
           </modifiers>
           <comment>Crusade modifiers</comment>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="a80a-623d-10a-155c">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
       <modifiers>
         <modifier type="remove" value="6df-937-16bc-8c1a" field="category">
           <conditions>
             <condition type="atLeast" value="1" field="selections" scope="self" childId="a8a0-dacd-a0e-55fb" shared="true" includeChildSelections="true"/>
-          </conditions>
-        </modifier>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
           </conditions>
         </modifier>
       </modifiers>
@@ -5698,6 +5873,18 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
               </characteristics>
             </profile>
           </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="set" value="1" field="ed31-ecac-75fb-8f52">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <comment>Boarding Actions modifiers</comment>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
       </selectionEntries>
       <constraints>
@@ -5775,14 +5962,47 @@ Designer’s Note: Place two Stealth Drone tokens next to the unit, removing one
             </modifier>
           </modifiers>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="5813-9a21-20f-db72">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
-      </modifiers>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Vespid Stingwings" hidden="false" id="b91-ba27-3842-76c">
       <profiles>
@@ -6642,11 +6862,6 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
             <condition type="atLeast" value="3" field="selections" scope="self" childId="model" shared="true" includeChildSelections="true"/>
           </conditions>
         </modifier>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
       </modifiers>
       <entryLinks>
         <entryLink import="true" name="Crusade" hidden="false" id="6bfc-6ae8-097a-d11f" type="selectionEntryGroup" targetId="bc88-2f42-15bd-1714" sortIndex="1"/>
@@ -6716,6 +6931,16 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
               </conditions>
             </modifier>
           </modifiers>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
         </modifierGroup>
       </modifierGroups>
       <profiles>
@@ -6994,14 +7219,47 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
             </modifier>
           </modifiers>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="c0f6-4c2c-84aa-5c86">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
-      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Hammerhead Gunship" hidden="false" id="ca9-49ab-17c1-8556">
       <profiles>
@@ -7275,14 +7533,47 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
             </modifier>
           </modifiers>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="bfe6-4768-fc97-8d24">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
-      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Sky Ray Gunship" hidden="false" id="bfe0-2e9f-6f57-b48f">
       <categoryLinks>
@@ -7496,14 +7787,47 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
             </modifier>
           </modifiers>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="3b5-7dee-1edc-d93e">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
-      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Devilfish" hidden="false" id="14f3-9aa6-21af-7fe3">
       <profiles>
@@ -7903,14 +8227,47 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
             </modifier>
           </modifiers>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="3f11-6c39-7ad2-c326">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
-      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Sun Shark Bomber" hidden="false" id="8d6a-3409-52db-a8c">
       <profiles>
@@ -8126,14 +8483,47 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
             </modifier>
           </modifiers>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="d97d-cff7-73e3-2fe2">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
-      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Tidewall Shieldline" hidden="false" id="1d72-cdbd-796f-7c0d">
       <categoryLinks>
@@ -8761,14 +9151,47 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
             </modifier>
           </modifiers>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="2c2-9b09-22ce-5cc0">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
-      </modifiers>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Tactical Drones [Legends]" hidden="false" id="f98a-5aa8-9305-2ed">
       <infoLinks>
@@ -9550,14 +9973,9 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
       </costs>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="or">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
-                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
+          </conditions>
         </modifier>
       </modifiers>
       <entryLinks>
@@ -9628,6 +10046,46 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
               </conditions>
             </modifier>
           </modifiers>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="5f51-ac86-3eec-311e">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
         </modifierGroup>
       </modifierGroups>
     </selectionEntry>
@@ -9797,14 +10255,9 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
       </costs>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="or">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
-                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
+          </conditions>
         </modifier>
       </modifiers>
       <entryLinks>
@@ -9875,6 +10328,46 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
               </conditions>
             </modifier>
           </modifiers>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="ffe6-73d5-4871-1b6e">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
         </modifierGroup>
       </modifierGroups>
     </selectionEntry>
@@ -9989,14 +10482,9 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
           </conditions>
         </modifier>
         <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="or">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
-                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
+          </conditions>
         </modifier>
       </modifiers>
       <entryLinks>
@@ -10067,6 +10555,16 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
               </conditions>
             </modifier>
           </modifiers>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
         </modifierGroup>
       </modifierGroups>
     </selectionEntry>
@@ -10861,14 +11359,9 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
       </costs>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="or">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
-                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
+          </conditions>
         </modifier>
       </modifiers>
       <modifierGroups>
@@ -10936,6 +11429,46 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
               </conditions>
             </modifier>
           </modifiers>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="c504-da78-d1d0-2d3a">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
         </modifierGroup>
       </modifierGroups>
     </selectionEntry>
@@ -11272,14 +11805,47 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
             </modifier>
           </modifiers>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="2545-93dc-50b4-6fa9">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
-      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="AX-1-0 Tiger Shark" hidden="false" id="6a78-555-46c7-999b">
       <constraints>
@@ -11507,14 +12073,47 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
           </modifiers>
           <comment>Crusade modifiers</comment>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="2545-93dc-50b4-6fa9">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
-      </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Manta" hidden="false" id="8e75-7545-e43b-7c67">
       <constraints>
@@ -11784,6 +12383,16 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
             </modifier>
           </modifiers>
         </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
       </modifierGroups>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -11854,14 +12463,9 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
       </costs>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="or">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
-                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
+          </conditions>
         </modifier>
       </modifiers>
       <selectionEntryGroups>
@@ -11992,6 +12596,46 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
               </conditions>
             </modifier>
           </modifiers>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="9bc9-75d0-1a89-83c1">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
         </modifierGroup>
       </modifierGroups>
     </selectionEntry>
@@ -12595,14 +13239,9 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
       </costs>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="or">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
-                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
+          </conditions>
         </modifier>
       </modifiers>
       <entryLinks>
@@ -12673,6 +13312,51 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
               </conditions>
             </modifier>
           </modifiers>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="3d7f-4230-c51f-c3e8">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
         </modifierGroup>
       </modifierGroups>
     </selectionEntry>
@@ -13011,14 +13695,9 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
       </costs>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="or">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
-                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
+          </conditions>
         </modifier>
       </modifiers>
       <selectionEntryGroups>
@@ -13028,6 +13707,38 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
           </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
+      </modifierGroups>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="XV9 Hazard Battlesuits [Legends]" hidden="false" id="9b21-52b7-6d8b-3e51">
       <constraints>
@@ -13185,18 +13896,25 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
               </entryLinks>
             </selectionEntry>
           </selectionEntries>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="set" value="1" field="c5f7-ce76-6f2-7c55">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <comment>Boarding Actions modifiers</comment>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="or">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
-                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="9ed-cbf4-bfe5-90bf" shared="true" includeChildSelections="true" includeChildForces="false"/>
+          </conditions>
         </modifier>
       </modifiers>
       <entryLinks>
@@ -13267,6 +13985,46 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
               </conditions>
             </modifier>
           </modifiers>
+        </modifierGroup>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+            <modifier type="set" value="-" field="e703-ecb6-5ce7-aec1" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="add" value="bdc8-7127-287c-a267" field="category">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="1" field="d8d9-b16f-8825-9efa">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" join=" ">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+            <modifier type="append" value="Docked Vehicle" field="annotation" affects="self.entries.recursive.profiles.Unit">
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="force" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
         </modifierGroup>
       </modifierGroups>
     </selectionEntry>
@@ -15940,7 +16698,7 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
             <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Indirect Fire, Twin-linked</characteristic>
           </characteristics>
           <modifiers>
-            <modifier type="replace" value="" field="7f1b-8591-2fcf-d01c" arg="Indirect Fire, ">
+            <modifier type="replace" field="7f1b-8591-2fcf-d01c" arg="Indirect Fire, ">
               <conditions>
                 <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
               </conditions>
@@ -17056,13 +17814,6 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
         <categoryLink name="Non-Kroot" hidden="false" id="6e22-d21d-0fb4-a22a" targetId="4814-7b6d-aea6-4228" primary="false"/>
         <categoryLink name="The Twin Lance" hidden="false" id="532a-7ee2-6023-7f22" targetId="61b0-12ea-d5fc-1816" primary="false"/>
       </categoryLinks>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditions>
-            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
-          </conditions>
-        </modifier>
-      </modifiers>
       <profiles>
         <profile name="Neocapacitor Shields" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="faa8-1253-136d-3d91">
           <characteristics>
@@ -17262,6 +18013,18 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
           </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
+      <modifierGroups>
+        <modifierGroup type="and">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true" includeChildForces="false"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <comment>Boarding Actions modifiers</comment>
+        </modifierGroup>
+      </modifierGroups>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="XV pulse pistol" hidden="false" id="02f8-7b19-7f5e-7b88">
       <profiles>

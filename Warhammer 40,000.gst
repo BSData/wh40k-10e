@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="102" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="103" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -539,6 +539,26 @@
     </categoryEntry>
     <categoryEntry name="Reference" id="eef1-be80-500a-edfc" hidden="false"/>
     <categoryEntry id="c97c-376-e2e0-1dd2" name="Dreadnought" hidden="false"/>
+    <categoryEntry name="Docked Vehicle" id="bdc8-7127-287c-a267" hidden="false">
+      <comment>Boarding Actions mission special unit tracker</comment>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="0f8b-aea2-227c-248f" includeChildSelections="true" includeChildForces="true"/>
+        <constraint type="min" value="0" field="selections" scope="roster" shared="true" id="f298-5931-6cbc-0115" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+      <modifiers>
+        <modifier type="set" value="1" field="f298-5931-6cbc-0115">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="227e-45aa-4d8b-4171" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </categoryEntry>
+    <categoryEntry name="Critical Threat" id="0cc6-ca49-ee2f-4294" hidden="false">
+      <comment>Boarding Actions mission special unit tracker</comment>
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="f61e-2b47-32cb-14d3" includeChildSelections="true" includeChildForces="true"/>
+      </constraints>
+    </categoryEntry>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
