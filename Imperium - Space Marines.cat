@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Adeptus Astartes - Space Marines" revision="199" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="e0af-67df-9d63-8fb7" name="Imperium - Adeptus Astartes - Space Marines" revision="200" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue" authorName="Acebaur">
   <categoryEntries>
     <categoryEntry id="5179-8ede-45e3-49a2" name="Tacticus" hidden="false"/>
     <categoryEntry id="930d-2875-125b-a65e" name="Bladeguard Veteran Squad" hidden="false"/>
@@ -2845,20 +2845,35 @@
             </selectionEntry>
             <selectionEntry id="dc86-5f80-455a-b73c" name="Boltstorm Gauntlet, Powerfist, and Relic weapon" hidden="false" collective="false" import="true" type="upgrade">
               <modifiers>
-                <modifier type="append" field="name" value="Chainsword">
-                  <conditions>
-                    <condition field="selections" scope="dc86-5f80-455a-b73c" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="6f4d-ecbf-e3e2-4252" type="greaterThan"/>
-                  </conditions>
+                <modifier type="replace" field="name" value="Chainsword" arg="weapon">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="1d56-1cc3-de57-10e2" childId="dc86-5f80-455a-b73c" shared="true"/>
+                        <condition type="greaterThan" value="0" field="selections" scope="dc86-5f80-455a-b73c" childId="6f4d-ecbf-e3e2-4252" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
-                <modifier type="append" field="name" value="Blade">
-                  <conditions>
-                    <condition field="selections" scope="dc86-5f80-455a-b73c" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="c980-26fb-a481-fc4e" type="greaterThan"/>
-                  </conditions>
+                <modifier type="replace" field="name" value="Blade" arg="weapon">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="1d56-1cc3-de57-10e2" childId="dc86-5f80-455a-b73c" shared="true"/>
+                        <condition type="greaterThan" value="0" field="selections" scope="dc86-5f80-455a-b73c" childId="c980-26fb-a481-fc4e" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
-                <modifier type="append" field="name" value="Fist">
-                  <conditions>
-                    <condition field="selections" scope="dc86-5f80-455a-b73c" value="0" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" childId="4f19-4c2c-ec70-e4f0" type="greaterThan"/>
-                  </conditions>
+                <modifier type="replace" field="name" value="Fist" arg="weapon">
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="atLeast" value="1" field="selections" scope="1d56-1cc3-de57-10e2" childId="dc86-5f80-455a-b73c" shared="true"/>
+                        <condition type="greaterThan" value="0" field="selections" scope="dc86-5f80-455a-b73c" childId="4f19-4c2c-ec70-e4f0" shared="true" percentValue="false" includeChildSelections="true" includeChildForces="false"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
                 </modifier>
               </modifiers>
               <constraints>
@@ -38650,6 +38665,19 @@ than the Toughness characteristic of your unit or your unit has the ^^**Titus^^
             </modifier>
           </modifiers>
         </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Ceramite Sentinels" hidden="false" id="3000-9a97-6f30-5a00">
+          <rules>
+            <rule name="Adaptive Defence" id="505c-7ce2-155c-682c" hidden="false">
+              <description>Each time an ^^**Adeptus Astartes**^^ model from your army makes an attack, if that model’s unit is within a terrain feature, re‑roll a Hit roll of 1 and re‑roll a Wound roll of 1. 
+
+
+^^**Adeptus Astartes**^^ units from your army gain the ^^**Entrenched**^^ keyword while all of the following are true: 
+- That unit is within a terrain feature.
+- That unit was not set up on the battlefield this turn.
+- No model in that unit has moved more than 3” this turn.</description>
+            </rule>
+          </rules>
+        </selectionEntry>
       </selectionEntries>
     </selectionEntryGroup>
     <selectionEntryGroup name="Enhancements" hidden="false" id="9e5d-de4c-c5d1-1d3e" collapsible="true">
@@ -43401,6 +43429,125 @@ Strategic Reserves.</characteristic>
                   <characteristics>
                     <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Adeptus Astartes model only. Each time the bearer makes an attack that targets an enemy unit, if the
 target is within range of an objective marker, you can re‑roll the Hit roll and you can re‑roll the Wound roll.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+          </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Ceramite Sentinels Enhancements" id="d4c6-a853-4bda-7efd" hidden="false">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true"/>
+                    <condition type="lessThan" value="1" field="selections" scope="roster" childId="3000-9a97-6f30-5a00" shared="true" id="7df7-916f-625e-2395" includeChildSelections="true" includeChildForces="true"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="46a0-5cca-ff12-2cca"/>
+          </constraints>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Honour Indefatigable" hidden="false" id="b75f-9c58-3606-bde2">
+              <profiles>
+                <profile name="Honour Indefatigable" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="3b05-708d-2edd-a38d">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">The first time the bearer is destroyed, roll one D6 at the end of the phase. On a 2+, set the bearer back up on the battlefield, as close as possible to where it was destroyed and not within Engagement Range of any enemy units, with its full wounds remaining.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="set" value="true" field="hidden">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="81f0-f40e-c36c-5a30" shared="true"/>
+                  </conditions>
+                </modifier>
+              </modifiers>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="80e5-0897-5ab0-28c1" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="25"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Castellum Omnivox" hidden="false" id="2b11-ea2b-4da9-de92">
+              <profiles>
+                <profile name="Castellum Omnivox" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="cc8d-6fdb-0e22-26e6">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the bearer’s unit makes a Fall Back move, select one of the following to apply to that unit until the end of the turn: 
+- That unit is eligible to perform an Action in a turn in which it Fell Back. 
+- That unit is eligible to shoot and declare a charge in a turn in which it Fell Back.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="2587-5f67-a66d-5a79" includeChildSelections="true" includeChildForces="true"/>
+              </constraints>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Spy-skull Datalink" hidden="false" id="d01a-5940-704d-c0da">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="6420-7563-7fec-e7e6" includeChildSelections="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Spy-skull Datalink" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="eb08-e401-e0da-5c00">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Ranged weapons equipped by models in the bearer’s unit have the [IGNORES COVER] ability.</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <modifiers>
+                <modifier type="append" value="Ignores Cover" field="7f1b-8591-2fcf-d01c" scope="parent" affects="self.entries.recursive.profiles.Ranged Weapons" join=", "/>
+              </modifiers>
+              <costs>
+                <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+                <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+                <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+                <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+                <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+                <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
+                <cost name="Honour Points" typeId="8135-9a2f-6627-09e2" value="0"/>
+                <cost name="Relic Fragments" typeId="0ece-6541-4662-ece2" value="0"/>
+              </costs>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Defensive Mastery" hidden="false" id="6bd0-b2f7-0414-3536">
+              <constraints>
+                <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="5c10-9019-f6e6-17c7" includeChildSelections="true"/>
+              </constraints>
+              <profiles>
+                <profile name="Defensive Mastery" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1adc-68bf-6e00-cbf2">
+                  <characteristics>
+                    <characteristic name="Description" typeId="9b8f-694b-e5e-b573">After both players have deployed their armies, select up to three ^^**Adeptus Astartes**^^ units from your army and redeploy them. When doing so, you can set those units up in Strategic Reserves, regardless of how many units are already in Strategic Reserves.</characteristic>
                   </characteristics>
                 </profile>
               </profiles>
