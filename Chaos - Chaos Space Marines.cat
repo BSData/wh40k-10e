@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="182" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" id="c8da-e875-58f7-f6d6" name="Chaos - Chaos Space Marines" revision="183" battleScribeVersion="2.03" library="false" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" type="catalogue">
   <profileTypes>
     <profileType id="3084-68b8-1d20-2f26" name="Marks of Chaos">
       <characteristicTypes>
@@ -6104,7 +6104,7 @@ Penetration and Damage characteristics of melee weapons equipped by this model b
           <modifiers>
             <modifier type="set" value="While this model is within 6&quot; of one or more friendly ^^**Heretic Astartes Vehicle**^^ units, this model has the Lone Operative ability." field="9b8f-694b-e5e-b573">
               <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="parent" childId="2c8c-811f-f25f-40ab" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="440-a22a-eac1-b107" childId="2c8c-811f-f25f-40ab" shared="true" includeChildSelections="true"/>
               </conditions>
             </modifier>
           </modifiers>
@@ -6116,7 +6116,7 @@ Penetration and Damage characteristics of melee weapons equipped by this model b
           <modifiers>
             <modifier type="set" value="In your Command phase, select one friendly ^^**Heretic Astartes Vehicle**^^ model within 6&quot; of this model. That **^^ Vehicle**^^ model regains up to D3 lost wounds and, until the start of your next Command phase, each time that **^^Vehicle**^^ makes an attack, add 1 to the Hit roll. Each model can only be selected for this ability once per Command phase." field="9b8f-694b-e5e-b573">
               <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="parent" childId="2c8c-811f-f25f-40ab" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="440-a22a-eac1-b107" childId="2c8c-811f-f25f-40ab" shared="true" includeChildSelections="true"/>
               </conditions>
             </modifier>
           </modifiers>
@@ -6128,7 +6128,7 @@ Penetration and Damage characteristics of melee weapons equipped by this model b
           <modifiers>
             <modifier type="set" value="At the end of your Movement phase, select one enemy ^^**Vehicle**^^ unit within 15&quot; of this model. That unit must take a Battle-shock test." field="9b8f-694b-e5e-b573">
               <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="parent" childId="2c8c-811f-f25f-40ab" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="440-a22a-eac1-b107" childId="2c8c-811f-f25f-40ab" shared="true" includeChildSelections="true"/>
               </conditions>
             </modifier>
           </modifiers>
@@ -27844,6 +27844,7 @@ This unit cannot join an Attached unit, and only ^^**Huron Blackheart**^^ can jo
       </selectionEntryGroups>
       <categoryLinks>
         <categoryLink name="Ranged Weapon" hidden="false" id="7e29-44f6-9475-bf3e" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+        <categoryLink name="Pistol Weapon" hidden="false" id="e567-13ab-13f3-d919" targetId="1db0-c6b5-19db-8d0c" primary="false"/>
       </categoryLinks>
       <comment>BS 2+</comment>
     </selectionEntry>
@@ -28207,23 +28208,6 @@ This unit cannot join an Attached unit, and only ^^**Huron Blackheart**^^ can jo
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
             <characteristic name="OC" typeId="bef7-942a-1a23-59f8">4</characteristic>
           </characteristics>
-        </profile>
-        <profile name="Leader" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="ba42-57a4-3e54-4ff7">
-          <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model can be attached to the following units: ^^**Chosen, Havocs, Legionaries, Nemesis Claw, Raiders**^^</characteristic>
-          </characteristics>
-          <modifiers>
-            <modifier type="set" value="true" field="hidden">
-              <conditionGroups>
-                <conditionGroup type="and">
-                  <conditions>
-                    <condition type="atLeast" value="1" field="selections" scope="9573-8b24-3796-d9d9" childId="51cc-e9bc-b09c-3969" shared="true"/>
-                    <condition type="lessThan" value="1" field="selections" scope="9573-8b24-3796-d9d9" childId="8270-eebb-b9c8-a2c3" shared="true"/>
-                  </conditions>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
         </profile>
         <profile name="Skulking Nightmare" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f709-520f-163e-cbcf">
           <characteristics>
@@ -31174,6 +31158,9 @@ In the Declare Battle Formations step, the bearer can be attached to a Warp Talo
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
             <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
           </costs>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="force" shared="true" id="b589-2116-c367-19f9" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Cybinfernal Font" hidden="false" id="2f57-9703-18b2-6390" sortIndex="14">
           <modifiers>
@@ -31212,6 +31199,9 @@ In the Declare Battle Formations step, the bearer can be attached to a Warp Talo
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
             <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
           </costs>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="force" shared="true" id="c40e-b249-80c6-3514" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Mark of the Soul Forges" hidden="false" id="116c-7dd8-92e5-f085" sortIndex="15">
           <modifiers>
@@ -31249,6 +31239,9 @@ In the Declare Battle Formations step, the bearer can be attached to a Warp Talo
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
             <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
           </costs>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="force" shared="true" id="a642-bdcc-e94b-fa4f" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Crown of Worms" hidden="false" id="2c8c-811f-f25f-40ab" sortIndex="13">
           <modifiers>
@@ -31286,6 +31279,9 @@ In the Declare Battle Formations step, the bearer can be attached to a Warp Talo
             <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
             <cost name="Blackstone Fragments" typeId="ac6b-ced3-9b5e-9a6e" value="0"/>
           </costs>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="force" shared="true" id="2625-a945-836c-2053" includeChildSelections="true"/>
+          </constraints>
         </selectionEntry>
       </selectionEntries>
       <modifiers>
@@ -33605,6 +33601,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Warp Talo
               </selectionEntryGroups>
               <categoryLinks>
                 <categoryLink name="Ranged Weapon" hidden="false" id="acf4-88c9-42c1-8384" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+                <categoryLink name="Pistol Weapon" hidden="false" id="3caf-dac9-62d1-f75b" targetId="1db0-c6b5-19db-8d0c" primary="false"/>
               </categoryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Melta tendril" hidden="false" id="f1bf-55d9-cb14-c254">
@@ -33638,6 +33635,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Warp Talo
               </infoLinks>
               <categoryLinks>
                 <categoryLink name="Ranged Weapon" hidden="false" id="3449-f174-cb73-42e9" targetId="eeda-8544-a2f3-3fab" primary="false"/>
+                <categoryLink name="Pistol Weapon" hidden="false" id="44bd-67be-2045-aad8" targetId="1db0-c6b5-19db-8d0c" primary="false"/>
               </categoryLinks>
             </selectionEntry>
           </selectionEntries>
@@ -33767,6 +33765,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Warp Talo
               </profiles>
               <categoryLinks>
                 <categoryLink name="Extra Attacks Weapon" hidden="false" id="0a5e-f546-2a32-f37e" targetId="84c4-6d1e-e724-bd6e" primary="false"/>
+                <categoryLink name="Melee Weapon" hidden="false" id="1d4d-b758-76a2-d603" targetId="ccdd-3987-11ed-90cd" primary="false"/>
               </categoryLinks>
               <constraints>
                 <constraint type="max" value="3" field="selections" scope="parent" shared="true" id="16aa-1ed0-4329-b40c" includeChildSelections="false"/>
@@ -33945,6 +33944,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Warp Talo
               </profiles>
               <categoryLinks>
                 <categoryLink name="Melee Weapon" hidden="false" id="bc6f-9bf4-7f08-aa80" targetId="ccdd-3987-11ed-90cd" primary="false"/>
+                <categoryLink name="Psychic Weapon" hidden="false" id="0368-a2f8-ba83-d96b" targetId="4546-4a0c-b3be-e84c" primary="false"/>
               </categoryLinks>
               <infoLinks>
                 <infoLink name="Psychic" id="b835-ebc3-9901-bbd1" hidden="false" type="rule" targetId="e9c4-2bb8-12ee-cd1b"/>
@@ -34078,6 +34078,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Warp Talo
               </profiles>
               <categoryLinks>
                 <categoryLink name="Extra Attacks Weapon" hidden="false" id="6b7f-5a0a-2a7e-8348" targetId="84c4-6d1e-e724-bd6e" primary="false"/>
+                <categoryLink name="Melee Weapon" hidden="false" id="0fa3-f806-6289-8e49" targetId="ccdd-3987-11ed-90cd" primary="false"/>
               </categoryLinks>
               <infoLinks>
                 <infoLink name="Extra Attacks" id="718a-527e-7756-66b3" hidden="false" type="rule" targetId="115b-79dc-f723-d761"/>
