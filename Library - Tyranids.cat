@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue library="true" id="374d-45f0-5832-001e" name="Library - Tyranids" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="77" revision="19" authorName="Dunamis55" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
+<catalogue library="true" id="374d-45f0-5832-001e" name="Library - Tyranids" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="77" revision="20" authorName="Dunamis55" battleScribeVersion="2.03" type="catalogue" xmlns="http://www.battlescribe.net/schema/catalogueSchema">
   <sharedSelectionEntries>
     <selectionEntry id="fa68-fcb9-38c-cd0f" name="Winged Hive Tyrant" hidden="false" collective="false" import="true" type="model">
       <constraints>
@@ -2151,9 +2151,14 @@
         <modifierGroup type="and">
           <modifiers>
             <modifier type="set" value="6" field="3523-602d-3c05-b77b">
-              <conditions>
-                <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
-              </conditions>
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+                    <condition type="instanceOf" value="1" field="selections" scope="root-entry" childId="9cfd-1c32-585f-7d5c" shared="true" includeChildSelections="true" childName="Character"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </modifier>
             <modifier type="increment" value="2" field="22dc-9a8c-cc17-3758">
               <repeats>
@@ -2269,16 +2274,6 @@
             <condition type="atLeast" value="1" field="selections" scope="force" childId="731f-1524-da02-945b" shared="true" includeChildSelections="true" includeChildForces="true"/>
           </conditions>
         </modifier>
-        <modifier type="unset-primary" value="9693-cf84-fe69-37a9" field="category">
-          <conditions>
-            <condition type="atLeast" value="1" field="selections" scope="self" childId="499b-29ee-1402-ae25" shared="true"/>
-          </conditions>
-        </modifier>
-        <modifier type="set-primary" value="9cfd-1c32-585f-7d5c" field="category">
-          <conditions>
-            <condition type="atLeast" value="1" field="selections" scope="self" childId="499b-29ee-1402-ae25" shared="true"/>
-          </conditions>
-        </modifier>
       </modifiers>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Trygon Character upgrade" hidden="false" id="499b-29ee-1402-ae25" sortIndex="2">
@@ -2287,16 +2282,27 @@
             <constraint type="max" value="2" field="selections" scope="roster" shared="true" id="d943-ec54-f75d-710f" includeChildSelections="true"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="2741-eca6-34a7-6d92" includeChildSelections="false"/>
           </constraints>
-          <categoryLinks>
-            <categoryLink name="Character" hidden="false" id="cab6-8991-8b9d-4996" targetId="9cfd-1c32-585f-7d5c" primary="false"/>
-          </categoryLinks>
           <modifiers>
             <modifier type="set" value="true" field="hidden">
-              <conditions>
-                <condition type="lessThan" value="1" field="selections" scope="force" childId="731f-1524-da02-945b" shared="true" includeChildSelections="true" includeChildForces="true"/>
-              </conditions>
+              <conditionGroups>
+                <conditionGroup type="and">
+                  <conditions>
+                    <condition type="lessThan" value="1" field="selections" scope="force" childId="731f-1524-da02-945b" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                    <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true" childName="Crusade Force"/>
+                  </conditions>
+                </conditionGroup>
+              </conditionGroups>
             </modifier>
           </modifiers>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="add" value="9cfd-1c32-585f-7d5c" field="category" scope="root-entry"/>
+                <modifier type="unset-primary" value="9693-cf84-fe69-37a9" field="category" scope="root-entry"/>
+                <modifier type="set-primary" value="9cfd-1c32-585f-7d5c" field="category" scope="root-entry"/>
+              </modifiers>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
       </selectionEntries>
     </selectionEntry>
