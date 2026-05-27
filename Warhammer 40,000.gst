@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="115" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="116" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -6818,10 +6818,10 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
                   <modifierGroups>
                     <modifierGroup type="and">
                       <modifiers>
-                        <modifier type="append" value="Empyromancer&apos;s Focus" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Ranged Weapons"/>
-                        <modifier type="append" value="Sustained Hits 2" field="7f1b-8591-2fcf-d01c" scope="model-or-unit" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Ranged Weapons" join=", "/>
-                        <modifier type="append" value="Empyromancer&apos;s Focus" field="annotation" join=", " scope="model-or-unit" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Melee Weapons"/>
-                        <modifier type="append" value="Sustained Hits 2" field="7f1b-8591-2fcf-d01c" scope="model-or-unit" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Melee Weapons" join=", "/>
+                        <modifier type="append" value="Empyromancer&apos;s Focus" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Ranged Weapons"/>
+                        <modifier type="append" value="Sustained Hits 2" field="7f1b-8591-2fcf-d01c" scope="root-entry" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Ranged Weapons" join=", "/>
+                        <modifier type="append" value="Empyromancer&apos;s Focus" field="annotation" join=", " scope="root-entry" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Melee Weapons"/>
+                        <modifier type="append" value="Sustained Hits 2" field="7f1b-8591-2fcf-d01c" scope="root-entry" affects="self.entries.recursive.4546-4a0c-b3be-e84c.profiles.Melee Weapons" join=", "/>
                       </modifiers>
                     </modifierGroup>
                   </modifierGroups>
