@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="117" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="118" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -564,6 +564,11 @@
     </categoryEntry>
     <categoryEntry name="Supreme Commander" id="75fe-c657-43c6-7c09" hidden="true"/>
     <categoryEntry name="Bellatus" id="1cf9-0660-4ef2-4d18" hidden="false"/>
+    <categoryEntry name="Unbound Adversaries" id="9440-07f1-b09d-ce8b" hidden="false"/>
+    <categoryEntry name="Greater Daemon" id="d445-8a18-5300-c3cc" hidden="false"/>
+    <categoryEntry name="Lesser Daemon" id="f927-898a-ebe2-1aca" hidden="false"/>
+    <categoryEntry name="Abomination" id="e17d-56fd-1957-071f" hidden="false"/>
+    <categoryEntry name="Daemonic Beasts" id="a783-fe90-2280-47ec" hidden="false"/>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="bb9d-299a-ed60-2d8a" name="Army Roster" hidden="false">
@@ -719,6 +724,10 @@
   </forceEntries>
   <entryLinks>
     <entryLink id="7380-3e40-6ed6-b7cc" name="Battle Size" hidden="false" collective="false" import="true" targetId="564e-fbc6-5266-3ea4" type="selectionEntry"/>
+    <entryLink import="true" name="Greater Daemon (Unbound Adversaries)" hidden="false" id="3de2-29bc-15da-d52d" targetId="b216-722b-2361-a19f" type="selectionEntry"/>
+    <entryLink import="true" name="Lesser Daemons (Unbound Adversaries)" hidden="false" id="8560-d945-b3e4-904a" targetId="b257-5fca-9e35-6c64" type="selectionEntry"/>
+    <entryLink import="true" name="Abomination (Unbound Adversaries)" hidden="false" id="4ed6-4bbd-0a99-4ba3" targetId="4ad0-7f62-b1e4-c6bb" type="selectionEntry"/>
+    <entryLink import="true" name="Daemonic Beasts (Unbound Adversaries)" hidden="false" id="48c5-2a0a-1c81-ebac" targetId="8d9a-d925-56f3-1890" type="selectionEntry"/>
   </entryLinks>
   <sharedSelectionEntries>
     <selectionEntry id="564e-fbc6-5266-3ea4" name="Battle Size" hidden="false" collective="false" import="true" type="upgrade">
@@ -1181,6 +1190,281 @@
           </conditionGroups>
         </modifier>
       </modifiers>
+    </selectionEntry>
+    <selectionEntry type="model" import="true" name="Greater Daemon (Unbound Adversaries)" hidden="false" id="b216-722b-2361-a19f">
+      <categoryLinks>
+        <categoryLink name="Reference" hidden="false" id="0666-6a9b-6202-1120" targetId="eef1-be80-500a-edfc" primary="true"/>
+        <categoryLink name="Monster" hidden="false" id="5434-8667-9ef9-d240" targetId="9693-cf84-fe69-37a9" primary="false"/>
+        <categoryLink name="Character" hidden="false" id="2107-8e8b-71d3-9287" targetId="9cfd-1c32-585f-7d5c" primary="false"/>
+        <categoryLink name="Chaos" hidden="false" id="a695-eb39-ed90-8b3a" targetId="4c00-2578-faf5-6918" primary="false"/>
+        <categoryLink name="Daemon" hidden="false" id="11a3-cbae-245d-b7b7" targetId="9c0e-7e25-4580-e439" primary="false"/>
+        <categoryLink name="Greater Daemon" hidden="false" id="eec6-b9ae-212a-c5a8" targetId="d445-8a18-5300-c3cc" primary="false"/>
+      </categoryLinks>
+      <comment>Armageddon Crusade content</comment>
+      <profiles>
+        <profile name="Greater Daemon" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="28eb-0e07-bb68-1abb">
+          <characteristics>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">12&quot;</characteristic>
+            <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">10</characteristic>
+            <characteristic name="SV" typeId="450-a17e-9d5e-29da">5+</characteristic>
+            <characteristic name="W" typeId="750a-a2ec-90d3-21fe">18</characteristic>
+            <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">5</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <infoLinks>
+        <infoLink name="Invulnerable Save (4+)" id="4235-ca5c-8ddb-a140" hidden="false" type="profile" targetId="5b77-29f8-7b77-75e3"/>
+        <infoLink name="Deadly Demise" id="9d9c-85a9-fcef-63a2" hidden="false" type="rule" targetId="b68a-5ded-65ac-98c">
+          <modifiers>
+            <modifier type="append" value="D6" field="name"/>
+          </modifiers>
+        </infoLink>
+      </infoLinks>
+      <selectionEntries>
+        <selectionEntry type="upgrade" import="true" name="Fell weapon" hidden="false" id="67d8-8ee4-6f6f-727a">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="fd44-8916-88d5-5ed8" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8b6e-9629-761c-8ace" includeChildSelections="false"/>
+          </constraints>
+          <profiles>
+            <profile name="➤ Fell weapon - sweep" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="ff85-20f1-0ad9-e303">
+              <characteristics>
+                <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                <characteristic name="A" typeId="2337-daa1-6682-b110">12</characteristic>
+                <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">7</characteristic>
+                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+              </characteristics>
+            </profile>
+            <profile name="➤ Fell weapon - strike" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="37ba-cd7f-a05f-be0c">
+              <characteristics>
+                <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                <characteristic name="A" typeId="2337-daa1-6682-b110">6</characteristic>
+                <characteristic name="WS" typeId="95d1-95f-45b4-11d6">2+</characteristic>
+                <characteristic name="S" typeId="ab33-d393-96ce-ccba">10</characteristic>
+                <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                <characteristic name="D" typeId="3254-9fe6-d824-513e">D6+1</characteristic>
+                <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Infernal scream" hidden="false" id="2123-d523-b4e3-459b">
+          <constraints>
+            <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="f189-5332-f802-b60a" includeChildSelections="false"/>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5e03-4b4b-a640-49c5" includeChildSelections="false"/>
+          </constraints>
+          <profiles>
+            <profile name="Infernal scream" typeId="f77d-b953-8fa4-b762" typeName="Ranged Weapons" hidden="false" id="0b50-d04d-5a42-85c3">
+              <characteristics>
+                <characteristic name="Range" typeId="9896-9419-16a1-92fc">12&quot;</characteristic>
+                <characteristic name="A" typeId="3bb-c35f-f54-fb08">D6</characteristic>
+                <characteristic name="BS" typeId="94d-8a98-cf90-183e">N/A</characteristic>
+                <characteristic name="S" typeId="2229-f494-25db-c5d3">5</characteristic>
+                <characteristic name="AP" typeId="9ead-8a10-520-de15">-1</characteristic>
+                <characteristic name="D" typeId="a354-c1c8-a745-f9e3">1</characteristic>
+                <characteristic name="Keywords" typeId="7f1b-8591-2fcf-d01c">Ignores Cover, Torrent</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Torrent" id="013b-effd-5168-1b03" hidden="false" type="rule" targetId="5edf-d619-23e0-9b56"/>
+            <infoLink name="Ignores Cover" id="a3fb-93b0-560e-b9ed" hidden="false" type="rule" targetId="4640-43e7-30b-215a"/>
+          </infoLinks>
+        </selectionEntry>
+      </selectionEntries>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="fd80-17e3-3c1a-6570" shared="true" childName="Armageddon" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Lesser Daemons (Unbound Adversaries)" hidden="false" id="b257-5fca-9e35-6c64">
+      <selectionEntries>
+        <selectionEntry type="model" import="true" name="Lesser Daemons" hidden="false" id="23b7-c2ad-8d26-c40f">
+          <profiles>
+            <profile name="Lesser Daemons" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="2bad-97be-4440-f399">
+              <characteristics>
+                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">6&quot;</characteristic>
+                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">4</characteristic>
+                <characteristic name="SV" typeId="450-a17e-9d5e-29da">7+</characteristic>
+                <characteristic name="W" typeId="750a-a2ec-90d3-21fe">1</characteristic>
+                <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Invulnerable Save (5+)" id="e718-f923-4c07-ba85" hidden="false" type="profile" targetId="3b8a-73e4-1389-b399"/>
+          </infoLinks>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Daemonic weapon" hidden="false" id="c8d1-48e3-3264-8927">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e64d-6c5f-9fb6-07a3" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f5a9-50b3-a704-accb" includeChildSelections="false"/>
+              </constraints>
+              <profiles>
+                <profile name="Daemonic weapon" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="457c-9f0b-d49c-5a01">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">3</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">4</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">1</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="fd80-17e3-3c1a-6570" shared="true" childName="Armageddon" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="min" value="10" field="selections" scope="parent" shared="true" id="02be-5f7d-9894-c5d1" includeChildSelections="false"/>
+            <constraint type="max" value="10" field="selections" scope="parent" shared="true" id="f7e5-f34a-0949-1bbe" includeChildSelections="false"/>
+          </constraints>
+        </selectionEntry>
+      </selectionEntries>
+      <comment>Armageddon Crusade content</comment>
+      <categoryLinks>
+        <categoryLink name="Reference" hidden="false" id="536b-5510-699e-3c70" targetId="eef1-be80-500a-edfc" primary="true"/>
+        <categoryLink name="Unbound Adversaries" hidden="false" id="bacf-1147-5f81-5c87" targetId="9440-07f1-b09d-ce8b" primary="false"/>
+        <categoryLink name="Infantry" hidden="false" id="f7fe-66bc-36dd-81a7" targetId="cf47-a0d7-7207-29dc" primary="false"/>
+        <categoryLink name="Chaos" hidden="false" id="91ea-5507-f876-9594" targetId="4c00-2578-faf5-6918" primary="false"/>
+        <categoryLink name="Daemon" hidden="false" id="5eb0-2ced-c599-c2e4" targetId="9c0e-7e25-4580-e439" primary="false"/>
+        <categoryLink name="Lesser Daemon" hidden="false" id="3d6a-170f-73ef-a855" targetId="f927-898a-ebe2-1aca" primary="false"/>
+      </categoryLinks>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Abomination (Unbound Adversaries)" hidden="false" id="4ad0-7f62-b1e4-c6bb">
+      <selectionEntries>
+        <selectionEntry type="model" import="true" name="Abomination" hidden="false" id="1def-7fc2-64ba-706b">
+          <profiles>
+            <profile name="Abomination" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="ad6f-6c38-6998-5648">
+              <characteristics>
+                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
+                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">5</characteristic>
+                <characteristic name="SV" typeId="450-a17e-9d5e-29da">4+</characteristic>
+                <characteristic name="W" typeId="750a-a2ec-90d3-21fe">4</characteristic>
+                <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">1</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Hideous mutations" hidden="false" id="db8e-4a59-5a9c-b987">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="b2eb-3fab-c10b-ae39" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="8f6f-6571-44ff-d03d" includeChildSelections="false"/>
+              </constraints>
+              <profiles>
+                <profile name="Hideous mutations" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="a8f3-eb0b-068b-8681">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">D6+2</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">4+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">5</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-1</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="fd80-17e3-3c1a-6570" shared="true" childName="Armageddon" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="98b0-0e92-a693-3392" includeChildSelections="false"/>
+            <constraint type="max" value="4" field="selections" scope="parent" shared="true" id="a3ec-bd40-d17f-1ebd" includeChildSelections="false"/>
+          </constraints>
+        </selectionEntry>
+      </selectionEntries>
+      <comment>Armageddon Crusade content</comment>
+      <categoryLinks>
+        <categoryLink name="Reference" hidden="false" id="ed60-52ac-15af-8016" targetId="eef1-be80-500a-edfc" primary="true"/>
+        <categoryLink name="Unbound Adversaries" hidden="false" id="518f-6762-3633-07b7" targetId="9440-07f1-b09d-ce8b" primary="false"/>
+        <categoryLink name="Beast" hidden="false" id="6061-32e4-5826-5e5f" targetId="4c3e-9310-a516-3590" primary="false"/>
+        <categoryLink name="Chaos" hidden="false" id="9e84-3111-919f-43b0" targetId="4c00-2578-faf5-6918" primary="false"/>
+        <categoryLink name="Abomination" hidden="false" id="e0e8-4123-33f7-0bb7" targetId="e17d-56fd-1957-071f" primary="false"/>
+      </categoryLinks>
+    </selectionEntry>
+    <selectionEntry type="unit" import="true" name="Daemonic Beasts (Unbound Adversaries)" hidden="false" id="8d9a-d925-56f3-1890">
+      <selectionEntries>
+        <selectionEntry type="model" import="true" name="Daemonic Beasts" hidden="false" id="317e-1c59-edbb-f183">
+          <profiles>
+            <profile name="Daemonic Beasts" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="df83-de4d-16bb-c352">
+              <characteristics>
+                <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">10&quot;</characteristic>
+                <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">6</characteristic>
+                <characteristic name="SV" typeId="450-a17e-9d5e-29da">7+</characteristic>
+                <characteristic name="W" typeId="750a-a2ec-90d3-21fe">4</characteristic>
+                <characteristic name="LD" typeId="58d2-b879-49c7-43bc">7+</characteristic>
+                <characteristic name="OC" typeId="bef7-942a-1a23-59f8">2</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <infoLinks>
+            <infoLink name="Invulnerable Save (5+)" id="3b95-679f-fe9d-b275" hidden="false" type="profile" targetId="3b8a-73e4-1389-b399"/>
+          </infoLinks>
+          <selectionEntries>
+            <selectionEntry type="upgrade" import="true" name="Horns and talons" hidden="false" id="91d6-dd7e-e0cd-b04f">
+              <constraints>
+                <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e166-d534-3d8a-0c2a" includeChildSelections="false"/>
+                <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9c27-303c-c458-2ba1" includeChildSelections="false"/>
+              </constraints>
+              <profiles>
+                <profile name="Horns and talons" typeId="8a40-4aaa-c780-9046" typeName="Melee Weapons" hidden="false" id="87c5-899f-6200-49c2">
+                  <characteristics>
+                    <characteristic name="Range" typeId="914c-b413-91e3-a132">Melee</characteristic>
+                    <characteristic name="A" typeId="2337-daa1-6682-b110">4</characteristic>
+                    <characteristic name="WS" typeId="95d1-95f-45b4-11d6">3+</characteristic>
+                    <characteristic name="S" typeId="ab33-d393-96ce-ccba">6</characteristic>
+                    <characteristic name="AP" typeId="41a0-1301-112a-e2f2">-2</characteristic>
+                    <characteristic name="D" typeId="3254-9fe6-d824-513e">2</characteristic>
+                    <characteristic name="Keywords" typeId="893f-9000-ccf7-648e">-</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+          </selectionEntries>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="fd80-17e3-3c1a-6570" shared="true" childName="Armageddon" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="min" value="3" field="selections" scope="parent" shared="true" id="aa6e-e362-4565-70cb" includeChildSelections="false"/>
+            <constraint type="max" value="6" field="selections" scope="parent" shared="true" id="6ff9-0c26-020f-2b32" includeChildSelections="false"/>
+          </constraints>
+        </selectionEntry>
+      </selectionEntries>
+      <comment>Armageddon Crusade content</comment>
+      <categoryLinks>
+        <categoryLink name="Reference" hidden="false" id="3c66-9631-712e-8f43" targetId="eef1-be80-500a-edfc" primary="true"/>
+        <categoryLink name="Unbound Adversaries" hidden="false" id="0535-0745-9463-5abf" targetId="9440-07f1-b09d-ce8b" primary="false"/>
+        <categoryLink name="Chaos" hidden="false" id="7fd2-fea7-e335-9daa" targetId="4c00-2578-faf5-6918" primary="false"/>
+        <categoryLink name="Daemon" hidden="false" id="07ae-2cbd-ccc6-d9b9" targetId="9c0e-7e25-4580-e439" primary="false"/>
+        <categoryLink name="Beast" hidden="false" id="1dfe-b7fb-a69e-30ee" targetId="4c3e-9310-a516-3590" primary="false"/>
+        <categoryLink name="Daemonic Beasts" hidden="false" id="ac04-ac2c-81eb-94c6" targetId="a783-fe90-2280-47ec" primary="false"/>
+      </categoryLinks>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedRules>
