@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="159" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="false" id="d81a-61dd-6d27-a3ce" name="Xenos - T&apos;au Empire" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="160" battleScribeVersion="2.03" authorContact="Dunamis55 &amp; AbonShell" authorName="BSData Developers" type="catalogue">
   <rules>
     <rule name="For The Greater Good" hidden="false" id="eeb6-c42-48f7-cc21">
       <description>If your Army Faction is **^^T’au Empire^^**, at the start of your Shooting phase you can select units from your army with this ability to become Observer units.
@@ -4247,6 +4247,7 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="73f0-2618-5e33-29b0"/>
                   </constraints>
                 </entryLink>
+                <entryLink import="true" name="Homing beacon" hidden="false" id="b63d-8730-94c2-1d0d" targetId="733a-d8f9-87a0-4200" type="selectionEntry"/>
               </entryLinks>
               <profiles>
                 <profile name="Stealth Shas&apos;ui" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="110a-c939-d3bf-eb08">
@@ -4306,6 +4307,7 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                     <constraint type="max" value="2" field="selections" scope="unit" shared="true" id="bf75-664b-6625-643c" includeChildSelections="true"/>
                   </constraints>
                 </entryLink>
+                <entryLink import="true" name="Homing beacon" hidden="false" id="31d5-a576-0462-f9ee" targetId="733a-d8f9-87a0-4200" type="selectionEntry"/>
               </entryLinks>
               <profiles>
                 <profile name="Stealth Shas&apos;ui" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="e7a3-0c26-b822-60c4">
@@ -4395,34 +4397,6 @@ Designer’s Note: Place a Support Turret token next to this unit to remind you.
                       </entryLinks>
                     </selectionEntryGroup>
                   </selectionEntryGroups>
-                  <selectionEntries>
-                    <selectionEntry type="upgrade" import="true" name="Homing beacon" hidden="false" id="733a-d8f9-87a0-4200">
-                      <constraints>
-                        <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="d8a7-6375-1eb8-7b9b" automatic="true"/>
-                        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5fa7-8938-9a77-3a87"/>
-                      </constraints>
-                      <profiles>
-                        <profile name="Homing Beacon" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1333-60c8-37d2-1a4d">
-                          <characteristics>
-                            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, you can use the Rapid Ingress Stratagem for 0CP. The target must be set up within 3&quot; of the bearer’s unit and more than 9&quot; away from all enemy units.
-**Designer’s Note:** *Place a Homing Beacon token next to this unit, removing it once this ability is used.*</characteristic>
-                          </characteristics>
-                        </profile>
-                      </profiles>
-                      <modifiers>
-                        <modifier type="set" value="true" field="hidden">
-                          <conditions>
-                            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                        <modifier type="set" value="1" field="d8a7-6375-1eb8-7b9b">
-                          <conditions>
-                            <condition type="notInstanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
-                          </conditions>
-                        </modifier>
-                      </modifiers>
-                    </selectionEntry>
-                  </selectionEntries>
                   <entryLinks>
                     <entryLink import="true" name="Battlesuit fists" hidden="false" id="329a-10c5-2661-7ba3" type="selectionEntry" targetId="6cf1-5611-ba26-a9b1">
                       <entryLinks>
@@ -18153,6 +18127,26 @@ Designer’s Note: Place an Oversight Drone token next to the bearer, removing i
           </infoLinks>
         </selectionEntry>
       </selectionEntries>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Homing beacon" hidden="false" id="733a-d8f9-87a0-4200">
+      <constraints>
+        <constraint type="max" value="1" field="selections" scope="unit" shared="true" id="5fa7-8938-9a77-3a87" includeChildSelections="true"/>
+      </constraints>
+      <profiles>
+        <profile name="Homing Beacon" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1333-60c8-37d2-1a4d">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, you can use the Rapid Ingress Stratagem for 0CP. The target must be set up within 3&quot; of the bearer’s unit and more than 9&quot; away from all enemy units.
+**Designer’s Note:** *Place a Homing Beacon token next to this unit, removing it once this ability is used.*</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="instanceOf" value="1" field="selections" scope="force" childId="1d6e-2579-8e7f-1ed4" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
     </selectionEntry>
   </sharedSelectionEntries>
   <entryLinks>
