@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cogitator Editorius — wh40k data editor</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◣◢</span>
+      <span class="brand-name">COGITATOR EDITORIUS</span>
+      <span class="brand-sub">wh40k 11e · éditeur de données</span>
+    </div>
+    <div class="topbar-status">
+      <span id="branch" class="pill" title="branche git"></span>
+      <span id="dirty" class="pill pill-warn" hidden></span>
+      <button id="btn-save" class="btn">Enregistrer fichiers</button>
+      <button id="btn-commit" class="btn btn-primary">Commit…</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <label class="field">
+        <span>Faction / fichier</span>
+        <select id="faction-select"></select>
+      </label>
+
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-tab="units">Unités</button>
+        <button class="tab" data-tab="weapons">Armes</button>
+        <button class="tab" data-tab="detachments">Détachements</button>
+      </div>
+
+      <div class="list-tools">
+        <input id="filter" type="search" placeholder="Filtrer…" />
+        <button id="btn-new" class="btn btn-small" title="Créer">+ Nouveau</button>
+      </div>
+
+      <ul id="entity-list" class="entity-list"></ul>
+    </aside>
+
+    <main id="detail" class="detail">
+      <div class="empty-state">
+        <p>Sélectionne une faction puis une entrée à éditer.</p>
+        <p class="hint">Toute modification d'une arme partagée signalera les unités impactées.</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- modal host -->
+  <div id="modal-root" class="modal-root" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal" id="modal"></div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

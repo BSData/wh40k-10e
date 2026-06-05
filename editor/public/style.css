@@ -1,0 +1,181 @@
+/* Cogitator Editorius — Warhammer 40k datasheet-styled editor.
+   Self-contained, restyle-friendly. Palette: gothic charcoal + bone + blood. */
+:root {
+  --bg: #15171c;
+  --bg-2: #1d2027;
+  --panel: #23262f;
+  --panel-2: #2a2e38;
+  --ink: #e9e6dd;
+  --ink-dim: #a7a294;
+  --bone: #d8d2c2;
+  --gold: #c9a24a;
+  --blood: #7c1f1f;
+  --blood-2: #a62a2a;
+  --green: #4a8c5a;
+  --line: #3a3f4b;
+  --radius: 6px;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  --sans: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+/* ---- top bar ---- */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px;
+  background: linear-gradient(180deg, #20232b, #181a20);
+  border-bottom: 2px solid var(--gold);
+}
+.brand { display: flex; align-items: baseline; gap: 10px; }
+.brand-mark { color: var(--gold); font-size: 18px; }
+.brand-name { font-weight: 800; letter-spacing: 2px; color: var(--bone); }
+.brand-sub { color: var(--ink-dim); font-size: 12px; letter-spacing: .5px; }
+.topbar-status { display: flex; align-items: center; gap: 10px; }
+
+.pill {
+  font-size: 12px; padding: 3px 9px; border-radius: 999px;
+  background: var(--panel-2); color: var(--ink-dim); border: 1px solid var(--line);
+}
+.pill-warn { background: #3a2a14; color: #e8b964; border-color: #6b4e1f; }
+
+/* ---- layout ---- */
+.layout { display: grid; grid-template-columns: 320px 1fr; height: calc(100vh - 53px); }
+.sidebar {
+  background: var(--bg-2); border-right: 1px solid var(--line);
+  display: flex; flex-direction: column; padding: 12px; gap: 10px; overflow: hidden;
+}
+.detail { overflow: auto; padding: 22px; }
+
+/* ---- sidebar controls ---- */
+.field { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--ink-dim); }
+select, input, textarea {
+  background: var(--panel); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 4px; padding: 7px 8px; font-family: inherit; font-size: 13px;
+}
+select:focus, input:focus, textarea:focus { outline: 1px solid var(--gold); }
+
+.tabs { display: flex; gap: 4px; }
+.tab {
+  flex: 1; padding: 7px 4px; background: var(--panel); color: var(--ink-dim);
+  border: 1px solid var(--line); border-radius: 4px; cursor: pointer; font-size: 12px;
+}
+.tab.active { background: var(--blood); color: #fff; border-color: var(--blood-2); }
+
+.list-tools { display: flex; gap: 6px; }
+.list-tools input { flex: 1; }
+
+.entity-list { list-style: none; margin: 0; padding: 0; overflow: auto; flex: 1; }
+.entity-list li {
+  padding: 8px 10px; border-bottom: 1px solid var(--line); cursor: pointer;
+  display: flex; justify-content: space-between; gap: 8px; align-items: center;
+}
+.entity-list li:hover { background: var(--panel); }
+.entity-list li.active { background: var(--blood); color: #fff; }
+.entity-list .tag { font-size: 10px; color: var(--ink-dim); text-transform: uppercase; }
+.entity-list li.active .tag { color: #f0d6d6; }
+
+/* ---- buttons ---- */
+.btn {
+  background: var(--panel-2); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 4px; padding: 7px 12px; cursor: pointer; font-size: 13px;
+}
+.btn:hover { background: #343945; }
+.btn-primary { background: var(--blood); border-color: var(--blood-2); color: #fff; }
+.btn-primary:hover { background: var(--blood-2); }
+.btn-small { padding: 5px 9px; font-size: 12px; }
+.btn-ghost { background: transparent; }
+.btn-danger { background: #3a1717; border-color: var(--blood); color: #e6b3b3; }
+
+/* ---- datasheet card ---- */
+.empty-state { color: var(--ink-dim); margin-top: 40px; text-align: center; }
+.empty-state .hint { font-size: 12px; }
+
+.sheet {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  max-width: 1000px; margin: 0 auto; overflow: hidden;
+}
+.sheet-head {
+  background: linear-gradient(90deg, var(--blood), #2a1414);
+  padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;
+}
+.sheet-head h2 { margin: 0; font-size: 20px; letter-spacing: 1px; color: #fff; }
+.sheet-head .meta { color: #e7c9c9; font-size: 12px; }
+.sheet-body { padding: 18px; display: flex; flex-direction: column; gap: 18px; }
+
+.section { border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
+.section > h3 {
+  margin: 0; padding: 8px 12px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gold); background: var(--panel-2); border-bottom: 1px solid var(--line);
+}
+.section-body { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+
+/* stat line like a datasheet */
+.statline { display: flex; flex-wrap: wrap; gap: 8px; }
+.stat {
+  display: flex; flex-direction: column; align-items: center; min-width: 52px;
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+.stat .k { font-size: 10px; color: var(--ink-dim); background: var(--panel-2); width: 100%; text-align: center; padding: 2px; }
+.stat .v { padding: 4px; }
+.stat .v input { width: 48px; text-align: center; padding: 3px; }
+
+/* weapon tables */
+table.wt { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.wt th, table.wt td { border: 1px solid var(--line); padding: 5px 7px; text-align: center; }
+table.wt th { background: var(--panel-2); color: var(--gold); font-size: 11px; text-transform: uppercase; }
+table.wt td.name { text-align: left; }
+table.wt input { width: 100%; min-width: 40px; text-align: center; }
+table.wt input.name { text-align: left; }
+.wt-kind { font-size: 10px; color: var(--ink-dim); text-transform: uppercase; }
+
+/* keyword chips */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 12px;
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: 999px; padding: 3px 8px;
+}
+.chip .x { cursor: pointer; color: var(--blood-2); font-weight: bold; }
+.chip.primary { border-color: var(--gold); color: var(--gold); }
+
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.row label { font-size: 12px; color: var(--ink-dim); }
+.grow { flex: 1; }
+textarea { width: 100%; min-height: 70px; resize: vertical; }
+.muted { color: var(--ink-dim); font-size: 12px; }
+.warn-note { color: #e8b964; font-size: 12px; }
+
+.sheet-actions { display: flex; gap: 10px; justify-content: flex-end; padding-top: 4px; }
+
+/* used-by list */
+.usedby { display: flex; flex-direction: column; gap: 4px; max-height: 220px; overflow: auto; }
+.usedby label { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--ink); }
+.usedby .file { color: var(--ink-dim); font-size: 11px; }
+
+/* ---- modal ---- */
+.modal-root { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 50; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
+.modal {
+  position: relative; background: var(--panel); border: 1px solid var(--gold);
+  border-radius: 8px; width: min(640px, 92vw); max-height: 86vh; overflow: auto; padding: 0;
+}
+.modal h3 { margin: 0; padding: 14px 18px; background: var(--panel-2); border-bottom: 1px solid var(--line); color: var(--gold); }
+.modal .modal-body { padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+.modal .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+/* ---- toast ---- */
+.toast {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  background: #111; border: 1px solid var(--gold); color: var(--ink);
+  padding: 10px 16px; border-radius: 6px; z-index: 100; max-width: 80vw;
+}
+.toast.err { border-color: var(--blood-2); color: #f0c0c0; }
+.toast.ok { border-color: var(--green); }
