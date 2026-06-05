@@ -1531,7 +1531,7 @@ Each time a unit that is part of an Attached unit is destroyed, it does not have
       <description>Some models have &apos;Feel No Pain x+&apos; listed in their abilities. Each time a model with this ability suffers damage and so would lose a wound (including wounds lost due to mortal wounds), roll one D6: if the result is greater than or equal to the number denoted by &apos;x: that wound is ignored and is not lost. If a model has more than one Feel No Pain ability, you can only use one of those abilities each time that model suffers damage and so would lose a wound.</description>
     </rule>
     <rule id="6c1f-1cf7-ff25-c99e" name="Blast" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
-      <description>Weapons with **[BLAST]** in their profile are known as Blast weapons, and they make a random number of attacks. Each time you determine how many attacks are made with a Blast weapon, add 1 to the result for every five models that were in the target unit when you selected it as the target (rounding down). Blast weapons can never be used to make attacks against a unit that is within Engagement Range of one or more units from the attacking model’s army (including its own unit).</description>
+      <description>Weapons with **[BLAST]** in their profile are known as Blast weapons. Each time you gather attack dice for a Blast weapon, add one additional attack dice for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form [BLAST X], add X additional attack dice for every five models instead. Blast weapons can never be used to make attacks against a unit that is within Engagement Range of one or more units from the attacking model’s army (including its own unit).</description>
       <alias>BLAST</alias>
     </rule>
     <rule id="9143-31ae-e0a6-6007" name="Precision" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
@@ -1623,6 +1623,161 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
     </rule>
     <rule name="Crucible" id="5ce6-a3cf-e871-f081" hidden="false">
       <description>A **^^Character^^** created using Crucible rules has the Crucible ability. Your army may include up to three units with the Crucible ability and these units cannot be given Enhancements.</description>
+    </rule>
+    <rule id="ea1f-c7b7-cafa-43f8" name="Cleave" publicationId="48fc-15aa-b307-9443" page="79" hidden="false">
+      <description>Weapons with **[CLEAVE]** in their profile are known as Cleave weapons. This ability always takes the form **[CLEAVE X]**. Each time you gather attack dice for a Cleave weapon, if you only selected one target for all of that weapon’s attacks, add X additional attack dice for every five models that were in the target unit in the Select Targets step (rounding down).
+
+*Example: If a [CLEAVE 1] weapon with an Attacks characteristic of 3 targets one unit containing 16 models, you would gather three additional attack dice for that weapon (for a total of six for that weapon).*</description>
+      <alias>CLEAVE</alias>
+    </rule>
+    <rule id="59e0-775e-fce5-43ca" name="Close-Quarters" publicationId="48fc-15aa-b307-9443" page="80" hidden="false">
+      <description>Weapons with **[CLOSE-QUARTERS]** in their profile are known as Close-quarters weapons. Units containing one or more models with a [CLOSE-QUARTERS] weapon can shoot using close-quarters shooting (10.06).
+
+When using another shooting type, for each model in that unit (excluding MONSTER/VEHICLE models), you can only select one of the following to make attacks with:
+- One or more of its [CLOSE-QUARTERS] weapons.
+- One or more of its other ranged weapons.
+
+[PISTOL] and [CLOSE-QUARTERS] are identical for all rules purposes. [PISTOL] is a pre-existing ability that is superseded by [CLOSE-QUARTERS] as this edition progresses.</description>
+      <alias>CLOSE-QUARTERS</alias>
+    </rule>
+    <rule id="21f5-c07c-6d97-4405" name="Support" publicationId="48fc-15aa-b307-9443" page="84" hidden="false">
+      <description>Some models have ‘Support’ listed among their core abilities. Such models are support models. While a support model is on the battlefield it can be attached to one of the units listed on its datasheet (in the same manner as a Leader), forming an Attached unit to bolster that unit’s fighting effectiveness. See Attached Units (19).</description>
+      <alias>SUPPORT</alias>
+    </rule>
+    <rule id="d4d5-4375-0e91-c7d0" name="Stratagem: Command Re-roll (1CP)" publicationId="48fc-15aa-b307-9443" page="55" hidden="false">
+      <description>**CORE STRATAGEM — 1CP** (15.02)
+
+**WHEN:** Any phase, just after you make an Advance, Charge, Damage, Hazard, Hit, Save or Wound roll, or a roll to determine the number of attacks generated with a weapon, for a friendly unit or model.
+**TARGET:** That unit or model.
+**EFFECT:** You re-roll that roll. If you are rolling more than one dice together, select one of those dice to re-roll (excluding charge rolls, which you must re-roll in full).</description>
+    </rule>
+    <rule id="c205-a458-8cdb-5eac" name="Stratagem: Epic Challenge (1CP)" publicationId="48fc-15aa-b307-9443" page="55" hidden="false">
+      <description>**CORE STRATAGEM — 1CP** (15.03)
+
+**WHEN:** Fight phase, just after a friendly CHARACTER unit is selected to fight.
+**TARGET:** That CHARACTER unit.
+**EFFECT:** Select one CHARACTER model in your unit. Until the end of the phase, that model’s melee weapons have the [PRECISION] ability.</description>
+    </rule>
+    <rule id="fcbf-0c41-f037-5094" name="Stratagem: Insane Bravery (1CP)" publicationId="48fc-15aa-b307-9443" page="55" hidden="false">
+      <description>**CORE STRATAGEM — 1CP** (15.04)
+
+**WHEN:** Battle-shock step of your Command phase, just before you make a battle-shock roll for a friendly unit.
+**TARGET:** That unit.
+**EFFECT:** That battle-shock roll is automatically successful.
+**RESTRICTIONS:** You cannot use this stratagem more than once per battle.</description>
+    </rule>
+    <rule id="4fc8-f3ee-3d63-0dcf" name="Stratagem: Explosives (1CP)" publicationId="48fc-15aa-b307-9443" page="55" hidden="false">
+      <description>**CORE STRATAGEM — 1CP** (15.05)
+
+**WHEN:** Your Shooting phase.
+**TARGET:** One friendly unengaged EXPLOSIVES/GRENADES unit that is eligible to shoot and did not make an Advance move this turn.
+**EFFECT:** Resolve the following sequence:
+1. Select one EXPLOSIVES/GRENADES model in your unit.
+2. Select one unengaged enemy unit within 8" of and visible to that model.
+3. Roll six D6: for each 4+, that enemy unit suffers 1 mortal wound.</description>
+    </rule>
+    <rule id="40e8-48bd-5c13-ac7d" name="Stratagem: Crushing Impact (1CP)" publicationId="48fc-15aa-b307-9443" page="55" hidden="false">
+      <description>**CORE STRATAGEM — 1CP** (15.06)
+
+**WHEN:** Your Charge phase, just after a friendly MONSTER/VEHICLE unit ends a charge move.
+**TARGET:** That MONSTER/VEHICLE unit.
+**EFFECT:** Select one enemy unit engaged with your unit, then one model in your unit engaged with that enemy unit. Roll a number of D6 equal to that model’s Toughness: for each 1, your unit suffers 1 mortal wound; for each 5+, that enemy unit suffers 1 mortal wound (to a maximum of 6 mortal wounds per unit).</description>
+    </rule>
+    <rule id="3e0f-57c7-79b7-77a8" name="Stratagem: Rapid Ingress (1CP)" publicationId="48fc-15aa-b307-9443" page="56" hidden="false">
+      <description>**CORE STRATAGEM — 1CP** (15.07)
+
+**WHEN:** End of your opponent’s Movement phase.
+**TARGET:** One friendly unit that is in strategic reserves (excluding AIRCRAFT).
+**EFFECT:** Your unit makes an ingress move (20.04).
+**RESTRICTIONS:** You cannot use this stratagem during the first battle round.</description>
+    </rule>
+    <rule id="e421-1f40-8c6e-ac44" name="Stratagem: Fire Overwatch (1CP)" publicationId="48fc-15aa-b307-9443" page="56" hidden="false">
+      <description>**CORE STRATAGEM — 1CP** (15.08)
+
+**WHEN:** End of your opponent’s Movement phase.
+**TARGET:** One friendly unengaged unit (excluding TITANIC units).
+**EFFECT:** Your unit shoots using snap shooting (15.09): you can only target one visible enemy unit within 24"; each attack only hits on an unmodified Hit roll of 6 (irrespective of BS or modifiers); you cannot re-roll Hit rolls.</description>
+    </rule>
+    <rule id="0212-a34f-5622-ac26" name="Stratagem: Smokescreen (1CP)" publicationId="48fc-15aa-b307-9443" page="56" hidden="false">
+      <description>**CORE STRATAGEM — 1CP** (15.10)
+
+**WHEN:** Start of your opponent’s Shooting phase.
+**TARGET:** One friendly SMOKE unit.
+**EFFECT:** Until the end of the phase, each time an attack targets your SMOKE unit (or a unit that is not fully visible to the attacking model because of one or more models in your SMOKE unit), the target has the benefit of cover against that attack.</description>
+    </rule>
+    <rule id="b60b-c9ff-cea8-a442" name="Stratagem: Heroic Intervention (1CP/2CP)" publicationId="48fc-15aa-b307-9443" page="57" hidden="false">
+      <description>**CORE STRATAGEM — 1CP (or 2CP)** (15.11)
+
+**WHEN:** End of your opponent’s Charge phase.
+**TARGET:** One friendly unengaged unit within 12" of one or more enemy units. You can only select a VEHICLE unit if it is a CHARACTER/WALKER unit.
+**EFFECT:** Resolve a charge with your unit (11.02). Before making the charge roll, select one of:
+- **Leap to Defend:** When selecting charge targets, you can only select enemy units that made a charge move this phase and are within the maximum distance.
+- **Into the Fray (+1CP):** When making the charge roll, if the result is greater than 6 (after modifiers), change it to 6. When selecting charge targets, you can select any enemy units within 6" of your unit and within the maximum distance.</description>
+    </rule>
+    <rule id="9d34-55e4-b050-f842" name="Stratagem: Counter-offensive (2CP)" publicationId="48fc-15aa-b307-9443" page="57" hidden="false">
+      <description>**CORE STRATAGEM — 2CP** (15.12)
+
+**WHEN:** Fight step of your opponent’s Fight phase, just after an enemy unit has resolved its attacks.
+**TARGET:** One friendly unit that is eligible to fight.
+**EFFECT:** Until the end of the phase, your unit has the Fights First ability and it must be the next unit you select to fight (12.04).</description>
+    </rule>
+    <rule id="8931-e19c-2851-f4da" name="Core Rule: The Battle Round (07)" publicationId="48fc-15aa-b307-9443" page="28" hidden="false">
+      <description>A battle lasts five battle rounds. In each battle round both players take a turn, starting with the player who has the first turn. During its turn, a player progresses through five phases in this order:
+1. **Command phase** (08)
+2. **Movement phase** (09)
+3. **Shooting phase** (10)
+4. **Charge phase** (11)
+5. **Fight phase** (12)
+When a player has completed all five phases, their turn ends.</description>
+    </rule>
+    <rule id="8360-5587-5507-9033" name="Core Rule: Command Phase (08)" publicationId="48fc-15aa-b307-9443" page="30" hidden="false">
+      <description>The Command phase has two steps:
+- **Command step:** You gain 1 Command Point (CP).
+- **Battle-shock step:** Take a Battle-shock test (roll 2D6 vs Leadership) for each of your units that is below its Starting Strength. A battle-shocked unit has OC 0, fails Desperate Escape tests more easily, and cannot use stratagems on it/control objectives normally until the start of your next Command phase.</description>
+    </rule>
+    <rule id="f60b-8e32-2b3b-33f8" name="Core Rule: Remain Stationary (09.04)" publicationId="48fc-15aa-b307-9443" page="32" hidden="false">
+      <description>**MAXIMUM DISTANCE:** ‘–’.
+**ELIGIBLE IF:** Any unit.
+**EFFECT:** No models are moved (neither in straight lines nor rotated). Units that remain stationary do not trigger any rules that are triggered when a unit starts or ends a move.</description>
+    </rule>
+    <rule id="c17d-dc64-eecf-f1ae" name="Core Rule: Normal Move (09.05)" publicationId="48fc-15aa-b307-9443" page="32" hidden="false">
+      <description>**MAXIMUM DISTANCE:** Your unit’s M characteristic.
+**ELIGIBLE IF:** Your unit is on the battlefield and unengaged.
+**EFFECT:** Your unit moves (no model within Engagement Range of enemies).
+**AFTER MOVING:** Your unit must be unengaged.</description>
+    </rule>
+    <rule id="7528-fd2e-72b9-3590" name="Core Rule: Advance Move (09.06)" publicationId="48fc-15aa-b307-9443" page="32" hidden="false">
+      <description>**MAXIMUM DISTANCE:** Advance roll (1D6) + your unit’s M characteristic.
+**ELIGIBLE IF:** Your unit is on the battlefield and unengaged.
+**BEFORE MOVING:** Make an Advance roll of one D6.
+**AFTER MOVING:** Your unit must be unengaged, and until the end of the turn (unless otherwise stated) it is not eligible to declare a charge or start an action. It also cannot shoot unless it has [ASSAULT] weapons (Assault shooting).</description>
+    </rule>
+    <rule id="e4cd-d46b-d7a6-7166" name="Core Rule: Fall-Back Move (09.07)" publicationId="48fc-15aa-b307-9443" page="32" hidden="false">
+      <description>**MAXIMUM DISTANCE:** Your unit’s M characteristic.
+**ELIGIBLE IF:** Your unit is engaged.
+**BEFORE MOVING — select a mode:**
+- **Ordered Retreat:** available if your unit is not battle-shocked.
+- **Desperate Escape:** otherwise mandatory. Make a Hazard roll for each model in your unit.
+**WHILE MOVING:** Desperate Escape models can move through enemy models.
+**AFTER MOVING:** Your unit must be unengaged, and until the end of the turn it is not eligible to shoot, declare a charge or start an action. (Desperate Escape: if not battle-shocked, make a battle-shock roll.)</description>
+    </rule>
+    <rule id="7f10-badc-6eb2-c3f5" name="Core Rule: Shooting Types (10)" publicationId="48fc-15aa-b307-9443" page="34" hidden="false">
+      <description>When a unit is selected to shoot, choose one shooting type it is eligible for:
+- **Normal Shooting (10.04):** unit is unengaged and did not Advance this turn.
+- **Assault Shooting (10.05):** unit is unengaged and made an Advance this turn; can only use [ASSAULT] weapons.
+- **Close-quarters Shooting (10.06):** unit is engaged and did not Advance; can target units it is engaged with. Non-MONSTER/VEHICLE models may only use [CLOSE-QUARTERS] weapons against engaged units; MONSTER/VEHICLE models suffer -1 to Hit unless using a [CLOSE-QUARTERS] weapon against an engaged unit.
+- **Indirect Shooting (10.07):** unit is unengaged, did not Advance, and has [INDIRECT FIRE] weapons; those weapons can target units that are not visible (target gains cover, no re-rolls, unmodified Hit of 1-5 fails unless stationary with a friendly spotter).</description>
+    </rule>
+    <rule id="2b30-9e7f-1ef3-6ead" name="Core Rule: Charge Phase (11)" publicationId="48fc-15aa-b307-9443" page="36" hidden="false">
+      <description>**Declare Charge (11.02):** A unit is eligible to declare a charge if it is on the battlefield, within 12" of one or more enemy units, is not engaged, and did not Advance or Fall Back this turn.
+**Charge Roll:** Roll 2D6 — the result is the maximum charge distance.
+**Charge Move (11.04):** Before moving, select charge targets (enemy units within 12" and within the maximum distance). Each model must end closer to a charge target, and end within Engagement Range of one or more targets if able. After moving, your unit must be engaged with ALL its charge targets and must not be engaged with non-target enemy units. Until the end of the turn, models in a charging unit have the Fights First ability.</description>
+    </rule>
+    <rule id="33dc-d8d1-0469-0c05" name="Core Rule: Fight Phase (12)" publicationId="48fc-15aa-b307-9443" page="38" hidden="false">
+      <description>The Fight phase resolves in steps: **Pile In → Fight → Consolidate**.
+- **Pile-in Move (12.03):** up to 3"; each model must end closer to the nearest enemy model.
+- **Fight (12.04):** Resolve Fights First combats first (units that charged or have Fights First), then players alternate selecting units to fight, starting with the player whose turn it is NOT. A selected unit piles in, makes melee attacks, then consolidates.
+- **Consolidate (12.08):** up to 3"; move toward the nearest enemy unit / objective as allowed.</description>
     </rule>
   </sharedRules>
   <sharedProfiles>
