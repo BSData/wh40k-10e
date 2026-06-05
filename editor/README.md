@@ -1,10 +1,17 @@
 # Cogitator Editorius — éditeur de données wh40k
 
 Interface graphique pour **consulter et modifier** les données BattleScribe
-(`.cat` / `.gst`) de ce dépôt en vue des mises à jour git. Présentation de type
-*datasheet* Warhammer 40 000, édition de tout (points, caractéristiques,
-capacités, mots-clés, armes, stats d'armes), gestion des **armes partagées**
-entre unités, et création de nouvelles armes / unités / détachements.
+(`.cat` / `.gst`) de ce dépôt en vue des mises à jour git. L'**aperçu** réutilise
+le module de présentation de **Cogitator Bellicum**
+(`public/datasheet-presentation/`) : la datasheet affichée applique exactement
+les mêmes règles et la même mise en page (statlines, sauvegarde invulnérable
+dérivée du texte, tableau d'armes, capacités, encart « peut diriger », labels
+FR/EN, markup `**gras**` / `^^capitales^^`). À gauche, un formulaire d'édition ;
+à droite, l'**aperçu datasheet en direct** qui se met à jour à chaque frappe.
+
+Édition de tout (points, caractéristiques, capacités, mots-clés, armes, stats
+d'armes), gestion des **armes partagées** entre unités, et création de nouvelles
+armes / unités / détachements.
 
 ## Lancer
 
@@ -54,10 +61,18 @@ editor/
     xml.js         # parseur + sérialiseur XML fidèle (round-trip parfait)
     catalog.js     # chargement, indexation globale, requêtes et éditions
   public/
-    index.html     # structure de l'UI
-    style.css      # thème datasheet 40k
-    app.js         # logique front (rendu, édition, dialogues, création)
+    index.html     # structure de l'UI (charge le module en ES module)
+    style.css      # thème de l'éditeur (chrome) + layout split form/aperçu
+    app.js         # logique front : adaptateur (JSON API -> forme `unit`),
+                   #   édition, aperçu en direct, dialogues, création
+    datasheet-presentation/   # module d'affichage de Cogitator Bellicum
+                              #   (renderers HTML + règles + thème + labels)
 ```
+
+L'éditeur **n'altère pas** le module de présentation : il l'utilise tel quel via
+`renderDatasheet()` / `renderWeaponTable()` et lui fournit la forme `unit`
+attendue grâce à un adaptateur. Mettre à jour ce module = recopier le dossier
+`datasheet-presentation/` depuis Cogitator Bellicum.
 
 ### API (résumé)
 
