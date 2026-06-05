@@ -28,8 +28,13 @@ Aucune dépendance à installer : 100 % Node natif + JS navigateur.
   filtre de recherche.
 - **Édition d'une unité** : nom, points (coût `pts`), caractéristiques
   (M/T/SV/W/LD/OC, y compris les profils des sous-modèles), capacités
-  (texte des profils), mots-clés (ajout/retrait). Les armes liées sont
-  affichées ; elles se modifient depuis l'onglet *Armes*.
+  (texte des profils), mots-clés (ajout/retrait).
+  - **Armes en ligne** : chaque arme de l'unité (liée *ou* intégrée) est
+    éditable directement dans la fiche, avec gestion de l'impact partagé
+    (cf. ci-dessous) au moment de l'enregistrer.
+  - **Composition** : min/max de chaque type de figurine + paliers de coût
+    (modificateurs `set pts` conditionnés au nombre de figurines).
+  - **Options / équipement** : points de chaque choix d'arme/wargear.
 - **Édition d'une arme** : nom, profil(s) (Range/A/BS|WS/S/AP/D/Keywords),
   mots-clés. La liste des datasheets qui l'utilisent est affichée.
 - **Impact des armes partagées** : si une arme est utilisée par plusieurs
@@ -41,6 +46,9 @@ Aucune dépendance à installer : 100 % Node natif + JS navigateur.
     référencée par Blood Angels est repointée dans `Blood Angels.cat`).
 - **Création** d'une arme, d'une unité, d'un détachement (entrées BattleScribe
   valides : bons `typeId` de caractéristiques, échappement correct, indentation).
+  La création d'unité peut **rattacher** automatiquement la datasheet à
+  l'organisation d'armée (ajout d'un `entryLink` racine), comme toutes les
+  datasheets existantes, pour la rendre sélectionnable.
 - **Enregistrement** : « Enregistrer fichiers » écrit les fichiers modifiés ;
   « Commit… » fait `git add` + `git commit` (option `push`).
 

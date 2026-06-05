@@ -163,7 +163,9 @@ class Catalog {
       statProfiles: readProfilesDeep(node, PROFILE_UNIT),
       abilities: readProfilesDeep(node, PROFILE_ABILITIES),
       ruleLinks: readInfoLinks(node, 'rule'),
-      weapons: this.readUnitWeapons(node),
+      weapons: this.readUnitWeapons(node).map((w) => ({ ...w, weaponFile: w.weaponFile || ref.file })),
+      composition: readComposition(node),
+      options: readOptions(node),
     };
   }
 
@@ -277,6 +279,9 @@ class Catalog {
     if (Array.isArray(patch.removeKeywords)) {
       for (const cid of patch.removeKeywords) removeCategoryLink(node, cid);
     }
+    if (Array.isArray(patch.composition)) applyComposition(node, patch.composition);
+    if (Array.isArray(patch.tiers)) applyTiers(node, patch.tiers);
+    if (Array.isArray(patch.options)) applyOptions(node, patch.options);
     this.markDirty(ref.file);
     this.buildIndex();
     return this.getUnit(ref.file, id);
@@ -421,6 +426,20 @@ class Catalog {
       children
     );
     container.children.push(node);
+
+    // Optionally expose the datasheet to army building via a root entryLink,
+    // the same mechanism every existing datasheet uses.
+    if (data.attach) {
+      const links = xml.child(doc.root, 'entryLinks') || (() => {
+        const e = xml.elem('entryLinks', {}, []);
+        doc.root.children.push(e);
+        return e;
+      })();
+      links.children.push(
+        xml.elem('entryLink', { import: 'true', name: data.name, hidden: 'false', type: 'selectionEntry', id: this.newId(), targetId: id })
+      );
+    }
+
     this.markDirty(file);
     this.buildIndex();
     return this.getUnit(file, id);
@@ -696,6 +715,177 @@ function readRules(node) {
       name: xml.getAttrDecoded(c, 'name'),
       description: xml.getText(xml.child(c, 'description') || {}),
     }));
+}
+
+// ---- composition / options / tiers (read) ---------------------------------
+// Model selection entries of a datasheet: those directly under the unit, plus
+// one level inside its selectionEntryGroups (squad model types).
+function unitModelEntries(unitNode) {
+  const res = [];
+  const direct = xml.child(unitNode, 'selectionEntries');
+  if (direct) {
+    for (const e of direct.children) {
+      if (e.tag === 'selectionEntry' && xml.getAttr(e, 'type') === 'model') res.push({ group: null, entry: e });
+    }
+  }
+  const groups = xml.child(unitNode, 'selectionEntryGroups');
+  if (groups) {
+    for (const g of groups.children) {
+      if (g.tag !== 'selectionEntryGroup') continue;
+      const se = xml.child(g, 'selectionEntries');
+      if (!se) continue;
+      for (const e of se.children) {
+        if (e.tag === 'selectionEntry' && xml.getAttr(e, 'type') === 'model') res.push({ group: g, entry: e });
+      }
+    }
+  }
+  return res;
+}
+
+// min/max model-count constraints (field=selections, scope=parent) of an entry.
+function entryCount(entry) {
+  const c = xml.child(entry, 'constraints');
+  const r = { min: null, max: null };
+  if (!c) return r;
+  for (const k of c.children) {
+    if (k.tag !== 'constraint') continue;
+    if (xml.getAttr(k, 'field') !== 'selections' || xml.getAttr(k, 'scope') !== 'parent') continue;
+    const t = xml.getAttr(k, 'type');
+    if (t === 'min') r.min = xml.getAttr(k, 'value');
+    if (t === 'max') r.max = xml.getAttr(k, 'value');
+  }
+  return r;
+}
+
+function readComposition(unitNode) {
+  const models = unitModelEntries(unitNode);
+  const tiers = readTiers(unitNode);
+  if (models.length === 0) {
+    // single-model datasheet (character / vehicle / monster)
+    return {
+      minM: 1, maxM: 1, tiers,
+      groups: [{
+        groupId: null, name: '_fixed', fixed: true,
+        models: [{ entryId: xml.getAttr(unitNode, 'id'), name: xml.getAttrDecoded(unitNode, 'name'), min: '1', max: '1', editable: false }],
+      }],
+    };
+  }
+  const groupsMap = new Map();
+  let minM = 0;
+  let maxM = 0;
+  for (const { group, entry } of models) {
+    const mc = entryCount(entry);
+    minM += Number(mc.min || 0);
+    maxM += Number(mc.max || mc.min || 0);
+    const key = group ? xml.getAttr(group, 'id') : '_loose';
+    if (!groupsMap.has(key)) {
+      groupsMap.set(key, {
+        groupId: group ? xml.getAttr(group, 'id') : null,
+        name: group ? xml.getAttrDecoded(group, 'name') : '_fixed',
+        models: [],
+      });
+    }
+    groupsMap.get(key).models.push({
+      entryId: xml.getAttr(entry, 'id'), name: xml.getAttrDecoded(entry, 'name'),
+      min: mc.min, max: mc.max, editable: true,
+    });
+  }
+  return { minM, maxM, tiers, groups: [...groupsMap.values()] };
+}
+
+// Cost tiers expressed as pts "set" modifiers gated by a model-count condition.
+function readTiers(unitNode) {
+  const tiers = [];
+  let idx = 0;
+  xml.walk(unitNode, (n) => {
+    if (n.tag !== 'modifier') return;
+    if (xml.getAttr(n, 'field') !== COST_PTS || xml.getAttr(n, 'type') !== 'set') return;
+    let at = null;
+    xml.walk(n, (c) => {
+      if (c.tag === 'condition' && xml.getAttr(c, 'field') === 'selections') at = xml.getAttr(c, 'value');
+    });
+    tiers.push({ idx: idx++, atModels: at, pts: xml.getAttr(n, 'value') });
+  });
+  return tiers;
+}
+
+// Wargear / weapon-option groups, grouped by name, choices deduped by name.
+function readOptions(unitNode) {
+  const groups = new Map();
+  xml.walk(unitNode, (node) => {
+    if (node.tag !== 'selectionEntryGroup') return;
+    const name = xml.getAttrDecoded(node, 'name');
+    if (!name || name === 'Detachment') return;
+    // choices may be inline selectionEntries or entryLinks to shared weapons.
+    const choiceNodes = [];
+    const se = xml.child(node, 'selectionEntries');
+    if (se) for (const e of se.children) if (e.tag === 'selectionEntry' && xml.getAttr(e, 'type') !== 'model') choiceNodes.push(e);
+    const el = xml.child(node, 'entryLinks');
+    if (el) for (const e of el.children) if (e.tag === 'entryLink') choiceNodes.push(e);
+    if (!choiceNodes.length) return;
+    if (!groups.has(name)) groups.set(name, new Map());
+    const cm = groups.get(name);
+    for (const ch of choiceNodes) {
+      const cn = xml.getAttrDecoded(ch, 'name');
+      if (!cn) continue;
+      const pts = (readCosts(ch).find((c) => c.name === 'pts') || {}).value || '0';
+      if (!cm.has(cn)) cm.set(cn, { name: cn, pts, entryIds: [] });
+      const cur = cm.get(cn);
+      cur.entryIds.push(xml.getAttr(ch, 'id'));
+      if (cur.pts === '0' && pts !== '0') cur.pts = pts; // surface a non-zero cost
+    }
+  });
+  return [...groups.entries()].map(([name, cm]) => ({ name, choices: [...cm.values()] }));
+}
+
+// ---- composition / options / tiers (write) --------------------------------
+function applyComposition(unitNode, comp) {
+  for (const m of comp) {
+    const entry = findById(unitNode, m.entryId);
+    if (!entry) continue;
+    const c = xml.child(entry, 'constraints');
+    if (!c) continue;
+    for (const k of c.children) {
+      if (k.tag !== 'constraint') continue;
+      if (xml.getAttr(k, 'field') !== 'selections' || xml.getAttr(k, 'scope') !== 'parent') continue;
+      const t = xml.getAttr(k, 'type');
+      if (t === 'min' && m.min != null) xml.setAttr(k, 'value', String(m.min));
+      if (t === 'max' && m.max != null) xml.setAttr(k, 'value', String(m.max));
+    }
+  }
+}
+
+function applyTiers(unitNode, tiers) {
+  const mods = [];
+  xml.walk(unitNode, (n) => {
+    if (n.tag === 'modifier' && xml.getAttr(n, 'field') === COST_PTS && xml.getAttr(n, 'type') === 'set') mods.push(n);
+  });
+  for (const t of tiers) {
+    const m = mods[t.idx];
+    if (!m) continue;
+    if (t.pts != null) xml.setAttr(m, 'value', String(t.pts));
+    if (t.atModels != null) {
+      xml.walk(m, (c) => {
+        if (c.tag === 'condition' && xml.getAttr(c, 'field') === 'selections') xml.setAttr(c, 'value', String(t.atModels));
+      });
+    }
+  }
+}
+
+function applyOptions(unitNode, options) {
+  for (const o of options) {
+    for (const id of o.entryIds || []) {
+      const e = findById(unitNode, id);
+      if (!e || o.pts == null) continue;
+      const costs = xml.ensureChild(e, 'costs');
+      let c = costs.children.find((x) => x.tag === 'cost' && xml.getAttr(x, 'typeId') === COST_PTS);
+      if (!c) {
+        c = xml.elem('cost', { name: 'pts', typeId: COST_PTS, value: '0' });
+        costs.children.push(c);
+      }
+      xml.setAttr(c, 'value', String(o.pts));
+    }
+  }
 }
 
 // ---- mutation helpers ------------------------------------------------------

@@ -95,7 +95,29 @@ function unitToShape(u) {
   const sp = u.statProfiles || [];
   if (sp.length > 1) shape.statLines = sp.map((p) => [p.name, statsArray(p.chars)]);
   else if (sp.length === 1) shape.stats = statsArray(sp[0].chars);
+  Object.assign(shape, compToShape(u.composition));
+  shape.opts = optsToShape(u.options);
   return shape;
+}
+
+function compToShape(composition) {
+  if (!composition) return {};
+  const num = (x) => Number(x || 0);
+  const comp = (composition.groups || []).map((g) => {
+    const min = g.models.reduce((s, m) => s + num(m.min), 0);
+    const max = g.models.reduce((s, m) => s + num(m.max || m.min), 0);
+    if (g.name === '_fixed') return ['_fixed', min, max, g.models.map((m) => [m.name, num(m.max) || 1]), []];
+    return [g.name, min, max, g.models.map((m) => [m.name, num(m.max)])];
+  });
+  const tiers = (composition.tiers || []).filter((t) => t.atModels != null).map((t) => [num(t.atModels), num(t.pts)]);
+  // recompute totals from the (possibly edited) model counts so the header is live
+  const minM = comp.reduce((s, g) => s + num(g[1]), 0) || composition.minM;
+  const maxM = comp.reduce((s, g) => s + num(g[2]), 0) || composition.maxM;
+  return { comp, minM, maxM, tiers };
+}
+
+function optsToShape(options) {
+  return (options || []).slice(0, 12).map((o) => [o.name, o.choices.map((ch) => [ch.name, Number(ch.pts) || 0])]);
 }
 
 function weaponToShape(w) {
@@ -197,13 +219,15 @@ function renderUnit(u) {
     ),
   ]);
 
-  // weapons (links) — read-only stats here; edit via the Weapons tab
+  // weapons — editable inline; each weapon saves through the shared-impact flow
+  const weaponEditors = [];
   const weaponsSection = el('div', { class: 'section' }, [
     el('h3', {}, 'Armes'),
-    el('div', { class: 'section-body' }, [
-      u.weapons.length ? weaponTable(u.weapons) : el('p', { class: 'muted' }, 'Aucune arme liée.'),
-      el('p', { class: 'muted' }, 'Astuce : pour modifier les stats d\'une arme, ouvre-la dans l\'onglet « Armes » (impact partagé géré).'),
-    ]),
+    el('div', { class: 'section-body' },
+      u.weapons.length
+        ? u.weapons.map((w) => { const ed = unitWeaponEditor(w); weaponEditors.push(ed); return ed.node; })
+        : [el('p', { class: 'muted' }, 'Aucune arme.')]
+    ),
   ]);
 
   // abilities
@@ -219,6 +243,10 @@ function renderUnit(u) {
       el('p', { class: 'muted' }, 'Règles liées : ' + u.ruleLinks.map((r) => r.name).join(', '))
     );
   }
+
+  // composition (model min/max + cost tiers) and wargear options
+  const comp = compositionSection(u);
+  const optionsBlock = optionsSection(u);
 
   // keywords
   const kwSection = keywordSection(u.keywords);
@@ -242,6 +270,9 @@ function renderUnit(u) {
       abilities: u.abilities.map((a) => ({ id: a.id, name: abEditName(a.id), description: abEditDesc(a.id) })),
       removeKeywords: kwState.removed,
       addKeywords: kwState.added,
+      composition: comp.collect(),
+      tiers: comp.collectTiers(),
+      options: optionsBlock.collect(),
     };
     try {
       await apiPost('/unit/edit', { file: state.file, id: u.id, patch });
@@ -257,11 +288,13 @@ function renderUnit(u) {
     keywords: currentKeywords(),
     statProfiles: u.statProfiles.map((p) => ({ id: p.id, name: p.name, chars: collectStatChars(p) })),
     abilities: u.abilities.map((a) => ({ name: abEditName(a.id), chars: { Description: abEditDesc(a.id) } })),
-    weapons: u.weapons,
+    weapons: weaponEditors.length ? weaponEditors.map((e) => e.get()) : u.weapons,
+    composition: comp.live(),
+    options: optionsBlock.live(),
   });
 
   mountSheet(u.name, `unité · ${u.file}`, nameInput, [
-    ptsBlock, statSection, weaponsSection, abilitiesSection, kwSection,
+    ptsBlock, statSection, weaponsSection, comp.node, optionsBlock.node, abilitiesSection, kwSection,
   ], [saveBtn], buildPreview, 'unit');
 }
 
@@ -269,6 +302,118 @@ function renderUnit(u) {
 function currentKeywords() {
   const live = (kwState.current || []).filter((k) => !kwState.removed.includes(k.id));
   return live.concat(kwState.added || []);
+}
+
+// ---- inline weapon editor (inside a unit) ----------------------------------
+function unitWeaponEditor(w) {
+  const profEditors = (w.profiles || []).map((p) => weaponProfileEditor(p, w.kind));
+  const tag = el('span', { class: 'wt-kind' }, (w.kind || '') + (w.embedded ? ' · intégrée' : ' · partagée'));
+  const saveB = el('button', { class: 'btn btn-small' }, 'Enregistrer cette arme');
+  saveB.addEventListener('click', () => saveUnitWeapon(w, profEditors));
+  const node = el('div', { class: 'section', style: 'border:none; padding:0; margin-bottom:10px' }, [
+    el('div', { class: 'row', style: 'justify-content:space-between' }, [
+      el('div', {}, [el('strong', {}, w.name || '(arme)'), ' ', tag]),
+      saveB,
+    ]),
+    ...(profEditors.length ? profEditors.map((b) => b.node) : [el('p', { class: 'muted' }, 'Aucun profil.')]),
+  ]);
+  return {
+    node,
+    get: () => ({
+      name: w.name, kind: w.kind,
+      profiles: profEditors.map((pe, i) => { const g = pe.get(); return { name: g.name, typeId: (w.profiles[i] || {}).typeId, chars: g.chars }; }),
+    }),
+  };
+}
+
+async function saveUnitWeapon(w, profEditors) {
+  const patch = { profiles: profEditors.map((pe) => pe.get()) };
+  try {
+    const wd = await apiGet(`/weapon?file=${enc(w.weaponFile)}&id=${enc(w.targetId)}`);
+    commitWeapon({
+      file: w.weaponFile, id: w.targetId, name: w.name, patch,
+      usage: wd.usedBy, reopen: () => openEntity('units', state.selected.id),
+    });
+  } catch (e) { toast(e.message, 'err'); }
+}
+
+// ---- composition section (model min/max + cost tiers) ----------------------
+function compositionSection(u) {
+  const comp = u.composition || { groups: [], tiers: [] };
+  const rows = [];
+  const groupNodes = [];
+  for (const g of comp.groups) {
+    const modelRows = g.models.map((m) => {
+      if (!m.editable) return el('div', { class: 'row' }, [el('span', { class: 'muted' }, '■ ' + m.name + ' (figurine unique)')]);
+      const minI = el('input', { value: m.min != null ? m.min : '', style: 'width:56px', 'data-comp': m.entryId, 'data-cf': 'min' });
+      const maxI = el('input', { value: m.max != null ? m.max : '', style: 'width:56px', 'data-comp': m.entryId, 'data-cf': 'max' });
+      rows.push({ entryId: m.entryId, minI, maxI });
+      return el('div', { class: 'row' }, [el('span', { style: 'min-width:160px' }, m.name), el('label', {}, 'min'), minI, el('label', {}, 'max'), maxI]);
+    });
+    groupNodes.push(el('div', {}, [g.name !== '_fixed' ? el('div', { class: 'muted', style: 'margin-top:4px' }, g.name) : null, ...modelRows]));
+  }
+  // tiers
+  const tierRows = [];
+  const tierNodes = (comp.tiers || []).map((t) => {
+    const atI = el('input', { value: t.atModels != null ? t.atModels : '', style: 'width:56px' });
+    const ptI = el('input', { value: t.pts != null ? t.pts : '', style: 'width:70px' });
+    tierRows.push({ idx: t.idx, atI, ptI });
+    return el('div', { class: 'row' }, [el('span', {}, 'À partir de'), atI, el('label', {}, 'figurines →'), ptI, el('label', {}, 'pts')]);
+  });
+
+  const body = [];
+  if (groupNodes.length) body.push(...groupNodes);
+  if (tierNodes.length) body.push(el('div', { class: 'muted', style: 'margin-top:6px' }, 'Paliers de coût :'), ...tierNodes);
+  if (!body.length) body.push(el('p', { class: 'muted' }, 'Aucune composition éditable.'));
+
+  const node = el('div', { class: 'section' }, [
+    el('h3', {}, `Composition (${comp.minM ?? '?'}–${comp.maxM ?? '?'} figurines)`),
+    el('div', { class: 'section-body' }, body),
+  ]);
+
+  return {
+    node,
+    collect: () => rows.map((r) => ({ entryId: r.entryId, min: r.minI.value, max: r.maxI.value })),
+    collectTiers: () => tierRows.map((t) => ({ idx: t.idx, atModels: t.atI.value, pts: t.ptI.value })),
+    // live composition object (api-unit shape) for the preview
+    live: () => ({
+      minM: comp.minM, maxM: comp.maxM,
+      tiers: tierRows.map((t) => ({ idx: t.idx, atModels: t.atI.value, pts: t.ptI.value })),
+      groups: comp.groups.map((g) => ({
+        name: g.name,
+        models: g.models.map((m) => {
+          const r = rows.find((x) => x.entryId === m.entryId);
+          return r ? { ...m, min: r.minI.value, max: r.maxI.value } : m;
+        }),
+      })),
+    }),
+  };
+}
+
+// ---- options section (wargear / weapon choices, editable points) -----------
+function optionsSection(u) {
+  const options = u.options || [];
+  const rows = [];
+  const groupNodes = options.map((o) => {
+    const chips = o.choices.map((ch) => {
+      const ptI = el('input', { value: ch.pts != null ? ch.pts : '0', style: 'width:54px', 'data-optids': JSON.stringify(ch.entryIds || []) });
+      rows.push({ entryIds: ch.entryIds || [], ptI, name: ch.name });
+      return el('div', { class: 'row', style: 'gap:6px' }, [el('span', { style: 'min-width:180px' }, ch.name), el('label', {}, 'pts'), ptI]);
+    });
+    return el('div', {}, [el('div', { class: 'muted', style: 'margin-top:4px' }, o.name), ...chips]);
+  });
+  const node = el('div', { class: 'section' }, [
+    el('h3', {}, 'Options / équipement'),
+    el('div', { class: 'section-body' }, groupNodes.length ? groupNodes : [el('p', { class: 'muted' }, 'Aucune option.')]),
+  ]);
+  return {
+    node,
+    collect: () => rows.filter((r) => r.entryIds.length).map((r) => ({ entryIds: r.entryIds, pts: r.ptI.value })),
+    live: () => options.map((o) => ({
+      name: o.name,
+      choices: o.choices.map((ch) => { const r = rows.find((x) => x.name === ch.name); return { ...ch, pts: r ? r.ptI.value : ch.pts }; }),
+    })),
+  };
 }
 
 function statProfileBlock(p) {
@@ -395,30 +540,36 @@ function weaponProfileEditor(p, kind) {
   return { node, profileId: p.id, get: () => ({ id: p.id, name: nameI.value, chars: Object.fromEntries(keys.map((k) => [k, inputs[k].value])) }) };
 }
 
-async function saveWeapon(w, nameInput, profBlocks, usage) {
+function saveWeapon(w, nameInput, profBlocks, usage) {
   const patch = {
     name: nameInput.value,
     profiles: profBlocks.map((b) => b.get()),
     removeKeywords: kwState.removed,
     addKeywords: kwState.added,
   };
-  // shared? ask scope.
-  if (usage.length > 1) {
-    chooseImpact(w, usage, patch);
+  commitWeapon({
+    file: state.file, id: w.id, name: nameInput.value, patch, usage,
+    reopen: (r) => openEntity('weapons', (r && r.newWeaponId) || w.id),
+  });
+}
+
+// Apply a weapon edit, routing through the shared-impact dialog when the weapon
+// is used by more than one datasheet. `reopen(result)` refreshes the view.
+function commitWeapon({ file, id, name, patch, usage, reopen }) {
+  const datasheetUsers = (usage || []).filter((u) => u.isDatasheet);
+  if (datasheetUsers.length > 1) {
+    chooseImpact({ file, id, name, patch, usage: datasheetUsers, reopen });
     return;
   }
-  try {
-    await apiPost('/weapon/edit', { file: state.file, id: w.id, patch, scope: 'all' });
-    toast('Arme enregistrée (en mémoire).', 'ok');
-    await refreshStatus();
-    openEntity('weapons', w.id);
-  } catch (e) { toast(e.message, 'err'); }
+  apiPost('/weapon/edit', { file, id, patch, scope: 'all' })
+    .then(async (r) => { toast('Arme enregistrée (en mémoire).', 'ok'); await refreshStatus(); if (reopen) reopen(r); })
+    .catch((e) => toast(e.message, 'err'));
 }
 
 // ---- shared weapon impact dialog ------------------------------------------
-function chooseImpact(w, usage, patch) {
+function chooseImpact({ file, id, name, patch, usage, reopen }) {
   const intro = el('p', {}, [
-    `L'arme `, el('strong', {}, w.name), ` est partagée par `, el('strong', {}, String(usage.length)),
+    `L'arme `, el('strong', {}, name), ` est partagée par `, el('strong', {}, String(usage.length)),
     ` unités. Que veux-tu faire ?`,
   ]);
 
@@ -426,7 +577,7 @@ function chooseImpact(w, usage, patch) {
     el('label', {}, [
       el('input', { type: 'checkbox', value: u.ownerId, 'data-file': u.file }),
       el('span', {}, u.ownerName),
-      el('span', { class: 'file' }, u.file === state.file ? '' : ('· ' + u.file)),
+      el('span', { class: 'file' }, u.file === file ? '' : ('· ' + u.file)),
     ])
   ));
   checks.hidden = true;
@@ -438,9 +589,9 @@ function chooseImpact(w, usage, patch) {
 
   btnAll.addEventListener('click', async () => {
     try {
-      await apiPost('/weapon/edit', { file: state.file, id: w.id, patch, scope: 'all' });
+      const r = await apiPost('/weapon/edit', { file, id, patch, scope: 'all' });
       closeModal(); toast('Modifié pour toutes les unités.', 'ok');
-      await refreshStatus(); openEntity('weapons', w.id);
+      await refreshStatus(); if (reopen) reopen(r);
     } catch (e) { toast(e.message, 'err'); }
   });
   btnSome.addEventListener('click', () => {
@@ -450,13 +601,12 @@ function chooseImpact(w, usage, patch) {
     const ids = $$('input[type=checkbox]:checked', checks).map((c) => c.value);
     if (!ids.length) { toast('Sélectionne au moins une unité.', 'err'); return; }
     try {
-      const r = await apiPost('/weapon/edit', { file: state.file, id: w.id, patch, scope: 'some', selectedOwnerIds: ids });
+      const r = await apiPost('/weapon/edit', { file, id, patch, scope: 'some', selectedOwnerIds: ids });
       closeModal();
       toast(`Variante créée et reliée à ${r.repointed.length} unité(s).`, 'ok');
       await refreshStatus();
-      // refresh contents so the new weapon appears
-      await selectFaction(state.file);
-      openEntity('weapons', r.newWeaponId);
+      await selectFaction(state.file); // refresh lists so the variant appears
+      if (reopen) reopen(r);
     } catch (e) { toast(e.message, 'err'); }
   });
 
@@ -588,12 +738,14 @@ function newUnit() {
   const inputs = {};
   const head = el('tr', {}, statNames.map((n) => el('th', {}, n)));
   const row = el('tr', {}, statNames.map((n) => { const i = el('input', { value: '' }); inputs[n] = i; return el('td', {}, [i]); }));
+  const attach = el('input', { type: 'checkbox' });
+  attach.checked = true;
   const create = el('button', { class: 'btn btn-primary' }, 'Créer l\'unité');
   create.addEventListener('click', async () => {
     if (!name.value.trim()) { toast('Nom requis.', 'err'); return; }
     const stats = Object.fromEntries(statNames.map((n) => [n, inputs[n].value]));
     try {
-      const u = await apiPost('/unit/create', { file: state.file, data: { name: name.value.trim(), points: pts.value, stats } });
+      const u = await apiPost('/unit/create', { file: state.file, data: { name: name.value.trim(), points: pts.value, stats, attach: attach.checked } });
       closeModal(); toast('Unité créée.', 'ok');
       await selectFaction(state.file); $('#tabs .tab[data-tab=units]').click(); openEntity('units', u.id);
     } catch (e) { toast(e.message, 'err'); }
@@ -602,7 +754,7 @@ function newUnit() {
     row2('Nom', name), row2('Points', pts),
     el('div', { class: 'muted' }, 'Caractéristiques :'),
     el('table', { class: 'wt' }, [el('tbody', {}, [head, row])]),
-    el('p', { class: 'muted' }, 'L\'unité est créée comme entrée partagée (sharedSelectionEntries). Lie-la ensuite à l\'organisation de l\'armée / aux armes dans le fichier.'),
+    el('label', { class: 'row' }, [attach, el('span', {}, 'Rattacher à l\'organisation d\'armée (ajoute un entryLink racine pour la rendre sélectionnable)')]),
   ], [create, cancelBtn()]);
 }
 
