@@ -1531,7 +1531,7 @@ Each time a unit that is part of an Attached unit is destroyed, it does not have
       <description>Some models have &apos;Feel No Pain x+&apos; listed in their abilities. Each time a model with this ability suffers damage and so would lose a wound (including wounds lost due to mortal wounds), roll one D6: if the result is greater than or equal to the number denoted by &apos;x: that wound is ignored and is not lost. If a model has more than one Feel No Pain ability, you can only use one of those abilities each time that model suffers damage and so would lose a wound.</description>
     </rule>
     <rule id="6c1f-1cf7-ff25-c99e" name="Blast" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
-      <description>Weapons with **[BLAST]** in their profile are known as Blast weapons, and they make a random number of attacks. Each time you determine how many attacks are made with a Blast weapon, add 1 to the result for every five models that were in the target unit when you selected it as the target (rounding down). Blast weapons can never be used to make attacks against a unit that is within Engagement Range of one or more units from the attacking model’s army (including its own unit).</description>
+      <description>Weapons with **[BLAST]** in their profile are known as Blast weapons. Each time you gather attack dice for a Blast weapon, add one additional attack dice for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form [BLAST X], add X additional attack dice for every five models instead. Blast weapons can never be used to make attacks against a unit that is within Engagement Range of one or more units from the attacking model’s army (including its own unit).</description>
       <alias>BLAST</alias>
     </rule>
     <rule id="9143-31ae-e0a6-6007" name="Precision" publicationId="48fc-15aa-b307-9443" page="26" hidden="false">
@@ -1623,6 +1623,26 @@ If a model is in Hover mode, then until the end of the battle, its Move characte
     </rule>
     <rule name="Crucible" id="5ce6-a3cf-e871-f081" hidden="false">
       <description>A **^^Character^^** created using Crucible rules has the Crucible ability. Your army may include up to three units with the Crucible ability and these units cannot be given Enhancements.</description>
+    </rule>
+    <rule id="ea1f-c7b7-cafa-43f8" name="Cleave" publicationId="48fc-15aa-b307-9443" page="79" hidden="false">
+      <description>Weapons with **[CLEAVE]** in their profile are known as Cleave weapons. This ability always takes the form **[CLEAVE X]**. Each time you gather attack dice for a Cleave weapon, if you only selected one target for all of that weapon’s attacks, add X additional attack dice for every five models that were in the target unit in the Select Targets step (rounding down).
+
+*Example: If a [CLEAVE 1] weapon with an Attacks characteristic of 3 targets one unit containing 16 models, you would gather three additional attack dice for that weapon (for a total of six for that weapon).*</description>
+      <alias>CLEAVE</alias>
+    </rule>
+    <rule id="59e0-775e-fce5-43ca" name="Close-Quarters" publicationId="48fc-15aa-b307-9443" page="80" hidden="false">
+      <description>Weapons with **[CLOSE-QUARTERS]** in their profile are known as Close-quarters weapons. Units containing one or more models with a [CLOSE-QUARTERS] weapon can shoot using close-quarters shooting (10.06).
+
+When using another shooting type, for each model in that unit (excluding MONSTER/VEHICLE models), you can only select one of the following to make attacks with:
+- One or more of its [CLOSE-QUARTERS] weapons.
+- One or more of its other ranged weapons.
+
+[PISTOL] and [CLOSE-QUARTERS] are identical for all rules purposes. [PISTOL] is a pre-existing ability that is superseded by [CLOSE-QUARTERS] as this edition progresses.</description>
+      <alias>CLOSE-QUARTERS</alias>
+    </rule>
+    <rule id="21f5-c07c-6d97-4405" name="Support" publicationId="48fc-15aa-b307-9443" page="84" hidden="false">
+      <description>Some models have ‘Support’ listed among their core abilities. Such models are support models. While a support model is on the battlefield it can be attached to one of the units listed on its datasheet (in the same manner as a Leader), forming an Attached unit to bolster that unit’s fighting effectiveness. See Attached Units (19).</description>
+      <alias>SUPPORT</alias>
     </rule>
   </sharedRules>
   <sharedProfiles>
