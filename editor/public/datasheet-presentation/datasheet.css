@@ -1,0 +1,148 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Datasheet presentation — standalone stylesheet.
+
+   Every rule is scoped under `.ds-sheet`, and every class is `ds-`-prefixed, so
+   this drops into any project without colliding with host styles. The theme is
+   driven by CSS custom properties on `.ds-sheet` (mirrors theme.js `C`); to
+   re-skin, override the `--ds-*` vars on or above `.ds-sheet`.
+
+   Fonts: Cinzel (display), Crimson Text (body), JetBrains Mono (labels/stats).
+   The @import below pulls them from Google Fonts. If your host app already
+   loads them — or you want to self-host — delete the @import line.
+   ═════════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.ds-sheet {
+  --ds-bg: #07070a; --ds-p: #0e0e13; --ds-ph: #161620; --ds-bd: #252530;
+  --ds-g: #c9a84c; --ds-gb: #e8cc5c; --ds-gd: #6b5a2a; --ds-gbr: #8b7536;
+  --ds-t: #d4d0c8; --ds-td: #7a7670; --ds-tb: #f0ece4;
+  --ds-r: #c44040; --ds-gr: #4caf50; --ds-bl: #4a90c4;
+
+  font-family: 'Crimson Text', Georgia, serif;
+  background: var(--ds-bg);
+  color: var(--ds-t);
+  box-sizing: border-box;
+}
+.ds-sheet *, .ds-sheet *::before, .ds-sheet *::after { box-sizing: border-box; }
+
+/* Inline-markup helper emitted by markup.js renderMarkupToHtml(). */
+.ds-caps { text-transform: uppercase; }
+
+/* ─── Card header (UnitCard) ─────────────────────────────────────────────── */
+.ds-uc {
+  padding: 10px 14px; border-bottom: 1px solid var(--ds-bd);
+  background: var(--ds-p); position: relative; overflow: hidden; isolation: isolate;
+}
+.ds-uc-r { display: flex; align-items: center; gap: 5px; }
+.ds-uc-ct {
+  font-family: 'JetBrains Mono', monospace; font-size: 7px; padding: 1px 3px;
+  border-radius: 2px; color: var(--ds-td); border: 1px solid var(--ds-bd);
+}
+.ds-uc-n {
+  font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600;
+  color: var(--ds-tb); flex: 1; word-break: break-word;
+}
+.ds-uc-n.ds-leg { color: var(--ds-td); font-style: italic; }
+.ds-uc-p { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ds-g); white-space: nowrap; }
+.ds-uc-kw { display: flex; gap: 2px; flex-wrap: wrap; margin-top: 2px; }
+
+/* ─── Keyword chips ──────────────────────────────────────────────────────── */
+.ds-kw {
+  font-family: 'JetBrains Mono', monospace; font-size: 7px; padding: 1px 3px;
+  border: 1px solid var(--ds-bd); border-radius: 2px; color: var(--ds-td);
+}
+.ds-kw-e { border-color: var(--ds-gd); color: var(--ds-g); }            /* epic hero */
+.ds-kw-c { border-color: var(--ds-bl); color: var(--ds-bl); opacity: .7; } /* character */
+.ds-kw-l { border-color: #6a5a20; color: #a09030; }                    /* legends */
+.ds-kw-a { border-color: #4a6a8a; color: #6a9aba; }                    /* allied */
+.ds-kw-x { border-color: #5a4a8a; color: #9a8aba; }                    /* crusade */
+.ds-kw-ok { border-color: var(--ds-gr); color: var(--ds-gr); }         /* in army ✓ */
+.ds-kw-row { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+
+/* ─── Detail body (UnitDetail) ───────────────────────────────────────────── */
+.ds-ud { padding: 5px 14px 8px; border-bottom: 1px solid var(--ds-bd); background: var(--ds-p); }
+
+/* ─── Statline bar (StatBar / StatLines) ─────────────────────────────────── */
+.ds-statline-cap { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--ds-bl); margin-bottom: 2px; }
+.ds-statline + .ds-statline { margin-top: 4px; }
+.ds-sb { display: flex; gap: 2px; margin: 3px 0; }
+.ds-sx { flex: 1; text-align: center; padding: 2px; background: var(--ds-ph); border: 1px solid var(--ds-bd); border-radius: 2px; }
+.ds-sx-l { font-family: 'JetBrains Mono', monospace; font-size: 7px; color: var(--ds-td); text-transform: uppercase; }
+.ds-sx-v { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700; color: var(--ds-tb); }
+.ds-invuln { color: var(--ds-g); }   /* the "/4+" invulnerable suffix on the Sv cell */
+
+/* ─── Weapon table (WeaponTable / WeaponRow) ─────────────────────────────── */
+.ds-wt { width: 100%; border-collapse: collapse; margin-top: 3px; font-size: 10px; table-layout: fixed; }
+.ds-wt col.ds-wc0 { width: 30px; } .ds-wt col.ds-wcq { width: 22px; } .ds-wt col.ds-wc1 { width: auto; }
+.ds-wt col.ds-wc2 { width: 42px; } .ds-wt col.ds-wc3 { width: 42px; } .ds-wt col.ds-wc4 { width: 40px; }
+.ds-wt col.ds-wc5 { width: 28px; } .ds-wt col.ds-wc6 { width: 28px; } .ds-wt col.ds-wc7 { width: 42px; }
+.ds-wt th { font-family: 'JetBrains Mono', monospace; font-size: 7px; color: var(--ds-td); text-align: left; padding: 2px 3px; border-bottom: 1px solid var(--ds-bd); }
+/* table-layout:fixed honours colgroup widths, but a long token (weapon keyword,
+   big number) still overflows visually; force breaks + clip so a "Heavy" tag
+   never crashes into the Rng cell on narrow screens. vertical-align:top keeps
+   short stat cells aligned with the weapon name's first line. */
+.ds-wt td { padding: 2px 3px; border-bottom: 1px solid #18181e; font-size: 10px; vertical-align: top; word-break: break-word; overflow-wrap: anywhere; overflow: hidden; }
+.ds-wt-name { color: var(--ds-tb); }
+.ds-wt-kw { font-family: 'JetBrains Mono', monospace; font-size: 7px; color: var(--ds-bl); margin-top: 1px; }
+.ds-wt-q { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ds-td); }
+.ds-wt-q.ds-many { color: var(--ds-g); font-weight: 700; }   /* count > 1 */
+.ds-wb { font-family: 'JetBrains Mono', monospace; font-size: 7px; padding: 1px 2px; border-radius: 2px; }
+.ds-wb-R { background: #1a2530; color: #6ab0e0; }   /* ranged */
+.ds-wb-M { background: #2a1a1a; color: #e06a6a; }   /* melee */
+
+/* ─── Abilities ──────────────────────────────────────────────────────────── */
+.ds-core-row { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 3px; }
+.ds-core-ab { font-family: 'JetBrains Mono', monospace; font-size: 8px; padding: 2px 6px; border: 1px solid var(--ds-gbr); border-radius: 2px; color: var(--ds-g); }
+.ds-ab-block { margin-top: 4px; padding: 4px 6px; background: var(--ds-ph); border: 1px solid var(--ds-bd); border-radius: 2px; }
+.ds-ab-row { margin-bottom: 2px; }
+.ds-ab-row:last-child { margin-bottom: 0; }
+.ds-ab-name { font-family: 'Cinzel', serif; font-size: 10px; font-weight: 600; color: var(--ds-tb); }
+.ds-ab-desc { font-family: 'Crimson Text', serif; font-size: 10px; color: var(--ds-td); margin-left: 6px; }
+
+/* ─── "Can lead" panel (LeaderBox) ───────────────────────────────────────── */
+.ds-leader { margin-top: 4px; padding: 4px 6px; background: var(--ds-ph); border: 1px solid var(--ds-bd); border-left: 2px solid var(--ds-g); border-radius: 2px; }
+.ds-leader-h { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--ds-g); text-transform: uppercase; margin-bottom: 3px; }
+.ds-leader-units { display: flex; flex-wrap: wrap; gap: 3px; }
+.ds-leader-notes { margin-top: 3px; font-family: 'Crimson Text', serif; font-size: 9px; color: var(--ds-td); font-style: italic; line-height: 1.4; }
+
+/* ─── Composition ────────────────────────────────────────────────────────── */
+.ds-comp { margin-top: 4px; padding: 6px; background: var(--ds-ph); border: 1px solid var(--ds-bd); border-radius: 2px; }
+.ds-comp-h { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--ds-g); text-transform: uppercase; margin-bottom: 3px; }
+.ds-comp-h .ds-comp-cost { color: var(--ds-td); text-transform: none; }
+.ds-comp-g { margin-bottom: 3px; }
+.ds-comp-glabel { font-size: 9px; color: var(--ds-bl); font-family: 'JetBrains Mono', monospace; margin-bottom: 1px; }
+.ds-comp-fixed { font-size: 10px; color: var(--ds-tb); font-family: 'Crimson Text', serif; }
+.ds-comp-sub { padding-left: 12px; font-size: 9px; color: var(--ds-td); font-family: 'JetBrains Mono', monospace; }
+.ds-comp-m { font-size: 10px; color: var(--ds-t); font-family: 'Crimson Text', serif; padding-left: 10px; }
+.ds-comp-max { color: var(--ds-td); font-family: 'JetBrains Mono', monospace; font-size: 8px; }
+
+/* ─── Wargear / options ──────────────────────────────────────────────────── */
+.ds-opt { padding: 3px 6px; background: var(--ds-ph); border: 1px solid var(--ds-bd); border-radius: 2px; margin-bottom: 2px; }
+.ds-opt-l { font-family: 'JetBrains Mono', monospace; font-size: 7px; color: var(--ds-bl); text-transform: uppercase; }
+.ds-opt-chips { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 2px; }
+.ds-opt-chip { font-family: 'JetBrains Mono', monospace; font-size: 8px; padding: 1px 4px; border: 1px solid var(--ds-bd); border-radius: 2px; color: var(--ds-td); }
+
+/* ─── Call-to-action (the "Add to list" button — optional) ───────────────── */
+.ds-add {
+  margin-top: 5px; width: 100%; padding: 6px; border: 1px dashed var(--ds-gbr);
+  background: transparent; color: var(--ds-g); font-family: 'Cinzel', serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 1px; cursor: pointer; transition: all .15s;
+}
+.ds-add:hover { background: rgba(201, 168, 76, .1); border-style: solid; border-color: var(--ds-g); }
+
+/* ─── Narrow screens: re-tune the 9 weapon columns so the table fits a phone
+       and the auto-width Weapon name keeps real room (else it clipped to 0). ── */
+@media (max-width: 560px) {
+  .ds-sheet .ds-wt { font-size: 9px; }
+  .ds-sheet .ds-wt col.ds-wc0 { width: 22px; }
+  .ds-sheet .ds-wt col.ds-wcq { width: 16px; }
+  .ds-sheet .ds-wt col.ds-wc2 { width: 30px; }
+  .ds-sheet .ds-wt col.ds-wc3 { width: 22px; }
+  .ds-sheet .ds-wt col.ds-wc4 { width: 28px; }
+  .ds-sheet .ds-wt col.ds-wc5 { width: 18px; }
+  .ds-sheet .ds-wt col.ds-wc6 { width: 18px; }
+  .ds-sheet .ds-wt col.ds-wc7 { width: 22px; }
+  .ds-sheet .ds-wt th, .ds-sheet .ds-wt td { padding: 2px 1px; font-size: 9px; }
+  .ds-sheet .ds-wt th { font-size: 7px; }
+}

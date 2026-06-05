@@ -1,5 +1,10 @@
-'use strict';
-/* Cogitator Editorius — front-end logic (vanilla JS, no build step). */
+/* Cogitator Editorius — front-end logic (vanilla JS module, no build step).
+ * The read-only datasheet preview is rendered by the Cogitator Bellicum
+ * presentation module (editor/public/datasheet-presentation), so the editor
+ * shows exactly the same layout/rules; the left column is the edit form. */
+import {
+  renderDatasheet, renderWeaponTable,
+} from './datasheet-presentation/index.js';
 
 // ---- tiny DOM helpers ------------------------------------------------------
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -39,7 +44,64 @@ const state = {
   tab: 'units',
   selected: null, // {kind,id}
   categories: null,
+  lang: 'fr',
+  livePreview: null, // () => rebuild the preview pane from current form values
 };
+
+// ---- adapters: API JSON -> presentation module `unit` shape ----------------
+const SL = ['M', 'T', 'SV', 'W', 'LD', 'OC'];
+const CAT_KEYS = ['Character', 'Battleline', 'Vehicle', 'Monster', 'Mounted', 'Beast', 'Transport', 'Aircraft', 'Fortification', 'Infantry'];
+
+function statsArray(chars) { return SL.map((k) => (chars && chars[k] != null ? chars[k] : '')); }
+
+function pickCat(keywordNames) {
+  for (const key of CAT_KEYS) if (keywordNames.includes(key)) return key;
+  return undefined;
+}
+
+const MELEE_PROFILE = '8a40-4aaa-c780-9046';
+function weaponsToShape(weapons) {
+  const out = [];
+  for (const w of weapons || []) {
+    for (const p of w.profiles || []) {
+      const c = p.chars || {};
+      // badge per profile so combi-weapons (ranged + melee in one entry) are
+      // each tagged correctly; fall back to the weapon's overall kind.
+      const t = p.typeId ? (p.typeId === MELEE_PROFILE ? 'M' : 'R') : (w.kind === 'melee' ? 'M' : 'R');
+      out.push({
+        n: p.name || w.name, t,
+        rng: c.Range, a: c.A, sk: c.BS != null ? c.BS : c.WS,
+        s: c.S, ap: c.AP, d: c.D, kw: c.Keywords, count: 1,
+      });
+    }
+  }
+  return out;
+}
+
+function unitToShape(u) {
+  const keywordNames = (u.keywords || []).map((k) => k.name);
+  const pts = (u.costs || []).find((c) => c.name === 'pts');
+  const shape = {
+    name: u.name,
+    cat: pickCat(keywordNames),
+    pts: pts ? Number(pts.value) : undefined,
+    keywords: keywordNames,
+    weapons: weaponsToShape(u.weapons),
+    abilities: (u.abilities || []).map((a) => [a.name || '', (a.chars && a.chars.Description) || a.description || '']),
+    isChar: keywordNames.includes('Character'),
+    isEpic: keywordNames.includes('Epic Hero'),
+    isLegend: /\[legends?\]/i.test(u.name || '') || keywordNames.some((k) => /legend/i.test(k)),
+  };
+  const sp = u.statProfiles || [];
+  if (sp.length > 1) shape.statLines = sp.map((p) => [p.name, statsArray(p.chars)]);
+  else if (sp.length === 1) shape.stats = statsArray(sp[0].chars);
+  return shape;
+}
+
+function weaponToShape(w) {
+  // present a lone weapon as a one-row datasheet-style weapon table input
+  return { name: w.name, weapons: weaponsToShape([w]) };
+}
 
 // ---- boot ------------------------------------------------------------------
 init().catch((e) => toast(e.message, 'err'));
@@ -65,10 +127,15 @@ async function init() {
   $('#btn-new').addEventListener('click', onNew);
   $('#btn-save').addEventListener('click', onSave);
   $('#btn-commit').addEventListener('click', onCommit);
+  $('#btn-lang').addEventListener('click', () => {
+    state.lang = state.lang === 'fr' ? 'en' : 'fr';
+    $('#btn-lang').textContent = state.lang.toUpperCase();
+    if (state.livePreview) state.livePreview();
+  });
 
   await refreshStatus();
   // default to a meaty catalogue if present
-  const def = state.factions.find((f) => /Space Marines\.cat$/.test(f.file)) || state.factions[0];
+  const def = state.factions.find((f) => /Imperium - Space Marines\.cat$/.test(f.file)) || state.factions[0];
   if (def) { sel.value = def.file; await selectFaction(def.file); }
 }
 
@@ -184,12 +251,24 @@ function renderUnit(u) {
     } catch (e) { toast(e.message, 'err'); }
   });
 
+  const buildPreview = () => unitToShape({
+    name: nameInput.value,
+    costs: pts ? [{ name: 'pts', typeId: pts.typeId, value: ptsInput.value }] : [],
+    keywords: currentKeywords(),
+    statProfiles: u.statProfiles.map((p) => ({ id: p.id, name: p.name, chars: collectStatChars(p) })),
+    abilities: u.abilities.map((a) => ({ name: abEditName(a.id), chars: { Description: abEditDesc(a.id) } })),
+    weapons: u.weapons,
+  });
+
   mountSheet(u.name, `unité · ${u.file}`, nameInput, [
     ptsBlock, statSection, weaponsSection, abilitiesSection, kwSection,
-  ], [saveBtn]);
+  ], [saveBtn], buildPreview, 'unit');
+}
 
-  // keyword editing state for this render
-  resetKwState();
+// current keyword objects from the live editing state ({name,...})
+function currentKeywords() {
+  const live = (kwState.current || []).filter((k) => !kwState.removed.includes(k.id));
+  return live.concat(kwState.added || []);
 }
 
 function statProfileBlock(p) {
@@ -284,12 +363,22 @@ function renderWeapon(w) {
   const saveBtn = el('button', { class: 'btn btn-primary' }, 'Enregistrer l\'arme');
   saveBtn.addEventListener('click', () => saveWeapon(w, nameInput, profBlocks, usage));
 
+  const buildPreview = () => ({
+    weapons: profBlocks.map((b) => {
+      const g = b.get();
+      const c = g.chars || {};
+      return {
+        n: g.name || nameInput.value, t: w.kind === 'melee' ? 'M' : 'R',
+        rng: c.Range, a: c.A, sk: c.BS != null ? c.BS : c.WS, s: c.S, ap: c.AP, d: c.D, kw: c.Keywords, count: 1,
+      };
+    }),
+  });
+
   mountSheet(w.name, `arme · ${w.kind} · ${w.file}`, nameInput,
     [el('div', { class: 'section' }, [el('h3', {}, 'Profil(s) d\'arme'), el('div', { class: 'section-body' }, profBlocks.length ? profBlocks.map((b) => b.node) : [el('p', { class: 'muted' }, 'Aucun profil.')])]),
      keywordSection(w.keywords),
      usageSection],
-    [saveBtn]);
-  resetKwState();
+    [saveBtn], buildPreview, 'weapon');
 }
 
 function weaponProfileEditor(p, kind) {
@@ -392,7 +481,9 @@ function renderDetachment(d) {
 }
 
 // ---- sheet mounting --------------------------------------------------------
-function mountSheet(title, meta, nameInput, sections, actions) {
+// `buildPreview` (optional) returns the unit/weapon shape to feed the
+// presentation renderer; the preview re-renders live on every form input.
+function mountSheet(title, meta, nameInput, sections, actions, buildPreview, previewKind) {
   const head = el('div', { class: 'sheet-head' }, [
     el('div', {}, [el('h2', {}, title), el('div', { class: 'meta' }, meta)]),
   ]);
@@ -401,10 +492,33 @@ function mountSheet(title, meta, nameInput, sections, actions) {
     ...sections,
     el('div', { class: 'sheet-actions' }, actions),
   ]);
-  const sheet = el('div', { class: 'sheet' }, [head, body]);
+  const form = el('div', { class: 'ed-form' }, [el('div', { class: 'sheet' }, [head, body])]);
+
   const d = $('#detail');
   d.innerHTML = '';
-  d.appendChild(sheet);
+  state.livePreview = null;
+
+  if (buildPreview) {
+    const previewHost = el('div', { id: 'live-preview' });
+    const preview = el('div', { class: 'ed-preview' }, [
+      el('div', { class: 'preview-cap' }, 'Aperçu datasheet'),
+      previewHost,
+    ]);
+    const render = () => {
+      try {
+        const shape = buildPreview();
+        previewHost.innerHTML = previewKind === 'weapon'
+          ? `<div class="ds-sheet">${renderWeaponTable(shape.weapons, { lang: state.lang })}</div>`
+          : renderDatasheet(shape, { lang: state.lang });
+      } catch (e) { previewHost.innerHTML = '<p class="muted">Aperçu indisponible.</p>'; }
+    };
+    state.livePreview = render;
+    form.addEventListener('input', render);
+    d.appendChild(el('div', { class: 'ed-split' }, [form, preview]));
+    render(); // after the form is in the document so DOM reads succeed
+  } else {
+    d.appendChild(form);
+  }
 }
 
 function weaponTable(weapons) {

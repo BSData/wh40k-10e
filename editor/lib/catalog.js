@@ -169,11 +169,31 @@ class Catalog {
 
   readUnitWeapons(unitNode) {
     const out = [];
+    const seen = new Set();
+    // (1) weapons defined inline inside the datasheet (common for characters,
+    //     e.g. Abaddon's Talon of Horus / Drach'nyen) - direct weapon entries.
+    xml.walk(unitNode, (node) => {
+      if (node.tag !== 'selectionEntry' || node === unitNode) return;
+      if (!isWeaponNode(node)) return;
+      const id = xml.getAttr(node, 'id');
+      if (id && seen.has(id)) return;
+      if (id) seen.add(id);
+      out.push({
+        targetId: id,
+        name: xml.getAttrDecoded(node, 'name'),
+        kind: weaponKind(node),
+        embedded: true,
+        profiles: [...readProfiles(node, PROFILE_RANGED), ...readProfiles(node, PROFILE_MELEE)],
+      });
+    });
+    // (2) weapons referenced by entryLink (shared weapon entries).
     xml.walk(unitNode, (node) => {
       if (node.tag !== 'entryLink') return;
       const targetId = xml.getAttr(node, 'targetId');
       const ref = targetId && this.byId.get(targetId);
       if (!ref || !isWeaponNode(ref.node)) return;
+      if (seen.has(targetId)) return;
+      seen.add(targetId);
       out.push({
         targetId,
         name: xml.getAttrDecoded(node, 'name') || xml.getAttrDecoded(ref.node, 'name'),
@@ -185,7 +205,7 @@ class Catalog {
         ],
       });
     });
-    return dedupBy(out, (w) => w.targetId);
+    return out;
   }
 
   getWeapon(file, id) {
