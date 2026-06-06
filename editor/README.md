@@ -34,7 +34,8 @@ Aucune dépendance à installer : 100 % Node natif + JS navigateur.
     (cf. ci-dessous) au moment de l'enregistrer.
   - **Composition** : min/max de chaque type de figurine + paliers de coût
     (modificateurs `set pts` conditionnés au nombre de figurines).
-  - **Options / équipement** : points de chaque choix d'arme/wargear.
+  - **Options / équipement** : points de chaque choix d'arme/wargear, plus
+    **ajout** (sélecteur d'arme → `entryLink`) et **suppression** de choix.
 - **Édition d'une arme** : nom, profil(s) (Range/A/BS|WS/S/AP/D/Keywords),
   mots-clés. La liste des datasheets qui l'utilisent est affichée.
 - **Impact des armes partagées** : si une arme est utilisée par plusieurs
@@ -44,11 +45,16 @@ Aucune dépendance à installer : 100 % Node natif + JS navigateur.
     remplace le lien (`targetId`) des unités sélectionnées vers cette variante.
     Le repointage fonctionne **entre fichiers** (ex. une arme Space Marines
     référencée par Blood Angels est repointée dans `Blood Angels.cat`).
+- **Édition d'un détachement** : nom, **règles** (texte, ajout/suppression) et
+  **enhancements** (nom, points, description, ajout/suppression).
 - **Création** d'une arme, d'une unité, d'un détachement (entrées BattleScribe
   valides : bons `typeId` de caractéristiques, échappement correct, indentation).
-  La création d'unité peut **rattacher** automatiquement la datasheet à
-  l'organisation d'armée (ajout d'un `entryLink` racine), comme toutes les
-  datasheets existantes, pour la rendre sélectionnable.
+  - Une unité peut être créée en **figurine unique** *ou* en **escouade
+    multi-figurines** (groupe de composition avec un type de figurine par ligne,
+    min/max et profil de stats par figurine).
+  - La création d'unité peut **rattacher** automatiquement la datasheet à
+    l'organisation d'armée (ajout d'un `entryLink` racine), comme toutes les
+    datasheets existantes, pour la rendre sélectionnable.
 - **Enregistrement** : « Enregistrer fichiers » écrit les fichiers modifiés ;
   « Commit… » fait `git add` + `git commit` (option `push`).
 

@@ -255,13 +255,135 @@ class Catalog {
     const ref = this.byId.get(id);
     if (!ref) return null;
     const node = ref.node;
+    const name = xml.getAttrDecoded(node, 'name');
+    const group = this.findEnhancementsGroup(ref.file, name);
     return {
       file: ref.file,
       id,
-      name: xml.getAttrDecoded(node, 'name'),
+      name,
       rules: readRules(node),
       keywords: readCategoryLinks(node),
+      enhancements: group ? readEnhancements(group) : [],
+      hasEnhancementsGroup: !!group,
     };
+  }
+
+  findEnhancementsGroup(file, detName) {
+    const doc = this.docs.get(file);
+    if (!doc) return null;
+    let g = null;
+    xml.walk(doc.root, (n) => {
+      if (!g && n.tag === 'selectionEntryGroup' && xml.getAttrDecoded(n, 'name') === detName + ' Enhancements') g = n;
+    });
+    return g;
+  }
+
+  // ---- editing: detachments ---------------------------------------------
+  editDetachment(file, id, patch) {
+    const ref = this.byId.get(id);
+    if (!ref) throw new Error('Detachment not found: ' + id);
+    const node = ref.node;
+    if (patch.name != null) xml.setAttr(node, 'name', patch.name);
+    if (Array.isArray(patch.rules)) {
+      for (const r of patch.rules) {
+        const rule = r.id && findById(node, r.id);
+        if (!rule) continue;
+        if (r.name != null) xml.setAttr(rule, 'name', r.name);
+        if (r.description != null) {
+          const desc = xml.child(rule, 'description') || (() => { const d = xml.elem('description', {}); rule.children.push(d); rule.selfClose = false; return d; })();
+          xml.setText(desc, r.description);
+        }
+      }
+    }
+    if (Array.isArray(patch.enhancements)) {
+      const group = this.findEnhancementsGroup(ref.file, xml.getAttrDecoded(node, 'name'));
+      for (const en of patch.enhancements) {
+        const e = en.id && group && findById(group, en.id);
+        if (!e) continue;
+        if (en.name != null) xml.setAttr(e, 'name', en.name);
+        if (en.pts != null) {
+          const costs = xml.ensureChild(e, 'costs');
+          let c = costs.children.find((x) => x.tag === 'cost' && xml.getAttr(x, 'typeId') === COST_PTS);
+          if (!c) { c = xml.elem('cost', { name: 'pts', typeId: COST_PTS, value: '0' }); costs.children.push(c); }
+          xml.setAttr(c, 'value', String(en.pts));
+        }
+        if (en.description != null) {
+          const prof = profilesOfType(e, PROFILE_ABILITIES)[0];
+          if (prof) {
+            const cc = xml.child(prof, 'characteristics');
+            const desc = cc && cc.children.find((c) => c.tag === 'characteristic' && xml.getAttrDecoded(c, 'name') === 'Description');
+            if (desc) xml.setText(desc, en.description);
+          }
+        }
+      }
+    }
+    this.markDirty(ref.file);
+    this.buildIndex();
+    return this.getDetachment(ref.file, id);
+  }
+
+  addRule(file, detId, data) {
+    const ref = this.byId.get(detId);
+    if (!ref) throw new Error('Detachment not found');
+    const rules = xml.ensureChild(ref.node, 'rules');
+    const rule = xml.elem('rule', { name: data.name || 'New rule', id: this.newId(), hidden: 'false' });
+    rule.children.push(textElem('description', data.text || ''));
+    rule.selfClose = false;
+    rules.children.push(rule);
+    this.markDirty(ref.file);
+    this.buildIndex();
+    return this.getDetachment(ref.file, detId);
+  }
+
+  removeRule(file, detId, ruleId) {
+    const ref = this.byId.get(detId);
+    if (!ref) throw new Error('Detachment not found');
+    const rules = xml.child(ref.node, 'rules');
+    if (rules) rules.children = rules.children.filter((r) => xml.getAttr(r, 'id') !== ruleId);
+    this.markDirty(ref.file);
+    this.buildIndex();
+    return this.getDetachment(ref.file, detId);
+  }
+
+  addEnhancement(file, detId, data) {
+    const ref = this.byId.get(detId);
+    if (!ref) throw new Error('Detachment not found');
+    const detName = xml.getAttrDecoded(ref.node, 'name');
+    let group = this.findEnhancementsGroup(ref.file, detName);
+    if (!group) {
+      // create an enhancements group nested under the detachment entry
+      group = xml.elem('selectionEntryGroup', { name: detName + ' Enhancements', hidden: 'false', id: this.newId() }, [xml.elem('selectionEntries', {}, [])]);
+      ref.node.children.push(group);
+    }
+    const entries = xml.child(group, 'selectionEntries') || (() => { const e = xml.elem('selectionEntries', {}, []); group.children.push(e); return e; })();
+    const enh = xml.elem('selectionEntry', { type: 'upgrade', import: 'true', name: data.name || 'New Enhancement', hidden: 'false', id: this.newId() }, [
+      xml.elem('constraints', {}, [
+        xml.elem('constraint', { type: 'max', value: '1', field: 'selections', scope: 'roster', shared: 'true', id: this.newId(), includeChildSelections: 'true', includeChildForces: 'true' }),
+      ]),
+      xml.elem('profiles', {}, [
+        xml.elem('profile', { name: data.name || 'New Enhancement', typeId: PROFILE_ABILITIES, typeName: 'Abilities', hidden: 'false', id: this.newId() }, [
+          xml.elem('characteristics', {}, [charElem('Description', data.text || '', ABILITY_DESC_TYPE)]),
+        ]),
+      ]),
+      xml.elem('costs', {}, [xml.elem('cost', { name: 'pts', typeId: COST_PTS, value: String(data.pts != null ? data.pts : 0) })]),
+    ]);
+    entries.children.push(enh);
+    this.markDirty(ref.file);
+    this.buildIndex();
+    return this.getDetachment(ref.file, detId);
+  }
+
+  removeEnhancement(file, detId, enhId) {
+    const ref = this.byId.get(detId);
+    if (!ref) throw new Error('Detachment not found');
+    const group = this.findEnhancementsGroup(ref.file, xml.getAttrDecoded(ref.node, 'name'));
+    if (group) {
+      const parent = this.findParentInNode(group, enhId) || xml.child(group, 'selectionEntries');
+      if (parent) parent.children = parent.children.filter((c) => xml.getAttr(c, 'id') !== enhId);
+    }
+    this.markDirty(ref.file);
+    this.buildIndex();
+    return this.getDetachment(ref.file, detId);
   }
 
   // ---- editing: units ---------------------------------------------------
@@ -285,6 +407,49 @@ class Catalog {
     this.markDirty(ref.file);
     this.buildIndex();
     return this.getUnit(ref.file, id);
+  }
+
+  // ---- editing: option choices (add / remove) ---------------------------
+  addOptionChoice(file, unitId, groupId, weaponId, weaponName) {
+    const ref = this.byId.get(unitId);
+    if (!ref) throw new Error('Unit not found: ' + unitId);
+    const group = findById(ref.node, groupId);
+    if (!group || group.tag !== 'selectionEntryGroup') throw new Error('Option group not found');
+    const wref = this.byId.get(weaponId);
+    const name = weaponName || (wref ? xml.getAttrDecoded(wref.node, 'name') : 'Weapon');
+    const links = xml.ensureChild(group, 'entryLinks');
+    const link = xml.elem('entryLink', {
+      import: 'true', name, hidden: 'false', id: this.newId(), type: 'selectionEntry', targetId: weaponId,
+    });
+    // mirror the "pick up to one" constraint that sibling choices carry
+    link.children.push(xml.elem('constraints', {}, [
+      xml.elem('constraint', { type: 'max', value: '1', field: 'selections', scope: 'parent', shared: 'true', id: this.newId(), includeChildSelections: 'false' }),
+    ]));
+    link.selfClose = false;
+    links.children.push(link);
+    this.markDirty(ref.file);
+    this.buildIndex();
+    return this.getUnit(ref.file, unitId);
+  }
+
+  removeOptionChoice(file, unitId, choiceId) {
+    const ref = this.byId.get(unitId);
+    if (!ref) throw new Error('Unit not found: ' + unitId);
+    const parent = this.findParentInNode(ref.node, choiceId);
+    if (!parent) throw new Error('Choice not found');
+    parent.children = parent.children.filter((c) => xml.getAttr(c, 'id') !== choiceId);
+    this.markDirty(ref.file);
+    this.buildIndex();
+    return this.getUnit(ref.file, unitId);
+  }
+
+  findParentInNode(root, childId) {
+    let found = null;
+    xml.walk(root, (node) => {
+      if (found || !node.children) return;
+      if (node.children.some((c) => xml.getAttr(c, 'id') === childId)) found = node;
+    });
+    return found;
   }
 
   // ---- editing: weapons (with shared impact) ----------------------------
@@ -396,28 +561,39 @@ class Catalog {
     const container = this.ensureSharedSelectionEntries(doc);
     const id = this.newId();
 
-    const statProfile = xml.elem(
-      'profile',
-      { id: this.newId(), name: data.name, hidden: 'false', typeId: PROFILE_UNIT, typeName: 'Unit' },
-      [
-        xml.elem(
-          'characteristics',
-          {},
-          ['M', 'T', 'SV', 'W', 'LD', 'OC'].map((c) =>
-            charElem(c, (data.stats && data.stats[c]) || '', UNIT_CHAR_TYPES[c])
-          )
-        ),
-      ]
-    );
-    const children = [
-      xml.elem('profiles', {}, [statProfile]),
-      xml.elem('costs', {}, [
-        xml.elem('cost', { name: 'pts', typeId: COST_PTS, value: String(data.points != null ? data.points : 0) }),
-      ]),
-    ];
+    const costsEl = xml.elem('costs', {}, [
+      xml.elem('cost', { name: 'pts', typeId: COST_PTS, value: String(data.points != null ? data.points : 0) }),
+    ]);
+    const children = [costsEl];
     if (data.keywords && data.keywords.length) {
       children.push(
         xml.elem('categoryLinks', {}, data.keywords.map((kw) => catLinkElem(kw, this.newId())))
+      );
+    }
+
+    if (Array.isArray(data.models) && data.models.length) {
+      // multi-model unit: a composition group with one model entry per type
+      const modelEntries = data.models.map((m) => this.buildModelEntry(m));
+      children.push(
+        xml.elem('selectionEntryGroups', {}, [
+          xml.elem('selectionEntryGroup', { name: data.name, hidden: 'false', id: this.newId() }, [
+            xml.elem('selectionEntries', {}, modelEntries),
+          ]),
+        ])
+      );
+    } else {
+      // single-profile datasheet
+      children.push(
+        xml.elem('profiles', {}, [
+          xml.elem(
+            'profile',
+            { id: this.newId(), name: data.name, hidden: 'false', typeId: PROFILE_UNIT, typeName: 'Unit' },
+            [
+              xml.elem('characteristics', {}, ['M', 'T', 'SV', 'W', 'LD', 'OC'].map((c) =>
+                charElem(c, (data.stats && data.stats[c]) || '', UNIT_CHAR_TYPES[c]))),
+            ]
+          ),
+        ])
       );
     }
     const node = xml.elem(
@@ -443,6 +619,26 @@ class Catalog {
     this.markDirty(file);
     this.buildIndex();
     return this.getUnit(file, id);
+  }
+
+  // Build a model selectionEntry (stat profile + min/max count) for composition.
+  buildModelEntry(m) {
+    return xml.elem(
+      'selectionEntry',
+      { type: 'model', import: 'true', name: m.name, hidden: 'false', id: this.newId() },
+      [
+        xml.elem('constraints', {}, [
+          xml.elem('constraint', { type: 'min', value: String(m.min != null ? m.min : 1), field: 'selections', scope: 'parent', shared: 'true', id: this.newId() }),
+          xml.elem('constraint', { type: 'max', value: String(m.max != null ? m.max : (m.min != null ? m.min : 1)), field: 'selections', scope: 'parent', shared: 'true', id: this.newId() }),
+        ]),
+        xml.elem('profiles', {}, [
+          xml.elem('profile', { id: this.newId(), name: m.name, hidden: 'false', typeId: PROFILE_UNIT, typeName: 'Unit' }, [
+            xml.elem('characteristics', {}, ['M', 'T', 'SV', 'W', 'LD', 'OC'].map((c) =>
+              charElem(c, (m.stats && m.stats[c]) || '', UNIT_CHAR_TYPES[c]))),
+          ]),
+        ]),
+      ]
+    );
   }
 
   createDetachment(file, data) {
@@ -717,6 +913,28 @@ function readRules(node) {
     }));
 }
 
+function readEnhancements(group) {
+  const se = xml.child(group, 'selectionEntries');
+  if (!se) return [];
+  return se.children
+    .filter((e) => e.tag === 'selectionEntry')
+    .map((e) => {
+      const prof = profilesOfType(e, PROFILE_ABILITIES)[0];
+      let description = '';
+      if (prof) {
+        const cc = xml.child(prof, 'characteristics');
+        const desc = cc && cc.children.find((c) => c.tag === 'characteristic' && xml.getAttrDecoded(c, 'name') === 'Description');
+        if (desc) description = xml.getText(desc);
+      }
+      return {
+        id: xml.getAttr(e, 'id'),
+        name: xml.getAttrDecoded(e, 'name'),
+        pts: (readCosts(e).find((c) => c.name === 'pts') || {}).value || '0',
+        description,
+      };
+    });
+}
+
 // ---- composition / options / tiers (read) ---------------------------------
 // Model selection entries of a datasheet: those directly under the unit, plus
 // one level inside its selectionEntryGroups (squad model types).
@@ -809,33 +1027,36 @@ function readTiers(unitNode) {
   return tiers;
 }
 
-// Wargear / weapon-option groups, grouped by name, choices deduped by name.
+// Wargear / weapon-option groups (one entry per group node, so choices can be
+// added/removed against a specific group). Choices may be inline selectionEntries
+// or entryLinks to shared weapons.
 function readOptions(unitNode) {
-  const groups = new Map();
-  xml.walk(unitNode, (node) => {
+  const groups = [];
+  xml.walk(unitNode, (node, parent, ancestors) => {
     if (node.tag !== 'selectionEntryGroup') return;
     const name = xml.getAttrDecoded(node, 'name');
     if (!name || name === 'Detachment') return;
-    // choices may be inline selectionEntries or entryLinks to shared weapons.
     const choiceNodes = [];
     const se = xml.child(node, 'selectionEntries');
-    if (se) for (const e of se.children) if (e.tag === 'selectionEntry' && xml.getAttr(e, 'type') !== 'model') choiceNodes.push(e);
-    const el = xml.child(node, 'entryLinks');
-    if (el) for (const e of el.children) if (e.tag === 'entryLink') choiceNodes.push(e);
+    if (se) for (const e of se.children) if (e.tag === 'selectionEntry' && xml.getAttr(e, 'type') !== 'model') choiceNodes.push({ node: e, kind: 'entry' });
+    const elk = xml.child(node, 'entryLinks');
+    if (elk) for (const e of elk.children) if (e.tag === 'entryLink') choiceNodes.push({ node: e, kind: 'link' });
     if (!choiceNodes.length) return;
-    if (!groups.has(name)) groups.set(name, new Map());
-    const cm = groups.get(name);
-    for (const ch of choiceNodes) {
-      const cn = xml.getAttrDecoded(ch, 'name');
-      if (!cn) continue;
-      const pts = (readCosts(ch).find((c) => c.name === 'pts') || {}).value || '0';
-      if (!cm.has(cn)) cm.set(cn, { name: cn, pts, entryIds: [] });
-      const cur = cm.get(cn);
-      cur.entryIds.push(xml.getAttr(ch, 'id'));
-      if (cur.pts === '0' && pts !== '0') cur.pts = pts; // surface a non-zero cost
-    }
+    const model = ancestors.slice().reverse().find((a) => a.tag === 'selectionEntry' && ['model', 'unit'].includes(xml.getAttr(a, 'type')));
+    groups.push({
+      groupId: xml.getAttr(node, 'id'),
+      name,
+      ownerName: model ? xml.getAttrDecoded(model, 'name') : null,
+      choices: choiceNodes.map((c) => ({
+        id: xml.getAttr(c.node, 'id'),
+        name: xml.getAttrDecoded(c.node, 'name'),
+        kind: c.kind,
+        targetId: xml.getAttr(c.node, 'targetId'),
+        pts: (readCosts(c.node).find((x) => x.name === 'pts') || {}).value || '0',
+      })),
+    });
   });
-  return [...groups.entries()].map(([name, cm]) => ({ name, choices: [...cm.values()] }));
+  return groups;
 }
 
 // ---- composition / options / tiers (write) --------------------------------
@@ -874,7 +1095,8 @@ function applyTiers(unitNode, tiers) {
 
 function applyOptions(unitNode, options) {
   for (const o of options) {
-    for (const id of o.entryIds || []) {
+    const ids = o.ids || o.entryIds || (o.id ? [o.id] : []);
+    for (const id of ids) {
       const e = findById(unitNode, id);
       if (!e || o.pts == null) continue;
       const costs = xml.ensureChild(e, 'costs');

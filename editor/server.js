@@ -89,8 +89,22 @@ async function handleApi(req, res, url) {
         return sendJson(res, 200, catalog.createWeapon(body.file, body.data || {}));
       case '/api/unit/create':
         return sendJson(res, 200, catalog.createUnit(body.file, body.data || {}));
+      case '/api/unit/option/add':
+        return sendJson(res, 200, catalog.addOptionChoice(body.file, body.unitId, body.groupId, body.weaponId, body.weaponName));
+      case '/api/unit/option/remove':
+        return sendJson(res, 200, catalog.removeOptionChoice(body.file, body.unitId, body.choiceId));
       case '/api/detachment/create':
         return sendJson(res, 200, catalog.createDetachment(body.file, body.data || {}));
+      case '/api/detachment/edit':
+        return sendJson(res, 200, catalog.editDetachment(body.file, body.id, body.patch || {}));
+      case '/api/detachment/rule/add':
+        return sendJson(res, 200, catalog.addRule(body.file, body.id, body.data || {}));
+      case '/api/detachment/rule/remove':
+        return sendJson(res, 200, catalog.removeRule(body.file, body.id, body.ruleId));
+      case '/api/detachment/enhancement/add':
+        return sendJson(res, 200, catalog.addEnhancement(body.file, body.id, body.data || {}));
+      case '/api/detachment/enhancement/remove':
+        return sendJson(res, 200, catalog.removeEnhancement(body.file, body.id, body.enhId));
       case '/api/save': {
         const written = catalog.save();
         return sendJson(res, 200, { written });

@@ -117,7 +117,15 @@ function compToShape(composition) {
 }
 
 function optsToShape(options) {
-  return (options || []).slice(0, 12).map((o) => [o.name, o.choices.map((ch) => [ch.name, Number(ch.pts) || 0])]);
+  const seen = new Set();
+  const out = [];
+  for (const o of options || []) {
+    if (seen.has(o.name)) continue;
+    seen.add(o.name);
+    out.push([o.name, o.choices.map((ch) => [ch.name, Number(ch.pts) || 0])]);
+    if (out.length >= 12) break;
+  }
+  return out;
 }
 
 function weaponToShape(w) {
@@ -390,17 +398,26 @@ function compositionSection(u) {
   };
 }
 
-// ---- options section (wargear / weapon choices, editable points) -----------
+// ---- options section (wargear / weapon choices; edit pts, add/remove) -------
 function optionsSection(u) {
   const options = u.options || [];
   const rows = [];
   const groupNodes = options.map((o) => {
-    const chips = o.choices.map((ch) => {
-      const ptI = el('input', { value: ch.pts != null ? ch.pts : '0', style: 'width:54px', 'data-optids': JSON.stringify(ch.entryIds || []) });
-      rows.push({ entryIds: ch.entryIds || [], ptI, name: ch.name });
-      return el('div', { class: 'row', style: 'gap:6px' }, [el('span', { style: 'min-width:180px' }, ch.name), el('label', {}, 'pts'), ptI]);
+    const choiceNodes = o.choices.map((ch) => {
+      const ptI = el('input', { value: ch.pts != null ? ch.pts : '0', style: 'width:54px' });
+      rows.push({ id: ch.id, ptI });
+      const rm = el('span', { class: 'x', title: 'retirer ce choix', onclick: () => removeOption(u, ch.id) }, '×');
+      return el('div', { class: 'row', style: 'gap:6px' }, [
+        el('span', { style: 'min-width:180px' }, ch.name + (ch.kind === 'entry' ? ' ·inline' : '')),
+        el('label', {}, 'pts'), ptI, rm,
+      ]);
     });
-    return el('div', {}, [el('div', { class: 'muted', style: 'margin-top:4px' }, o.name), ...chips]);
+    const addBtn = el('button', { class: 'btn btn-small' }, '+ Choix d\'arme');
+    addBtn.addEventListener('click', () => addOption(u, o.groupId));
+    return el('div', { style: 'margin-bottom:8px' }, [
+      el('div', { class: 'muted', style: 'margin-top:4px' }, o.name + (o.ownerName ? ` · ${o.ownerName}` : '')),
+      ...choiceNodes, el('div', { class: 'row' }, [addBtn]),
+    ]);
   });
   const node = el('div', { class: 'section' }, [
     el('h3', {}, 'Options / équipement'),
@@ -408,12 +425,43 @@ function optionsSection(u) {
   ]);
   return {
     node,
-    collect: () => rows.filter((r) => r.entryIds.length).map((r) => ({ entryIds: r.entryIds, pts: r.ptI.value })),
+    collect: () => rows.map((r) => ({ id: r.id, pts: r.ptI.value })),
     live: () => options.map((o) => ({
-      name: o.name,
-      choices: o.choices.map((ch) => { const r = rows.find((x) => x.name === ch.name); return { ...ch, pts: r ? r.ptI.value : ch.pts }; }),
+      groupId: o.groupId, name: o.name,
+      choices: o.choices.map((ch) => { const r = rows.find((x) => x.id === ch.id); return { ...ch, pts: r ? r.ptI.value : ch.pts }; }),
     })),
   };
+}
+
+async function addOption(u, groupId) {
+  pickWeapon(async (w) => {
+    try {
+      await apiPost('/unit/option/add', { file: u.file, unitId: u.id, groupId, weaponId: w.id, weaponName: w.name });
+      toast('Choix ajouté.', 'ok'); await refreshStatus(); openEntity('units', u.id);
+    } catch (e) { toast(e.message, 'err'); }
+  });
+}
+
+async function removeOption(u, choiceId) {
+  try {
+    await apiPost('/unit/option/remove', { file: u.file, unitId: u.id, choiceId });
+    toast('Choix retiré.', 'ok'); await refreshStatus(); openEntity('units', u.id);
+  } catch (e) { toast(e.message, 'err'); }
+}
+
+// weapon picker (from the current faction's weapons)
+function pickWeapon(cb) {
+  const weapons = (state.contents && state.contents.weapons) || [];
+  const search = el('input', { type: 'search', placeholder: 'Chercher une arme…', class: 'grow' });
+  const listEl = el('div', { class: 'usedby' });
+  const render = () => {
+    const q = search.value.trim().toLowerCase();
+    listEl.innerHTML = '';
+    weapons.filter((w) => !q || (w.name || '').toLowerCase().includes(q)).slice(0, 80)
+      .forEach((w) => listEl.appendChild(el('label', { onclick: () => { closeModal(); cb(w); } }, [w.name + ' [' + w.kind + ']'])));
+  };
+  search.addEventListener('input', render); render();
+  showModal('Ajouter un choix d\'arme', [search, listEl], [el('button', { class: 'btn', onclick: closeModal }, 'Annuler')]);
 }
 
 function statProfileBlock(p) {
@@ -620,14 +668,88 @@ function chooseImpact({ file, id, name, patch, usage, reopen }) {
 // ---- render: DETACHMENT ----------------------------------------------------
 function renderDetachment(d) {
   const nameInput = el('input', { value: d.name, class: 'grow' });
-  const rules = el('div', { class: 'section' }, [
-    el('h3', {}, 'Règles de détachement'),
-    el('div', { class: 'section-body' },
-      d.rules.length ? d.rules.map((r) => el('div', {}, [el('div', { class: 'muted' }, r.name), el('div', { class: 'muted', style: 'white-space:pre-wrap;color:var(--ink)' }, r.description)]))
-        : [el('p', { class: 'muted' }, 'Aucune règle (lecture). L\'édition fine des règles se fait dans le fichier.')]),
-  ]);
-  mountSheet(d.name, `détachement · ${d.file}`, nameInput, [rules, keywordSection(d.keywords)], []);
+
+  // --- rules (editable + add/remove) ---
+  const ruleRows = [];
+  const rulesBody = el('div', { class: 'section-body' });
+  const renderRules = () => {
+    rulesBody.innerHTML = ''; ruleRows.length = 0;
+    (d.rules || []).forEach((r) => {
+      const nm = el('input', { value: r.name || '', class: 'grow' });
+      const desc = el('textarea', {}, r.description || '');
+      ruleRows.push({ id: r.id, nm, desc });
+      rulesBody.appendChild(el('div', { class: 'section', style: 'border:none' }, [
+        el('div', { class: 'row', style: 'justify-content:space-between' }, [
+          el('div', { class: 'row' }, [el('label', {}, 'Règle'), nm]),
+          el('button', { class: 'btn btn-small btn-danger', onclick: () => removeDetRule(d, r.id) }, 'Supprimer'),
+        ]), desc,
+      ]));
+    });
+    if (!d.rules || !d.rules.length) rulesBody.appendChild(el('p', { class: 'muted' }, 'Aucune règle.'));
+    const add = el('button', { class: 'btn btn-small' }, '+ Règle');
+    add.addEventListener('click', () => addDetRule(d));
+    rulesBody.appendChild(el('div', { class: 'row' }, [add]));
+  };
+  renderRules();
+  const rulesSection = el('div', { class: 'section' }, [el('h3', {}, 'Règles de détachement'), rulesBody]);
+
+  // --- enhancements (editable + add/remove) ---
+  const enhRows = [];
+  const enhBody = el('div', { class: 'section-body' });
+  const renderEnh = () => {
+    enhBody.innerHTML = ''; enhRows.length = 0;
+    (d.enhancements || []).forEach((e) => {
+      const nm = el('input', { value: e.name || '', class: 'grow' });
+      const pt = el('input', { value: e.pts != null ? e.pts : '0', style: 'width:64px' });
+      const desc = el('textarea', {}, e.description || '');
+      enhRows.push({ id: e.id, nm, pt, desc });
+      enhBody.appendChild(el('div', { class: 'section', style: 'border:none' }, [
+        el('div', { class: 'row', style: 'justify-content:space-between' }, [
+          el('div', { class: 'row' }, [el('label', {}, 'Nom'), nm, el('label', {}, 'pts'), pt]),
+          el('button', { class: 'btn btn-small btn-danger', onclick: () => removeDetEnh(d, e.id) }, 'Supprimer'),
+        ]), desc,
+      ]));
+    });
+    if (!d.enhancements || !d.enhancements.length) enhBody.appendChild(el('p', { class: 'muted' }, 'Aucun enhancement.'));
+    const add = el('button', { class: 'btn btn-small' }, '+ Enhancement');
+    add.addEventListener('click', () => addDetEnh(d));
+    enhBody.appendChild(el('div', { class: 'row' }, [add]));
+  };
+  renderEnh();
+  const enhSection = el('div', { class: 'section' }, [el('h3', {}, 'Enhancements'), enhBody]);
+
+  const saveBtn = el('button', { class: 'btn btn-primary' }, 'Enregistrer le détachement');
+  saveBtn.addEventListener('click', async () => {
+    const patch = {
+      name: nameInput.value,
+      rules: ruleRows.map((r) => ({ id: r.id, name: r.nm.value, description: r.desc.value })),
+      enhancements: enhRows.map((e) => ({ id: e.id, name: e.nm.value, pts: e.pt.value, description: e.desc.value })),
+    };
+    try {
+      await apiPost('/detachment/edit', { file: d.file, id: d.id, patch });
+      toast('Détachement enregistré (en mémoire).', 'ok'); await refreshStatus(); openEntity('detachments', d.id);
+    } catch (e) { toast(e.message, 'err'); }
+  });
+
+  mountSheet(d.name, `détachement · ${d.file}`, nameInput, [rulesSection, enhSection, keywordSection(d.keywords)], [saveBtn]);
   resetKwState();
+}
+
+async function addDetRule(d) {
+  try { await apiPost('/detachment/rule/add', { file: d.file, id: d.id, data: { name: 'Nouvelle règle', text: '' } }); toast('Règle ajoutée.', 'ok'); await refreshStatus(); openEntity('detachments', d.id); }
+  catch (e) { toast(e.message, 'err'); }
+}
+async function removeDetRule(d, ruleId) {
+  try { await apiPost('/detachment/rule/remove', { file: d.file, id: d.id, ruleId }); toast('Règle retirée.', 'ok'); await refreshStatus(); openEntity('detachments', d.id); }
+  catch (e) { toast(e.message, 'err'); }
+}
+async function addDetEnh(d) {
+  try { await apiPost('/detachment/enhancement/add', { file: d.file, id: d.id, data: { name: 'Nouvel enhancement', pts: '0', text: '' } }); toast('Enhancement ajouté.', 'ok'); await refreshStatus(); openEntity('detachments', d.id); }
+  catch (e) { toast(e.message, 'err'); }
+}
+async function removeDetEnh(d, enhId) {
+  try { await apiPost('/detachment/enhancement/remove', { file: d.file, id: d.id, enhId }); toast('Enhancement retiré.', 'ok'); await refreshStatus(); openEntity('detachments', d.id); }
+  catch (e) { toast(e.message, 'err'); }
 }
 
 // ---- sheet mounting --------------------------------------------------------
@@ -732,29 +854,65 @@ function newWeapon() {
 }
 
 function newUnit() {
+  const STAT = ['M', 'T', 'SV', 'W', 'LD', 'OC'];
   const name = el('input', { class: 'grow', placeholder: 'Nom de l\'unité' });
   const pts = el('input', { value: '0', style: 'width:80px' });
-  const statNames = ['M', 'T', 'SV', 'W', 'LD', 'OC'];
-  const inputs = {};
-  const head = el('tr', {}, statNames.map((n) => el('th', {}, n)));
-  const row = el('tr', {}, statNames.map((n) => { const i = el('input', { value: '' }); inputs[n] = i; return el('td', {}, [i]); }));
-  const attach = el('input', { type: 'checkbox' });
-  attach.checked = true;
+  const attach = el('input', { type: 'checkbox' }); attach.checked = true;
+  const kind = el('select', {}, [
+    el('option', { value: 'single' }, 'Figurine unique (personnage)'),
+    el('option', { value: 'squad' }, 'Escouade (plusieurs figurines)'),
+  ]);
+
+  // single-profile stats row
+  const singleInputs = {};
+  const singleTable = el('table', { class: 'wt' }, [el('tbody', {}, [
+    el('tr', {}, STAT.map((n) => el('th', {}, n))),
+    el('tr', {}, STAT.map((n) => { const i = el('input', {}); singleInputs[n] = i; return el('td', {}, [i]); })),
+  ])]);
+
+  // squad model rows
+  const modelRows = [];
+  const modelsBody = el('div', {});
+  const addModelRow = (def = {}) => {
+    const mi = { name: el('input', { value: def.name || '', placeholder: 'Type de figurine', style: 'min-width:140px' }),
+      min: el('input', { value: def.min || '1', style: 'width:48px' }), max: el('input', { value: def.max || '1', style: 'width:48px' }), stats: {} };
+    const statCells = STAT.map((n) => { const i = el('input', { value: '', style: 'width:46px' }); mi.stats[n] = i; return el('td', {}, [i]); });
+    const rm = el('span', { class: 'x', onclick: () => { const idx = modelRows.indexOf(mi); if (idx >= 0) { modelRows.splice(idx, 1); row.remove(); } } }, '×');
+    const row = el('div', { class: 'row', style: 'gap:4px; margin-bottom:4px; flex-wrap:nowrap; overflow-x:auto' }, [
+      mi.name, el('label', {}, 'min'), mi.min, el('label', {}, 'max'), mi.max,
+      el('table', { class: 'wt', style: 'width:auto' }, [el('tbody', {}, [el('tr', {}, STAT.map((n) => el('th', {}, n))), el('tr', {}, statCells)])]), rm,
+    ]);
+    modelRows.push(mi); modelsBody.appendChild(row);
+  };
+  const addModelBtn = el('button', { class: 'btn btn-small' }, '+ Type de figurine');
+  addModelBtn.addEventListener('click', () => addModelRow());
+  addModelRow({ name: 'Sergeant', min: '1', max: '1' });
+  addModelRow({ name: 'Trooper', min: '4', max: '9' });
+  const squadBlock = el('div', {}, [el('div', { class: 'muted' }, 'Figurines :'), modelsBody, el('div', { class: 'row' }, [addModelBtn])]);
+
+  const swap = () => { const sq = kind.value === 'squad'; squadBlock.style.display = sq ? '' : 'none'; singleTable.style.display = sq ? 'none' : ''; };
+  kind.addEventListener('change', swap); swap();
+
   const create = el('button', { class: 'btn btn-primary' }, 'Créer l\'unité');
   create.addEventListener('click', async () => {
     if (!name.value.trim()) { toast('Nom requis.', 'err'); return; }
-    const stats = Object.fromEntries(statNames.map((n) => [n, inputs[n].value]));
+    const data = { name: name.value.trim(), points: pts.value, attach: attach.checked };
+    if (kind.value === 'squad') {
+      data.models = modelRows.map((m) => ({ name: m.name.value.trim() || 'Model', min: m.min.value, max: m.max.value, stats: Object.fromEntries(STAT.map((n) => [n, m.stats[n].value])) }));
+    } else {
+      data.stats = Object.fromEntries(STAT.map((n) => [n, singleInputs[n].value]));
+    }
     try {
-      const u = await apiPost('/unit/create', { file: state.file, data: { name: name.value.trim(), points: pts.value, stats, attach: attach.checked } });
+      const u = await apiPost('/unit/create', { file: state.file, data });
       closeModal(); toast('Unité créée.', 'ok');
       await selectFaction(state.file); $('#tabs .tab[data-tab=units]').click(); openEntity('units', u.id);
     } catch (e) { toast(e.message, 'err'); }
   });
+
   showModal('Nouvelle unité', [
-    row2('Nom', name), row2('Points', pts),
-    el('div', { class: 'muted' }, 'Caractéristiques :'),
-    el('table', { class: 'wt' }, [el('tbody', {}, [head, row])]),
-    el('label', { class: 'row' }, [attach, el('span', {}, 'Rattacher à l\'organisation d\'armée (ajoute un entryLink racine pour la rendre sélectionnable)')]),
+    row2('Nom', name), row2('Points', pts), row2('Type', kind),
+    singleTable, squadBlock,
+    el('label', { class: 'row' }, [attach, el('span', {}, 'Rattacher à l\'organisation d\'armée (entryLink racine, rend l\'unité sélectionnable)')]),
   ], [create, cancelBtn()]);
 }
 
