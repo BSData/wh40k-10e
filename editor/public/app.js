@@ -157,6 +157,7 @@ async function init() {
   $('#btn-new').addEventListener('click', onNew);
   $('#btn-save').addEventListener('click', onSave);
   $('#btn-commit').addEventListener('click', onCommit);
+  $('#btn-validate').addEventListener('click', () => onValidate(false));
   $('#btn-lang').addEventListener('click', () => {
     state.lang = state.lang === 'fr' ? 'en' : 'fr';
     $('#btn-lang').textContent = state.lang.toUpperCase();
@@ -944,14 +945,46 @@ async function onSave() {
   } catch (e) { toast(e.message, 'err'); }
 }
 
+// ---- validation ------------------------------------------------------------
+function renderValidationBody(v) {
+  const body = [];
+  const dirty = v.results.filter((r) => r.dirty);
+  const shown = dirty.length ? dirty : v.results;
+  if (!shown.length) { body.push(el('p', { class: 'muted' }, 'Aucun fichier à vérifier.')); return body; }
+  body.push(el('p', { class: v.ok ? 'ok-note' : 'warn-note' },
+    v.ok ? `✓ ${shown.length} fichier(s) vérifié(s) — aucun problème introduit.`
+         : `✗ Des problèmes ont été détectés dans les fichiers modifiés.`));
+  for (const r of shown) {
+    const status = r.errors.length ? '✗' : '✓';
+    const rows = [el('div', { class: r.errors.length ? 'warn-note' : 'ok-note', style: 'font-weight:600' }, `${status} ${r.file}`)];
+    r.errors.forEach((e) => rows.push(el('div', { class: 'muted', style: 'color:#e89090;margin-left:14px' }, '• ' + e)));
+    r.warnings.forEach((w) => rows.push(el('div', { class: 'muted', style: 'margin-left:14px' }, '⚠ ' + w)));
+    body.push(el('div', { style: 'margin-bottom:6px' }, rows));
+  }
+  return body;
+}
+
+async function onValidate(all) {
+  try {
+    toast('Validation en cours…');
+    const v = await apiGet('/validate' + (all ? '?all=1' : ''));
+    const toggle = el('button', { class: 'btn' }, all ? 'Vérifier seulement les modifiés' : 'Vérifier TOUS les fichiers');
+    toggle.addEventListener('click', () => { closeModal(); onValidate(!all); });
+    showModal('Test / Validation', renderValidationBody(v), [toggle, el('button', { class: 'btn btn-primary', onclick: closeModal }, 'OK')]);
+    return v;
+  } catch (e) { toast(e.message, 'err'); }
+}
+
 async function onCommit() {
   const msg = el('input', { class: 'grow', placeholder: 'Message de commit' });
   const push = el('input', { type: 'checkbox' });
-  const doIt = el('button', { class: 'btn btn-primary' }, 'Commit');
+  const doIt = el('button', { class: 'btn btn-primary' }, 'Valider & Commit');
   doIt.addEventListener('click', async () => {
     if (!msg.value.trim()) { toast('Message requis.', 'err'); return; }
     try {
+      toast('Validation & commit en cours…');
       const r = await apiPost('/commit', { message: msg.value.trim(), push: push.checked });
+      if (r.blocked) { closeModal(); showCommitBlocked(r.validation, msg.value.trim(), push.checked); return; }
       closeModal(); toast('Commit effectué.' + (r.pushed ? ' Poussé.' : ''), 'ok');
       await refreshStatus();
     } catch (e) { toast(e.message, 'err'); }
@@ -959,7 +992,23 @@ async function onCommit() {
   showModal('Commit git', [
     row2('Message', msg),
     el('label', { class: 'row' }, [push, el('span', {}, 'Pousser vers origin après le commit')]),
+    el('p', { class: 'muted' }, 'Les fichiers modifiés sont validés automatiquement avant le commit.'),
   ], [doIt, cancelBtn()]);
+}
+
+// Commit was refused because validation found introduced problems.
+function showCommitBlocked(v, message, push) {
+  const force = el('button', { class: 'btn btn-danger' }, 'Forcer le commit malgré tout');
+  force.addEventListener('click', async () => {
+    try {
+      const r = await apiPost('/commit', { message, push, force: true });
+      closeModal(); toast('Commit forcé.' + (r.pushed ? ' Poussé.' : ''), 'ok'); await refreshStatus();
+    } catch (e) { toast(e.message, 'err'); }
+  });
+  showModal('Commit bloqué — validation échouée', [
+    el('p', { class: 'warn-note' }, 'Le commit a été bloqué : des problèmes ont été introduits. Corrige-les, ou force le commit.'),
+    ...renderValidationBody(v),
+  ], [force, el('button', { class: 'btn btn-primary', onclick: closeModal }, 'Annuler')]);
 }
 
 async function refreshStatus() {

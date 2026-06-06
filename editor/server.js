@@ -67,6 +67,8 @@ async function handleApi(req, res, url) {
         return sendJson(res, 200, catalog.listCategories());
       case '/api/status':
         return sendJson(res, 200, await statusPayload());
+      case '/api/validate':
+        return sendJson(res, 200, catalog.validate({ dirtyOnly: q.get('all') !== '1' }));
       case '/api/preview':
         return send(res, 200, 'text/plain; charset=utf-8', catalog.preview(q.get('file')) || '');
       default:
@@ -110,7 +112,7 @@ async function handleApi(req, res, url) {
         return sendJson(res, 200, { written });
       }
       case '/api/commit':
-        return sendJson(res, 200, await commit(body.message, body.push));
+        return sendJson(res, 200, await commit(body.message, body.push, body.force));
       default:
         return sendJson(res, 404, { error: 'unknown endpoint ' + p });
     }
@@ -144,8 +146,13 @@ async function statusPayload() {
   return { dirtyInMemory, branch, gitStatus };
 }
 
-async function commit(message, push) {
+async function commit(message, push, force) {
   if (!message || !message.trim()) throw new Error('commit message required');
+  // safety net: refuse to commit if edits broke a file, unless forced
+  const validation = catalog.validate({ dirtyOnly: true });
+  if (!validation.ok && !force) {
+    return { blocked: true, validation };
+  }
   const written = catalog.save();
   await git(['add', '--', ...catalogFiles()]);
   const out = await git(['commit', '-m', message]);

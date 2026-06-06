@@ -55,8 +55,17 @@ Aucune dépendance à installer : 100 % Node natif + JS navigateur.
   - La création d'unité peut **rattacher** automatiquement la datasheet à
     l'organisation d'armée (ajout d'un `entryLink` racine), comme toutes les
     datasheets existantes, pour la rendre sélectionnable.
+- **Test / Validation** : le bouton « Tester / Valider » revérifie les fichiers
+  modifiés — XML bien formé (re-sérialisation + re-parsing), **références
+  `targetId` orphelines** et **IDs dupliqués introduits**. La détection est
+  *relative à une baseline* capturée au chargement (les données d'origine
+  contiennent ~900 IDs légitimement réutilisés et 0 référence orpheline), donc
+  seuls les problèmes **introduits par les éditions** sont signalés. Option
+  « Vérifier TOUS les fichiers ».
 - **Enregistrement** : « Enregistrer fichiers » écrit les fichiers modifiés ;
-  « Commit… » fait `git add` + `git commit` (option `push`).
+  « Commit… » **valide automatiquement** avant de faire `git add` + `git commit`
+  (option `push`) et **bloque** le commit en cas de problème introduit (avec
+  possibilité de forcer).
 
 ## Diffs git propres
 

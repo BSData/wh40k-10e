@@ -36,6 +36,9 @@ const MELEE_CHAR_TYPES = {
 };
 const ABILITY_DESC_TYPE = '9b8f-694b-e5e-b573';
 
+// Element tags that reference another entry by `targetId` (for ref validation).
+const LINK_TAGS = new Set(['entryLink', 'infoLink', 'categoryLink', 'catalogueLink']);
+
 class Catalog {
   constructor(rootDir) {
     this.rootDir = rootDir;
@@ -56,7 +59,71 @@ class Catalog {
       this.docs.set(f, doc);
     }
     this.buildIndex();
+    this.captureBaseline();
     return this;
+  }
+
+  // ---- validation -------------------------------------------------------
+  // Scan every loaded document for the id space, duplicate ids and dangling
+  // link targets. (The pristine data legitimately contains ~900 reused ids
+  // and zero dangling refs, so validation is done RELATIVE to a baseline
+  // captured at load: only NEW problems introduced by edits are reported.)
+  scan() {
+    const idCount = new Map();
+    const allIds = new Set();
+    for (const [, doc] of this.docs) {
+      xml.walk(doc.root, (n) => {
+        const id = xml.getAttr(n, 'id');
+        if (id) { idCount.set(id, (idCount.get(id) || 0) + 1); allIds.add(id); }
+      });
+    }
+    const dupIds = new Set([...idCount].filter(([, c]) => c > 1).map(([id]) => id));
+    const danglingTargets = new Set();
+    for (const [, doc] of this.docs) {
+      xml.walk(doc.root, (n) => {
+        if (!LINK_TAGS.has(n.tag)) return;
+        const tid = xml.getAttr(n, 'targetId');
+        if (tid && !allIds.has(tid)) danglingTargets.add(tid);
+      });
+    }
+    return { allIds, dupIds, danglingTargets };
+  }
+
+  captureBaseline() {
+    const s = this.scan();
+    this.baseline = { dupIds: s.dupIds, danglingTargets: s.danglingTargets };
+  }
+
+  validate({ dirtyOnly = true } = {}) {
+    const cur = this.scan();
+    const baseDup = (this.baseline && this.baseline.dupIds) || new Set();
+    const baseDang = (this.baseline && this.baseline.danglingTargets) || new Set();
+    const files = [...this.docs.keys()].filter((f) => !dirtyOnly || this.docs.get(f).dirty);
+    const results = [];
+    for (const file of files) {
+      const doc = this.docs.get(file);
+      const r = { file, dirty: !!doc.dirty, errors: [], warnings: [] };
+      // 1. well-formedness: serialized output must re-parse
+      try { xml.parse(xml.serialize(doc)); } catch (e) { r.errors.push('XML invalide: ' + e.message); results.push(r); continue; }
+      // 2. NEW dangling refs / NEW duplicate-id definitions in this file
+      const newDang = [];
+      const newDup = new Set();
+      xml.walk(doc.root, (n) => {
+        if (LINK_TAGS.has(n.tag)) {
+          const tid = xml.getAttr(n, 'targetId');
+          if (tid && !cur.allIds.has(tid) && !baseDang.has(tid)) {
+            newDang.push((xml.getAttrDecoded(n, 'name') || n.tag) + ' → ' + tid);
+          }
+        }
+        const id = xml.getAttr(n, 'id');
+        if (id && cur.dupIds.has(id) && !baseDup.has(id)) newDup.add(id);
+      });
+      for (const d of newDang.slice(0, 20)) r.errors.push('Référence orpheline : ' + d);
+      if (newDang.length > 20) r.errors.push(`… +${newDang.length - 20} autres références orphelines`);
+      for (const id of newDup) r.errors.push('ID dupliqué (introduit) : ' + id);
+      results.push(r);
+    }
+    return { ok: results.every((r) => !r.errors.length), checked: files.length, results };
   }
 
   buildIndex() {
