@@ -25,7 +25,13 @@ Aucune dépendance à installer : 100 % Node natif + JS navigateur.
 ## Fonctionnalités
 
 - **Navigation** par faction (fichier), onglets *Unités / Armes / Détachements*,
-  filtre de recherche.
+  recherche par nom + **filtres à facettes** propres à chaque onglet (avec
+  compteur de résultats et bouton de réinitialisation) :
+  - *Unités* : rôle (Character, Battleline, Vehicle, Monster…), mot-clé,
+    fourchette de points, Endurance ≥, masquer les [Legends], Epic Hero.
+  - *Armes* : type (distance/mêlée), mot-clé (Pistol, Heavy, Devastating
+    Wounds, Torrent… regroupés), Force ≥, partagée uniquement.
+  - *Détachements* : avec enhancements.
 - **Édition d'une unité** : nom, points (coût `pts`), caractéristiques
   (M/T/SV/W/LD/OC, y compris les profils des sous-modèles), capacités
   (texte des profils), mots-clés (ajout/retrait).

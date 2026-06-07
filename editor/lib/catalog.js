@@ -171,17 +171,28 @@ class Catalog {
     const units = [];
     const weapons = [];
     const detachments = [];
+    // map "<Detachment>" -> enhancement count, collected in the same pass
+    const enhCounts = new Map();
+    xml.walk(doc.root, (node) => {
+      if (node.tag === 'selectionEntryGroup') {
+        const gname = xml.getAttrDecoded(node, 'name') || '';
+        if (gname.endsWith(' Enhancements')) {
+          const se = xml.child(node, 'selectionEntries');
+          enhCounts.set(gname.slice(0, -' Enhancements'.length), se ? se.children.filter((c) => c.tag === 'selectionEntry').length : 0);
+        }
+      }
+    });
     xml.walk(doc.root, (node, parent, ancestors) => {
       if (node.tag !== 'selectionEntry') return;
       const id = xml.getAttr(node, 'id');
       const name = xml.getAttrDecoded(node, 'name');
       if (isDatasheet(node, ancestors)) {
-        units.push({ id, name });
+        units.push(unitMeta(node, id, name));
       } else if (isWeaponNode(node)) {
-        weapons.push({ id, name, kind: weaponKind(node) });
+        weapons.push(weaponMeta(node, id, name, this));
       }
       if (isDetachmentNode(node, ancestors)) {
-        detachments.push({ id, name });
+        detachments.push({ id, name, enh: enhCounts.get(name) || 0, rules: readRules(node).length });
       }
     });
     const sort = (a, b) => (a.name || '').localeCompare(b.name || '');
@@ -833,6 +844,43 @@ function profilesOfType(node, typeId) {
 
 function hasUnitProfile(node) {
   return node.tag === 'selectionEntry' && profilesOfType(node, PROFILE_UNIT).length > 0;
+}
+
+// Known datasheet roles (a strong unit discriminant) in priority order.
+const ROLE_KEYWORDS = ['Epic Hero', 'Character', 'Battleline', 'Dedicated Transport', 'Vehicle', 'Monster', 'Walker', 'Mounted', 'Beast', 'Aircraft', 'Fortification', 'Swarm', 'Infantry'];
+
+// Lightweight, list-level metadata used for client-side faceted filtering.
+function unitMeta(node, id, name) {
+  const keywords = readCategoryLinks(node).map((k) => k.name).filter(Boolean);
+  const pts = (readCosts(node).find((c) => c.name === 'pts') || {}).value;
+  const stat = readProfilesDeep(node, PROFILE_UNIT)[0];
+  const role = ROLE_KEYWORDS.find((r) => keywords.includes(r)) || 'Other';
+  return {
+    id, name, keywords, role,
+    pts: pts != null && pts !== '' ? Number(pts) : null,
+    t: stat && stat.chars ? stat.chars.T : null,
+    w: stat && stat.chars ? stat.chars.W : null,
+    legend: /\[legend/i.test(name || ''),
+    epic: keywords.includes('Epic Hero'),
+  };
+}
+
+function weaponMeta(node, id, name, catalog) {
+  const kind = weaponKind(node);
+  const prof = (profilesOfType(node, PROFILE_RANGED)[0] || profilesOfType(node, PROFILE_MELEE)[0]);
+  const chars = {};
+  if (prof) {
+    const cc = xml.child(prof, 'characteristics');
+    if (cc) for (const c of cc.children) if (c.tag === 'characteristic') chars[xml.getAttrDecoded(c, 'name')] = xml.getText(c);
+  }
+  const kws = (chars.Keywords || '').split(',').map((s) => s.trim()).filter((s) => s && s !== '-');
+  const users = catalog.weaponUsage(id).filter((u) => u.isDatasheet).length;
+  return {
+    id, name, kind,
+    keywords: kws,
+    s: chars.S || null, ap: chars.AP || null, d: chars.D || null, range: chars.Range || null,
+    users, shared: users > 1,
+  };
 }
 
 // A "datasheet" is a top-level playable entry: a squad (type=unit) or a

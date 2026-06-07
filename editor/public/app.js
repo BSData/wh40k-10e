@@ -46,6 +46,7 @@ const state = {
   categories: null,
   lang: 'fr',
   livePreview: null, // () => rebuild the preview pane from current form values
+  filters: { units: {}, weapons: {}, detachments: {} },
 };
 
 // ---- adapters: API JSON -> presentation module `unit` shape ----------------
@@ -150,6 +151,7 @@ async function init() {
     t.addEventListener('click', () => {
       $$('#tabs .tab').forEach((x) => x.classList.toggle('active', x === t));
       state.tab = t.dataset.tab;
+      renderFacets();
       renderList();
     })
   );
@@ -174,31 +176,119 @@ async function selectFaction(file) {
   state.file = file;
   state.contents = await apiGet('/faction?file=' + encodeURIComponent(file));
   state.selected = null;
+  state.filters = { units: {}, weapons: {}, detachments: {} };
+  $('#filter').value = '';
+  renderFacets();
   renderList();
   $('#detail').innerHTML = '<div class="empty-state"><p>Choisis une entrée à gauche.</p></div>';
 }
 
-// ---- sidebar list ----------------------------------------------------------
+// ---- sidebar list + faceted filters ----------------------------------------
 function currentItems() {
   if (!state.contents) return [];
   return state.contents[state.tab] || [];
 }
+function activeFilters() {
+  return state.filters[state.tab] || (state.filters[state.tab] = {});
+}
+
+const WEAPON_KW_BASE = (kw) => kw.replace(/\s+\d+\+?$/, '').trim(); // "Rapid Fire 2"->"Rapid Fire"
+function distinct(arr) { return [...new Set(arr)].sort((a, b) => a.localeCompare(b)); }
+
+function applyFilters(items) {
+  const q = $('#filter').value.trim().toLowerCase();
+  const f = activeFilters();
+  return items.filter((it) => {
+    if (q && !(it.name || '').toLowerCase().includes(q)) return false;
+    if (state.tab === 'units') {
+      if (f.role && f.role !== '*' && it.role !== f.role) return false;
+      if (f.kw && f.kw !== '*' && !(it.keywords || []).includes(f.kw)) return false;
+      if (f.ptsMin !== undefined && f.ptsMin !== '' && (it.pts == null || it.pts < Number(f.ptsMin))) return false;
+      if (f.ptsMax !== undefined && f.ptsMax !== '' && (it.pts == null || it.pts > Number(f.ptsMax))) return false;
+      if (f.tMin !== undefined && f.tMin !== '' && !(Number(it.t) >= Number(f.tMin))) return false;
+      if (f.hideLegend && it.legend) return false;
+      if (f.epic && !it.epic) return false;
+    } else if (state.tab === 'weapons') {
+      if (f.kind && f.kind !== '*' && it.kind !== f.kind) return false;
+      if (f.kw && f.kw !== '*' && !(it.keywords || []).some((k) => WEAPON_KW_BASE(k) === f.kw)) return false;
+      if (f.sMin !== undefined && f.sMin !== '' && !(Number(it.s) >= Number(f.sMin))) return false;
+      if (f.shared && !it.shared) return false;
+    } else if (state.tab === 'detachments') {
+      if (f.hasEnh && !(it.enh > 0)) return false;
+    }
+    return true;
+  });
+}
+
 function renderList() {
   const ul = $('#entity-list');
   ul.innerHTML = '';
-  const q = $('#filter').value.trim().toLowerCase();
-  const items = currentItems().filter((i) => !q || (i.name || '').toLowerCase().includes(q));
+  const items = applyFilters(currentItems());
   for (const it of items) {
-    const li = el('li', {
-      onclick: () => openEntity(state.tab, it.id),
-    }, [
+    const meta = state.tab === 'units' ? (it.pts != null ? it.pts + ' pts' : '')
+      : state.tab === 'weapons' ? it.kind
+      : (it.enh ? it.enh + ' enh.' : '');
+    const li = el('li', { onclick: () => openEntity(state.tab, it.id) }, [
       el('span', {}, it.name || '(sans nom)'),
-      it.kind ? el('span', { class: 'tag' }, it.kind) : null,
+      meta ? el('span', { class: 'tag' }, meta) : null,
     ]);
     if (state.selected && state.selected.id === it.id) li.classList.add('active');
     ul.appendChild(li);
   }
   if (!items.length) ul.appendChild(el('li', { class: 'muted' }, 'Aucune entrée.'));
+  $('#list-count').textContent = `${items.length} / ${currentItems().length}`;
+}
+
+// Build the filter controls for the active tab from the current data.
+function renderFacets() {
+  const host = $('#facets');
+  host.innerHTML = '';
+  if (!state.contents) return;
+  const items = currentItems();
+  const f = activeFilters();
+  const onChange = () => renderList();
+
+  const selectRow = (label, key, options) => {
+    const sel = el('select', { onchange: (e) => { f[key] = e.target.value; onChange(); } },
+      options.map((o) => el('option', { value: o.v }, o.t)));
+    sel.value = f[key] || '*';
+    return el('div', { class: 'frow' }, [el('label', {}, label), sel]);
+  };
+  const numRow = (label, ...inputs) => el('div', { class: 'frow' }, [el('label', {}, label), ...inputs]);
+  const numInput = (key, ph) => {
+    const i = el('input', { class: 'fnum', type: 'number', placeholder: ph, value: f[key] != null ? f[key] : '' });
+    i.addEventListener('input', () => { f[key] = i.value; onChange(); });
+    return i;
+  };
+  const check = (label, key) => {
+    const c = el('input', { type: 'checkbox' }); c.checked = !!f[key];
+    c.addEventListener('change', () => { f[key] = c.checked; onChange(); });
+    return el('label', {}, [c, label]);
+  };
+
+  if (state.tab === 'units') {
+    const roles = distinct(items.map((i) => i.role));
+    const names = new Set(items.map((i) => i.name));
+    const kws = distinct(items.flatMap((i) => i.keywords || [])
+      .filter((k) => k && !k.startsWith('Faction:') && !names.has(k)));
+    host.appendChild(selectRow('Rôle', 'role', [{ v: '*', t: 'Tous' }, ...roles.map((r) => ({ v: r, t: r }))]));
+    host.appendChild(selectRow('Mot-clé', 'kw', [{ v: '*', t: 'Tous' }, ...kws.map((k) => ({ v: k, t: k }))]));
+    host.appendChild(numRow('Points', numInput('ptsMin', 'min'), numInput('ptsMax', 'max')));
+    host.appendChild(numRow('Endur. ≥', numInput('tMin', 'T')));
+    host.appendChild(el('div', { class: 'fchecks' }, [check('Masquer Legends', 'hideLegend'), check('Epic Hero', 'epic')]));
+  } else if (state.tab === 'weapons') {
+    const kws = distinct(items.flatMap((i) => (i.keywords || []).map(WEAPON_KW_BASE)).filter(Boolean));
+    host.appendChild(selectRow('Type', 'kind', [{ v: '*', t: 'Tous' }, { v: 'ranged', t: 'À distance' }, { v: 'melee', t: 'Mêlée' }]));
+    host.appendChild(selectRow('Mot-clé', 'kw', [{ v: '*', t: 'Tous' }, ...kws.map((k) => ({ v: k, t: k }))]));
+    host.appendChild(numRow('Force ≥', numInput('sMin', 'S')));
+    host.appendChild(el('div', { class: 'fchecks' }, [check('Partagée uniquement', 'shared')]));
+  } else if (state.tab === 'detachments') {
+    host.appendChild(el('div', { class: 'fchecks' }, [check('Avec enhancements', 'hasEnh')]));
+  }
+
+  const reset = el('button', { class: 'btn btn-small freset' }, 'Réinitialiser les filtres');
+  reset.addEventListener('click', () => { state.filters[state.tab] = {}; $('#filter').value = ''; renderFacets(); renderList(); });
+  host.appendChild(reset);
 }
 
 // ---- open entity -----------------------------------------------------------
