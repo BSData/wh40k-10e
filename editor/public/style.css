@@ -184,6 +184,9 @@ textarea { width: 100%; min-height: 70px; resize: vertical; }
 
 /* ---- modal ---- */
 .modal-root { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 50; }
+/* the [hidden] attribute must win over the display:flex above, otherwise the
+   (empty) modal shows permanently as a thin gold-bordered box at screen centre */
+.modal-root[hidden] { display: none; }
 .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
 .modal {
   position: relative; background: var(--panel); border: 1px solid var(--gold);
