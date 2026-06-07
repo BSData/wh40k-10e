@@ -318,16 +318,17 @@ function renderUnit(u) {
     ),
   ]);
 
-  // weapons — editable inline; each weapon saves through the shared-impact flow
+  // weapons — editable inline; each weapon saves through the shared-impact flow.
+  // Split into always-equipped (default) and option/choice weapons.
   const weaponEditors = [];
-  const weaponsSection = el('div', { class: 'section' }, [
-    el('h3', {}, 'Armes'),
-    el('div', { class: 'section-body' },
-      u.weapons.length
-        ? u.weapons.map((w) => { const ed = unitWeaponEditor(w); weaponEditors.push(ed); return ed.node; })
-        : [el('p', { class: 'muted' }, 'Aucune arme.')]
-    ),
-  ]);
+  const mkWeapon = (w) => { const ed = unitWeaponEditor(w); weaponEditors.push(ed); return ed.node; };
+  const defWeapons = u.weapons.filter((w) => !w.optional);
+  const optWeapons = u.weapons.filter((w) => w.optional);
+  const wbody = [];
+  if (defWeapons.length) { wbody.push(el('div', { class: 'wsub' }, 'Armes par défaut (toujours équipées)')); defWeapons.forEach((w) => wbody.push(mkWeapon(w))); }
+  if (optWeapons.length) { wbody.push(el('div', { class: 'wsub' }, 'Options / choix d\'armes')); optWeapons.forEach((w) => wbody.push(mkWeapon(w))); }
+  if (!wbody.length) wbody.push(el('p', { class: 'muted' }, 'Aucune arme.'));
+  const weaponsSection = el('div', { class: 'section' }, [el('h3', {}, 'Armes'), el('div', { class: 'section-body' }, wbody)]);
 
   // abilities
   const abilityBlocks = u.abilities.map((a) => abilityBlock(a));
@@ -406,12 +407,16 @@ function currentKeywords() {
 // ---- inline weapon editor (inside a unit) ----------------------------------
 function unitWeaponEditor(w) {
   const profEditors = (w.profiles || []).map((p) => weaponProfileEditor(p, w.kind));
-  const tag = el('span', { class: 'wt-kind' }, (w.kind || '') + (w.embedded ? ' · intégrée' : ' · partagée'));
+  const badge = el('span', { class: 'wbadge ' + (w.optional ? 'w-option' : 'w-default') }, w.optional ? 'OPTION' : 'DÉFAUT');
+  const meta = [badge];
+  if (w.optional && w.group) meta.push(el('span', { class: 'wmeta' }, w.group));
+  if (w.model) meta.push(el('span', { class: 'wmeta' }, '· ' + w.model));
+  meta.push(el('span', { class: 'wt-kind' }, (w.kind || '') + (w.embedded ? ' · intégrée' : ' · partagée')));
   const saveB = el('button', { class: 'btn btn-small' }, 'Enregistrer cette arme');
   saveB.addEventListener('click', () => saveUnitWeapon(w, profEditors));
   const node = el('div', { class: 'section', style: 'border:none; padding:0; margin-bottom:10px' }, [
     el('div', { class: 'row', style: 'justify-content:space-between' }, [
-      el('div', {}, [el('strong', {}, w.name || '(arme)'), ' ', tag]),
+      el('div', {}, [el('strong', {}, w.name || '(arme)'), ' ', ...meta]),
       saveB,
     ]),
     ...(profEditors.length ? profEditors.map((b) => b.node) : [el('p', { class: 'muted' }, 'Aucun profil.')]),

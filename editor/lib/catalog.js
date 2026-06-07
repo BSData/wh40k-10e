@@ -252,40 +252,47 @@ class Catalog {
     const seen = new Set();
     // (1) weapons defined inline inside the datasheet (common for characters,
     //     e.g. Abaddon's Talon of Horus / Drach'nyen) - direct weapon entries.
-    xml.walk(unitNode, (node) => {
+    xml.walk(unitNode, (node, parent, ancestors) => {
       if (node.tag !== 'selectionEntry' || node === unitNode) return;
       if (!isWeaponNode(node)) return;
       const id = xml.getAttr(node, 'id');
-      if (id && seen.has(id)) return;
-      if (id) seen.add(id);
+      const ctx = weaponContext(ancestors, node);
+      const key = id + '|' + (ctx.group || '') + '|' + (ctx.model || '');
+      if (seen.has(key)) return;
+      seen.add(key);
       out.push({
         targetId: id,
         name: xml.getAttrDecoded(node, 'name'),
         kind: weaponKind(node),
         embedded: true,
+        ...ctx,
         profiles: [...readProfiles(node, PROFILE_RANGED), ...readProfiles(node, PROFILE_MELEE)],
       });
     });
     // (2) weapons referenced by entryLink (shared weapon entries).
-    xml.walk(unitNode, (node) => {
+    xml.walk(unitNode, (node, parent, ancestors) => {
       if (node.tag !== 'entryLink') return;
       const targetId = xml.getAttr(node, 'targetId');
       const ref = targetId && this.byId.get(targetId);
       if (!ref || !isWeaponNode(ref.node)) return;
-      if (seen.has(targetId)) return;
-      seen.add(targetId);
+      const ctx = weaponContext(ancestors, node);
+      const key = targetId + '|' + (ctx.group || '') + '|' + (ctx.model || '');
+      if (seen.has(key)) return;
+      seen.add(key);
       out.push({
         targetId,
         name: xml.getAttrDecoded(node, 'name') || xml.getAttrDecoded(ref.node, 'name'),
         kind: weaponKind(ref.node),
         weaponFile: ref.file,
+        ...ctx,
         profiles: [
           ...readProfiles(ref.node, PROFILE_RANGED),
           ...readProfiles(ref.node, PROFILE_MELEE),
         ],
       });
     });
-    return out;
+    // default weapons first, then options; stable by name within each
+    return out.sort((a, b) => (a.optional - b.optional) || (a.model || '').localeCompare(b.model || '') || (a.name || '').localeCompare(b.name || ''));
   }
 
   getWeapon(file, id) {
@@ -961,6 +968,27 @@ function readCategoryLinks(node) {
       name: xml.getAttrDecoded(c, 'name'),
       primary: xml.getAttr(c, 'primary'),
     }));
+}
+
+// Classify a weapon within a datasheet: is it a DEFAULT (always-equipped)
+// weapon attached directly to a model/unit, or an OPTION inside a weapon-choice
+// selectionEntryGroup? Also report the carrying model and the option group name.
+function weaponContext(ancestors, node) {
+  // nearest enclosing model / unit (the carrier)
+  let ownerIdx = -1;
+  let model = null;
+  for (let i = ancestors.length - 1; i >= 0; i--) {
+    const a = ancestors[i];
+    if (a.tag === 'selectionEntry' && ['model', 'unit'].includes(xml.getAttr(a, 'type'))) {
+      ownerIdx = i; model = xml.getAttrDecoded(a, 'name'); break;
+    }
+  }
+  // a selectionEntryGroup sitting BETWEEN the carrier and this weapon = a choice
+  let group = null;
+  for (let i = ownerIdx + 1; i < ancestors.length; i++) {
+    if (ancestors[i].tag === 'selectionEntryGroup') { group = xml.getAttrDecoded(ancestors[i], 'name'); break; }
+  }
+  return { optional: !!group, group, model };
 }
 
 // Collect profiles of a given type anywhere in a datasheet subtree (squad

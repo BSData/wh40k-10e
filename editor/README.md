@@ -37,7 +37,9 @@ Aucune dépendance à installer : 100 % Node natif + JS navigateur.
   (texte des profils), mots-clés (ajout/retrait).
   - **Armes en ligne** : chaque arme de l'unité (liée *ou* intégrée) est
     éditable directement dans la fiche, avec gestion de l'impact partagé
-    (cf. ci-dessous) au moment de l'enregistrer.
+    (cf. ci-dessous) au moment de l'enregistrer. Les armes sont classées en
+    **« par défaut » (toujours équipées)** vs **« options / choix »**, avec un
+    badge, le groupe d'option et la **figurine** porteuse pour chacune.
   - **Composition** : min/max de chaque type de figurine + paliers de coût
     (modificateurs `set pts` conditionnés au nombre de figurines).
   - **Options / équipement** : points de chaque choix d'arme/wargear, plus
