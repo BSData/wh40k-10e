@@ -471,6 +471,146 @@ class Catalog {
     return this.getDetachment(ref.file, detId);
   }
 
+  // ---- enhancement targeting (who an enhancement applies to) ------------
+  // List datasheets of a file with their keywords (for the targeting selector).
+  datasheetsForTargeting(file) {
+    const doc = this.docs.get(file);
+    if (!doc) return [];
+    const out = [];
+    xml.walk(doc.root, (node, parent, ancestors) => {
+      if (!isDatasheet(node, ancestors)) return;
+      const clc = xml.child(node, 'categoryLinks');
+      const kws = clc ? clc.children.filter((c) => c.tag === 'categoryLink').map((c) => xml.getAttrDecoded(c, 'name')) : [];
+      out.push({
+        id: xml.getAttr(node, 'id'), name: xml.getAttrDecoded(node, 'name'),
+        keywords: kws, character: kws.includes('Character'), epic: kws.includes('Epic Hero'),
+      });
+    });
+    out.sort((a, b) => a.name.localeCompare(b.name));
+    return out;
+  }
+
+  // Current targeting of an enhancement: the datasheets it is attached to, and
+  // whether it still sits in the character Enhancements menu.
+  enhancementTargeting(file, enhId) {
+    const doc = this.docs.get(file);
+    const dsIds = [];
+    let inMenu = false;
+    if (doc) {
+      xml.walk(doc.root, (node, parent, ancestors) => {
+        if (node.tag === 'entryLink' && xml.getAttr(node, 'targetId') === enhId) {
+          const ds = [...ancestors].reverse().find((a) => a.tag === 'selectionEntry' && ['unit', 'model'].includes(xml.getAttr(a, 'type')));
+          if (ds) dsIds.push(xml.getAttr(ds, 'id'));
+        }
+        if (node.tag === 'selectionEntry' && xml.getAttr(node, 'id') === enhId) {
+          if (ancestors.some((a) => a.tag === 'selectionEntryGroup' && /Enhancements$/.test(xml.getAttrDecoded(a, 'name') || ''))) inMenu = true;
+        }
+      });
+    }
+    return { datasheetIds: [...new Set(dsIds)], inMenu };
+  }
+
+  // Configure WHO an enhancement applies to.
+  //   bearer 'unit'  -> shared entry + detachment-gated entryLink on each datasheet
+  //   bearer 'model' -> keep it in the character Enhancements menu (remove unit links)
+  setEnhancementTargeting(file, detId, enhId, bearer, datasheetIds) {
+    const ENH_CAT = '6226-9b9b-107a-9ada'; // "Enhancement" category -> army cap of 4
+    const ref = this.byId.get(detId);
+    if (!ref) throw new Error('Detachment not found');
+    const detName = xml.getAttrDecoded(ref.node, 'name');
+    const enhRef = this.byId.get(enhId);
+    if (!enhRef) throw new Error('Enhancement not found');
+    const enh = enhRef.node;
+    const enhName = xml.getAttrDecoded(enh, 'name');
+
+    // every matched-play enhancement carries the Enhancement category (cap of 4)
+    const clc = xml.child(enh, 'categoryLinks');
+    if (!clc || !clc.children.some((c) => xml.getAttr(c, 'targetId') === ENH_CAT)) {
+      addCategoryLink(enh, { name: 'Enhancement', targetId: ENH_CAT, primary: false }, this.newId());
+    }
+
+    // clean slate: drop existing unit links for this enhancement
+    this._removeEnhUnitLinks(file, enhId, detName);
+
+    if (bearer === 'unit') {
+      this._moveEnhToShared(file, enh);                 // out of the character menu, into shared entries
+      for (const dsId of datasheetIds || []) {
+        const dsRef = this.byId.get(dsId);
+        if (dsRef) this._attachEnhLink(dsRef.node, enhId, enhName, detId, detName);
+      }
+    } else {
+      this._moveEnhToMenu(file, enh, ref.node, detId, detName); // back into the character menu
+    }
+    this.markDirty(file);
+    this.buildIndex();
+    return { detachment: this.getDetachment(file, detId), targeting: this.enhancementTargeting(file, enhId) };
+  }
+
+  _moveEnhToShared(file, enh) {
+    const doc = this.docs.get(file);
+    const shared = this.ensureSharedSelectionEntries(doc);
+    if (shared.children.includes(enh)) return;
+    const parent = this.findParent(file, enh);
+    if (parent) parent.children = parent.children.filter((c) => c !== enh);
+    shared.children.push(enh);
+  }
+
+  _moveEnhToMenu(file, enh, detNode, detId, detName) {
+    let group = this.findEnhancementsGroup(file, detName);
+    if (!group) {
+      group = xml.elem('selectionEntryGroup', { name: detName + ' Enhancements', hidden: 'false', id: this.newId() }, [xml.elem('selectionEntries', {}, [])]);
+      detNode.children.push(group);
+    }
+    const entries = xml.ensureChild(group, 'selectionEntries');
+    if (entries.children.includes(enh)) return;
+    const parent = this.findParent(file, enh);
+    if (parent && parent !== entries) parent.children = parent.children.filter((c) => c !== enh);
+    entries.children.push(enh);
+  }
+
+  _attachEnhLink(dsNode, enhId, enhName, detId, detName) {
+    const groupName = detName + ' Enhancement';
+    let group = null;
+    xml.walk(dsNode, (n) => { if (!group && n.tag === 'selectionEntryGroup' && xml.getAttrDecoded(n, 'name') === groupName) group = n; });
+    const link = xml.elem('entryLink', { type: 'selectionEntry', import: 'true', name: enhName, hidden: 'false', id: this.newId(), targetId: enhId });
+    if (group) {
+      const els = xml.ensureChild(group, 'entryLinks');
+      if (!els.children.some((l) => xml.getAttr(l, 'targetId') === enhId)) els.children.push(link);
+      return;
+    }
+    group = xml.elem('selectionEntryGroup', { name: groupName, hidden: 'false', id: this.newId() }, [
+      xml.elem('modifiers', {}, [
+        xml.elem('modifier', { type: 'set', value: 'true', field: 'hidden' }, [
+          xml.elem('conditions', {}, [
+            xml.elem('condition', { type: 'lessThan', value: '1', field: 'selections', scope: 'roster', childId: detId, shared: 'true', includeChildSelections: 'true', includeChildForces: 'true' }),
+          ]),
+        ]),
+      ]),
+      xml.elem('constraints', {}, [
+        xml.elem('constraint', { type: 'max', value: '1', field: 'selections', scope: 'parent', shared: 'true', id: this.newId() }),
+      ]),
+      xml.elem('entryLinks', {}, [link]),
+    ]);
+    const segs = xml.ensureChild(dsNode, 'selectionEntryGroups');
+    segs.children.push(group);
+  }
+
+  _removeEnhUnitLinks(file, enhId, detName) {
+    const doc = this.docs.get(file);
+    if (!doc) return;
+    const groupName = detName + ' Enhancement';
+    const toPrune = []; // {parent, group}
+    xml.walk(doc.root, (node, parent) => {
+      if (node.tag !== 'selectionEntryGroup' || xml.getAttrDecoded(node, 'name') !== groupName) return;
+      const els = xml.child(node, 'entryLinks');
+      if (els) els.children = els.children.filter((l) => xml.getAttr(l, 'targetId') !== enhId);
+      const links = (xml.child(node, 'entryLinks') || { children: [] }).children;
+      const ents = (xml.child(node, 'selectionEntries') || { children: [] }).children;
+      if (!links.length && !ents.length && parent) toPrune.push({ parent, group: node });
+    });
+    for (const { parent, group } of toPrune) parent.children = parent.children.filter((c) => c !== group);
+  }
+
   // ---- editing: units ---------------------------------------------------
   editUnit(file, id, patch) {
     const ref = this.byId.get(id);
