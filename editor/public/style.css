@@ -73,6 +73,18 @@ select:focus, input:focus, textarea:focus { outline: 1px solid var(--gold); }
 .list-tools { display: flex; gap: 6px; }
 .list-tools input { flex: 1; }
 
+/* faceted filters */
+.facets { display: flex; flex-direction: column; gap: 6px; }
+.facets .frow { display: flex; gap: 6px; align-items: center; }
+.facets .frow > label { font-size: 11px; color: var(--ink-dim); min-width: 46px; }
+.facets select, .facets input { font-size: 12px; padding: 4px 6px; }
+.facets select { flex: 1; min-width: 0; }
+.facets .fnum { width: 60px; flex: none; }
+.facets .fchecks { display: flex; flex-wrap: wrap; gap: 8px; }
+.facets .fchecks label { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--ink); }
+.facets .freset { align-self: flex-start; }
+.list-count { font-size: 11px; color: var(--ink-dim); padding: 2px 0; }
+
 .entity-list { list-style: none; margin: 0; padding: 0; overflow: auto; flex: 1; }
 .entity-list li {
   padding: 8px 10px; border-bottom: 1px solid var(--line); cursor: pointer;
@@ -145,6 +157,11 @@ table.wt td.name { text-align: left; }
 table.wt input { width: 100%; min-width: 40px; text-align: center; }
 table.wt input.name { text-align: left; }
 .wt-kind { font-size: 10px; color: var(--ink-dim); text-transform: uppercase; }
+.wsub { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin: 4px 0; border-bottom: 1px solid var(--line); padding-bottom: 3px; }
+.wbadge { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 3px; letter-spacing: .5px; }
+.w-default { background: #173a22; color: #6fd08a; border: 1px solid #2f6b42; }
+.w-option { background: #1a2c3a; color: #6ab0e0; border: 1px solid #2f566b; }
+.wmeta { font-size: 11px; color: var(--ink-dim); margin-left: 4px; }
 
 /* keyword chips */
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -172,6 +189,9 @@ textarea { width: 100%; min-height: 70px; resize: vertical; }
 
 /* ---- modal ---- */
 .modal-root { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 50; }
+/* the [hidden] attribute must win over the display:flex above, otherwise the
+   (empty) modal shows permanently as a thin gold-bordered box at screen centre */
+.modal-root[hidden] { display: none; }
 .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
 .modal {
   position: relative; background: var(--panel); border: 1px solid var(--gold);

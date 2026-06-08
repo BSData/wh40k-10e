@@ -171,17 +171,28 @@ class Catalog {
     const units = [];
     const weapons = [];
     const detachments = [];
+    // map "<Detachment>" -> enhancement count, collected in the same pass
+    const enhCounts = new Map();
+    xml.walk(doc.root, (node) => {
+      if (node.tag === 'selectionEntryGroup') {
+        const gname = xml.getAttrDecoded(node, 'name') || '';
+        if (gname.endsWith(' Enhancements')) {
+          const se = xml.child(node, 'selectionEntries');
+          enhCounts.set(gname.slice(0, -' Enhancements'.length), se ? se.children.filter((c) => c.tag === 'selectionEntry').length : 0);
+        }
+      }
+    });
     xml.walk(doc.root, (node, parent, ancestors) => {
       if (node.tag !== 'selectionEntry') return;
       const id = xml.getAttr(node, 'id');
       const name = xml.getAttrDecoded(node, 'name');
       if (isDatasheet(node, ancestors)) {
-        units.push({ id, name });
+        units.push(unitMeta(node, id, name));
       } else if (isWeaponNode(node)) {
-        weapons.push({ id, name, kind: weaponKind(node) });
+        weapons.push(weaponMeta(node, id, name, this));
       }
       if (isDetachmentNode(node, ancestors)) {
-        detachments.push({ id, name });
+        detachments.push({ id, name, enh: enhCounts.get(name) || 0, rules: readRules(node).length });
       }
     });
     const sort = (a, b) => (a.name || '').localeCompare(b.name || '');
@@ -241,40 +252,47 @@ class Catalog {
     const seen = new Set();
     // (1) weapons defined inline inside the datasheet (common for characters,
     //     e.g. Abaddon's Talon of Horus / Drach'nyen) - direct weapon entries.
-    xml.walk(unitNode, (node) => {
+    xml.walk(unitNode, (node, parent, ancestors) => {
       if (node.tag !== 'selectionEntry' || node === unitNode) return;
       if (!isWeaponNode(node)) return;
       const id = xml.getAttr(node, 'id');
-      if (id && seen.has(id)) return;
-      if (id) seen.add(id);
+      const ctx = weaponContext(ancestors, node);
+      const key = id + '|' + (ctx.group || '') + '|' + (ctx.model || '');
+      if (seen.has(key)) return;
+      seen.add(key);
       out.push({
         targetId: id,
         name: xml.getAttrDecoded(node, 'name'),
         kind: weaponKind(node),
         embedded: true,
+        ...ctx,
         profiles: [...readProfiles(node, PROFILE_RANGED), ...readProfiles(node, PROFILE_MELEE)],
       });
     });
     // (2) weapons referenced by entryLink (shared weapon entries).
-    xml.walk(unitNode, (node) => {
+    xml.walk(unitNode, (node, parent, ancestors) => {
       if (node.tag !== 'entryLink') return;
       const targetId = xml.getAttr(node, 'targetId');
       const ref = targetId && this.byId.get(targetId);
       if (!ref || !isWeaponNode(ref.node)) return;
-      if (seen.has(targetId)) return;
-      seen.add(targetId);
+      const ctx = weaponContext(ancestors, node);
+      const key = targetId + '|' + (ctx.group || '') + '|' + (ctx.model || '');
+      if (seen.has(key)) return;
+      seen.add(key);
       out.push({
         targetId,
         name: xml.getAttrDecoded(node, 'name') || xml.getAttrDecoded(ref.node, 'name'),
         kind: weaponKind(ref.node),
         weaponFile: ref.file,
+        ...ctx,
         profiles: [
           ...readProfiles(ref.node, PROFILE_RANGED),
           ...readProfiles(ref.node, PROFILE_MELEE),
         ],
       });
     });
-    return out;
+    // default weapons first, then options; stable by name within each
+    return out.sort((a, b) => (a.optional - b.optional) || (a.model || '').localeCompare(b.model || '') || (a.name || '').localeCompare(b.name || ''));
   }
 
   getWeapon(file, id) {
@@ -835,6 +853,43 @@ function hasUnitProfile(node) {
   return node.tag === 'selectionEntry' && profilesOfType(node, PROFILE_UNIT).length > 0;
 }
 
+// Known datasheet roles (a strong unit discriminant) in priority order.
+const ROLE_KEYWORDS = ['Epic Hero', 'Character', 'Battleline', 'Dedicated Transport', 'Vehicle', 'Monster', 'Walker', 'Mounted', 'Beast', 'Aircraft', 'Fortification', 'Swarm', 'Infantry'];
+
+// Lightweight, list-level metadata used for client-side faceted filtering.
+function unitMeta(node, id, name) {
+  const keywords = readCategoryLinks(node).map((k) => k.name).filter(Boolean);
+  const pts = (readCosts(node).find((c) => c.name === 'pts') || {}).value;
+  const stat = readProfilesDeep(node, PROFILE_UNIT)[0];
+  const role = ROLE_KEYWORDS.find((r) => keywords.includes(r)) || 'Other';
+  return {
+    id, name, keywords, role,
+    pts: pts != null && pts !== '' ? Number(pts) : null,
+    t: stat && stat.chars ? stat.chars.T : null,
+    w: stat && stat.chars ? stat.chars.W : null,
+    legend: /\[legend/i.test(name || ''),
+    epic: keywords.includes('Epic Hero'),
+  };
+}
+
+function weaponMeta(node, id, name, catalog) {
+  const kind = weaponKind(node);
+  const prof = (profilesOfType(node, PROFILE_RANGED)[0] || profilesOfType(node, PROFILE_MELEE)[0]);
+  const chars = {};
+  if (prof) {
+    const cc = xml.child(prof, 'characteristics');
+    if (cc) for (const c of cc.children) if (c.tag === 'characteristic') chars[xml.getAttrDecoded(c, 'name')] = xml.getText(c);
+  }
+  const kws = (chars.Keywords || '').split(',').map((s) => s.trim()).filter((s) => s && s !== '-');
+  const users = catalog.weaponUsage(id).filter((u) => u.isDatasheet).length;
+  return {
+    id, name, kind,
+    keywords: kws,
+    s: chars.S || null, ap: chars.AP || null, d: chars.D || null, range: chars.Range || null,
+    users, shared: users > 1,
+  };
+}
+
 // A "datasheet" is a top-level playable entry: a squad (type=unit) or a
 // single-model unit/character (type=model carrying its own Unit profile and
 // not nested inside another unit/model entry).
@@ -913,6 +968,27 @@ function readCategoryLinks(node) {
       name: xml.getAttrDecoded(c, 'name'),
       primary: xml.getAttr(c, 'primary'),
     }));
+}
+
+// Classify a weapon within a datasheet: is it a DEFAULT (always-equipped)
+// weapon attached directly to a model/unit, or an OPTION inside a weapon-choice
+// selectionEntryGroup? Also report the carrying model and the option group name.
+function weaponContext(ancestors, node) {
+  // nearest enclosing model / unit (the carrier)
+  let ownerIdx = -1;
+  let model = null;
+  for (let i = ancestors.length - 1; i >= 0; i--) {
+    const a = ancestors[i];
+    if (a.tag === 'selectionEntry' && ['model', 'unit'].includes(xml.getAttr(a, 'type'))) {
+      ownerIdx = i; model = xml.getAttrDecoded(a, 'name'); break;
+    }
+  }
+  // a selectionEntryGroup sitting BETWEEN the carrier and this weapon = a choice
+  let group = null;
+  for (let i = ownerIdx + 1; i < ancestors.length; i++) {
+    if (ancestors[i].tag === 'selectionEntryGroup') { group = xml.getAttrDecoded(ancestors[i], 'name'); break; }
+  }
+  return { optional: !!group, group, model };
 }
 
 // Collect profiles of a given type anywhere in a datasheet subtree (squad
