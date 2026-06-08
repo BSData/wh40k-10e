@@ -802,7 +802,10 @@ function renderDetachment(d) {
       enhBody.appendChild(el('div', { class: 'section', style: 'border:none' }, [
         el('div', { class: 'row', style: 'justify-content:space-between' }, [
           el('div', { class: 'row' }, [el('label', {}, 'Nom'), nm, el('label', {}, 'pts'), pt]),
-          el('button', { class: 'btn btn-small btn-danger', onclick: () => removeDetEnh(d, e.id) }, 'Supprimer'),
+          el('div', { class: 'row' }, [
+            el('button', { class: 'btn btn-small', onclick: () => openEnhTargeting(d, e) }, '🎯 Ciblage'),
+            el('button', { class: 'btn btn-small btn-danger', onclick: () => removeDetEnh(d, e.id) }, 'Supprimer'),
+          ]),
         ]), desc,
       ]));
     });
@@ -846,6 +849,69 @@ async function addDetEnh(d) {
 async function removeDetEnh(d, enhId) {
   try { await apiPost('/detachment/enhancement/remove', { file: d.file, id: d.id, enhId }); toast('Enhancement retiré.', 'ok'); await refreshStatus(); openEntity('detachments', d.id); }
   catch (e) { toast(e.message, 'err'); }
+}
+
+// ---- targeting selector: WHO an enhancement applies to ---------------------
+async function openEnhTargeting(d, enh) {
+  let datasheets, current;
+  try {
+    datasheets = await apiGet('/datasheets?file=' + enc(d.file));
+    current = await apiGet('/detachment/enhancement/target?file=' + enc(d.file) + '&enhId=' + enc(enh.id));
+  } catch (e) { return toast(e.message, 'err'); }
+
+  const selected = new Set(current.datasheetIds || []);
+  let bearer = (selected.size === 0 && current.inMenu) ? 'model' : 'unit';
+
+  const kwFilter = el('input', { type: 'search', placeholder: 'Filtrer par mot-clé(s) ou nom… (ex: terminator, ravenwing fly)', class: 'grow' });
+  const countLbl = el('span', { class: 'muted' });
+  const listWrap = el('div', { class: 'usedby', style: 'max-height:320px;overflow:auto' });
+
+  const renderList = () => {
+    const terms = kwFilter.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    const matches = datasheets.filter((ds) => {
+      if (!terms.length) return true;
+      const hay = (ds.name + ' ' + (ds.keywords || []).join(' ')).toLowerCase();
+      return terms.every((t) => hay.includes(t));
+    });
+    listWrap.innerHTML = '';
+    matches.slice(0, 500).forEach((ds) => {
+      const cb = el('input', { type: 'checkbox' });
+      cb.checked = selected.has(ds.id);
+      cb.addEventListener('change', () => { cb.checked ? selected.add(ds.id) : selected.delete(ds.id); updateCount(matches.length); });
+      const tag = ds.epic ? ' [Epic Hero]' : (ds.character ? ' [perso]' : '');
+      listWrap.appendChild(el('label', { class: 'row', style: 'gap:6px' }, [cb, el('span', {}, ds.name + tag)]));
+    });
+    const all = el('button', { class: 'btn btn-small', onclick: () => { matches.forEach((m) => selected.add(m.id)); renderList(); } }, 'Tout cocher (filtré)');
+    const none = el('button', { class: 'btn btn-small', onclick: () => { matches.forEach((m) => selected.delete(m.id)); renderList(); } }, 'Tout décocher (filtré)');
+    listWrap.prepend(el('div', { class: 'row', style: 'gap:6px;margin-bottom:6px' }, [all, none]));
+    updateCount(matches.length);
+  };
+  const updateCount = (shown) => { countLbl.textContent = selected.size + ' sélectionnée(s) · ' + shown + ' affichée(s)'; };
+
+  const rModel = el('input', { type: 'radio', name: 'bearer' }); rModel.checked = bearer === 'model';
+  const rUnit = el('input', { type: 'radio', name: 'bearer' }); rUnit.checked = bearer === 'unit';
+  const unitBox = el('div', {}, [el('div', { class: 'row' }, [kwFilter, countLbl]), listWrap]);
+  const sync = () => { bearer = rUnit.checked ? 'unit' : 'model'; unitBox.style.display = bearer === 'unit' ? '' : 'none'; };
+  rModel.addEventListener('change', sync); rUnit.addEventListener('change', sync);
+  renderList(); kwFilter.addEventListener('input', renderList); sync();
+
+  const apply = el('button', { class: 'btn btn-primary' }, 'Appliquer');
+  apply.addEventListener('click', async () => {
+    try {
+      await apiPost('/detachment/enhancement/target', {
+        file: d.file, detId: d.id, enhId: enh.id, bearer,
+        datasheetIds: bearer === 'unit' ? [...selected] : [],
+      });
+      closeModal(); toast('Ciblage appliqué.', 'ok'); await refreshStatus(); openEntity('detachments', d.id);
+    } catch (e) { toast(e.message, 'err'); }
+  });
+
+  showModal('Ciblage — ' + (enh.name || 'amélioration'), [
+    el('p', { class: 'muted' }, 'À qui s\'applique cette amélioration ? (filtrée par le détachement « ' + d.name + ' »)'),
+    el('label', { class: 'row', style: 'gap:6px' }, [rModel, el('span', {}, 'Personnage — menu d\'améliorations standard (1 par perso, Epic Hero exclus)')]),
+    el('label', { class: 'row', style: 'gap:6px' }, [rUnit, el('span', {}, 'Unité(s) — rattachement direct, ciblage par mot-clé / datasheet')]),
+    unitBox,
+  ], [apply, el('button', { class: 'btn', onclick: closeModal }, 'Annuler')]);
 }
 
 // ---- sheet mounting --------------------------------------------------------

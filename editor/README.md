@@ -55,6 +55,14 @@ Aucune dépendance à installer : 100 % Node natif + JS navigateur.
     référencée par Blood Angels est repointée dans `Blood Angels.cat`).
 - **Édition d'un détachement** : nom, **règles** (texte, ajout/suppression) et
   **enhancements** (nom, points, description, ajout/suppression).
+  - **Ciblage d'un enhancement** (bouton 🎯) : configure **à qui il s'applique**.
+    - *Personnage* — menu d'améliorations standard (1 par perso, Epic Hero exclus) ;
+    - *Unité(s)* — rattachement direct, avec un **filtre par mot-clé(s) / nom**
+      (ex. `terminator`, `ravenwing fly`) et une liste de datasheets à cocher.
+    L'éditeur crée une **entrée partagée** + des **entryLink** filtrés par le
+    détachement sur chaque datasheet choisie, ajoute la **catégorie
+    « Enhancement »** (plafond de 4 par armée) et bascule l'amélioration entre le
+    menu personnage et le rattachement unité (re-ciblage propre, sans doublon).
 - **Création** d'une arme, d'une unité, d'un détachement (entrées BattleScribe
   valides : bons `typeId` de caractéristiques, échappement correct, indentation).
   - Une unité peut être créée en **figurine unique** *ou* en **escouade
@@ -114,6 +122,9 @@ attendue grâce à un adaptateur. Mettre à jour ce module = recopier le dossier
 | GET  | `/api/unit?file=&id=` | détail d'une unité |
 | GET  | `/api/weapon?file=&id=` | détail d'une arme + `usedBy` |
 | GET  | `/api/categories` | mots-clés disponibles |
+| GET  | `/api/datasheets?file=` | datasheets + mots-clés (sélecteur de ciblage) |
+| GET  | `/api/detachment/enhancement/target?file=&enhId=` | ciblage actuel d'un enhancement |
+| POST | `/api/detachment/enhancement/target` | `{file,detId,enhId,bearer,datasheetIds}` |
 | POST | `/api/unit/edit` | `{file,id,patch}` |
 | POST | `/api/weapon/edit` | `{file,id,patch,scope,selectedOwnerIds}` |
 | POST | `/api/weapon/create` · `/api/unit/create` · `/api/detachment/create` | création |

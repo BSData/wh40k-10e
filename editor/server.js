@@ -65,6 +65,10 @@ async function handleApi(req, res, url) {
         return sendJson(res, 200, catalog.weaponUsage(q.get('id')));
       case '/api/categories':
         return sendJson(res, 200, catalog.listCategories());
+      case '/api/datasheets':
+        return sendJson(res, 200, catalog.datasheetsForTargeting(q.get('file')));
+      case '/api/detachment/enhancement/target':
+        return sendJson(res, 200, catalog.enhancementTargeting(q.get('file'), q.get('enhId')));
       case '/api/status':
         return sendJson(res, 200, await statusPayload());
       case '/api/validate':
@@ -107,6 +111,8 @@ async function handleApi(req, res, url) {
         return sendJson(res, 200, catalog.addEnhancement(body.file, body.id, body.data || {}));
       case '/api/detachment/enhancement/remove':
         return sendJson(res, 200, catalog.removeEnhancement(body.file, body.id, body.enhId));
+      case '/api/detachment/enhancement/target':
+        return sendJson(res, 200, catalog.setEnhancementTargeting(body.file, body.detId, body.enhId, body.bearer, body.datasheetIds || []));
       case '/api/save': {
         const written = catalog.save();
         return sendJson(res, 200, { written });
