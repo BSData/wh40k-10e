@@ -96,6 +96,11 @@
     </profileType>
   </profileTypes>
   <categoryEntries>
+    <categoryEntry name="Enhancement" id="6226-9b9b-107a-9ada" hidden="true">
+      <constraints>
+        <constraint type="max" value="4" field="selections" scope="roster" shared="true" id="6b32-8e25-77e5-de28" includeChildSelections="true"/>
+      </constraints>
+    </categoryEntry>
     <categoryEntry id="9cfd-1c32-585f-7d5c" name="Character" hidden="false"/>
     <categoryEntry id="4f3a-f0f7-6647-348d" name="Epic Hero" hidden="false"/>
     <categoryEntry id="cf47-a0d7-7207-29dc" name="Infantry" hidden="false"/>
