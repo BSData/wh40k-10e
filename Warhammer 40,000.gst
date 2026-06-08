@@ -19,6 +19,9 @@
         </modifier>
       </modifiers>
     </costType>
+    <costType id="0d99-4ee2-7b3c-1f5a" name="DP" defaultCostLimit="-1" hidden="false">
+      <comment>Detachment Points. In 11th edition each Detachment has a points cost paid from the army&apos;s Detachment Points budget.</comment>
+    </costType>
     <costType name="Crusade Points" id="b03b-c239-15a5-da55" defaultCostLimit="-1" hidden="true">
       <modifiers>
         <modifier type="set" value="false" field="hidden" scope="roster">
