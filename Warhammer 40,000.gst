@@ -94,6 +94,11 @@
         <characteristicType id="30f2-be70-861d-1b84" name="Capacity"/>
       </characteristicTypes>
     </profileType>
+    <profileType id="4680-63ad-ad70-1872" name="Force Disposition">
+      <characteristicTypes>
+        <characteristicType id="9145-6e6a-17b9-0a2c" name="Force Disposition"/>
+      </characteristicTypes>
+    </profileType>
   </profileTypes>
   <categoryEntries>
     <categoryEntry name="Enhancement" id="6226-9b9b-107a-9ada" hidden="true">
