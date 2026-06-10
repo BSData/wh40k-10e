@@ -1,5 +1,10 @@
 # Cogitator Editorius — éditeur de données wh40k
 
+> **Intégration d'un faction pack / édition des détachements et
+> améliorations** : suivre **[`FACTION_PACK_PROMPT.md`](FACTION_PACK_PROMPT.md)**
+> (workflow complet, règle des améliorations « Upgrade », encodage par
+> mots-clefs, pièges connus, constantes d'ids, validation obligatoire).
+
 Interface graphique pour **consulter et modifier** les données BattleScribe
 (`.cat` / `.gst`) de ce dépôt en vue des mises à jour git. L'**aperçu** réutilise
 le module de présentation de **Cogitator Bellicum**
