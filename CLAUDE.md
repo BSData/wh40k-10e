@@ -10,6 +10,11 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   pièges, constantes d'ids, validation obligatoire). À suivre pour toute
   intégration de pack et, plus largement, pour toute édition de
   détachements/améliorations.
+- **`editor/MFM_PROMPT.md`** — le guide d'intégration d'un MFM (points
+  unités/améliorations, surcoûts par arme, prix par seuil de répétition).
+  Compagnon : `editor/MFM_APP_PROMPT.md`, prompt autonome à coller dans
+  le dépôt d'une application consommatrice (type NewRecruit) pour
+  l'adapter à ces mécanismes.
 - `editor/README.md` — l'éditeur web (`node editor/server.js`) et la lib
   `editor/lib/catalog.js` + `editor/lib/xml.js` (round-trip XML fidèle :
   toujours passer par cette lib pour éditer, jamais de sed/regex sur les
