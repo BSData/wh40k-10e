@@ -6764,9 +6764,25 @@ The first time your selected Deed is completed your Oath is fulfilled and, until
             <condition type="instanceOf" value="1" field="selections" scope="ancestor" childId="4f3a-f0f7-6647-348d" shared="true"/>
           </conditions>
         </modifier>
+        <modifier type="set" value="true" field="hidden">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true"/>
+                <condition type="lessThan" value="1" field="forces" scope="roster" shared="true" includeChildSelections="true" includeChildForces="true" childId="cac3-71d1-ea4b-795d" childName="Crusade Force"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="set" value="-1" field="aff1-9a43-882b-f046">
+          <conditions>
+            <condition type="atLeast" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
       <constraints>
-        <constraint type="max" value="4" field="selections" scope="force" shared="true" id="fe73-19d3-9cad-0cd6" includeChildSelections="true"/>
+        <constraint type="max" value="4" field="selections" scope="roster" shared="true" id="aff1-9a43-882b-f046" includeChildForces="true" includeChildSelections="true"/>
+        <constraint type="max" value="1" field="selections" scope="self" shared="true" id="d44d-e4f5-ce79-5d7d" includeChildSelections="true" includeChildForces="false"/>
       </constraints>
       <selectionEntryGroups>
         <selectionEntryGroup name="Valourstrike Lance Enhancements" id="1223-782e-cce2-bdfd" hidden="false">
@@ -7442,30 +7458,12 @@ The first time your selected Deed is completed your Oath is fulfilled and, until
           </modifiers>
         </selectionEntryGroup>
       </selectionEntryGroups>
-      <modifiers>
-        <modifier type="set" value="true" field="hidden">
-          <conditionGroups>
-            <conditionGroup type="and">
-              <conditions>
-                <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true"/>
-                <condition type="lessThan" value="1" field="forces" scope="roster" shared="true" includeChildSelections="true" includeChildForces="true" childId="cac3-71d1-ea4b-795d" childName="Crusade Force"/>
-              </conditions>
-            </conditionGroup>
-          </conditionGroups>
-        </modifier>
-        <modifier type="set" value="-1" field="aff1-9a43-882b-f046">
-          <conditions>
-            <condition type="atLeast" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
-          </conditions>
-        </modifier>
-      </modifiers>
-      <constraints>
-        <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="aff1-9a43-882b-f046" includeChildForces="true" includeChildSelections="true"/>
-        <constraint type="max" value="1" field="selections" scope="self" shared="true" id="d44d-e4f5-ce79-5d7d" includeChildSelections="true" includeChildForces="false"/>
-      </constraints>
       <entryLinks>
         <entryLink targetId="c6b4-5090-67be-ea17" id="4a54-eb79-421e-190b" type="selectionEntryGroup" name="Questor Forgepact Enhancements" hidden="false"/>
       </entryLinks>
+      <categoryLinks>
+        <categoryLink targetId="6226-9b9b-107a-9ada" id="01b6-ae74-dfa5-8a4f" primary="false" name="Enhancement"/>
+      </categoryLinks>
     </selectionEntryGroup>
     <selectionEntryGroup name="Detachment" id="d793-8964-e815-3bb8" defaultSelectionEntryId="none">
       <selectionEntries>
