@@ -83,6 +83,7 @@
     <categoryEntry name="Bloodcult Champion" id="9a7b-12e0-9593-2c83" hidden="false"/>
     <categoryEntry name="Butcherlord" id="0326-7374-f8d6-99e7" hidden="false"/>
     <categoryEntry name="Eight-blessed Lord" id="289a-b6ce-6809-8013" hidden="false"/>
+    <categoryEntry id="426c-19ad-4191-6d0c" name="Frame" hidden="false"/>
   </categoryEntries>
   <entryLinks>
     <entryLink id="37e4-799e-798f-19a8" name="Angron" hidden="false" collective="false" import="true" targetId="f4b8-1179-de57-4d69" type="selectionEntry"/>
@@ -3659,7 +3660,7 @@
       <profiles>
         <profile id="98dc-e20d-8ee7-882c" name="Blood Surge" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your opponent&apos;s Shooting phase, each time an enemy unit has shot, if any models from this unit were destroyed as a result of those attacks, this unit can make a Blood Surge move. To do so, roll one D6 and add 2 to the roll: models in this unit move a number of inches up to this result, but this unit must finish that move as close as possible to the closest enemy unit (excluding ^^**Aircraft^^**). When doing so, those models can be moved within Engagement Range of that enemy unit. This unit cannot make a Blood Surge move while it is Battle-shocked or within Engagement Range of one or more enemy units, and can only make one Blood Surge move per phase.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your opponent&apos;s Shooting phase, when an enemy unit has shot, if a model in this unit was destroyed as a result of those attacks, this unit can make a surge move of up to D6+2&quot;.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -4045,7 +4046,7 @@
       <profiles>
         <profile id="355d-5150-1982-17b2" name="Icon of Khorne" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If the bearer&apos;s unit contains 1 or more Icons of Khorne, each time the bearer&apos;s unit destroys an enemy unit, you gain one Bloodshed point. Each time you make a Blessings of Khorne roll, roll one additional D6 for each Bloodshed point you have, after which, all your Bloodshed points are lost.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If the bearer&apos;s unit contains one or more Icons of Khorne, each time the bearer&apos;s unit destroys an enemy unit, you gain 1 Bloodshed point. Each time you make a Blessings of Khorne roll, roll one additional D6 for each Bloodshed point you have, after which, all your Bloodshed points are lost.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -4145,7 +4146,10 @@
         </profile>
         <profile id="cabc-c518-5262-d65e" name="Bloody Fury" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time a model in this unit makes a ranged attack that targets the closest enemy unit, you can re-roll the Hit roll. Each time this unit declares a charge that targets the closest enemy unit, you can re-roll the Charge roll.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">- This unit&apos;s ranged attacks that target the closest eligible target can re-roll hit rolls.
+- When this unit declares a charge, you can use this part of this ability. If you do:
+ - This unit can re-roll that charge roll.
+ - This unit must end that charge move engaged with the closest charge target.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -4562,6 +4566,22 @@
               </costs>
             </selectionEntry>
           </selectionEntries>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Butchers of Khorne Enhancement" hidden="false" id="5c84-d973-5f88-aec0">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="d08b-63a8-4213-8f4b" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ef5d-126c-fad9-a1fc"/>
+          </constraints>
+          <entryLinks>
+            <entryLink type="selectionEntry" import="true" name="Sanctified in Slaughter Upgrade" hidden="false" id="94e5-d0a5-d580-1859" targetId="5123-fd40-c63e-5b6e"/>
+            <entryLink type="selectionEntry" import="true" name="Gore-Stained Veterans Upgrade" hidden="false" id="2aaf-04e5-6bb8-57fa" targetId="266e-a329-dc79-b094"/>
+          </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <costs>
@@ -5600,6 +5620,7 @@
         <categoryLink id="dcb6-eaeb-2174-282a" name="Chaos" hidden="false" targetId="4c00-2578-faf5-6918" primary="false"/>
         <categoryLink id="9fd7-38bb-2e50-c966" name="Khorne" hidden="false" targetId="4bd-5ee0-f179-2fc5" primary="false"/>
         <categoryLink id="4db0-c564-aea5-f7a5" name="Land Raider" hidden="false" targetId="8419-8f54-c5b0-8f76" primary="false"/>
+        <categoryLink id="13bd-568c-6984-20bb" name="Frame" hidden="false" targetId="426c-19ad-4191-6d0c" primary="false"/>
       </categoryLinks>
       <selectionEntryGroups>
         <selectionEntryGroup name="Wargear" id="b857-57b5-9198-5e16" hidden="false" sortIndex="2">
@@ -5693,6 +5714,21 @@
               </entryLinks>
             </selectionEntryGroup>
           </selectionEntryGroups>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Brazen Engines Enhancement" hidden="false" id="1d5d-ae51-2ed7-e41b">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="8a6e-1797-2e80-4438" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0605-fabc-ef68-1345"/>
+          </constraints>
+          <entryLinks>
+            <entryLink type="selectionEntry" import="true" name="Murder-Forged Entity Upgrade" hidden="false" id="7db9-9726-5607-dae2" targetId="c4b9-1a84-4a67-aa58"/>
+          </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <entryLinks>
@@ -5908,6 +5944,7 @@
         <categoryLink id="2e87-da7c-b165-bf1d" name="Chaos" hidden="false" targetId="4c00-2578-faf5-6918" primary="false"/>
         <categoryLink id="9136-bfe5-3709-79b4" name="Khorne" hidden="false" targetId="4bd-5ee0-f179-2fc5" primary="false"/>
         <categoryLink id="d2e1-8206-3af9-229b" name="Predator Annihilator" hidden="false" targetId="a510-da27-1450-e28c" primary="false"/>
+        <categoryLink id="a2f3-6406-55f4-aceb" name="Frame" hidden="false" targetId="426c-19ad-4191-6d0c" primary="false"/>
       </categoryLinks>
       <selectionEntryGroups>
         <selectionEntryGroup name="Wargear" id="2829-e94b-3c14-c993" hidden="false" sortIndex="2">
@@ -6012,6 +6049,21 @@
               </selectionEntries>
             </selectionEntryGroup>
           </selectionEntryGroups>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Brazen Engines Enhancement" hidden="false" id="4d06-9ab7-94a3-ff96">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="8a6e-1797-2e80-4438" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5cbf-9596-0110-b297"/>
+          </constraints>
+          <entryLinks>
+            <entryLink type="selectionEntry" import="true" name="Murder-Forged Entity Upgrade" hidden="false" id="2ee1-ffca-1a50-70b2" targetId="c4b9-1a84-4a67-aa58"/>
+          </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <entryLinks>
@@ -6194,6 +6246,7 @@
         <categoryLink id="d37c-ab0a-93f8-f943" name="Chaos" hidden="false" targetId="4c00-2578-faf5-6918" primary="false"/>
         <categoryLink id="d58c-1b10-5bdc-c629" name="Khorne" hidden="false" targetId="4bd-5ee0-f179-2fc5" primary="false"/>
         <categoryLink targetId="a2a0-c04e-a958-afed" id="44fd-ea48-be9e-d004" primary="false" name="Predator Destructor"/>
+        <categoryLink id="3f9b-5219-630f-d0aa" name="Frame" hidden="false" targetId="426c-19ad-4191-6d0c" primary="false"/>
       </categoryLinks>
       <selectionEntryGroups>
         <selectionEntryGroup name="Wargear" id="ba3b-bfd0-0579-98a7" hidden="false" sortIndex="2">
@@ -6297,6 +6350,21 @@
               </selectionEntries>
             </selectionEntryGroup>
           </selectionEntryGroups>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Brazen Engines Enhancement" hidden="false" id="d174-8ade-fdc4-0ee1">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="8a6e-1797-2e80-4438" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4d6a-82a8-e38e-6a54"/>
+          </constraints>
+          <entryLinks>
+            <entryLink type="selectionEntry" import="true" name="Murder-Forged Entity Upgrade" hidden="false" id="221b-3699-3acd-7dcb" targetId="c4b9-1a84-4a67-aa58"/>
+          </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <entryLinks>
@@ -6693,6 +6761,21 @@
             </selectionEntryGroup>
           </selectionEntryGroups>
         </selectionEntryGroup>
+        <selectionEntryGroup name="Brazen Engines Enhancement" hidden="false" id="90d4-e56d-64f0-fd6e">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="8a6e-1797-2e80-4438" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5ab1-6837-6be8-7948"/>
+          </constraints>
+          <entryLinks>
+            <entryLink type="selectionEntry" import="true" name="Murder-Forged Entity Upgrade" hidden="false" id="22bf-5175-aa85-6611" targetId="c4b9-1a84-4a67-aa58"/>
+          </entryLinks>
+        </selectionEntryGroup>
       </selectionEntryGroups>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="250"/>
@@ -6937,6 +7020,21 @@
             </selectionEntryGroup>
           </selectionEntryGroups>
         </selectionEntryGroup>
+        <selectionEntryGroup name="Brazen Engines Enhancement" hidden="false" id="fcbb-a382-743c-41f6">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="8a6e-1797-2e80-4438" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="16cd-36a7-1d1d-1f72"/>
+          </constraints>
+          <entryLinks>
+            <entryLink type="selectionEntry" import="true" name="Murder-Forged Entity Upgrade" hidden="false" id="e0f3-57f4-5676-cf82" targetId="c4b9-1a84-4a67-aa58"/>
+          </entryLinks>
+        </selectionEntryGroup>
       </selectionEntryGroups>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="165"/>
@@ -7083,7 +7181,7 @@
         </profile>
         <profile id="2f94-5892-1327-89f6" name="Frenzy" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your opponent&apos;s Shooting phase, and in the Fight phase, each time an enemy unit targets this model, after that unit has finished making its attacks, this model can either shoot or fight, but when resolving those attacks it can only target that enemy unit (and only if it is an eligible target).</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">(Once per turn, per unit) In the Fight phase, when an enemy unit targets this unit, after that unit has resolved its attacks, you can use this ability. If you do, this unit is eligible to fight (even if it has already fought this phase) and must be selected to fight next.</characteristic>
           </characteristics>
         </profile>
         <profile id="95b1-3a4a-5a80-8bd5" name="Devoted to Destruction" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -7474,6 +7572,21 @@
             </selectionEntryGroup>
           </selectionEntryGroups>
         </selectionEntryGroup>
+        <selectionEntryGroup name="Brazen Engines Enhancement" hidden="false" id="e95f-3614-ba19-a02c">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="8a6e-1797-2e80-4438" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c139-5ad9-1e0d-be69"/>
+          </constraints>
+          <entryLinks>
+            <entryLink type="selectionEntry" import="true" name="Murder-Forged Entity Upgrade" hidden="false" id="5b5c-489e-1682-fc6b" targetId="c4b9-1a84-4a67-aa58"/>
+          </entryLinks>
+        </selectionEntryGroup>
       </selectionEntryGroups>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="120"/>
@@ -7622,12 +7735,12 @@
         </profile>
         <profile id="a9c5-98ef-70a6-d536" name="Heldrake" hidden="false" typeId="c547-1836-d8a-ff4f" typeName="Unit">
           <characteristics>
-            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">20&quot;+</characteristic>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">12&quot;</characteristic>
             <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">9</characteristic>
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">12</characteristic>
             <characteristic name="LD" typeId="58d2-b879-49c7-43bc">6+</characteristic>
-            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">0</characteristic>
+            <characteristic name="OC" typeId="bef7-942a-1a23-59f8">-</characteristic>
           </characteristics>
         </profile>
         <profile id="af84-fe8c-7d08-4370" name="Invulnerable Save" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -7650,7 +7763,6 @@
         <categoryLink id="a99d-7d7a-b9dc-a661" name="Faction: World Eaters" hidden="false" targetId="bd1d-c1a5-6ca2-c791" primary="false"/>
         <categoryLink id="6b35-1dc7-77b5-fc29" name="Vehicle" hidden="false" targetId="dbd4-63-af05-998" primary="true"/>
         <categoryLink id="456b-95d6-d00e-6f7e" name="Fly" hidden="false" targetId="c619-2086-bbcf-69c9" primary="false"/>
-        <categoryLink id="8555-97cb-b092-c430" name="Aircraft" hidden="false" targetId="63f1-e6e8-f6f6-a4f0" primary="false"/>
         <categoryLink id="f79d-8e72-38be-b390" name="Chaos" hidden="false" targetId="4c00-2578-faf5-6918" primary="false"/>
         <categoryLink id="ea78-4501-29a2-4dc3" name="Khorne" hidden="false" targetId="4bd-5ee0-f179-2fc5" primary="false"/>
         <categoryLink id="6b59-1627-1b4b-14e7" name="Daemon" hidden="false" targetId="9c0e-7e25-4580-e439" primary="false"/>
@@ -7731,6 +7843,21 @@
               </entryLinks>
             </selectionEntryGroup>
           </selectionEntryGroups>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Brazen Engines Enhancement" hidden="false" id="5fce-7005-e8fa-44d3">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="8a6e-1797-2e80-4438" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ec50-b8b9-242d-d550"/>
+          </constraints>
+          <entryLinks>
+            <entryLink type="selectionEntry" import="true" name="Murder-Forged Entity Upgrade" hidden="false" id="08eb-ff76-1393-fadd" targetId="c4b9-1a84-4a67-aa58"/>
+          </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <costs>
@@ -7831,7 +7958,9 @@
         </profile>
         <profile id="8084-c2ca-004e-c463" name="The Scent of Blood" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model declares a charge that targets one or more units below Starting Strength, add 1 to the Charge roll. If one or more of the targets of that charge are Below Half-strength, add 2 to the Charge roll instead.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In the Charge phase, when this unit declares a charge:
+- If an enemy unit below starting strength is within 9&quot; of this unit, this unit has +1 to charge rolls.
+- Or: If an enemy unit below half strength is within 9&quot; of this unit, this unit has +2 to charge rolls.</characteristic>
           </characteristics>
         </profile>
         <profile id="eb5d-a656-b952-25c4" name="Invulnerable Save" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
@@ -7960,6 +8089,22 @@
             </selectionEntryGroup>
           </selectionEntryGroups>
         </selectionEntryGroup>
+        <selectionEntryGroup name="Brazen Engines Enhancement" hidden="false" id="55d4-ebd5-885a-68b2">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="8a6e-1797-2e80-4438" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="758e-d1ab-1598-784a"/>
+          </constraints>
+          <entryLinks>
+            <entryLink type="selectionEntry" import="true" name="Talons of Butchery Upgrade" hidden="false" id="dd66-a5eb-8043-3c83" targetId="2e2e-b9e7-2237-152a"/>
+            <entryLink type="selectionEntry" import="true" name="Murder-Forged Entity Upgrade" hidden="false" id="b5c4-5de6-6310-c1b3" targetId="c4b9-1a84-4a67-aa58"/>
+          </entryLinks>
+        </selectionEntryGroup>
       </selectionEntryGroups>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="150"/>
@@ -8059,7 +8204,7 @@
         </profile>
         <profile id="d170-6fa7-f88c-f888" name="Meet Any Challenge" hidden="false" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your opponent&apos;s Movement phase, each time an enemy unit is set up or ends a Normal, Advance or Fall Back move within 9&quot; of this model, any units embarked within it can disembark.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your opponent&apos;s Movement phase, each time an enemy unit is set up or ends a Normal, Advance or Fall Back move within 8&quot; of this model, any units embarked within it can disembark.</characteristic>
           </characteristics>
         </profile>
         <profile id="7526-3b9f-33ca-b410" name="Chaos Rhino" hidden="false" typeId="74f8-5443-9d6d-1f1e" typeName="Transport">
@@ -8090,6 +8235,7 @@
         <categoryLink id="5ec4-3f8a-8974-0840" name="Chaos" hidden="false" targetId="4c00-2578-faf5-6918" primary="false"/>
         <categoryLink id="d298-82e9-56f9-bde9" name="Khorne" hidden="false" targetId="4bd-5ee0-f179-2fc5" primary="false"/>
         <categoryLink id="0985-cc3f-d592-67ba" name="Rhino" hidden="false" targetId="7683-9a29-39d9-ae31" primary="false"/>
+        <categoryLink id="8c88-7b25-a4a3-1feb" name="Frame" hidden="false" targetId="426c-19ad-4191-6d0c" primary="false"/>
       </categoryLinks>
       <selectionEntryGroups>
         <selectionEntryGroup name="Wargear" id="465d-5908-c229-beb8" hidden="false" sortIndex="2">
@@ -8132,6 +8278,21 @@
               </entryLinks>
             </selectionEntryGroup>
           </selectionEntryGroups>
+        </selectionEntryGroup>
+        <selectionEntryGroup name="Brazen Engines Enhancement" hidden="false" id="0e16-0119-8a69-3b05">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="8a6e-1797-2e80-4438" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3885-0bdc-73bf-8910"/>
+          </constraints>
+          <entryLinks>
+            <entryLink type="selectionEntry" import="true" name="Murder-Forged Entity Upgrade" hidden="false" id="8880-a568-e71c-f591" targetId="c4b9-1a84-4a67-aa58"/>
+          </entryLinks>
         </selectionEntryGroup>
       </selectionEntryGroups>
       <entryLinks>
@@ -8429,6 +8590,7 @@
         <categoryLink id="f84b-628c-22e9-a249" name="Khorne" hidden="false" targetId="4bd-5ee0-f179-2fc5" primary="false"/>
         <categoryLink id="7774-f808-f8f9-91fc" name="Daemon" hidden="false" targetId="9c0e-7e25-4580-e439" primary="false"/>
         <categoryLink id="df2f-3815-bf26-f0f2" name="Lord of Skulls" hidden="false" targetId="ad21-8e29-c122-9cbb" primary="false"/>
+        <categoryLink id="020e-9a9e-0e7e-46f4" name="Frame" hidden="false" targetId="426c-19ad-4191-6d0c" primary="false"/>
       </categoryLinks>
       <selectionEntryGroups>
         <selectionEntryGroup name="Wargear" id="408c-99c9-c58d-8098" hidden="false" sortIndex="2">
@@ -8622,6 +8784,21 @@
             </selectionEntryGroup>
           </selectionEntryGroups>
         </selectionEntryGroup>
+        <selectionEntryGroup name="Brazen Engines Enhancement" hidden="false" id="fc9f-4777-b447-5166">
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditions>
+                <condition type="lessThan" value="1" field="selections" scope="roster" childId="8a6e-1797-2e80-4438" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="0c73-39d3-3cdd-a212"/>
+          </constraints>
+          <entryLinks>
+            <entryLink type="selectionEntry" import="true" name="Murder-Forged Entity Upgrade" hidden="false" id="f277-be31-0cfd-c4c8" targetId="c4b9-1a84-4a67-aa58"/>
+          </entryLinks>
+        </selectionEntryGroup>
       </selectionEntryGroups>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="505"/>
@@ -8719,17 +8896,60 @@
             <selectionEntry id="3490-ec82-70b3-c5cf" name="Berzerker Warband" hidden="false" collective="false" import="true" type="upgrade">
               <costs>
                 <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="3"/>
               </costs>
               <rules>
                 <rule name="Relentless Rage" id="5fc9-9ee8-8657-65b6" hidden="false">
                   <description>Each time a ^^**World Eaters^^** unit from your army makes a Charge move, until the end of the turn, add 1 to the Attacks characteristic and add 2 to the Strength characteristic of melee weapons equipped by models in that unit.</description>
                 </rule>
               </rules>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="ce9b-7a73-7405-2ede">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Purge the Foe</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Vessels of Wrath" hidden="false" id="70d9-0c7a-6b46-65fa">
               <infoLinks>
                 <infoLink name="Wrath of Khorne" id="7328-609a-e1fc-56e9" hidden="false" type="rule" targetId="269f-6b39-4a8e-0872"/>
               </infoLinks>
+              <costs>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="1"/>
+              </costs>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="0306-e467-75c2-179d">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Priority Assets</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+              <rules>
+                <rule name="Scorn the Witch (Stratagem, 1CP)" id="820a-a32f-e652-43ed" hidden="false">
+                  <description>Vessels of Wrath – STRATAGEM (1CP)
+
+WHEN: Any phase, when a friendly WORLD EATERS CHARACTER unit (excluding EPIC HERO units) suffers a mortal wound.
+TARGET: That WORLD EATERS CHARACTER unit.
+EFFECT: Your unit has Feel No Pain 4+ against mortal wounds.</description>
+                </rule>
+                <rule name="Aspire to Infamy (Stratagem, 1CP)" id="3f2d-95cf-be51-b86a" hidden="false">
+                  <description>Vessels of Wrath – STRATAGEM (1CP)
+
+WHEN: Fight phase, when a friendly WORLD EATERS CHARACTER unit (excluding EPIC HERO units) is selected to fight.
+TARGET: That WORLD EATERS CHARACTER unit.
+EFFECT: Your unit&apos;s CHARACTER models&apos; melee attacks have:
+- +1 A.
+- +2 S.</description>
+                </rule>
+                <rule name="Punish the Craven (Stratagem, 1CP)" id="11eb-c809-3516-3fd4" hidden="false">
+                  <description>Vessels of Wrath – STRATAGEM (1CP)
+
+WHEN: Your opponent&apos;s Movement phase, when a unit is selected to make a fall-back move, if that unit is engaged with a friendly WORLD EATERS CHARACTER unit.
+TARGET: That WORLD EATERS CHARACTER unit.
+EFFECT: When an enemy unit engaged with your unit is selected to make a fall-back move, that enemy unit must use the desperate escape mode. If that enemy unit is battle-shocked, -1 from those hazard rolls.</description>
+                </rule>
+              </rules>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Cult of Blood" hidden="false" id="9c45-483a-44b9-536c">
               <rules>
@@ -8752,6 +8972,16 @@ While a friendly ^^**Jakhals^^** or ^^**Goremongers^^** unit is within 6&quot; o
 ^^**Jakhals^^** or ^^**Goremongers^^** units from your army have the ^^**Battleline^^** keyword.</description>
                 </rule>
               </rules>
+              <costs>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="2"/>
+              </costs>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="e0fe-39ad-1e60-82e6">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Priority Assets</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Khorne Daemonkin" hidden="false" id="1558-660f-466b-a087">
               <rules>
@@ -8775,6 +9005,16 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
 ^^**Blood Legions^^** units from your army gain the Blessings of Khorne ability.</description>
                 </rule>
               </rules>
+              <costs>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="2"/>
+              </costs>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="8a3b-85f6-63b9-a072">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Reconnaissance</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Possessed Slaughterband" hidden="false" id="dda8-a874-feac-1f81">
               <rules>
@@ -8782,9 +9022,19 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
                   <description>^^**World Eaters Possessed^^** units in your army have the following ability:
 
 
-**Brazen Fury**: In your opponent&apos;s Shooting phase, each time an enemy unit has shot, if any models from this unit were destroyed as a result of those attacks, this unit can make a Brazen Fury move. To do so, roll one D6: models in this unit move a number of inches up to the result of this roll, but this unit must end that move as close as possible to the closest enemy unit (excluding ^^**Aircraft^^**). When doing so, those models can be moved within Engagement Range of that enemy unit. This unit cannot make a Brazen Fury move while Battle-shocked or within Engagement Range of one or more enemy units, and can only make one Brazen Fury move per phase.</description>
+**Brazen Fury**: In your opponent&apos;s Shooting phase, when an enemy unit has shot, if a model in this unit was destroyed as a result of those attacks, this unit can make a surge move of up to D6&quot;. That surge move is a Brazen Fury move.</description>
                 </rule>
               </rules>
+              <costs>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="2"/>
+              </costs>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="2332-d27a-0d74-2e5a">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Purge the Foe</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Goretrack Onslaught" hidden="false" id="8a29-5bbd-3ee6-b64a">
               <rules>
@@ -8792,6 +9042,101 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
                   <description>Each time a ^^**World Eaters^^** unit from your army disembarks from a ^^**Transport^^**, until then end of the turn, add 1 to Charge rolls made for that unit and that unit&apos;s melee weapons have the [Lance] ability.</description>
                 </rule>
               </rules>
+              <costs>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="2"/>
+              </costs>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="aa41-ce40-9786-718c">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Take and Hold</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Brazen Engines" hidden="false" id="8a6e-1797-2e80-4438">
+              <rules>
+                <rule name="Rampaging Terrors" id="64f8-edd0-1eb5-4419" hidden="false">
+                  <description>Friendly **^^Daemon Vehicle^^** units have the following ability:
+
+
+**Terror of Khorne:** At the start of the Fight phase, you can select one enemy unit engaged with this unit. That enemy unit makes a Battle-shock test, with -1 to that Battle-shock test. You cannot select the same enemy unit for this effect more than once per phase.
+
+
+This detachment has the **^^Onslaught^^** tag and cannot be taken with another **^^Onslaught^^** detachment.</description>
+                </rule>
+                <rule name="Apoplectic Clarity (Stratagem, 1CP)" id="4eb6-20ec-1cdf-fa93" hidden="false">
+                  <description>Brazen Engines – STRATAGEM (1CP)
+
+WHEN: Your Shooting phase or the Fight phase, when a friendly DAEMON VEHICLE unit is selected to attack.
+TARGET: That DAEMON VEHICLE unit.
+EFFECT: Your unit&apos;s attacks can ignore modifiers to:
+- BS.
+- WS.
+- Hit rolls and wound rolls.</description>
+                </rule>
+                <rule name="Trail of Destruction (Stratagem, 1CP)" id="fa73-4ad5-416b-8f7f" hidden="false">
+                  <description>Brazen Engines – STRATAGEM (1CP)
+
+WHEN: Your Movement phase, when a friendly DAEMON VEHICLE unit is selected to move.
+TARGET: That DAEMON VEHICLE unit.
+EFFECT: Your unit has MOBILE.</description>
+                </rule>
+                <rule name="Goaded to Fury (Stratagem, 1CP)" id="3dbc-e73f-7f24-c7a9" hidden="false">
+                  <description>Brazen Engines – STRATAGEM (1CP)
+
+WHEN: Your opponent&apos;s Shooting phase, when an enemy unit that targeted a friendly unengaged DAEMON VEHICLE unit (excluding TITANIC units) has shot.
+TARGET: That DAEMON VEHICLE unit.
+EFFECT: Your unit can make a surge move of up to D6&quot;.</description>
+                </rule>
+              </rules>
+              <costs>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="1"/>
+              </costs>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="c823-5398-7a28-90a7">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Purge the Foe</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
+            </selectionEntry>
+            <selectionEntry type="upgrade" import="true" name="Butchers of Khorne" hidden="false" id="d08b-63a8-4213-8f4b">
+              <rules>
+                <rule name="Adamantine Avalanche" id="1f41-93dc-a6fb-d637" hidden="false">
+                  <description>At the start of the Fight phase, if a friendly **^^Terminator Squad^^** unit is engaged, make a Blessings of Khorne roll and use the results to activate one Blessing of Khorne. Until the end of the phase, that Blessing of Khorne is active for friendly **^^Terminator Squad^^** units in addition to any other Blessings of Khorne that are currently active.</description>
+                </rule>
+                <rule name="Focused Ferocity (Stratagem, 1CP)" id="26e6-80b9-c562-23c8" hidden="false">
+                  <description>Butchers of Khorne – STRATAGEM (1CP)
+
+WHEN: Fight phase, when a friendly TERMINATOR SQUAD unit is selected to fight.
+TARGET: That TERMINATOR SQUAD unit.
+EFFECT: Your unit&apos;s melee attacks have +1 A.</description>
+                </rule>
+                <rule name="A Trophy for the Throne (Stratagem, 1CP)" id="e317-a155-26dd-9b52" hidden="false">
+                  <description>Butchers of Khorne – STRATAGEM (1CP)
+
+WHEN: Fight phase, when a friendly TERMINATOR SQUAD unit is selected to fight.
+TARGET: That TERMINATOR SQUAD unit.
+EFFECT: Your unit&apos;s attacks that target a MONSTER/VEHICLE unit have +1 to wound rolls.</description>
+                </rule>
+                <rule name="Wrath Beyond Reason (Stratagem, 2CP)" id="5ac8-a646-c48e-96e9" hidden="false">
+                  <description>Butchers of Khorne – STRATAGEM (2CP)
+
+WHEN: Your opponent&apos;s Shooting phase, when an enemy unit targets a friendly TERMINATOR SQUAD unit.
+TARGET: That TERMINATOR SQUAD unit.
+EFFECT: Ranged attacks that target your unit have -1 D until that enemy unit has attacked.</description>
+                </rule>
+              </rules>
+              <costs>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="1"/>
+              </costs>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="503a-14a2-cfa1-2315">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Disruption</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -8815,7 +9160,7 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
         <profile id="51f5-e7af-9e0f-b904" name="1. Unbridled Bloodlust" hidden="false" typeId="d07f-b12b-1c73-fa2c" typeName="Blessings of Khorne">
           <characteristics>
             <characteristic name="Roll" typeId="f99e-3b0d-b8fa-71b6">Double 1+</characteristic>
-            <characteristic name="Effect" typeId="fcc3-ca7a-d697-7098">You can re-roll Charge rolls made for this unit.</characteristic>
+            <characteristic name="Effect" typeId="fcc3-ca7a-d697-7098">This unit has +1 to charge rolls.</characteristic>
           </characteristics>
           <alias>Unbridled Bloodlust</alias>
         </profile>
@@ -9364,7 +9709,7 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
         </profile>
         <profile name="Loping Speed" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a1d9-75ac-7b5d-1623">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per turn, when an enemy unit ends a Normal, Advance or Fall Back move within 9&quot; of this unit, if this unit is not within Engagement Range of one or more enemy units, it can make a Normal move of up to D6&quot;.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">In your opponent&apos;s Movement phase, if an enemy unit ends a move within 8&quot; of this unit, if this unit is not within Engagement Range of one or more enemy units, this unit can make a Normal move of up to D6&quot;.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -11342,6 +11687,82 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
         <entryLink import="true" name="Weapon Modifications" hidden="false" id="3dcb-0cfb-328f-0598" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
       </entryLinks>
     </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Talons of Butchery Upgrade" hidden="false" id="2e2e-b9e7-2237-152a">
+      <profiles>
+        <profile name="Talons of Butchery Upgrade" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="9828-8e6d-c3c3-f779">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Maulerfiend^^** unit only. This unit&apos;s Maulerfiend Fists have [CLEAVE 2].</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink id="748b-74e3-d976-991a" name="Enhancement" hidden="false" targetId="6226-9b9b-107a-9ada" primary="false"/>
+      </categoryLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Murder-Forged Entity Upgrade" hidden="false" id="c4b9-1a84-4a67-aa58">
+      <profiles>
+        <profile name="Murder-Forged Entity Upgrade" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f1df-b6bf-fecc-3ff1">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^World Eaters Vehicle^^** unit only. This unit has **^^Daemon^^**.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink id="c2d2-2711-3721-6a0d" name="Enhancement" hidden="false" targetId="6226-9b9b-107a-9ada" primary="false"/>
+      </categoryLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Sanctified in Slaughter Upgrade" hidden="false" id="5123-fd40-c63e-5b6e">
+      <profiles>
+        <profile name="Sanctified in Slaughter Upgrade" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="b5f0-a5df-e920-f890">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Terminator Squad^^** unit only. This unit has +1 OC.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink id="2e1a-908c-397a-d289" name="Enhancement" hidden="false" targetId="6226-9b9b-107a-9ada" primary="false"/>
+      </categoryLinks>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Gore-Stained Veterans Upgrade" hidden="false" id="266e-a329-dc79-b094">
+      <profiles>
+        <profile name="Gore-Stained Veterans Upgrade" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1601-e790-b951-edd0">
+          <characteristics>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^Terminator Squad^^** unit only. This unit&apos;s melee attacks have +1 WS.</characteristic>
+          </characteristics>
+        </profile>
+      </profiles>
+      <costs>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="0"/>
+        <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+        <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+        <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+        <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+      </costs>
+      <categoryLinks>
+        <categoryLink id="f39d-4d45-71f1-1216" name="Enhancement" hidden="false" targetId="6226-9b9b-107a-9ada" primary="false"/>
+      </categoryLinks>
+    </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
     <selectionEntryGroup id="7b6d-6d90-0ffe-b45b" name="Enhancements" hidden="false" collective="false" import="true" collapsible="true">
@@ -11550,7 +11971,7 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
           <profiles>
             <profile name="Archslaughterer" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="a978-65ee-3f97-bf3e">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Improve the Armour Penetration characteristic of melee weapons equipped by the bearer by 1. While the bearer is a **^^Vessel Of Wrath^^**, improve the Damage characteristic of those weapons by 1 as well.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^World Eaters^^** model only. (Once per battle, per army) In your Command phase, you can use this ability. If you do, every Blessing of Khorne is active for this unit until the start of your next turn.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -11586,84 +12007,6 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
             </modifierGroup>
           </modifierGroups>
         </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Vox-Diabolus" hidden="false" id="4548-4f87-97e8-fc14" sortIndex="24">
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-          </costs>
-          <profiles>
-            <profile name="Vox-Diabolus" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f90a-708b-66ed-92a7">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the bearer’s unit destroys an enemy unit with a melee attack, roll one D6, adding 1 to the result if the bearer is a VESSEL OF WRATH: on a 4+, you gain 1CP.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="400c-4c9b-d118-58c6" includeChildSelections="true"/>
-          </constraints>
-          <modifiers>
-            <modifier type="set" value="true" field="hidden">
-              <conditionGroups>
-                <conditionGroup type="or">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="bd1d-c1a5-6ca2-c791" shared="true"/>
-                  </conditions>
-                  <conditionGroups>
-                    <conditionGroup type="and">
-                      <conditions>
-                        <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                        <condition type="equalTo" value="0" field="selections" scope="force" childId="70d9-0c7a-6b46-65fa" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </conditionGroup>
-                  </conditionGroups>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-          <comment>Vessels of Wrath</comment>
-        </selectionEntry>
-        <selectionEntry type="upgrade" import="true" name="Avenger&apos;s Crown" hidden="false" id="ebe6-5a5b-cdf3-815f" sortIndex="22">
-          <costs>
-            <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
-            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
-            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
-            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
-            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
-          </costs>
-          <profiles>
-            <profile name="Avenger&apos;s Crown" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d91c-04ad-b9b6-5b22">
-              <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If the bearer is destroyed by a melee attack, if it has not fought this phase, roll one D6: on a 2+, do not remove it from play. The destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play.</characteristic>
-              </characteristics>
-            </profile>
-          </profiles>
-          <constraints>
-            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="2200-18d5-070f-8e1a" includeChildSelections="true"/>
-          </constraints>
-          <modifiers>
-            <modifier type="set" value="true" field="hidden">
-              <conditionGroups>
-                <conditionGroup type="or">
-                  <conditions>
-                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="bd1d-c1a5-6ca2-c791" shared="true"/>
-                  </conditions>
-                  <conditionGroups>
-                    <conditionGroup type="and">
-                      <conditions>
-                        <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
-                        <condition type="equalTo" value="0" field="selections" scope="force" childId="70d9-0c7a-6b46-65fa" shared="true" includeChildSelections="true"/>
-                      </conditions>
-                    </conditionGroup>
-                  </conditionGroups>
-                </conditionGroup>
-              </conditionGroups>
-            </modifier>
-          </modifiers>
-          <comment>Vessels of Wrath</comment>
-        </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Gateways to Glory" hidden="false" id="0986-e2aa-a2d9-f0db" sortIndex="23">
           <costs>
             <cost name="pts" typeId="51b2-306e-1021-d207" value="10"/>
@@ -11675,7 +12018,11 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
           <profiles>
             <profile name="Gateways to Glory" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="65c6-d26c-bd71-866a">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the bearer makes a Normal, Advance or Charge move, it can move horizontally through models and terrain features. When doing so, it can move within Engagement Range of such models but cannot end a Normal or Advance move within Engagement Range of them.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">**^^World Eaters^^** **^^Daemon Prince^^** model only. This model has:
+
+
+- MOBILE.
+- +1 to Charge rolls.</characteristic>
               </characteristics>
             </profile>
           </profiles>
@@ -12367,6 +12714,84 @@ Melee weapons equipped by ^^**Blood Legions^^** units from your army have the [L
             </modifier>
           </modifiers>
           <comment>Goretrack Onslaught</comment>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Vox-Diabolus" hidden="false" id="4548-4f87-97e8-fc14" sortIndex="24">
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="20"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Vox-Diabolus" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="f90a-708b-66ed-92a7">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time the bearer’s unit destroys an enemy unit with a melee attack, roll one D6, adding 1 to the result if the bearer is a VESSEL OF WRATH: on a 4+, you gain 1CP.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="400c-4c9b-d118-58c6" includeChildSelections="true"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="bd1d-c1a5-6ca2-c791" shared="true"/>
+                  </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                        <condition type="equalTo" value="0" field="selections" scope="force" childId="70d9-0c7a-6b46-65fa" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <comment>Vessels of Wrath</comment>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Avenger&apos;s Crown" hidden="false" id="ebe6-5a5b-cdf3-815f" sortIndex="22">
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="15"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Avenger&apos;s Crown" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="d91c-04ad-b9b6-5b22">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">If the bearer is destroyed by a melee attack, if it has not fought this phase, roll one D6: on a 2+, do not remove it from play. The destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="2200-18d5-070f-8e1a" includeChildSelections="true"/>
+          </constraints>
+          <modifiers>
+            <modifier type="set" value="true" field="hidden">
+              <conditionGroups>
+                <conditionGroup type="or">
+                  <conditions>
+                    <condition type="notInstanceOf" value="1" field="selections" scope="ancestor" childId="bd1d-c1a5-6ca2-c791" shared="true"/>
+                  </conditions>
+                  <conditionGroups>
+                    <conditionGroup type="and">
+                      <conditions>
+                        <condition type="lessThan" value="1" field="forces" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+                        <condition type="equalTo" value="0" field="selections" scope="force" childId="70d9-0c7a-6b46-65fa" shared="true" includeChildSelections="true"/>
+                      </conditions>
+                    </conditionGroup>
+                  </conditionGroups>
+                </conditionGroup>
+              </conditionGroups>
+            </modifier>
+          </modifiers>
+          <comment>Vessels of Wrath</comment>
         </selectionEntry>
       </selectionEntries>
       <categoryLinks>
@@ -14642,23 +15067,11 @@ They then use the two 2s to activate Wrathful Devotion (which requires any doubl
 However, now that they have activated two Blessings of Khorne, they cannot activate any more and the remaining dice are discarded.**</description>
     </rule>
     <rule name="Wrath of Khorne" id="269f-6b39-4a8e-0872" hidden="false">
-      <description>At the start of the battle round, after activating Blessings of Khorne, you can select one or more models from your army from those listed below (including models that are embarked within Transports): 
-- WORLD EATERS CHARACTER (excluding EPIC HEROES) 
-- Eightbound Champion 
-- Exalted Eightbound Champion 
-- Khorne Berzerker Champion 
-- World Eaters Terminator Champion 
+      <description>When a friendly **^^World Eaters^^** **^^Character^^** unit (excluding **^^Epic Hero^^** units) is selected to fight, that unit&apos;s **^^Character^^** models&apos; melee attacks can have:
 
 
-You can select the same type of model multiple times. The maximum number of models you can select depends on the battle size, as follows: 
-
-
-INCURSION: 2 MODELS
-STRIKE FORCE: 3 MODELS
-ONSLAUGHT: 4 MODELS 
-
-
-Until the end of the battle round, each of those models has the VESSEL OF WRATH keyword (we recommend marking such models with a suitable token). Then, select one Blessing of Khorne that is not currently active for your army. Until the end of the battle round, that Blessing of Khorne is active for VESSEL OF WRATH units from your army in addition to any others that are active for your army.</description>
+- [CLEAVE 1].
+- Or: +1 AP.</description>
     </rule>
   </sharedRules>
   <sharedProfiles>
