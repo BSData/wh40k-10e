@@ -41,18 +41,25 @@ Type de coût points : `typeId="51b2-306e-1021-d207"`, `name="pts"`.
      l'arme (`condition atLeast 1 field="selections" scope="parent"
      childId="<id arme>" shared="true"`).
 
-4. **NOUVEAU — seuil de répétition** : deux encodages possibles selon le
-   texte GW :
-   - **Palier global** : sur l'entrée d'unité, `modifier set|increment`
-     du coût avec `condition atLeast N field="selections"
-     scope="roster" childId="<id de l'unité (ou d'une catégorie)>"
-     shared="true"`. Sens : dès que le roster contient ≥N exemplaires,
-     **chaque** exemplaire prend le nouveau prix.
-   - **Entrée scindée** : l'entrée d'origine reçoit une contrainte
-     `max N scope="roster"` ; une seconde entrée clonée
-     (`"<Unité> (au-delà du Nième)"`, prix Y) est `hidden="true"` par
-     défaut et révélée par un `modifier set hidden=false` conditionné
-     au décompte roster de la première.
+4. **NOUVEAU — seuil de répétition** (encodage confirmé : **entrée
+   scindée**, sémantique « les N premiers au prix de base, chaque
+   exemplaire au-delà du Nième à un autre prix ») :
+   - l'entrée d'origine reçoit une contrainte `max N field="selections"
+     scope="roster" shared="true"` ;
+   - une entrée jumelle `"<Unité> (additional)"` (selectionEntry clonée,
+     ids propres) porte le prix « au-delà », est `hidden="true"` par
+     défaut et révélée par `modifier set hidden=false` + `condition
+     atLeast N field="selections" scope="roster" childId="<id de
+     l'origine>" shared="true"` ;
+   - les plafonds datasheet de la jumelle (`max field="selections"`
+     scope force/roster) sont réduits de N : origine + jumelle
+     respectent ensemble la limite d'armée ;
+   - chaque `entryLink` exposant l'origine a un jumeau pointant la
+     jumelle ;
+   - les deux entrées portent un `<comment>` machine-lisible
+     `repeat-tier: role=base|extra threshold=N partner=<id> [capId=…]`
+     — ignore-le pour le calcul, mais il est fiable si tu veux grouper
+     l'affichage du couple dans l'UI.
 
 5. Mécanismes BattleScribe standards déjà présents dans les données et
    qu'il faut évaluer correctement : `modifierGroups`
@@ -79,10 +86,10 @@ Type de coût points : `typeId="51b2-306e-1021-d207"`, `name="pts"`.
    compter les sélections issues de links vers cette cible —
    `shared="true"`).
 3. **Réactivité roster-scope** : ajouter le Nième exemplaire d'une unité
-   doit **re-prix(er) les N−1 autres** (palier global) ou révéler/masquer
-   l'entrée scindée. Le coût d'une entrée n'est donc pas cachable
-   isolément : invalide le cache de coûts à chaque ajout/retrait/
-   changement d'option dans le roster, ou recalcule le total à la
+   doit **révéler l'entrée jumelle** (et son retrait la masquer) — la
+   visibilité d'une entrée dépend de l'état du roster entier, pas de la
+   seule entrée. Invalide tout cache de visibilité/coût à chaque
+   ajout/retrait/changement d'option dans le roster, ou recalcule à la
    volée à partir de l'état complet.
 4. **Affichage** : le prix affiché dans le picker (catalogue) peut
    différer du prix effectif dans le roster (conditions roster). Affiche
@@ -109,13 +116,13 @@ Type de coût points : `typeId="51b2-306e-1021-d207"`, `name="pts"`.
      l'arme → identique au cas coût-sur-entrée ;
    - tiers de taille : 5 modèles = 90, 10 modèles = 180 (modifier
      `set`) ;
-   - palier global : 2 exemplaires à 100 = 200 ; ajout du 3e
-     (condition `atLeast 3 @roster`, set 110) → total 330, retrait →
-     200 ;
-   - palier + tiers combinés sur la même unité (set taille +
-     increment seuil) → ordre d'évaluation correct ;
-   - entrée scindée : la jumelle apparaît au Nième, contrainte
-     `max N @roster` respectée, total exact X×N + Y×(k−N) ;
+   - entrée scindée : la jumelle est invisible avec N−1 exemplaires de
+     l'origine, visible au Nième (et re-masquée au retrait) ;
+     contrainte `max N @roster` sur l'origine et plafonds réduits de la
+     jumelle respectés ; total exact X×N + Y×(k−N) ;
+   - entrée scindée + tiers de taille : la jumelle prise en taille
+     supérieure utilise **ses propres** modifiers de prix (références
+     internes re-mappées sur ses ids), pas ceux de l'origine ;
    - amélioration à 25 pts sur un personnage → ajoutée au total de
      l'unité porteuse ;
    - `repeats` : +5 pts par modèle au-delà du 2e (`repeat` +

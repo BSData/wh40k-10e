@@ -82,40 +82,49 @@ cas, dans cet ordre de préférence :
   `atLeast 1 field="selections" scope="parent" childId="<id arme>"
   shared="true"` — documente-le en `<comment>`.
 
-## Nouveauté 2 — prix par seuil de répétition
+## Nouveauté 2 — prix par seuil de répétition (RÈGLE FIGÉE)
 
-Le MFM peut dire « à partir du Nième exemplaire de l'unité dans l'armée,
-le prix change ». **Détermine d'abord la sémantique exacte du texte GW**,
-elles s'encodent différemment :
+**Sémantique confirmée par l'utilisateur** : « les N premiers
+exemplaires au prix de base, chaque exemplaire **au-delà du Nième** à un
+autre prix ». Le MFM donne les deux prix. C'est inexprimable par
+modifier pur (les instances d'une même entrée sont indistinguables, une
+condition roster les re-prixerait toutes) → **pattern d'entrée scindée**,
+outillé dans la lib et **testé** (round-trip byte-identique) :
 
-- **Sémantique A — le palier s'applique à tous les exemplaires**
-  (« si l'armée en contient ≥N, chaque exemplaire coûte Y ») : sur
-  l'entrée d'unité, modifier `type="set" value="Y" field=pts` +
-  condition `atLeast N field="selections" scope="roster"
-  childId="<id de l'unité>" shared="true"`. Chaque instance évalue la
-  même condition roster → toutes basculent ensemble. **Exact.**
-  Attention à l'ordre : les tiers de taille sont déjà des `set` — un
-  `set` de seuil doit alors être un `increment` (ou des `set` par
-  combinaison taille×seuil dans un `modifierGroup type="and"`), sinon le
-  dernier `set` écrase l'autre. Teste les deux dimensions ensemble.
-- **Sémantique B — seuls les exemplaires au-delà du seuil changent**
-  (« les N premiers à X pts, les suivants à Y ») : **inexprimable**
-  par modifier pur — les instances d'une même entrée sont
-  indistinguables, une condition roster les re-prix toutes. Encodage
-  exact = **entrée scindée** : (1) l'entrée d'origine reçoit
-  `max N scope="roster"` ; (2) clone (`cloneWithNewIds`) nommé
-  `"<Unité> (au-delà du Nième)"`, coût Y, masqué par défaut
-  (`hidden="true"`) + modifier `set hidden=false` conditionné
-  `atLeast N @roster childId=<id origine> shared="true"`. Documente le
-  lien entre les deux entrées en `<comment>`. Coûteux en maintenance →
-  ne l'emploie que si la sémantique B est avérée.
-- Le brique « increment + `<repeats>` + condition seuil » existe déjà
-  dans le dépôt (ex. ~137 `increment value="5"` avec
-  `repeat field="selections"`) pour des paliers **intra-unité** (par
-  modèle au-delà du Nième). Réutilise ce pattern tel quel si le MFM
-  introduit des paliers par modèle.
-- **Cas ambigu → demande à l'utilisateur avant d'encoder** (règle
-  maison), en lui montrant le texte GW et les deux encodages.
+```js
+// création — threshold = N (dernier exemplaire au prix de base),
+// pts = prix des exemplaires au-delà ; tiers obligatoire si l'unité a
+// des paliers de taille (forme applyTiers : [{idx, pts}])
+c.splitRepeatTier(file, unitId, { threshold: 3, pts: 200,
+                                  tiers: [{ idx: 0, pts: 400 }] });
+c.removeRepeatTier(unitId);   // dépose (origine ou jumelle) — réversible
+c.auditRepeatTiers();         // [] attendu — à inclure dans le gauntlet
+```
+
+Ce que fait `splitRepeatTier` (ne le ré-implémente pas à la main) :
+- **origine** : contrainte `max=N field="selections" scope="roster"
+  shared="true"` + marqueur `<comment>repeat-tier: role=base
+  threshold=N partner=<idJumelle> capId=<idContrainte></comment>` ;
+- **jumelle** `"<Nom> (additional)"` : clone à ids neufs avec **remap
+  des références internes** (`cloneWithNewIdsRemapped` — indispensable :
+  les tiers de taille utilisent `scope="<id de l'unité>"`), prix `pts`,
+  paliers de taille re-chiffrés via `tiers`, plafonds datasheet
+  (`field="selections"` scope force/roster) **réduits de N** pour que le
+  total reste conforme, `hidden="true"` + modifier `set hidden=false`
+  conditionné `atLeast N @roster childId=<idOrigine> shared="true"`,
+  marqueur `role=extra` ;
+- **entryLinks** : chaque link exposant l'origine est dupliqué vers la
+  jumelle (tous fichiers — bibliothèques partagées comprises), plafonds
+  de link réduits pareillement.
+
+Garde-fous intégrés : refus si seuil ≥ plafond datasheet (scission
+inutile), si l'unité a des paliers de taille sans `tiers` fourni, ou si
+l'entrée est déjà scindée. Les marqueurs `repeat-tier:` sont la source
+de vérité de l'audit et de la dépose — ne les édite jamais à la main.
+
+La brique « increment + `<repeats>` + condition seuil » existe déjà dans
+le dépôt pour des paliers **intra-unité** (par modèle au-delà du Nième) ;
+réutilise-la telle quelle si le MFM introduit des paliers par modèle.
 
 ## Améliorations
 
@@ -154,5 +163,6 @@ elles s'encodent différemment :
 3. Ids dupliqués identiques à HEAD (`grep -oE 'id="[^"]+"' | sort |
    uniq -d`).
 4. Re-run `/tmp/points_audit.js` → 0 écart vs `/tmp/mfm.json`.
-5. Diff git lisible : uniquement des `value="…"` de coûts, des modifiers
+5. `c.auditRepeatTiers()` → `[]` (0 problème) si des scissions existent.
+6. Diff git lisible : uniquement des `value="…"` de coûts, des modifiers
    de coût, et les éventuelles entrées d'option/scission documentées.

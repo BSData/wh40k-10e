@@ -36,6 +36,11 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
 4. Validation avant tout commit : `xmllint`, `catalog.validate` (ok,
    0 erreur), **0 id dupliqué introduit** vs HEAD, audit de la règle des
    améliorations. Diff-check : ne réécrire un texte que s'il diffère.
+5. **Prix par seuil de répétition (MFM)** : sémantique « les N premiers
+   au prix de base, au-delà du Nième à l'autre prix » → toujours le
+   pattern d'**entrée scindée** via `catalog.splitRepeatTier` (audit
+   `auditRepeatTiers`, dépose `removeRepeatTier`) — jamais de re-prix
+   global par condition roster. Détails : `editor/MFM_PROMPT.md`.
 
 ## Git
 
