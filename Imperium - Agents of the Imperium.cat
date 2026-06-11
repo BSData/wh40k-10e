@@ -35,7 +35,9 @@
         </profile>
         <profile name="Dead-shot" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="27d2-74da-5c1-a8e">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Each time this model makes a ranged attack, when selecting targets for that attack, you can ignore the Lone Operative ability.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">When this unit is selected to shoot, until this unit has shot:
+- Enemy units do not have Lone Operative.
+- Hidden enemy units have +15&quot; detection range.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -162,6 +164,37 @@
               </characteristics>
             </profile>
           </profiles>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Micromelta Rounds" hidden="true" id="5497-0da4-5c96-bb5f">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1d8e-93f8-6d8f-f19b" includeChildSelections="false"/>
+            <constraint type="min" value="-1" field="selections" scope="parent" shared="true" id="df0f-4613-7f90-31c6" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="45"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Micromelta Rounds" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="455c-5dcc-a966-396b">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model’s exitus rifle has the [ANTI-MONSTER 4+] and [ANTI-VEHICLE 4+] abilities.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="set" value="false" field="hidden"/>
+                <modifier type="set" value="1" field="df0f-4613-7f90-31c6"/>
+              </modifiers>
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="e203-73dc-18d9-f390" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
       </selectionEntries>
       <costs>
@@ -501,6 +534,39 @@
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="aa5d-9820-fe62-e35f"/>
           </constraints>
         </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Intraneural Biotech" hidden="true" id="f81b-99df-9a06-5673">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7e3e-11e2-a260-c4f0" includeChildSelections="false"/>
+            <constraint type="min" value="-1" field="selections" scope="parent" shared="true" id="84a4-2c4f-904c-aa88" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="35"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Intraneural Biotech" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5a89-54a4-8a07-ea36">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You can target this unit with the Heroic Intervention stratagem, regardless of any other uses of that stratagem this phase. If you do:
+- That use is -1 CP.
+- That use does not prevent any uses of that stratagem on other units this phase.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="set" value="false" field="hidden"/>
+                <modifier type="set" value="1" field="84a4-2c4f-904c-aa88"/>
+              </modifiers>
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="e203-73dc-18d9-f390" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
       </selectionEntries>
       <modifiers>
         <modifier type="set" value="true" field="hidden">
@@ -568,12 +634,12 @@
         </profile>
         <profile name="Reign of Confusion" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="true" id="d262-7a63-4838-828a">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, after your opponent uses a Stratagem, this model can use this ability. If it does, until the end of the battle, the CP cost your opponent must pay to use that Stratagem again is increased by 1CP.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per turn, when your opponent targets a unit from their army within 12&quot; of this model with a stratagem, this model can use this ability. If you do increase the CP cost of that use of that stratagem by 1CP.</characteristic>
           </characteristics>
         </profile>
         <profile name="Acrobatic Escape" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="812f-ed2e-6abf-35be">
           <characteristics>
-            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of the Fight phase, if this model is within Engagement Range of one or more enemy units, it can make a Fall Back move of up to D6&quot;. In addition, at the end of your opponent&apos;s turn, if this model is not within 3&quot; of one or more enemy units, you can remove it from the battlefield and then, in the Reinforcements step of your next Movement phase, set it up anywhere on the battlefield that is more than 9&quot; horizontally away from all enemy models. If the battle ends and this model is not on the battlefield, it is destroyed.</characteristic>
+            <characteristic name="Description" typeId="9b8f-694b-e5e-b573">At the end of the Fight phase, if this model is within Engagement Range of one or more enemy units, it can make a Fall Back move of up to D6&quot;. In addition, at the end of your opponent&apos;s turn, if this model is not within 3&quot; of one or more enemy units, you can remove it from the battlefield and then, in the Reinforcements step of your next Movement phase, set it up anywhere on the battlefield that is more than 8&quot; horizontally away from all enemy models. If the battle ends and this model is not on the battlefield, it is destroyed.</characteristic>
           </characteristics>
         </profile>
       </profiles>
@@ -5516,6 +5582,16 @@ While this Mission Tactic is active, weapons equipped by ^^Deathwatch^^ units fr
 While this Mission Tactic is active, each time a ^^Deathwatch^^ model from your army makes an attack, on a Critical Wound, that attack has the [PRECISION] ability.</description>
                 </rule>
               </rules>
+              <costs>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="3"/>
+              </costs>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="1770-717d-b9f8-fcc2">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Purge the Foe</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Purgation Force (Ordo Hereticus)" hidden="false" id="cfc6-5531-53cb-1964">
               <rules>
@@ -5526,6 +5602,16 @@ While this Mission Tactic is active, each time a ^^Deathwatch^^ model from your 
 Each time an ^^Adeptus Arbites, Inquisitor, Inquisitorial Agents^^ or ^^Ordo Hereticus^^ model from your army makes an attack that targets a ^^Chaos^^ unit containing 5 or more models, that attack has the [SUSTAINED HITS 1] ability.</description>
                 </rule>
               </rules>
+              <costs>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="3"/>
+              </costs>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="2936-4b3a-6f4e-c422">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Priority Assets</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Daemon Hunters (Ordo Malleus)" hidden="false" id="bd6f-97c7-6ac4-8320">
               <rules>
@@ -5533,6 +5619,16 @@ Each time an ^^Adeptus Arbites, Inquisitor, Inquisitorial Agents^^ or ^^Ordo Her
                   <description>Each time an ^^Inquisitor, Inquisitorial Agents^^ or ^^Ordo Malleus^^ model from your army makes an attack, re-roll a Hit roll of 1 and, if the target is a ^^Daemon^^ unit, re-roll a Wound roll of 1 as well.</description>
                 </rule>
               </rules>
+              <costs>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="3"/>
+              </costs>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="88ea-b10e-5f06-4c90">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Reconnaissance</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Imperialis Fleet" hidden="false" id="5347-93e5-b3f2-366d">
               <rules>
@@ -5548,6 +5644,16 @@ Select one enemy unit on the battlefield. Until the start of your next Command p
 Select one objective marker on the battlefield. Until the start of your next Command phase, while an ^^Agents of the Imperium^^ unit from your army is within range of that objective marker, improve the Leadership and Objective Control characteristics of models in that unit by 1 and models in that unit have a 5+ invulnerable save.</description>
                 </rule>
               </rules>
+              <costs>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="3"/>
+              </costs>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="ee36-c53e-1d6c-b5fe">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Disruption</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Veiled Blade Elimination Force" hidden="false" id="e203-73dc-18d9-f390">
               <rules>
@@ -5556,7 +5662,59 @@ Select one objective marker on the battlefield. Until the start of your next Com
 
 When mustering your army, each ^^Officio Assassinorum^^ unit from your army has the relevant Extremis ability, and you must increase the points cost of each of those units by the amount shown. If this causes your army to exceed the points limit for the battle you are playing, you cannot include that unit in your army.</description>
                 </rule>
+                <rule name="Prime Target (Stratagem, 1CP)" id="6230-1484-57b3-6e4c" hidden="false">
+                  <description>Veiled Blade Elimination Force – STRATAGEM (1CP)
+
+WHEN: Your Shooting phase or the Fight phase.
+TARGET: One Agents of the Imperium unit from your army that has not been selected to shoot or fight this phase.
+EFFECT: Until the end of the phase, each time a model in your unit makes an attack that targets a Character unit, re-roll a Wound roll of 1. If that attack is made by an Officio Assassinorum model and it targets the enemy Warlord, you can re-roll the Wound roll instead.</description>
+                </rule>
+                <rule name="Hyperstimms (Stratagem, 2CP)" id="482d-13b3-99e9-d427" hidden="false">
+                  <description>Veiled Blade Elimination Force – STRATAGEM (2CP)
+
+WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.
+TARGET: One Agents of the Imperium Character unit from your army that was selected as the target of one or more of the attacking unit’s attacks.
+EFFECT: Until the end of the phase, add 1 to the Toughness characteristic of models in your unit. In addition, if it is an Eversor Assassin unit, until the end of the phase, it has the Feel No Pain 4+ ability.</description>
+                </rule>
+                <rule name="Will-Sapping Salvo (Stratagem, 1CP)" id="9f26-221a-999c-2526" hidden="false">
+                  <description>Veiled Blade Elimination Force – STRATAGEM (1CP)
+
+WHEN: Your Shooting phase.
+TARGET: One Agents of the Imperium Infantry unit from your army that has not been selected to shoot this phase.
+EFFECT: Until the end of the phase, ranged weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability. In addition, if it is a Culexus Assassin unit, until the end of the phase, change the Damage characteristic of ranged weapons equipped by models in your unit to 3.</description>
+                </rule>
+                <rule name="Orbital Oversight (Stratagem, 1CP)" id="0ce4-fab5-8de0-0006" hidden="false">
+                  <description>Veiled Blade Elimination Force – STRATAGEM (1CP)
+
+WHEN: Your opponent’s Shooting phase, just after an enemy unit has selected its targets.
+TARGET: One Agents of the Imperium Infantry unit from your army that was selected as the target of one or more of the attacking unit’s attacks.
+EFFECT: Until the end of the phase, your unit can only be selected as the target of a ranged attack if the attacking model is within 18&quot;, or, if your unit has the Lone Operative ability, if the attacking model is within 6&quot;.</description>
+                </rule>
+                <rule name="Blind Grenades (Stratagem, 1CP)" id="0d66-6682-a86e-3976" hidden="false">
+                  <description>Veiled Blade Elimination Force – STRATAGEM (1CP)
+
+WHEN: Your opponent’s Charge phase, just after an enemy unit has declared a charge.
+TARGET: One Agents of the Imperium Grenades or Vindicare Assassin unit from your army that was selected as one of the targets of that charge and is not within Engagement Range of one or more enemy units.
+EFFECT: Until the end of the phase, subtract 1 from Charge rolls made for that enemy unit, or, if your unit is a Vindicare Assassin, subtract 2 from Charge rolls made for that enemy unit instead.</description>
+                </rule>
+                <rule name="Ensnaring Trap (Stratagem, 1CP)" id="32fb-585b-4d54-4fa6" hidden="false">
+                  <description>Veiled Blade Elimination Force – STRATAGEM (1CP)
+
+WHEN: End of your opponent’s Charge phase.
+TARGET: One Agents of the Imperium Infantry unit from your army that is within 6&quot; of one or more enemy units and would be eligible to declare a charge against one or more of those enemy units.
+EFFECT: Your unit can declare a charge. When doing so, you must select one or more of those enemy units as the targets of that charge, and your unit does not receive a Charge bonus this turn. In addition, if it is a Callidus Assassin unit and it makes a Charge move as a result of this Stratagem, until the end of the turn, each time a model in your unit makes a melee attack, add 1 to the Wound roll.</description>
+                </rule>
               </rules>
+              <costs>
+                <cost name="DP" typeId="0d99-4ee2-7b3c-1f5a" value="3"/>
+              </costs>
+              <profiles>
+                <profile name="Force Disposition" typeId="4680-63ad-ad70-1872" typeName="Force Disposition" hidden="false" id="31c0-94a0-edf7-820b">
+                  <characteristics>
+                    <characteristic name="Force Disposition" typeId="9145-6e6a-17b9-0a2c">Purge the Foe</characteristic>
+                  </characteristics>
+                </profile>
+              </profiles>
             </selectionEntry>
           </selectionEntries>
         </selectionEntryGroup>
@@ -5779,7 +5937,7 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
         <categoryLink name="Faction: Agents of the Imperium" hidden="false" id="b647-09c3-1dce-2260" targetId="5128-90b-e4a5-dcbd" primary="false"/>
       </categoryLinks>
       <infoLinks>
-        <infoLink name="Leader" id="866e-dd91-1b53-06ad" hidden="false" type="rule" targetId="b4dd-3e1f-41cb-218f"/>
+        <infoLink name="Support" id="866e-dd91-1b53-06ad" hidden="false" type="rule" targetId="21f5-c07c-6d97-4405"/>
       </infoLinks>
       <selectionEntryGroups>
         <selectionEntryGroup name="Wargear" id="378d-9a17-1665-b19d" hidden="false" defaultSelectionEntryId="9d92-f59c-e9fb-6457" sortIndex="4">
@@ -6954,6 +7112,7 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
         <categoryLink name="Imperium" hidden="false" id="0d7b-e6a6-85ce-6f4e" targetId="aff3-d6a3-2a95-9dc" primary="false"/>
         <categoryLink name="Inquisitorial Chimera" hidden="false" id="26b8-6f54-be7f-2acc" targetId="3769-650b-539f-dc11" primary="false"/>
         <categoryLink name="Faction: Agents of the Imperium" hidden="false" id="a29f-a125-6ad7-e560" targetId="5128-90b-e4a5-dcbd" primary="false"/>
+        <categoryLink id="4fef-5764-33c8-f13d" name="Frame" hidden="false" targetId="5de4-e6e1-efb3-fdf0" primary="false"/>
       </categoryLinks>
       <profiles>
         <profile name="Inquisitorial Chimera" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="8c83-5b3b-c266-3684">
@@ -7358,6 +7517,7 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
         <categoryLink name="Transport" hidden="false" id="db76-10ee-3565-9a3f" targetId="75e8-57c4-40e3-1817" primary="false"/>
         <categoryLink name="Imperium" hidden="false" id="3800-fd5b-59b7-6316" targetId="aff3-d6a3-2a95-9dc" primary="false"/>
         <categoryLink name="Imperial Rhino" hidden="false" id="67b2-aa7b-afae-9385" targetId="c779-37d6-af9a-db1a" primary="false"/>
+        <categoryLink id="1f60-83bc-997c-99ac" name="Frame" hidden="false" targetId="5de4-e6e1-efb3-fdf0" primary="false"/>
       </categoryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="75"/>
@@ -8160,6 +8320,7 @@ When mustering your army, each ^^Officio Assassinorum^^ unit from your army has 
         <categoryLink name="Faction: Agents of the Imperium" hidden="false" id="abca-a597-e534-d204" targetId="5128-90b-e4a5-dcbd" primary="false"/>
         <categoryLink name="Ordo Hereticus" hidden="false" id="e44c-1c7d-e47a-2cea" targetId="cc90-ec2e-cca3-e44d" primary="false"/>
         <categoryLink name="Sisters of Battle Immolator" hidden="false" id="6168-adbf-ba3f-460b" targetId="a860-cde8-a263-dfa0" primary="false"/>
+        <categoryLink id="dc1e-4718-758a-416b" name="Frame" hidden="false" targetId="5de4-e6e1-efb3-fdf0" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Deadly Demise" id="ddd8-baf0-ffed-ddce" hidden="false" type="rule" targetId="b68a-5ded-65ac-98c">
@@ -8890,7 +9051,6 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
       <categoryLinks>
         <categoryLink name="Fly" hidden="false" id="4456-ded0-6b4d-b166" targetId="c619-2086-bbcf-69c9" primary="false"/>
         <categoryLink name="Vehicle" hidden="false" id="d642-ba10-c7c9-e8cd" targetId="dbd4-63-af05-998" primary="true"/>
-        <categoryLink name="Aircraft" hidden="false" id="b91f-a4ed-33bf-ab0b" targetId="63f1-e6e8-f6f6-a4f0" primary="false"/>
         <categoryLink name="Imperium" hidden="false" id="5be8-b179-46b6-30a5" targetId="aff3-d6a3-2a95-9dc" primary="false"/>
         <categoryLink name="Transport" hidden="false" id="a2b2-a53e-1690-d5a8" targetId="75e8-57c4-40e3-1817" primary="false"/>
         <categoryLink name="Faction: Agents of the Imperium" hidden="false" id="ffe4-2ea5-cb34-fc86" targetId="5128-90b-e4a5-dcbd" primary="false"/>
@@ -8898,6 +9058,7 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
         <categoryLink name="Corvus Blackstar" hidden="false" id="8bc6-aed3-b137-a53e" targetId="509b-cfe0-9bcd-f84c" primary="false"/>
         <categoryLink name="Ordo Xenos" hidden="false" id="db84-182a-4222-4fde" targetId="ab1c-1334-d1cc-08df" primary="false"/>
         <categoryLink name="Deathwatch" hidden="false" id="337b-5086-5cb5-9569" targetId="357e-615e-5313-2ac2" primary="false"/>
+        <categoryLink id="a16e-f913-2295-9439" name="Frame" hidden="false" targetId="5de4-e6e1-efb3-fdf0" primary="false"/>
       </categoryLinks>
       <infoLinks>
         <infoLink name="Deadly Demise" id="a591-a41f-57b8-70e1" hidden="false" type="rule" targetId="b68a-5ded-65ac-98c">
@@ -8911,7 +9072,7 @@ At the start of the Declare Battle Formations step, you can select one SISTERS O
       <profiles>
         <profile name="Corvus Blackstar" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="782e-311e-0601-a32f" publicationId="4115-3627-e608-39f6" page="29">
           <characteristics>
-            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">20+&quot;</characteristic>
+            <characteristic name="M" typeId="e703-ecb6-5ce7-aec1">14&quot;</characteristic>
             <characteristic name="T" typeId="d29d-cf75-fc2d-34a4">10</characteristic>
             <characteristic name="SV" typeId="450-a17e-9d5e-29da">3+</characteristic>
             <characteristic name="W" typeId="750a-a2ec-90d3-21fe">14</characteristic>
@@ -17904,6 +18065,7 @@ For the purposes of determining which models in this unit can embark within a ^^
     <categoryEntry name="Enthroned Agent" id="c7d9-1704-f2c9-7fe7" hidden="false"/>
     <categoryEntry name="Rogue Trader" id="4630-27cf-81b4-5b8d" hidden="false"/>
     <categoryEntry name="Kroyle" id="270f-d684-8c46-00d2" hidden="false"/>
+    <categoryEntry id="5de4-e6e1-efb3-fdf0" name="Frame" hidden="false"/>
   </categoryEntries>
   <sharedRules>
     <rule name="Assigned Agents" hidden="false" id="58c1-ec7a-74f5-26b9">
@@ -19392,7 +19554,7 @@ For the purposes of interacting with terrain features, all models in units with 
           <profiles>
             <profile name="Gift of the Prescient" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="1669-9ecd-8a1a-bb2e">
               <characteristics>
-                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, if the bearer is on the battlefield, you can use the Rapid Ingress Stratagem for 0CP. When doing so, you must target a GREY KNIGHTS TERMINATOR SQUAD unit from your army, and when using the Stratagem, that unit can be set up on the battlefield anywhere that is more than 3&quot; from all enemy units.</characteristic>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">Once per battle, if the bearer is on the battlefield, you can use the Rapid Ingress Stratagem for 0CP. When doing so, you must target a GREY KNIGHTS TERMINATOR SQUAD unit from your army, and when using the Stratagem, that unit can be set up on the battlefield anywhere that is more than 6&quot; from all enemy units.</characteristic>
               </characteristics>
             </profile>
           </profiles>
