@@ -971,6 +971,232 @@ class Catalog {
     return clone;
   }
 
+  // Comme cloneWithNewIds, mais remappe aussi toute référence INTERNE au
+  // sous-arbre (scope/childId/targetId/… portant un ancien id du clone).
+  // Indispensable pour cloner une unité : ses tiers de taille utilisent
+  // scope="<id de l'unité>" et des childId internes.
+  cloneWithNewIdsRemapped(node) {
+    const clone = deepClone(node);
+    const map = new Map(); // ancien id -> nouvel id
+    xml.walk(clone, (n) => {
+      n.pad = undefined;
+      const a = n.attrs.find((x) => x.name === 'id');
+      if (a) {
+        const nid = this.newId();
+        map.set(a.value, nid);
+        a.value = nid;
+      }
+    });
+    xml.walk(clone, (n) => {
+      for (const a of n.attrs) {
+        if (a.name !== 'id' && map.has(a.value)) a.value = map.get(a.value);
+      }
+    });
+    return clone;
+  }
+
+  // ---- MFM : prix par seuil de répétition (entrée scindée) ----------------
+  // « Les N premiers exemplaires au prix de base, chaque exemplaire au-delà
+  // du Nième au prix `pts`. » Crée l'entrée jumelle « <nom><suffix> » :
+  //   - origine : contrainte max=threshold @roster + marqueur repeat-tier ;
+  //   - jumelle : prix `pts` (+ `tiers` si l'unité a des paliers de taille),
+  //     plafonds datasheet réduits de threshold, masquée par défaut et
+  //     révélée quand le roster compte >= threshold exemplaires de
+  //     l'origine ;
+  //   - chaque entryLink exposant l'origine est dupliqué vers la jumelle
+  //     (tous fichiers), plafonds de link réduits pareillement.
+  // `tiers` suit la forme d'applyTiers : [{ idx, pts }].
+  splitRepeatTier(file, unitId, { threshold, pts, tiers = null, suffix = ' (additional)' } = {}) {
+    const ref = this.byId.get(unitId);
+    if (!ref) throw new Error('Unit not found: ' + unitId);
+    const node = ref.node;
+    if (!['unit', 'model'].includes(xml.getAttr(node, 'type'))) {
+      throw new Error('Not a unit/model entry: ' + unitId);
+    }
+    const N = Number(threshold);
+    if (!Number.isInteger(N) || N < 1) throw new Error('threshold must be an integer >= 1');
+    if (pts == null) throw new Error('pts (prix au-delà du seuil) is required');
+    if (readRepeatTierComment(node)) {
+      throw new Error('Entry already split (repeat-tier marker): ' + unitId);
+    }
+    const ownTiers = readTiers(node);
+    if (ownTiers.length && !Array.isArray(tiers)) {
+      throw new Error(
+        'Unit has ' + ownTiers.length + ' size tier(s); provide tiers=[{idx, pts}] for the clone'
+      );
+    }
+    const caps = countCaps(node);
+    const minCap = caps.length ? Math.min(...caps.map((c) => Number(xml.getAttr(c, 'value')))) : Infinity;
+    if (N >= minCap) {
+      throw new Error('threshold ' + N + ' >= datasheet cap ' + minCap + ': split is pointless');
+    }
+
+    // 1) jumelle (clonée AVANT de modifier l'origine)
+    const clone = this.cloneWithNewIdsRemapped(node);
+    const baseName = xml.getAttrDecoded(node, 'name');
+    xml.setAttr(clone, 'name', baseName + suffix);
+    applyCosts(clone, [{ typeId: COST_PTS, value: String(pts) }]);
+    if (Array.isArray(tiers)) applyTiers(clone, tiers);
+    for (const c of countCaps(clone)) {
+      xml.setAttr(c, 'value', String(Math.max(0, Number(xml.getAttr(c, 'value')) - N)));
+    }
+    const cloneId = xml.getAttr(clone, 'id');
+    xml.setAttr(clone, 'hidden', 'true');
+    const mods = xml.ensureChild(clone, 'modifiers');
+    mods.selfClose = false;
+    mods.children.unshift(
+      xml.elem('modifier', { type: 'set', value: 'false', field: 'hidden' }, [
+        xml.elem('conditions', {}, [
+          xml.elem('condition', {
+            type: 'atLeast',
+            value: String(N),
+            field: 'selections',
+            scope: 'roster',
+            childId: unitId,
+            shared: 'true',
+          }),
+        ]),
+      ])
+    );
+    setComment(clone, 'repeat-tier: role=extra threshold=' + N + ' partner=' + unitId);
+
+    // 2) origine : plafond au seuil + marqueur (capId pour une dépose sûre)
+    const capId = this.newId();
+    const cons = xml.ensureChild(node, 'constraints');
+    cons.selfClose = false;
+    cons.children.push(
+      xml.elem('constraint', {
+        type: 'max',
+        value: String(N),
+        field: 'selections',
+        scope: 'roster',
+        shared: 'true',
+        id: capId,
+      })
+    );
+    setComment(node, 'repeat-tier: role=base threshold=' + N + ' partner=' + cloneId + ' capId=' + capId);
+
+    // 3) insertion de la jumelle juste après l'origine
+    const parent = this.findParentInNode(this.docs.get(ref.file).root, unitId);
+    parent.children.splice(parent.children.indexOf(node) + 1, 0, clone);
+    this.markDirty(ref.file);
+
+    // 4) duplication des entryLinks exposant l'origine (tous fichiers)
+    const links = (this.linksByTarget.get(unitId) || []).slice();
+    const linkFiles = [];
+    for (const l of links) {
+      const lparent = this.findParentInNode(this.docs.get(l.file).root, xml.getAttr(l.node, 'id'));
+      if (!lparent) continue;
+      const lclone = this.cloneWithNewIdsRemapped(l.node);
+      xml.setAttr(lclone, 'targetId', cloneId);
+      xml.setAttr(lclone, 'name', (xml.getAttrDecoded(l.node, 'name') || baseName) + suffix);
+      for (const c of countCaps(lclone)) {
+        xml.setAttr(c, 'value', String(Math.max(0, Number(xml.getAttr(c, 'value')) - N)));
+      }
+      lparent.children.splice(lparent.children.indexOf(l.node) + 1, 0, lclone);
+      this.markDirty(l.file);
+      linkFiles.push(l.file);
+    }
+    this.buildIndex();
+    return { cloneId, name: baseName + suffix, links: links.length, linkFiles };
+  }
+
+  // Dépose une scission (accepte l'id de l'origine ou de la jumelle) :
+  // retire jumelle + ses entryLinks + plafond seuil + marqueurs.
+  removeRepeatTier(unitId) {
+    const ref = this.byId.get(unitId);
+    if (!ref) throw new Error('Unit not found: ' + unitId);
+    const info = readRepeatTierComment(ref.node);
+    if (!info) throw new Error('No repeat-tier marker on: ' + unitId);
+    const baseRef = info.role === 'base' ? ref : this.byId.get(info.partner);
+    if (!baseRef || !readRepeatTierComment(baseRef.node)) {
+      throw new Error('repeat-tier base entry not found for: ' + unitId);
+    }
+    const base = readRepeatTierComment(baseRef.node);
+    const extraId = base.partner;
+    // 1) entryLinks vers la jumelle
+    for (const l of (this.linksByTarget.get(extraId) || []).slice()) {
+      const lparent = this.findParentInNode(this.docs.get(l.file).root, xml.getAttr(l.node, 'id'));
+      if (lparent) {
+        lparent.children = lparent.children.filter((x) => x !== l.node);
+        this.markDirty(l.file);
+      }
+    }
+    // 2) la jumelle
+    const extraRef = this.byId.get(extraId);
+    if (extraRef) {
+      const p = this.findParentInNode(this.docs.get(extraRef.file).root, extraId);
+      if (p) {
+        p.children = p.children.filter((x) => x !== extraRef.node);
+        this.markDirty(extraRef.file);
+      }
+    }
+    // 3) plafond seuil (par id) + marqueur sur l'origine
+    const cons = xml.child(baseRef.node, 'constraints');
+    if (cons && base.capId) {
+      cons.children = cons.children.filter((x) => xml.getAttr(x, 'id') !== base.capId);
+    }
+    removeCommentWithPrefix(baseRef.node, 'repeat-tier:');
+    this.markDirty(baseRef.file);
+    this.buildIndex();
+    return { removed: extraId };
+  }
+
+  // Audit des couples repeat-tier (à inclure dans le gauntlet de
+  // validation MFM). Retourne une liste de problèmes (vide = conforme).
+  auditRepeatTiers() {
+    const problems = [];
+    for (const [file, doc] of this.docs) {
+      xml.walk(doc.root, (n) => {
+        if (n.tag !== 'selectionEntry') return;
+        const info = readRepeatTierComment(n);
+        if (!info) return;
+        const id = xml.getAttr(n, 'id');
+        const where = file + ' :: ' + (xml.getAttrDecoded(n, 'name') || id);
+        const partner = this.byId.get(info.partner);
+        if (!partner) {
+          problems.push(where + ' : partner manquant (' + info.partner + ')');
+          return;
+        }
+        const pInfo = readRepeatTierComment(partner.node);
+        if (!pInfo || pInfo.partner !== id) {
+          problems.push(where + ' : couple incohérent (le partner ne pointe pas en retour)');
+        }
+        if (info.role === 'base') {
+          const cons = xml.child(n, 'constraints');
+          const cap = cons && cons.children.find((x) => xml.getAttr(x, 'id') === info.capId);
+          if (!cap) problems.push(where + ' : plafond seuil (capId) introuvable');
+          else if (xml.getAttr(cap, 'value') !== String(info.threshold)) {
+            problems.push(where + ' : plafond=' + xml.getAttr(cap, 'value') + ' != threshold=' + info.threshold);
+          }
+        } else if (info.role === 'extra') {
+          if (xml.getAttr(n, 'hidden') !== 'true') problems.push(where + ' : jumelle non masquée par défaut');
+          let reveal = false;
+          xml.walk(n, (m) => {
+            if (m.tag !== 'modifier' || xml.getAttr(m, 'field') !== 'hidden' || xml.getAttr(m, 'value') !== 'false') return;
+            xml.walk(m, (c) => {
+              if (
+                c.tag === 'condition' &&
+                xml.getAttr(c, 'type') === 'atLeast' &&
+                xml.getAttr(c, 'value') === String(info.threshold) &&
+                xml.getAttr(c, 'scope') === 'roster' &&
+                xml.getAttr(c, 'childId') === info.partner
+              ) {
+                reveal = true;
+              }
+            });
+          });
+          if (!reveal) problems.push(where + ' : modifier de révélation absent ou incohérent');
+          const pts = (readCosts(n).find((c) => c.name === 'pts') || {}).value;
+          if (!pts || pts === '0') problems.push(where + ' : prix extra à 0');
+        } else {
+          problems.push(where + ' : role inconnu "' + info.role + '"');
+        }
+      });
+    }
+    return problems;
+  }
+
   newId() {
     let id;
     do {
@@ -1403,6 +1629,57 @@ function applyCosts(node, costs) {
     );
     if (c) xml.setAttr(c, 'value', String(want.value));
   }
+}
+
+// ---- MFM : prix par seuil de répétition (pattern « entrée scindée ») -----
+// Sémantique GW confirmée : les N premiers exemplaires d'une unité au prix
+// de base, chaque exemplaire AU-DELÀ du Nième à un autre prix. Inexprimable
+// par modifier pur (les instances d'une même entrée sont indistinguables,
+// une condition roster les re-prixerait toutes) → entrée jumelle. Voir
+// editor/MFM_PROMPT.md. Le couple est marqué par des <comment>
+// « repeat-tier: role=… threshold=… partner=… [capId=…] » pour l'audit
+// (Catalog.auditRepeatTiers) et la dépose (Catalog.removeRepeatTier).
+
+// Plafonds de comptage d'exemplaires de l'entrée elle-même (et rien
+// d'autre : les contraintes de coûts Crusade ont un field différent).
+function countCaps(node) {
+  const cons = xml.child(node, 'constraints');
+  if (!cons) return [];
+  return cons.children.filter(
+    (x) =>
+      x.tag === 'constraint' &&
+      xml.getAttr(x, 'type') === 'max' &&
+      xml.getAttr(x, 'field') === 'selections' &&
+      ['roster', 'force'].includes(xml.getAttr(x, 'scope'))
+  );
+}
+
+function readRepeatTierComment(node) {
+  const cm = xml.child(node, 'comment');
+  if (!cm) return null;
+  const t = xml.getText(cm);
+  if (!t.startsWith('repeat-tier:')) return null;
+  const out = {};
+  for (const kv of t.slice('repeat-tier:'.length).trim().split(/\s+/)) {
+    const i = kv.indexOf('=');
+    if (i > 0) out[kv.slice(0, i)] = kv.slice(i + 1);
+  }
+  return out;
+}
+
+function setComment(node, text) {
+  let cm = xml.child(node, 'comment');
+  if (!cm) {
+    cm = xml.elem('comment', {});
+    node.children.unshift(cm); // <comment> est le premier enfant en BattleScribe
+  }
+  xml.setText(cm, text);
+}
+
+function removeCommentWithPrefix(node, prefix) {
+  node.children = node.children.filter(
+    (x) => !(x.tag === 'comment' && xml.getText(x).startsWith(prefix))
+  );
 }
 
 function applyProfileChars(node, statProfiles) {

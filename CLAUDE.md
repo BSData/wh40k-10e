@@ -10,6 +10,11 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   pièges, constantes d'ids, validation obligatoire). À suivre pour toute
   intégration de pack et, plus largement, pour toute édition de
   détachements/améliorations.
+- **`editor/MFM_PROMPT.md`** — le guide d'intégration d'un MFM (points
+  unités/améliorations, surcoûts par arme, prix par seuil de répétition).
+  Compagnon : `editor/MFM_APP_PROMPT.md`, prompt autonome à coller dans
+  le dépôt d'une application consommatrice (type NewRecruit) pour
+  l'adapter à ces mécanismes.
 - `editor/README.md` — l'éditeur web (`node editor/server.js`) et la lib
   `editor/lib/catalog.js` + `editor/lib/xml.js` (round-trip XML fidèle :
   toujours passer par cette lib pour éditer, jamais de sed/regex sur les
@@ -31,6 +36,11 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
 4. Validation avant tout commit : `xmllint`, `catalog.validate` (ok,
    0 erreur), **0 id dupliqué introduit** vs HEAD, audit de la règle des
    améliorations. Diff-check : ne réécrire un texte que s'il diffère.
+5. **Prix par seuil de répétition (MFM)** : sémantique « les N premiers
+   au prix de base, au-delà du Nième à l'autre prix » → toujours le
+   pattern d'**entrée scindée** via `catalog.splitRepeatTier` (audit
+   `auditRepeatTiers`, dépose `removeRepeatTier`) — jamais de re-prix
+   global par condition roster. Détails : `editor/MFM_PROMPT.md`.
 
 ## Git
 
