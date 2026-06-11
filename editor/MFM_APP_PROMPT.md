@@ -99,6 +99,25 @@ Type de coût points : `typeId="51b2-306e-1021-d207"`, `name="pts"`.
    entrée d'unité (pattern entrée scindée) doit être appliqué, et
    l'entrée jumelle masquée ne doit être proposée que lorsque sa
    condition de visibilité est vraie.
+6. **Évaluation complète des modifiers `hidden`** (bug réel constaté
+   sur les améliorations Adeptus Custodes du dépôt) :
+   - dans un `conditionGroup`, les `<conditions>` directes ET les
+     `<conditionGroups>` imbriqués comptent **ensemble** dans le
+     or/and du groupe — n'ignore jamais l'un des deux ;
+   - `instanceOf`/`notInstanceOf` avec `scope="ancestor"` et
+     `childId=<categoryEntry>` se résout en remontant les ancêtres de
+     la sélection et leurs **categoryLinks** (catégories héritées
+     comprises) ; une condition non implémentée ne doit JAMAIS être
+     évaluée « vraie » par défaut — échoue bruyamment ou logge ;
+   - cas réels de référence (fichier `Imperium - Adeptus
+     Custodes.cat`, détachement Shield Host) : « From the Hall of
+     Armouries » = cachée si `notInstanceOf ancestor Shield-Captain`
+     (condition directe + sous-groupe détachement dans le même OR) ;
+     « Auric Mantle » = cachée si `AND(notInstanceOf Shield-Captain,
+     notInstanceOf Blade Champion)` (deux sous-groupes, pas de
+     condition directe). Attendu : un Blade Champion en Shield Host
+     voit Auric Mantle mais PAS From the Hall of Armouries ; un
+     Shield-Captain voit les deux.
 
 ## Plan de travail demandé
 
@@ -127,7 +146,14 @@ Type de coût points : `typeId="51b2-306e-1021-d207"`, `name="pts"`.
      l'unité porteuse ;
    - `repeats` : +5 pts par modèle au-delà du 2e (`repeat` +
      condition `atLeast 3`) → 3 modèles = +15−10 (reproduis le
-     modifierGroup réel : increment 5 répété + decrement 10 fixe).
+     modifierGroup réel : increment 5 répété + decrement 10 fixe) ;
+   - visibilité d'amélioration (cas Custodes ci-dessus) : porteur
+     Blade Champion en Shield Host → « Auric Mantle » proposée,
+     « From the Hall of Armouries » masquée ; porteur Shield-Captain
+     → les deux proposées ; hors Shield Host (sans force Croisade) →
+     les deux masquées. Fixture reprenant la structure exacte :
+     OR(condition directe, sous-groupe AND) pour l'une,
+     OR(sous-groupe AND, sous-groupe AND) pour l'autre.
 4. Non-régression : les rosters existants sauvegardés doivent recharger
    au même total tant que les données n'ont pas changé.
 
