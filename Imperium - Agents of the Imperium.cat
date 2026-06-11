@@ -165,6 +165,37 @@
             </profile>
           </profiles>
         </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Micromelta Rounds" hidden="true" id="5497-0da4-5c96-bb5f">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1d8e-93f8-6d8f-f19b" includeChildSelections="false"/>
+            <constraint type="min" value="-1" field="selections" scope="parent" shared="true" id="df0f-4613-7f90-31c6" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="45"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Micromelta Rounds" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="455c-5dcc-a966-396b">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">This model’s exitus rifle has the [ANTI-MONSTER 4+] and [ANTI-VEHICLE 4+] abilities.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="set" value="false" field="hidden"/>
+                <modifier type="set" value="1" field="df0f-4613-7f90-31c6"/>
+              </modifiers>
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="e203-73dc-18d9-f390" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifierGroup>
+          </modifierGroups>
+        </selectionEntry>
       </selectionEntries>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="110"/>
@@ -502,6 +533,39 @@
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="7d10-8c23-952-4396"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="aa5d-9820-fe62-e35f"/>
           </constraints>
+        </selectionEntry>
+        <selectionEntry type="upgrade" import="true" name="Intraneural Biotech" hidden="true" id="f81b-99df-9a06-5673">
+          <constraints>
+            <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7e3e-11e2-a260-c4f0" includeChildSelections="false"/>
+            <constraint type="min" value="-1" field="selections" scope="parent" shared="true" id="84a4-2c4f-904c-aa88" includeChildSelections="false"/>
+          </constraints>
+          <costs>
+            <cost name="pts" typeId="51b2-306e-1021-d207" value="35"/>
+            <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
+            <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
+            <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
+            <cost name="Crusade: Weapon Modifications" typeId="716d-91b7-d55a-1022" value="0"/>
+          </costs>
+          <profiles>
+            <profile name="Intraneural Biotech" typeId="9cc3-6d83-4dd3-9b64" typeName="Abilities" hidden="false" id="5a89-54a4-8a07-ea36">
+              <characteristics>
+                <characteristic name="Description" typeId="9b8f-694b-e5e-b573">You can target this unit with the Heroic Intervention stratagem, regardless of any other uses of that stratagem this phase. If you do:
+- That use is -1 CP.
+- That use does not prevent any uses of that stratagem on other units this phase.</characteristic>
+              </characteristics>
+            </profile>
+          </profiles>
+          <modifierGroups>
+            <modifierGroup type="and">
+              <modifiers>
+                <modifier type="set" value="false" field="hidden"/>
+                <modifier type="set" value="1" field="84a4-2c4f-904c-aa88"/>
+              </modifiers>
+              <conditions>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="e203-73dc-18d9-f390" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifierGroup>
+          </modifierGroups>
         </selectionEntry>
       </selectionEntries>
       <modifiers>
@@ -5597,6 +5661,48 @@ Select one objective marker on the battlefield. Until the start of your next Com
                   <description>^^Officio Assassinorum^^ units from your army can use the Overkill, Soulless Horror and Shieldbreaker abilities twice per battle, instead of once per battle (but cannot use such an ability more than once in the same battle round). 
 
 When mustering your army, each ^^Officio Assassinorum^^ unit from your army has the relevant Extremis ability, and you must increase the points cost of each of those units by the amount shown. If this causes your army to exceed the points limit for the battle you are playing, you cannot include that unit in your army.</description>
+                </rule>
+                <rule name="Prime Target (Stratagem, 1CP)" id="6230-1484-57b3-6e4c" hidden="false">
+                  <description>Veiled Blade Elimination Force – STRATAGEM (1CP)
+
+WHEN: Your Shooting phase or the Fight phase.
+TARGET: One Agents of the Imperium unit from your army that has not been selected to shoot or fight this phase.
+EFFECT: Until the end of the phase, each time a model in your unit makes an attack that targets a Character unit, re-roll a Wound roll of 1. If that attack is made by an Officio Assassinorum model and it targets the enemy Warlord, you can re-roll the Wound roll instead.</description>
+                </rule>
+                <rule name="Hyperstimms (Stratagem, 2CP)" id="482d-13b3-99e9-d427" hidden="false">
+                  <description>Veiled Blade Elimination Force – STRATAGEM (2CP)
+
+WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.
+TARGET: One Agents of the Imperium Character unit from your army that was selected as the target of one or more of the attacking unit’s attacks.
+EFFECT: Until the end of the phase, add 1 to the Toughness characteristic of models in your unit. In addition, if it is an Eversor Assassin unit, until the end of the phase, it has the Feel No Pain 4+ ability.</description>
+                </rule>
+                <rule name="Will-Sapping Salvo (Stratagem, 1CP)" id="9f26-221a-999c-2526" hidden="false">
+                  <description>Veiled Blade Elimination Force – STRATAGEM (1CP)
+
+WHEN: Your Shooting phase.
+TARGET: One Agents of the Imperium Infantry unit from your army that has not been selected to shoot this phase.
+EFFECT: Until the end of the phase, ranged weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability. In addition, if it is a Culexus Assassin unit, until the end of the phase, change the Damage characteristic of ranged weapons equipped by models in your unit to 3.</description>
+                </rule>
+                <rule name="Orbital Oversight (Stratagem, 1CP)" id="0ce4-fab5-8de0-0006" hidden="false">
+                  <description>Veiled Blade Elimination Force – STRATAGEM (1CP)
+
+WHEN: Your opponent’s Shooting phase, just after an enemy unit has selected its targets.
+TARGET: One Agents of the Imperium Infantry unit from your army that was selected as the target of one or more of the attacking unit’s attacks.
+EFFECT: Until the end of the phase, your unit can only be selected as the target of a ranged attack if the attacking model is within 18&quot;, or, if your unit has the Lone Operative ability, if the attacking model is within 6&quot;.</description>
+                </rule>
+                <rule name="Blind Grenades (Stratagem, 1CP)" id="0d66-6682-a86e-3976" hidden="false">
+                  <description>Veiled Blade Elimination Force – STRATAGEM (1CP)
+
+WHEN: Your opponent’s Charge phase, just after an enemy unit has declared a charge.
+TARGET: One Agents of the Imperium Grenades or Vindicare Assassin unit from your army that was selected as one of the targets of that charge and is not within Engagement Range of one or more enemy units.
+EFFECT: Until the end of the phase, subtract 1 from Charge rolls made for that enemy unit, or, if your unit is a Vindicare Assassin, subtract 2 from Charge rolls made for that enemy unit instead.</description>
+                </rule>
+                <rule name="Ensnaring Trap (Stratagem, 1CP)" id="32fb-585b-4d54-4fa6" hidden="false">
+                  <description>Veiled Blade Elimination Force – STRATAGEM (1CP)
+
+WHEN: End of your opponent’s Charge phase.
+TARGET: One Agents of the Imperium Infantry unit from your army that is within 6&quot; of one or more enemy units and would be eligible to declare a charge against one or more of those enemy units.
+EFFECT: Your unit can declare a charge. When doing so, you must select one or more of those enemy units as the targets of that charge, and your unit does not receive a Charge bonus this turn. In addition, if it is a Callidus Assassin unit and it makes a Charge move as a result of this Stratagem, until the end of the turn, each time a model in your unit makes a melee attack, add 1 to the Wound roll.</description>
                 </rule>
               </rules>
               <costs>
