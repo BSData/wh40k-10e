@@ -28,9 +28,27 @@ const FACTIONS = [
   'chaos-daemons',
   'death-guard',
   'world-eaters',
-  'emperors-children',
+  'emperor-s-children',
   'thousand-sons',
   'chaos-knights',
+	'adepta-sororitas',
+	'adeptus-custodes',
+	'adeptus-mechanicus',
+	'adeptus-titanicus',
+	'astra-militarum',
+	'grey-knights',
+	'imperial-agents',
+	'imperial-knights',
+	'space-marines',
+	'aeldari',
+	'drukhari',
+	'genestealer-cults',
+	'leagues-of-votann',
+	'necrons',
+	'orks',
+	't-au-empire',
+	'tyranids',
+
 ];
 
 // Pour chaque faction : la page "datasheets" (toutes les fiches, avec les
