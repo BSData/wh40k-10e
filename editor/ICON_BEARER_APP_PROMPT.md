@@ -85,8 +85,13 @@ Ils prouvent que le chef n'a aucun statut particulier — seul `scope` +
    → éligibles = **les 3 modèles de troupe uniquement** ; l'Aspiring
    Sorcerer (champion) **ne doit PAS** se voir proposer l'icône.
 
-Cas spécifique supplémentaire : « Instrument of Chaos » est souvent
-`childId="<id du modèle de troupe>"` → attribuable **à ce seul modèle**.
+Cas spécifique supplémentaire — **arme/équipement réservé à un modèle
+précis** (≠ icône/bannière) : p. ex. la **« Helix Gauntlet »** de
+l'`Infiltrator Squad` est `childId="<id du modèle Infiltrator>"`
+(l'Infiltrator de base, **pas** le Sergeant) → attribuable à ce seul
+modèle. (Dans ce dépôt, icônes / bannières / instruments sont tous
+`childId="model"` ; le `childId` modèle-précis sert aux équipements que
+la règle réserve à un modèle donné.)
 
 ### Contre-modèle (PAS d'association) — porteur dédié
 
@@ -157,7 +162,8 @@ deux mécanismes.)
   troupe uniquement** ; `C` ne se voit **pas** proposer `U`. (Réel :
   Rubric Marines / Aspiring Sorcerer + « 4-9 Rubric Marines ».)
 - **Modèle précis** : `U` avec `childId=<id modèle M>` → attribuable au
-  seul `M`. (Réel : Instrument of Chaos épinglé à « Bloodletter ».)
+  seul `M`. (Réel : « Helix Gauntlet » de l'Infiltrator Squad épinglée à
+  l'« Infiltrator » de base, pas au Sergeant.)
 - **Porteur dédié (sans association)** : unité avec variante « w/
   standard » → choisie au compte, pas via association ; le chef n'est pas
   forcé.
