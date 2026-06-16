@@ -15,6 +15,11 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   Compagnon : `editor/MFM_APP_PROMPT.md`, prompt autonome à coller dans
   le dépôt d'une application consommatrice (type NewRecruit) pour
   l'adapter à ces mécanismes.
+- **`editor/ICON_BEARER_APP_PROMPT.md`** — prompt autonome (application
+  consommatrice) pour interpréter le rattachement « 1 modèle porte
+  l'amélioration » : icônes/bannières via `<association>` (`childId="model"`
+  = n'importe quel modèle, ou un modèle/groupe/catégorie précis) ; le
+  porteur n'est **jamais le chef par défaut**, il sort de `scope`+`childId`.
 - `editor/README.md` — l'éditeur web (`node editor/server.js`) et la lib
   `editor/lib/catalog.js` + `editor/lib/xml.js` (round-trip XML fidèle :
   toujours passer par cette lib pour éditer, jamais de sed/regex sur les
