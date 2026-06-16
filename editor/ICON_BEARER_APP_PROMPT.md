@@ -136,6 +136,29 @@ deux mécanismes.)
    `selectionEntryGroup` / `categoryEntry`. Un type de `childId` non
    implémenté doit **échouer bruyamment** (log/erreur), **jamais**
    retomber silencieusement sur « le chef » ou « n'importe lequel ».
+7. **Exclusion mutuelle icône ↔ instrument (assignation à des modèles
+   distincts)** : certaines unités exposent **deux** améliorations
+   associées au **même type de modèle** non-lieutenant — p. ex.
+   Bloodcrushers : « Daemonic Icon » **et** « Instrument of Chaos »,
+   chacune `min=1 max=1 childId=<modèle régulier>`. La datasheet dit
+   « 1 *[modèle]* **qui n'est pas équipé de** l'autre peut être équipé
+   de… » → les deux doivent être portées par des **modèles différents**.
+   - **Ce n'est pas exprimable dans la donnée** : une `<association>` /
+     `<constraint>` BattleScribe ne peut pas référencer *l'instance de
+     modèle* qu'une autre association a résolue, et les entrées de modèle
+     sont à compteur N (2–5 modèles pour une entrée). Le couplage **1
+     icône + 1 instrument par unité** EST déjà garanti par les `min/max=1`
+     des associations ; le « modèles différents » n'a **aucune incidence
+     sur les points ni la légalité** (effets à l'échelle de l'unité).
+   - **À toi de l'appliquer, côté assignation** : quand plusieurs
+     associations d'une unité ciblent le **même** type de modèle, assigne
+     chacune à une **instance distincte** et **interdis** d'en placer deux
+     sur la même instance. Détecte le couple : deux améliorations dont le
+     nom contient `icon` / `instrument` (ou `brayhorn` / `herd banner`)
+     **associées au même `childId`**, `min/max=1`, dans la même unité.
+   - S'il n'y a pas assez d'instances éligibles pour toutes les
+     associations (jamais le cas aux tailles d'unité légales), signale-le
+     plutôt que d'empiler deux améliorations sur un modèle.
 
 ## Plan de travail demandé
 
@@ -167,6 +190,11 @@ deux mécanismes.)
 - **Porteur dédié (sans association)** : unité avec variante « w/
   standard » → choisie au compte, pas via association ; le chef n'est pas
   forcé.
+- **Exclusion mutuelle** : unité avec une icône ET un instrument, tous
+  deux `childId=<même modèle régulier>` `min/max=1` (ex. Bloodcrushers) →
+  prendre les deux les assigne à **deux Bloodcrusher différents** ;
+  l'app refuse de les mettre sur le **même** modèle ; total = 1 icône +
+  1 instrument, points inchangés.
 - **Aller-retour** : attribuer `U` à un modèle non-chef, sauvegarder,
   recharger → toujours sur ce modèle.
 - **Échec bruyant** : association avec un type de `childId` inconnu →
