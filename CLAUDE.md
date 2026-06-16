@@ -20,6 +20,12 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   l'amélioration » : icônes/bannières via `<association>` (`childId="model"`
   = n'importe quel modèle, ou un modèle/groupe/catégorie précis) ; le
   porteur n'est **jamais le chef par défaut**, il sort de `scope`+`childId`.
+- **`editor/ALLIED_UNITS_APP_PROMPT.md`** — prompt autonome (application
+  consommatrice) : une armée dont le roster est importé d'une bibliothèque
+  via `catalogueLink importRootEntries="true"` (Chaos Daemons, Imperial
+  Knights) ne doit pas voir toutes ses unités tomber en « Allied Units » —
+  les entrées importées sont **natives** du catalogue importateur ; le
+  statut allié se décide par **mot-clef de faction**, jamais par fichier.
 - `editor/README.md` — l'éditeur web (`node editor/server.js`) et la lib
   `editor/lib/catalog.js` + `editor/lib/xml.js` (round-trip XML fidèle :
   toujours passer par cette lib pour éditer, jamais de sed/regex sur les
