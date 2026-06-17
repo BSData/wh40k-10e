@@ -26,6 +26,12 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   Knights) ne doit pas voir toutes ses unités tomber en « Allied Units » —
   les entrées importées sont **natives** du catalogue importateur ; le
   statut allié se décide par **mot-clef de faction**, jamais par fichier.
+- **`editor/UNIT_COMPOSITION_APP_PROMPT.md`** — prompt autonome (application
+  consommatrice) : pour afficher la bonne composition des unités à choix de
+  taille (Jakhals, etc.), l'appli doit **résoudre les `entryLink`-vers-modèle**
+  (même au niveau unité) comme des modèles, **exécuter les `modifier`**
+  (`set`/`decrement`, cross-node, `repeats`) et **respecter min=0** — la donnée
+  est complète, c'est l'évaluation qui manque.
 - `editor/README.md` — l'éditeur web (`node editor/server.js`) et la lib
   `editor/lib/catalog.js` + `editor/lib/xml.js` (round-trip XML fidèle :
   toujours passer par cette lib pour éditer, jamais de sed/regex sur les
