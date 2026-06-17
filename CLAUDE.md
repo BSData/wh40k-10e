@@ -15,6 +15,11 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   Compagnon : `editor/MFM_APP_PROMPT.md`, prompt autonome à coller dans
   le dépôt d'une application consommatrice (type NewRecruit) pour
   l'adapter à ces mécanismes.
+- **`editor/REPEAT_COST_APP_PROMPT.md`** — prompt autonome (application
+  consommatrice) : le surcoût « 3e+ exemplaire plus cher » est encodé par
+  un `<modifier>` de coût + marqueur `repeat-cost: threshold=N delta=Δ` ;
+  l'appli doit n'appliquer Δ qu'aux exemplaires **au-delà du Nème** (pas à
+  tous). Remplace l'ancienne entrée dupliquée `(additional)`.
 - **`editor/ICON_BEARER_APP_PROMPT.md`** — prompt autonome (application
   consommatrice) pour interpréter le rattachement « 1 modèle porte
   l'amélioration » : icônes/bannières via `<association>` (`childId="model"`
@@ -60,11 +65,15 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
 4. Validation avant tout commit : `xmllint`, `catalog.validate` (ok,
    0 erreur), **0 id dupliqué introduit** vs HEAD, audit de la règle des
    améliorations. Diff-check : ne réécrire un texte que s'il diffère.
-5. **Prix par seuil de répétition (MFM)** : sémantique « les N premiers
-   au prix de base, au-delà du Nième à l'autre prix » → toujours le
-   pattern d'**entrée scindée** via `catalog.splitRepeatTier` (audit
-   `auditRepeatTiers`, dépose `removeRepeatTier`) — jamais de re-prix
-   global par condition roster. Détails : `editor/MFM_PROMPT.md`.
+5. **Prix par seuil de répétition (MFM)** : « les N premiers au prix de
+   base, au-delà du Nième à l'autre prix » → **modifier de coût**
+   `increment` + marqueur `<comment>repeat-cost: threshold=N delta=Δ</comment>`
+   sur l'unité ; l'**appli** n'applique Δ qu'aux exemplaires au-delà du
+   Nème (`editor/REPEAT_COST_APP_PROMPT.md`). **Ne plus dupliquer
+   l'entrée** : `splitRepeatTier` abandonné (l'entrée cachée
+   n'apparaissait pas dans les applis), `removeRepeatTier` ne sert qu'à
+   déposer d'anciennes jumelles `(additional)`. Détails :
+   `editor/MFM_PROMPT.md`.
 
 ## Git
 
