@@ -140,10 +140,63 @@ indépendants — expose **les variantes** comme seules éditables, et laisse le
 `automatic` + `decrement` par variante) ; il suffit de l'évaluer (§2, §4) et de
 présenter chaque « +1 arme » comme **un échange** qui consomme un modèle de base.
 
+## Coût d'arme PAR MODÈLE — multiplier par le nombre de porteurs
+
+> Bug type : **Retributor Squad** (Adepta Sororitas). L'appli affiche
+> « Multi-melta **+5 pts** » et n'ajoute **+5 qu'une fois** quand les **4**
+> Retributors prennent la multi-melta. Le bon total est **4 × 5 = +20**.
+
+Un `<cost>` porté par une arme/option est **par instance sélectionnée**, pas par
+unité. Quand **plusieurs modèles** d'une unité peuvent prendre **chacun** la même
+arme payante, le surcoût se **multiplie par le nombre de modèles qui la prennent**.
+
+La donnée l'encode de façon standard : le groupe d'arme est **imbriqué dans une
+entrée-modèle de quantité N**, donc il existe **N exemplaires** du groupe (un par
+modèle), chacun « max 1 » :
+
+```
+selectionEntry type="model" "Retributor"   min=4 max=4         ← 4 figurines
+  └ selectionEntryGroup "Retributor Weapons"  min=1 max=1      ← 1 arme PAR figurine
+       ├ Ministorum heavy flamer (max 1)
+       ├ Multi-melta (max 1)            <cost pts="5"/>        ← +5 PAR exemplaire
+       └ Heavy bolter (défaut, max 1)
+```
+
+Il n'y a **aucune** contrainte « max 1 multi-melta dans l'unité » : le plafond de
+4 vient des **4 modèles × (max 1 chacun)**. Donc 4 multi-meltas possibles, +5
+chacune → **+20**.
+
+### Ce que l'application doit faire
+1. **Étends l'entrée-modèle collective** (`type="model"` avec quantité > 1 qui
+   contient un groupe d'options) en **N porteurs indépendants** — ou, de façon
+   équivalente, **compte le coût d'option par instance** plutôt qu'une fois.
+2. Pour chaque option payante : `contribution = cost × (nombre de modèles qui la
+   prennent)`, borné par le `max` **par modèle** **et** par le nombre de modèles.
+   Ne coûte **jamais** une option « par modèle » une seule fois au niveau de
+   l'unité.
+3. Idem pour le calcul d'un **« coût maximal une fois armée »** : prends, sur ce
+   groupe, l'option payante la plus chère **× le nombre de modèles porteurs**
+   (Retributor armé au max = base **+ 4 × 5 = +20**, pas +5).
+4. Piège d'évaluation : une contrainte `scope="parent" shared="true"` **max 1**
+   sur le groupe d'arme s'applique **au modèle** (1 arme par figurine), **pas à
+   l'unité entière** — ne la lis pas comme « 1 seule arme spéciale dans l'unité ».
+
+### Cas de référence à tester — Retributor Squad
+- **Défaut** : 1 Retributor Superior + 4 Retributors (heavy bolter gratuit) →
+  prix de base de l'unité, **0** surcoût d'arme.
+- **1 Retributor en multi-melta** : **+5**.
+- **4 Retributors en multi-melta** : **+20** (et non +5). Même logique pour la
+  Ministorum heavy flamer si elle devient payante, et pour toute unité « N
+  modèles, 1 arme payante chacun » (Devastators/Havocs/Long Fangs‑like, équipes
+  d'armes lourdes, etc.).
+
 ## Invariants
 - Points et ratios d'armes par taille sont **déjà** pilotés par le nombre de
   modèles et par ces modifiers : une fois l'évaluation faite, rien d'autre à
   coder côté données.
+- **Coût d'arme par modèle = `cost` × nombre de porteurs** (jamais une seule
+  fois) : la donnée porte un `cost` par instance sur un groupe d'arme imbriqué
+  dans une entrée-modèle de quantité N ; multiplie, ne fais pas un forfait unité.
 - **Aucune donnée à modifier** : c'est strictement un correctif d'évaluation
   côté appli (résolution des `entryLink`-modèles + exécution des `modifier`
-  cross-node/`repeats` + défauts min/max).
+  cross-node/`repeats` + défauts min/max + coût d'option **par instance**).
