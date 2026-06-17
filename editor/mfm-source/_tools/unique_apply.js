@@ -11,6 +11,8 @@ const FILES={
  "aeldari":["Aeldari - Aeldari Library.cat"],
  "astra-militarum":["Imperium - Astra Militarum.cat","Imperium - Astra Militarum - Library.cat"],
  "blood-angels":["Imperium - Blood Angels.cat","Imperium - Space Marines.cat"],
+ "chaos-knights":["Chaos - Chaos Knights.cat","Chaos - Chaos Knights Library.cat"],
+ "chaos-space-marines":["Chaos - Chaos Space Marines.cat"],
  "death-guard":["Chaos - Death Guard.cat"],
  "drukhari":["Aeldari - Aeldari Library.cat"],
  "genestealer-cults":["Genestealer Cults.cat","Library - Tyranids.cat"],
