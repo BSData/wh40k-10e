@@ -48,6 +48,21 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   l'appli doit **suivre les `<catalogueLink>` par `targetId`** (transitif),
   résoudre les `<infoLink type="rule">` **inter-fichiers**, et filtrer les
   détachements par condition **`primary-catalogue`**, jamais par fichier.
+- **`editor/MARINE_CHAPTER_COST_APP_PROMPT.md`** — prompt autonome (application
+  consommatrice) : quelques unités du **tronc commun Space Marines** (définies
+  dans `Imperium - Space Marines.cat`, importées par les chapitres) ont un
+  **prix différent selon le chapitre** ; encodé par un modifier de coût `set`
+  conditionné **`primary-catalogue`** (marqueur `<comment>chapter-cost: XX</comment>`).
+  Aucune logique spéciale côté appli : **éval BattleScribe standard** (contraste
+  avec `repeat-cost`). Si le chapitre **redéfinit** l'unité localement (Black
+  Templars), le prix est déjà sur l'entrée locale.
+- **`editor/LEADER_LINKS_APP_PROMPT.md`** — prompt autonome (application
+  consommatrice) : les listes MFM « LEADER » (quelles unités un chef peut mener)
+  sont encodées sur les datasheets Space Marines/chapitres par des
+  `selectionEntryGroup` **déclaratifs** `hidden`+`max=0` — `Can Lead (MFM)` sur
+  le chef, `Can Be Led By (MFM)` sur l'unité quand le chef est importé (frontière
+  de bibliothèque partagée). L'appli reconstitue les rattachements par **union
+  des deux sens**, restreinte au catalogue primaire ; jamais sélectionnables.
 - `editor/README.md` — l'éditeur web (`node editor/server.js`) et la lib
   `editor/lib/catalog.js` + `editor/lib/xml.js` (round-trip XML fidèle :
   toujours passer par cette lib pour éditer, jamais de sed/regex sur les

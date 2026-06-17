@@ -9,7 +9,7 @@ const isCostHeader = l => /^YOUR\b.*\b(UNIT COSTS|UNITS COST)$/i.test(l);
 const priceOf = l => { const m = l.match(/(\d[\d,]*)\s*pts?\s*$/i); return m ? num(m[1]) : null; };
 const modelsOf = l => { const m = l.match(/(\d[\d,]*)\s*models?\b/i); return m ? num(m[1]) : null; };
 const isSection = l => /^(UNITS|SPACE MARINES|HARLEQUINS|YNNARI|LEGIONS? OF EXCESS|PLAGUE LEGIONS?|IMPERIAL FISTS|IRON HANDS|SALAMANDERS|RAVEN GUARD|ULTRAMARINES|WHITE SCARS|EVERY MODEL HAS THE IMPERIUM KEYWORD)$/i.test(l);
-const stripPts = l => l.replace(/(\d[\d,]*)\s*pts?\s*$/i, '').replace(/^per\s+/i, '').replace(/^\+\s*/, '').trim();
+const stripPts = l => l.replace(/(\d[\d,]*)\s*pts?\s*$/i, '').replace(/^per\s+/i, '').replace(/^\+\s*\d*\s*/, '').trim();
 
 function parseFaction(text) {
   const all = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);

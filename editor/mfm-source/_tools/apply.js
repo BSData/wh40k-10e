@@ -30,6 +30,10 @@ function addRepeatCost(node, threshold, delta, unitId) {
 const log = [], flag = [], touched = new Set();
 const byName = new Map();
 for (const f of files) for (const d of c.datasheetsForTargeting(f)) { if (/\[/.test(d.name)) continue; const k = norm(d.name); if (!byName.has(k)) byName.set(k, d); }
+// fallback: standalone (depth-0) type=model entries are datasheet-like (shared-library
+// chassis like Leman Russ variants, Soul Grinders). Only add when the name isn't already
+// claimed by a type=unit datasheet, so we never shadow a real unit.
+for (const f of files) { const doc = c.docs.get(f); if (!doc) continue; xml.walk(doc.root, (n, p, anc) => { if (n.tag !== 'selectionEntry' || xml.getAttr(n, 'type') !== 'model') return; if (anc.some(a => a.tag === 'selectionEntry' || a.tag === 'selectionEntryGroup')) return; const nm = xml.getAttrDecoded(n, 'name') || ''; if (/\[/.test(nm)) return; const k = norm(nm); if (!byName.has(k)) byName.set(k, { id: xml.getAttr(n, 'id'), name: nm }); }); }
 const findUnit = mn => byName.get(norm(mn)) || byName.get(norm(mn).replace(/S$/, '')) || byName.get(norm(mn) + 'S') || null;
 const splitExists = mn => { const d = findUnit(mn); if (!d) return false; const nm = norm(d.name) + ' (ADDITIONAL)'; for (const f of files) if (c.datasheetsForTargeting(f).some(x => norm(x.name) === nm)) return true; return false; };
 
@@ -46,11 +50,26 @@ for (const [mn, mu] of Object.entries(fac.units)) {
   if (perModel) {
     const m0 = mu.tiers[0].models, p0 = mu.tiers[0].pts, per = p0 / m0;
     const linear = Number.isInteger(per) && mu.tiers.every(t => t.pts === per * t.models);
-    if (linear && mu.options.length === 0) {
-      const mnodes = []; xml.walk(node, e => { if (e.tag === 'selectionEntry' && e !== node && xml.getAttr(e, 'type') === 'model' && ptsOf(e) != null) mnodes.push(e); });
+    const mnodes = []; xml.walk(node, e => { if (e.tag === 'selectionEntry' && e !== node && xml.getAttr(e, 'type') === 'model' && ptsOf(e) != null) mnodes.push(e); });
+    if (mu.options.length) { unhandled = true; flag.push(`PER-MODEL ${mn} (has-options) mfm=${mu.tiers.map(t => t.models + '=' + t.pts).join(',')}`); }
+    else if (linear) {
       const toset = mnodes.filter(e => String(ptsOf(e)) !== String(per));
       if (toset.length) { acts.push(() => toset.forEach(e => setPts(e, per))); log.push(`per-model ${d.name}: ${per}/model x${toset.length}`); }
-    } else { unhandled = true; flag.push(`PER-MODEL ${mn} (${linear ? 'has-options' : 'non-linear'}) mfm=${mu.tiers.map(t => t.models + '=' + t.pts).join(',')}`); }
+    } else { // non-linear: move cost to the unit + create size-tier set modifiers (Gretchin pattern)
+      acts.push(() => {
+        mnodes.forEach(e => setPts(e, 0));
+        setPts(node, mu.tiers[0].pts);
+        let mods = xml.child(node, 'modifiers');
+        if (!mods) { mods = xml.elem('modifiers', {}, []); mods.selfClose = false; const ci = node.children.findIndex(ch => ch.tag === 'costs'); if (ci >= 0) node.children.splice(ci + 1, 0, mods); else node.children.push(mods); }
+        mods.children = mods.children.filter(m => { if (m.tag !== 'modifier') return true; let f = false; xml.walk(m, x => { if (x.tag === 'comment' && /mfm-size/.test(xml.getText(x))) f = true; }); return !f; });
+        for (let i = 1; i < mu.tiers.length; i++) {
+          const cmt = xml.elem('comment', {}); xml.setText(cmt, 'mfm-size');
+          const cond = xml.elem('condition', { type: 'greaterThan', value: String(mu.tiers[i - 1].models), field: 'selections', scope: d.id, childId: 'model', shared: 'true' });
+          mods.children.push(xml.elem('modifier', { type: 'set', value: String(mu.tiers[i].pts), field: COST_PTS }, [cmt, xml.elem('conditions', {}, [cond])]));
+        }
+      });
+      log.push(`per-model->unit-tiers ${d.name}: base=${mu.tiers[0].pts} +${mu.tiers.length - 1} tier(s)`);
+    }
   } else {
     if (mfmBase != null && String(base) !== mfmBase) patch.costs = [{ typeId: COST_PTS, value: mfmBase }];
     const tp = [];
@@ -60,8 +79,8 @@ for (const [mn, mu] of Object.entries(fac.units)) {
   const op = [];
   if (!unhandled) for (const o of mu.options) {
     let ids = [];
-    for (const g of u.options) for (const ch of g.choices) if (normOpt(ch.name) === normOpt(o.name) || normEnh(ch.name) === normEnh(o.name)) ids.push(ch.id);
-    if (!ids.length) { const want = normOpt(o.name); xml.walk(node, e => { if (e.tag !== 'selectionEntry' || e === node) return; const en = normOpt(xml.getAttrDecoded(e, 'name')); if (en === want || en.includes('W/' + want) || en.includes('WITH' + want)) ids.push(xml.getAttr(e, 'id')); }); }
+    for (const g of u.options) for (const ch of g.choices) if (normOpt(ch.name) === normOpt(o.name) || normEnh(ch.name) === normEnh(o.name) || normOpt(ch.name).startsWith(normOpt(o.name))) ids.push(ch.id);
+    if (!ids.length) { const want = normOpt(o.name); xml.walk(node, e => { if (e.tag !== 'selectionEntry' || e === node) return; const en = normOpt(xml.getAttrDecoded(e, 'name')); if (en === want || en.startsWith(want) || en.includes('W/' + want) || en.includes('WITH' + want)) ids.push(xml.getAttr(e, 'id')); }); }
     if (!ids.length) { flag.push(`OPT no-match ${mn} "${o.name}"`); continue; }
     for (const id of [...new Set(ids)]) { const r = c.byId.get(id); if (r && String(ptsOf(r.node)) !== String(o.pts)) op.push({ id, pts: o.pts }); }
   }
@@ -91,7 +110,7 @@ for (const [dn, enhs] of Object.entries(fac.enhancements)) {
     let cand = allEnh.filter(e => normEnh(e.name) === k), fuzzy = false;
     if (cand.some(e => e.isEnh)) cand = cand.filter(e => e.isEnh);
     if (!cand.length) { fuzzy = true; const fz = allEnh.filter(e => e.isEnh && ed(normEnh(e.name), k) <= 2); const sc = fz.filter(e => norm(e.det) === norm(dn)); cand = sc.length ? sc : fz; }
-    if (cand.length > 1) { const s = cand.filter(e => norm(e.det) === norm(dn)); if (s.length) cand = s; }
+    if (cand.length > 1) { const s = cand.filter(e => norm(e.det) === norm(dn)); if (s.length) cand = s; else { const orph = cand.filter(e => !e.det); if (orph.length === 1) cand = orph; } }
     if (!cand.length) { flag.push(`NOMATCH enh ${dn} / ${en}`); continue; }
     if (cand.length > 1 && !(!fuzzy && mfmVals.get(k).size === 1)) { flag.push(`AMBIG enh ${dn} / ${en}`); continue; }
     let did = false; for (const e of cand) { if (String(ptsOf(e.node)) !== String(pts)) { if (DO) { setPts(e.node, pts); touched.add(e.file); } did = true; } }
