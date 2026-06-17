@@ -177,7 +177,7 @@
         <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="ff16-654c-9f5f-d392"/>
       </constraints>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="125"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="140"/>
         <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
         <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
         <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
@@ -300,7 +300,7 @@
         <constraint type="max" value="1" field="selections" scope="roster" shared="true" id="ff16-654c-9f5f-d392"/>
       </constraints>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="85"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="75"/>
       </costs>
       <infoLinks>
         <infoLink name="Oath of Moment" hidden="false" type="rule" id="5281-f2e5-43cd-c2a4" targetId="3b76-4053-ece9-6e7d"/>
@@ -501,7 +501,7 @@
         </entryLink>
       </entryLinks>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="115"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="105"/>
         <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
         <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
         <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
@@ -949,7 +949,7 @@
         </entryLink>
       </entryLinks>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="315"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="285"/>
         <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
         <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
         <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
@@ -1421,7 +1421,7 @@
         <infoLink name="Oath of Moment" hidden="false" type="rule" id="5ad8-a06c-1acb-b4db" targetId="3b76-4053-ece9-6e7d"/>
       </infoLinks>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="210"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="200"/>
       </costs>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="24e0-992f-b207-1714" includeChildSelections="true"/>
@@ -1596,6 +1596,14 @@
       </selectionEntryGroups>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Land Speeder Vengeance" hidden="false" id="b4a0-d2fe-a988-f28b" page="35">
+      <modifiers>
+        <modifier type="increment" field="51b2-306e-1021-d207" value="10">
+          <comment>repeat-cost: threshold=2 delta=10 (surcout par exemplaire au-dela du Neme uniquement; voir editor/REPEAT_COST_APP_PROMPT.md)</comment>
+          <conditions>
+            <condition type="atLeast" value="3" field="selections" scope="roster" childId="b4a0-d2fe-a988-f28b" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="120"/>
         <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
@@ -1878,7 +1886,7 @@
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Ravenwing Darkshroud" hidden="false" id="152b-a271-df2b-21a9" page="33">
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="100"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="80"/>
         <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
         <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
         <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
@@ -2107,7 +2115,7 @@
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Ravenwing Black Knights" hidden="false" id="212d-f302-aaaf-5c12" page="31">
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="80"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="75"/>
         <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
         <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
         <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
@@ -2446,9 +2454,15 @@
         </selectionEntryGroup>
       </selectionEntryGroups>
       <modifiers>
-        <modifier type="set" value="160" field="51b2-306e-1021-d207">
+        <modifier type="set" value="150" field="51b2-306e-1021-d207">
           <conditions>
             <condition type="greaterThan" value="3" field="selections" scope="212d-f302-aaaf-5c12" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="increment" field="51b2-306e-1021-d207" value="10">
+          <comment>repeat-cost: threshold=2 delta=10 (surcout par exemplaire au-dela du Neme uniquement; voir editor/REPEAT_COST_APP_PROMPT.md)</comment>
+          <conditions>
+            <condition type="atLeast" value="3" field="selections" scope="roster" childId="212d-f302-aaaf-5c12" shared="true" includeChildSelections="true" includeChildForces="true"/>
           </conditions>
         </modifier>
       </modifiers>
@@ -2533,8 +2547,16 @@
       </modifierGroups>
     </selectionEntry>
     <selectionEntry type="unit" import="true" name="Ravenwing Command Squad" hidden="false" id="e87d-f173-88b9-aa84" publicationId="3931-1b04-c00e-afad" page="30">
+      <modifiers>
+        <modifier type="increment" field="51b2-306e-1021-d207" value="10">
+          <comment>repeat-cost: threshold=2 delta=10 (surcout par exemplaire au-dela du Neme uniquement; voir editor/REPEAT_COST_APP_PROMPT.md)</comment>
+          <conditions>
+            <condition type="atLeast" value="3" field="selections" scope="roster" childId="e87d-f173-88b9-aa84" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="120"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="115"/>
         <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
         <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
         <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
@@ -3119,8 +3141,16 @@
         <infoLink name="Deep Strike" hidden="false" type="rule" id="42f3-3cbb-c7b-5fe4" targetId="7cb5-dd6b-dd87-ad3b"/>
         <infoLink name="Oath of Moment" hidden="false" id="a9ed-4479-7769-b018" type="rule" targetId="3b76-4053-ece9-6e7d"/>
       </infoLinks>
+      <modifiers>
+        <modifier type="increment" field="51b2-306e-1021-d207" value="20">
+          <comment>repeat-cost: threshold=1 delta=20 (surcout par exemplaire au-dela du Neme uniquement; voir editor/REPEAT_COST_APP_PROMPT.md)</comment>
+          <conditions>
+            <condition type="atLeast" value="2" field="selections" scope="roster" childId="a6cc-9a65-dbf1-71b0" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="250"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="240"/>
         <cost name="Crusade Points" typeId="b03b-c239-15a5-da55" value="0"/>
         <cost name="Crusade: Battle Honours" typeId="75bb-ded1-c86d-bdf0" value="0"/>
         <cost name="Crusade: Experience" typeId="a623-fe74-1d33-cddf" value="0"/>
@@ -3378,10 +3408,10 @@ In addition, each time a model in this unit makes an attack that targets your Oa
         </profile>
       </profiles>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="180"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="165"/>
       </costs>
       <modifiers>
-        <modifier type="set" value="360" field="51b2-306e-1021-d207">
+        <modifier type="set" value="330" field="51b2-306e-1021-d207">
           <conditions>
             <condition type="greaterThan" value="5" field="selections" scope="6135-d842-8e61-889d" childId="model" shared="true" includeChildSelections="true"/>
           </conditions>
@@ -3829,12 +3859,18 @@ In addition, each time a model in this unit makes an attack that targets your Oa
         <infoLink name="Oath of Moment" hidden="false" type="rule" id="a0d8-bbcb-b00d-b420" targetId="3b76-4053-ece9-6e7d"/>
       </infoLinks>
       <costs>
-        <cost name="pts" typeId="51b2-306e-1021-d207" value="90"/>
+        <cost name="pts" typeId="51b2-306e-1021-d207" value="80"/>
       </costs>
       <modifiers>
-        <modifier type="set" value="180" field="51b2-306e-1021-d207">
+        <modifier type="set" value="170" field="51b2-306e-1021-d207">
           <conditions>
             <condition type="greaterThan" value="3" field="selections" scope="f34-e2f9-c98e-1916" childId="model" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="increment" field="51b2-306e-1021-d207" value="10">
+          <comment>repeat-cost: threshold=2 delta=10 (surcout par exemplaire au-dela du Neme uniquement; voir editor/REPEAT_COST_APP_PROMPT.md)</comment>
+          <conditions>
+            <condition type="atLeast" value="3" field="selections" scope="roster" childId="f34-e2f9-c98e-1916" shared="true" includeChildSelections="true" includeChildForces="true"/>
           </conditions>
         </modifier>
       </modifiers>
