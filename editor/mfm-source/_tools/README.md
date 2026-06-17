@@ -25,8 +25,11 @@ fidèle), jamais de sed/regex sur les `.cat`.
 4. `extract_unique.js` → `/tmp/unique.json` puis `unique_apply.js [apply]` —
    marqueurs `<comment>unique-detachment: X</comment>` (détachement = entrée à coût DP).
    Voir `UNIQUE_DETACHMENT_APP_PROMPT.md`.
-5. `leader_analyze.js` (lecture seule) puis `leader_write.js [apply]` — liens
-   chef→unités (groupes déclaratifs `hidden`+`max=0`). Voir `LEADER_LINKS_APP_PROMPT.md`.
+5. `prose_links.js [apply]` — liens chef→unités **toutes factions**, parsés de la
+   prose des datasheets (capacité *Leader* : « can be attached to the following
+   units: … »). Groupes déclaratifs `hidden`+`max=0` « Can Lead (MFM) » sur le chef.
+   Supersède l'ancienne approche MFM-caption marines (`leader_write/analyze.js`).
+   Voir `LEADER_LINKS_APP_PROMPT.md`.
 
 ## Validation (avant chaque commit)
 
