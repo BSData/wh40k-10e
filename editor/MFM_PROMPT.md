@@ -82,45 +82,44 @@ cas, dans cet ordre de préférence :
   `atLeast 1 field="selections" scope="parent" childId="<id arme>"
   shared="true"` — documente-le en `<comment>`.
 
-## Nouveauté 2 — prix par seuil de répétition (RÈGLE FIGÉE)
+## Nouveauté 2 — prix par seuil de répétition (RÈGLE FIGÉE — révisée)
 
-**Sémantique confirmée par l'utilisateur** : « les N premiers
-exemplaires au prix de base, chaque exemplaire **au-delà du Nième** à un
-autre prix ». Le MFM donne les deux prix. C'est inexprimable par
-modifier pur (les instances d'une même entrée sont indistinguables, une
-condition roster les re-prixerait toutes) → **pattern d'entrée scindée**,
-outillé dans la lib et **testé** (round-trip byte-identique) :
+**Sémantique** : « les N premiers exemplaires au prix de base, chaque
+exemplaire **au-delà du Nième** à un autre prix ». Le MFM donne les deux prix.
 
-```js
-// création — threshold = N (dernier exemplaire au prix de base),
-// pts = prix des exemplaires au-delà ; tiers obligatoire si l'unité a
-// des paliers de taille (forme applyTiers : [{idx, pts}])
-c.splitRepeatTier(file, unitId, { threshold: 3, pts: 200,
-                                  tiers: [{ idx: 0, pts: 400 }] });
-c.removeRepeatTier(unitId);   // dépose (origine ou jumelle) — réversible
-c.auditRepeatTiers();         // [] attendu — à inclure dans le gauntlet
+**Encodage (décision utilisateur, remplace l'ancien)** : surcoût porté par un
+**modifier de coût** sur le `selectionEntry` de l'unité + un **marqueur**
+`<comment>` ; c'est l'**application** qui n'applique le surcoût qu'aux
+exemplaires au-delà du Nème. **On ne duplique plus l'entrée.** L'ancien pattern
+« entrée scindée / `(additional)` » (`splitRepeatTier`) est **abandonné** :
+l'entrée cachée n'apparaissait jamais dans les applis à parsing statique (le 3e
+exemplaire ne coûtait pas plus cher). `removeRepeatTier` sert désormais à
+**déposer** d'anciennes jumelles avant de poser le modifier.
+
+```xml
+<modifier type="increment" field="51b2-306e-1021-d207" value="Δ">
+  <comment>repeat-cost: threshold=N delta=Δ (surcout par exemplaire au-dela du Neme uniquement; voir editor/REPEAT_COST_APP_PROMPT.md)</comment>
+  <conditions>
+    <condition type="atLeast" value="N+1" field="selections" scope="roster"
+               childId="<id de l'unité>" shared="true"
+               includeChildSelections="true" includeChildForces="true"/>
+  </conditions>
+</modifier>
 ```
 
-Ce que fait `splitRepeatTier` (ne le ré-implémente pas à la main) :
-- **origine** : contrainte `max=N field="selections" scope="roster"
-  shared="true"` + marqueur `<comment>repeat-tier: role=base
-  threshold=N partner=<idJumelle> capId=<idContrainte></comment>` ;
-- **jumelle** `"<Nom> (additional)"` : clone à ids neufs avec **remap
-  des références internes** (`cloneWithNewIdsRemapped` — indispensable :
-  les tiers de taille utilisent `scope="<id de l'unité>"`), prix `pts`,
-  paliers de taille re-chiffrés via `tiers`, plafonds datasheet
-  (`field="selections"` scope force/roster) **réduits de N** pour que le
-  total reste conforme, `hidden="true"` + modifier `set hidden=false`
-  conditionné `atLeast N @roster childId=<idOrigine> shared="true"`,
-  marqueur `role=extra` ;
-- **entryLinks** : chaque link exposant l'origine est dupliqué vers la
-  jumelle (tous fichiers — bibliothèques partagées comprises), plafonds
-  de link réduits pareillement.
-
-Garde-fous intégrés : refus si seuil ≥ plafond datasheet (scission
-inutile), si l'unité a des paliers de taille sans `tiers` fourni, ou si
-l'entrée est déjà scindée. Les marqueurs `repeat-tier:` sont la source
-de vérité de l'audit et de la dépose — ne les édite jamais à la main.
+- `value` = Δ = prix_fort − prix_base (**forfait par exemplaire**, constant
+  quelle que soit la taille). `threshold=N` dans le marqueur (= `value` de la
+  condition − 1). Coût de base + paliers de taille (`set` pts) restent encodés
+  comme d'habitude ; le repeat-cost s'ajoute par-dessus.
+- Δ supposé **constant** sur tous les paliers de taille ; si le MFM donne des Δ
+  différents par taille → **demander** (un forfait unique ne suffit pas).
+- **Pièges** : créer le `<modifiers>` manquant avec `selfClose=false` (sinon le
+  modifier est perdu au save) ; déposer toute ancienne jumelle `(additional)`
+  **dans une passe séparée** (`removeRepeatTier`) avant d'ajouter le modifier —
+  ne pas entrelacer dépose et ajout dans la même boucle.
+- **Côté application** : `editor/REPEAT_COST_APP_PROMPT.md` (compter les
+  exemplaires dans le roster ; N premiers au prix normal, le reste à +Δ ;
+  **jamais** Δ sur tous).
 
 La brique « increment + `<repeats>` + condition seuil » existe déjà dans
 le dépôt pour des paliers **intra-unité** (par modèle au-delà du Nième) ;
