@@ -20,6 +20,10 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   un `<modifier>` de coût + marqueur `repeat-cost: threshold=N delta=Δ` ;
   l'appli doit n'appliquer Δ qu'aux exemplaires **au-delà du Nème** (pas à
   tous). Remplace l'ancienne entrée dupliquée `(additional)`.
+- **`editor/UNIQUE_DETACHMENT_APP_PROMPT.md`** — prompt autonome (application
+  consommatrice) : les détachements à mot-clef `UNIQUE: X` (marqueur
+  `<comment>unique-detachment: X</comment>`) sont **mutuellement exclusifs** par
+  X — une armée multi-détachements ne peut en contenir qu'un par mot-clef.
 - **`editor/ICON_BEARER_APP_PROMPT.md`** — prompt autonome (application
   consommatrice) pour interpréter le rattachement « 1 modèle porte
   l'amélioration » : icônes/bannières via `<association>` (`childId="model"`
