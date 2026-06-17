@@ -57,12 +57,13 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   avec `repeat-cost`). Si le chapitre **redéfinit** l'unité localement (Black
   Templars), le prix est déjà sur l'entrée locale.
 - **`editor/LEADER_LINKS_APP_PROMPT.md`** — prompt autonome (application
-  consommatrice) : les listes MFM « LEADER » (quelles unités un chef peut mener)
-  sont encodées sur les datasheets Space Marines/chapitres par des
-  `selectionEntryGroup` **déclaratifs** `hidden`+`max=0` — `Can Lead (MFM)` sur
-  le chef, `Can Be Led By (MFM)` sur l'unité quand le chef est importé (frontière
-  de bibliothèque partagée). L'appli reconstitue les rattachements par **union
-  des deux sens**, restreinte au catalogue primaire ; jamais sélectionnables.
+  consommatrice) : « quelles unités un chef peut mener », **toutes factions**,
+  encodé sur chaque datasheet de chef par un `selectionEntryGroup` **déclaratif**
+  `hidden`+`max=0` nommé `Can Lead (MFM)` (entryLinks vers les unités menées).
+  **Source = la prose de la capacité *Leader*** (« can be attached to the following
+  units: … »), redondée en données ; un seul sens (côté chef), cibles résolues
+  dans la clôture d'import. Restent dans la prose seule : rattachements **par
+  mot-clef**, **accordés par amélioration**, ou inter-fichiers hors import.
 - `editor/README.md` — l'éditeur web (`node editor/server.js`) et la lib
   `editor/lib/catalog.js` + `editor/lib/xml.js` (round-trip XML fidèle :
   toujours passer par cette lib pour éditer, jamais de sed/regex sur les
