@@ -32,6 +32,13 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   (même au niveau unité) comme des modèles, **exécuter les `modifier`**
   (`set`/`decrement`, cross-node, `repeats`) et **respecter min=0** — la donnée
   est complète, c'est l'évaluation qui manque.
+- **`editor/SHARED_LIBRARY_RULES_APP_PROMPT.md`** — prompt autonome (application
+  consommatrice) : les règles d'armée et de détachement des factions
+  « importateur mince » (Aeldari/Drukhari/Ynnari → `Aeldari - Aeldari
+  Library.cat`, etc.) ne sont **pas dans le `.cat` de la faction** (0 règle) ;
+  l'appli doit **suivre les `<catalogueLink>` par `targetId`** (transitif),
+  résoudre les `<infoLink type="rule">` **inter-fichiers**, et filtrer les
+  détachements par condition **`primary-catalogue`**, jamais par fichier.
 - `editor/README.md` — l'éditeur web (`node editor/server.js`) et la lib
   `editor/lib/catalog.js` + `editor/lib/xml.js` (round-trip XML fidèle :
   toujours passer par cette lib pour éditer, jamais de sed/regex sur les
