@@ -64,6 +64,13 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   units: … »), redondée en données ; un seul sens (côté chef), cibles résolues
   dans la clôture d'import. Restent dans la prose seule : rattachements **par
   mot-clef**, **accordés par amélioration**, ou inter-fichiers hors import.
+- **`editor/MODEL_ABILITIES_APP_PROMPT.md`** — prompt autonome (application
+  consommatrice) : la plupart des capacités de datasheet sont des profils
+  `Abilities` sur l'**unité**, mais quelques-unes sont portées par un
+  `selectionEntry type="model"` imbriqué (ex. capacité propre à un Sergent). L'appli
+  doit collecter les capacités dans **tout le sous-arbre** (unité **+** modèles),
+  exclure les lignes de stats (`typeName="Unit"`) et les armes, et **dédupliquer**
+  (une fois, pas une par figurine). Correctif de lecture/affichage, aucune donnée.
 - `editor/README.md` — l'éditeur web (`node editor/server.js`) et la lib
   `editor/lib/catalog.js` + `editor/lib/xml.js` (round-trip XML fidèle :
   toujours passer par cette lib pour éditer, jamais de sed/regex sur les
