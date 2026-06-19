@@ -1,0 +1,170 @@
+{
+  "_meta": {
+    "purpose": "Jeu de cas de test idiome-par-idiome pour valider un parseur/évaluateur des catalogues BattleScribe de wh40k-11e. Chaque cas cible un idiome documenté dans editor/BSDATA_PARSING_REFERENCE.md et un prompt spécialisé. Charge la datasheet par 'unitId', évalue le 'scenario' (sélections), compare au 'expect'.",
+    "costType": "pts (typeId 51b2-306e-1021-d207)",
+    "battlelineCategoryId": "e338-111e-d0c6-b687",
+    "generated": "2026-06-18"
+  },
+  "cases": [
+    {
+      "id": "weapon-slots-rhino",
+      "idiom": "Arme de base fixe (min=1) + emplacement optionnel à choix (groupe max=1)",
+      "promptRef": ["WEAPON_SLOTS_APP_PROMPT.md", "BSDATA_PARSING_REFERENCE.md §3,§9"],
+      "file": "Chaos - Chaos Space Marines.cat",
+      "unit": "Chaos Rhino", "unitId": "e981-27ae-112f-aa9a", "baseCostPts": 75,
+      "scenarios": [
+        { "given": "défaut", "expect": "1× Combi-bolter (base, lecture seule) ; emplacement 'Pintle weapon' = aucune ; Havoc launcher = non ; coût 75" },
+        { "given": "Pintle weapon = Combi-weapon", "expect": "armes = Combi-bolter + Combi-weapon ; coût 75 (armes gratuites)" },
+        { "given": "Pintle weapon = Combi-bolter", "expect": "armes = 2× Combi-bolter (base + pintle, deux emplacements distincts)" }
+      ],
+      "mustNot": "ne pas présenter le Combi-bolter de base comme un choix ; ne pas fusionner les 2 combi-bolters ; ne pas omettre l'option Combi-weapon"
+    },
+    {
+      "id": "per-model-weapon-cost-retributor",
+      "idiom": "Coût d'arme PAR MODÈLE (× nombre de porteurs)",
+      "promptRef": ["UNIT_COMPOSITION_APP_PROMPT.md", "BSDATA_PARSING_REFERENCE.md §7"],
+      "file": "Imperium - Adepta Sororitas.cat",
+      "unit": "Retributor Squad", "unitId": "c49d-f150-4b3-c118", "baseCostPts": 105,
+      "scenarios": [
+        { "given": "défaut (4 Retributors, heavy bolter gratuit)", "expect": "surcoût d'arme 0 ; 4 Heavy bolters affichés" },
+        { "given": "1 Retributor en Multi-melta", "expect": "+5 (total armes) ; 3 Heavy bolters + 1 Multi-melta" },
+        { "given": "4 Retributors en Multi-melta", "expect": "+20 (= 4 × 5), PAS +5 ; 0 Heavy bolter + 4 Multi-melta" }
+      ],
+      "mustNot": "facturer la Multi-melta une seule fois pour l'unité"
+    },
+    {
+      "id": "collective-false-multislot-fireknife",
+      "idiom": "Modèle collective=false (instances séparées) + 2 emplacements d'arme/modèle + arme par défaut gratuite",
+      "promptRef": ["WEAPON_SLOTS_APP_PROMPT.md", "UNIT_COMPOSITION_APP_PROMPT.md", "BSDATA_PARSING_REFERENCE.md §3,§7"],
+      "file": "T'au Empire.cat",
+      "unit": "Crisis Fireknife Battlesuits", "unitId": "9373-d0b3-94c9-e47", "baseCostPts": 100,
+      "scenarios": [
+        { "given": "défaut", "expect": "chaque Crisis = 2 armes ; défaut = Plasma rifle (gratuit) ; Missile pod = 0 ; coût 100" },
+        { "given": "1 Missile pod", "expect": "+5" },
+        { "given": "max (2 Missile pods par figurine)", "expect": "Missile pod plafonné à 2 PAR figurine (≠ 2 pour l'unité)" }
+      ],
+      "mustNot": "afficher Plasma + Missile par défaut équipés ensemble ; plafonner Missile à 2 pour toute l'unité ; fusionner les figurines (collective=false ⇒ chacune configurable)"
+    },
+    {
+      "id": "count-based-swaps-troupe",
+      "idiom": "Échanges d'arme en compteurs indépendants (2 dimensions) + paliers de points",
+      "promptRef": ["UNIT_COMPOSITION_APP_PROMPT.md", "BSDATA_PARSING_REFERENCE.md §3,§5,§7"],
+      "file": "Aeldari - Aeldari Library.cat",
+      "unit": "Troupe", "unitId": "dac1-6a7f-a06a-82cf", "baseCostPts": 85,
+      "scenarios": [
+        { "given": "tailles", "expect": "5 modèles=85, 6=100, 7-11=190, 12=205 pts" },
+        { "given": "armes Player", "expect": "compteurs indépendants : Harlequin's Special Weapon (any number), Neuro Disruptor (≤2 si ≤9 fig. / ≤4 si ≥10), Fusion Pistol (idem) ; bases Blade/Shuriken auto-décrémentées" },
+        { "given": "1 Player special weapon + neuro", "expect": "autorisé (mêlée et pistolet indépendants)" },
+        { "given": "Lead Player", "expect": "Blade → Power sword possible ; pistolet → Fusion/Neuro" }
+      ],
+      "mustNot": "un seul menu d'arme pour tout le bloc ; empêcher special weapon + neuro sur la même figurine"
+    },
+    {
+      "id": "battleline-warlord-wazdakka",
+      "idiom": "Grant Battleline conditionné au WARLORD (drapeau de catégorie sur la sélection Warlord)",
+      "promptRef": ["BATTLELINE_GRANT_APP_PROMPT.md", "BSDATA_PARSING_REFERENCE.md §6"],
+      "file": "Orks.cat",
+      "unit": "Warbikers", "unitId": "83a7-ea20-ed9-d14a", "baseCostPts": 60,
+      "extra": { "wazdakkaId": "2ab7-ab71-0af4-5d39", "battlelineCategory": "e338-111e-d0c6-b687" },
+      "scenarios": [
+        { "given": "sans Wazdakka Warlord", "expect": "Warbikers NON Battleline ; plafond 0-3" },
+        { "given": "Wazdakka désigné Warlord", "expect": "Warbikers gagnent Battleline (catégorie primaire) ; plafond 0-3 → 0-6" }
+      ],
+      "mustNot": "accorder Battleline si Wazdakka est présent mais PAS Warlord"
+    },
+    {
+      "id": "battleline-detachment-tzaangors",
+      "idiom": "Grant Battleline conditionné au détachement (OR sur plusieurs détachements)",
+      "promptRef": ["BATTLELINE_GRANT_APP_PROMPT.md", "BSDATA_PARSING_REFERENCE.md §5,§6"],
+      "file": "Chaos - Thousand Sons.cat",
+      "unit": "Tzaangors", "unitId": "f5b9-50c8-5c60-d8ea", "baseCostPts": 75,
+      "extra": { "detachments": ["Warpmeld Pact", "Servants of Change"] },
+      "scenarios": [
+        { "given": "détachement autre", "expect": "Tzaangors NON Battleline ; 0-3" },
+        { "given": "détachement = Warpmeld Pact", "expect": "Tzaangors Battleline ; 0-6" },
+        { "given": "détachement = Servants of Change", "expect": "Tzaangors Battleline ; 0-6 (les DEUX détachements accordent — OR)" }
+      ]
+    },
+    {
+      "id": "modifier-imported-group-count-warwalker",
+      "idiom": "modifier set ciblant la contrainte d'un GROUPE IMPORTÉ (nombre d'armes) + capacité au niveau unité",
+      "promptRef": ["BSDATA_PARSING_REFERENCE.md §4,§9", "MODEL_ABILITIES_APP_PROMPT.md"],
+      "file": "Aeldari - Aeldari Library.cat",
+      "unit": "War Walkers", "unitId": "bcec-dc54-9242-4e13", "perModelCostPts": 85,
+      "scenarios": [
+        { "given": "armes du War Walker", "expect": "2 armes lourdes (Heavy Weapons), pas 1 — le modèle porte un modifier set=2 sur le min/max du groupe importé ; chaque arme échangeable indépendamment" },
+        { "given": "capacité datasheet", "expect": "'Crystalline Targeting' affichée (profil Abilities au niveau UNITÉ)" }
+      ],
+      "mustNot": "afficher 1 seule arme ; manquer Crystalline Targeting"
+    },
+    {
+      "id": "unit-level-ability-skyweavers",
+      "idiom": "Capacités de datasheet au niveau unité (et collecte unité+modèles)",
+      "promptRef": ["MODEL_ABILITIES_APP_PROMPT.md", "BSDATA_PARSING_REFERENCE.md §2"],
+      "file": "Aeldari - Aeldari Library.cat",
+      "unit": "Skyweavers", "unitId": "9270-4b93-ca59-f3ed",
+      "scenarios": [
+        { "given": "capacités", "expect": "'Acrobatic Grace' ET 'Invulnerable Save' affichées (profils Abilities au niveau unité)" }
+      ],
+      "note": "collecte = union des profils Abilities de l'unité ET de ses modèles, dédupliquée (une fois, pas une par figurine)"
+    },
+    {
+      "id": "datasheet-limit-harlequin-characters",
+      "idiom": "Plafond par datasheet via constraint max scope=roster (≠ '1 par personnage' codé en dur)",
+      "promptRef": ["BSDATA_PARSING_REFERENCE.md §3"],
+      "file": "Aeldari - Aeldari Library.cat",
+      "scenarios": [
+        { "given": "Troupe Master (dada-b81b-37bd-1f3b)", "expect": "max 3 (roster)" },
+        { "given": "Shadowseer (8c34-52ba-cbd0-9ca4)", "expect": "max 3" },
+        { "given": "Death Jester (5768-1f87-3a16-d901)", "expect": "max 3" },
+        { "given": "Solitaire (f88f-60c5-3daf-3d2f)", "expect": "max 1 (categoryLink Epic Hero)" }
+      ],
+      "mustNot": "plafonner tous les personnages à 1"
+    },
+    {
+      "id": "repeat-cost-darkcommune",
+      "idiom": "Surcoût par seuil de répétition (Δ uniquement au-delà du Nème)",
+      "promptRef": ["REPEAT_COST_APP_PROMPT.md", "BSDATA_PARSING_REFERENCE.md §7"],
+      "file": "Chaos - Chaos Space Marines.cat",
+      "unit": "Dark Commune", "unitId": "1780-25b8-ce0b-898d", "baseCostPts": 90,
+      "marker": "repeat-cost: threshold=1 delta=10",
+      "scenarios": [
+        { "given": "1er exemplaire", "expect": "90" },
+        { "given": "2e exemplaire", "expect": "100 (90 + 10)" },
+        { "given": "armée avec 2 Dark Commune", "expect": "total 190 (90 + 100), PAS 200" }
+      ],
+      "mustNot": "appliquer Δ à tous les exemplaires"
+    },
+    {
+      "id": "chapter-cost-primary-catalogue",
+      "idiom": "Coût variable selon la faction jouée (scope=primary-catalogue)",
+      "promptRef": ["MARINE_CHAPTER_COST_APP_PROMPT.md", "BSDATA_PARSING_REFERENCE.md §3,§7"],
+      "file": "Imperium - Space Marines.cat",
+      "unit": "Captain with Jump Pack", "baseCostPts": 75,
+      "marker": "chapter-cost: BA",
+      "scenarios": [
+        { "given": "chapitre générique / autre", "expect": "75" },
+        { "given": "primary-catalogue = Blood Angels", "expect": "80 (modifier set conditionné scope=primary-catalogue)" }
+      ],
+      "mustNot": "ignorer le scope primary-catalogue (→ prix faux selon le chapitre)"
+    },
+    {
+      "id": "leader-links-can-lead",
+      "idiom": "Liens chef→unités menées (groupe déclaratif hidden + max=0)",
+      "promptRef": ["LEADER_LINKS_APP_PROMPT.md", "BSDATA_PARSING_REFERENCE.md §8"],
+      "file": "Imperium - Space Marines.cat",
+      "scenarios": [
+        { "given": "datasheet d'un chef", "expect": "lire le groupe nommé 'Can Lead (MFM)' (hidden, max=0) → entryLinks = unités menables ; NE PAS le proposer comme sélection ni compter son coût" }
+      ]
+    },
+    {
+      "id": "unique-detachment-exclusive",
+      "idiom": "Détachements mutuellement exclusifs par mot-clef",
+      "promptRef": ["UNIQUE_DETACHMENT_APP_PROMPT.md", "BSDATA_PARSING_REFERENCE.md §8"],
+      "file": "Chaos - Chaos Space Marines.cat",
+      "scenarios": [
+        { "given": "détachements marqués <comment>unique-detachment: NIGHTMARE</comment> (Murdertalon Raiders, Nightmare Hunt)", "expect": "une armée multi-détachements ne peut en contenir qu'UN par mot-clef X" }
+      ]
+    }
+  ]
+}
