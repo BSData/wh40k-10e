@@ -71,6 +71,19 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   doit collecter les capacités dans **tout le sous-arbre** (unité **+** modèles),
   exclure les lignes de stats (`typeName="Unit"`) et les armes, et **dédupliquer**
   (une fois, pas une par figurine). Correctif de lecture/affichage, aucune donnée.
+- **`editor/BSDATA_PARSING_REFERENCE.md`** — **doc de référence complète** pour
+  l'agent de l'appli consommatrice : tout le vocabulaire réel du format (11 types de
+  modifier, 7 de condition, scopes dont `primary-catalogue`/`ancestor`/`forces`,
+  `conditionGroup` and/or/**count**, `infoLink type=infoGroup`, `field=hidden/defaultAmount`,
+  profils-capacité à `typeName` non-`Abilities`…), le pipeline résoudre→évaluer→agréger,
+  les **idiomes multiples** (sources de trous silencieux) et un renvoi vers chaque prompt
+  spécialisé. À donner à toute appli qui parse la base.
+- **`editor/BATTLELINE_GRANT_APP_PROMPT.md`** — grants Battleline (catégorie
+  conditionnelle `add`/`set-primary` + plafond 0-3→0-6), conditionnés détachement
+  (`scope="force"`) ou Warlord (drapeau de catégorie sur la sélection Warlord).
+- **`editor/WEAPON_SLOTS_APP_PROMPT.md`** — arme de **base fixe** (`min≥1`) +
+  **emplacement optionnel à choix** (groupe `max=1`/min 0) ; même arme en base ET en
+  option = deux emplacements (ex. Chaos Rhino : combi-bolter + pintle combi-bolter/weapon).
 - `editor/README.md` — l'éditeur web (`node editor/server.js`) et la lib
   `editor/lib/catalog.js` + `editor/lib/xml.js` (round-trip XML fidèle :
   toujours passer par cette lib pour éditer, jamais de sed/regex sur les
