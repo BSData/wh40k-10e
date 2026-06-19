@@ -10,6 +10,8 @@ en s'appuyant sur `editor/BSDATA_PARSING_REFERENCE.md` et les prompts spécialis
 2. Coûts en **`pts`** (typeId `51b2-306e-1021-d207`). Catégorie Battleline = `e338-111e-d0c6-b687`.
 3. Un cas qui échoue = un idiome non géré → va lire le `promptRef` correspondant.
 4. Transforme chaque `scenario` en assertion automatisée (et garde-les en non-régression).
+5. Le JSON a **deux blocs** : `cases` (13 cas chiffrés, ci-dessous) **et** `blindSpotCases`
+   (8 idiomes non encore audités, section « Angles morts » plus bas).
 
 ## Couverture (idiome → cas → règle de référence)
 | Cas | Idiome testé | Réf |
@@ -40,6 +42,31 @@ en s'appuyant sur `editor/BSDATA_PARSING_REFERENCE.md` et les prompts spécialis
 - **Persos Harlequins** : Troupe Master/Shadowseer/Death Jester = **3** ; Solitaire = **1**.
 - **Dark Commune** : ×2 = **190** (90 + 100), pas 200.
 - **Captain with Jump Pack** : **75**, mais **80** si la faction primaire est Blood Angels.
+
+## Angles morts — idiomes que l'appli n'a PAS encore audités (bloc `blindSpotCases`)
+Le JSON contient un **second bloc**, `blindSpotCases` (8 cas). Ce sont des idiomes
+**réels et fréquents** que la passe « cherche d'autres bugs du même genre » n'a pas
+examinés : ils ne déclenchent pas forcément un bug visible sur une fiche précise, mais
+un constructeur de liste / simulateur qui les ignore **perd silencieusement** des
+capacités, affiche de mauvaises options, ou évalue de fausses contraintes. Chaque cas
+pointe des **exemples réels** (vérifiés dans la donnée) à transformer en tests.
+
+| Cas | Idiome (angle mort) | Réf | Exemple réel vérifié |
+|---|---|---|---|
+| `blind-non-abilities-profiles` | capacités à `typeName ≠ 'Abilities'` (Orders, Rituals, Triarch Abilities, Marks of Chaos, Hymn of Battle, Blessings of Khorne…) | §2 / MODEL_ABILITIES | Cadian Castellan `2b49-4d03-aaf5-3532` (Orders) ; Silent King `7422-7fbf-8694-364c` (Triarch Abilities) |
+| `blind-conditional-hidden` | visibilité conditionnelle via `modifier field='hidden'` | §4 | Celerity `3ad6-26c4-206b-aa4f` (enhancement SM, 556 modif. hidden) |
+| `blind-conditiongroup-count` | `conditionGroup type='count'` (≥N sous-conditions vraies) | §5 | Abominant `97b1-4873-9fcb-5cb8` (GSC) |
+| `blind-condition-field-forces` | `condition field='forces'` (compter détachements, pas sélections) | §5 | Asurmen `828d-840a-9a67-9074` (Aeldari, 273 occ.) |
+| `blind-scopes` | scopes `ancestor` / `model-or-unit` / `upgrade` / `primary-catalogue` | §3 | Spirit Stone of Raelyth (ancestor) ; Sword of the Void's Eye (upgrade) ; Chaos Knights (model-or-unit) |
+| `blind-infogroup-link` | `link type='infoGroup'` (paquet de règles/profils) | §1,§2 | Aleya `9e42-7207-9c30-6122` « Talons » (Custodes) |
+| `blind-modifier-remove-defaultamount` | `modifier remove`/`unset-primary` (catégorie) + `field='defaultAmount'` | §4 | Jetbike (remove cat, Aeldari) ; Show Imperial Knights (defaultAmount) |
+| `blind-replace-floor-ceil` | modifiers `replace` (texte/carac.) et `floor`/`ceil` (arrondi) | §4 | Aspect of Murder (replace, Aeldari) ; Knight Diabolus (floor, Chaos Knights) |
+
+> **Comment les attaquer** : pour chaque cas, ouvre l'exemple cité, vérifie que ton
+> évaluateur (a) **collecte/affiche** ce qu'il doit, (b) **évalue** la bonne condition/
+> scope. Un échec ⇒ idiome non géré → lis le `promptRef`. Les 3 premiers (profils non-
+> Abilities, hidden, count) sont les plus impactants pour un **constructeur de liste** ;
+> `replace`/`floor`/`ceil` surtout pour un **simulateur** de profils.
 
 > Si un cas passe mais qu'un idiome voisin reste douteux, ajoute une datasheet de la
 > même classe (la colonne « idiomes multiples » de la référence §9 liste les variantes).

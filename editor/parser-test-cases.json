@@ -166,5 +166,91 @@
         { "given": "détachements marqués <comment>unique-detachment: NIGHTMARE</comment> (Murdertalon Raiders, Nightmare Hunt)", "expect": "une armée multi-détachements ne peut en contenir qu'UN par mot-clef X" }
       ]
     }
-  ]
+  ],
+  "blindSpotCases": {
+    "_note": "Idiomes que l'audit 'cherche d'autres bugs du même genre' n'a PAS examinés (angles morts). Exemples réels extraits de la base. Priorité : un constructeur de liste doit gérer non-Abilities-profiles, hidden, conditionGroup count, field=forces, scopes, infoGroup, remove/defaultAmount ; replace/floor/ceil surtout pour un simulateur.",
+    "cases": [
+      {
+        "id": "blind-non-abilities-profiles",
+        "idiom": "Capacités de datasheet à typeName ≠ 'Abilities' (Orders, Rituals, Triarch Abilities, Marks of Chaos, Hymn of Battle, Blessings of Khorne…)",
+        "promptRef": ["BSDATA_PARSING_REFERENCE.md §2"],
+        "risk": "un parseur qui ne collecte que typeName='Abilities' (ou typeId 9cc3) PERD silencieusement ces capacités",
+        "examples": [
+          { "file": "Imperium - Astra Militarum - Library.cat", "unit": "Cadian Castellan", "unitId": "2b49-4d03-aaf5-3532", "expect": "profil 'Orders' (typeName='Orders') collecté comme capacité" },
+          { "file": "Necrons.cat", "unit": "The Silent King", "unitId": "7422-7fbf-8694-364c", "expect": "'Phaeron of the Stars (Aura)' (typeName='Triarch Abilities') collecté" },
+          { "file": "Chaos - Chaos Space Marines.cat", "unit": "Pactbound Zealots", "expect": "profils 'Marks of Chaos' collectés" },
+          { "file": "Chaos - Thousand Sons.cat", "expect": "profils 'Rituals' collectés" },
+          { "file": "Imperium - Adepta Sororitas.cat", "expect": "profils 'Hymn of Battle' collectés" },
+          { "file": "Chaos - World Eaters.cat", "expect": "profils 'Blessings of Khorne' collectés" }
+        ],
+        "rule": "Collecte un profil comme capacité dès que son typeId/typeName n'est NI Unit (statline) NI Ranged/Melee Weapons NI Transport. Ne filtre pas sur le seul nom 'Abilities'."
+      },
+      {
+        "id": "blind-conditional-hidden",
+        "idiom": "Visibilité conditionnelle via modifier field='hidden'",
+        "promptRef": ["BSDATA_PARSING_REFERENCE.md §4"],
+        "risk": "afficher des entrées qui devraient être cachées, ou inversement (ex. enhancement visible hors de son détachement, option réservée à un mot-clef)",
+        "example": { "file": "Imperium - Space Marines.cat", "entry": "Celerity (enhancement Librarius Conclave)", "entryId": "3ad6-26c4-206b-aa4f", "expect": "set hidden=true tant que ses conditions (détachement / Psyker) ne sont pas remplies ; visible quand elles le sont" },
+        "rule": "Évalue les modifier field='hidden' (avec leurs conditions) AVANT d'afficher/proposer une entrée ; hidden effectif=true ⇒ ne pas la montrer."
+      },
+      {
+        "id": "blind-conditiongroup-count",
+        "idiom": "conditionGroup type='count' (≥N des sous-conditions vraies)",
+        "promptRef": ["BSDATA_PARSING_REFERENCE.md §5"],
+        "risk": "évaluateur ne gérant que and/or → règle/option mal activée",
+        "example": { "file": "Genestealer Cults.cat", "unit": "Abominant", "unitId": "97b1-4873-9fcb-5cb8" },
+        "rule": "Supporte and, or ET count dans conditionGroup."
+      },
+      {
+        "id": "blind-condition-field-forces",
+        "idiom": "condition field='forces' (compter des détachements/forces, pas des sélections)",
+        "risk": "un évaluateur qui compte toujours des sélections active/désactive la mauvaise règle (conditions liées au nombre de détachements)",
+        "promptRef": ["BSDATA_PARSING_REFERENCE.md §5"],
+        "example": { "file": "Aeldari - Aeldari Library.cat", "unit": "Asurmen", "unitId": "828d-840a-9a67-9074", "expect": "condition atLeast 1 sur field='forces'" },
+        "rule": "field='forces' compte des forces/détachements ; field='selections' compte des sélections — gère les deux."
+      },
+      {
+        "id": "blind-scopes",
+        "idiom": "scopes ancestor / model-or-unit / upgrade / primary-catalogue (au-delà de parent/self/unit/roster/force)",
+        "risk": "un évaluateur qui ne connaît que parent/self/unit/roster/force compte dans le mauvais périmètre → contraintes/conditions fausses (option dé/verrouillée à tort)",
+        "promptRef": ["BSDATA_PARSING_REFERENCE.md §3"],
+        "examples": [
+          { "file": "Aeldari - Aeldari Library.cat", "entry": "Spirit Stone of Raelyth", "scope": "ancestor" },
+          { "file": "Genestealer Cults.cat", "entry": "Sword of the Void's Eye", "scope": "upgrade" },
+          { "file": "Chaos - Chaos Knights Library.cat", "scope": "model-or-unit" }
+        ],
+        "rule": "Implémente TOUS les scopes (table §3), y compris ancestor, model-or-unit, upgrade, primary-catalogue."
+      },
+      {
+        "id": "blind-infogroup-link",
+        "idiom": "link type='infoGroup' (paquet de règles/profils référencé)",
+        "risk": "un résolveur qui ne suit que type='profile'/'rule' ignore l'infoGroup → tout un paquet de règles/profils manquant sur la fiche",
+        "promptRef": ["BSDATA_PARSING_REFERENCE.md §1,§2"],
+        "example": { "file": "Imperium - Adeptus Custodes.cat", "unit": "Aleya", "unitId": "9e42-7207-9c30-6122", "expect": "résoudre l'infoGroup 'Talons' → afficher les règles/profils regroupés" },
+        "rule": "Résous infoLink/entryLink type='infoGroup' comme un conteneur de règles/profils, pas seulement profile/rule isolés."
+      },
+      {
+        "id": "blind-modifier-remove-defaultamount",
+        "idiom": "modifier remove/unset-primary (catégorie) et field='defaultAmount'",
+        "risk": "un évaluateur qui ne gère qu'add/set garde une catégorie qui devrait disparaître, ou rate un défaut modifié → loadout/statut faux",
+        "promptRef": ["BSDATA_PARSING_REFERENCE.md §4"],
+        "examples": [
+          { "file": "Aeldari - Aeldari Library.cat", "entry": "Jetbike", "modifier": "remove category (retrait conditionnel)" },
+          { "file": "Imperium - Imperial Knights - Library.cat", "entry": "Show Imperial Knights", "modifier": "set defaultAmount=0 (modifie le compte par défaut)" }
+        ],
+        "rule": "Applique remove/unset-primary (catégorie retirée) et field='defaultAmount' (défaut modifié), pas seulement add/set."
+      },
+      {
+        "id": "blind-replace-floor-ceil",
+        "idiom": "modifiers replace (texte/caractéristique) et floor/ceil (arrondi) — surtout simulateur",
+        "risk": "un simulateur qui ignore replace/floor/ceil affiche des profils/coûts non modifiés ou non arrondis (stats fausses)",
+        "promptRef": ["BSDATA_PARSING_REFERENCE.md §4"],
+        "examples": [
+          { "file": "Aeldari - Aeldari Library.cat", "entry": "Aspect of Murder", "modifier": "replace sur une caractéristique" },
+          { "file": "Chaos - Chaos Knights Library.cat", "entry": "Knight Diabolus", "modifier": "floor sur une caractéristique" }
+        ],
+        "rule": "Gère replace et floor/ceil ; impact surtout affichage de profils/coûts arrondis (requis pour un simulateur)."
+      }
+    ]
+  }
 }
