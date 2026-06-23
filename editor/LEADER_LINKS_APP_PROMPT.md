@@ -1,4 +1,4 @@
-# PROMPT — Liens « chef → unités menées » (toutes factions)
+# PROMPT — Liens « chef → unités menées » & « support → unités renforcées » (toutes factions)
 
 > Prompt autonome : colle-le comme consigne à l'agent **dans le dépôt de ton
 > application** (builder de listes qui lit les `.cat`/`.gst` de `wh40k-11e`).
@@ -50,6 +50,30 @@ leadables(L) = { unité B : B ∈ liens du groupe "Can Lead (MFM)" de L }
   rattachement (mécanique *Leader* 10e/11e).
 - Ne propose **jamais** ce groupe comme sélection, n'en compte pas le coût
   (`hidden`+`max=0`).
+
+## Variante SUPPORT — groupe `Can Support (MFM)`
+
+Certaines unités ne sont pas des chefs (*Leader*) mais des modèles **Support**
+(capacité de base **SUPPORT** = `infoLink type="rule" targetId="21f5-c07c-6d97-4405"`) :
+elles se rattachent à une des unités listées sur leur datasheet « *in the same
+manner as a Leader* », pour la **renforcer**. Cette liste est redondée **à
+l'identique** sous un groupe nommé **`Can Support (MFM)`** :
+
+```xml
+<selectionEntryGroup name="Can Support (MFM)" hidden="true" id="…">
+  <comment>support-link: unites que ce modele Support peut rejoindre (…)</comment>
+  <constraints><constraint type="max" value="0" field="selections" scope="parent" shared="true" id="…"/></constraints>
+  <entryLinks><entryLink type="selectionEntry" hidden="true" targetId="&lt;unité renforçable&gt;"/> …</entryLinks>
+</selectionEntryGroup>
+```
+
+- **Même structure et mêmes invariants** que `Can Lead (MFM)` (hidden, `max=0`,
+  jamais sélectionnable, cibles dans la clôture d'import) — lis-le exactement pareil.
+- Un modèle est **Support** (et non *Leader*) ssi il porte la capacité de base
+  **SUPPORT** (`infoLink` `21f5-…`). Le mot-clef est **par faction** dans le MFM :
+  une même fiche peut être *Leader* dans une faction et *Support* dans une autre
+  (ex. **Ministorum Priest**, **Master of Executions**) — fie-toi au groupe présent
+  (`Can Lead` vs `Can Support`) et à la présence du mot-clef SUPPORT, pas au nom.
 
 ## Ce qui n'est PAS encodé en liens (rester sur la prose)
 
