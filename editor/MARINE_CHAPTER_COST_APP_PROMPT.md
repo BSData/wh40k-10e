@@ -17,6 +17,14 @@ chapitre. Exemples (Blood Angels) : Assault Intercessors 75→**80**, Bladeguard
 chapitre **redéfinit** localement l'unité dans son propre `.cat` — cas de
 Black Templars — le prix est déjà sur l'entrée locale ; rien à faire ici.)
 
+> **Pareil pour les DP de détachement.** Les détachements **partagés** (définis
+> dans `Space Marines.cat`, importés par les chapitres) ont un **coût DP** qui
+> varie aussi par sous-chapitre. Même encodage, mais le `field` est le typeId
+> **DP** (`0d99-4ee2-7b3c-1f5a`) au lieu de `pts`. Ex. **Stormlance Task Force** :
+> base **3 DP**, mais **2 DP** en Black Templars / Blood Angels / Deathwatch ;
+> **Bastion Task Force** : base **2 DP**, mais **3 DP** en Black Templars. Idem :
+> aucune logique spéciale, éval standard du `set` conditionné `primary-catalogue`.
+
 ## Encodage (rien de spécial à coder — éval BattleScribe standard)
 
 Sur l'entrée **partagée** de `Space Marines.cat`, un **modifier de coût `set`**
