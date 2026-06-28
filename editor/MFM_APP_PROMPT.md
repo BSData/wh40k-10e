@@ -41,9 +41,17 @@ Type de coût points : `typeId="51b2-306e-1021-d207"`, `name="pts"`.
      l'arme (`condition atLeast 1 field="selections" scope="parent"
      childId="<id arme>" shared="true"`).
 
-4. **NOUVEAU — seuil de répétition** (encodage confirmé : **entrée
-   scindée**, sémantique « les N premiers au prix de base, chaque
-   exemplaire au-delà du Nième à un autre prix ») :
+4. **Seuil de répétition** — ⚠️ **OBSOLÈTE.** L'encodage par **entrée
+   scindée** `(additional)` décrit ci-dessous a été **abandonné** (la
+   jumelle cachée n'apparaissait pas dans les applis). Il est remplacé par
+   un **modifier de coût `increment` + marqueur
+   `repeat-cost: threshold=N delta=Δ`** sur l'unité — voir
+   `REPEAT_COST_APP_PROMPT.md` (et la règle #5 du `CLAUDE.md`). La
+   description qui suit n'est conservée que pour reconnaître d'éventuelles
+   anciennes jumelles `(additional)` résiduelles dans des données non
+   migrées ; **n'implémente pas ce mécanisme pour de nouvelles données**.
+   Ancien encodage (entrée scindée, « les N premiers au prix de base,
+   chaque exemplaire au-delà du Nième à un autre prix ») :
    - l'entrée d'origine reçoit une contrainte `max N field="selections"
      scope="roster" shared="true"` ;
    - une entrée jumelle `"<Unité> (additional)"` (selectionEntry clonée,
