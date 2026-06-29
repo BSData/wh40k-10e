@@ -71,6 +71,15 @@ BattleScribe) + un éditeur web zéro-dépendance dans `/editor`.
   doit collecter les capacités dans **tout le sous-arbre** (unité **+** modèles),
   exclure les lignes de stats (`typeName="Unit"`) et les armes, et **dédupliquer**
   (une fois, pas une par figurine). Correctif de lecture/affichage, aucune donnée.
+- **`editor/SIM_MOD_APP_PROMPT.md`** — prompt autonome (simulateur de dégâts) :
+  les bonus **offensifs** accordés par une capacité de datasheet ou une
+  amélioration (ex. compétence de Castellan Crowe) sont matérialisés par un
+  marqueur `<comment>sim-mod: source="…" attacks=+1 weapon="…" whileLeading
+  …</comment>` posé en **1ᵉʳ enfant** de la `selectionEntry` de l'unité ; l'appli
+  parse les lignes `sim-mod:`, les attache à l'unité (`simMods`), les propose en
+  **bascule** (pré-cochées si non conditionnelles) et **replie** les effets actifs
+  dans l'objet `mods` de `simulate()`. Ne couvre **que** les bonus de
+  capacité/amélioration — mots-clefs d'arme et règles d'armée restent côté appli.
 - **`editor/BSDATA_PARSING_REFERENCE.md`** — **doc de référence complète** pour
   l'agent de l'appli consommatrice : tout le vocabulaire réel du format (11 types de
   modifier, 7 de condition, scopes dont `primary-catalogue`/`ancestor`/`forces`,
