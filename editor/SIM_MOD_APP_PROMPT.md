@@ -70,14 +70,21 @@ sont entre guillemets) :
    - Respecter `when=melee|ranged` selon l'onglet actif.
    - Cumul additif pour les bonus numériques ; `max` pour les relances ;
      `min` pour les seuils de critique.
+5. **Portée par arme** (`weapon="…"`) : l'effet ne doit toucher **que** les
+   profils dont le nom correspond. Le moteur prend un seul `mods`, donc on lui
+   passe une **surcouche par arme** : `mods.byWeapon[nomDuProfil]` = un objet
+   `mods` complet (global + les effets scopés de cette arme) ; `resolveProfile`
+   la substitue au `mods` global pour le profil correspondant. Un effet **sans**
+   `weapon=` reste global. Une portée qui ne correspond à **aucun** profil
+   activé est ignorée (le bonus n'a rien à toucher). Ainsi le +1 A de Crowe
+   ne frappe que la Purifying Flame, pas le psycannon d'un Purificateur de la
+   même unité.
 
-## Limite connue (assumée pour l'instant)
+## Surlignage
 
-Le moteur prend **un** objet `mods` pour **tous** les profils d'arme activés.
-Un effet `weapon="X"` est donc replié **globalement** (la portée n'est
-qu'affichée sur la puce). L'utilisateur garde le contrôle en n'activant que
-les profils pertinents dans le simulateur. Un ciblage par arme exact
-nécessiterait que le moteur accepte des `mods` par profil — évolution future.
+Quand un bonus est actif, l'appli relance la simu **sans** lui et peint en
+**vert** toute valeur déplacée (tableau des cibles, cartes de stats, détail
+par arme) — le joueur voit exactement ce que la capacité apporte.
 
 ## Exemple — Castellan Crowe (`Imperium - Grey Knights.cat`)
 
