@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="119" battleScribeVersion="2.03" type="gameSystem">
+<gameSystem xmlns="http://www.battlescribe.net/schema/gameSystemSchema" id="sys-352e-adc2-7639-d6a9" name="Warhammer 40,000 10th Edition" revision="120" battleScribeVersion="2.03" type="gameSystem">
   <publications>
     <publication id="48fc-15aa-b307-9443" name="10th Edition Core Rules" shortName="10th Ed Core"/>
     <publication name="Github" hidden="false" id="8db3-575d-91b-47f8" shortName="BSData/wh40k-10e" publisherUrl="https://github.com/BSData/wh40k-10e"/>
@@ -607,9 +607,11 @@
         <categoryLink name="Reference" hidden="false" id="3761-5a4e-79e0-3c18" targetId="eef1-be80-500a-edfc"/>
       </categoryLinks>
       <modifiers>
-        <modifier type="set" field="readme" value="This *10th* edition data set will not be getting updated for 11th edition.
-There will be a new, separate data set for 11th edition which will be made available as soon as it is ready.
-There is no need to report any discrepancies between this data set and the 11th edition rules."/>
+        <modifier type="set" field="readme" value="##This *10th* edition data set will not be getting updated for 11th edition.
+
+##There is a new, separate data set for 11th edition which you can add.
+
+##Do not report any discrepancies between this data set and the 11th edition rules."/>
       </modifiers>
     </forceEntry>
     <forceEntry name="Boarding Actions" hidden="true" id="1d6e-2579-8e7f-1ed4">
@@ -708,9 +710,13 @@ There is no need to report any discrepancies between this data set and the 11th 
             <repeat value="1" repeats="1" field="selections" scope="force" childId="4213-a51d-bffe-87dc" shared="true" roundUp="false" includeChildSelections="true" includeChildForces="true"/>
           </repeats>
         </modifier>
-        <modifier type="set" value="This *10th* edition data set will not be getting updated for 11th edition.
-There will be a new, separate data set for 11th edition which will be made available as soon as it is ready.
-There is no need to report any discrepancies between this data set and the 11th edition rules.
+        <modifier type="set" value="##This *10th* edition data set will not be getting updated for 11th edition.
+
+
+##There is a new, separate data set for 11th edition which you can add.
+
+
+##Do not report any discrepancies between this data set and the 11th edition rules.
 
 
 **Reminder: Your Crusade Force is every model available to your faction in Crusade Mode. Your Crusade Army is the list of units you intend to use in a game.**" field="readme">
@@ -718,9 +724,13 @@ There is no need to report any discrepancies between this data set and the 11th 
             <condition type="atLeast" value="1" field="forces" scope="roster" childId="ff7b-8f73-1756-650a" shared="true" includeChildSelections="true" includeChildForces="true"/>
           </conditions>
         </modifier>
-        <modifier type="set" value="This *10th* edition data set will not be getting updated for 11th edition.
-There will be a new, separate data set for 11th edition which will be made available as soon as it is ready.
-There is no need to report any discrepancies between this data set and the 11th edition rules.
+        <modifier type="set" value="##This *10th* edition data set will not be getting updated for 11th edition.
+
+
+##There is a new, separate data set for 11th edition which you can add.
+
+
+##Do not report any discrepancies between this data set and the 11th edition rules.
 
 
 **Reminder: Your Crusade Force is every model available to your faction in Crusade Mode. Your Crusade Army is the list of units you intend to use in a game.**" field="readme">
